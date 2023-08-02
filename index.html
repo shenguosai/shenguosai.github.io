@@ -214,6 +214,85 @@
             
 
   
+    <article id="post-Hexo发布文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2023/08/03/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" target="_blank">在自己搭建的hexo博客上发布文章</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2023/08/03/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" class="archive-article-date">
+        <time datetime="2023-08-02T16:19:02.735Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-03</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <ol>
+<li>在<code>/source/_posts</code>目录下建立<code>.md</code>文件并撰写内容；<br>编辑文章时要在第一行中加上<code>title</code>，如果不按此格式来写的话在<code>hexo</code>博客中就会显示这篇文章没有名字。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章题目</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
+<li>命名完成后，将终端当前目录更改为<code>/source/_posts</code><br>输入<code>hexo g</code>(完整命令为<code>hexo generate</code>)，生成静态文件；<br>输入<code>hexo s</code>(完整命令为<code>hexo server</code>)，启动local服务器，主要用于本地预览。完成后打开浏览器输入<a href="">http://localhost:4000</a>，就会发现多了刚才写的那篇博客。<br>输入<code>hexo d</code>(完整命令为<code>hexo deploy</code>)，将本地文件发布到github仓库上。</li>
+<li>每次对hexo博客上的<code>.md</code>文件进行更改后都要重复步骤2，这样更改的内容才能在hexo博客上显示。</li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2023/08/03/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Hexo搭建私人博客挂载github" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
