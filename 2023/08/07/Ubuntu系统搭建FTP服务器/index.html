@@ -17,10 +17,10 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Ubuntu系统搭建FTP服务器.md | Hexo</title>
+  <title>Ubuntu系统搭建FTP服务器 | Hexo</title>
   <meta name="description" content="Ubuntu发行版本：20.04.6 LTS 安装 vsftpd 软件包12sudo apt-get updatesudo apt-get install vsftp 查看版本确认是否安装成功：vsftpd -v 配置文件在终端打开vsftpd配置文件： 1sudo vim &#x2F;etc&#x2F;vsftpd.conf 修改配置如下： 12345678910anonymous_enable&#x3D;NO">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu系统搭建FTP服务器.md">
+<meta property="og:title" content="Ubuntu系统搭建FTP服务器">
 <meta property="og:url" content="http://shenguosai.github.io/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Ubuntu发行版本：20.04.6 LTS 安装 vsftpd 软件包12sudo apt-get updatesudo apt-get install vsftp 查看版本确认是否安装成功：vsftpd -v 配置文件在终端打开vsftpd配置文件： 1sudo vim &#x2F;etc&#x2F;vsftpd.conf 修改配置如下： 12345678910anonymous_enable&#x3D;NO">
@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230807224623.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230808003301.png">
 <meta property="article:published_time" content="2023-08-07T14:32:50.000Z">
-<meta property="article:modified_time" content="2023-08-07T16:33:23.126Z">
+<meta property="article:modified_time" content="2023-08-07T16:36:03.355Z">
 <meta property="article:author" content="乙未丁酉壬戌">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230807224413.png">
@@ -245,7 +245,7 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="title">Ubuntu系统搭建FTP服务器.md</a>
+                <a href="/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="title">Ubuntu系统搭建FTP服务器</a>
               </p>
               <p class="item-date">
                 <time datetime="2023-08-07T14:32:50.000Z" itemprop="datePublished">2023-08-07</time>
@@ -303,7 +303,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Ubuntu系统搭建FTP服务器.md
+      Ubuntu系统搭建FTP服务器
     </h1>
   
 
@@ -338,7 +338,7 @@
 <h2 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h2><p>如果是VPS要在网页控制面板中开启相应端口。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230808003301.png" alt="20230808003301"><br>防火墙打开FTP服务所需端口号。</p>
 <h2 id="添加FTP用户"><a href="#添加FTP用户" class="headerlink" title="添加FTP用户"></a>添加FTP用户</h2><p>创建名为guest的用户并设置密码：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd -d /home/ftp -s /bin/bash guest      <span class="comment">#新建ftp用户,-d:指定目录，-s：指定shell</span></span><br><span class="line">sudo passwd guest       <span class="comment">#新建ftp用户密码</span></span><br></pre></td></tr></table></figure>
-<p>记得要讲用户登录所在的文件夹的权限赋予ftp用户，否则无法进行上传和删除。</p>
+<p>记得要将用户登录所在的文件夹的权限赋予ftp用户，否则无法进行上传和删除。</p>
 
       
     </div>
@@ -348,7 +348,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://shenguosai.github.io/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="Ubuntu系统搭建FTP服务器.md" target="_blank" rel="external">http://shenguosai.github.io/2023/08/07/Ubuntu系统搭建FTP服务器/</a>
+      <a href="http://shenguosai.github.io/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="Ubuntu系统搭建FTP服务器" target="_blank" rel="external">http://shenguosai.github.io/2023/08/07/Ubuntu系统搭建FTP服务器/</a>
     </li>
     
     <li class="post-copyright-license">
