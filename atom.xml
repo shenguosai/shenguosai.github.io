@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2023-08-10T05:49:09.206Z</updated>
+  <updated>2023-08-10T08:03:10.982Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -17,16 +17,29 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hexo设置博客文章加密</title>
+    <link href="http://shenguosai.github.io/2023/08/10/Hexo%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/"/>
+    <id>http://shenguosai.github.io/2023/08/10/Hexo%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/</id>
+    <published>2023-08-10T05:53:55.000Z</published>
+    <updated>2023-08-10T08:03:10.982Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Diary</title>
     <link href="http://shenguosai.github.io/2023/08/10/Diary/"/>
     <id>http://shenguosai.github.io/2023/08/10/Diary/</id>
     <published>2023-08-10T05:44:16.000Z</published>
-    <updated>2023-08-10T05:49:09.206Z</updated>
+    <updated>2023-08-10T08:03:12.249Z</updated>
     
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="e22229fc1811271847865c75cafb5ebd323b0341b5dca2c730882631b1c3bcd9">da0a26c26fdc3adc6c296250a94e3b4e37c3b1006ca99a84384837ba60666222433f5c5691174b7e60b8f89cce75220ed040beb8beea7db935b1a7dd82a97e0b505a59c1636bd71a5b1cdeab4f0b6a2130ded0a658bf1ec8dcb7c7752d41231b3a82b2662764d9981fa9736279858036</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入密码查看文章</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">  <script id="hbeData" type="hbeData" data-hmacdigest="e22229fc1811271847865c75cafb5ebd323b0341b5dca2c730882631b1c3bcd9">da0a26c26fdc3adc6c296250a94e3b4e37c3b1006ca99a84384837ba60666222433f5c5691174b7e60b8f89cce75220ed040beb8beea7db935b1a7dd82a97e0b505a59c1636bd71a5b1cdeab4f0b6a2130ded0a658bf1ec8dcb7c7752d41231b3a82b2662764d9981fa9736279858036</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
     
     
-    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    <summary type="html">有东西被加密了, 请输入密码查看.</summary>
     
     
     
