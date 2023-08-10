@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2023-08-10T08:03:10.982Z</updated>
+  <updated>2023-08-10T08:18:24.643Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -21,8 +21,15 @@
     <link href="http://shenguosai.github.io/2023/08/10/Hexo%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/"/>
     <id>http://shenguosai.github.io/2023/08/10/Hexo%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/</id>
     <published>2023-08-10T05:53:55.000Z</published>
-    <updated>2023-08-10T08:03:10.982Z</updated>
+    <updated>2023-08-10T08:18:24.643Z</updated>
     
+    <content type="html"><![CDATA[<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>Hexo搭配使用<a href="https://www.npmjs.com/package/hexo-blog-encrypt">hexo-blog-encrypt</a>插件可以写一些比较私密的博客，通过密码验证的方式让其他人不能随意浏览。</p><h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>在<code>blog\</code>目录运行以下代码：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-blog-encrypt</span><br></pre></td></tr></table></figure><h1 id="一般配置"><a href="#一般配置" class="headerlink" title="一般配置"></a>一般配置</h1><ol><li>在根目录的配置文件<code>_config.yml</code>中添加以下代码：<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">encrypt:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li><li>设置加密之后，需要在新建博文时在文章头部添加加密的信息设置：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags: </span><br><span class="line">categories: </span><br><span class="line">password: </span><br><span class="line">message: </span><br><span class="line">---</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><figcaption><span>密码。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">```message```：输入密码界面的提示说明。</span><br><span class="line"></span><br><span class="line"># 针对Tag的加密</span><br><span class="line">将以下代码复制到根目录下的```_config.yml```:</span><br><span class="line">```yml</span><br><span class="line">encrypt: #hexo-blog-encrypt</span><br><span class="line">  enable: true</span><br><span class="line">  abstract: 有东西被加密了, 请输入密码查看.</span><br><span class="line">  message: 您好, 这里需要密码.</span><br><span class="line">  tags:</span><br><span class="line">  - &#123;name: TagName1, password: 密码A&#125;</span><br><span class="line">  - &#123;name: TagName2, password: 密码B&#125;</span><br><span class="line">  wrong_pass_message: 抱歉, 这个密码看着不太对, 请再试试.</span><br><span class="line">  wrong_hash_message: 抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h1&gt;&lt;p&gt;Hexo搭配使用&lt;a href=&quot;https://www.npmjs.com/package/hexo-blog-encrypt&quot;&gt;hexo</summary>
+      
     
     
     
