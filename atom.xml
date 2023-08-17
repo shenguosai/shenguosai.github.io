@@ -41,19 +41,18 @@
   </entry>
   
   <entry>
-    <title>NLDMOS和DEMOS</title>
+    <title>几种功率管</title>
     <link href="http://shenguosai.github.io/2023/08/17/NLDMOS%E5%92%8CDEMOS/"/>
     <id>http://shenguosai.github.io/2023/08/17/NLDMOS%E5%92%8CDEMOS/</id>
     <published>2023-08-17T03:32:09.000Z</published>
-    <updated>2023-08-17T14:02:32.943Z</updated>
+    <updated>2023-08-17T14:50:39.851Z</updated>
     
-    <content type="html"><![CDATA[<p>DMOS：Double-Diffusion MOS<br>VDMOS：Virtical DMOS<br>LDMOS：Lateral DMOS<br>DEMOS：Drain-Extending MOS</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="DMOS：Double-Diffused-MOS"><a href="#DMOS：Double-Diffused-MOS" class="headerlink" title="DMOS：Double-Diffused MOS"></a>DMOS：Double-Diffused MOS</h2><h2 id="VDMOS：Virtical-DMOS"><a href="#VDMOS：Virtical-DMOS" class="headerlink" title="VDMOS：Virtical DMOS"></a>VDMOS：Virtical DMOS</h2><p>垂直扩散DMOS，VDMOS的漏极在硅片背面，沟道在两个维度上包围源极，所以叫“垂直”，实际上栅极依然是水平的。VDMOS是PowerMOS（大功率MOS器件）的一种，通过垂直设计减小沟道场强，可以使短沟道承受很高的电压和电流。<br>缺点是漏极要从背面引出，很难用和主流集成电路工艺兼容。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230817223815.png" alt="20230817223815"><br>这种结构可以减小漏电流并提高开关速度，具有低导通电阻、高电压承受能力和低开关损耗的优点。它在功率电子器件中广泛应用，如逆变器、直流-直流转换器和交流电机驱动器等。主要缺点是存在体效应和漏电流，且制造过程较为复杂。</p><h2 id="LDMOS：Lateral-DMOS，常用于高电压大电流电路。"><a href="#LDMOS：Lateral-DMOS，常用于高电压大电流电路。" class="headerlink" title="LDMOS：Lateral DMOS，常用于高电压大电流电路。"></a>LDMOS：Lateral DMOS，常用于高电压大电流电路。</h2><p>水平扩散DMOS，也是PowerMOS的一种，和VDMOS的区别是去掉了背部的漏极引出，方便兼容其它工艺(CMOS工艺)，和其他集成电路整合在同一块芯片上。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230817224559.png" alt="20230817224559"><br>可以看到LDMOS把背部的Drain引出挪到了右边，代价是相对VDMOS面积变大了。<br>LDMOS具有高电压承受能力和低导通电阻的优点。LDMOS主要应用于高频功率放大器、天线开关和发射机等领域。LDMOS的主要缺点是存在漏电流和温度效应，且不适用于高速开关应用。</p><h2 id="DEMOS：Drain-Extended-MOS，常用于高电压小电流电路。"><a href="#DEMOS：Drain-Extended-MOS，常用于高电压小电流电路。" class="headerlink" title="DEMOS：Drain-Extended MOS，常用于高电压小电流电路。"></a>DEMOS：Drain-Extended MOS，常用于高电压小电流电路。</h2><h2 id="SGT：Superjunction-MOSFET"><a href="#SGT：Superjunction-MOSFET" class="headerlink" title="SGT：Superjunction MOSFET"></a>SGT：Superjunction MOSFET</h2><p>采用多个交替的不同材料层构成，具有高电压承受能力和低导通电阻的优点。SGT主要应用于高压直流输电、电动汽车和太阳能发电等领域。SGT的主要缺点是制造成本较高。</p><h2 id="Cool-MOS"><a href="#Cool-MOS" class="headerlink" title="Cool MOS"></a>Cool MOS</h2><p>英飞凌发明制造的功率管，是一种快速开关MOSFET，具有低开关损耗和低导通电阻的优点。主要应用于高效率电源、LED驱动器和电动汽车充电器等领域。主要缺点是存在体效应和漏电流，且制造成本较高。</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;DMOS：Double-Diffusion MOS&lt;br&gt;VDMOS：Virtical DMOS&lt;br&gt;LDMOS：Lateral DMOS&lt;br&gt;DEMOS：Drain-Extending MOS&lt;/p&gt;
-</summary>
+    <summary type="html">&lt;h2 id=&quot;DMOS：Double-Diffused-MOS&quot;&gt;&lt;a href=&quot;#DMOS：Double-Diffused-MOS&quot; class=&quot;headerlink&quot; title=&quot;DMOS：Double-Diffused MOS&quot;&gt;&lt;/a&gt;DMOS：Double-Di</summary>
       
     
     
