@@ -11,8 +11,8 @@ http://shenguosai.github.io/categories/index.html
 http://shenguosai.github.io/about/index.html
 http://shenguosai.github.io/
 http://shenguosai.github.io/tags/Privacy/
-http://shenguosai.github.io/tags/Semiconductor/
 http://shenguosai.github.io/tags/Poetry/
+http://shenguosai.github.io/tags/Semiconductor/
 http://shenguosai.github.io/categories/Article/
 http://shenguosai.github.io/categories/Tutorial/
 http://shenguosai.github.io/categories/Knowledge-Share/
