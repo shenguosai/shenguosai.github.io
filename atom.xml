@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2023-08-10T08:35:18.090Z</updated>
+  <updated>2023-08-17T14:25:23.715Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>日本鬼子名称的由来</title>
+    <link href="http://shenguosai.github.io/2023/08/17/%E6%97%A5%E6%9C%AC%E9%AC%BC%E5%AD%90%E5%90%8D%E7%A7%B0%E7%9A%84%E7%94%B1%E6%9D%A5/"/>
+    <id>http://shenguosai.github.io/2023/08/17/%E6%97%A5%E6%9C%AC%E9%AC%BC%E5%AD%90%E5%90%8D%E7%A7%B0%E7%9A%84%E7%94%B1%E6%9D%A5/</id>
+    <published>2023-08-17T13:39:53.000Z</published>
+    <updated>2023-08-17T14:25:23.715Z</updated>
+    
+    <content type="html"><![CDATA[<p>中日甲午战争的记者会上，日本人想嘲讽和羞辱中国人，事先准备好了一副对联的上联让与会的中国代表当场对出下联。<br><font size=10 face="华文行楷">上联：骑奇马、张长弓，琴瑟琵琶、八大王并肩居头上，单戈独战。</font><br>“骑奇马，张长弓”这两句是将第一个字本身拆开两个字组成的，而琴瑟琵琶这四个字共共有八个王字对应了后半部分“八大王并肩居头上”，末句“单戈独战”的“单戈”合成一个繁体的“战”字。日本人出这个对联的大意是自己骑着快马张着长弓，兵强马壮的兵临中国，赢得胜利，并以此鄙视和嘲讽中国。<br>正当日本人洋洋得意认为没有中国人对出下联时，一位负责谈判的清朝大臣拿起笔写出了下联。<br><font size=10 face="华文行楷">下联：倭委人、袭龙衣，魑魅魍魉、四小鬼屈膝跪身旁，合手擒拿。</font><br>这个下联真是神来之笔，令日本人膛目结舌。下面每一句都工整的对应上联。倭委人袭龙衣对应骑齐马张长弓，魑魅魍魉对应琴瑟琵琶，且魑魅魍魉左偏旁都是鬼字而且有四个。从字形看鬼字末笔一横勾就像是在下跪故屈膝跪身旁，末句合手擒拿的合手就是拿字，正好对应上面的八大王并肩居头上、单戈独战，而且还反过来将了日本人一军。下联的意思是日本小人偷穿龙袍，只不过是魑魅魍魉四个小鬼而已，赶快下跪认错否则合手擒拿，这下联是句句工整字字珠玑。<br>从那以后中国人不在称日本人为倭寇而叫日本鬼子了。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;中日甲午战争的记者会上，日本人想嘲讽和羞辱中国人，事先准备好了一副对联的上联让与会的中国代表当场对出下联。&lt;br&gt;&lt;font size=10 face=&quot;华文行楷&quot;&gt;上联：骑奇马、张长弓，琴瑟琵琶、八大王并肩居头上，单戈独战。&lt;/font&gt;&lt;br&gt;“骑奇马，张长弓”这两句是</summary>
+      
+    
+    
+    
+    <category term="Knowledge Share" scheme="http://shenguosai.github.io/categories/Knowledge-Share/"/>
+    
+    
+    <category term="Poetry" scheme="http://shenguosai.github.io/tags/Poetry/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NLDMOS和DEMOS</title>
+    <link href="http://shenguosai.github.io/2023/08/17/NLDMOS%E5%92%8CDEMOS/"/>
+    <id>http://shenguosai.github.io/2023/08/17/NLDMOS%E5%92%8CDEMOS/</id>
+    <published>2023-08-17T03:32:09.000Z</published>
+    <updated>2023-08-17T14:02:32.943Z</updated>
+    
+    <content type="html"><![CDATA[<p>DMOS：Double-Diffusion MOS<br>VDMOS：Virtical DMOS<br>LDMOS：Lateral DMOS<br>DEMOS：Drain-Extending MOS</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;DMOS：Double-Diffusion MOS&lt;br&gt;VDMOS：Virtical DMOS&lt;br&gt;LDMOS：Lateral DMOS&lt;br&gt;DEMOS：Drain-Extending MOS&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="Knowledge Share" scheme="http://shenguosai.github.io/categories/Knowledge-Share/"/>
+    
+    
+    <category term="Semiconductor" scheme="http://shenguosai.github.io/tags/Semiconductor/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo设置博客文章加密</title>
