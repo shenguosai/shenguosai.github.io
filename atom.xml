@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2023-09-13T08:19:15.714Z</updated>
+  <updated>2023-09-13T11:49:18.602Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Elecom MR-C18BK 读卡器</title>
+    <link href="http://shenguosai.github.io/2023/09/13/Elecom-MR-C18BK-%E8%AF%BB%E5%8D%A1%E5%99%A8/"/>
+    <id>http://shenguosai.github.io/2023/09/13/Elecom-MR-C18BK-%E8%AF%BB%E5%8D%A1%E5%99%A8/</id>
+    <published>2023-09-13T11:40:45.000Z</published>
+    <updated>2023-09-13T11:49:18.602Z</updated>
+    
+    <content type="html"><![CDATA[<p>这两天帮父亲新接手的球馆弄监控，花了一番功夫终于把已经停产的十几年前的监控摄像头搞定，发现里面的TF卡却坏掉了。于是在京东上买了BanQ的Joy联名TF卡，买来之后插上读卡器发现无法识别，申请换新之后还是无法识别，这才开始怀疑自己的读卡器是不是有问题。但是前两天刚试过家里的4G的TF卡读取是没有问题的。<br>于是从同事那里借来较新的读卡器发现成功读出来了，就怀疑自己应该也是十几年前买的读卡器是不是不支持大容量TF卡，于是到主页上查找了一番，发现Micro SD卡容量最大支持到16GB。<br><br><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230913194643.png" alt="20230913194643"><br><br><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230913194802.png" alt="20230913194802"><br><br><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230913194820.png" alt="20230913194820"><br><br></p><p><a href="https://www2.elecom.co.jp/data-media/memory-rw/mr-c18/">商品说明链接</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;这两天帮父亲新接手的球馆弄监控，花了一番功夫终于把已经停产的十几年前的监控摄像头搞定，发现里面的TF卡却坏掉了。于是在京东上买了BanQ的Joy联名TF卡，买来之后插上读卡器发现无法识别，申请换新之后还是无法识别，这才开始怀疑自己的读卡器是不是有问题。但是前两天刚试过家里的</summary>
+      
+    
+    
+    
+    <category term="Electronic Equipments" scheme="http://shenguosai.github.io/categories/Electronic-Equipments/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>无门关·平常是道</title>
