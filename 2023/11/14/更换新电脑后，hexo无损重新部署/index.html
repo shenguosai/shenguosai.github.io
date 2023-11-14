@@ -17,43 +17,18 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>放大器的谐波失真(THD) | Hexo</title>
-  <meta name="description" content="本文主要总结和收集关于放大器谐波失真的原因及改良方法。 一、什么是谐波失真 THD是英文Total Harmonic Distortion的缩写，译成中文即为总谐波失真。  谐波失真是什么？谐波失真的原因是电路电路的线性度不好。理想线性电路的输入x和输出y可以使用一次方程表示：$y&#x3D;ax+b$如果输出和输入的关系偏离了上述方程的直线我们称之为线性度差。下面是一个典型的线性度差的代表电路：">
-<meta property="og:type" content="article">
-<meta property="og:title" content="放大器的谐波失真(THD)">
-<meta property="og:url" content="http://shenguosai.github.io/2023/08/21/%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%B0%90%E6%B3%A2%E5%A4%B1%E7%9C%9F-THD/index.html">
+  <title>更换新电脑后，hexo无损重新部署 | Hexo</title>
+  <meta property="og:type" content="article">
+<meta property="og:title" content="更换新电脑后，hexo无损重新部署">
+<meta property="og:url" content="http://shenguosai.github.io/2023/11/14/%E6%9B%B4%E6%8D%A2%E6%96%B0%E7%94%B5%E8%84%91%E5%90%8E%EF%BC%8Chexo%E6%97%A0%E6%8D%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="本文主要总结和收集关于放大器谐波失真的原因及改良方法。 一、什么是谐波失真 THD是英文Total Harmonic Distortion的缩写，译成中文即为总谐波失真。  谐波失真是什么？谐波失真的原因是电路电路的线性度不好。理想线性电路的输入x和输出y可以使用一次方程表示：$y&#x3D;ax+b$如果输出和输入的关系偏离了上述方程的直线我们称之为线性度差。下面是一个典型的线性度差的代表电路：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821215601.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821215939.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821220543.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821222803.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821223007.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821223242.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821223841.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224015.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224157.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224254.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224406.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224550.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224912.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821225043.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821225153.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821225302.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821225458.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821230626.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821230849.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821231335.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821231413.png">
-<meta property="article:published_time" content="2023-08-21T13:47:21.000Z">
-<meta property="article:modified_time" content="2023-08-21T15:16:49.446Z">
+<meta property="article:published_time" content="2023-11-14T13:44:02.000Z">
+<meta property="article:modified_time" content="2023-11-14T13:44:02.050Z">
 <meta property="article:author" content="乙未丁酉">
-<meta property="article:tag" content="Semiconductor">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821215601.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://shenguosai.github.io/2023/08/21/%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%B0%90%E6%B3%A2%E5%A4%B1%E7%9C%9F-THD/index.html">
+  <link rel="canonical" href="http://shenguosai.github.io/2023/11/14/%E6%9B%B4%E6%8D%A2%E6%96%B0%E7%94%B5%E8%84%91%E5%90%8E%EF%BC%8Chexo%E6%97%A0%E6%8D%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -366,14 +341,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-放大器的谐波失真-THD" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-更换新电脑后，hexo无损重新部署" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      放大器的谐波失真(THD)
+      更换新电脑后，hexo无损重新部署
     </h1>
   
 
@@ -381,22 +356,12 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2023/08/21/%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%B0%90%E6%B3%A2%E5%A4%B1%E7%9C%9F-THD/" class="article-date">
-	  <time datetime="2023-08-21T13:47:21.000Z" itemprop="datePublished">2023-08-21</time>
+	<a href="/2023/11/14/%E6%9B%B4%E6%8D%A2%E6%96%B0%E7%94%B5%E8%84%91%E5%90%8E%EF%BC%8Chexo%E6%97%A0%E6%8D%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/" class="article-date">
+	  <time datetime="2023-11-14T13:44:02.000Z" itemprop="datePublished">2023-11-14</time>
 	</a>
 </span>
         
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Knowledge-Share/">Knowledge Share</a>
-  </span>
-
         
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/Semiconductor/" rel="tag">Semiconductor</a>
-  </span>
-
 
         
 	<span class="article-read hidden-xs">
@@ -407,46 +372,13 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/08/21/%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%B0%90%E6%B3%A2%E5%A4%B1%E7%9C%9F-THD/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/11/14/%E6%9B%B4%E6%8D%A2%E6%96%B0%E7%94%B5%E8%84%91%E5%90%8E%EF%BC%8Chexo%E6%97%A0%E6%8D%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>本文主要总结和收集关于放大器谐波失真的原因及改良方法。</p>
-<h2 id="一、什么是谐波失真"><a href="#一、什么是谐波失真" class="headerlink" title="一、什么是谐波失真"></a>一、什么是谐波失真</h2><blockquote>
-<p>THD是英文Total Harmonic Distortion的缩写，译成中文即为总谐波失真。</p>
-</blockquote>
-<h4 id="谐波失真是什么？"><a href="#谐波失真是什么？" class="headerlink" title="谐波失真是什么？"></a>谐波失真是什么？</h4><p>谐波失真的原因是电路电路的线性度不好。<br>理想线性电路的输入x和输出y可以使用一次方程表示：$y&#x3D;ax+b$<br>如果输出和输入的关系偏离了上述方程的直线我们称之为线性度差。<br>下面是一个典型的线性度差的代表电路：Diode Clip电路。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821215601.png" alt="20230821215601"><br>根据二极管的顺方向I-V特性可知，在±0.6V之外被clip，就是说当输入电压在±0.6V之外时，电路显现非线性特性，如下图：<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821215939.png" alt="20230821215939"><br>如果将正弦波作为此电路的输入信号，输出信号变为在原信号基础上叠加了“不存在”的信号。其输入即输出入下式所示：<br>输入：$V_{in}&#x3D;sinωt$<br>输出：$V_{out}&#x3D;a_1sin(ωt+φ_1)+a_2sin(ωt+φ_2)+a_3sin(ωt+φ_3)+…$<br>输入输出的FFT(Fast Fourier Transform)结果如下图所示：<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821220543.png" alt="20230821220543"></p>
-<h2 id="二、谐波失真的定量分析"><a href="#二、谐波失真的定量分析" class="headerlink" title="二、谐波失真的定量分析"></a>二、谐波失真的定量分析</h2><p>在进行谐波失真的定量分析时经常用到的指标为THD和THD+N。</p>
-<blockquote>
-<p>THD+N即Total Harmonic Distortion + Noise的缩写。</p>
-</blockquote>
-<p>通常我们所说的谐波失真都是叠加了输入信号的高次谐波。THD的定义即为在基波的高次谐波的平方和的平方根与基波的电压之比。<br>即：$V_{THD}&#x3D;\frac{\sqrt{V_2^2+V_3^2+V_4^2+…+V_N^2}}{V_1}$<br>其中，$V_1$为基波电压成分，$V_2$、$V_3$、$V_4$···$V_N$为整数倍的谐波电压成分。<br>高次谐波成分+噪声，即THD+N就是在高次谐波中再加入噪声：<br>$V_{THD}&#x3D;\frac{\sqrt{V_2^2+V_3^2+V_4^2+…+V_N^2+V_{Noise}^2}}{V_1}$</p>
-<h2 id="三、通过反馈改善谐波失真"><a href="#三、通过反馈改善谐波失真" class="headerlink" title="三、通过反馈改善谐波失真"></a>三、通过反馈改善谐波失真</h2><p>改善THD方法中最一般的方法就是利用反馈，还是用上面的Diode Clip电路举例说明，在此电路中加入放大器及其反馈后电路结构如下：<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821222803.png" alt="20230821222803"></p>
-<p><em>我们使用LTSpice中的理想放大器，设置其直流增益为100dB，带宽为10MHz。则1kHz的输入信号的增益为80dB。</em><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821223007.png" alt="20230821223007"></p>
-<p>由于作为中间节点的放大器的输出可以对非线性进行抵消，所以整个电路的输入输出特性有了较大的改善。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821223242.png" alt="20230821223242"></p>
-<p>使用1kHz的正弦波作为输入时可以看出只有少量的谐波成分的残留。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821223841.png" alt="20230821223841"></p>
-<p>通过FFT结果可以看到奇数倍的高次谐波成分。$THD&#x3D;3.2%$<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224015.png" alt="20230821224015"></p>
-<h4 id="下面讨论如果进一步削减谐波失真应该怎么做"><a href="#下面讨论如果进一步削减谐波失真应该怎么做" class="headerlink" title="下面讨论如果进一步削减谐波失真应该怎么做"></a>下面讨论如果进一步削减谐波失真应该怎么做</h4><p>首先为了加强反馈网络我们可以保持放大器带宽的情况下将放大器的增益提高到120dB以上。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224157.png" alt="20230821224157"></p>
-<p>可以看到THD完全没有改善还是3.2%，原因是1kHz的反馈量没有变化。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224254.png" alt="20230821224254"></p>
-<p>然后尝试保持放大器的直流增益不变将带宽增加到100MHz。由于是单极点放大器，所以1kHz时的增益约上升10倍。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224406.png" alt="20230821224406"></p>
-<p>THD改善了0.35%，约上升了1&#x2F;10。所以，<b><font color="red"> 改善AC的谐波失真需要重点关注带宽！！</font></b><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224550.png" alt="20230821224550"></p>
-<p>为确保放大器的稳定性，在高频阶段通常降低增益。也就是说在单位增益频率附近的信号无法使用反馈来改善THD。所以，一般来说高频信号的THD会比较差。</p>
-<h2 id="四、输出端形成的开关谐波失真"><a href="#四、输出端形成的开关谐波失真" class="headerlink" title="四、输出端形成的开关谐波失真"></a>四、输出端形成的开关谐波失真</h2><p>经过妥当设计的放大器在规格范围内使用时，造成谐波失真的最多原因是输出端的谐波失真。<br>通过使用射极跟随器驱动负载电路的电路举例说明：<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224912.png" alt="20230821224912"></p>
-<p>射极跟随器通常对输入电压进行约1倍的放大输出(即，输出&#x3D;输入)，但如果集电极的电流在接近0A附近工作时，线性度会发生恶化。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821225043.png" alt="20230821225043"></p>
-<p>使用正弦波作为输入信号，在集电极电流为0(cut off)时输出波形出现严重失真。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821225153.png" alt="20230821225153"></p>
-<p>现实中放大器则通常通过一个npn和一个pnp组成推挽式结构，在一侧无法正常工作时通过另一侧进行补偿。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821225302.png" alt="20230821225302"></p>
-<p>即使使用合适的偏置在输入信号为0时两侧的三极管均不会发生cut off(Class AB)，在大振幅或大负载电流的情况下也会使一侧的三极管发生cut off，不可避免地导致THD指标恶化。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821225458.png" alt="20230821225458"></p>
-<p>开关谐波失真在Class A结构中可以避免，但是会增加功耗及电路的复杂度。</p>
-<h2 id="五、耗尽层电容引起的失真"><a href="#五、耗尽层电容引起的失真" class="headerlink" title="五、耗尽层电容引起的失真"></a>五、耗尽层电容引起的失真</h2><p>去除开关因素导致的失真之后，剩余的就是耗尽层电容为起因导致的失真。<br>由于耗尽层是绝缘的，所以在Si和耗尽层之间可以看做形成电容，这个电容称之为耗尽层电容。耗尽层的长度随两边的电压不同而变化，就是说随着两端电压的不同耗尽层电容值是发生变化的。可变容量二极管就是利用这一原理制作而成的。普通的小信号用PN结二极管以及晶体管的集电极和基电极之间的容值也会跟随两端电压而变化。<br>耗尽层电容导致的失真由以下电路模型展示。<br>虽然在直流区域有反馈，但是在100kHz时输出由G1的互导和Q1的寄生电容决定。<br>Q1以外均使用理想器件，Q1为共基级放大电路，所以输出波形仅会受到由集电极电位影响的非线性度影响而导致失真。Q1的集极-基级之间的反向偏置，所以在集电极上形成耗尽层电容$C_{ob}$经电源V2连接GND。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821230626.png" alt="20230821230626"></p>
-<p>若集电极电压发生变化，则$C_{ob}$的容值发生变化，导致$C_{ob}$的充电电流释放至GND而造成了失真发生。THD为0.47%。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821230849.png" alt="20230821230849"></p>
-<p>其对策为增加射极跟随器使$C_{ob}$的充电电流能够回流。通过Q2可以使Q1的集电极&#x3D;&#x3D;&gt; $C_{ob}$&#x3D;&#x3D;&gt; GND释放的电流进行回流而抵消$C_{ob}$造成的非线性。为使开环增益相同增加C3.<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821231335.png" alt="20230821231335"></p>
-<p>此时，THD有了巨大的改善，变为0.0008%。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821231413.png" alt="20230821231413"></p>
-<blockquote>
-<p>参考文献：<br><em><font size=2>Douglas Self, Small Signal Audio Design, 2010, Focal Press</font></em><br><em><font size=2>黒田徹, 解析OPアンプ&amp;トランジスタ活用, 2002, CQ出版</font></em></p>
-</blockquote>
-
+        
       
     </div>
     <div class="article-footer">
@@ -455,7 +387,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://shenguosai.github.io/2023/08/21/%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%B0%90%E6%B3%A2%E5%A4%B1%E7%9C%9F-THD/" title="放大器的谐波失真(THD)" target="_blank" rel="external">http://shenguosai.github.io/2023/08/21/放大器的谐波失真-THD/</a>
+      <a href="http://shenguosai.github.io/2023/11/14/%E6%9B%B4%E6%8D%A2%E6%96%B0%E7%94%B5%E8%84%91%E5%90%8E%EF%BC%8Chexo%E6%97%A0%E6%8D%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/" title="更换新电脑后，hexo无损重新部署" target="_blank" rel="external">http://shenguosai.github.io/2023/11/14/更换新电脑后，hexo无损重新部署/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -501,13 +433,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2023/09/04/SPICE%E7%AE%80%E5%8F%B2/" title="SPICE简史"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2023/08/19/%E3%80%8A%E6%88%91%E5%8F%AB%E8%B5%B5%E7%94%B2%E7%AC%AC%E3%80%8B%E7%89%87%E5%B0%BE%E5%90%8D%E8%A8%80/" title="《我叫赵甲第》片尾名言及经典台词"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2023/09/13/Elecom-MR-C18BK-%E8%AF%BB%E5%8D%A1%E5%99%A8/" title="Elecom MR-C18BK 读卡器"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
