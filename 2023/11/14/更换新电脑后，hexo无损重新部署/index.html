@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231114224848.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231115001919.png">
 <meta property="article:published_time" content="2023-11-14T13:44:02.000Z">
-<meta property="article:modified_time" content="2023-11-14T16:27:08.278Z">
+<meta property="article:modified_time" content="2023-11-14T16:55:59.674Z">
 <meta property="article:author" content="乙未丁酉">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231114224848.png">
@@ -390,8 +390,12 @@
       
         <p>趁着双十一入手了樊想S500 pro的2T SSD，到货后就迫不及待的换下了原来笔记本里500G的老硬盘。<br>然后发现新装系统后各种软件的安装和配置都要重新来一遍。<br>下面记录下hexo的迁移过程。<br>首先将原硬盘的hexo目录拷贝到新硬盘。<br>然后配置环境：<br>1.安装nodejs和git，nodejs安装好才可以使用npm安装hexo，git就是用来上传博客用的；（如果不希望多装软件可只安装git而不需要git bash）<br>2.如果可以将原来电脑中的<code>C:\User\username\.gitconfig</code>文件和<code>C:\User\username（斜体）\.ssh\</code>目录拷贝到同目录下就不需要重新配置了。(其中username是自己电脑的用户名)<br>  如果没有就只能重新设置并生成ssh key文件了，命令如下：<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;username&quot;</span><br><span class="line">git config --global user.mail &quot;user mail address&quot;</span><br><span class="line">ssh-keygen -t rsa -C &quot;user mail address&quot;</span><br></pre></td></tr></table></figure><br>3.进入到hexo部署文件夹，执行命令安装hexo和hexo-depolyer-git插件<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><br>然后这里会出现一个问题，我是使用vs code中的终端来操作的，怎么样识别不了hexo命令，提示如下：（由于忘记截图了，网上找了张类似的）<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231114224848.png" alt="20231114224848"></p>
 <p>处理方案在提示中就有，可以通过访问请参阅后面的链接查看，核心问题是power shell的安全策略，将hexo命令视为了不安全脚本，不允许执行。只需要放开权限就行。<br>通过管理员权限运行power shell，然后输入命令：<code>set-ExecutionPolicy RemoteSigned</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231115001919.png" alt="20231115001919"><br>选择”Y”即可。</p>
-<p>然后就可以正常在vs code的终端里使用hexo了。</p>
-<p>目前还有图床的问题没有解决，下载并配置了vs code里的PicGo插件能够成功上传图片并且在图床仓库中也可以正常预览，但是在博客中却无法正常显示。<br>感觉像是链接地址的问题，还没找到如何解决。</p>
+<p>然后就可以正常在vs code的终端里使用hexo了。<br>虽然可以正常上传，但是上传时会有换行符的问题，解决方法：<br>将默认时的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#提交时转换为LF，检出时转换为CRLF</span><br><span class="line">git config --globel core.autocrlf true</span><br></pre></td></tr></table></figure>
+<p>修改为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#提交检出时均不做换行符转换</span><br><span class="line">git config --globel core.autocrlf false</span><br></pre></td></tr></table></figure>
+
+<p>4.图床设置<br>下载插件vs code的插件PicGo，配置方法网上有很多，但是需要注意一点在<code>Picgo &gt; Pic Bed &gt; Github: Custom Url</code>中需要填入图传链接格式为<code>https://raw.githubusercontent.com/用户名/仓库名/分支名</code>，一开始这个地方没有设置对对上传没有影响但是在博客中看不到图片。</p>
 
       
     </div>
