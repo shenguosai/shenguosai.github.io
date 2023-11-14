@@ -26,3 +26,4 @@ http://shenguosai.github.io/categories/Tutorial/
 http://shenguosai.github.io/categories/Knowledge-Share/
 http://shenguosai.github.io/categories/%E5%88%86%E4%BA%AB/
 http://shenguosai.github.io/categories/Electronic-Equipments/
+http://shenguosai.github.io/categories/Tutotial/
