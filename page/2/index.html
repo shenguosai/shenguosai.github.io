@@ -1,579 +1,901 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no,email=no,adress=no">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000000" />
-  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
-  <meta http-equiv="window-target" content="_top" />
-  
-  
-  <title>Hexo</title>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="乙未丁酉">
 <meta property="og:url" content="http://shenguosai.github.io/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="乙未丁酉">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="乙未丁酉">
 <meta name="twitter:card" content="summary">
-  <!-- Canonical links -->
-  <link rel="canonical" href="http://shenguosai.github.io/page/2/index.html">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png" type="image/x-icon">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-  
-  
-  
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
+<link rel="canonical" href="http://shenguosai.github.io/page/2/">
 
 
-<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="slimContent">
-    <div class="navbar-header">
-      
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/shenguosai" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">乙未丁酉</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">模拟工程师的日常</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Qingdao, China</small>
-      </div>
-      
-      <div class="search" id="search-form-wrap">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
 
-    <form class="search-form sidebar-form">
-        <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="搜索" />
-            <span class="input-group-btn">
-                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
-            </span>
-        </div>
-    </form>
-    <div class="ins-search">
-  <div class="ins-search-mask"></div>
-  <div class="ins-search-container">
-    <div class="ins-input-wrapper">
-      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
-      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+  <title>乙未丁酉</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="乙未丁酉" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    <div class="ins-section-wrapper">
-      <div class="ins-section-container"></div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">乙未丁酉</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">模拟工程师</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
   </div>
 </div>
 
 
-</div>
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
-        
-        
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
-          <a href="/.">
-            
-            <i class="icon icon-home-fill"></i>
-            
-            <span class="menu-title">首页</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            
-            <i class="icon icon-archives-fill"></i>
-            
-            <span class="menu-title">归档</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            
-            <i class="icon icon-tags"></i>
-            
-            <span class="menu-title">标签</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-repository">
-          <a href="/repository">
-            
-            <i class="icon icon-project"></i>
-            
-            <span class="menu-title">项目</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-books">
-          <a href="/books">
-            
-            <i class="icon icon-book-fill"></i>
-            
-            <span class="menu-title">书单</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-links">
-          <a href="/links">
-            
-            <i class="icon icon-friendship"></i>
-            
-            <span class="menu-title">友链</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about">
-            
-            <i class="icon icon-cup-fill"></i>
-            
-            <span class="menu-title">关于</span>
-          </a>
-        </li>
-        
-      </ul>
-      
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/shenguosai" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="https://weibo.com/u/2257702307" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://www.facebook.com/shenguosai" target="_blank" title="Facebook" data-toggle=tooltip data-placement=top><i class="icon icon-facebook"></i></a></li>
-        
-    </ul>
 
-    </nav>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
   </div>
-</header>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2023/08/17/%E6%97%A5%E6%9C%AC%E9%AC%BC%E5%AD%90%E5%90%8D%E7%A7%B0%E7%9A%84%E7%94%B1%E6%9D%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="乙未丁酉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/17/%E6%97%A5%E6%9C%AC%E9%AC%BC%E5%AD%90%E5%90%8D%E7%A7%B0%E7%9A%84%E7%94%B1%E6%9D%A5/" class="post-title-link" itemprop="url">日本鬼子名称的由来</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-17 21:39:53" itemprop="dateCreated datePublished" datetime="2023-08-17T21:39:53+08:00">2023-08-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-11 09:39:29" itemprop="dateModified" datetime="2023-09-11T09:39:29+08:00">2023-09-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Knowledge-Share/" itemprop="url" rel="index"><span itemprop="name">Knowledge Share</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/08/17/%E6%97%A5%E6%9C%AC%E9%AC%BC%E5%AD%90%E5%90%8D%E7%A7%B0%E7%9A%84%E7%94%B1%E6%9D%A5/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/08/17/%E6%97%A5%E6%9C%AC%E9%AC%BC%E5%AD%90%E5%90%8D%E7%A7%B0%E7%9A%84%E7%94%B1%E6%9D%A5/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>523</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>　　中日甲午战争的记者会上，日本人想嘲讽和羞辱中国人，事先准备好了一副对联的上联让与会的中国代表当场对出下联。<br><font size=10 face="华文行楷">上联：骑奇马、张长弓，琴瑟琵琶、八大王并肩居头上，单戈独战。</font><br>　　“骑奇马，张长弓”这两句是将第一个字本身拆开两个字组成的，而琴瑟琵琶这四个字共共有八个王字对应了后半部分“八大王并肩居头上”，末句“单戈独战”的“单戈”合成一个繁体的“战”字。日本人出这个对联的大意是自己骑着快马张着长弓，兵强马壮的兵临中国，赢得胜利，并以此鄙视和嘲讽中国。<br>　　正当日本人洋洋得意认为没有中国人对出下联时，一位负责谈判的清朝大臣拿起笔写出了下联。<br><font size=10 face="华文行楷">下联：倭委人、袭龙衣，魑魅魍魉、四小鬼屈膝跪身旁，合手擒拿。</font><br>　　这个下联真是神来之笔，令日本人膛目结舌。下面每一句都工整的对应上联。倭委人袭龙衣对应骑齐马张长弓，魑魅魍魉对应琴瑟琵琶，且魑魅魍魉左偏旁都是鬼字而且有四个。从字形看鬼字末笔一横勾就像是在下跪故屈膝跪身旁，末句合手擒拿的合手就是拿字，正好对应上面的八大王并肩居头上、单戈独战，而且还反过来将了日本人一军。下联的意思是日本小人偷穿龙袍，只不过是魑魅魍魉四个小鬼而已，赶快下跪认错否则合手擒拿，这下联是句句工整字字珠玑。<br>　　从那以后中国人不在称日本人为倭寇而叫日本鬼子了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2023/08/17/NLDMOS%E5%92%8CDEMOS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="乙未丁酉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/17/NLDMOS%E5%92%8CDEMOS/" class="post-title-link" itemprop="url">几种功率管</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-08-17 11:32:09 / 修改时间：22:57:05" itemprop="dateCreated datePublished" datetime="2023-08-17T11:32:09+08:00">2023-08-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Knowledge-Share/" itemprop="url" rel="index"><span itemprop="name">Knowledge Share</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/08/17/NLDMOS%E5%92%8CDEMOS/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/08/17/NLDMOS%E5%92%8CDEMOS/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="DMOS：Double-Diffused-MOS"><a href="#DMOS：Double-Diffused-MOS" class="headerlink" title="DMOS：Double-Diffused MOS"></a>DMOS：Double-Diffused MOS</h2><h2 id="VDMOS：Virtical-DMOS"><a href="#VDMOS：Virtical-DMOS" class="headerlink" title="VDMOS：Virtical DMOS"></a>VDMOS：Virtical DMOS</h2><p>垂直扩散DMOS，VDMOS的漏极在硅片背面，沟道在两个维度上包围源极，所以叫“垂直”，实际上栅极依然是水平的。VDMOS是PowerMOS（大功率MOS器件）的一种，通过垂直设计减小沟道场强，可以使短沟道承受很高的电压和电流。<br>缺点是漏极要从背面引出，很难用和主流集成电路工艺兼容。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230817223815.png" alt="20230817223815"><br>这种结构可以减小漏电流并提高开关速度，具有低导通电阻、高电压承受能力和低开关损耗的优点。它在功率电子器件中广泛应用，如逆变器、直流-直流转换器和交流电机驱动器等。主要缺点是存在体效应和漏电流，且制造过程较为复杂。</p>
+<h2 id="LDMOS：Lateral-DMOS，常用于高电压大电流电路。"><a href="#LDMOS：Lateral-DMOS，常用于高电压大电流电路。" class="headerlink" title="LDMOS：Lateral DMOS，常用于高电压大电流电路。"></a>LDMOS：Lateral DMOS，常用于高电压大电流电路。</h2><p>水平扩散DMOS，也是PowerMOS的一种，和VDMOS的区别是去掉了背部的漏极引出，方便兼容其它工艺(CMOS工艺)，和其他集成电路整合在同一块芯片上。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230817224559.png" alt="20230817224559"><br>可以看到LDMOS把背部的Drain引出挪到了右边，代价是相对VDMOS面积变大了。<br>LDMOS具有高电压承受能力和低导通电阻的优点。LDMOS主要应用于高频功率放大器、天线开关和发射机等领域。LDMOS的主要缺点是存在漏电流和温度效应，且不适用于高速开关应用。<br>LDMOS由于更容易与CMOS工艺兼容而被广泛采用。LDMOS器件结构如上图所示，是一种双扩散结构的功率器件。这项技术是在相同的源&#x2F;漏区域注入两次，一次注入浓度较大（典型注入剂量 1015cm-2）的砷（As），另一次注入浓度较小（典型剂量1013cm-2）的硼（B）。注入之后再进行一个高温推进过程，由于硼扩散比砷快，所以在栅极边界下会沿着横向扩散更远（上图中P阱），形成一个有浓度梯度的沟道，它的沟道长度由这两次横向扩散的距离之差决定。为了增加击穿电压，在有源区和漏区之间有一个漂移区。LDMOS中的漂移区是该类器件设计的关键，漂移区的杂质浓度比较低，因此，当LDMOS 接高压时，漂移区由于是高阻，能够承受更高的电压。图1所示LDMOS的多晶扩展到漂移区的场氧上面，充当场极板，会弱化漂移区的表面电场，有利于提高击穿电压。场极板的作用大小与场极板的长度密切相关。要使场极板能充分发挥作用，一要设计好SiO2层的厚度，二要设计好场极板的长度。</p>
+<h2 id="DEMOS：Drain-Extended-MOS，常用于高电压小电流电路。"><a href="#DEMOS：Drain-Extended-MOS，常用于高电压小电流电路。" class="headerlink" title="DEMOS：Drain-Extended MOS，常用于高电压小电流电路。"></a>DEMOS：Drain-Extended MOS，常用于高电压小电流电路。</h2><h2 id="SGT：Superjunction-MOSFET"><a href="#SGT：Superjunction-MOSFET" class="headerlink" title="SGT：Superjunction MOSFET"></a>SGT：Superjunction MOSFET</h2><p>采用多个交替的不同材料层构成，具有高电压承受能力和低导通电阻的优点。SGT主要应用于高压直流输电、电动汽车和太阳能发电等领域。SGT的主要缺点是制造成本较高。</p>
+<h2 id="Cool-MOS"><a href="#Cool-MOS" class="headerlink" title="Cool MOS"></a>Cool MOS</h2><p>英飞凌发明制造的功率管，是一种快速开关MOSFET，具有低开关损耗和低导通电阻的优点。主要应用于高效率电源、LED驱动器和电动汽车充电器等领域。主要缺点是存在体效应和漏电流，且制造成本较高。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2023/08/10/Hexo%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="乙未丁酉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/10/Hexo%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/" class="post-title-link" itemprop="url">Hexo设置博客文章加密</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-08-10 13:53:55 / 修改时间：16:35:18" itemprop="dateCreated datePublished" datetime="2023-08-10T13:53:55+08:00">2023-08-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tutorial/" itemprop="url" rel="index"><span itemprop="name">Tutorial</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/08/10/Hexo%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/08/10/Hexo%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>648</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>Hexo搭配使用<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-blog-encrypt">hexo-blog-encrypt</a>插件可以写一些比较私密的博客，通过密码验证的方式让其他人不能随意浏览。</p>
+<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>在<code>blog\</code>目录运行以下代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-blog-encrypt</span><br></pre></td></tr></table></figure>
+<h1 id="一般配置"><a href="#一般配置" class="headerlink" title="一般配置"></a>一般配置</h1><ol>
+<li>在根目录的配置文件<code>_config.yml</code>中添加以下代码：<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">encrypt:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+<li>设置加密之后，需要在新建博文时在文章头部添加加密的信息设置：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags: </span><br><span class="line">categories: </span><br><span class="line">password: </span><br><span class="line">message: </span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>密码。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">```message```：输入密码界面的提示说明。</span><br><span class="line"></span><br><span class="line"># 针对Tag的加密</span><br><span class="line">将以下代码复制到根目录下的```_config.yml```:</span><br><span class="line">```yml</span><br><span class="line">encrypt: #hexo-blog-encrypt</span><br><span class="line">  enable: true</span><br><span class="line">  abstract: 有东西被加密了, 请输入密码查看.</span><br><span class="line">  message: 您好, 这里需要密码.</span><br><span class="line">  tags:</span><br><span class="line">  - &#123;name: TagName1, password: 密码A&#125;</span><br><span class="line">  - &#123;name: TagName2, password: 密码B&#125;</span><br><span class="line">  wrong_pass_message: 抱歉, 这个密码看着不太对, 请再试试.</span><br><span class="line">  wrong_hash_message: 抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2023/08/10/Diary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="乙未丁酉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/10/Diary/" class="post-title-link" itemprop="url">Diary</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-10 13:44:16" itemprop="dateCreated datePublished" datetime="2023-08-10T13:44:16+08:00">2023-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-08-14 21:42:34" itemprop="dateModified" datetime="2023-08-14T21:42:34+08:00">2023-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Article/" itemprop="url" rel="index"><span itemprop="name">Article</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/08/10/Diary/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/08/10/Diary/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>665</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          有东西被加密了, 请输入密码查看.
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/10/Diary/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="乙未丁酉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">Ubuntu系统搭建FTP服务器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-07 22:32:50" itemprop="dateCreated datePublished" datetime="2023-08-07T22:32:50+08:00">2023-08-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-08-09 00:42:01" itemprop="dateModified" datetime="2023-08-09T00:42:01+08:00">2023-08-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tutorial/" itemprop="url" rel="index"><span itemprop="name">Tutorial</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><code>Ubuntu发行版本：20.04.6 LTS</code></p>
+<h2 id="安装-vsftpd-软件包"><a href="#安装-vsftpd-软件包" class="headerlink" title="安装 vsftpd 软件包"></a>安装 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=vsftpd&spm=1001.2101.3001.7020">vsftpd</a> 软件包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install vsftp</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230807224413.png" alt="20230807224413"><br>查看版本确认是否安装成功：<code>vsftpd -v</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230807224623.png" alt="20230807224623"></p>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>在终端打开vsftpd配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
+<p>修改配置如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=NO             #禁止匿名用户</span><br><span class="line">local_enable=YES                #允许本地用户访问</span><br><span class="line">chroot_local_user=YES           #防止FTP用户访问其主目录之外的任何文件</span><br><span class="line">write_enable=YES                #上传与删除文件及文件夹权限</span><br><span class="line"></span><br><span class="line">allow_writeable_chroot=YES      #允许用户在FTP根目录下创建和修改文件夹及文件</span><br><span class="line">port_enable=YES                 #开启主动模式</span><br><span class="line">pasv_enable=YES                 #开启被动模式</span><br><span class="line">#设置FTP端口范围，以便在打开了防火墙的情况下开放对应端口</span><br><span class="line">pasv_min_port=39000</span><br><span class="line">pasv_max_port=40000</span><br></pre></td></tr></table></figure>
+<p>保存文件，并重启vsftpd服务，使更改生效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart vsftpd</span><br></pre></td></tr></table></figure>
+<h2 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h2><p>如果是VPS要在网页控制面板中开启相应端口。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230808003301.png" alt="20230808003301"><br>防火墙打开FTP服务所需端口号。</p>
+<h2 id="添加FTP用户"><a href="#添加FTP用户" class="headerlink" title="添加FTP用户"></a>添加FTP用户</h2><p>创建名为guest的用户并设置密码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd -d /home/ftp -s /bin/bash guest      <span class="comment">#新建ftp用户,-d:指定目录，-s：指定shell</span></span><br><span class="line">sudo passwd guest       <span class="comment">#新建ftp用户密码</span></span><br></pre></td></tr></table></figure>
+<p>记得要将用户登录所在的文件夹的权限赋予ftp用户，否则无法进行上传和删除。</p>
+<h2 id="附录1：主动模式与被动模式的区别"><a href="#附录1：主动模式与被动模式的区别" class="headerlink" title="附录1：主动模式与被动模式的区别"></a>附录1：主动模式与被动模式的区别</h2><h4 id="1-FTP有控制连接和数据连接"><a href="#1-FTP有控制连接和数据连接" class="headerlink" title="1.FTP有控制连接和数据连接"></a>1.FTP有控制连接和数据连接</h4><p>控制连接标准端口为21，用于发送FTP命令信息。<br>数据连接标准端口为20，用于上传、下载数据。<br>FTP协议与其它协议不同之处就在于客户端访问FTP服务器需要建立两个TCP连接，一个用来传输FTP命令，一个用来传输数据。</p>
+<h4 id="2-PORT-主动-模式"><a href="#2-PORT-主动-模式" class="headerlink" title="2.PORT(主动)模式"></a>2.PORT(主动)模式</h4><p>所谓主动模式，是指FTP服务器主动去连接客户端的数据端口来传输数据。<br>第一步：客户端提交PORT命令访问服务端的21端口，并分配一个数据端口监听(1027端口)；<br>第二步：服务器返回确认；<br>第三步：FTP服务器向客户端发送TCP连接请求，目标端口为1027，源端口为20。建立起传输数据的连接。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/Port_Mode.jpg" alt="Port_Mode"></p>
+<h4 id="3-PASV-被动-模式"><a href="#3-PASV-被动-模式" class="headerlink" title="3.PASV(被动)模式"></a>3.PASV(被动)模式</h4><p>所谓被动模式，是指FTP服务器“被动”等待客户端来连接自己的数据端口。<br>第一步：客户端的命令端口与服务器的命令端口建立连接，并发送命令“PAVS”；<br>第二步：服务器返回命令“PORT 2024”告诉客户端服务器用来监听数据连接的端口；<br>第三步：客户端初始化一个从自己的数据端口到服务器指定的数据端口的数据连接；<br>第四步：服务器给客户端的数据端口返回一个“ACK”响应。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/PASV_Mode.jpg" alt="PASV_Mode"></p>
+<h2 id="附录2：vsftpd配置文件翻译"><a href="#附录2：vsftpd配置文件翻译" class="headerlink" title="附录2：vsftpd配置文件翻译"></a>附录2：vsftpd配置文件翻译</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line"># 示例配置文件，地址： /etc/vsftpd.conf</span><br><span class="line">#</span><br><span class="line"># vsftpd的默认编译设置比较谨慎，这个示例文件会放宽一些限制，使ftp服务更加易用。</span><br><span class="line"># 同时建议查看vsftpd.conf.5文件以了解所有编译默认值。</span><br><span class="line">#</span><br><span class="line"># 特别提醒：这个示例文件并不包含vsftpd选项的所有内容，建议阅读vsftpd.conf.5手册页以充分了解vsftpd的功能。</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># </span><br><span class="line"># 用来设置vsftpd是否以独立守护进程运行。</span><br><span class="line"># 如果设置为&quot;listen=YES&quot;，则表示vsftpd将作为独立守护进程运行；</span><br><span class="line"># 如果设置为&quot;listen=NO&quot;，则表示vsftpd将不会以独立守护进程运行，而是通过inetd或者initscript启动。</span><br><span class="line">listen=NO</span><br><span class="line">#</span><br><span class="line"># 设置vsftpd是否启用IPv6监听。</span><br><span class="line"># 如果设置为&quot;listen_ipv6=YES&quot;，则表示vsftpd将启用IPv6监听；</span><br><span class="line"># 如果设置为&quot;listen_ipv6=NO&quot;，则表示vsftpd将不会启用IPv6监听。</span><br><span class="line"># 默认情况下，IPv6监听地址为&quot;::&quot;，同时可以接受IPv6和IPv4客户端的连接。</span><br><span class="line"># 如果你只需要监听IPv4或IPv6地址，则不需要同时启用两种监听，如果你需要同时监听特定的IPv4和IPv6地址，则需要运行两个vsftpd实例，并使用两个不同的配置文件来进行配置。</span><br><span class="line">listen_ipv6=YES</span><br><span class="line">#</span><br><span class="line"># 设置是否允许匿名FTP登录。</span><br><span class="line">anonymous_enable=NO</span><br><span class="line">#</span><br><span class="line"># 设置是否允许本地用户登录FTP服务器。</span><br><span class="line">local_enable=YES</span><br><span class="line">#</span><br><span class="line"># 设置是否允许FTP用户执行写入操作。</span><br><span class="line"># write_enable=YES</span><br><span class="line">#</span><br><span class="line"># 设置本地用户的默认umask值。</span><br><span class="line"># umask是一个三位八进制数，用来控制新建文件或目录的访问权限。</span><br><span class="line"># 在FTP服务器中，local_umask选项用来设置本地用户上传文件或创建目录时的默认权限。</span><br><span class="line"># 默认情况下，local_umask的值为077，表示新建的文件或目录权限为只有所有者可读、可写、可执行，其他用户无权访问。</span><br><span class="line"># 如果你的用户希望默认权限为所有者可读、可写、可执行，其他用户可读、可执行，则可以将local_umask的值设置为022。</span><br><span class="line">local_umask=022</span><br><span class="line">#</span><br><span class="line"># 设置是否允许匿名FTP用户上传文件。</span><br><span class="line"># 如果将该选项的注释去掉（即将“#”删去），并将其值设置为YES，则表示允许匿名FTP用户上传文件。</span><br><span class="line"># 但是，这个选项只有在全局写入权限被激活时才会生效。此外，你还需要创建一个由FTP用户可写的目录，以便匿名FTP用户可以上传文件。</span><br><span class="line"># 需要注意的是，开启匿名FTP用户上传文件功能可能存在一定的安全风险，因此需要谨慎使用。</span><br><span class="line"># anon_upload_enable=YES</span><br><span class="line">#</span><br><span class="line"># 设置是否允许匿名FTP用户创建新目录。</span><br><span class="line"># 如果将该选项的注释去掉（即将“#”删去），并将其值设置为YES，则表示允许匿名FTP用户创建新目录。</span><br><span class="line"># 需要注意的是，开启匿名FTP用户创建新目录功能可能存在一定的安全风险，因此需要谨慎使用。</span><br><span class="line"># anon_mkdir_write_enable=YES</span><br><span class="line">#</span><br><span class="line"># 这段配置文件是用来设置是否启用目录消息功能。</span><br><span class="line"># 如果设置为YES，则表示启用目录消息功能。当远程用户进入某个目录时，会显示该目录的消息。</span><br><span class="line">dirmessage_enable=YES</span><br><span class="line">#</span><br><span class="line"># 设置是否启用本地时间功能。</span><br><span class="line"># 启用本地时间功能后，vsftpd将会在目录列表中显示本地时间而非GMT时间。</span><br><span class="line">use_localtime=YES</span><br><span class="line">#</span><br><span class="line"># 启用上传和下载日志记录功能。</span><br><span class="line"># 启用该功能后，vsftpd会记录每个用户的上传和下载操作，并将其记录到指定的日志文件中。</span><br><span class="line">xferlog_enable=YES</span><br><span class="line">#</span><br><span class="line"># 设置数据传输的端口号。</span><br><span class="line"># 将其值设置为YES，则表示数据传输使用的端口号为20。</span><br><span class="line">connect_from_port_20=YES</span><br><span class="line">#</span><br><span class="line"># 设置匿名用户上传的文件的所有者。</span><br><span class="line"># 设置为YES，则表示上传的文件将会被转换为指定用户的所有权。</span><br><span class="line"># chown_uploads=YES</span><br><span class="line"># 设置为指定的用户名。</span><br><span class="line"># chown_username=whoever</span><br><span class="line">#</span><br><span class="line"># 设置vsftpd日志文件的路径。该路径必须具有可写权限，并且对于vsftpd进程来说，必须具有可访问权限。</span><br><span class="line"># xferlog_file=/var/log/vsftpd.log</span><br><span class="line">#</span><br><span class="line"># 设置vsftpd日志文件的格式。设备为YES则存储为标准ftpd xferlog格式。</span><br><span class="line"># xferlog_std_format=YES</span><br><span class="line">#</span><br><span class="line"># 设置vsftpd空闲会话超时的时间（以秒为单位）。</span><br><span class="line"># idle_session_timeout=600</span><br><span class="line">#</span><br><span class="line"># 设置vsftpd数据连接超时的时间（以秒为单位）。</span><br><span class="line"># data_connection_timeout=120</span><br><span class="line">#</span><br><span class="line"># vsftpd建议在系统中定义一个唯一的用户，供FTP服务器使用，作为完全隔离和无特权的用户。</span><br><span class="line"># nopriv_user选项可以用来指定该用户的用户名。</span><br><span class="line"># nopriv_user=ftpsecure</span><br><span class="line">#</span><br><span class="line"># 用于启用异步ABOR请求的识别。</span><br><span class="line"># 异步ABOR请求是一种FTP客户端请求，用于取消当前正在进行的数据传输操作。</span><br><span class="line"># 启用该选项可以提高FTP服务器的性能，但也会增加安全风险。因为异步ABOR请求的代码比较复杂，可能会被黑客利用进行恶意攻击。</span><br><span class="line"># 所以，如果安全性是首要考虑因素，则不建议启用该选项。</span><br><span class="line"># async_abor_enable=YES</span><br><span class="line">#</span><br><span class="line"># 用于控制FTP服务器是否启用ASCII模式下的文件转换功能。</span><br><span class="line"># 默认情况下，FTP服务器会假装允许ASCII模式，但实际上会忽略该请求。</span><br><span class="line"># 如果需要启用ASCII模式下的文件转换功能，则可以将ascii_upload_enable和ascii_download_enable选项的注释去掉，并将它们的值设置为YES。</span><br><span class="line"># 在ASCII模式下，FTP服务器会将文本文件中的换行符和回车符进行转换，以便在不同操作系统之间进行传输。</span><br><span class="line"># 但是，需要注意的是，ASCII模式下可能存在一些安全风险。例如，攻击者可以利用SIZE命令在ASCII模式下发送一个超大文件名，导致FTP服务器崩溃。</span><br><span class="line"># 因此，建议谨慎使用ASCII模式，并确保FTP服务器已经做好了相应的安全措施。</span><br><span class="line"># ascii_upload_enable=YES</span><br><span class="line"># ascii_download_enable=YES</span><br><span class="line">#</span><br><span class="line"># vsftpd的登录横幅的设置，你可以理解为登录成功后的欢迎词。</span><br><span class="line"># ftpd_banner=Welcome to blah FTP service.</span><br><span class="line">#</span><br><span class="line"># 设备是否拒绝匿名电子邮件地址</span><br><span class="line"># 有助于减轻利用匿名访问FTP服务器进行的拒绝服务（DoS）攻击。如果检测到被禁止的电子邮件地址，服务器将拒绝该用户的访问。</span><br><span class="line"># deny_email_enable=YES</span><br><span class="line"># 如果启用了拒绝匿名电子邮件地址的选项，则通过从指定的文件“/etc/vsftpd.banned_emails”读取被禁止的电子邮件地址列表。</span><br><span class="line"># banned_email_file=/etc/vsftpd.banned_emails</span><br><span class="line">#</span><br><span class="line"># 设备限制本地用户仅访问其home目录。</span><br><span class="line"># 如果启用，则本地用户将仅访问其home目录和其子目录，无法访问其他目录。</span><br><span class="line"># chroot_local_user=YES</span><br><span class="line">#</span><br><span class="line"># 是否允许本地用户，是否将本地用户限制在其主目录中，如果设置为YES，则不会将列在chroot_list_file中的用户限制在其主目录中。</span><br><span class="line"># chroot_local_user=YES</span><br><span class="line"># 是否启用chroot_list_file列表，用于指定哪些用户不应该被限制在主目录中。</span><br><span class="line"># chroot_list_enable=YES</span><br><span class="line"># 指定了chroot_list_file列表的路径和名称。一行一个用户名。</span><br><span class="line"># chroot_list_file=/etc/vsftpd.chroot_list</span><br><span class="line">#</span><br><span class="line"># 否启用ls命令的递归选项“-R”，该选项可以在列出目录内容时递归地列出子目录。</span><br><span class="line"># 默认情况下，该选项被禁用以避免远程用户在大型站点上引起过多的I/O。</span><br><span class="line"># ls_recurse_enable=YES</span><br><span class="line">#</span><br><span class="line"># 自定义配置：</span><br><span class="line">#</span><br><span class="line"># 指定了一个空目录作为安全chroot() jail。</span><br><span class="line"># 在某些情况下，vsftpd不需要访问文件系统，因此可以将FTP用户限制在这个空目录中，以增强安全性。该目录应该为空，并且不应该被FTP用户写入。</span><br><span class="line">secure_chroot_dir=/var/run/vsftpd/empty</span><br><span class="line">#</span><br><span class="line"># 指定vsftpd将使用的PAM服务的名称。</span><br><span class="line"># 默认情况下，pam_service_name的值为“vsftpd”，这意味着vsftpd将使用名为“vsftpd”的PAM服务来进行认证。</span><br><span class="line"># 如果需要使用其他的PAM服务，可以修改该选项的值。</span><br><span class="line">pam_service_name=vsftpd</span><br><span class="line">#</span><br><span class="line"># 用于指定在SSL加密连接中使用的RSA证书的位置。</span><br><span class="line"># 通过设置rsa_cert_file和rsa_private_key_file选项来指定RSA证书和私钥的位置。</span><br><span class="line"># 其中，rsa_cert_file选项用于指定证书文件的位置，而rsa_private_key_file选项用于指定私钥文件的位置。</span><br><span class="line">rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem</span><br><span class="line">rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key</span><br><span class="line"># 是否启用SSL加密连接。</span><br><span class="line">ssl_enable=NO</span><br><span class="line">#</span><br><span class="line"># 指定是否在vsftpd中使用UTF-8编码的文件系统。</span><br><span class="line"># utf8_filesystem=YES</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
-    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    
-      <div class="widget">
-    <h3 class="widget-title">公告</h3>
-    <div class="widget-body">
-        <div id="board">
-            <div class="content">
-                <p>欢迎交流与分享经验!</p>
-            </div>
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
         </div>
-    </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">乙未丁酉</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
 </div>
 
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Article/">Article</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Electronic-Equipments/">Electronic Equipments</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Knowledge-Share/">Knowledge Share</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tutorial/">Tutorial</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tutotial/">Tutotial</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E4%BA%AB/">分享</a><span class="category-list-count">1</span></li></ul>
+
+
+      </div>
+
     </div>
-  </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Poetry/" rel="tag">Poetry</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Privacy/" rel="tag">Privacy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Semiconductor/" rel="tag">Semiconductor</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%B2%E5%84%BF/" rel="tag">育儿</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
+      </div>
+    </main>
 
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget-body tagcloud">
-      <a href="/tags/Poetry/" style="font-size: 14px;">Poetry</a> <a href="/tags/Privacy/" style="font-size: 13px;">Privacy</a> <a href="/tags/Semiconductor/" style="font-size: 14px;">Semiconductor</a> <a href="/tags/%E8%82%B2%E5%84%BF/" style="font-size: 13px;">育儿</a>
-    </div>
-  </div>
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">9</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget-body">
-      <ul class="recent-post-list list-unstyled no-thumbnail">
+    <footer class="footer">
+      <div class="footer-inner">
         
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/Tutotial/">Tutotial</a>
-              </p>
-              <p class="item-title">
-                <a href="/2023/11/14/%E6%9B%B4%E6%8D%A2%E6%96%B0%E7%94%B5%E8%84%91%E5%90%8E%EF%BC%8Chexo%E6%97%A0%E6%8D%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/" class="title">更换新电脑后，hexo无损重新部署</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2023-11-14T13:44:02.000Z" itemprop="datePublished">2023-11-14</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/Electronic-Equipments/">Electronic Equipments</a>
-              </p>
-              <p class="item-title">
-                <a href="/2023/09/13/Elecom-MR-C18BK-%E8%AF%BB%E5%8D%A1%E5%99%A8/" class="title">Elecom MR-C18BK 读卡器</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2023-09-13T11:40:45.000Z" itemprop="datePublished">2023-09-13</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/Knowledge-Share/">Knowledge Share</a>
-              </p>
-              <p class="item-title">
-                <a href="/2023/09/13/%E6%97%A0%E9%97%A8%E5%85%B3%C2%B7%E5%B9%B3%E5%B8%B8%E6%98%AF%E9%81%93/" class="title">无门关·平常是道</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2023-09-13T01:11:08.000Z" itemprop="datePublished">2023-09-13</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E5%88%86%E4%BA%AB/">分享</a>
-              </p>
-              <p class="item-title">
-                <a href="/2023/09/11/%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%98%AF%E4%B8%80%E4%B8%AA%E6%99%AE%E9%80%9A%E7%9A%84%E7%88%B6%E6%AF%8D/" class="title">如果你是一个普通的父母</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2023-09-11T01:14:04.000Z" itemprop="datePublished">2023-09-11</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/Knowledge-Share/">Knowledge Share</a>
-              </p>
-              <p class="item-title">
-                <a href="/2023/09/04/SPICE%E7%AE%80%E5%8F%B2/" class="title">SPICE简史</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2023-09-04T07:10:04.000Z" itemprop="datePublished">2023-09-04</time>
-              </p>
-            </div>
-          </li>
-          
-      </ul>
-    </div>
-  </div>
-  
 
-    
-  </div>
-</aside>
-
-  
-  <main class="main" role="main">
-  
-  <div class="content article-list">
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/08/10/Diary/">Diary</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    有东西被加密了, 请输入密码查看.
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2023/08/10/Diary/" class="article-date">
-	  <time datetime="2023-08-10T05:44:16.000Z" itemprop="datePublished">8月 10</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Article/">Article</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/Privacy/" rel="tag">Privacy</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/08/10/Diary/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/">Ubuntu系统搭建FTP服务器</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
-	  <time datetime="2023-08-07T14:32:50.000Z" itemprop="datePublished">8月 7</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>
-  </span>
-
-    
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/08/03/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/">在自己搭建的hexo博客上发布文章</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2023/08/03/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" class="article-date">
-	  <time datetime="2023-08-02T16:19:02.735Z" itemprop="datePublished">8月 3</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>
-  </span>
-
-    
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/08/03/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/08/03/Hexo%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%8C%82%E8%BD%BDgithub/">Hexo搭建个人博客挂载Github(未完)</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2023/08/03/Hexo%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%8C%82%E8%BD%BDgithub/" class="article-date">
-	  <time datetime="2023-08-02T16:03:40.079Z" itemprop="datePublished">8月 3</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>
-  </span>
-
-    
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/08/03/Hexo%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%8C%82%E8%BD%BDgithub/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-  </div>
-
-  
-    
-    <nav class="bar bar-footer clearfix" data-stick-bottom>
-        <div class="bar-inner">
-        <ul class="pager pull-left">
-            
-            <li class="prev">
-                <a href="/">
-                    <i class="icon icon-angle-left"></i>
-                    上一页
-                </a>
-            </li>
-            
-            
-            <li class="next disabled">
-                <a href="javascript:;">
-                    下一页
-                    <i class="icon icon-angle-right"></i>                    
-                </a>
-            </li>
-            
-        </ul>
-            <div class="total-article bar-right">Page 2 of 2</div>
-        </div>
-    </nav>
-    
- 
-</main>
-
-  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-	
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/shenguosai" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
         
-        <li><a href="https://weibo.com/u/2257702307" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://www.facebook.com/shenguosai" target="_blank" title="Facebook" data-toggle=tooltip data-placement=top><i class="icon icon-facebook"></i></a></li>
-        
-    </ul>
 
-    <div class="copyright">
-    	
-        <div class="publishby">
-        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
-        </div>
-    </div>
-</footer>
-  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">乙未丁酉</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">38k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">35 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
 <script>
-window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '0dJ6KzQjpKzOPUi998D88vE3-gzGzoHsz',
+      appKey     : 'LseOZQMpqtwJKZALm9XXl9h',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
 </script>
-
-<script src="/js/plugin.min.js"></script>
-
-
-<script src="/js/application.js"></script>
-
-
-    <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-
-
-
-
-
-   
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>
