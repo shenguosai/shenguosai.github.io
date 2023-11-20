@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230904094920.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230904144358.png">
 <meta property="article:published_time" content="2023-09-04T07:10:04.000Z">
-<meta property="article:modified_time" content="2023-09-11T01:40:51.985Z">
+<meta property="article:modified_time" content="2023-11-20T13:28:12.176Z">
 <meta property="article:author" content="乙未丁酉">
 <meta property="article:tag" content="Semiconductor">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-11 09:40:51" itemprop="dateModified" datetime="2023-09-11T09:40:51+08:00">2023-09-11</time>
+                <time title="修改时间：2023-11-20 21:28:12" itemprop="dateModified" datetime="2023-11-20T21:28:12+08:00">2023-11-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -274,6 +274,7 @@
 
       
         <p>　　如今，SPICE广泛应用在仿真模拟电路(运放、基准、电源、AD&#x2F;DA等)，混合信号电路(PLL、SRAM&#x2F;DRAM，高速接口)，精确数字电路(延时、时序、功耗、漏电流等)，建立SoC的时序及功耗单元库，分析系统级的信号完整性，等等。<br>作为最早的电子设计自动化软件，它今天仍然是最重要的软件之一。可以说，没有SPICE，就没有电子设计自动化这个产业，也就没有今天的半导体工业。它的市场超过上亿美元。所有这一切，都是从1970年加州大学伯克利分校电机工程系的一堂课开始的。</p>
+<span id="more"></span>
 <h2 id="SPICE的诞生"><a href="#SPICE的诞生" class="headerlink" title="SPICE的诞生"></a>SPICE的诞生</h2><p>　　时间回到1970年，在加州大学伯克利分校电机工程与计算机科学系(UC Berkeley, Dept. EECS)，Ron Rohrer教授给7个研究生上“电路综合”课。Rohrer教授那时刚刚从仙童半导体公司(Fairchild Semiconductor)返回伯克利，没有时间准备教材。所以，在第一堂课，他就宣布：学生们一起写一个电路仿真程序。他跟系里管教学的助人Don Peterson教授达成一个协议：只要Peterson教授认可学生们写的仿真程序，他们就全部通过。否则的话，他们就全部不及格。这七个学生中有一个还是从机械系来的。他感到十分委屈：教授啊，俺啥电路都不会，俺就是来学电路的。这倒好，电路没学到，反而要去写电路仿真程序。这可咋办啊？Rohrer教授想了想，说没关系。虽然电路你不懂，但你的数值分析不是很厉害吗？OK，你就负责解方程这块吧。最后的结果证明了恰恰是学生们自己开发的解稀疏矩阵的模块是一个亮点，它使得可处理的电路规模成倍的增大。为什么这么说呢？如果你学过数值方法，你就知道一般解方程组用的是高斯消元法。它的时间复杂度是$O^{(n*3)}$。也就是说，电路规模增大一倍，你的运算时间就要增大到8倍。当时的电路仿真程序最多可以仿真10个晶体管。超过这个数，不是你的预算被烧没了，就是你的耐心被耗没了。但是，学生们注意到从电路搭出来的矩阵有个特点，就是它的稀疏性。一个电路矩阵里很多元素都是0(意味着两个电路节点之间没有连接关系)。既然是0，那就没有必要去存储和计算它了。这样一来，存储量和计算量大大减少了。<br>　　很多SPICE里面的基本要素都来自于Rohrer教授指导的这一堂电路分析课的项目，包括上面讲到的解稀疏矩阵的模块，还有隐式积分算法的使用使得瞬态分析更加稳定。并且，程序里加入了自带的半导体器件模型，用户只要给出一组模型参数，用不着自己提供器件模型的FORTRAN模块了。<br>这7个学生推举Laurence Nagel为代表，由他负责向Peterson教授汇报结果。这个结果就是CANCER。没错，它的意思就是“癌症”。它是“不包括辐射的非线性电路计算机分析”(“Computer Analysis of Nonlinear Circuits, Excluding Radiation”)的缩写。不要忘了，这是在一个叛逆的时代。当时绝大部分的电路分析软件来自于大公司与政府&#x2F;军方的合同开发。在冷战和核威胁的环境下，政府&#x2F;军方要求这些软件都具有分析电路抗辐射的能力。伯克利是反战的大本营，学生们自己开发的程序当然要跟政府&#x2F;军方的要求对着干了。<br>有同学可能会问：为什么要开发一个电路仿真程序？呵呵，要知道在这之前，人们分析电路，要么是用笔和纸，要么就要搭电路板(Bread Board)。Peterson教授就被学生们称之为“信封教授”，因为他认为电路分析用个信封的背面来做就足够了。但随着电路规模的增大，用笔纸变得越来越不可能，搭电路板又不能精确反应芯片上的电路特性，而且费用也越来越高。因此，用软件来做仿真就变得日益迫切了。<br>　　当课程结束，Nagel向Peterson教授汇报CANCER之后，Peterson教授给予了认可。学生们都通过了！CANCER成了Nagel的硕士论文课题。它在伯克利被很多本科生及研究生使用，并且给了大量的建议去改进它。呵呵，都说学生是最好的“小白鼠”，这话果然不假(再插一段话：基于这堂课的巨大成功，Rohrer教授后来又用同样的办法试了几堂课，但都失败了。他自己总结说，是因为有Nagel，伯克利的那堂课才成功了。所以，如果没有Rohrer教授那样的功力和Nagel那样天分的学生，SPICE也不可能从一堂课里诞生出来。)<br>　　到了1971年的秋天，Nagel在伯克利又开始了他的博士生生活，这一回是在Peterson教授的指导下了。(在这之前，Rohrer教授离开了伯克利到工业界去发展。原因嘛，据说Rohrer教授与Peterson教授在是否要公开CANCER的源代码上有不同意见。Rohrer教授后来又回到了学术界，在卡内基-梅隆大学(CMU)做教授，并指导开发了AWE，这是后话。)<br>　　Peterson教授给Nagel的第一个任务是给程序起个新名字。确实，CANCER太难听了，谁都不喜欢。Nagel花了天知道多长时间才想出来这样好听的，也就是我们现在还在用的名字：SPICE(Simulation Program with Integrated Circuit Emphasis)。(所以，如果你要写一个新程序，创建一个新公司，生一个小孩，一定要给他&#x2F;她起个好听的名字。)<br>　　1971年被正式认定为SPICE诞生的年份。</p>
 <div>
     <center>
@@ -736,7 +737,7 @@ SPICE3自带了一个图形模块nutmeg。下面是nutmeg显示的波形，是�
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">38k</span>
+    <span title="站点总字数">39k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
