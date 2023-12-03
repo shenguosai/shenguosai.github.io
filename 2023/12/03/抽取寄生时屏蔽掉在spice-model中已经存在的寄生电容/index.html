@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="这两天帮父亲新接手的球馆弄监控，花了一番功夫终于把已经停产的十几年前的监控摄像头搞定，发现里面的TF卡却坏掉了。于是在京东上买了BanQ的Joy联名TF卡，买来之后插上读卡器发现无法识别，申请换新之后还是无法识别，这才开始怀疑自己的读卡器是不是有问题。但是前两天刚试过家里的4G的TF卡读取是没有问题的。于是从同事那里借来较新的读卡器发现成功读出来了，就怀疑自己应该也是十几年前买的读卡器是不是不支持">
+  <meta name="description" content="在提取寄生参数时，除了需要关注金属导体的寄生电容外，还需要分析mos器件的节点寄生参数提取是否准确。下面是一个典型的 nmos 4端器件: 该mos管的4个节点 D, G, S, B 的寄生电容是否准确呢？首先用calibre xrc提取一下其寄生参数，结果如下: 123456cc_1 S G 3.32511fcc_2 S D 6.73464e-19cc_3 S B 12.7622fcc_4 G">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Elecom MR-C18BK 读卡器">
-<meta property="og:url" content="http://shenguosai.github.io/2023/09/13/Elecom-MR-C18BK-%E8%AF%BB%E5%8D%A1%E5%99%A8/index.html">
+<meta property="og:title" content="抽取寄生时屏蔽掉在spice model中已经存在的寄生电容">
+<meta property="og:url" content="http://shenguosai.github.io/2023/12/03/%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F%E6%97%B6%E5%B1%8F%E8%94%BD%E6%8E%89%E5%9C%A8spice-model%E4%B8%AD%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AF%84%E7%94%9F%E7%94%B5%E5%AE%B9/index.html">
 <meta property="og:site_name" content="乙未丁酉">
-<meta property="og:description" content="这两天帮父亲新接手的球馆弄监控，花了一番功夫终于把已经停产的十几年前的监控摄像头搞定，发现里面的TF卡却坏掉了。于是在京东上买了BanQ的Joy联名TF卡，买来之后插上读卡器发现无法识别，申请换新之后还是无法识别，这才开始怀疑自己的读卡器是不是有问题。但是前两天刚试过家里的4G的TF卡读取是没有问题的。于是从同事那里借来较新的读卡器发现成功读出来了，就怀疑自己应该也是十几年前买的读卡器是不是不支持">
+<meta property="og:description" content="在提取寄生参数时，除了需要关注金属导体的寄生电容外，还需要分析mos器件的节点寄生参数提取是否准确。下面是一个典型的 nmos 4端器件: 该mos管的4个节点 D, G, S, B 的寄生电容是否准确呢？首先用calibre xrc提取一下其寄生参数，结果如下: 123456cc_1 S G 3.32511fcc_2 S D 6.73464e-19cc_3 S B 12.7622fcc_4 G">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-13T11:40:45.000Z">
-<meta property="article:modified_time" content="2023-11-20T13:27:00.777Z">
+<meta property="article:published_time" content="2023-12-03T14:14:43.000Z">
+<meta property="article:modified_time" content="2023-12-03T15:02:59.784Z">
 <meta property="article:author" content="sgs">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://shenguosai.github.io/2023/09/13/Elecom-MR-C18BK-%E8%AF%BB%E5%8D%A1%E5%99%A8/">
+<link rel="canonical" href="http://shenguosai.github.io/2023/12/03/%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F%E6%97%B6%E5%B1%8F%E8%94%BD%E6%8E%89%E5%9C%A8spice-model%E4%B8%AD%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AF%84%E7%94%9F%E7%94%B5%E5%AE%B9/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>Elecom MR-C18BK 读卡器 | 乙未丁酉</title>
+  <title>抽取寄生时屏蔽掉在spice model中已经存在的寄生电容 | 乙未丁酉</title>
   
 
 
@@ -172,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2023/09/13/Elecom-MR-C18BK-%E8%AF%BB%E5%8D%A1%E5%99%A8/">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2023/12/03/%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F%E6%97%B6%E5%B1%8F%E8%94%BD%E6%8E%89%E5%9C%A8spice-model%E4%B8%AD%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AF%84%E7%94%9F%E7%94%B5%E5%AE%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -185,7 +185,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Elecom MR-C18BK 读卡器
+          抽取寄生时屏蔽掉在spice model中已经存在的寄生电容
         </h1>
 
         <div class="post-meta">
@@ -194,23 +194,25 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2023-09-13 19:40:45" itemprop="dateCreated datePublished" datetime="2023-09-13T19:40:45+08:00">2023-09-13</time>
+              <time title="创建时间：2023-12-03 22:14:43 / 修改时间：23:02:59" itemprop="dateCreated datePublished" datetime="2023-12-03T22:14:43+08:00">2023-12-03</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-20 21:27:00" itemprop="dateModified" datetime="2023-11-20T21:27:00+08:00">2023-11-20</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Electronic-Equipments/" itemprop="url" rel="index"><span itemprop="name">Electronic Equipments</span></a>
+                  <a href="/categories/Semiconductor/" itemprop="url" rel="index"><span itemprop="name">Semiconductor</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Semiconductor/post-sim/" itemprop="url" rel="index"><span itemprop="name">post-sim</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Semiconductor/EDA/" itemprop="url" rel="index"><span itemprop="name">EDA</span></a>
                 </span>
             </span>
 
@@ -223,8 +225,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2023/09/13/Elecom-MR-C18BK-%E8%AF%BB%E5%8D%A1%E5%99%A8/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2023/09/13/Elecom-MR-C18BK-%E8%AF%BB%E5%8D%A1%E5%99%A8/" itemprop="commentCount"></span>
+    <a title="valine" href="/2023/12/03/%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F%E6%97%B6%E5%B1%8F%E8%94%BD%E6%8E%89%E5%9C%A8spice-model%E4%B8%AD%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AF%84%E7%94%9F%E7%94%B5%E5%AE%B9/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/12/03/%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F%E6%97%B6%E5%B1%8F%E8%94%BD%E6%8E%89%E5%9C%A8spice-model%E4%B8%AD%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AF%84%E7%94%9F%E7%94%B5%E5%AE%B9/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -234,14 +236,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>535</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -253,18 +255,46 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>这两天帮父亲新接手的球馆弄监控，花了一番功夫终于把已经停产的十几年前的监控摄像头搞定，发现里面的TF卡却坏掉了。于是在京东上买了BanQ的Joy联名TF卡，买来之后插上读卡器发现无法识别，申请换新之后还是无法识别，这才开始怀疑自己的读卡器是不是有问题。但是前两天刚试过家里的4G的TF卡读取是没有问题的。<br>于是从同事那里借来较新的读卡器发现成功读出来了，就怀疑自己应该也是十几年前买的读卡器是不是不支持大容量TF卡，于是到主页上查找了一番，发现Micro SD卡容量最大支持到16GB。</p>
+        <p>在提取寄生参数时，除了需要关注金属导体的寄生电容外，还需要分析mos器件的节点寄生参数提取是否准确。<br>下面是一个典型的 nmos 4端器件:</p>
+<p>该mos管的4个节点 D, G, S, B 的寄生电容是否准确呢？<br>首先用calibre xrc提取一下其寄生参数，结果如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cc_1 S G 3.32511f</span><br><span class="line">cc_2 S D 6.73464e-19</span><br><span class="line">cc_3 S B 12.7622f</span><br><span class="line">cc_4 G D 3.32511f</span><br><span class="line">cc_5 G B 1.16212f</span><br><span class="line">cc_6 D B 12.7506f</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<br>
-![20230913194643](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230913194643.png)
-<br>
-![20230913194802](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230913194802.png)
-<br>
-![20230913194820](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230913194820.png)
-<br>
-
-<p><a target="_blank" rel="noopener" href="https://www2.elecom.co.jp/data-media/memory-rw/mr-c18/">商品说明链接</a></p>
-
+<p>上述寄生电容分为4类:</p>
+<ul>
+<li>Gate 到 Source&#x2F;Drain 电容</li>
+<li>Source&#x2F;Drain 到 Bulk 电容</li>
+<li>Gate 到 Bulk 电容</li>
+<li>Source 到 Drain 电容</li>
+</ul>
+<p>由于在spice model中一般会自动把上述4类电容考虑，如果寄生参数提取中再提取一遍，就会发生重复提取。<br>因此，需要把这4类电容屏蔽，屏蔽方法如下:</p>
+<ul>
+<li>屏蔽 Gate 到 Source&#x2F;Drain 电容<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PEX IGNORE CAPACITANCE ALL poly nsd</span><br><span class="line">PEX IGNORE CAPACITANCE ALL poly psd</span><br></pre></td></tr></table></figure></li>
+<li>屏蔽 Gate 到 Bulk 电容，其中 ALLGATE 是 mark layer<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PEX IGNORE CAPATANCE DEVICE INTRINSIC poly ALLGATE</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>设置上述3个参数后，提取结果如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cc_1 S D 0.00129446f</span><br><span class="line">cc_2 S B 12.7622f</span><br><span class="line">cc_3 G B 0.211916f</span><br><span class="line">cc_4 D B 12.7506f</span><br></pre></td></tr></table></figure>
+<p>可以看到，Gate 到 Source&#x2F;Drain 的电容没有了，被屏蔽掉了。Gate 到 Bulk 的电容比刚才的值小了，说明在mos管区域的电容被屏蔽了，只剩下 Gate 露头的电容了，这个符合预期。<br>但是，Source&#x2F;Drain 到 Bulk 的电容没有屏蔽掉，该如何设置呢？<br>首先看一下再原始的工艺文件定义中，有如下语句:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">diffusion = diff &#123;</span><br><span class="line">    thickness = 0.004</span><br><span class="line">    min_width = 0.15</span><br><span class="line">    min_spacing = 0.18</span><br><span class="line">    resistivity = 10</span><br><span class="line">    src_drn_layers = &#123;nsd_psd_&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意 diffusion, src_drn_layers是关键字，nsd_psd_ 是两个 process layer。<br>calibre命令文件中原来有如下语句:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PEX MAP diff NTAP PTAP nsd psd</span><br></pre></td></tr></table></figure>
+<p>它把 nsd, psd 映射到了diff层，但是没有告诉工具映射到 nsd_psd_层。<br>如果修改该语句如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PEX MAP diff NTAP PTAP</span><br><span class="line">PEX MAP nsd_nsd_</span><br><span class="line">PEX MAP psd_psd_</span><br></pre></td></tr></table></figure>
+<p>当calibre xrc识别到该语句后，自动会把nsd之间的相互电容屏蔽掉，也自动会把 nsd&#x2F;psd 到衬底的电容屏蔽掉。<br>屏蔽后提取结果如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cc_1 S B 0.0777512f</span><br><span class="line">cc_2 G B 0.211916f</span><br><span class="line">cc_3 D B 0.0540989f</span><br></pre></td></tr></table></figure>
+<p>以上3个电容都是连接到mos管的金属之间的耦合电容了，电容值很小，不是器件本身的电容，符合预期。</p>
+<hr>
+<p>如果用户在原始的工艺定义中没有用 diffusion 的关键字，而是用 conductor 的关键字，如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conductor = diff &#123;</span><br><span class="line">    thickness = 0.004</span><br><span class="line">    min_width = 0.15</span><br><span class="line">    min_spacing = 0.18</span><br><span class="line">    resistivity = 10</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>则用户需要增加额外的语句来屏蔽 source 到 drain，source 到衬底的寄生电容。</p>
+<ul>
+<li>屏蔽 Gate 到 Source&#x2F;Drain 的电容<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PEX IGNORE CAPATANCE ALL poly nsd</span><br><span class="line">PEX IGNORE CAPATANCE ALL poly psd</span><br></pre></td></tr></table></figure></li>
+<li>屏蔽 Gate 到 Bulk<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PEX IGNORE CAPACITANCE DEVICE INTRINSIC poly ALLGATE</span><br></pre></td></tr></table></figure></li>
+<li>屏蔽 Source&#x2F;Drain 到 Bulk<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PEX IGNORE CAPACITANCE DEVICE INTRINSIC nsd ALLGATE</span><br></pre></td></tr></table></figure></li>
+<li>屏蔽 Source 到 Drain<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PEX IGNORE CAPACITANCE DEVICE nsd nsd ALLGATE</span><br></pre></td></tr></table></figure>
+可以看到，这种写法比较繁琐，不如前面的方法简洁。</li>
+</ul>
+<p>总结，屏蔽掉 spice model 中的寄生参数最简单的方法是:在工艺文件定义中用 diffusion 的关键字，用 src_drn_layers 指定具体的layer名称。然后在提取命令文件中，把 gate 的电容通过 PEX IGNORE 语句来屏蔽掉，不需要写 source, drain 的屏蔽语句。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
     
@@ -299,7 +329,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://shenguosai.github.io/2023/09/13/Elecom-MR-C18BK-%E8%AF%BB%E5%8D%A1%E5%99%A8/" title="Elecom MR-C18BK 读卡器">http://shenguosai.github.io/2023/09/13/Elecom-MR-C18BK-读卡器/</a>
+    <a href="http://shenguosai.github.io/2023/12/03/%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F%E6%97%B6%E5%B1%8F%E8%94%BD%E6%8E%89%E5%9C%A8spice-model%E4%B8%AD%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AF%84%E7%94%9F%E7%94%B5%E5%AE%B9/" title="抽取寄生时屏蔽掉在spice model中已经存在的寄生电容">http://shenguosai.github.io/2023/12/03/抽取寄生时屏蔽掉在spice-model中已经存在的寄生电容/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -316,13 +346,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/09/13/%E6%97%A0%E9%97%A8%E5%85%B3%C2%B7%E5%B9%B3%E5%B8%B8%E6%98%AF%E9%81%93/" rel="prev" title="无门关·平常是道">
-      <i class="fa fa-chevron-left"></i> 无门关·平常是道
+    <a href="/2023/12/03/Sublime-Text-Build-4169-%E6%B3%A8%E5%86%8C%E6%96%B9%E6%B3%95/" rel="prev" title="Sublime Text (Build 4169) 注册方法">
+      <i class="fa fa-chevron-left"></i> Sublime Text (Build 4169) 注册方法
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/11/13/Hexo%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%8C%82%E8%BD%BDgithub/" rel="next" title="Hexo搭建个人博客挂载Github(未完)">
-      Hexo搭建个人博客挂载Github(未完) <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
