@@ -1,3 +1,5 @@
+http://shenguosai.github.io/2023/12/05/Adobe-Acrobat-XI-Pro-11-0-23%E4%B8%8B%E8%BD%BD%E5%8F%8A%E6%BF%80%E6%B4%BB/
+http://shenguosai.github.io/2023/12/03/%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F-Calibre/
 http://shenguosai.github.io/2023/12/03/%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F%E6%97%B6%E5%B1%8F%E8%94%BD%E6%8E%89%E5%9C%A8spice-model%E4%B8%AD%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AF%84%E7%94%9F%E7%94%B5%E5%AE%B9/
 http://shenguosai.github.io/2023/12/01/%E8%8B%B1%E8%AF%AD-%E8%82%AF%E5%AE%9A%E5%8F%A5%E5%8F%98%E5%90%A6%E5%AE%9A%E5%8F%A5/
 http://shenguosai.github.io/2023/12/03/Sublime-Text-Build-4169-%E6%B3%A8%E5%86%8C%E6%96%B9%E6%B3%95/
@@ -38,3 +40,4 @@ http://shenguosai.github.io/categories/Education/
 http://shenguosai.github.io/categories/Semiconductor/
 http://shenguosai.github.io/categories/Semiconductor/post-sim/
 http://shenguosai.github.io/categories/Semiconductor/EDA/
+http://shenguosai.github.io/categories/Tutorial/Software/
