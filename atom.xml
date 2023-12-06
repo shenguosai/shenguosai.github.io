@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2023-12-05T08:15:11.985Z</updated>
+  <updated>2023-12-06T15:53:19.223Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VIM学习笔记--状态行</title>
+    <link href="http://shenguosai.github.io/2023/12/06/VIM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%8A%B6%E6%80%81%E8%A1%8C/"/>
+    <id>http://shenguosai.github.io/2023/12/06/VIM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%8A%B6%E6%80%81%E8%A1%8C/</id>
+    <published>2023-12-06T15:33:25.000Z</published>
+    <updated>2023-12-06T15:53:19.223Z</updated>
+    
+    <content type="html"><![CDATA[<center>状态行参数列表</center>|参数|说明||----|----||%(...%)|定义一个项目||%{n}*|%对其余的行使用高亮显示组 User n，知道另一个```%n*```。数字 n 必须从 1 到 9。用```%*```或```%0*```可以恢复正常的高亮显示。||%<|如果状态行过长，在何处换行。缺省是在开头。||%=|左对齐和右对齐之间的分割点。||%|字符%||%B|光标下字符的十六进制形式。||%F|缓冲区的文件完整路径。||%H|如果为帮助缓冲区则显示未HLP。||%L|缓冲区中的行数。||%M|如果缓冲区修改过则显示未```+```。||%N|打印机页号。||%O|以十六进制方式显示文件中的字符偏移。||%P|文件中光标前的```%```。||%R|如果缓冲区只读则为 RO。||%V|列数。如果与```%c```相同则为空字符。||%W|如果窗口为预览窗口则为 PRV。||%Y|缓冲区的文件类型，如 vim。||%a|如果编辑多行文本，这个字行串就是 ({current} of {arguments})，例如: (5 of 18)。如果在命令行中只有一行，这个字符串为空。||%b|光标下的字符的十进制表示形式。||%c|列号。||%f|缓冲区的文件路径。||%h|如果为帮助缓冲区显示为 [Help]。||%l|行号。||%m|如果缓冲区已修改则表示为[+]。||%n|缓冲区号。||%o|在光标前的字符数(包括光标下的字符)。||%p|文件中所在行的百分比。||%r|如果缓冲区为只读则表示为[RO]。||%t|文件名(无路径)。||%v|虚列号。||%w|如果为预览窗口则显示为[Preview]。||%y|缓冲区的文件类型，如[vim]。||%{expr}|表达式的结果。|<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;center&gt;状态行参数列表&lt;/center&gt;
+|参数|说明|
+|----|----|
+|%(...%)|定义一个项目|
+|%{n}*|%对其余的行使用高亮显示组 User n，知道另一个```%n*```。数字 n 必须从 1 到 9。用```%*```或```%0*```可</summary>
+      
+    
+    
+    
+    <category term="Note" scheme="http://shenguosai.github.io/categories/Note/"/>
+    
+    <category term="vim" scheme="http://shenguosai.github.io/categories/Note/vim/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Adobe Acrobat XI Pro 11.0.23下载及激活</title>
@@ -523,27 +551,6 @@
     
     <category term="Tutorial" scheme="http://shenguosai.github.io/categories/Tutorial/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Diary</title>
-    <link href="http://shenguosai.github.io/2023/08/10/Diary/"/>
-    <id>http://shenguosai.github.io/2023/08/10/Diary/</id>
-    <published>2023-08-10T05:44:16.000Z</published>
-    <updated>2023-08-14T13:42:34.935Z</updated>
-    
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">  <script id="hbeData" type="hbeData" data-hmacdigest="b3d81a3150f80007dace6b726570d1bf80785eaebef1e1b674c2ff9619d44c4d">da0a26c26fdc3adc6c296250a94e3b4e37c3b1006ca99a84384837ba60666222e63725afa8c7c2484146bec8770d930f27f7cbc1aab385730bb6de9b9ad40f43dc2cb4512ea66ecbaee77d3f110270396c07f5cd7bd50682f5f02dbdaf13ea6860ba18e5b1afe4437475cfc9a7886f683b96d82cf5f34d13d51e41f134c39c9ea107b82e03c415164a5e8c9ae6eccbaa51c1178359541f6830029add2fb6f40840c70cf58cbc4c1072765cef35d99caa54c46f6082ed4eafbc5c8a712c402da025b37459a55746c3e6a4655acd89ce5e67399fe459bf0c2209a13272a753ddf5d7f0edcfb2b4a276678b29181051780d6fffc40bb589b3b6e07371fc6f747133dc5b1aaca82c81747d924009a737dbe8d7e20d6578593acdfed76f2cc96759cadb6cfbb5a645343d65f5d123167707bf6304feaa884122b034aa43511972cee66bdf43407664d75cb05a9a77519bdfbe652e369c983f020291c63cd12da4a27ae1d705a9af859a5f3a72df076a434407221d0b328e6897f5b88b56dbdb70f2acf649e8b9ddfc6781a8dd84a39cae4c79b5027d90c573265b1d0d4946f27960d34dc519243c1146bdc6d78b0b5c8e40c7f59244bce1ccb6d0731a9d692077c1552430fd2248d67287f47278ca75f43f4429bcfe08ccf7a28a6f74b69007c892ee3ac3ef7ed1cf1811992166020e52eb3233ded82462edef42e403fb1f1244f6e826d8645e3b8cd81ba522390fe87acf696bc93f5630e0e5d30160915dfabd563a7c2db1925269db3bd58cb0f3fccc553b22f087a98afe780988954a508a15b8a77a2c5038ddbaa0a7028d78b2f7079dcb04101d14e9958ff7616c0c2197ba5121d248cf5c40582923105fdff4f48737d01166eb036005e4e187bd9c10fea918fe517d83d25d95fee0a2980a33723905b2e3ba25393feaf4f7b200395a79ec953f7d2d4d07461ce9d0aba0671344d13f3fae33123fabcb5936e86aae19fe8e0281dd09cb72e7db1db290aa4f33f009590c7622dd46e50dee040ac1f324995ca4acd5fe1870e3974694b96bb83fa4fa2bf6ac69d06010a824e6726a22782035bca256deb5cf20c5867626805151fec3c291312a8ee941afed3351682d93bcdc925efb517bd95cabb3478e9ffdd9bd028cdb206fc888a2c584e7f56d187bff9faf091d0b500ee77b3865b3af54ee8684888e7878e9418639fbc2c25e2e6653922590a3c2b5af1047b7c2a8a020e8c9fe2669c6ff7e2f56af1eb3a6ef1c3241835aa357b7cccbb1fdc193181dec3b28da8f2f007a41171ecd7656ed8895b7cfd5263da1d4d13f396b33bcea3ac367c56429b09e9740225271cd1348e74ccc724e92f7ceb3a0f42383ac49aba0c42a57c0ae0990b38a5f4f9689c45bdd56001dee9238f4d5e206f85b42693b06c5b46a5200ed72e92f7bf7badbb173cf8d9c8c27632dd20e73a62785570687b5f68d14135ad2e0bf9ca194db20558ffd04450f6004f6d8f53a816bad7179fcbda7a690632c430d2eb10434907b3c673a414f80bc5f080a834596e747861ca2f230c45ff395deb360c598fe2c33bbfb975a7ee41d5fea213e0b53d8b622e3cb2bae7119364d9b950116e499091680652d0ed6b8fa4181054baa4299a78eb4520bcde742dfd11e0ce3362d49e5bb73d75bb16bbd45ac9433e22bb9e90dd43c34d171ac84eda03e51e4ce12d06629fb9cdca604ab46ee649d4d60c19faea309d40391b1030c4fa7b3b1483af70eb718462898faaedf9b0140bc3f0f8547b9a304e6e06fb8cb8ef2b987d8c88ad7270081922080b415a9b7ddc23468427045bfdcd8c0c72f00a726429abc1c4bb3add6f72044ba1b0c96c03d1e155b28ae058e36c6fbc83228b4b9635eb9f12916936fca3032c20e8eb5f45b1c3664f37276ea2c0120b0031482688f4ca3e327dd9fc2966d542f5cdb7c6b4afb8560caf7d67987b548203c34f01778e974ccd05af607c2c5ae18838cad7f184af989699fd4133a5897a6c588b86cb918b0fdd47704675a4b7519293d9d70f49555a948e7b20a43a3213d6200a1ff95e48f220ba7b59f3bf97c1d7800828ec6eadf3ce0cf97b8cea0b1a18c4c1c22742fb6f5dbd71c4b3a07b84bc2590efe095475619769f0753ca377f330b7ed8c43a6f8f81b1f1e8c38b42f86b309d76c31fc50af4921df43adbadb542b35a0afa0a4caf8198b377e430335441ce958b9265897b8cfb9e1977313c480563806172843f6ad88f778f457c12ccea447e12e2309cf1e5363ab93289d518a5ffdc501a323edbe086cc5467a3d36c40a5a18a2da992a1500b98f62becec044663ac01e263511d132b91f54739c667abe360bad5fd05859271f6105b4fb5e62bc34bc1d3721e144656d50dfa85944610e8f5db42ccc3b1d8ffc57d14d8a54106d1677a70e1f3b7595ede530ad66d1f399e411deafff2082352755e10398418ae0dfda8f5c644e9cd1ab5e146b4f6a7f4c7c13b0a9e24caa5513db025f583db8efd0d8e3a4159976d63a8c10dbc87609cd595f503932ead13b399131d9845e057f76b70dedf7cb2ad699a0e14829f3bc283c64030ef8335864d7f8131dabc1b248941dc8ef912a5b49c12e5be395bf98cb79439a9149270833046c293fe1237300f32f915c5186f5400be088e36709e6e5b30c2ee8e057f4bed4c38cd79c1f3b2ba264fea481d57b301833913b1dc954f33d1b177d7ad593efdc9134fd0267a23ffe01167e668955b46416ee90fda13e1668c9bdb8369a79e8381ad17da814064593ca2b6bd08b9fbcc270fe799dcec8bbc2b48669c5f31d7308f2aa58f23200a337d54546559144c26d19018dbfe692fc72bec000cc6a6e2c7c822ab71750319944457ab6f59970ea41017cb9f1849d5c815bc98df02a9493ccfd027ba3be22bf2a0dbaf5c360ca0deb41984333b7d5bc34eea7d3192416718cae31f0efa0661c27bf85a8dc6d39290cbd24c227b83d3408dd9747f297a7fe341bcab3c3ff9f44cccda6ba142e529e8481d3fbc9df52b83a4c81cd6c6962a05c4e54cfd5a94605806df99bc6cf149402e07f84f47f606203cdf7d3dc8797289ed7cf0a6ef36a9c05520c</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-    
-    
-    <summary type="html">有东西被加密了, 请输入密码查看.</summary>
-    
-    
-    
-    <category term="Article" scheme="http://shenguosai.github.io/categories/Article/"/>
-    
-    
-    <category term="Privacy" scheme="http://shenguosai.github.io/tags/Privacy/"/>
     
   </entry>
   
