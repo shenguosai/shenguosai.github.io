@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2023-12-06T16:02:54.123Z</updated>
+  <updated>2023-12-12T15:50:12.859Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在Windows11中找回照片查看器打开图片</title>
+    <link href="http://shenguosai.github.io/2023/12/12/%E5%9C%A8Windows11%E4%B8%AD%E6%89%BE%E5%9B%9E%E7%85%A7%E7%89%87%E6%9F%A5%E7%9C%8B%E5%99%A8%E6%89%93%E5%BC%80%E5%9B%BE%E7%89%87/"/>
+    <id>http://shenguosai.github.io/2023/12/12/%E5%9C%A8Windows11%E4%B8%AD%E6%89%BE%E5%9B%9E%E7%85%A7%E7%89%87%E6%9F%A5%E7%9C%8B%E5%99%A8%E6%89%93%E5%BC%80%E5%9B%BE%E7%89%87/</id>
+    <published>2023-12-12T15:41:05.000Z</published>
+    <updated>2023-12-12T15:50:12.859Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>使用快捷键<code>Win + R</code>打开运行窗口， 输入<code>regedit</code>命令回车打开注册表<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212234749.png" alt="20231212234749"></li><li>找到<code>HKEY_LOCAL_MACHINE-&gt;SOFTWARE-&gt;Microsoft&gt;Windows Photo Viewer-&gt;Capabilities-&gt;FileAssociations</code>，右键 &#x3D;&gt; 新建 &#x3D;&gt; 字符串值，名称调谐<code>.jpg</code>，数值填写<code>PhotoViewer.FileAssoc.Tiff</code>，同理添加<code>.png</code>，<code>.jpeg</code>，数值相同。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212234917.png" alt="20231212234917"></li><li>添加之后就可以使用Windows照片查看器看图。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212235008.png" alt="20231212235008"></li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;使用快捷键&lt;code&gt;Win + R&lt;/code&gt;打开运行窗口， 输入&lt;code&gt;regedit&lt;/code&gt;命令回车打开注册表&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/shenguosai/MyPic/im</summary>
+      
+    
+    
+    
+    <category term="Note" scheme="http://shenguosai.github.io/categories/Note/"/>
+    
+    <category term="Windows" scheme="http://shenguosai.github.io/categories/Note/Windows/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>smic工艺中带有ckt后缀的器件</title>
+    <link href="http://shenguosai.github.io/2023/12/08/smic%E5%B7%A5%E8%89%BA%E4%B8%AD%E5%B8%A6%E6%9C%89ckt%E5%90%8E%E7%BC%80%E7%9A%84%E5%99%A8%E4%BB%B6/"/>
+    <id>http://shenguosai.github.io/2023/12/08/smic%E5%B7%A5%E8%89%BA%E4%B8%AD%E5%B8%A6%E6%9C%89ckt%E5%90%8E%E7%BC%80%E7%9A%84%E5%99%A8%E4%BB%B6/</id>
+    <published>2023-12-08T06:16:14.000Z</published>
+    <updated>2023-12-08T06:21:54.021Z</updated>
+    
+    <content type="html"><![CDATA[<p>在SMIC的PDK中存在后面带ckt和不带ckt的PDK，其中不带ckt的器件模型是bsim4，而带ckt的器件模型是subckt。网上查询，subckt就是sub circuit，即子电路的意思。<br>查询并猜想如下:<br>不带ckt: 类理想器件，即只针对此种器件建模；<br>带ckt: 考虑其内部构造所产生的各种寄生成分，并且包含寄生器件参数随电路参数的变化</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;在SMIC的PDK中存在后面带ckt和不带ckt的PDK，其中不带ckt的器件模型是bsim4，而带ckt的器件模型是subckt。网上查询，subckt就是sub circuit，即子电路的意思。&lt;br&gt;查询并猜想如下:&lt;br&gt;不带ckt: 类理想器件，即只针对此种器件建</summary>
+      
+    
+    
+    
+    <category term="Semiconductor" scheme="http://shenguosai.github.io/categories/Semiconductor/"/>
+    
+    <category term="Process" scheme="http://shenguosai.github.io/categories/Semiconductor/Process/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>VIM学习笔记--状态行</title>
@@ -502,48 +551,6 @@
     
     
     <category term="Poetry" scheme="http://shenguosai.github.io/tags/Poetry/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几种功率管</title>
-    <link href="http://shenguosai.github.io/2023/08/17/NLDMOS%E5%92%8CDEMOS/"/>
-    <id>http://shenguosai.github.io/2023/08/17/NLDMOS%E5%92%8CDEMOS/</id>
-    <published>2023-08-17T03:32:09.000Z</published>
-    <updated>2023-11-20T13:28:00.526Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="DMOS：Double-Diffused-MOS"><a href="#DMOS：Double-Diffused-MOS" class="headerlink" title="DMOS：Double-Diffused MOS"></a>DMOS：Double-Diffused MOS</h2><h2 id="VDMOS：Virtical-DMOS"><a href="#VDMOS：Virtical-DMOS" class="headerlink" title="VDMOS：Virtical DMOS"></a>VDMOS：Virtical DMOS</h2><p>垂直扩散DMOS，VDMOS的漏极在硅片背面，沟道在两个维度上包围源极，所以叫“垂直”，实际上栅极依然是水平的。VDMOS是PowerMOS（大功率MOS器件）的一种，通过垂直设计减小沟道场强，可以使短沟道承受很高的电压和电流。<br>缺点是漏极要从背面引出，很难用和主流集成电路工艺兼容。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230817223815.png" alt="20230817223815"><br>这种结构可以减小漏电流并提高开关速度，具有低导通电阻、高电压承受能力和低开关损耗的优点。它在功率电子器件中广泛应用，如逆变器、直流-直流转换器和交流电机驱动器等。主要缺点是存在体效应和漏电流，且制造过程较为复杂。</p><span id="more"></span><h2 id="LDMOS：Lateral-DMOS，常用于高电压大电流电路。"><a href="#LDMOS：Lateral-DMOS，常用于高电压大电流电路。" class="headerlink" title="LDMOS：Lateral DMOS，常用于高电压大电流电路。"></a>LDMOS：Lateral DMOS，常用于高电压大电流电路。</h2><p>水平扩散DMOS，也是PowerMOS的一种，和VDMOS的区别是去掉了背部的漏极引出，方便兼容其它工艺(CMOS工艺)，和其他集成电路整合在同一块芯片上。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230817224559.png" alt="20230817224559"><br>可以看到LDMOS把背部的Drain引出挪到了右边，代价是相对VDMOS面积变大了。<br>LDMOS具有高电压承受能力和低导通电阻的优点。LDMOS主要应用于高频功率放大器、天线开关和发射机等领域。LDMOS的主要缺点是存在漏电流和温度效应，且不适用于高速开关应用。<br>LDMOS由于更容易与CMOS工艺兼容而被广泛采用。LDMOS器件结构如上图所示，是一种双扩散结构的功率器件。这项技术是在相同的源&#x2F;漏区域注入两次，一次注入浓度较大（典型注入剂量 1015cm-2）的砷（As），另一次注入浓度较小（典型剂量1013cm-2）的硼（B）。注入之后再进行一个高温推进过程，由于硼扩散比砷快，所以在栅极边界下会沿着横向扩散更远（上图中P阱），形成一个有浓度梯度的沟道，它的沟道长度由这两次横向扩散的距离之差决定。为了增加击穿电压，在有源区和漏区之间有一个漂移区。LDMOS中的漂移区是该类器件设计的关键，漂移区的杂质浓度比较低，因此，当LDMOS 接高压时，漂移区由于是高阻，能够承受更高的电压。图1所示LDMOS的多晶扩展到漂移区的场氧上面，充当场极板，会弱化漂移区的表面电场，有利于提高击穿电压。场极板的作用大小与场极板的长度密切相关。要使场极板能充分发挥作用，一要设计好SiO2层的厚度，二要设计好场极板的长度。</p><h2 id="DEMOS：Drain-Extended-MOS，常用于高电压小电流电路。"><a href="#DEMOS：Drain-Extended-MOS，常用于高电压小电流电路。" class="headerlink" title="DEMOS：Drain-Extended MOS，常用于高电压小电流电路。"></a>DEMOS：Drain-Extended MOS，常用于高电压小电流电路。</h2><h2 id="SGT：Superjunction-MOSFET"><a href="#SGT：Superjunction-MOSFET" class="headerlink" title="SGT：Superjunction MOSFET"></a>SGT：Superjunction MOSFET</h2><p>采用多个交替的不同材料层构成，具有高电压承受能力和低导通电阻的优点。SGT主要应用于高压直流输电、电动汽车和太阳能发电等领域。SGT的主要缺点是制造成本较高。</p><h2 id="Cool-MOS"><a href="#Cool-MOS" class="headerlink" title="Cool MOS"></a>Cool MOS</h2><p>英飞凌发明制造的功率管，是一种快速开关MOSFET，具有低开关损耗和低导通电阻的优点。主要应用于高效率电源、LED驱动器和电动汽车充电器等领域。主要缺点是存在体效应和漏电流，且制造成本较高。</p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;DMOS：Double-Diffused-MOS&quot;&gt;&lt;a href=&quot;#DMOS：Double-Diffused-MOS&quot; class=&quot;headerlink&quot; title=&quot;DMOS：Double-Diffused MOS&quot;&gt;&lt;/a&gt;DMOS：Double-Diffused MOS&lt;/h2&gt;&lt;h2 id=&quot;VDMOS：Virtical-DMOS&quot;&gt;&lt;a href=&quot;#VDMOS：Virtical-DMOS&quot; class=&quot;headerlink&quot; title=&quot;VDMOS：Virtical DMOS&quot;&gt;&lt;/a&gt;VDMOS：Virtical DMOS&lt;/h2&gt;&lt;p&gt;垂直扩散DMOS，VDMOS的漏极在硅片背面，沟道在两个维度上包围源极，所以叫“垂直”，实际上栅极依然是水平的。VDMOS是PowerMOS（大功率MOS器件）的一种，通过垂直设计减小沟道场强，可以使短沟道承受很高的电压和电流。&lt;br&gt;缺点是漏极要从背面引出，很难用和主流集成电路工艺兼容。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230817223815.png&quot; alt=&quot;20230817223815&quot;&gt;&lt;br&gt;这种结构可以减小漏电流并提高开关速度，具有低导通电阻、高电压承受能力和低开关损耗的优点。它在功率电子器件中广泛应用，如逆变器、直流-直流转换器和交流电机驱动器等。主要缺点是存在体效应和漏电流，且制造过程较为复杂。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Knowledge Share" scheme="http://shenguosai.github.io/categories/Knowledge-Share/"/>
-    
-    
-    <category term="Semiconductor" scheme="http://shenguosai.github.io/tags/Semiconductor/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo设置博客文章加密</title>
-    <link href="http://shenguosai.github.io/2023/08/10/Hexo%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/"/>
-    <id>http://shenguosai.github.io/2023/08/10/Hexo%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/</id>
-    <published>2023-08-10T05:53:55.000Z</published>
-    <updated>2023-11-20T13:27:47.383Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>Hexo搭配使用<a href="https://www.npmjs.com/package/hexo-blog-encrypt">hexo-blog-encrypt</a>插件可以写一些比较私密的博客，通过密码验证的方式让其他人不能随意浏览。</p><h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>在<code>blog\</code>目录运行以下代码：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-blog-encrypt</span><br></pre></td></tr></table></figure><span id="more"></span><h1 id="一般配置"><a href="#一般配置" class="headerlink" title="一般配置"></a>一般配置</h1><ol><li>在根目录的配置文件<code>_config.yml</code>中添加以下代码：<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">encrypt:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li><li>设置加密之后，需要在新建博文时在文章头部添加加密的信息设置：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags: </span><br><span class="line">categories: </span><br><span class="line">password: </span><br><span class="line">message: </span><br><span class="line">---</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><figcaption><span>密码。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">```message```：输入密码界面的提示说明。</span><br><span class="line"></span><br><span class="line"># 针对Tag的加密</span><br><span class="line">将以下代码复制到根目录下的```_config.yml```:</span><br><span class="line">```yml</span><br><span class="line">encrypt: #hexo-blog-encrypt</span><br><span class="line">  enable: true</span><br><span class="line">  abstract: 有东西被加密了, 请输入密码查看.</span><br><span class="line">  message: 您好, 这里需要密码.</span><br><span class="line">  tags:</span><br><span class="line">  - &#123;name: TagName1, password: 密码A&#125;</span><br><span class="line">  - &#123;name: TagName2, password: 密码B&#125;</span><br><span class="line">  wrong_pass_message: 抱歉, 这个密码看着不太对, 请再试试.</span><br><span class="line">  wrong_hash_message: 抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.</span><br></pre></td></tr></table></figure></li></ol>]]></content>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h1&gt;&lt;p&gt;Hexo搭配使用&lt;a href=&quot;https://www.npmjs.com/package/hexo-blog-encrypt&quot;&gt;hexo-blog-encrypt&lt;/a&gt;插件可以写一些比较私密的博客，通过密码验证的方式让其他人不能随意浏览。&lt;/p&gt;
-&lt;h1 id=&quot;安装插件&quot;&gt;&lt;a href=&quot;#安装插件&quot; class=&quot;headerlink&quot; title=&quot;安装插件&quot;&gt;&lt;/a&gt;安装插件&lt;/h1&gt;&lt;p&gt;在&lt;code&gt;blog&#92;&lt;/code&gt;目录运行以下代码：&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-blog-encrypt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="Tutorial" scheme="http://shenguosai.github.io/categories/Tutorial/"/>
-    
     
   </entry>
   
