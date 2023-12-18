@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2023-12-12T16:06:21.443Z</updated>
+  <updated>2023-12-18T12:09:02.358Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Cadence使用Calibre进行后仿</title>
+    <link href="http://shenguosai.github.io/2023/12/18/Cadence%E4%BD%BF%E7%94%A8Calibre%E8%BF%9B%E8%A1%8C%E5%90%8E%E4%BB%BF/"/>
+    <id>http://shenguosai.github.io/2023/12/18/Cadence%E4%BD%BF%E7%94%A8Calibre%E8%BF%9B%E8%A1%8C%E5%90%8E%E4%BB%BF/</id>
+    <published>2023-12-18T05:50:59.000Z</published>
+    <updated>2023-12-18T12:09:02.358Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>通过 Virtuoso 的 Layout XL &#x3D;&gt; Calibre &#x3D;&gt; Run PEX 进入 Calibre PEX，并将工艺厂提供的 xRC(Rule) 文件设置好 Calibre PEX。</li><li>为了减少寄生参数，以及提高后仿效率，建议在 Calibre PEX &#x3D;&gt; PEX Options &#x3D;&gt; Netlist &#x3D;&gt; Reduction and CC 中将 Enable MinRes reduction 和 Enable MinCap Reduction 选中，并在 COMBINE 和 REMOVE 后的框中填写所需数值，一般 Cap 的 Combine 为 0.5fF，Remove 为 0.1fF。Res 的 Combine 为 1Ω，Remove 为 0.1Ω。</li><li>在 Outputs 选项中，Outputs &#x3D;&gt; Netlist 框中，Format 选 CALIBREVIEW(可增加 Geometry 可在 PEX 运行完后弹出寄生参数的总结)，Use Names From : SCHEMATIC 。</li><li>点击 Run PEX 开始寄生参数提取，之后进入 Calibre View Setup 界面。</li><li>Calibre View Setup 设置中，Output 选项填被提取寄生参数的 library，Calibre View Type 选择 masklayout 意味着直接以 layout 的摆放位置提取寄生参数，选择 Schematic 意味着以 schematic 的位置生成寄生参数，建议选择 schematic，这可以在后仿中如前仿一样直接查看 schematic 的电路仿真信息，Create Terminal &#x3D;&gt; if matching terminal exists on symbol，Device Placement &#x3D;&gt; Layout Location，设置完毕，点击 OK 。</li><li>提取寄生参数完毕后，如果有错误可能是 calibre 中部分线短路了，手动改正即可，可通过 calibre view type 更改类型为 masklayout 可以避免这种错误，但是后仿不能通过直接点击。</li><li>在 testbench 中新建 config view，将 config 中的 view to use 更改为提取的寄生参数 calibre，加入 calibre 提取出来的参数，同时 ADE L &#x3D;&gt; Setup &#x3D;&gt; Design 更改类型为 config，即可开始后仿。</li><li>仿真结束后，可以直接在 schematic 中查看信号线。</li></ol><p>生成 calibre 耗费时间过长，可以直接更改 calibre view type 为 masklayout，但是此种方法对于查看结果没那么方便。<br>或者直接在 pex 设置中，Output &#x3D;&gt; Netlist &#x3D;&gt; Format 更改为 SPECTRE 生成网表。</p><ol><li>该方法生成的网表不一定能直接用于 spectre 仿真，需要先将该网表的 pin 顺序更正。更改方法为，首先需要先用前仿电路跑一次仿真生成网表，然后在 simulation 这个文件夹中找到 input.scs 的网表，将该网表中的 pin 复制到后仿的网表中。</li><li>后仿生成的网表更改完毕，在 testbench 中新建 config view，将 config 中的 view to use 更改为 Specify SPICE Source File，同时选择后仿的网表即可，这就是用网表仿真，速度快，但是不方便查看信号，但是利于排除寄生电容，需要排除哪项将其注释即可。</li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;通过 Virtuoso 的 Layout XL &amp;#x3D;&amp;gt; Calibre &amp;#x3D;&amp;gt; Run PEX 进入 Calibre PEX，并将工艺厂提供的 xRC(Rule) 文件设置好 Calibre PEX。&lt;/li&gt;
+&lt;li&gt;为了减少寄生参</summary>
+      
+    
+    
+    
+    <category term="Semiconductor" scheme="http://shenguosai.github.io/categories/Semiconductor/"/>
+    
+    <category term="post-sim" scheme="http://shenguosai.github.io/categories/Semiconductor/post-sim/"/>
+    
+    <category term="EDA" scheme="http://shenguosai.github.io/categories/Semiconductor/EDA/"/>
+    
+    
+    <category term="Calibre" scheme="http://shenguosai.github.io/tags/Calibre/"/>
+    
+  </entry>
   
   <entry>
     <title>在Windows11中找回照片查看器打开图片</title>
@@ -279,7 +309,7 @@
     <link href="http://shenguosai.github.io/2023/12/03/%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F%E6%97%B6%E5%B1%8F%E8%94%BD%E6%8E%89%E5%9C%A8spice-model%E4%B8%AD%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AF%84%E7%94%9F%E7%94%B5%E5%AE%B9/"/>
     <id>http://shenguosai.github.io/2023/12/03/%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F%E6%97%B6%E5%B1%8F%E8%94%BD%E6%8E%89%E5%9C%A8spice-model%E4%B8%AD%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AF%84%E7%94%9F%E7%94%B5%E5%AE%B9/</id>
     <published>2023-12-03T14:14:43.000Z</published>
-    <updated>2023-12-03T15:02:59.784Z</updated>
+    <updated>2023-12-18T05:49:28.082Z</updated>
     
     <content type="html"><![CDATA[<p>在提取寄生参数时，除了需要关注金属导体的寄生电容外，还需要分析mos器件的节点寄生参数提取是否准确。<br>下面是一个典型的 nmos 4端器件:</p><p>该mos管的4个节点 D, G, S, B 的寄生电容是否准确呢？<br>首先用calibre xrc提取一下其寄生参数，结果如下:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cc_1 S G 3.32511f</span><br><span class="line">cc_2 S D 6.73464e-19</span><br><span class="line">cc_3 S B 12.7622f</span><br><span class="line">cc_4 G D 3.32511f</span><br><span class="line">cc_5 G B 1.16212f</span><br><span class="line">cc_6 D B 12.7506f</span><br></pre></td></tr></table></figure><span id="more"></span><p>上述寄生电容分为4类:</p><ul><li>Gate 到 Source&#x2F;Drain 电容</li><li>Source&#x2F;Drain 到 Bulk 电容</li><li>Gate 到 Bulk 电容</li><li>Source 到 Drain 电容</li></ul><p>由于在spice model中一般会自动把上述4类电容考虑，如果寄生参数提取中再提取一遍，就会发生重复提取。<br>因此，需要把这4类电容屏蔽，屏蔽方法如下:</p><ul><li>屏蔽 Gate 到 Source&#x2F;Drain 电容<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PEX IGNORE CAPACITANCE ALL poly nsd</span><br><span class="line">PEX IGNORE CAPACITANCE ALL poly psd</span><br></pre></td></tr></table></figure></li><li>屏蔽 Gate 到 Bulk 电容，其中 ALLGATE 是 mark layer<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PEX IGNORE CAPATANCE DEVICE INTRINSIC poly ALLGATE</span><br></pre></td></tr></table></figure></li></ul><p>设置上述3个参数后，提取结果如下:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cc_1 S D 0.00129446f</span><br><span class="line">cc_2 S B 12.7622f</span><br><span class="line">cc_3 G B 0.211916f</span><br><span class="line">cc_4 D B 12.7506f</span><br></pre></td></tr></table></figure><p>可以看到，Gate 到 Source&#x2F;Drain 的电容没有了，被屏蔽掉了。Gate 到 Bulk 的电容比刚才的值小了，说明在mos管区域的电容被屏蔽了，只剩下 Gate 露头的电容了，这个符合预期。<br>但是，Source&#x2F;Drain 到 Bulk 的电容没有屏蔽掉，该如何设置呢？<br>首先看一下再原始的工艺文件定义中，有如下语句:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">diffusion = diff &#123;</span><br><span class="line">    thickness = 0.004</span><br><span class="line">    min_width = 0.15</span><br><span class="line">    min_spacing = 0.18</span><br><span class="line">    resistivity = 10</span><br><span class="line">    src_drn_layers = &#123;nsd_psd_&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注意 diffusion, src_drn_layers是关键字，nsd_psd_ 是两个 process layer。<br>calibre命令文件中原来有如下语句:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PEX MAP diff NTAP PTAP nsd psd</span><br></pre></td></tr></table></figure><p>它把 nsd, psd 映射到了diff层，但是没有告诉工具映射到 nsd_psd_层。<br>如果修改该语句如下:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PEX MAP diff NTAP PTAP</span><br><span class="line">PEX MAP nsd_nsd_</span><br><span class="line">PEX MAP psd_psd_</span><br></pre></td></tr></table></figure><p>当calibre xrc识别到该语句后，自动会把nsd之间的相互电容屏蔽掉，也自动会把 nsd&#x2F;psd 到衬底的电容屏蔽掉。<br>屏蔽后提取结果如下:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cc_1 S B 0.0777512f</span><br><span class="line">cc_2 G B 0.211916f</span><br><span class="line">cc_3 D B 0.0540989f</span><br></pre></td></tr></table></figure><p>以上3个电容都是连接到mos管的金属之间的耦合电容了，电容值很小，不是器件本身的电容，符合预期。</p><hr><p>如果用户在原始的工艺定义中没有用 diffusion 的关键字，而是用 conductor 的关键字，如下:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conductor = diff &#123;</span><br><span class="line">    thickness = 0.004</span><br><span class="line">    min_width = 0.15</span><br><span class="line">    min_spacing = 0.18</span><br><span class="line">    resistivity = 10</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>则用户需要增加额外的语句来屏蔽 source 到 drain，source 到衬底的寄生电容。</p><ul><li>屏蔽 Gate 到 Source&#x2F;Drain 的电容<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PEX IGNORE CAPATANCE ALL poly nsd</span><br><span class="line">PEX IGNORE CAPATANCE ALL poly psd</span><br></pre></td></tr></table></figure></li><li>屏蔽 Gate 到 Bulk<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PEX IGNORE CAPACITANCE DEVICE INTRINSIC poly ALLGATE</span><br></pre></td></tr></table></figure></li><li>屏蔽 Source&#x2F;Drain 到 Bulk<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PEX IGNORE CAPACITANCE DEVICE INTRINSIC nsd ALLGATE</span><br></pre></td></tr></table></figure></li><li>屏蔽 Source 到 Drain<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PEX IGNORE CAPACITANCE DEVICE nsd nsd ALLGATE</span><br></pre></td></tr></table></figure>可以看到，这种写法比较繁琐，不如前面的方法简洁。</li></ul><p>总结，屏蔽掉 spice model 中的寄生参数最简单的方法是:在工艺文件定义中用 diffusion 的关键字，用 src_drn_layers 指定具体的layer名称。然后在提取命令文件中，把 gate 的电容通过 PEX IGNORE 语句来屏蔽掉，不需要写 source, drain 的屏蔽语句。</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
     
@@ -296,6 +326,8 @@
     
     <category term="EDA" scheme="http://shenguosai.github.io/categories/Semiconductor/EDA/"/>
     
+    
+    <category term="Calibre" scheme="http://shenguosai.github.io/tags/Calibre/"/>
     
   </entry>
   
@@ -661,27 +693,6 @@
 &lt;p&gt;一旦走进深处，人与人就是相互的迷宫。&lt;/p&gt;
 &lt;p align=&quot;right&quot;&gt; ——史铁生《活出爱》
 &lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Knowledge Share" scheme="http://shenguosai.github.io/categories/Knowledge-Share/"/>
-    
-    
-    <category term="Poetry" scheme="http://shenguosai.github.io/tags/Poetry/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>日本鬼子名称的由来</title>
-    <link href="http://shenguosai.github.io/2023/08/17/%E6%97%A5%E6%9C%AC%E9%AC%BC%E5%AD%90%E5%90%8D%E7%A7%B0%E7%9A%84%E7%94%B1%E6%9D%A5/"/>
-    <id>http://shenguosai.github.io/2023/08/17/%E6%97%A5%E6%9C%AC%E9%AC%BC%E5%AD%90%E5%90%8D%E7%A7%B0%E7%9A%84%E7%94%B1%E6%9D%A5/</id>
-    <published>2023-08-17T13:39:53.000Z</published>
-    <updated>2023-11-20T13:26:21.983Z</updated>
-    
-    <content type="html"><![CDATA[<p>　　中日甲午战争的记者会上，日本人想嘲讽和羞辱中国人，事先准备好了一副对联的上联让与会的中国代表当场对出下联。<br><font size=10 face="华文行楷">上联：骑奇马、张长弓，琴瑟琵琶、八大王并肩居头上，单戈独战。</font></p><span id="more"></span><p>　　“骑奇马，张长弓”这两句是将第一个字本身拆开两个字组成的，而琴瑟琵琶这四个字共共有八个王字对应了后半部分“八大王并肩居头上”，末句“单戈独战”的“单戈”合成一个繁体的“战”字。日本人出这个对联的大意是自己骑着快马张着长弓，兵强马壮的兵临中国，赢得胜利，并以此鄙视和嘲讽中国。<br>　　正当日本人洋洋得意认为没有中国人对出下联时，一位负责谈判的清朝大臣拿起笔写出了下联。<br><font size=10 face="华文行楷">下联：倭委人、袭龙衣，魑魅魍魉、四小鬼屈膝跪身旁，合手擒拿。</font><br>　　这个下联真是神来之笔，令日本人膛目结舌。下面每一句都工整的对应上联。倭委人袭龙衣对应骑齐马张长弓，魑魅魍魉对应琴瑟琵琶，且魑魅魍魉左偏旁都是鬼字而且有四个。从字形看鬼字末笔一横勾就像是在下跪故屈膝跪身旁，末句合手擒拿的合手就是拿字，正好对应上面的八大王并肩居头上、单戈独战，而且还反过来将了日本人一军。下联的意思是日本小人偷穿龙袍，只不过是魑魅魍魉四个小鬼而已，赶快下跪认错否则合手擒拿，这下联是句句工整字字珠玑。<br>　　从那以后中国人不在称日本人为倭寇而叫日本鬼子了。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;　　中日甲午战争的记者会上，日本人想嘲讽和羞辱中国人，事先准备好了一副对联的上联让与会的中国代表当场对出下联。&lt;br&gt;&lt;font size=10 face=&quot;华文行楷&quot;&gt;上联：骑奇马、张长弓，琴瑟琵琶、八大王并肩居头上，单戈独战。&lt;/font&gt;&lt;/p&gt;</summary>
     
     
     
