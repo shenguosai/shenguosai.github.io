@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2024-01-05T00:48:22.488Z</updated>
+  <updated>2024-01-10T08:49:57.248Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>浅谈几种带宽与增益</title>
+    <link href="http://shenguosai.github.io/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/"/>
+    <id>http://shenguosai.github.io/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/</id>
+    <published>2024-01-10T07:02:38.000Z</published>
+    <updated>2024-01-10T08:49:57.248Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天记录一下闭环增益、开环增益、环路增益，以及3dB带宽、单位增益带宽(UGB)、增益带宽积(GBW)。</p><span id="more"></span><h2 id="关于增益"><a href="#关于增益" class="headerlink" title="关于增益"></a>关于增益</h2><h3 id="闭环增益"><a href="#闭环增益" class="headerlink" title="闭环增益"></a>闭环增益</h3><p>对于一个闭环反馈系统，如下图:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110153857.png" alt="20240110153857"><br>闭环增益即传输函数为: $\frac{Y(s)}{X(s)}&#x3D;\frac{H(s)}{1+\beta H(s)}$, 是 $\frac{开环增益}{1+环路增益}$。</p><h3 id="开环增益"><a href="#开环增益" class="headerlink" title="开环增益"></a>开环增益</h3><p>从上面图中可知，开环增益就是去除反馈对系统的作用，看运放的增益。</p><h3 id="环路增益"><a href="#环路增益" class="headerlink" title="环路增益"></a>环路增益</h3><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110154642.png" alt="20240110154642"><br>如图所示，输入置0，断开环路。<br>环路增益$\frac{V_F}{V_t}&#x3D;\beta A$<br>根据巴克豪森判据判断系统是否稳定，所以仿真都是用stb仿环路稳定性，看<b>环路增益波特图</b>而不是看开环增益或者闭环增益。</p><p>那为什么到运放看稳定性就说开环增益了呢？<br>对于单个运放来说，由于运放一般工作在负反馈系统中，开环增益就相当于反馈系数为1的环路增益，所以到运放会说开环增益，其实还是在说环路增益。</p><p>那为什么说运放仿开环增益相位裕度够了就代表其接成反馈系统是稳定的呢？<br>拉扎维的10.2节完美解释了这个问题:<br>运放开环增益相当于反馈系数为1的环路增益:在反馈系统里，反馈系数最大为1，就是接成单位增益负反馈形势。这种情况下，系统的环路增益波特图与运放的完全重合，即相位裕度一样，所以可以稳定。<br>对于其它反馈系数小于1的系统来说，环路增益为$\beta A$，不管$\beta$如何变，环路增益的波特图中，极点的位置与运放极点位置一样，不会变，所以相频曲线没有任何改变。但是由于$\beta &lt;1$，幅频曲线下移，增益交点提前，相位裕度只会越来越大。<br>综上，运放单独仿真与它接在负反馈系统里相比，相位裕度是最差的情况了，即当反馈变弱时，结果是系统更稳定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110161104.png" alt="20240110161104"></p><h2 id="关于带宽"><a href="#关于带宽" class="headerlink" title="关于带宽"></a>关于带宽</h2><h3 id="3dB带宽"><a href="#3dB带宽" class="headerlink" title="3dB带宽"></a>3dB带宽</h3><p>3dB带宽就是运放的主极点处所对应的频率，幅度上对应比低频增益下降3个dB处。<br>推导:<br>运放传递函数:$A_v(s)&#x3D;\frac{A_v(0)}{(1+s&#x2F;\omega _0)(1+s&#x2F;\omega _1)(1+s&#x2F;\omega _2)···}$</p><p>假设次极点离主极点很远很远，那么在主极点$s&#x3D;\omega _0$处，有:<br>$A_v(\omega _0)&#x3D;20log(\frac{A_v(0)}{1+\omega _0&#x2F;\omega _0})&#x3D;20log(\frac{A_v(0))}{2}&#x3D;20logA_v(0)-20log(2)\approx 20logA_v(0)-3dB$</p><p>所以叫做3dB带宽。</p><h3 id="单位增益带宽"><a href="#单位增益带宽" class="headerlink" title="单位增益带宽"></a>单位增益带宽</h3><p>顾名思义，就是运放$\frac{开环增益}{闭环负反馈系统环路增益}&#x3D;1$时对应的频率。<br>为了推导方便，假设只有一个极点的运放，那么在它的单位增益带宽处，有:<br>$A_v(\omega _{UGB})&#x3D;\frac{A_v(0)}{1+\frac{\omega _{UGB}}{\omega _0}}&#x3D;1$<br>可得，$\omega _{UGB}&#x3D;A_v(0)*\omega _0$</p><p>这里有一个结论: 闭环系统的3dB带宽等于环路增益的党委增益带宽。单位增益负反馈系统的3dB带宽等于该系统中所使用的运放的单位增益带宽。<br>推导:负反馈想要稳定，即相位裕度达到60°，单位增益带宽内一定只有一个极点。只看单位增益带宽内的情况，那么有:<br>环路增益: $\beta A(s)&#x3D;\frac{\beta A_0}{1+\frac{s}{\omega _0}}$<br>闭环系统传输函数: $\frac{Y(s)}{X(s)}&#x3D;\frac{A(s)}{1+\beta A(s)}&#x3D;\frac{\frac{A_0}{1+\beta A_0}}{1+\frac{s}{(1+\beta A_0)\omega _0}}$<br>所以就闭环系统传输函数3dB带宽<b>(不是环路增益，是传输函数)</b>是$\omega _0<em>\beta A_0$，环路增益的单位增益带宽也是$\omega _0</em>\beta A_0$。<br>当系统为单位增益负反馈系统时，即反馈因子是1，系统3dB带宽是$\omega _0<em>A_0$,运放单位增益带宽也是$\omega _0</em>A_0$。</p><h3 id="增益带宽积-GBW"><a href="#增益带宽积-GBW" class="headerlink" title="增益带宽积(GBW)"></a>增益带宽积(GBW)</h3><p>增益与带宽的乘积。<br>重要结论:在单极点系统中，GBW是不变的，等于单位增益带宽，等于低频增益3dB带宽。因为只有一个极点的时候，极点之后，带宽每增大10倍，增益下降20dB，20dB就是10倍，一个增大十倍，一个减小十倍，自然不变。<br>结合单位增益带宽中的结论推导部分，可见，闭环系统传输函数的增益带宽积与开环的增益带宽积相等。(再次强调:是传输函数的增益带宽积，不是环路增益中的增益带宽积)<br>$A_0<em>\omega _0&#x3D;\frac{A_0}{1+\beta A_0}</em>(1+\beta A_0)*\omega _0$</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;今天记录一下闭环增益、开环增益、环路增益，以及3dB带宽、单位增益带宽(UGB)、增益带宽积(GBW)。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Semiconductor" scheme="http://shenguosai.github.io/categories/Semiconductor/"/>
+    
+    <category term="Analog" scheme="http://shenguosai.github.io/categories/Semiconductor/Analog/"/>
+    
+    
+    <category term="反馈" scheme="http://shenguosai.github.io/tags/%E5%8F%8D%E9%A6%88/"/>
+    
+  </entry>
+  
+  <entry>
     <title>TVBox的安装与使用</title>
     <link href="http://shenguosai.github.io/2024/01/05/TVBox%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
     <id>http://shenguosai.github.io/2024/01/05/TVBox%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</id>
     <published>2024-01-05T00:48:22.000Z</published>
-    <updated>2024-01-05T00:48:22.488Z</updated>
+    <updated>2024-01-05T02:15:26.668Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
     
@@ -33,6 +56,14 @@
     
     
     
+    <category term="Tutorial" scheme="http://shenguosai.github.io/categories/Tutorial/"/>
+    
+    <category term="TV-Software" scheme="http://shenguosai.github.io/categories/Tutorial/TV-Software/"/>
+    
+    <category term="TVBox" scheme="http://shenguosai.github.io/categories/Tutorial/TV-Software/TVBox/"/>
+    
+    
+    <category term="Life" scheme="http://shenguosai.github.io/tags/Life/"/>
     
   </entry>
   
@@ -93,7 +124,7 @@
     <link href="http://shenguosai.github.io/2023/12/08/smic%E5%B7%A5%E8%89%BA%E4%B8%AD%E5%B8%A6%E6%9C%89ckt%E5%90%8E%E7%BC%80%E7%9A%84%E5%99%A8%E4%BB%B6/"/>
     <id>http://shenguosai.github.io/2023/12/08/smic%E5%B7%A5%E8%89%BA%E4%B8%AD%E5%B8%A6%E6%9C%89ckt%E5%90%8E%E7%BC%80%E7%9A%84%E5%99%A8%E4%BB%B6/</id>
     <published>2023-12-08T06:16:14.000Z</published>
-    <updated>2023-12-08T06:21:54.021Z</updated>
+    <updated>2024-01-10T07:20:43.247Z</updated>
     
     <content type="html"><![CDATA[<p>在SMIC的PDK中存在后面带ckt和不带ckt的PDK，其中不带ckt的器件模型是bsim4，而带ckt的器件模型是subckt。网上查询，subckt就是sub circuit，即子电路的意思。<br>查询并猜想如下:<br>不带ckt: 类理想器件，即只针对此种器件建模；<br>带ckt: 考虑其内部构造所产生的各种寄生成分，并且包含寄生器件参数随电路参数的变化</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
     
@@ -109,6 +140,8 @@
     
     <category term="Process" scheme="http://shenguosai.github.io/categories/Semiconductor/Process/"/>
     
+    
+    <category term="工艺" scheme="http://shenguosai.github.io/tags/%E5%B7%A5%E8%89%BA/"/>
     
   </entry>
   
@@ -279,7 +312,7 @@
     <link href="http://shenguosai.github.io/2023/12/05/Adobe-Acrobat-XI-Pro-11-0-23%E4%B8%8B%E8%BD%BD%E5%8F%8A%E6%BF%80%E6%B4%BB/"/>
     <id>http://shenguosai.github.io/2023/12/05/Adobe-Acrobat-XI-Pro-11-0-23%E4%B8%8B%E8%BD%BD%E5%8F%8A%E6%BF%80%E6%B4%BB/</id>
     <published>2023-12-05T05:33:35.000Z</published>
-    <updated>2023-12-05T08:15:11.985Z</updated>
+    <updated>2024-01-05T02:01:11.329Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Adobe Acrobat XI Pro 是一个著名的功能性程序，用于舒适地处理各种 PDF 文件，它将为您提供以专业水平创建和编辑高质量 PDF 文件的机会。 Acrobat XI Pro 包含高级功能，可以轻松打开许多其他管理功能，具有用户友好的界面。在创建 PDF 文件并在以后进行处理时，Adobe Acrobat 变得绝对不可替代。</p><p>Adobe Acrobat XI Pro 包含提供额外互操作性的智能功能。简单，快速，专业。将包括文档，电子表格，电子邮件，图像，视频，3D图形和地图在内的多种内容组合到一个压缩的结构化PDF包中。在查看共享的文档时进行协作。创建交互式表格并快速收集数据。保护和控制有价值的信息。</p><p>体验 Adobe®Acrobat®Dynamic PDF 技术创建和共享下一代 PDF 的强大功能。通过电子文档审阅，可填写的 PDF 表单和 Acrobat 服务与同行，客户和合作伙伴进行协作。将多种文件类型组合成一个无缝组织的专业质量 PDF 包。设置密码和权限以保护文档。内容丰富，使您的文档更具吸引力。</p><p>Adobe Acrobat XI Pro 是理想的工具，可轻松，快速，专业地处理各种 PDF 文件。</p><span id="more"></span><h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h2><ul><li>1.3GHz或更快的处理器</li><li>Microsoft Windows XP，Service Pack 3 (32位) 或 Service Pack 2 (64位)；<br>Windows Server 2003 R2 (32位和64位)；<br>Windows Server 2008 或 2008 R2 (32位和64位)；<br>Windows 7 (32位何64位)；<br>Windows 8 (32位和64位)。</li><li>512 MB RAM (推荐1GB)</li><li>1.85 GB 可用硬盘空间</li><li>1024 x 768 屏幕分辨率</li><li>视频硬件加速(可选)</li></ul><p><b> 注意 </b>: 对于64位版本的Windows Server 2003 R2 和 Windows XP (带Service Pack 2)，需要 <code>Microsoft Update KB930627</code></p><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="magnet:?xt=urn:btih:2A0D5EE6129F2C24A2AC94A4C0ADC880CE99A1A0&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet&dn=Adobe%20Acrobat%20XI%20Pro%20v11.0.23%20Final%20%5B2017%2CMl%5CRus%5D">Adobe Acrobat XI Pro v11.0.23 Final MI</a><br>　　　　|–adobe.snr.patch.v2.0-painter<br>　　　　|–amtemu.v0.9.2.win-painter<br>　　　　|–Serial_Keygen X-FORCE<br>　　　　|–2A0D5EE6129F2C24A2AC94A4C0ADC880CE99A1A0.torrent<br>　　　　|–About the program.txt<br>　　　　|–AcrobatPro_11_Web_WWMUI.exe<br>　　　　|–AcrobatUpd11023.msp<br>　　　　|–Лечение.txt</p><h2 id="安装及激活"><a href="#安装及激活" class="headerlink" title="安装及激活"></a>安装及激活</h2><ol><li>断开互联网连接。</li><li>双击运行安装程序<code>AcrobatPro_11_Web_WWMUI.exe</code>，在安装程序窗口选择<code>使用试用版或订阅</code>。</li><li>安装程序(此时安装好的 Adobe Acrobat XI 为 11.0.0版本，可直接转向 5 )。</li><li>双击运行安装文件<code>AcrobatUpd11023.msp</code>，重新启动计算机(如有需要)。此程序安装好后版本升至 11.0.23。</li><li>激活:<ul><li>方式一:使用adobe.snr.patch.v2.0-painter<ul><li>将修补程序<code>adobe.snr.patch.v2.0-painter.exe</code>复制到包含已安装程序的文件夹中(一般情况为:<code>C:\Program Files (x86)\Adobe\Acrobat 11.0\Acrobat</code>)，然后以管理员身份运行。</li><li>从下拉菜单中选择<code>Adobe Acrobat XI Pro(32-bit)</code>，然后点击<code>Patch</code>。</li></ul></li><li>方式二:使用amtemu.v0.9.2.win-painter<ul><li>将修补程序<code>amtemu.v0.9.2-painter.exe</code>复制到包含已安装程序的文件夹中(一般情况为:<code>C:\Program Files (x86)\Adobe\Acrobat 11.0\Acrobat</code>)，然后以管理员身份运行。</li><li>从下拉菜单中选择<code>Adobe Acrobat XI</code>，然后单击<code>Install</code>。</li><li>如果需要，在打开的窗口中转到软件安装位置，然后选择<code>amtlib.dll</code>文件，等待软件被激活。</li></ul></li></ul></li><li>激活完成，打开网络连接。</li></ol><h2 id="关于闪退原因及解决办法"><a href="#关于闪退原因及解决办法" class="headerlink" title="关于闪退原因及解决办法"></a>关于闪退原因及解决办法</h2><p>在上述安装及激活完成后，Adobe Acrobat XI Pro会出现闪退问题，原因是联机版权校验问题，更多深层次的原理这里不做过多讨论，本文主要讲解如何避免闪退。既然原因找到了，就可以从以下方面着手进行处理：阻拦该软件进行联网校验即可。办法很多，这里提供两种稍微容易操作的方法进行说明。</p><ol><li>域名欺骗，添加伪造的host解析条目<br>Acrobat 校验的域名为: acroipm.adobe.com，因此只要将该域名定位到一个假的 IP 地址即可。最简单的办法就是在<code>C:\Windows\System32\drivers\etc\host</code>文件中添加条目:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 acroipm.adobe.com</span><br></pre></td></tr></table></figure><b>注意</b>&gt;: 编辑host需要管理员权限</li><li>阻断Acrobat主程序联网<br>这里使用windows自带防火墙进行阻断。具体操作步骤如下:<br><code>开始 -&gt; 设置 -&gt; 更新与安全</code>，打开更新与安全设置，点击 <code>Windows 安全中心</code>，点击打开<code>防火墙和网络保护</code>界面，点击<code>高级设置</code>，在<code>高级设置</code>界面中选择<code>出站规则</code>然后点击<code>新建规则</code>创建出站规则，在弹出的新建规则向导界面中，选择要创建的规则类型为<code>程序</code>，然后点击<code>下一步</code>选择指定的程序路径<code>C:\Program Files (x86)\Adobe\Acrobat 11.0\Acrobat\Acrobat.exe</code>，然后点击<code>下一步</code>，在操作类型界面选择<code>阻止连接</code>，点击<code>下一步</code>，在选择何时应用规则的界面选择所有的场景并点击<code>下一步</code>，在命名界面中填写<code>名称</code>及<code>描述</code>，然后点击完成即可。<br><b>注意</b>: 本方法的前提是要保障 Windows Defender 防火墙对三个应用区域(域网络、专用网络、公用网络)都已经启用。</li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
     
@@ -293,7 +326,9 @@
     
     <category term="Tutorial" scheme="http://shenguosai.github.io/categories/Tutorial/"/>
     
-    <category term="Software" scheme="http://shenguosai.github.io/categories/Tutorial/Software/"/>
+    <category term="Win-Software" scheme="http://shenguosai.github.io/categories/Tutorial/Win-Software/"/>
+    
+    <category term="Adobe" scheme="http://shenguosai.github.io/categories/Tutorial/Win-Software/Adobe/"/>
     
     
   </entry>
@@ -510,9 +545,9 @@
     <link href="http://shenguosai.github.io/2023/11/14/%E6%9B%B4%E6%8D%A2%E6%96%B0%E7%94%B5%E8%84%91%E5%90%8E%EF%BC%8Chexo%E6%97%A0%E6%8D%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/"/>
     <id>http://shenguosai.github.io/2023/11/14/%E6%9B%B4%E6%8D%A2%E6%96%B0%E7%94%B5%E8%84%91%E5%90%8E%EF%BC%8Chexo%E6%97%A0%E6%8D%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/</id>
     <published>2023-11-14T13:44:02.000Z</published>
-    <updated>2023-11-20T13:26:07.262Z</updated>
+    <updated>2024-01-05T01:22:47.358Z</updated>
     
-    <content type="html"><![CDATA[<p>趁着双十一在京东￥499入手了<a href="https://item.jd.com/100048210573.html#crumb-wrap">樊想S500PRO</a>的2T SSD固态硬盘。<br>到货后就迫不及待的换下了原来笔记本里500G的老硬盘。然后发现换硬盘新装系统后各种软件的安装和配置都要重新来一遍。</p><h3 id="下面记录下hexo的迁移过程。"><a href="#下面记录下hexo的迁移过程。" class="headerlink" title="下面记录下hexo的迁移过程。"></a>下面记录下hexo的迁移过程。</h3><span id="more"></span><ul><li><p>首先将原硬盘的hexo目录拷贝到新硬盘。我自己的目录是<code>D:\99_Git\blog</code>。</p></li><li><p>配置hexo环境：</p><ul><li><p>安装nodejs和git，nodejs安装好才可以使用npm安装hexo，git就是用来上传博客用的；（如果不希望多装软件可只安装git而不需要git bash）</p></li><li><p>如果可以将原来电脑中的<code>C:\User\username\.gitconfig</code>文件和<code>C:\User\username（斜体）\.ssh\</code>目录拷贝到同目录下就不需要重新配置了。(其中username是自己电脑的用户名)<br>如果没有就只能重新设置并生成ssh key文件了，命令如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;username&quot;</span><br><span class="line">git config --global user.mail &quot;user mail address&quot;</span><br><span class="line">ssh-keygen -t rsa -C &quot;user mail address&quot;</span><br></pre></td></tr></table></figure></li><li><p>进入到hexo部署文件夹，执行命令安装hexo和hexo-depolyer-git插件</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li><li><p><b>然后这里会出现一个问题:</b><br>我是使用vs code中的终端来操作的，怎么样也识别不了hexo命令，提示如下：（由于忘记截图了，网上找了张类似的）<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231114224848.png" alt="20231114224848"></p></li><li><p><b>解决方法</b><br>可以通过访问“请参阅……”后面的链接查看，核心问题是power shell的安全策略，将hexo命令视为了不安全脚本，不允许执行。只需要放开权限就行。<br>通过管理员权限运行power shell，然后输入命令：<code>set-ExecutionPolicy RemoteSigned</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231115001919.png" alt="20231115001919"><br>选择“Y”即可。<br>然后就可以正常在<a href="https://code.visualstudio.com/">VS Code</a>的终端里使用<a href="https://hexo.io/zh-cn/index.html">hexo</a>了。</p></li><li><p><b><font color=blue>碰到的第二个问题：</font></b><br>上传时提示有换行符的问题，在执行<code>hexo d</code>后会出现整屏的提示信息，是我这个强迫症患者所无法忍受的。</p></li><li><p><b><font color=blue>解决方法：</font></b><br>通过执行命令<code>git config --global core.autocrlf false</code>将默认的换行符转换功能去掉。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#提交时转换为LF，检出时转换为CRLF（默认）</span><br><span class="line">git config --global core.autocrlf true</span><br><span class="line"></span><br><span class="line">#提交和检出时均不做换行符转换（修改）</span><br><span class="line">git config --global core.autocrlf false</span><br></pre></td></tr></table></figure></li></ul></li><li><p>图床设置<br>下载插件vs code的插件PicGo，配置方法网上有很多，但是需要注意一点在<code>Picgo &gt; Pic Bed &gt; Github: Custom Url</code>中需要填入图传链接格式为<code>https://raw.githubusercontent.com/用户名/仓库名/分支名</code>，一开始这个地方没有设置对对上传没有影响但是在博客中看不到图片。</p></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>趁着双十一在京东￥499入手了<a href="https://item.jd.com/100048210573.html#crumb-wrap">樊想S500PRO</a>的2T SSD固态硬盘。<br>到货后就迫不及待的换下了原来笔记本里500G的老硬盘。然后发现换硬盘新装系统后各种软件的安装和配置都要重新来一遍。</p><h3 id="下面记录下hexo的迁移过程。"><a href="#下面记录下hexo的迁移过程。" class="headerlink" title="下面记录下hexo的迁移过程。"></a>下面记录下hexo的迁移过程。</h3><span id="more"></span><ul><li><p>首先将原硬盘的hexo目录拷贝到新硬盘。我自己的目录是<code>D:\99_Git\blog</code>。</p></li><li><p>配置hexo环境：</p><ul><li><p>安装nodejs和git，nodejs安装好才可以使用npm安装hexo，git就是用来上传博客用的；（如果不希望多装软件可只安装git而不需要git bash）</p></li><li><p>如果可以将原来电脑中的<code>C:\User\username\.gitconfig</code>文件和<code>C:\User\username（斜体）\.ssh\</code>目录拷贝到同目录下就不需要重新配置了。(其中username是自己电脑的用户名)<br>如果没有就只能重新设置并生成ssh key文件了，命令如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;username&quot;</span><br><span class="line">git config --global user.mail &quot;user mail address&quot;</span><br><span class="line">ssh-keygen -t rsa -C &quot;user mail address&quot;</span><br></pre></td></tr></table></figure></li><li><p>进入到hexo部署文件夹，执行命令安装hexo和hexo-depolyer-git插件</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li><li><p><b>然后这里会出现一个问题:</b><br>我是使用vs code中的终端来操作的，怎么样也识别不了hexo命令，提示如下：（由于忘记截图了，网上找了张类似的）<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231114224848.png" alt="20231114224848"></p></li><li><p><b>解决方法</b><br>可以通过访问“请参阅……”后面的链接查看，核心问题是power shell的安全策略，将hexo命令视为了不安全脚本，不允许执行。只需要放开权限就行。<br>通过管理员权限运行power shell，然后输入命令：<code>set-ExecutionPolicy RemoteSigned</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231115001919.png" alt="20231115001919"><br>选择“Y”即可。<br>然后就可以正常在<a href="https://code.visualstudio.com/">VS Code</a>的终端里使用<a href="https://hexo.io/zh-cn/index.html">hexo</a>了。</p></li><li><p><b><font color=blue>碰到的第二个问题：</font></b><br>上传时提示有换行符的问题，在执行<code>hexo d</code>后会出现整屏的提示信息，是我这个强迫症患者所无法忍受的。</p></li><li><p><b><font color=blue>解决方法：</font></b><br>通过执行命令<code>git config --global core.autocrlf false</code>将默认的换行符转换功能去掉。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#提交时转换为LF，检出时转换为CRLF（默认）</span><br><span class="line">git config --global core.autocrlf true</span><br><span class="line"></span><br><span class="line">#提交和检出时均不做换行符转换（修改）</span><br><span class="line">git config --global core.autocrlf false</span><br></pre></td></tr></table></figure></li></ul></li><li><p>图床设置<br>下载插件vs code的插件PicGo，配置方法网上有很多，但是需要注意一点在<code>Picgo &gt; Pic Bed &gt; Github: Custom Url</code>中需要填入图传链接格式为<code>https://raw.githubusercontent.com/用户名/仓库名/分支名</code>，一开始这个地方没有设置对对上传没有影响但是在博客中看不到图片。</p></li></ul><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
     
     
     <summary type="html">&lt;p&gt;趁着双十一在京东￥499入手了&lt;a href=&quot;https://item.jd.com/100048210573.html#crumb-wrap&quot;&gt;樊想S500PRO&lt;/a&gt;的2T SSD固态硬盘。&lt;br&gt;到货后就迫不及待的换下了原来笔记本里500G的老硬盘。然后发现换硬盘新装系统后各种软件的安装和配置都要重新来一遍。&lt;/p&gt;
@@ -520,7 +555,7 @@
     
     
     
-    <category term="Tutotial" scheme="http://shenguosai.github.io/categories/Tutotial/"/>
+    <category term="Tutorial" scheme="http://shenguosai.github.io/categories/Tutorial/"/>
     
     
   </entry>
@@ -652,31 +687,6 @@
     
     
     <summary type="html">&lt;p&gt;　　如今，SPICE广泛应用在仿真模拟电路(运放、基准、电源、AD&amp;#x2F;DA等)，混合信号电路(PLL、SRAM&amp;#x2F;DRAM，高速接口)，精确数字电路(延时、时序、功耗、漏电流等)，建立SoC的时序及功耗单元库，分析系统级的信号完整性，等等。&lt;br&gt;作为最早的电子设计自动化软件，它今天仍然是最重要的软件之一。可以说，没有SPICE，就没有电子设计自动化这个产业，也就没有今天的半导体工业。它的市场超过上亿美元。所有这一切，都是从1970年加州大学伯克利分校电机工程系的一堂课开始的。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Knowledge Share" scheme="http://shenguosai.github.io/categories/Knowledge-Share/"/>
-    
-    
-    <category term="Semiconductor" scheme="http://shenguosai.github.io/tags/Semiconductor/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>放大器的谐波失真(THD)</title>
-    <link href="http://shenguosai.github.io/2023/08/21/%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%B0%90%E6%B3%A2%E5%A4%B1%E7%9C%9F-THD/"/>
-    <id>http://shenguosai.github.io/2023/08/21/%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%B0%90%E6%B3%A2%E5%A4%B1%E7%9C%9F-THD/</id>
-    <published>2023-08-21T13:47:21.000Z</published>
-    <updated>2023-11-20T13:25:44.169Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文主要总结和收集关于放大器谐波失真的原因及改良方法。</p><h2 id="一、什么是谐波失真"><a href="#一、什么是谐波失真" class="headerlink" title="一、什么是谐波失真"></a>一、什么是谐波失真</h2><blockquote><p>THD是英文Total Harmonic Distortion的缩写，译成中文即为总谐波失真。</p></blockquote><h4 id="谐波失真是什么？"><a href="#谐波失真是什么？" class="headerlink" title="谐波失真是什么？"></a>谐波失真是什么？</h4><p>谐波失真的原因是电路电路的线性度不好。<br>理想线性电路的输入x和输出y可以使用一次方程表示：$y&#x3D;ax+b$</p><span id="more"></span><p>如果输出和输入的关系偏离了上述方程的直线我们称之为线性度差。<br>下面是一个典型的线性度差的代表电路：Diode Clip电路。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821215601.png" alt="20230821215601"><br>根据二极管的顺方向I-V特性可知，在±0.6V之外被clip，就是说当输入电压在±0.6V之外时，电路显现非线性特性，如下图：<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821215939.png" alt="20230821215939"><br>如果将正弦波作为此电路的输入信号，输出信号变为在原信号基础上叠加了“不存在”的信号。其输入即输出入下式所示：<br>输入：$V_{in}&#x3D;sinωt$<br>输出：$V_{out}&#x3D;a_1sin(ωt+φ_1)+a_2sin(ωt+φ_2)+a_3sin(ωt+φ_3)+…$<br>输入输出的FFT(Fast Fourier Transform)结果如下图所示：<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821220543.png" alt="20230821220543"></p><h2 id="二、谐波失真的定量分析"><a href="#二、谐波失真的定量分析" class="headerlink" title="二、谐波失真的定量分析"></a>二、谐波失真的定量分析</h2><p>在进行谐波失真的定量分析时经常用到的指标为THD和THD+N。</p><blockquote><p>THD+N即Total Harmonic Distortion + Noise的缩写。</p></blockquote><p>通常我们所说的谐波失真都是叠加了输入信号的高次谐波。THD的定义即为在基波的高次谐波的平方和的平方根与基波的电压之比。<br>即：$V_{THD}&#x3D;\frac{\sqrt{V_2^2+V_3^2+V_4^2+…+V_N^2}}{V_1}$<br>其中，$V_1$为基波电压成分，$V_2$、$V_3$、$V_4$···$V_N$为整数倍的谐波电压成分。<br>高次谐波成分+噪声，即THD+N就是在高次谐波中再加入噪声：<br>$V_{THD}&#x3D;\frac{\sqrt{V_2^2+V_3^2+V_4^2+…+V_N^2+V_{Noise}^2}}{V_1}$</p><h2 id="三、通过反馈改善谐波失真"><a href="#三、通过反馈改善谐波失真" class="headerlink" title="三、通过反馈改善谐波失真"></a>三、通过反馈改善谐波失真</h2><p>改善THD方法中最一般的方法就是利用反馈，还是用上面的Diode Clip电路举例说明，在此电路中加入放大器及其反馈后电路结构如下：<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821222803.png" alt="20230821222803"></p><p><em>我们使用LTSpice中的理想放大器，设置其直流增益为100dB，带宽为10MHz。则1kHz的输入信号的增益为80dB。</em><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821223007.png" alt="20230821223007"></p><p>由于作为中间节点的放大器的输出可以对非线性进行抵消，所以整个电路的输入输出特性有了较大的改善。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821223242.png" alt="20230821223242"></p><p>使用1kHz的正弦波作为输入时可以看出只有少量的谐波成分的残留。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821223841.png" alt="20230821223841"></p><p>通过FFT结果可以看到奇数倍的高次谐波成分。$THD&#x3D;3.2%$<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224015.png" alt="20230821224015"></p><h4 id="下面讨论如果进一步削减谐波失真应该怎么做"><a href="#下面讨论如果进一步削减谐波失真应该怎么做" class="headerlink" title="下面讨论如果进一步削减谐波失真应该怎么做"></a>下面讨论如果进一步削减谐波失真应该怎么做</h4><p>首先为了加强反馈网络我们可以保持放大器带宽的情况下将放大器的增益提高到120dB以上。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224157.png" alt="20230821224157"></p><p>可以看到THD完全没有改善还是3.2%，原因是1kHz的反馈量没有变化。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224254.png" alt="20230821224254"></p><p>然后尝试保持放大器的直流增益不变将带宽增加到100MHz。由于是单极点放大器，所以1kHz时的增益约上升10倍。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224406.png" alt="20230821224406"></p><p>THD改善了0.35%，约上升了1&#x2F;10。所以，<b><font color="red"> 改善AC的谐波失真需要重点关注带宽！！</font></b><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224550.png" alt="20230821224550"></p><p>为确保放大器的稳定性，在高频阶段通常降低增益。也就是说在单位增益频率附近的信号无法使用反馈来改善THD。所以，一般来说高频信号的THD会比较差。</p><h2 id="四、输出端形成的开关谐波失真"><a href="#四、输出端形成的开关谐波失真" class="headerlink" title="四、输出端形成的开关谐波失真"></a>四、输出端形成的开关谐波失真</h2><p>经过妥当设计的放大器在规格范围内使用时，造成谐波失真的最多原因是输出端的谐波失真。<br>通过使用射极跟随器驱动负载电路的电路举例说明：<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821224912.png" alt="20230821224912"></p><p>射极跟随器通常对输入电压进行约1倍的放大输出(即，输出&#x3D;输入)，但如果集电极的电流在接近0A附近工作时，线性度会发生恶化。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821225043.png" alt="20230821225043"></p><p>使用正弦波作为输入信号，在集电极电流为0(cut off)时输出波形出现严重失真。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821225153.png" alt="20230821225153"></p><p>现实中放大器则通常通过一个npn和一个pnp组成推挽式结构，在一侧无法正常工作时通过另一侧进行补偿。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821225302.png" alt="20230821225302"></p><p>即使使用合适的偏置在输入信号为0时两侧的三极管均不会发生cut off(Class AB)，在大振幅或大负载电流的情况下也会使一侧的三极管发生cut off，不可避免地导致THD指标恶化。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821225458.png" alt="20230821225458"></p><p>开关谐波失真在Class A结构中可以避免，但是会增加功耗及电路的复杂度。</p><h2 id="五、耗尽层电容引起的失真"><a href="#五、耗尽层电容引起的失真" class="headerlink" title="五、耗尽层电容引起的失真"></a>五、耗尽层电容引起的失真</h2><p>去除开关因素导致的失真之后，剩余的就是耗尽层电容为起因导致的失真。<br>由于耗尽层是绝缘的，所以在Si和耗尽层之间可以看做形成电容，这个电容称之为耗尽层电容。耗尽层的长度随两边的电压不同而变化，就是说随着两端电压的不同耗尽层电容值是发生变化的。可变容量二极管就是利用这一原理制作而成的。普通的小信号用PN结二极管以及晶体管的集电极和基电极之间的容值也会跟随两端电压而变化。<br>耗尽层电容导致的失真由以下电路模型展示。<br>虽然在直流区域有反馈，但是在100kHz时输出由G1的互导和Q1的寄生电容决定。<br>Q1以外均使用理想器件，Q1为共基级放大电路，所以输出波形仅会受到由集电极电位影响的非线性度影响而导致失真。Q1的集极-基级之间的反向偏置，所以在集电极上形成耗尽层电容$C_{ob}$经电源V2连接GND。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821230626.png" alt="20230821230626"></p><p>若集电极电压发生变化，则$C_{ob}$的容值发生变化，导致$C_{ob}$的充电电流释放至GND而造成了失真发生。THD为0.47%。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821230849.png" alt="20230821230849"></p><p>其对策为增加射极跟随器使$C_{ob}$的充电电流能够回流。通过Q2可以使Q1的集电极&#x3D;&#x3D;&gt; $C_{ob}$&#x3D;&#x3D;&gt; GND释放的电流进行回流而抵消$C_{ob}$造成的非线性。为使开环增益相同增加C3.<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821231335.png" alt="20230821231335"></p><p>此时，THD有了巨大的改善，变为0.0008%。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230821231413.png" alt="20230821231413"></p><blockquote><p>参考文献：<br><em><font size=2>Douglas Self, Small Signal Audio Design, 2010, Focal Press</font></em><br><em><font size=2>黒田徹, 解析OPアンプ&amp;トランジスタ活用, 2002, CQ出版</font></em></p></blockquote>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;本文主要总结和收集关于放大器谐波失真的原因及改良方法。&lt;/p&gt;
-&lt;h2 id=&quot;一、什么是谐波失真&quot;&gt;&lt;a href=&quot;#一、什么是谐波失真&quot; class=&quot;headerlink&quot; title=&quot;一、什么是谐波失真&quot;&gt;&lt;/a&gt;一、什么是谐波失真&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;THD是英文Total Harmonic Distortion的缩写，译成中文即为总谐波失真。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;谐波失真是什么？&quot;&gt;&lt;a href=&quot;#谐波失真是什么？&quot; class=&quot;headerlink&quot; title=&quot;谐波失真是什么？&quot;&gt;&lt;/a&gt;谐波失真是什么？&lt;/h4&gt;&lt;p&gt;谐波失真的原因是电路电路的线性度不好。&lt;br&gt;理想线性电路的输入x和输出y可以使用一次方程表示：$y&amp;#x3D;ax+b$&lt;/p&gt;</summary>
     
     
     
