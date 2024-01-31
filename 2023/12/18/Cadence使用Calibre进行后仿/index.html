@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="通过 Virtuoso 的 Layout XL &#x3D;&gt; Calibre &#x3D;&gt; Run PEX 进入 Calibre PEX，并将工艺厂提供的 xRC(Rule) 文件设置好 Calibre PEX。 为了减少寄生参数，以及提高后仿效率，建议在 Calibre PEX &#x3D;&gt; PEX Options &#x3D;&gt; Netlist &#x3D;&amp;g">
+  <meta name="description" content="通过 Virtuoso 的 Layout XL &#x3D;&gt; Calibre &#x3D;&gt; Run PEX 进入 Calibre PEX，并将工艺厂提供的 xRC(Rule) 文件设置好 Calibre PEX。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cadence使用Calibre进行后仿">
 <meta property="og:url" content="http://shenguosai.github.io/2023/12/18/Cadence%E4%BD%BF%E7%94%A8Calibre%E8%BF%9B%E8%A1%8C%E5%90%8E%E4%BB%BF/index.html">
 <meta property="og:site_name" content="乙未丁酉">
-<meta property="og:description" content="通过 Virtuoso 的 Layout XL &#x3D;&gt; Calibre &#x3D;&gt; Run PEX 进入 Calibre PEX，并将工艺厂提供的 xRC(Rule) 文件设置好 Calibre PEX。 为了减少寄生参数，以及提高后仿效率，建议在 Calibre PEX &#x3D;&gt; PEX Options &#x3D;&gt; Netlist &#x3D;&amp;g">
+<meta property="og:description" content="通过 Virtuoso 的 Layout XL &#x3D;&gt; Calibre &#x3D;&gt; Run PEX 进入 Calibre PEX，并将工艺厂提供的 xRC(Rule) 文件设置好 Calibre PEX。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-18T05:50:59.000Z">
-<meta property="article:modified_time" content="2023-12-18T12:09:02.358Z">
+<meta property="article:modified_time" content="2024-01-31T03:02:31.009Z">
 <meta property="article:author" content="sgs">
 <meta property="article:tag" content="Calibre">
 <meta name="twitter:card" content="summary">
@@ -195,10 +195,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-12-18 13:50:59 / 修改时间：20:09:02" itemprop="dateCreated datePublished" datetime="2023-12-18T13:50:59+08:00">2023-12-18</time>
+              <time title="创建时间：2023-12-18 13:50:59" itemprop="dateCreated datePublished" datetime="2023-12-18T13:50:59+08:00">2023-12-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-31 11:02:31" itemprop="dateModified" datetime="2024-01-31T11:02:31+08:00">2024-01-31</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -257,7 +263,7 @@
 
       
         <ol>
-<li>通过 Virtuoso 的 Layout XL &#x3D;&gt; Calibre &#x3D;&gt; Run PEX 进入 Calibre PEX，并将工艺厂提供的 xRC(Rule) 文件设置好 Calibre PEX。</li>
+<li>通过 Virtuoso 的 Layout XL &#x3D;&gt; Calibre &#x3D;&gt; Run PEX 进入 Calibre PEX，并将工艺厂提供的 xRC(Rule) 文件设置好 Calibre PEX。<span id="more"></span></li>
 <li>为了减少寄生参数，以及提高后仿效率，建议在 Calibre PEX &#x3D;&gt; PEX Options &#x3D;&gt; Netlist &#x3D;&gt; Reduction and CC 中将 Enable MinRes reduction 和 Enable MinCap Reduction 选中，并在 COMBINE 和 REMOVE 后的框中填写所需数值，一般 Cap 的 Combine 为 0.5fF，Remove 为 0.1fF。Res 的 Combine 为 1Ω，Remove 为 0.1Ω。</li>
 <li>在 Outputs 选项中，Outputs &#x3D;&gt; Netlist 框中，Format 选 CALIBREVIEW(可增加 Geometry 可在 PEX 运行完后弹出寄生参数的总结)，Use Names From : SCHEMATIC 。</li>
 <li>点击 Run PEX 开始寄生参数提取，之后进入 Calibre View Setup 界面。</li>
