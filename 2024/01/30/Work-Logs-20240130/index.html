@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="有东西被加密了, 请输入密码查看.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Work Logs--20240130">
+<meta property="og:url" content="http://shenguosai.github.io/2024/01/30/Work-Logs-20240130/index.html">
+<meta property="og:site_name" content="乙未丁酉">
+<meta property="og:description" content="有东西被加密了, 请输入密码查看.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-01-30T10:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-31T02:58:44.266Z">
+<meta property="article:author" content="sgs">
+<meta property="article:tag" content="WorkLogs">
+<meta property="article:tag" content="Swiching Regulator">
+<meta property="article:tag" content="Buck-Boost">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shenguosai.github.io/2024/01/30/Work-Logs-20240130/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Work Logs--20240130 | 乙未丁酉</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="乙未丁酉" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">乙未丁酉</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">模拟工程师</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/01/30/Work-Logs-20240130/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="sgs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Work Logs--20240130
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-01-30 18:00:00" itemprop="dateCreated datePublished" datetime="2024-01-30T18:00:00+08:00">2024-01-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-31 10:58:44" itemprop="dateModified" datetime="2024-01-31T10:58:44+08:00">2024-01-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Projects-CXT2503S/" itemprop="url" rel="index"><span itemprop="name">-[Projects,CXT2503S]</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/01/30/Work-Logs-20240130/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/01/30/Work-Logs-20240130/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>450</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="016e9aa1b2a512a297f9da608425a92f780194182117c2a5a917ea0dc66dc521">ae118af9461036e20f25663a30e189738734b433ecdcc685de42ade449b792d34bc8972806baa92858fa8c8179cc4f0cdad51b0f6d2e4688d806e1d895f634ddc3219fc23abbb5e49b2a3b0254457461a9e56f5091442fae415b599f95777f53349b5ac9c312d9f9d1912e24590acb55e898248e5f1fb86dc1d9976c1c1e6c8ecd7887d313f4407fbe3c890889a2d2809bb4758b29849793363c11583b4ca9bd52f72d00646e0765e1deeb8257354e35b1486ec2c81c151f323ad47e25a5e4315e22752ae0d2bfa35030b1a4e4583373bb896c9c8e403d683847dfb63251a37ec83a411798f3e5da471901e0e75c29d8526668ce930203040fb45b7a3abcfd0f3a3dec5dc16e7ee3ab45903cb868d7327add83a440d3b1660763271a7aab8ac70343844527c88ff59b5258ad8eb40496151c1e20d21267041fd4536a9ad3730095312382d9e2281afdc99c37d0ca3b44e329865d1ab6adc600b7e549e9837a6bc544531c3f9fe6b5bd33a6afa9d96a7f2a7bd0f0834d1f6f8b8fce30406b113877aa44806a250fcdf93d4d8a079ec9d4a0274aaaa95b2f03f09d85815c7aac1756558d9c3bfee577aae8640f09022b39a5e98d4ac8bc3e5dd56c13ba3caa06fd7a69f9f167c4524f8f34380a0febbfbf5d18e90f9d60aca880095d2725c456ba7426f9fc862ecbb3186a336121f4721441be44e4ce6b6f78c992da28dba56256f4ad4652895a736187c1f143ec1c0ccc9ef6e267ecace024063638c6119927c2c3a84896ddf99865ce8273947f1154e0dedda49eca1cc75c020eb1a9c081092a068fb317c0d307c9dcedf0c16dd871be612edf08e9caad415c46483ee97dafe34865ebedb8054bd621333bf6fd48014c34d165024971a301204fbd4475c622192f82e8fce352800a9f14fe87f6cb5a53b521615f70a28d6763ce6991ad7e5b5be0db481a8aa907d156bcde2fef66ff580b28a296b5d7cb9024b18c68b738cb86667dd6cdfb5e2ba81cc39325e7f4e399af93910e819b3df61c9dc7f28c35f3698014cf3c18888b9a4cd391a49e4e999e27fa66ece754f81cd66e8c013295f5ba13efaa3f6cbef275fb834b8eb8ec32f99c9efcfa9b9788daadf47dcef3192b89cf044c80de4fe86910ac925e606e377949dda4c187c422eca1ef1b1681d5bc74a6d2d1e8854ebcf0ffa80bdd6862480309d391afb82ecdbc05d81014f978af49cb5a399e5bdc1d8173f271b56a9f14e410c961ff6668fba456fe23e3c34b8471472c8c82a6c9a2a9880b43a91a6380b84bdf9a876c48ffc35d6f4421eea2c08633d6d4b0f009e7398cdd8cfb9f9354477a7704d271fac8893f04a1082988aa06ade7c4dbf8a53ff50e2a99789459506e070238a0af01d5570d87400daf457a93efd151cfb72de663f942ea36fbfdaf4e48c9ee4d21ed9ff20f0cd0a6139c667edff6c6dc5d1ac5cb7d104dc956b0158beb4a6317517fb50ee209fe934ce959abdca40d606faa7994ffc75c708ddfda002e9cbd4f3fbdd1a542a71cd094129a2b98c766892f2f2c53c405bf15bbf35fc815d3770803066b0460fa51cef863a557c67ef8435eccc9e7bfebd5abb9b81e671d8e92df7050109c11f05e3bd5ef048d3ea2b83985f68dc3cb2eb4c5db4972a2618a16d3d1fc3bda29ac49ba877187b1bf7d582901bf18f364529e28b6b321f88fd944fbc76fe4dafc9f3e515f329b9f1ba5c674b2bc97980df2b8bc5aefa2d6eb611e26a7767c61126d62e3256100016861766f65355cce2fa0e7fc51ba76cfd38dc52daada452c4bd48675086039d0ebc0d402533ff23f4aaaa59504f581ce8ab18dfd52d3847adb22ebc4962358b905e8718861e41acc24309981112f954ba7b9a6520b58631fe9714f91f3ce9925689ecc7cf10343bd45167895fb645cda5df1228c94b7e97d43ea1c6947105aae8586afb5d4f6f5850ce460c720c8d58c5d7ae6ac35a88f93342dc6529ac26880b67a7bfae16328065dfe33817f78d0e503856368ec397b13c1aa5228823ec2a8695dd47b1c2bfebda36da3d1a896d8952804886b5cb01d1d16d7fa9b3290f2226d3a1305cf019e66e88413d41a89368061d8b28d89b81531e096689ef2de74aa91417184c2757e7b43d7f4c9dae6bfec2c58d352f932628893a3489287344c073199d1ca2530ee8722525ceb2740364d948763ae352a26f15fce4f4cb87ff98fdd7c5defa6cc631ac33b03280e40e9c4ac7bff9b8bf228bc5641f45c272f189716e88787b88115acd7e1c9468522f70553f7bef38601a0ab7949ef6faa22a87e</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>买包烟</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="sgs 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="sgs 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>sgs
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://shenguosai.github.io/2024/01/30/Work-Logs-20240130/" title="Work Logs--20240130">http://shenguosai.github.io/2024/01/30/Work-Logs-20240130/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/WorkLogs/" rel="tag"># WorkLogs</a>
+              <a href="/tags/Swiching-Regulator/" rel="tag"># Swiching Regulator</a>
+              <a href="/tags/Buck-Boost/" rel="tag"># Buck-Boost</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/" rel="prev" title="浅谈几种带宽与增益">
+      <i class="fa fa-chevron-left"></i> 浅谈几种带宽与增益
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="sgs"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">sgs</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sgs</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">53k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">48 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '0dJ6KzQjpKzOPUi998D88vE3-gzGzoHsz',
+      appKey     : 'LseOZQMpqtwJKZALm9XXl9hA',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

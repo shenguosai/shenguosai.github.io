@@ -1,3 +1,4 @@
+http://shenguosai.github.io/2024/01/30/Work-Logs-20240130/
 http://shenguosai.github.io/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/
 http://shenguosai.github.io/2023/12/08/smic%E5%B7%A5%E8%89%BA%E4%B8%AD%E5%B8%A6%E6%9C%89ckt%E5%90%8E%E7%BC%80%E7%9A%84%E5%99%A8%E4%BB%B6/
 http://shenguosai.github.io/2024/01/05/TVBox%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/
@@ -40,6 +41,9 @@ http://shenguosai.github.io/tags/Calibre/
 http://shenguosai.github.io/tags/%E5%B7%A5%E8%89%BA/
 http://shenguosai.github.io/tags/%E5%8F%8D%E9%A6%88/
 http://shenguosai.github.io/tags/Life/
+http://shenguosai.github.io/tags/WorkLogs/
+http://shenguosai.github.io/tags/Swiching-Regulator/
+http://shenguosai.github.io/tags/Buck-Boost/
 http://shenguosai.github.io/categories/%E5%88%86%E4%BA%AB/
 http://shenguosai.github.io/categories/Article/
 http://shenguosai.github.io/categories/Knowledge-Share/
@@ -58,3 +62,4 @@ http://shenguosai.github.io/categories/Tutorial/Win-Software/Adobe/
 http://shenguosai.github.io/categories/Semiconductor/Analog/
 http://shenguosai.github.io/categories/Tutorial/TV-Software/
 http://shenguosai.github.io/categories/Tutorial/TV-Software/TVBox/
+http://shenguosai.github.io/categories/Projects-CXT2503S/
