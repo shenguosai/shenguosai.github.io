@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2024-02-26T02:59:03.959Z</updated>
+  <updated>2024-02-26T03:02:59.738Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -21,16 +21,12 @@
     <link href="http://shenguosai.github.io/2024/02/26/Windows11-%E6%BF%80%E6%B4%BB%E6%96%B9%E6%B3%95/"/>
     <id>http://shenguosai.github.io/2024/02/26/Windows11-%E6%BF%80%E6%B4%BB%E6%96%B9%E6%B3%95/</id>
     <published>2024-02-26T02:47:23.000Z</published>
-    <updated>2024-02-26T02:59:03.959Z</updated>
+    <updated>2024-02-26T03:02:59.738Z</updated>
     
-    <content type="html"><![CDATA[<p>今天将笔记本自带的 win11 家庭版升级到专业版时无意中在知乎中找到了一个方法，一试还真的有效，因为远程运行了一个网站的程序，不知道自己的电脑是不是成为别人的肉鸡了，但是激活方式确实是有效的。风险性后面再研究吧。</p><h3 id="两个激活秘钥"><a href="#两个激活秘钥" class="headerlink" title="两个激活秘钥"></a>两个激活秘钥</h3><p><code>J8WVF-9X3GM-4WVYC-VDHQG-42CXT</code><br><code>7Y64F-88DCY-Y6WTC-H33D2-64QHF</code><br>我使用的是第一个，第二个是否有效没有验证。</p><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ol><li>右键“此电脑”，依次点击“属性” &#x3D;&gt; “产品秘钥和激活” &#x3D;&gt; “更改产品秘钥”，输入上述秘钥；</li><li>win + R，输入powershell，回车。在弹窗中输入命令:<code>irm massgrave.dev/get.ps1 | iex</code></li><li>会弹出下面的窗口<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240226105515.png" alt="20240226105515"><br>简单解释一下: 按1，Windows永久激活；按2，office永久激活；按3，Windows激活到2038年；按4，180天的kms激活工具；……</li><li>然后重复1就会看到“已激活”字样。</li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    <content type="html"><![CDATA[<p>今天将笔记本自带的 win11 家庭版升级到专业版时无意中在知乎中找到了一个方法，一试还真的有效，因为远程运行了一个网站的程序，不知道自己的电脑是不是成为别人的肉鸡了，但是激活方式确实是有效的。风险性后面再研究吧。</p><span id="more"></span><h3 id="两个激活秘钥"><a href="#两个激活秘钥" class="headerlink" title="两个激活秘钥"></a>两个激活秘钥</h3><p><code>J8WVF-9X3GM-4WVYC-VDHQG-42CXT</code><br><code>7Y64F-88DCY-Y6WTC-H33D2-64QHF</code><br>我使用的是第一个，第二个是否有效没有验证。</p><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ol><li>右键“此电脑”，依次点击“属性” &#x3D;&gt; “产品秘钥和激活” &#x3D;&gt; “更改产品秘钥”，输入上述秘钥；</li><li>win + R，输入powershell，回车。在弹窗中输入命令:<code>irm massgrave.dev/get.ps1 | iex</code></li><li>会弹出下面的窗口<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240226105515.png" alt="20240226105515"><br>简单解释一下: 按1，Windows永久激活；按2，office永久激活；按3，Windows激活到2038年；按4，180天的kms激活工具；……</li><li>然后重复1就会看到“已激活”字样。</li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;p&gt;今天将笔记本自带的 win11 家庭版升级到专业版时无意中在知乎中找到了一个方法，一试还真的有效，因为远程运行了一个网站的程序，不知道自己的电脑是不是成为别人的肉鸡了，但是激活方式确实是有效的。风险性后面再研究吧。&lt;/p&gt;
-&lt;h3 id=&quot;两个激活秘钥&quot;&gt;&lt;a href=&quot;</summary>
-      
+    <summary type="html">&lt;p&gt;今天将笔记本自带的 win11 家庭版升级到专业版时无意中在知乎中找到了一个方法，一试还真的有效，因为远程运行了一个网站的程序，不知道自己的电脑是不是成为别人的肉鸡了，但是激活方式确实是有效的。风险性后面再研究吧。&lt;/p&gt;</summary>
     
     
     
