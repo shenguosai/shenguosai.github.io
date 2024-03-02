@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="转自RD网关部署说明，留待以后部署自己的远程桌面网关。 —–开始正文—– 1. 背景实现通过RD网关服务器实现外网访问内网的远程桌面。 1.1 远程桌面网关远程桌面网关（RD 网关）是一项角色服务，使授权远程用户可以从任何连接到 Internet 并且可以运行远程桌面连接 (RDC) 客户端的设备连接到内部企业网络或专用网络上的资源。网络资源可以是远程桌面会话主机（RD 会话主机）服务器、运行 R">
+  <meta name="description" content="转自RD网关部署说明，留待以后部署自己的远程桌面网关。 —–开始正文—–">
 <meta property="og:type" content="article">
 <meta property="og:title" content="部署 Windows RDS 远程桌面服务器(一)">
 <meta property="og:url" content="http://shenguosai.github.io/2024/03/02/%E9%83%A8%E7%BD%B2-Windows-RDS-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1-%E4%B8%80/index.html">
 <meta property="og:site_name" content="乙未丁酉">
-<meta property="og:description" content="转自RD网关部署说明，留待以后部署自己的远程桌面网关。 —–开始正文—– 1. 背景实现通过RD网关服务器实现外网访问内网的远程桌面。 1.1 远程桌面网关远程桌面网关（RD 网关）是一项角色服务，使授权远程用户可以从任何连接到 Internet 并且可以运行远程桌面连接 (RDC) 客户端的设备连接到内部企业网络或专用网络上的资源。网络资源可以是远程桌面会话主机（RD 会话主机）服务器、运行 R">
+<meta property="og:description" content="转自RD网关部署说明，留待以后部署自己的远程桌面网关。 —–开始正文—–">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302221216.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302221315.png">
@@ -97,7 +97,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302223942.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302223952.png">
 <meta property="article:published_time" content="2024-03-02T13:22:01.000Z">
-<meta property="article:modified_time" content="2024-03-02T14:43:25.950Z">
+<meta property="article:modified_time" content="2024-03-02T14:52:26.518Z">
 <meta property="article:author" content="sgs">
 <meta property="article:tag" content="Windows">
 <meta name="twitter:card" content="summary">
@@ -267,7 +267,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2024-03-02 21:22:01 / 修改时间：22:43:25" itemprop="dateCreated datePublished" datetime="2024-03-02T21:22:01+08:00">2024-03-02</time>
+              <time title="创建时间：2024-03-02 21:22:01 / 修改时间：22:52:26" itemprop="dateCreated datePublished" datetime="2024-03-02T21:22:01+08:00">2024-03-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -320,6 +320,7 @@
       
         <p>转自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/heavyhe/p/4547058.html">RD网关部署说明</a>，留待以后部署自己的远程桌面网关。</p>
 <p>—–<em>开始正文</em>—–</p>
+<span id="more"></span>
 <h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h2><p>实现通过RD网关服务器实现外网访问内网的远程桌面。</p>
 <h3 id="1-1-远程桌面网关"><a href="#1-1-远程桌面网关" class="headerlink" title="1.1 远程桌面网关"></a>1.1 远程桌面网关</h3><p>远程桌面网关（RD 网关）是一项角色服务，使授权远程用户可以从任何连接到 Internet 并且可以运行远程桌面连接 (RDC) 客户端的设备连接到内部企业网络或专用网络上的资源。网络资源可以是远程桌面会话主机（RD 会话主机）服务器、运行 RemoteApp 程序的RD 会话主机服务器或启用了远程桌面的计算机。<br>RD 网关使用 HTTPS 上的远程桌面协议 (RDP) 在 Internet 上的远程用户与运行其生产力应用程序的内部网络资源之间建立安全的加密连接。</p>
 <h3 id="1-2-为什么使用远程桌面网关？"><a href="#1-2-为什么使用远程桌面网关？" class="headerlink" title="1.2 为什么使用远程桌面网关？"></a>1.2 为什么使用远程桌面网关？</h3><p><strong>RD 网关有很多优点，其中包括:</strong><br>通过 RD 网关，远程用户可以使用加密连接，<strong>通过 Internet 连接到内部网络资源，而不必配置虚拟专用网络 (VPN) 连接。</strong><br>RD 网关提供全面的安全配置模型，使您可以控制对特定内部网络资源的访问。<strong>RD 网关提供点对点的 RDP 连接，而不是允许远程用户访问所有内部网络资源。</strong><br>通过 RD 网关，大多数远程用户可以连接到在专用网络中的防火墙后面或跨网络地址转换程序 (NAT) 托管的内部网络资源。在此方案中，<strong>通过 RD 网关，不必对 RD 网关服务器或客户端执行其他配置。</strong><br>在此版本的 Windows Server 之前，采用安全措施来阻止远程用户跨防火墙和 NAT 连接到内部网络资源。这是由于出于网络安全考虑，通常阻止端口 3389（用于 RDP 连接的端口）。RD 网关使用 HTTP 安全套接字层&#x2F;传输层安全 (SSL&#x2F;TLS) 隧道将 RDP 通信传输到端口 443。由于大多数公司打开端口 443 来支持 Internet 连接，所以，RD 网关利用此网络设计提供跨多个防火墙的远程访问连接。<br>通过远程桌面网关管理器可以配置授权策略，以定义远程用户要连接到内部网络资源必须满足的条件。例如，可以指定：<br>可以连接到内部网络资源的用户（即，可以连接的用户组）。<br>用户可以连接到的网络资源（计算机组）。<br>客户端计算机是否必须是 Active Directory 安全组的成员。<br>是否允许设备的重定向。<br>客户端需要使用智能卡身份验证还是密码身份验证，还是可以使用任一方法。<br>可以将 RD 网关服务器和远程桌面服务客户端配置为使用网络访问保护 (NAP) 来进一步增强安全性。NAP 是 Windows Server® 2008 R2、Windows Server® 2008、Windows® 7、Windows Vista® 和 Windows(R) XP Service Pack 3 中包含的运行状况策略创建、强制和补救技术。通过 NAP，系统管理员可以强制运行状况要求，可以包括软件要求、安全更新要求、所需的计算机配置以及其他设置。</p>
