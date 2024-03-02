@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="转自超详细的 部署Windows RDS 远程桌面服务来啦！！！确定不来看一下嘛~，留待以后部署自己的远程桌面网关。 —–开始正文—–用 Windows Server 2016 操作系统来完成 RDS 的部署，包括添加远程桌面服务角色，创建会话集合，发布 Remote App 程序，以及测试访问 Remote App 程序。首先准备两台部署好域环境的虚拟机: Windows Server 2016">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部署 Windows RDS 远程桌面服务(二)">
+<meta property="og:url" content="http://shenguosai.github.io/2024/03/02/%E9%83%A8%E7%BD%B2-Windows-RDS-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1-%E4%BA%8C/index.html">
+<meta property="og:site_name" content="乙未丁酉">
+<meta property="og:description" content="转自超详细的 部署Windows RDS 远程桌面服务来啦！！！确定不来看一下嘛~，留待以后部署自己的远程桌面网关。 —–开始正文—–用 Windows Server 2016 操作系统来完成 RDS 的部署，包括添加远程桌面服务角色，创建会话集合，发布 Remote App 程序，以及测试访问 Remote App 程序。首先准备两台部署好域环境的虚拟机: Windows Server 2016">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204322.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204403.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204503.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204559.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204643.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204837.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205006.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205108.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205210.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205308.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205410.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211135.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211242.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211336.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211436.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211505.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211534.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211551.png">
+<meta property="article:published_time" content="2024-03-02T12:35:58.000Z">
+<meta property="article:modified_time" content="2024-03-02T13:18:57.475Z">
+<meta property="article:author" content="sgs">
+<meta property="article:tag" content="Windows">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204322.png">
+
+<link rel="canonical" href="http://shenguosai.github.io/2024/03/02/%E9%83%A8%E7%BD%B2-Windows-RDS-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1-%E4%BA%8C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>部署 Windows RDS 远程桌面服务(二) | 乙未丁酉</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="乙未丁酉" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">乙未丁酉</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">模拟工程师</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/03/02/%E9%83%A8%E7%BD%B2-Windows-RDS-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1-%E4%BA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="sgs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          部署 Windows RDS 远程桌面服务(二)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-03-02 20:35:58 / 修改时间：21:18:57" itemprop="dateCreated datePublished" datetime="2024-03-02T20:35:58+08:00">2024-03-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tutorial/" itemprop="url" rel="index"><span itemprop="name">Tutorial</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/03/02/%E9%83%A8%E7%BD%B2-Windows-RDS-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1-%E4%BA%8C/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/03/02/%E9%83%A8%E7%BD%B2-Windows-RDS-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1-%E4%BA%8C/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>转自<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_70919503/article/details/134965019">超详细的 部署Windows RDS 远程桌面服务来啦！！！确定不来看一下嘛~</a>，留待以后部署自己的远程桌面网关。</p>
+<p>—–<em>开始正文</em>—–<br>用 Windows Server 2016 操作系统来完成 RDS 的部署，包括添加远程桌面服务角色，创建会话集合，发布 Remote App 程序，以及测试访问 Remote App 程序。<br>首先准备两台部署好域环境的虚拟机: Windows Server 2016 和 Windows 7</p>
+<h3 id="添加远程桌面服务角色"><a href="#添加远程桌面服务角色" class="headerlink" title="添加远程桌面服务角色"></a>添加远程桌面服务角色</h3><p>打开 Windows Server 2016:<br>    (1) 点进服务器管理器，点击“添加角色和功能”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204322.png" alt="20240302204322"><br>    (2) 在安装类型选择“远程桌面服务安装”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204403.png" alt="20240302204403"><br>    (3) 在“选择部署类型”窗口中选择“标准部署”按键，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204503.png" alt="20240302204503"><br>    (4) 在“选择部署方案”窗口中，选择“基于会话的桌面部署”按键，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204559.png" alt="20240302204559"><br>    (5) 系统会自动安装和配置必需的角色服务，直接“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204643.png" alt="20240302204643"><br>    (6) 依次指定下面三个服务所在的服务器，在“指定 RD 连接代理服务器”窗口中，将服务器池中的当前服务器添加到右侧窗格中，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204837.png" alt="20240302204837"><br>    (7) 选择服务器池中的当前的服务器后，双击添加到右侧窗格中，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205006.png" alt="20240302205006"><br>    (8) 选择服务器池中的当前的服务器后，双击添加到右侧窗格中，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205108.png" alt="20240302205108"><br>    (9) 选择“需要时自动启动目标服务器”后，单击“部署”按键<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205210.png" alt="20240302205210"><br>    (10) 安装过程中系统自动重启，重新后会自动完成剩下的安装任务<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205308.png" alt="20240302205308"><br>登录自己的域账号<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205410.png" alt="20240302205410"></p>
+<h3 id="创建会话集合"><a href="#创建会话集合" class="headerlink" title="创建会话集合"></a>创建会话集合</h3><pre><code>(1) 打开“服务器管理器”窗口，在左侧窗格单击刚安装好的“远程桌面服务”，在中间窗格选择“概述”选项，在右侧窗格单击“创建会话合集”
+![20240302205757](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205757.png)
+(2) 在“开始之前”窗口中，直接“下一步”
+(3) 自己取一个便于识别的名称后，单击“下一步”
+![20240302205902](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205902.png)
+(4) 将服务器池中的目标服务双击添加至右侧窗格中后，单击“下一步”
+![20240302205959](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205959.png)
+(5) 此页面可以点击“添加”按键可以添加需要授权的用户组，我们此处直接“下一步”
+![20240302210101](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210101.png)
+(6) 在“指定用户配置文件磁盘”窗口中，输入用户配置文件所在的位置后，单击“下一步”
+![20240302210201](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210201.png)
+(7) 确认信息无误后，单击“创建”
+![20240302210228](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210228.png)
+(8) 创建成功后单击“关闭”按键
+![20240302210300](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210300.png)
+</code></pre>
+<h3 id="发布-Remote-App-程序"><a href="#发布-Remote-App-程序" class="headerlink" title="发布 Remote App 程序"></a>发布 Remote App 程序</h3><pre><code>(1) 打开“服务器管理器”窗口，单击左侧窗格“远程桌面服务”，在中间窗格单击刚创建的集合名称，单击“发布 Remote App 程序”
+![20240302210553](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210553.png)
+(2) 选择要发布集合的应用程序，咱选择发布自带的“画图”
+![20240302210640](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210640.png)
+(3) 确认要发布的 Remote App 程序列表是否正确，正确就单击“发布”按键
+![20240302210731](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210731.png)
+(4) 发布“画图”完成
+![20240302210802](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210802.png)
+</code></pre>
+<h3 id="AD-服务端新建用户"><a href="#AD-服务端新建用户" class="headerlink" title="AD 服务端新建用户"></a>AD 服务端新建用户</h3><pre><code>(1) 打开“AD 用户和计算机”窗口
+![20240302210852](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210852.png)
+(2) 设置用户登录名称
+![20240302210913](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210913.png)
+(3) 设置用户登录密码
+![20240302210937](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210937.png)
+</code></pre>
+<h3 id="访问-Remote-App-程序-测试"><a href="#访问-Remote-App-程序-测试" class="headerlink" title="访问 Remote App 程序(测试)"></a>访问 Remote App 程序(测试)</h3><p>进入 Windows 7 (客户端):<br>    (1) 在 Web 浏览器地址栏输入 URL: “<a target="_blank" rel="noopener" href="http://fqdn/rdweb%E2%80%9D%EF%BC%8C%E5%9C%A8%E6%89%93%E5%BC%80%E7%9A%84%E9%A1%B5%E9%9D%A2%E4%B8%AD%E5%8D%95%E5%87%BB%E2%80%9C%E7%BB%A7%E7%BB%AD%E6%B5%8F%E8%A7%88%E6%AD%A4%E7%BD%91%E7%AB%99%E2%80%9D">http://FQDN/rdweb”，在打开的页面中单击“继续浏览此网站”</a><br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211135.png" alt="20240302211135"><br>    (2) 输入”服务端域名\刚刚新建的用户的名字”，和登录密码后，点击“登录”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211242.png" alt="20240302211242"><br>        登录成功后出现“画图”程序图表即代表发布成功<br>        <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211336.png" alt="20240302211336"><br>    (3) 单击程序图标，在浏览器底部弹出的对话框单击“打开”按键<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211436.png" alt="20240302211436"><br>    (4) 点击“连接”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211505.png" alt="20240302211505"><br>    (5) 输入账号和登录密码<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211534.png" alt="20240302211534"><br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211551.png" alt="20240302211551"></p>
+<p>以上便是所有内容，欢迎大家前来借鉴！</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>买包烟</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="sgs 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="sgs 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>sgs
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://shenguosai.github.io/2024/03/02/%E9%83%A8%E7%BD%B2-Windows-RDS-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1-%E4%BA%8C/" title="部署 Windows RDS 远程桌面服务(二)">http://shenguosai.github.io/2024/03/02/部署-Windows-RDS-远程桌面服务-二/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Windows/" rel="tag"># Windows</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/02/28/%E4%BD%BF%E7%94%A8PS%E5%9C%A85%E5%AF%B8%E7%9B%B8%E7%BA%B8%E4%B8%8A%E6%8E%92%E7%89%881%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7/" rel="prev" title="使用PS在5寸相纸上排版1寸证件照">
+      <i class="fa fa-chevron-left"></i> 使用PS在5寸相纸上排版1寸证件照
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/03/02/%E9%83%A8%E7%BD%B2-Windows-RDS-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1-%E4%B8%80/" rel="next" title="部署 Windows RDS 远程桌面服务器(一)">
+      部署 Windows RDS 远程桌面服务器(一) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E8%A7%92%E8%89%B2"><span class="nav-number">1.</span> <span class="nav-text">添加远程桌面服务角色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BC%9A%E8%AF%9D%E9%9B%86%E5%90%88"><span class="nav-number">2.</span> <span class="nav-text">创建会话集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B8%83-Remote-App-%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">发布 Remote App 程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AD-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%96%B0%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="nav-number">4.</span> <span class="nav-text">AD 服务端新建用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE-Remote-App-%E7%A8%8B%E5%BA%8F-%E6%B5%8B%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">访问 Remote App 程序(测试)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="sgs"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">sgs</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sgs</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">67k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:01</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '0dJ6KzQjpKzOPUi998D88vE3-gzGzoHsz',
+      appKey     : 'LseOZQMpqtwJKZALm9XXl9hA',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
