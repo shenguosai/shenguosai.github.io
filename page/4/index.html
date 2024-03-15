@@ -309,7 +309,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-03-15 10:04:46" itemprop="dateModified" datetime="2024-03-15T10:04:46+08:00">2024-03-15</time>
+                <time title="修改时间：2024-03-15 11:05:36" itemprop="dateModified" datetime="2024-03-15T11:05:36+08:00">2024-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -364,7 +364,7 @@
 <h2 id="一、什么是谐波失真"><a href="#一、什么是谐波失真" class="headerlink" title="一、什么是谐波失真"></a>一、什么是谐波失真</h2><blockquote>
 <p>THD是英文Total Harmonic Distortion的缩写，译成中文即为总谐波失真。</p>
 </blockquote>
-<h4 id="谐波失真是什么？"><a href="#谐波失真是什么？" class="headerlink" title="谐波失真是什么？"></a>谐波失真是什么？</h4><p>谐波失真的原因是电路电路的线性度不好。<br>理想线性电路的输入x和输出y可以使用一次方程表示：$y=ax+b$<br>
+<h3 id="谐波失真是什么？"><a href="#谐波失真是什么？" class="headerlink" title="谐波失真是什么？"></a>谐波失真是什么？</h3><p>谐波失真的原因是电路电路的线性度不好。<br>理想线性电路的输入x和输出y可以使用一次方程表示：$y=ax+b$<br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/08/21/%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%B0%90%E6%B3%A2%E5%A4%B1%E7%9C%9F-THD/#more" rel="contents">
@@ -1236,6 +1236,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
