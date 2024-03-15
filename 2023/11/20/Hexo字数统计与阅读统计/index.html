@@ -76,7 +76,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="乙未丁酉" type="application/atom+xml">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="乙未丁酉" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -250,13 +254,11 @@
         <ol>
 <li>安装<code>hexo-wordcount</code>插件<br><code>npm install hexo-wordcount --save</code></li>
 <li>安装<code>hexo-symbols-count-time</code>插件<br><code>npm install hexo-symbols-count-time --save</code></li>
-<li>安装<code>eslint</code><br><code>npm install eslint --save</code></li>
-</ol>
-<span id="more"></span>
-<ol start="4">
-<li>在hexo配置文件中添加<code>symbols_count_time</code>配置语句<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line"> symbols: true               # 文字字数统计</span><br><span class="line"> time: true                  # 文章阅读时长</span><br><span class="line"> total_symbols: true         # 站点总字数统计</span><br><span class="line"> total_time: true            # 站点总阅读时长</span><br><span class="line"> exclude_codeblock: false    # 排除代码字数统计</span><br></pre></td></tr></table></figure></li>
-<li>在主题配置文件中添加<code>symbols_count_time</code>配置语句<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line"> separated_meta: true        # 是否另起一行(true的话不和发表时间等同一行)</span><br><span class="line"> item_text_post: true        # 首页文章统计数量前是否显示文字描述(本文字数、阅读时长)</span><br><span class="line"> item_text_total: false      # 页面底部统计数量前是否显示文字描述(站点总字数、站点阅读时长)</span><br><span class="line"> awl: 4                      # Average Word Lenth</span><br><span class="line"> wpm: 275                    # Words Per Minute（每分钟阅读词数</span><br><span class="line"> suffix: mins.</span><br></pre></td></tr></table></figure></li>
-<li>在主题配置文件中配置wordcount<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">post_wordcount:          # 字数统计</span><br><span class="line"> item_text: true         # 是否显示文字</span><br><span class="line"> wordcount: true         # 显示字数</span><br><span class="line"> min2read: true          # 显示阅读时间</span><br><span class="line"> totalcount: true        # 显示总数</span><br><span class="line"> seperated_meta: true    # 是否分开</span><br></pre></td></tr></table></figure></li>
+<li>安装<code>eslint</code><br><code>npm install eslint --save</code><span id="more"></span></li>
+<li>在hexo配置文件中添加<code>symbols_count_time</code>配置语句<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">symbols_count_time:</span><br> <span class="hljs-attr">symbols:</span> <span class="hljs-literal">true</span>               <span class="hljs-comment"># 文字字数统计</span><br> <span class="hljs-attr">time:</span> <span class="hljs-literal">true</span>                  <span class="hljs-comment"># 文章阅读时长</span><br> <span class="hljs-attr">total_symbols:</span> <span class="hljs-literal">true</span>         <span class="hljs-comment"># 站点总字数统计</span><br> <span class="hljs-attr">total_time:</span> <span class="hljs-literal">true</span>            <span class="hljs-comment"># 站点总阅读时长</span><br> <span class="hljs-attr">exclude_codeblock:</span> <span class="hljs-literal">false</span>    <span class="hljs-comment"># 排除代码字数统计</span><br></code></pre></td></tr></table></figure></li>
+<li>在主题配置文件中添加<code>symbols_count_time</code>配置语句<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">symbols_count_time:</span><br> <span class="hljs-attr">separated_meta:</span> <span class="hljs-literal">true</span>        <span class="hljs-comment"># 是否另起一行(true的话不和发表时间等同一行)</span><br> <span class="hljs-attr">item_text_post:</span> <span class="hljs-literal">true</span>        <span class="hljs-comment"># 首页文章统计数量前是否显示文字描述(本文字数、阅读时长)</span><br> <span class="hljs-attr">item_text_total:</span> <span class="hljs-literal">false</span>      <span class="hljs-comment"># 页面底部统计数量前是否显示文字描述(站点总字数、站点阅读时长)</span><br> <span class="hljs-attr">awl:</span> <span class="hljs-number">4</span>                      <span class="hljs-comment"># Average Word Lenth</span><br> <span class="hljs-attr">wpm:</span> <span class="hljs-number">275</span>                    <span class="hljs-comment"># Words Per Minute（每分钟阅读词数</span><br> <span class="hljs-attr">suffix:</span> <span class="hljs-string">mins.</span><br></code></pre></td></tr></table></figure></li>
+<li>在主题配置文件中配置wordcount<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">post_wordcount:</span>          <span class="hljs-comment"># 字数统计</span><br> <span class="hljs-attr">item_text:</span> <span class="hljs-literal">true</span>         <span class="hljs-comment"># 是否显示文字</span><br> <span class="hljs-attr">wordcount:</span> <span class="hljs-literal">true</span>         <span class="hljs-comment"># 显示字数</span><br> <span class="hljs-attr">min2read:</span> <span class="hljs-literal">true</span>          <span class="hljs-comment"># 显示阅读时间</span><br> <span class="hljs-attr">totalcount:</span> <span class="hljs-literal">true</span>        <span class="hljs-comment"># 显示总数</span><br> <span class="hljs-attr">seperated_meta:</span> <span class="hljs-literal">true</span>    <span class="hljs-comment"># 是否分开</span><br></code></pre></td></tr></table></figure>
+</li>
 </ol>
 <p>设置完成！</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
@@ -441,12 +443,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">96k</span>
+    <span title="站点总字数">95k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:27</span>
+    <span title="站点阅读时长">1:26</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
@@ -497,6 +499,8 @@
 
 
 
+
+  
 
   
 

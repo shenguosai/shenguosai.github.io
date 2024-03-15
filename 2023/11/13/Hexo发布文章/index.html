@@ -76,7 +76,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="乙未丁酉" type="application/atom+xml">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="乙未丁酉" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -255,7 +259,7 @@
       
         <ol>
 <li>在<code>/source/_posts</code>目录下建立<code>.md</code>文件并撰写内容；<br>编辑文章时要在第一行中加上<code>title</code>，如果不按此格式来写的话在<code>hexo</code>博客中就会显示这篇文章没有名字。<span id="more"></span>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章题目</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">文章题目</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure></li>
 <li>命名完成后，将终端当前目录更改为<code>/source/_posts</code><br>输入<code>hexo g</code>(完整命令为<code>hexo generate</code>)，生成静态文件；<br>输入<code>hexo s</code>(完整命令为<code>hexo server</code>)，启动local服务器，主要用于本地预览。完成后打开浏览器输入<a href="">http://localhost:4000</a>，就会发现多了刚才写的那篇博客。<br>输入<code>hexo d</code>(完整命令为<code>hexo deploy</code>)，将本地文件发布到github仓库上。</li>
 <li>每次对hexo博客上的<code>.md</code>文件进行更改后都要重复步骤2，这样更改的内容才能在hexo博客上显示。</li>
 </ol>
@@ -441,12 +445,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">96k</span>
+    <span title="站点总字数">95k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:27</span>
+    <span title="站点阅读时长">1:26</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
@@ -497,6 +501,8 @@
 
 
 
+
+  
 
   
 

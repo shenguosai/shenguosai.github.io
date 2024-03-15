@@ -79,7 +79,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="乙未丁酉" type="application/atom+xml">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="乙未丁酉" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -241,7 +245,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.7k</span>
+              <span>3.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -265,7 +269,7 @@
 <ul>
 <li>示例存放目录:<code>Candence安装目录/tools/dfII/samples/local/cdsinit</code></li>
 <li>读取顺序: <blockquote>
-<p><em><font color="#d3d3d3">Cadence安装目录</font></em>&#x2F;tools&#x2F;dfII&#x2F;samples&#x2F;local&#x2F;cdsinit &#x3D;&gt; <em><font color="#d3d3d3">用户home目录</font></em>&#x2F;.cdsinit &#x3D;&gt; <em><font color="#d3d3d3">virtuoso启动目录</font></em>&#x2F;.cdsinit</p>
+<p><em><font color="#d3d3d3">Cadence安装目录</font></em>/tools/dfII/samples/local/cdsinit =&gt; <em><font color="#d3d3d3">用户home目录</font></em>/.cdsinit =&gt; <em><font color="#d3d3d3">virtuoso启动目录</font></em>/.cdsinit</p>
 </blockquote>
 </li>
 <li>设置默认读取的display.drf文件:    <pre>drLoadDrf(<em>filePath</em>)</pre></li>
@@ -279,25 +283,26 @@
 <li>设置快捷键“-”消除所有高亮net:  <pre>hiSetBindkey("Schematics" "<Key>-" "geDeleteAllProbe(getCurrentWindow() t)")</pre></li>
 <li>设置快捷键“F6”打开Library Manager(启动Virtuoso后): <pre>hiSetBindKey("Command Interpreter" "<Key>F6" "ddsOpenLibManager()")</pre></li>
 <li>设置快捷键“Shift+S”在上层schematic界面下编辑Symbol: <pre>hiSetBindKey("Schematics" "Shift<Ket>S" "schHiEditInPlace()")</pre></li>
-</ul>
-</li>
-<li>设置仿真结果默认存放目录为“&#x2F;DATA&#x2F;shenguosai&#x2F;simulasion”:  <pre>envSetVal("asimenv.startup" "projectDir" 'string "/DATA/shenguosai/simulasion")</pre></li>
+<li>设置仿真结果默认存放目录为“/DATA/shenguosai/simulasion”: <pre>envSetVal("asimenv.startup" "projectDir" 'string "/DATA/shenguosai/simulasion")</pre></li>
 <li>调用其它软件接口:<ul>
-<li>Calibre<pre>load("<em>Calibre_install_dir</em>/lib/calibre.skl")</li>
-<li>HSPICE<pre>load("<em>HSPICE_install_dir</em>/interface/HSPICE.ile")</li>
+<li>Calibre<br><pre>load(“<em>Calibre_install_dir</em>/lib/calibre.skl”)</li>
+<li>HSPICE<br><pre>load(“<em>HSPICE_install_dir</em>/interface/HSPICE.ile”)</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>.cdsenv: 包含了Cadence软件的变量设置，用户通过对变量赋值，改变软件设置。<ul>
+</ul>
+</li>
+<li><p>.cdsenv: 包含了Cadence软件的变量设置，用户通过对变量赋值，改变软件设置。</p>
+<ul>
 <li>示例存放目录: <code>Candence安装目录/tools/dfII/samples/.cdsenv</code></li>
 <li>读取顺序: <blockquote>
-<p><em><font color="#d3d3d3">Cadence安装目录</font></em>&#x2F;tools&#x2F;dfII&#x2F;samples&#x2F;.cdsenv &#x3D;&gt; <em><font color="#d3d3d3">用户home目录</font></em>&#x2F;.cdsenv &#x3D;&gt; <em><font color="#d3d3d3">virtuoso启动目录</font></em>&#x2F;.cdsenv</p>
+<p><em><font color="#d3d3d3">Cadence安装目录</font></em>/tools/dfII/samples/.cdsenv =&gt; <em><font color="#d3d3d3">用户home目录</font></em>/.cdsenv =&gt; <em><font color="#d3d3d3">virtuoso启动目录</font></em>/.cdsenv</p>
 </blockquote>
 </li>
 <li>设置仿真结果显示有效位数:(示例文件中有，通过搜索改变赋值即可,以下同)   <pre>auCore.misc labelDigits int 6</pre></li>
 <li>改变仿真结果保存路径:   <pre>asimenv.startup projectDir string" ./simulation"</pre></li>
-<li>按Library名称设置仿真结果保存路径:   <pre>asimenv.startup appendLibNameToProjectDir boolean t</li>
+<li>按Library名称设置仿真结果保存路径:<br>   <pre>asimenv.startup appendLibNameToProjectDir boolean t</li>
 <li>设置原理图和版图中的 label 默认字体改为 roman:   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs skill">schematic createLabelFontStyle cyclic &quot;roman&quot;<br>layout labelFontStyle cyclic &quot;roman&quot;<br></code></pre></td></tr></table></figure></li>
 <li>设置版图网格点默认值:视工艺而定   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs skill">layout xSnapSpacing float 0.005<br>layout ySnapSpacing float 0.005<br></code></pre></td></tr></table></figure></li>
 <li>设置仿真波形与坐标显示:   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs skill">viva.graph  titleFont  string  &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.rectGraph    background  string  &quot;white&quot;<br>viva.axis     font   string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.horizMarker font    string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.vertMarker     font    string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.referenceLineMarker    font  string    &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>...<br>viva.trace  lineThickness  string  &quot;Thick&quot;<br>viva.trace  lineStyle  string  &quot;solid&quot;<br>wavescan.trace  lineThickness  string  &quot;Thick&quot;<br>wavescan.trace  lineStyle  string  &quot;solid&quot;<br></code></pre></td></tr></table></figure>
@@ -305,7 +310,7 @@
 <p><b>注意</b>:仿真波形显示方法会与 PDK 中环境变量设置和 display.drf 文件中的设置有关，如果按照上面的方法设置完后不能达到实际效果，首先考虑是否是 PDK 自带脚本加载了其它软件变量或者使用的 display.drf 文件中做了相应修改，如果发现有问题可以修改 PDK 中环境变量或者 display.drf 文件的相应设置。</p>
 </blockquote>
 </li>
-<li>实现在 Library Manager 界面双击 view 以只读方式打开:   <pre>cdsLibManager.main dblClickEditCellView boolean nil</pre>
+<li><p>实现在 Library Manager 界面双击 view 以只读方式打开:<br>   <pre>cdsLibManager.main dblClickEditCellView boolean nil</pre></p>
 <blockquote>
 <p><b>特别注意</b>: 可能按照上面的方法设置完.cdsenv文件之后，发现设置并未生效，这时候需要注意一个问题，<b>Cadence每次启动时都会加载 .cdsinit 文件，然而对于 .cdsenv 文件并非如此，而且 .cdsenv文件中的变量值会被覆盖，具体软件加载 .cdsenv 文件的顺序需要再用户的环境变量设置文件中定义。</b>一般叫做 .bashrc (使用 export 定义环境变量)或者 .cshrc (使用 setenv 定义环境变量)。</p>
 </blockquote>
@@ -506,12 +511,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">96k</span>
+    <span title="站点总字数">95k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:27</span>
+    <span title="站点阅读时长">1:26</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
@@ -562,6 +567,8 @@
 
 
 
+
+  
 
   
 
