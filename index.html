@@ -194,7 +194,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2024-03-26 08:50:58 / 修改时间：09:26:18" itemprop="dateCreated datePublished" datetime="2024-03-26T08:50:58+08:00">2024-03-26</time>
+              <time title="创建时间：2024-03-26 08:50:58 / 修改时间：14:13:16" itemprop="dateCreated datePublished" datetime="2024-03-26T08:50:58+08:00">2024-03-26</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,20 +252,14 @@
           <p>使用ssh远程windows端的时候默认使用cmd，而用powershell可以使用很多linux的命令，像<code>ls</code>，<code>ps</code>，<code>cd</code>什么的(实际上只是映射了一下)。<br>使用管理员权限在<em>PowerShell</em>执行以下命令，使SSH连接Windows时默认使用<em>Powershell</em>。</p>
 <pre><code class="lang-powershell">New-ItemProperty -Path &quot;HKLM:\SOFTWARE\OpenSSH&quot; -Name DefaultShell -Value &quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -PropertyType String -Force
 </code></pre>
-<p>但是今天远程Windows下开启<code>http-server</code>服务时却遇到一个奇怪的问题。</p>
-<blockquote>
-<p>这个问题也可以描述为: powershell中无法执行命令/脚本</p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090059.png" alt="20240326090059"><br>尝试了一下发现一部分命令是可以执行的，就考虑是不是权限相关的问题，通过多方查证，总结了以下解决办法:</p>
-<ul>
-<li>运行命令行查看系统权限:<pre><code class="lang-powershell">Get-ExecutionPolicy -List
-</code></pre>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090340.png" alt="20240326090340"></li>
-<li>通过这个命令发现<code>CurrentUser</code>的权限是<code>Undefined</code>，那么就是权限的问题，尝试以下命令通过增加权限解决<pre><code class="lang-powershell">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-</code></pre>
-修改后再次执行<code>Get-ExecutionPolicy -List</code>查看权限<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090815.png" alt="20240326090815"><br>再次开启<code>http-server</code>:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090934.png" alt="20240326090934"><br>成功！</li>
-</ul>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/03/26/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9C%A8cmd%E4%B8%AD%E8%83%BD%E6%89%A7%E8%A1%8C%E4%BD%86%E6%98%AF%E5%9C%A8PowerShell%E4%B8%AD%E6%8A%A5%E9%94%99/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -307,10 +301,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-03-25 15:06:45 / 修改时间：15:30:34" itemprop="dateCreated datePublished" datetime="2024-03-25T15:06:45+08:00">2024-03-25</time>
+              <time title="创建时间：2024-03-25 15:06:45" itemprop="dateCreated datePublished" datetime="2024-03-25T15:06:45+08:00">2024-03-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-26 14:12:51" itemprop="dateModified" datetime="2024-03-26T14:12:51+08:00">2024-03-26</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -366,34 +366,14 @@
 <p>安装配置时的依赖包</p>
 <pre><code class="lang-bash">yum install -y yum-utils device-mapper-persistent-data lvm2
 </code></pre>
-<p>配置阿里云的<code>yum</code>源</p>
-<pre><code class="lang-bash">yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-</code></pre>
-<p>查看仓库中所有的docker版本</p>
-<pre><code class="lang-bash">yum list docker-ce --showduplicates | sort -r
-</code></pre>
-<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240325151136.png" alt="20240325151136"><br>默认使用<code>yum install docker-ce</code>安装最新版的docker，当然也可以指定安装特定的版本</p>
-<pre><code class="lang-bash">yum install docker-ce-24.0* -y
-</code></pre>
-<p>验证是否安装成功</p>
-<pre><code class="lang-bash">docker --version
-</code></pre>
-<p>或者</p>
-<pre><code class="lang-bash">docker -v
-</code></pre>
-<h1 id="安装-Docker-compose"><a href="#安装-Docker-compose" class="headerlink" title="安装 Docker-compose"></a>安装 Docker-compose</h1><p>国外源安装:</p>
-<pre><code class="lang-bash">curl -SL https://github.com/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
-</code></pre>
-<p>国内源安装:</p>
-<pre><code class="lang-bash">curl -SL https://get.daocloud.io/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
-</code></pre>
-<p>赋予可执行权限:</p>
-<pre><code class="lang-bash">chmod +x /usr/local/bin/docker-compose
-</code></pre>
-<p>验证是否安装成功:</p>
-<pre><code class="lang-bash">docker compose version
-</code></pre>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/03/25/CentOS-7-%E5%AE%89%E8%A3%85docker%E5%92%8Cdocker-compose/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
