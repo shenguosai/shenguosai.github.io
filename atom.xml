@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2024-03-25T07:30:34.023Z</updated>
+  <updated>2024-03-26T01:26:18.494Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Windows命令行在cmd中能执行但是在PowerShell中报错</title>
+    <link href="http://shenguosai.github.io/2024/03/26/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9C%A8cmd%E4%B8%AD%E8%83%BD%E6%89%A7%E8%A1%8C%E4%BD%86%E6%98%AF%E5%9C%A8PowerShell%E4%B8%AD%E6%8A%A5%E9%94%99/"/>
+    <id>http://shenguosai.github.io/2024/03/26/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9C%A8cmd%E4%B8%AD%E8%83%BD%E6%89%A7%E8%A1%8C%E4%BD%86%E6%98%AF%E5%9C%A8PowerShell%E4%B8%AD%E6%8A%A5%E9%94%99/</id>
+    <published>2024-03-26T00:50:58.000Z</published>
+    <updated>2024-03-26T01:26:18.494Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用ssh远程windows端的时候默认使用cmd，而用powershell可以使用很多linux的命令，像<code>ls</code>，<code>ps</code>，<code>cd</code>什么的(实际上只是映射了一下)。<br>使用管理员权限在<em>PowerShell</em>执行以下命令，使SSH连接Windows时默认使用<em>Powershell</em>。</p><pre><code class="lang-powershell">New-ItemProperty -Path &quot;HKLM:\SOFTWARE\OpenSSH&quot; -Name DefaultShell -Value &quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -PropertyType String -Force</code></pre><p>但是今天远程Windows下开启<code>http-server</code>服务时却遇到一个奇怪的问题。</p><blockquote><p>这个问题也可以描述为: powershell中无法执行命令/脚本</p></blockquote><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090059.png" alt="20240326090059"><br>尝试了一下发现一部分命令是可以执行的，就考虑是不是权限相关的问题，通过多方查证，总结了以下解决办法:</p><ul><li>运行命令行查看系统权限:<pre><code class="lang-powershell">Get-ExecutionPolicy -List</code></pre><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090340.png" alt="20240326090340"></li><li>通过这个命令发现<code>CurrentUser</code>的权限是<code>Undefined</code>，那么就是权限的问题，尝试以下命令通过增加权限解决<pre><code class="lang-powershell">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>修改后再次执行<code>Get-ExecutionPolicy -List</code>查看权限<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090815.png" alt="20240326090815"><br>再次开启<code>http-server</code>:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090934.png" alt="20240326090934"><br>成功！</li></ul><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;使用ssh远程windows端的时候默认使用cmd，而用powershell可以使用很多linux的命令，像&lt;code&gt;ls&lt;/code&gt;，&lt;code&gt;ps&lt;/code&gt;，&lt;code&gt;cd&lt;/code&gt;什么的(实际上只是映射了一下)。&lt;br&gt;使用管理员权限在&lt;em&gt;Powe</summary>
+      
+    
+    
+    
+    <category term="Note" scheme="http://shenguosai.github.io/categories/Note/"/>
+    
+    <category term="Windows" scheme="http://shenguosai.github.io/categories/Note/Windows/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>CentOS 7 安装docker和docker-compose</title>
@@ -611,34 +635,6 @@
     <category term="Win-Software" scheme="http://shenguosai.github.io/categories/Tutorial/Win-Software/"/>
     
     <category term="Adobe" scheme="http://shenguosai.github.io/categories/Tutorial/Win-Software/Adobe/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>使用命令行抽取寄生(Calibre)</title>
-    <link href="http://shenguosai.github.io/2023/12/03/%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F-Calibre/"/>
-    <id>http://shenguosai.github.io/2023/12/03/%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F-Calibre/</id>
-    <published>2023-12-03T15:12:02.000Z</published>
-    <updated>2023-12-03T15:16:48.215Z</updated>
-    
-    <content type="html"><![CDATA[<pre><code>% calibre -lvs -hier -auto rule.file% calibre -xrc -pdb -rcc -xcell cell.file rule.file% calibre -xrc -fmt -all -xcell cell.file rule.file</code></pre><p>rule.file 中应指定layout(gds)的路径及文件名<br><a href="https://www.engr.colostate.edu/ECE571/class_materials/xcalibre_instructions.htm">Instructions for Extracting Parasitics for your Layout using xCalibre Tool</a></p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;pre&gt;&lt;code&gt;% calibre -lvs -hier -auto rule.file
-% calibre -xrc -pdb -rcc -xcell cell.file rule.file
-% calibre -xrc -fmt -all -xcell cell.fil</summary>
-      
-    
-    
-    
-    <category term="Semiconductor" scheme="http://shenguosai.github.io/categories/Semiconductor/"/>
-    
-    <category term="post-sim" scheme="http://shenguosai.github.io/categories/Semiconductor/post-sim/"/>
-    
-    <category term="EDA" scheme="http://shenguosai.github.io/categories/Semiconductor/EDA/"/>
     
     
   </entry>
