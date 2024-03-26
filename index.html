@@ -226,7 +226,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>719</span>
+              <span>708</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -245,8 +245,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h1><p>更新 <code>yum</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum update<br></code></pre></td></tr></table></figure><br>安装配置时的依赖包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install -y yum-utils device-mapper-persistent-data lvm2<br></code></pre></td></tr></table></figure><br>配置阿里云的<code>yum</code>源<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo<br></code></pre></td></tr></table></figure><br>查看仓库中所有的docker版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum list docker-ce --showduplicates | <span class="hljs-built_in">sort</span> -r<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240325151136.png" alt="20240325151136"><br>默认使用<code>yum install docker-ce</code>安装最新版的docker，当然也可以指定安装特定的版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install docker-ce-24.0* -y<br></code></pre></td></tr></table></figure><br>验证是否安装成功<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker --version<br></code></pre></td></tr></table></figure><br>或者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker -v<br></code></pre></td></tr></table></figure></p>
-<h1 id="安装-Docker-compose"><a href="#安装-Docker-compose" class="headerlink" title="安装 Docker-compose"></a>安装 Docker-compose</h1><p>国外源安装:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -SL https://github.com/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure><br>国内源安装:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -SL https://get.daocloud.io/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure><br>赋予可执行权限:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> +x /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure><br>验证是否安装成功:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker compose version<br></code></pre></td></tr></table></figure></p>
+          <h1 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h1><p>更新 <code>yum</code></p>
+<pre><code class="lang-bash">yum update
+</code></pre>
+<p>安装配置时的依赖包</p>
+<pre><code class="lang-bash">yum install -y yum-utils device-mapper-persistent-data lvm2
+</code></pre>
+<p>配置阿里云的<code>yum</code>源</p>
+<pre><code class="lang-bash">yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+</code></pre>
+<p>查看仓库中所有的docker版本</p>
+<pre><code class="lang-bash">yum list docker-ce --showduplicates | sort -r
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240325151136.png" alt="20240325151136"><br>默认使用<code>yum install docker-ce</code>安装最新版的docker，当然也可以指定安装特定的版本</p>
+<pre><code class="lang-bash">yum install docker-ce-24.0* -y
+</code></pre>
+<p>验证是否安装成功</p>
+<pre><code class="lang-bash">docker --version
+</code></pre>
+<p>或者</p>
+<pre><code class="lang-bash">docker -v
+</code></pre>
+<h1 id="安装-Docker-compose"><a href="#安装-Docker-compose" class="headerlink" title="安装 Docker-compose"></a>安装 Docker-compose</h1><p>国外源安装:</p>
+<pre><code class="lang-bash">curl -SL https://github.com/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+</code></pre>
+<p>国内源安装:</p>
+<pre><code class="lang-bash">curl -SL https://get.daocloud.io/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+</code></pre>
+<p>赋予可执行权限:</p>
+<pre><code class="lang-bash">chmod +x /usr/local/bin/docker-compose
+</code></pre>
+<p>验证是否安装成功:</p>
+<pre><code class="lang-bash">docker compose version
+</code></pre>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
@@ -436,14 +467,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>192k</span>
+              <span>190k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2:55</span>
+              <span>2:52</span>
             </span>
 
         </div>
@@ -571,8 +602,21 @@
           <h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h2><p>查了一下订单，2015年5月回国的时候给爸爸和我买了两台小米Note，应该用了没有多久就出问题了一直闲置在家。上网查了一下回收价只有2元，所以就像改造一下看能不能当个简单的服务器来使用。</p>
 <h2 id="2-准备"><a href="#2-准备" class="headerlink" title="2. 准备"></a>2. 准备</h2><h3 id="2-1-小米手机助手"><a href="#2-1-小米手机助手" class="headerlink" title="2.1 小米手机助手"></a>2.1 小米手机助手</h3><p>近些年一直都没有关注小米，上网一查发现小米官网已经不开放手机助手的下载了，在网上找到这么一个网页:<a target="_blank" rel="noopener" href="https://miuiver.com/mi-phone-assistant/">MiPhoneAssistant 小米手机助手下载合集</a>。<br>留个底:<br>由于小米助手官方已经很久没更新了，最近一次更新是 2021-10-28，所以强烈不建议在这之后发布的手机和 MIUI 版本上使用，大概率会有适配兼容问题，备份恢复功能很可能不能按预期工作，它只适合在老机型和 MIUI 老版本上使用！</p>
 <p>下面是小米助手官方下载地址，版本由新到旧排列，可按个人喜好或需要选择。<br><a target="_blank" rel="noopener" href="https://miuirom.xiaomi.com/rom/u1106245679/4.2.1028.10/MiAssistant-4.2.1028.10.zip">https://miuirom.xiaomi.com/rom/u1106245679/4.2.1028.10/MiAssistant-4.2.1028.10.zip</a><br><a target="_blank" rel="noopener" href="https://miuirom.xiaomi.com/rom/u1106245679/3.2.522.32/MiAssistant-3.2.522.32.zip">https://miuirom.xiaomi.com/rom/u1106245679/3.2.522.32/MiAssistant-3.2.522.32.zip</a><br><a target="_blank" rel="noopener" href="https://miuirom.xiaomi.com/rom/u491047765/2.3.0.4071/mipctoolexe-2.3.0.4071.exe">https://miuirom.xiaomi.com/rom/u491047765/2.3.0.4071/mipctoolexe-2.3.0.4071.exe</a><br><a target="_blank" rel="noopener" href="https://miuirom.xiaomi.com/rom/u491047765/2.3.0.3101/mipctoolexe-2.3.0.3101.exe">https://miuirom.xiaomi.com/rom/u491047765/2.3.0.3101/mipctoolexe-2.3.0.3101.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.3.0.1031_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.3.0.1031_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.7241_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.7241_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.6261_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.6261_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.4091_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.4091_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.3171_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.3171_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.2131_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.2131_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.1301_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.1301_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.12251_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.12251_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.11211_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.11211_2717.exe</a></p>
-<p>文件 MD5 校验值如下。<br><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dns">b9aaa49dd92a828179b4994b1eb82136  MiAssistant-<span class="hljs-number">3.2.522</span>.<span class="hljs-number">32</span>.zip<br><span class="hljs-number">7</span>bc76814006a340667dbe72669c66e1f  MiAssistant-<span class="hljs-number">4.2.1028</span>.<span class="hljs-number">10</span>.zip<br>b4ebf49b441a3f4997fc1ac<span class="hljs-number">4a82486a5</span>  mipctoolexe-<span class="hljs-number">2</span>.<span class="hljs-number">3.0.3101</span>.exe<br>d274427550884f389c7e417a13bfd3c1  mipctoolexe-<span class="hljs-number">2</span>.<span class="hljs-number">3.0.4071</span>.exe<br>d4580a3adff0db692f7a0420b568499f  MiSetup2.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>.<span class="hljs-number">11211_2717</span>.exe<br><span class="hljs-number">936</span>fc4c41e247baf21528e13e26e577e  MiSetup2.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>.<span class="hljs-number">12251_2717</span>.exe<br><span class="hljs-number">8251</span>f9670237d91f22cc70fa<span class="hljs-number">8f910086</span>  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1301_2717</span>.exe<br><span class="hljs-number">80</span>a68985a0d063d32d7884d008a0a71e  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">2131_2717</span>.exe<br><span class="hljs-number">98</span>c7c5185ee0cd2f1940fcc<span class="hljs-number">8a0f95f99</span>  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">3171_2717</span>.exe<br>e1073d32737075b51709c9a2b1c0cc99  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">4091_2717</span>.exe<br>aea5d32a8c4839fc35a2ed4fbb53e70f  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">6261_2717</span>.exe<br><span class="hljs-number">62d</span>3bd3427038a67ea8772972da1f82f  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">7241_2717</span>.exe<br><span class="hljs-number">539</span>cd92545f27978e2fe29aae<span class="hljs-number">527d4b2</span>  MiSetup2.<span class="hljs-number">3</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1031_2717</span>.exe<br></code></pre></td></tr></table></figure></p>
-<p>尝试了一下上面下载地址的前4个还可以下载，但是后面的已经无法打开了，会提示<code>403 Forbidden</code>。</p>
+<p>文件 MD5 校验值如下。</p>
+<pre><code>b9aaa49dd92a828179b4994b1eb82136  MiAssistant-3.2.522.32.zip
+7bc76814006a340667dbe72669c66e1f  MiAssistant-4.2.1028.10.zip
+b4ebf49b441a3f4997fc1ac4a82486a5  mipctoolexe-2.3.0.3101.exe
+d274427550884f389c7e417a13bfd3c1  mipctoolexe-2.3.0.4071.exe
+d4580a3adff0db692f7a0420b568499f  MiSetup2.1.0.11211_2717.exe
+936fc4c41e247baf21528e13e26e577e  MiSetup2.1.0.12251_2717.exe
+8251f9670237d91f22cc70fa8f910086  MiSetup2.2.0.1301_2717.exe
+80a68985a0d063d32d7884d008a0a71e  MiSetup2.2.0.2131_2717.exe
+98c7c5185ee0cd2f1940fcc8a0f95f99  MiSetup2.2.0.3171_2717.exe
+e1073d32737075b51709c9a2b1c0cc99  MiSetup2.2.0.4091_2717.exe
+aea5d32a8c4839fc35a2ed4fbb53e70f  MiSetup2.2.0.6261_2717.exe
+62d3bd3427038a67ea8772972da1f82f  MiSetup2.2.0.7241_2717.exe
+539cd92545f27978e2fe29aae527d4b2  MiSetup2.3.0.1031_2717.exe
+</code></pre><p>尝试了一下上面下载地址的前4个还可以下载，但是后面的已经无法打开了，会提示<code>403 Forbidden</code>。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
@@ -1059,7 +1103,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.8k</span>
+              <span>1.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1330,12 +1374,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">262k</span>
+    <span title="站点总字数">259k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:58</span>
+    <span title="站点阅读时长">3:55</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>

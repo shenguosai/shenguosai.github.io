@@ -263,7 +263,8 @@
 
       
         <h2 id="Cadence"><a href="#Cadence" class="headerlink" title="Cadence"></a>Cadence</h2><h4 id="Virtuoso"><a href="#Virtuoso" class="headerlink" title="Virtuoso"></a>Virtuoso</h4><ol>
-<li>.cdsinit: 负责Cadence软件的初始化配置，包括加载快捷方式、嵌入Calibre软件接口等。<span id="more"></span>
+<li><p>.cdsinit: 负责Cadence软件的初始化配置，包括加载快捷方式、嵌入Calibre软件接口等。</p>
+<span id="more"></span>
 <ul>
 <li>示例存放目录:<code>Candence安装目录/tools/dfII/samples/local/cdsinit</code></li>
 <li>读取顺序: <blockquote>
@@ -271,9 +272,35 @@
 </blockquote>
 </li>
 <li>设置默认读取的display.drf文件:    <pre>drLoadDrf(<em>filePath</em>)</pre></li>
-<li>设置默认快捷键文件:<ul>
+<li><p>设置默认快捷键文件:</p>
+<ul>
 <li>添加单个快捷键文件 <pre>load("/home/IC/Desktop/workspace/analog_ic/set_env/bindKeys_ICSkillSharing.il")</pre></li>
-<li>添加多个快捷键文件 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs skill">let((bindKeyFileList file path saveSkillPath)<br>    bindKeyFileList = &#x27;(<br>        &quot;leBindKeys.il&quot;<br>        &quot;schBindKey.il&quot;<br>        &quot;bindKeys_ICSkillSharing.il&quot;<br>    )<br>)<br>; This is the path that is searched for the files<br>    path = strcat(<br>; If you want to add another path add it here as a string<br>        &quot;. ~/home/IC/Desktop/workspace/analog_ic/set_env &quot;<br>        prependInstallPath(&quot;local&quot;)<br>        prependInstallPath(&quot;samples/local&quot;)<br>    )<br>saveSkillPath = getSkillPath()<br>saveSkillPath(path)<br><br>foreach(file bindKeyFileList<br>    if(isFile(file) then<br>        loadi(file)<br>    )<br>)<br>setSkillPath(saveSkillPath)<br></code></pre></td></tr></table></figure></li>
+<li><p>添加多个快捷键文件</p>
+<pre><code class="lang-skill"> let((bindKeyFileList file path saveSkillPath)
+     bindKeyFileList = &#39;(
+         &quot;leBindKeys.il&quot;
+         &quot;schBindKey.il&quot;
+         &quot;bindKeys_ICSkillSharing.il&quot;
+     )
+ )
+ ; This is the path that is searched for the files
+     path = strcat(
+ ; If you want to add another path add it here as a string
+         &quot;. ~/home/IC/Desktop/workspace/analog_ic/set_env &quot;
+         prependInstallPath(&quot;local&quot;)
+         prependInstallPath(&quot;samples/local&quot;)
+     )
+ saveSkillPath = getSkillPath()
+ saveSkillPath(path)
+
+ foreach(file bindKeyFileList
+     if(isFile(file) then
+         loadi(file)
+     )
+ )
+ setSkillPath(saveSkillPath)
+</code></pre>
+</li>
 </ul>
 </li>
 <li>快捷键设置:<ul>
@@ -301,9 +328,26 @@
 <li>设置仿真结果显示有效位数:(示例文件中有，通过搜索改变赋值即可,以下同)   <pre>auCore.misc labelDigits int 6</pre></li>
 <li>改变仿真结果保存路径:   <pre>asimenv.startup projectDir string" ./simulation"</pre></li>
 <li>按Library名称设置仿真结果保存路径:<br>   <pre>asimenv.startup appendLibNameToProjectDir boolean t</li>
-<li>设置原理图和版图中的 label 默认字体改为 roman:   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs skill">schematic createLabelFontStyle cyclic &quot;roman&quot;<br>layout labelFontStyle cyclic &quot;roman&quot;<br></code></pre></td></tr></table></figure></li>
-<li>设置版图网格点默认值:视工艺而定   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs skill">layout xSnapSpacing float 0.005<br>layout ySnapSpacing float 0.005<br></code></pre></td></tr></table></figure></li>
-<li>设置仿真波形与坐标显示:   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs skill">viva.graph  titleFont  string  &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.rectGraph    background  string  &quot;white&quot;<br>viva.axis     font   string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.horizMarker font    string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.vertMarker     font    string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.referenceLineMarker    font  string    &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>...<br>viva.trace  lineThickness  string  &quot;Thick&quot;<br>viva.trace  lineStyle  string  &quot;solid&quot;<br>wavescan.trace  lineThickness  string  &quot;Thick&quot;<br>wavescan.trace  lineStyle  string  &quot;solid&quot;<br></code></pre></td></tr></table></figure>
+<li>设置原理图和版图中的 label 默认字体改为 roman:<pre><code class="lang-skill">   schematic createLabelFontStyle cyclic &quot;roman&quot;
+   layout labelFontStyle cyclic &quot;roman&quot;
+</code></pre>
+</li>
+<li>设置版图网格点默认值:视工艺而定<pre><code class="lang-skill">   layout xSnapSpacing float 0.005
+   layout ySnapSpacing float 0.005
+</code></pre>
+</li>
+<li>设置仿真波形与坐标显示:<pre><code class="lang-skill">   viva.graph  titleFont  string  &quot;Default,14,-1,5,75,0,0,0,0,0&quot;
+   viva.rectGraph    background  string  &quot;white&quot;
+   viva.axis     font   string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;
+   viva.horizMarker font    string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;
+   viva.vertMarker     font    string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;
+   viva.referenceLineMarker    font  string    &quot;Default,14,-1,5,75,0,0,0,0,0&quot;
+   ...
+   viva.trace  lineThickness  string  &quot;Thick&quot;
+   viva.trace  lineStyle  string  &quot;solid&quot;
+   wavescan.trace  lineThickness  string  &quot;Thick&quot;
+   wavescan.trace  lineStyle  string  &quot;solid&quot;
+</code></pre>
    其中<code>viva.axis font string &quot;Defaut,14,-1,5,75,0,0,0,0,0&quot;</code>中的 14 为字号；75 为颜色深度，可以理解为是否加粗，取值在0-99之间。<blockquote>
 <p><b>注意</b>:仿真波形显示方法会与 PDK 中环境变量设置和 display.drf 文件中的设置有关，如果按照上面的方法设置完后不能达到实际效果，首先考虑是否是 PDK 自带脚本加载了其它软件变量或者使用的 display.drf 文件中做了相应修改，如果发现有问题可以修改 PDK 中环境变量或者 display.drf 文件的相应设置。</p>
 </blockquote>
@@ -312,7 +356,13 @@
 <blockquote>
 <p><b>特别注意</b>: 可能按照上面的方法设置完.cdsenv文件之后，发现设置并未生效，这时候需要注意一个问题，<b>Cadence每次启动时都会加载 .cdsinit 文件，然而对于 .cdsenv 文件并非如此，而且 .cdsenv文件中的变量值会被覆盖，具体软件加载 .cdsenv 文件的顺序需要再用户的环境变量设置文件中定义。</b>一般叫做 .bashrc (使用 export 定义环境变量)或者 .cshrc (使用 setenv 定义环境变量)。</p>
 </blockquote>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 加载软件启动目录下的 .cdsenv 文件</span><br><span class="hljs-built_in">export</span> CDS_LOAD_ENV = CWD(setenv CDS_LOAD_ENV CWD)<br><br><span class="hljs-comment"># 首先加载用户主目录下的 .cdsenv 文件，然后加载软件启动目录下的 .cdsenv 文件。</span><br><span class="hljs-built_in">export</span> CDS_LOAD_ENV = addCWD(setenv CDS_LOAD_ENV addCWD)<br></code></pre></td></tr></table></figure></li>
+<pre><code class="lang-bash">   # 加载软件启动目录下的 .cdsenv 文件
+   export CDS_LOAD_ENV = CWD(setenv CDS_LOAD_ENV CWD)
+
+   # 首先加载用户主目录下的 .cdsenv 文件，然后加载软件启动目录下的 .cdsenv 文件。
+   export CDS_LOAD_ENV = addCWD(setenv CDS_LOAD_ENV addCWD)
+</code></pre>
+</li>
 </ul>
 </li>
 <li>display.drf: 一般在工艺库中会有初始化的显示文件。这里面会有电路的连线粗细及颜色，器件的一些显示，版图layout里面的layer颜色等等，还有ADE波形图里面的线的属性。总之就是显示相关的一些设置。<ul>
@@ -509,12 +559,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">262k</span>
+    <span title="站点总字数">259k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:58</span>
+    <span title="站点阅读时长">3:55</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
