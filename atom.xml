@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2024-03-26T14:58:46.613Z</updated>
+  <updated>2024-03-27T09:56:31.664Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>&lt;转&gt;【Darwin】越狱后玩耍IPhone系统</title>
+    <link href="http://shenguosai.github.io/2024/03/27/%E8%BD%AC-%E3%80%90Darwin%E3%80%91%E8%B6%8A%E7%8B%B1%E5%90%8E%E7%8E%A9%E8%80%8DIPhone%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://shenguosai.github.io/2024/03/27/%E8%BD%AC-%E3%80%90Darwin%E3%80%91%E8%B6%8A%E7%8B%B1%E5%90%8E%E7%8E%A9%E8%80%8DIPhone%E7%B3%BB%E7%BB%9F/</id>
+    <published>2024-03-27T09:21:46.000Z</published>
+    <updated>2024-03-27T09:56:31.664Z</updated>
+    
+    <content type="html"><![CDATA[<p>无意中找到一个介绍越狱后iOS的说明，受益匪浅，转一下:<a href="https://www.cnblogs.com/franknihao/p/7360695.html">【Darwin】 越狱后玩耍IPhone系统</a></p><p>大家都知道 iOS 是自 Mac OS 修改而来的。而 Mac OS 和 iOS 的共同核心是 Darwin, 其基于 FreeBSD 发展而来, 整体而言也是个类Unix系统。之前把自己的手机越狱之后正好开始接触 Linux 这类 OS，然后觉得很有意思就去网上找了些资料来自己玩自己的手机，也做了一些笔记。说来惭愧，当时手机系统版本还是 8.3。而后来也因为没什么时间加上这部分笔记维护在另外一个笔记本上，导致一直没有时间记录下来【捂脸】。本来想等 10.3 的越狱出来，把Pad越狱之后再来详细研究的，无奈 10.3 越狱也迟迟不出，不得已，只好现在来记录一下了。。<br>没有什么干货的技术知识，全部都是一点个人的爱折腾手机的小兴趣，系统版本又老。。嗯就这样吧。</p><h1 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h1><p>IPhone 越狱后，第一标志当然就是在桌面上看到了 Cydia。作为折腾手机的第一步，当然是要让手机有本地命令行来装逼了。如果没记错的话，几年前越狱的时候还是会附带一个命令行工具的，现在好像必须得自己下载安装了。进入 Cydia，搜索安装 MTerminal 这个命令行工具。其他也有一些命令行工具比如 mobileTerminal 什么的，不过那些好像都已经过时了，新系统们都打不开。打开 MTerminal 默认用户是 mobile，退出时自动也会退出这个用户，不用担心用户进程会留存在机器上。还有一点比较有意思的是 MTerminal 的非键盘区域，点击靠上下左右的边部区域就像是键盘上按上下左右方向键，所以可以进行退格和重复上条命令等操作。至于 Tab 键自动补全命令什么的操作至今还未发现。。<br>有了命令行，但是在手机上敲命令太蛋疼了，我们最好能通过电脑连入手机，这样方便多了。第一个想到的当然是通过 SSH。在 Cydia 安装 openSSH，之后就可以通过 22 端口远程连接手机了。一般可以直接用 root 用户连入手机，进入之后的第一件事<br><strong>千万要记得改root账户的密码，所有越狱后的IPhone手机root用户的默认密码都是一样的！！！都是 alpine ！不马上改掉，那随便什么人都可以直接连入你的 IPhone，你就没有任何安全可言了。</strong><br>改完密码之后，就可以对字符界面的 iOS 做一些改造让它看起来更像是一台服务器了。</p><h1 id="适当改造"><a href="#适当改造" class="headerlink" title="适当改造"></a>适当改造</h1><p>首先可以在<code>/etc/profile</code>中加上对环境变量 PS1 的定义，这个变量决定的是字符提示行的样式。这个文件是什么作用在 Linux 笔记中说过了，就不说了，样式可以选择<code>[\u@\h \W]\$</code>这款。在文件中加上<code>export PS1=&#39;[\u@\h \W]\$&#39;</code>即可。<br>默认的<code>ls</code>命令出来的文件没有任何颜色特效，看起来很累。可以加上<code>LS_COLORS</code>这个环境变量，至于具体的值怎么写可以参见已经配置好的 CentOS 系统等等，我这里给出一个参考：</p><pre><code class="lang-bash">export LS_COLORS=&#39;no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=01;32:*.cmd=01;35:*.exe=01;35:*.com=01;35:*.btm=01;35:*.bat=01;35:*.sh=01;35:*.csh=01;35:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tz=01;31:*.rpm=01;31:*.cpio=01;31:*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.xbm=01;35:*.xpm=01;35:*.png=01;35:*.tif=01;35:&#39;</code></pre><p>在设置好了配置文件之后<code>source</code>之以生效，至于<code>ls</code>的颜色，如果还是没有效果记得看一下<code>ls</code>有没有默认<code>alias ls=&#39;ls --color&#39;</code>，必须带上<code>color</code>参数<code>ls</code>才会显色。<br>忘记了系统是否自带了 vim 程序，应该是没有，那就需要安装。vim 的样式文件 vimrc 不放在<code>/etc/vimrc</code>，而是放到<code>/usr/share/vim/</code>目录下面去。</p><h1 id="常用工具安装"><a href="#常用工具安装" class="headerlink" title="常用工具安装"></a>常用工具安装</h1><p>在 CentOS 上习惯了用<code>yum</code>安装包，但是这里没有<code>yum</code>，只有<code>apt-get</code>。用法是类似的：</p><pre><code class="lang-bash">apt-get install &lt;PackageName&gt;　　# 安装某个包apt-get update　　# 更新 apt 源（是不是有点眼熟，其实估计 Cydi 里面的更新源就是运行了下这个命令）apt-get remove &lt;PackageName&gt;　　# 卸载某个包</code></pre><p>在update过后，apt会把所有更新到的包信息放到缓存里面，如果想要从最新的包信息中搜寻某个特定的包可以执行：</p><pre><code class="lang-bash">apt-cache search &lt;PackageName&gt;</code></pre><p>这条命令用的还是模糊搜索，可以帮助你寻找想要装的包名到底叫什么。由于一般人记的肯定是命令名而不是包名，所以下面给出的是一些命令和它们所在包的名字。如果想用这些命令就<code>apt-get install</code>安装这些包吧:</p><div class="table-container"><table><thead><tr><th>Tools Name</th><th>Package Name</th></tr></thead><tbody><tr><td>ifconfig, netstat, route</td><td>network-cmds</td></tr><tr><td>curl</td><td>cURL</td></tr><tr><td>top</td><td>top</td></tr><tr><td>wget</td><td>wget</td></tr><tr><td>finger,last,ps</td><td>adv-cmds</td></tr><tr><td>vim</td><td>vim</td></tr><tr><td>locate</td><td>mlocate</td></tr><tr><td>lrz,lsz (命令名和 linux上 略有出入，linux 上是直接 rz，sz，这里多个 l )</td><td>org.thebigboss.lrzsz</td></tr><tr><td>gcc</td><td>iphon-gcc</td></tr><tr><td>less</td><td>less</td></tr></tbody></table></div><p>这里稍微提醒一句，如果通过SSH经电脑连入手机操作，虽然是在电脑上打命令，不过网络走的还是手机的路，所以要注意手机别开 4G 跑流量了。。。<br>另外装了一个新包之后不知道有什么用或者怎么用时可以到手机端 Cydia—已安装—&lt;包名&gt; 里面，划到最下面的文件系统内容中，看这个包具体安装了的哪些文件，有什么文件被安装到了<code>/usr/bin</code>这种目录下，那个文件自然就是一个命令了。</p><h1 id="一些酷酷的事情"><a href="#一些酷酷的事情" class="headerlink" title="一些酷酷的事情"></a>一些酷酷的事情</h1><p>上面装的一些东西都是管理机器必须的，实用的工具。还有一些比较花哨，适合用于装逼的工具。比如下面：</p><h2 id="远程打开程序"><a href="#远程打开程序" class="headerlink" title="远程打开程序"></a>远程打开程序</h2><p>bigboss源上有个叫做 open(com.conadkramer.open) 的插件，装上之后可以在 SSH 里输入<code>open &lt;APPID&gt;</code>命令来远程让手机打开一个 APP。APPID 是每个 APP 目录下的 plist.xml 文件中记录的<code>CFBundleIdent.fier</code>的值，比如 safari 的话就是 com.Apple.mobilesafari ，系统自带的音乐的话就是 com.Apple.Music。</p><h2 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h2><p><code>netstat -ntlp</code>在这个系统里不管用，要用只能用<code>netstat -an</code>。而<code>-p</code>在这里的 netstat 是 protocol 的意思。所以你可以<code>netstat -ntlp TCP</code>来显示所有 TCP 连接的情况。</p><h2 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h2><p>Cydia 中搜索一下 Python，似乎可以找到一个 python2.5.1 版本的包，虽然老了点，但是勉强凑合可以用。至于用源码进行安装我没有试过，估计也可以吧。装上 python 之后就可以更加剧烈地折腾手机了。比方说为了安全性考虑，我的手机平时都是关闭 22 端口的，想要开启的时候再开。于是就写了一个 python 脚本，做成命令来手动开关 22 端口的访问。</p><h2 id="启停服务"><a href="#启停服务" class="headerlink" title="启停服务"></a>启停服务</h2><p>其实上面说的那个 python 脚本就是调用了启停服务的命令。在<code>/Library/LaunchDaemons</code>和<code>/Library/LaunchAgents</code>下面有很多跟服务相关的 plist 文件。<code>LaunchDaemons</code>指系统启动时自动启动的程序，而<code>LaunchAgents</code>中存放的是针对某个用户登录时自动启动的程序的配置。<br>想要启动或停止一个服务，可以这么操作：　　</p><pre><code class="lang-bash">launchctl load/unload -w &lt;plist的路径&gt;</code></pre><p>因为指定了 plist 文件的路径，所以 plist 文件未必一定要在那两个指定目录下，完全可以拷贝出来然后自己手动指定它的路径以启动。</p><h2 id="媒体和-APP-文件的位置-系统版本比较老，估计新版本系统已经有变化了"><a href="#媒体和-APP-文件的位置-系统版本比较老，估计新版本系统已经有变化了" class="headerlink" title="媒体和 APP 文件的位置(系统版本比较老，估计新版本系统已经有变化了)"></a>媒体和 APP 文件的位置(系统版本比较老，估计新版本系统已经有变化了)</h2><p>自带播放器的音乐和视频文件都放在<code>/private/var/mobile/Media/ITunes_Control</code>里面，但是文件名是被点窜过的，要用一定的手段来定位寻找特定的文件。（比如看大小，看修改日期，MP3 文件的话还可以解析其标签来判断是什么歌等等）<br>用户的 APP 的文件基本上都放在<code>/private/var/mobile/Container/Data/Application/&lt;一个被点窜过的目录名&gt;</code>。因为目录名是一串没有规律的，很难定位哪个目录对应哪个 APP。办法还是有的，比如可以通过脚本把每个目录的大小算出来，然后比较一下手机里的信息。还有定位特定的文件等等，方法就靠灵活自己想了 。</p><h1 id="如何通过-usb-直接连系统后台"><a href="#如何通过-usb-直接连系统后台" class="headerlink" title="如何通过 usb 直接连系统后台"></a>如何通过 usb 直接连系统后台</h1><p>上面连接进 iOS 系统都是通过了 WIFI 这个媒介。虽然方便一些，但是存在速度稍慢，安全性有疑问等问题。其实我们可以通过一些手段通过 USB 来模拟 SSH 连接，这样通过一条数据线，即使没有WIFI也可以做到连接系统了。<br>做法是首先确保系统中有合适的驱动。Mac 之类的机器就不用说了肯定是有的，像没有装 itunes 的 windows 机器的话可以下载安装<code>AppleApplicationSupport</code>和<code>AppleMobileDeviceSupport</code>这两个驱动程序，只要有这两个就行，也不用安装整个庞大的 itunes了。<br>然后，我们下载一个名叫<em>usbmxud</em>的工具。这个百度一下就能下载到了，然后在命令行运行一下这个工具中的一个脚本：</p><pre><code class="lang-bash">python &lt;usbmuxd目录&gt;/python-client/tcprelay.py -t 22:10022</code></pre><p>然后这个程序就会在 PC 端开启本地的 10022 端口，并把这个端口映射到 iOS 端的 22 端口。只要 iOS 开了 22 端口，就可以在本地通过工具 ssh 连接 10022 端口就可以了。<br>同理，不仅限于 22 端口，其他任何 iOS 上的端口都可以进行映射。非常好用。</p><h1 id="iOS上一些重要文件的位置等"><a href="#iOS上一些重要文件的位置等" class="headerlink" title="iOS上一些重要文件的位置等"></a>iOS上一些重要文件的位置等</h1><p>这位大神的博客还挺有参考价值的。<br><a href="http://www.cnblogs.com/ygm900/category/538781.html">http://www.cnblogs.com/ygm900/category/538781.html</a></p><blockquote><p>短信数据库的存放位置在ios的：<code>/private/var/mobile/Library/SMS/sms.db</code><br>联系人数据库存放的位置在ios的：<code>//private/var/mobile/Library/AddressBook/AddressBook.sqlitedb</code><br>联系人的头像估计存放在这里：<code>//private/var/mobile/Library/AddressBook/AddressBookImages.sqlitedb</code><br>通话记录数据库的存放路径是：<code>//private/var/wireless/Library/CallHistory/call_history.db</code><br>备忘录数据库的存放路径是：<code>//private/var/mobile/Library/Notes/notes.sqlite</code><br>safira 浏览器的收藏夹数据库存放路径是：<code>//private/var/mobile/Library/Safari/Bookmarks.db</code><br>日历数据库的存放路径是：<code>//private/var/mobile/Library/Calendar/Calendar.sqlitedb</code></p></blockquote><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;无意中找到一个介绍越狱后iOS的说明，受益匪浅，转一下:&lt;a href=&quot;https://www.cnblogs.com/franknihao/p/7360695.html&quot;&gt;【Darwin】 越狱后玩耍IPhone系统&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;大家都知道 iOS 是自 Ma</summary>
+      
+    
+    
+    
+    <category term="Note" scheme="http://shenguosai.github.io/categories/Note/"/>
+    
+    <category term="SmartPhone" scheme="http://shenguosai.github.io/categories/Note/SmartPhone/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>删除docker容器和镜像</title>
@@ -465,172 +490,6 @@
     
     
     <category term="工艺" scheme="http://shenguosai.github.io/tags/%E5%B7%A5%E8%89%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VIM学习笔记--状态行</title>
-    <link href="http://shenguosai.github.io/2023/12/06/VIM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%8A%B6%E6%80%81%E8%A1%8C/"/>
-    <id>http://shenguosai.github.io/2023/12/06/VIM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%8A%B6%E6%80%81%E8%A1%8C/</id>
-    <published>2023-12-06T15:33:25.000Z</published>
-    <updated>2023-12-12T15:54:28.260Z</updated>
-    
-    <content type="html"><![CDATA[<center>状态行参数列表</center><div class="table-container"><table><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td>%(…%)</td><td>定义一个项目</td></tr><tr><td>%{n}*</td><td>%对其余的行使用高亮显示组<code>User n</code>，知道另一个<code>%n*</code>。数字<code>n</code> 必须从<code>1</code>到<code>9</code>。用<code>%*</code>或<code>%0*</code>可以恢复正常的高亮显示。</td></tr><tr><td>%&lt;</td><td>如果状态行过长，在何处换行。缺省是在开头。</td></tr><tr><td>%=</td><td>左对齐和右对齐之间的分割点。</td></tr><tr><td>%</td><td>字符<code>%</code></td></tr><tr><td>%B</td><td>光标下字符的十六进制形式。</td></tr><tr><td>%F</td><td>缓冲区的文件完整路径。</td></tr><tr><td>%H</td><td>如果为帮助缓冲区则显示为<code>HLP</code>。</td></tr><tr><td>%L</td><td>缓冲区中的行数。</td></tr><tr><td>%M</td><td>如果缓冲区修改过则显示未<code>+</code>。</td></tr><tr><td>%N</td><td>打印机页号。</td></tr><tr><td>%O</td><td>以十六进制方式显示文件中的字符偏移。</td></tr><tr><td>%P</td><td>文件中光标前的<code>%</code>。</td></tr><tr><td>%R</td><td>如果缓冲区只读则为<code>RO</code>。</td></tr><tr><td>%V</td><td>列数。如果与<code>%c</code>相同则为空字符。</td></tr><tr><td>%W</td><td>如果窗口为预览窗口则为<code>PRV</code>。</td></tr><tr><td>%Y</td><td>缓冲区的文件类型，如 vim。</td></tr><tr><td>%a</td><td>如果编辑多行文本，这个字行串就是<code>(&#123;current&#125; of &#123;arguments&#125;)</code>，例如: <code>(5 of 18)</code>。如果在命令行中只有一行，这个字符串为空。</td></tr><tr><td>%b</td><td>光标下的字符的十进制表示形式。</td></tr><tr><td>%c</td><td>列号。</td></tr><tr><td>%f</td><td>缓冲区的文件路径。</td></tr><tr><td>%h</td><td>如果为帮助缓冲区显示为<code>[Help]</code>。</td></tr><tr><td>%l</td><td>行号。</td></tr><tr><td>%m</td><td>如果缓冲区已修改则表示为<code>[+]</code>。</td></tr><tr><td>%n</td><td>缓冲区号。</td></tr><tr><td>%o</td><td>在光标前的字符数(包括光标下的字符)。</td></tr><tr><td>%p</td><td>文件中所在行的百分比。</td></tr><tr><td>%r</td><td>如果缓冲区为只读则表示为<code>[RO]</code>。</td></tr><tr><td>%t</td><td>文件名(无路径)。</td></tr><tr><td>%v</td><td>虚列号。</td></tr><tr><td>%w</td><td>如果为预览窗口则显示为<code>[Preview]</code>。</td></tr><tr><td>%y</td><td>缓冲区的文件类型，如<code>[vim]</code>。</td></tr><tr><td>%{expr}</td><td>表达式的结果。</td></tr></tbody></table></div><span id="more"></span><p>例:</p><pre><code class="lang-vim">:set statusline=%F%m%r%h%w\ [FORMAT=%&#123;&amp;ff&#125;]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]</code></pre><p>定义显示颜色</p><pre><code class="lang-vim">:set statusline=%2*%n%m%r%h%w%*\ %F\ %1*[FORMAT=%2*%&#123;&amp;ff&#125;:%&#123;&amp;fenc!=&#39;&#39;?&amp;fenc:&amp;enc&#125;%1*]\ [TYPE=%2*%Y%1*]\ [COL=%2*%03v%1*]\ [ROW=%2*%03l%1*/%3*%L(%p%%)%1*]\</code></pre><p>自定义高亮显示颜色</p><pre><code class="lang-vim">hi User1 guifg=grayhi User2 guifg=redhi User3 guifg=white</code></pre><p>还可以通过在<code>.vimrc</code>文件中包括以下命令，使状态行根据状态的不同，显示不同的颜色。</p><pre><code class="lang-vim">function! InsertStatuslineColor(mode)if a:mode == &#39;i&#39;  hi statusline guibg=peruelseif a:mode == &#39;r&#39;  hi statusline guibg=blueelse  hi statusline guibg=blackendifendfunctionau InsertEnter * call InsertStatuslineColor(v:insertmode)au InsertLeave * hi statusline guibg=orange guifg=whitehi statusline guibg=black</code></pre><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-    <summary type="html">&lt;center&gt;状态行参数列表&lt;/center&gt;
-
-&lt;div class=&quot;table-container&quot;&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;参数&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;%(…%)&lt;/td&gt;
-&lt;td&gt;定义一个项目&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%{n}*&lt;/td&gt;
-&lt;td&gt;%对其余的行使用高亮显示组&lt;code&gt;User n&lt;/code&gt;，知道另一个&lt;code&gt;%n*&lt;/code&gt;。数字&lt;code&gt;n&lt;/code&gt; 必须从&lt;code&gt;1&lt;/code&gt;到&lt;code&gt;9&lt;/code&gt;。用&lt;code&gt;%*&lt;/code&gt;或&lt;code&gt;%0*&lt;/code&gt;可以恢复正常的高亮显示。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%&amp;lt;&lt;/td&gt;
-&lt;td&gt;如果状态行过长，在何处换行。缺省是在开头。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%=&lt;/td&gt;
-&lt;td&gt;左对齐和右对齐之间的分割点。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%&lt;/td&gt;
-&lt;td&gt;字符&lt;code&gt;%&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%B&lt;/td&gt;
-&lt;td&gt;光标下字符的十六进制形式。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%F&lt;/td&gt;
-&lt;td&gt;缓冲区的文件完整路径。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%H&lt;/td&gt;
-&lt;td&gt;如果为帮助缓冲区则显示为&lt;code&gt;HLP&lt;/code&gt;。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%L&lt;/td&gt;
-&lt;td&gt;缓冲区中的行数。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%M&lt;/td&gt;
-&lt;td&gt;如果缓冲区修改过则显示未&lt;code&gt;+&lt;/code&gt;。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%N&lt;/td&gt;
-&lt;td&gt;打印机页号。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%O&lt;/td&gt;
-&lt;td&gt;以十六进制方式显示文件中的字符偏移。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%P&lt;/td&gt;
-&lt;td&gt;文件中光标前的&lt;code&gt;%&lt;/code&gt;。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%R&lt;/td&gt;
-&lt;td&gt;如果缓冲区只读则为&lt;code&gt;RO&lt;/code&gt;。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%V&lt;/td&gt;
-&lt;td&gt;列数。如果与&lt;code&gt;%c&lt;/code&gt;相同则为空字符。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%W&lt;/td&gt;
-&lt;td&gt;如果窗口为预览窗口则为&lt;code&gt;PRV&lt;/code&gt;。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%Y&lt;/td&gt;
-&lt;td&gt;缓冲区的文件类型，如 vim。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%a&lt;/td&gt;
-&lt;td&gt;如果编辑多行文本，这个字行串就是&lt;code&gt;(&amp;#123;current&amp;#125; of &amp;#123;arguments&amp;#125;)&lt;/code&gt;，例如: &lt;code&gt;(5 of 18)&lt;/code&gt;。如果在命令行中只有一行，这个字符串为空。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%b&lt;/td&gt;
-&lt;td&gt;光标下的字符的十进制表示形式。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%c&lt;/td&gt;
-&lt;td&gt;列号。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%f&lt;/td&gt;
-&lt;td&gt;缓冲区的文件路径。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%h&lt;/td&gt;
-&lt;td&gt;如果为帮助缓冲区显示为&lt;code&gt;[Help]&lt;/code&gt;。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%l&lt;/td&gt;
-&lt;td&gt;行号。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%m&lt;/td&gt;
-&lt;td&gt;如果缓冲区已修改则表示为&lt;code&gt;[+]&lt;/code&gt;。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%n&lt;/td&gt;
-&lt;td&gt;缓冲区号。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%o&lt;/td&gt;
-&lt;td&gt;在光标前的字符数(包括光标下的字符)。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%p&lt;/td&gt;
-&lt;td&gt;文件中所在行的百分比。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%r&lt;/td&gt;
-&lt;td&gt;如果缓冲区为只读则表示为&lt;code&gt;[RO]&lt;/code&gt;。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%t&lt;/td&gt;
-&lt;td&gt;文件名(无路径)。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%v&lt;/td&gt;
-&lt;td&gt;虚列号。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%w&lt;/td&gt;
-&lt;td&gt;如果为预览窗口则显示为&lt;code&gt;[Preview]&lt;/code&gt;。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%y&lt;/td&gt;
-&lt;td&gt;缓冲区的文件类型，如&lt;code&gt;[vim]&lt;/code&gt;。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;%{expr}&lt;/td&gt;
-&lt;td&gt;表达式的结果。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;</summary>
-    
-    
-    
-    <category term="Note" scheme="http://shenguosai.github.io/categories/Note/"/>
-    
-    <category term="vim" scheme="http://shenguosai.github.io/categories/Note/vim/"/>
-    
     
   </entry>
   
