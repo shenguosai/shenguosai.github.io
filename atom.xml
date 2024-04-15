@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2024-04-01T11:50:37.763Z</updated>
+  <updated>2024-04-15T13:41:55.878Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用越狱iPhone部署ddns服务</title>
+    <link href="http://shenguosai.github.io/2024/04/15/%E4%BD%BF%E7%94%A8%E8%B6%8A%E7%8B%B1iPhone%E9%83%A8%E7%BD%B2ddns%E6%9C%8D%E5%8A%A1/"/>
+    <id>http://shenguosai.github.io/2024/04/15/%E4%BD%BF%E7%94%A8%E8%B6%8A%E7%8B%B1iPhone%E9%83%A8%E7%BD%B2ddns%E6%9C%8D%E5%8A%A1/</id>
+    <published>2024-04-15T12:21:42.000Z</published>
+    <updated>2024-04-15T13:41:55.878Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="iPhone-越狱并获取root权限"><a href="#iPhone-越狱并获取root权限" class="headerlink" title="iPhone 越狱并获取root权限"></a>iPhone 越狱并获取root权限</h1><p>此处略，可以使用爱思助手 8.0 通过 Chimera 进行的越狱，此越狱方式并不完美，每次iPhone重启后所有越狱安装的app都会闪退，需要重新越狱一次才行。</p><h1 id="在-CloudFlare-上建立一个二级域名"><a href="#在-CloudFlare-上建立一个二级域名" class="headerlink" title="在 CloudFlare 上建立一个二级域名"></a>在 CloudFlare 上建立一个二级域名</h1><p>首先，在 Cloudflare 上申请一个域名或者在其他网站申请托管到 Cloudflare 上，并建立用来作为 DDNS 用的 A 记录和 AAAA 记录。假设是:<br>A 记录:     ddns.example.com      1.1.1.1<br>AAAA 记录   ddns.example.com      2606:4700:4700::1111<br>IP 地址先可以随便填。</p><h1 id="取得所需的-ZONE-ID、API-Token-和-RECORD-ID"><a href="#取得所需的-ZONE-ID、API-Token-和-RECORD-ID" class="headerlink" title="取得所需的 ZONE_ID、API_Token 和 RECORD_ID"></a>取得所需的 ZONE_ID、API_Token 和 RECORD_ID</h1><p>ZONE_ID 就在域名概述页的右下侧，名字为区域 ID。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240415210230.png" alt="20240415210230"><br>然后在同一页面的下方点击获取 API 令牌。<br>点击创建令牌，使用“编辑区域 DNS”的模板，选择相应的域名，点击显示摘要，并创建令牌。<br>把生成的 API_Token 保存好。<br>接着打开一个 Linux 终端，执行以下代码:</p><pre><code class="lang-bash">ZONE_ID=&quot;你的 Zone ID&quot;API_TOKEN=&quot;你的API Token&quot;curl -X GET &quot;https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records?name=ddns.example.com&quot; \-H &quot;Authorization: Bearer $API_TOKEN&quot; \-H &quot;Content-Type: application/json&quot;</code></pre><p>注意替换上述代码中的 ZONE_ID，API_Token，二级域名。<br>在返回的结果中，找到“name”与相应二级域名相符的 RECORD_ID。</p><h1 id="建立-Shell-脚本"><a href="#建立-Shell-脚本" class="headerlink" title="建立 Shell 脚本"></a>建立 Shell 脚本</h1><p>在你想运行的位置比如<code>root</code>目录建立一个脚本文件:</p><pre><code class="lang-bash">mkdir cfddns &amp;&amp; cd cfddnstouch ddns.sh</code></pre><p>然后用编辑器打开:</p><pre><code class="lang-bash">vim ddns.sh</code></pre><p>复制一下代码并保存退出:</p><pre><code class="lang-bash">#!/bin/shNEW_IP=`curl -s http://ipv4.ddnspod.com`CURRENT_IP=`cat $(dirname &quot;$0&quot;)/current_ip.txt`CURRENT_TIME=$(date +&quot;%F %T&quot;)DDNS=&quot;home.starnest.eu.org&quot;ZONE_ID=&quot;1234567890abcdef1234567890abcdef&quot;API_TOKEN=&quot;1234567890abcdef1234567890abcdef&quot;RECORD_ID=&quot;1234567890abcdef1234567890abcdef&quot;if [ &quot;$NEW_IP&quot; = &quot;$CURRENT_IP&quot; ]then        echo &quot;[$CURRENT_TIME] No Change in IP Adddress&quot; &gt;&gt; $(dirname &quot;$0&quot;)/crontab_log.txtelsecurl -k -X PUT &quot;https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$RECORD_ID&quot; \     -H &quot;Authorization: Bearer $API_TOKEN&quot; \     -H &quot;Content-Type: application/json&quot; \     --data &#39;&#123;&quot;type&quot;:&quot;A&quot;,&quot;name&quot;:&quot;&#39;$DDNS&#39;&quot;,&quot;content&quot;:&quot;&#39;$NEW_IP&#39;&quot;,&quot;ttl&quot;:1,&quot;proxied&quot;:false&#125;&#39; &gt; /dev/nullecho $NEW_IP &gt; $(dirname &quot;$0&quot;)/current_ip.txtecho &quot;[$CURRENT_TIME] IP changed to $NEW_IP&quot; &gt;&gt; $(dirname &quot;$0&quot;)/crontab_log.txtfi</code></pre><p>若想同时适用对 ipv6 有效则使用下面的脚本(未测试):</p><pre><code class="lang-bash">#!/bin/sh# 简单的使用Clodflare API来实现DDNS的脚本NEW_IPv4=$(curl -s http://ipv4.icanhazip.com)NEW_IPv6=$(curl -s http://ipv6.icanhazip.com)CURRENT_IPv4=$(cat $(dirname &quot;$0&quot;)/current_ipv4.txt)CURRENT_IPv6=$(cat $(dirname &quot;$0&quot;)/current_ipv6.txt)CURRENT_TIME=$(date +&quot;%F %T&quot;)# 填入DDNS域名DDNS=&quot;ddns.example.com&quot;# ZONE_ID在Clouflare域名页面上获取ZONE_ID=&quot;1234567890abcdef1234567890abcdef&quot;# API_TOKEN在Clouflare个人资料页面上创建API_TOKEN=&quot;1234567890abcdef1234567890abcdef&quot;# RECORD_ID获取应执行以下代码：# ZONE_ID=&quot;你的 Zone ID&quot;# API_TOKEN=&quot;你的API Token&quot;# curl -X GET &quot;https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records?name=example.com&quot; \#     -H &quot;Authorization: Bearer $API_TOKEN&quot; \#     -H &quot;Content-Type: application/json&quot;RECORD_ID=&quot;1234567890abcdef1234567890abcdef&quot;if [ -z &quot;$NEW_IPv4&quot; ] &amp;&amp; [ -z &quot;$NEW_IPv6&quot; ]; then  echo &quot;[$CURRENT_TIME] Failed to get IP address&quot; &gt;&gt; $(dirname &quot;$0&quot;)/crontab_log.txt  exit 1elif [ &quot;$NEW_IPv4&quot; = &quot;$CURRENT_IPv4&quot; ] &amp;&amp; [ &quot;$NEW_IPv6&quot; = &quot;$CURRENT_IPv6&quot; ]; then  echo &quot;[$CURRENT_TIME] No change in IP address&quot; &gt;&gt; $(dirname &quot;$0&quot;)/crontab_log.txtelse  if [ -n &quot;$NEW_IPv4&quot; ] &amp;&amp; [ &quot;$NEW_IPv4&quot; != &quot;$CURRENT_IPv4&quot; ]; then    curl -k -X PUT &quot;https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$RECORD_ID&quot; \      -H &quot;Authorization: Bearer $API_TOKEN&quot; \      -H &quot;Content-Type: application/json&quot; \      --data &#39;&#123;&quot;type&quot;:&quot;A&quot;,&quot;name&quot;:&quot;&#39;$DDNS&#39;&quot;,&quot;content&quot;:&quot;&#39;$NEW_IPv4&#39;&quot;,&quot;ttl&quot;:1,&quot;proxied&quot;:false&#125;&#39; &gt; /dev/null    echo &quot;$NEW_IPv4&quot; &gt; $(dirname &quot;$0&quot;)/current_ipv4.txt    echo &quot;[$CURRENT_TIME] IPv4 address changed to $NEW_IPv4&quot; &gt;&gt; $(dirname &quot;$0&quot;)/crontab_log.txt  fi  if [ -n &quot;$NEW_IPv6&quot; ] &amp;&amp; [ &quot;$NEW_IPv6&quot; != &quot;$CURRENT_IPv6&quot; ]; then    curl -k -X PUT &quot;https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$RECORD_ID&quot; \      -H &quot;Authorization: Bearer $API_TOKEN&quot; \      -H &quot;Content-Type: application/json&quot; \      --data &#39;&#123;&quot;type&quot;:&quot;AAAA&quot;,&quot;name&quot;:&quot;&#39;$DDNS&#39;&quot;,&quot;content&quot;:&quot;&#39;$NEW_IPv6&#39;&quot;,&quot;ttl&quot;:1,&quot;proxied&quot;:false&#125;&#39; &gt; /dev/null    echo &quot;$NEW_IPv6&quot; &gt; $(dirname &quot;$0&quot;)/current_ipv6.txt    echo &quot;[$CURRENT_TIME] IPv6 address changed to $NEW_IPv6&quot; &gt;&gt; $(dirname &quot;$0&quot;)/crontab_log.txt  fifi</code></pre><h1 id="执行-Shell-脚本并设置定时任务"><a href="#执行-Shell-脚本并设置定时任务" class="headerlink" title="执行 Shell 脚本并设置定时任务"></a>执行 Shell 脚本并设置定时任务</h1><h2 id="手动执行确认"><a href="#手动执行确认" class="headerlink" title="手动执行确认"></a>手动执行确认</h2><p>先手动执行一次脚本，然后检查 Cloudflare 解析记录和同文件夹下生成的 crontab_log.txt，确认 IP 是否正确更新。</p><pre><code class="lang-bash">/bin/sh ddns.sh</code></pre><h2 id="设置定时任务"><a href="#设置定时任务" class="headerlink" title="设置定时任务"></a>设置定时任务</h2><p>若上述脚本执行无误，则使用 plist 设置定时任务。<br>首先，要新增被管理项需要新增一个<code>.plist</code>放入苹果的管理文件夹下，然后使其被加载后执行。苹果根据用户的角色提供了不同的 Launtch 存放位置。</p><pre><code class="lang-bash">~/Library/LaunchAgents          # 当前用户定义的任务/Library/LaunchAgents           # 系统管理员定义的任务/Library/LaunchDaemons          # 管理员定义的系统守护进程任务/System/Library/LaunchAgents    # 苹果定义的任务/System/Library/LaunchDaemons   # 苹果定义的系统守护进程任务</code></pre><p>很显然，我们最好不要使用下面两个位置的，我这里使用的是<code>/Library/LaunchDaemons</code>。</p><pre><code class="lang-bash">cd /Library/LaunchDaemonstouch starnest.ddns.plist   #前面的名字随便起，最后以`.plist`结尾</code></pre><p>然后编辑<code>starnest.ddns.plist</code>文件:</p><pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;!DOCTYPE plist PUBLIC &quot;-//Apple Computer//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;&lt;plist version=&quot;1.0&quot;&gt;&lt;dict&gt;    &lt;key&gt;Label&lt;/key&gt;    &lt;string&gt;starnest.ddns&lt;/string&gt;    &lt;key&gt;ProgramArguments&lt;/key&gt;    &lt;array&gt;      &lt;string&gt;/bin/sh&lt;/string&gt;      &lt;string&gt;/var/root/script_service/ddns/ddns.sh&lt;/string&gt;    &lt;/array&gt;    &lt;key&gt;RunAtLoad&lt;/key&gt;    &lt;true/&gt;    &lt;key&gt;StartInterval&lt;/key&gt;    &lt;integer&gt;180&lt;/integer&gt;&lt;/dict&gt;&lt;/plist&gt;</code></pre><blockquote><p>上面的 StartInterval 中的时间不是很确定，使用<code>date</code>命令测试时 interger 设置为 1 会没 10 秒执行一次任务，但是 ddns 脚本中设置 180 应该是 30 分钟执行一次，但根据日志结果来看是 1 小时 3~4 次，时间不是太固定。但对 ddns 来说每小时 3~4 的频度足够了。</p><h2 id="启动定时任务"><a href="#启动定时任务" class="headerlink" title="启动定时任务"></a>启动定时任务</h2><pre><code class="lang-bash">launchctl load /Library/LaunchDaemons/starnest.ddns.plist</code></pre><p>确认是否启动成功</p><pre><code class="lang-bash">launchctl list | grep starnest</code></pre><pre><code>-       0       starnest.ddns</code></pre><p>第一列的 PID，第二列是 status，当 status 显示为 0 时表示任务正常进行。<br>我刚开始 status 显示 127，这个可以用以下命令来初步确认问题。</p><pre><code class="lang-bash">launchctl error 127</code></pre><pre><code>127: The specified service did not ship with the operating system</code></pre><p>最后发现是<code>plist</code>文件中脚本路径发生的错误。</p></blockquote><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;iPhone-越狱并获取root权限&quot;&gt;&lt;a href=&quot;#iPhone-越狱并获取root权限&quot; class=&quot;headerlink&quot; title=&quot;iPhone 越狱并获取root权限&quot;&gt;&lt;/a&gt;iPhone 越狱并获取root权限&lt;/h1&gt;&lt;p&gt;此处略，可以</summary>
+      
+    
+    
+    
+    <category term="Note" scheme="http://shenguosai.github.io/categories/Note/"/>
+    
+    <category term="SmartPhone" scheme="http://shenguosai.github.io/categories/Note/SmartPhone/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>2024孩子电话手表更换方案</title>
@@ -474,32 +498,6 @@
     
     
     <category term="Life" scheme="http://shenguosai.github.io/tags/Life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Cadence使用Calibre进行后仿</title>
-    <link href="http://shenguosai.github.io/2023/12/18/Cadence%E4%BD%BF%E7%94%A8Calibre%E8%BF%9B%E8%A1%8C%E5%90%8E%E4%BB%BF/"/>
-    <id>http://shenguosai.github.io/2023/12/18/Cadence%E4%BD%BF%E7%94%A8Calibre%E8%BF%9B%E8%A1%8C%E5%90%8E%E4%BB%BF/</id>
-    <published>2023-12-18T05:50:59.000Z</published>
-    <updated>2024-01-31T03:02:31.009Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>通过 Virtuoso 的 Layout XL =&gt; Calibre =&gt; Run PEX 进入 Calibre PEX，并将工艺厂提供的 xRC(Rule) 文件设置好 Calibre PEX。<span id="more"></span></li><li>为了减少寄生参数，以及提高后仿效率，建议在 Calibre PEX =&gt; PEX Options =&gt; Netlist =&gt; Reduction and CC 中将 Enable MinRes reduction 和 Enable MinCap Reduction 选中，并在 COMBINE 和 REMOVE 后的框中填写所需数值，一般 Cap 的 Combine 为 0.5fF，Remove 为 0.1fF。Res 的 Combine 为 1Ω，Remove 为 0.1Ω。</li><li>在 Outputs 选项中，Outputs =&gt; Netlist 框中，Format 选 CALIBREVIEW(可增加 Geometry 可在 PEX 运行完后弹出寄生参数的总结)，Use Names From : SCHEMATIC 。</li><li>点击 Run PEX 开始寄生参数提取，之后进入 Calibre View Setup 界面。</li><li>Calibre View Setup 设置中，Output 选项填被提取寄生参数的 library，Calibre View Type 选择 masklayout 意味着直接以 layout 的摆放位置提取寄生参数，选择 Schematic 意味着以 schematic 的位置生成寄生参数，建议选择 schematic，这可以在后仿中如前仿一样直接查看 schematic 的电路仿真信息，Create Terminal =&gt; if matching terminal exists on symbol，Device Placement =&gt; Layout Location，设置完毕，点击 OK 。</li><li>提取寄生参数完毕后，如果有错误可能是 calibre 中部分线短路了，手动改正即可，可通过 calibre view type 更改类型为 masklayout 可以避免这种错误，但是后仿不能通过直接点击。</li><li>在 testbench 中新建 config view，将 config 中的 view to use 更改为提取的寄生参数 calibre，加入 calibre 提取出来的参数，同时 ADE L =&gt; Setup =&gt; Design 更改类型为 config，即可开始后仿。</li><li>仿真结束后，可以直接在 schematic 中查看信号线。</li></ol><p>生成 calibre 耗费时间过长，可以直接更改 calibre view type 为 masklayout，但是此种方法对于查看结果没那么方便。<br>或者直接在 pex 设置中，Output =&gt; Netlist =&gt; Format 更改为 SPECTRE 生成网表。</p><ol><li>该方法生成的网表不一定能直接用于 spectre 仿真，需要先将该网表的 pin 顺序更正。更改方法为，首先需要先用前仿电路跑一次仿真生成网表，然后在 simulation 这个文件夹中找到 input.scs 的网表，将该网表中的 pin 复制到后仿的网表中。</li><li>后仿生成的网表更改完毕，在 testbench 中新建 config view，将 config 中的 view to use 更改为 Specify SPICE Source File，同时选择后仿的网表即可，这就是用网表仿真，速度快，但是不方便查看信号，但是利于排除寄生电容，需要排除哪项将其注释即可。</li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;通过 Virtuoso 的 Layout XL =&amp;gt; Calibre =&amp;gt; Run PEX 进入 Calibre PEX，并将工艺厂提供的 xRC(Rule) 文件设置好 Calibre PEX。</summary>
-    
-    
-    
-    <category term="Semiconductor" scheme="http://shenguosai.github.io/categories/Semiconductor/"/>
-    
-    <category term="post-sim" scheme="http://shenguosai.github.io/categories/Semiconductor/post-sim/"/>
-    
-    <category term="EDA" scheme="http://shenguosai.github.io/categories/Semiconductor/EDA/"/>
-    
-    
-    <category term="Calibre" scheme="http://shenguosai.github.io/tags/Calibre/"/>
     
   </entry>
   
