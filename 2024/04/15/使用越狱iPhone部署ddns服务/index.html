@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240415210230.png">
 <meta property="article:published_time" content="2024-04-15T12:21:42.000Z">
-<meta property="article:modified_time" content="2024-04-15T13:41:55.878Z">
+<meta property="article:modified_time" content="2024-04-24T00:34:31.574Z">
 <meta property="article:author" content="sgs">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240415210230.png">
@@ -198,10 +198,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-04-15 20:21:42 / 修改时间：21:41:55" itemprop="dateCreated datePublished" datetime="2024-04-15T20:21:42+08:00">2024-04-15</time>
+              <time title="创建时间：2024-04-15 20:21:42" itemprop="dateCreated datePublished" datetime="2024-04-15T20:21:42+08:00">2024-04-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-04-24 08:34:31" itemprop="dateModified" datetime="2024-04-24T08:34:31+08:00">2024-04-24</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -256,7 +262,7 @@
 
       
         <h1 id="iPhone-越狱并获取root权限"><a href="#iPhone-越狱并获取root权限" class="headerlink" title="iPhone 越狱并获取root权限"></a>iPhone 越狱并获取root权限</h1><p>此处略，可以使用爱思助手 8.0 通过 Chimera 进行的越狱，此越狱方式并不完美，每次iPhone重启后所有越狱安装的app都会闪退，需要重新越狱一次才行。</p>
-<h1 id="在-CloudFlare-上建立一个二级域名"><a href="#在-CloudFlare-上建立一个二级域名" class="headerlink" title="在 CloudFlare 上建立一个二级域名"></a>在 CloudFlare 上建立一个二级域名</h1><p>首先，在 Cloudflare 上申请一个域名或者在其他网站申请托管到 Cloudflare 上，并建立用来作为 DDNS 用的 A 记录和 AAAA 记录。假设是:<br>A 记录:     ddns.example.com      1.1.1.1<br>AAAA 记录   ddns.example.com      2606:4700:4700::1111<br>IP 地址先可以随便填。</p>
+<h1 id="在-CloudFlare-上建立一个二级域名"><a href="#在-CloudFlare-上建立一个二级域名" class="headerlink" title="在 CloudFlare 上建立一个二级域名"></a>在 CloudFlare 上建立一个二级域名</h1><p>首先，在 Cloudflare 上申请一个域名或者在其他网站申请托管到 Cloudflare 上，并建立用来作为 DDNS 用的 A 记录和 AAAA 记录。假设是:<br>A 记录:     ddns.example.com      1.1.1.1<br>AAAA 记录   ddns.example.com      2606:4700:4700::1111<br>IP 地址先可以随便填。<br><span id="more"></span></p>
 <h1 id="取得所需的-ZONE-ID、API-Token-和-RECORD-ID"><a href="#取得所需的-ZONE-ID、API-Token-和-RECORD-ID" class="headerlink" title="取得所需的 ZONE_ID、API_Token 和 RECORD_ID"></a>取得所需的 ZONE_ID、API_Token 和 RECORD_ID</h1><p>ZONE_ID 就在域名概述页的右下侧，名字为区域 ID。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240415210230.png" alt="20240415210230"><br>然后在同一页面的下方点击获取 API 令牌。<br>点击创建令牌，使用“编辑区域 DNS”的模板，选择相应的域名，点击显示摘要，并创建令牌。<br>把生成的 API_Token 保存好。<br>接着打开一个 Linux 终端，执行以下代码:</p>
 <pre><code class="lang-bash">ZONE_ID=&quot;你的 Zone ID&quot;
 API_TOKEN=&quot;你的API Token&quot;
