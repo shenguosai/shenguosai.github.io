@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2024-04-28T06:24:37.489Z</updated>
+  <updated>2024-05-11T02:39:11.570Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Debian Linux 使用 -- 远程桌面黑屏并闪退</title>
+    <link href="http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/"/>
+    <id>http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/</id>
+    <published>2024-05-11T02:39:11.000Z</published>
+    <updated>2024-05-11T02:39:11.570Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/spoiler.css&quot; type=&quot;text/css&quot;&gt;&lt;script src=&quot;/js/spoiler.js&quot; type=&quot;text/javascript&quot; async&gt;&lt;/script&gt;</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Debian Linux 使用 -- 系统安装</title>
+    <link href="http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/"/>
+    <id>http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/</id>
+    <published>2024-05-11T00:32:17.000Z</published>
+    <updated>2024-05-11T02:38:03.005Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="机器配置"><a href="#机器配置" class="headerlink" title="机器配置"></a>机器配置</h1><p>这台机器比较老，是200x年在日本买的富士通的 FMV-DESKPOWER，型号是 FMVFB70T。<br>配置如下:</p><div class="table-container"><table><thead><tr><th>配件名称</th><th>型号</th><th>规格</th></tr></thead><tbody><tr><td>主板</td><td>FJNB023</td><td></td></tr><tr><td>CPU</td><td>Core(TM)2 Duo P8400</td><td>2.26GHz 2核2线程</td></tr><tr><td>Chipset</td><td>Intel GM45 Express</td><td>1066MHz</td></tr><tr><td>内存</td><td>型号不明，看实物为尔必达颗粒</td><td>DDR3-1066 PC3-8500 1G x2</td></tr><tr><td>硬盘</td><td>Seagate ST3500820AS</td><td>500G容量，7200转/s，5V 0.65A，12V 0.42A</td></tr><tr><td>LAN</td><td>Marvell 88E8055</td><td>1000BASE-T/100BASE-TX/10BASE-T,支持WOL</td></tr><tr><td>WIFI</td><td>Qualcomm Atheros AR928X</td><td>IEEE802.11/a/b/g/n</td></tr><tr><td>USB</td><td></td><td>USB2.0(4pin x5)</td></tr><tr><td>显示器</td><td></td><td>19inch，1440 x 900</td></tr></tbody></table></div><blockquote><p>官网建议最大内存 4G(2G x2)，是因为当时预装的 Windows Vista Home 是 32 位系统，最大支持 4G 内存，而根据 GN45 Express 的 Chipset 规格最大可支持 8G(4G x2) 内存。</p></blockquote><p>相关命令:</p><pre><code class="lang-bash">lscpu #使用程序将 sysfs 和 /proc/cpuinfo 中的详细 CPU 信息输出到屏幕sudo dmidecode -t 2 #主板信息sudo dmidecode -t 16 #内存信息lspci | grep Ethernet #有线网卡lspci | greo Wireless #无线网卡iwconfig #无线网卡</code></pre><h1 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h1><p>Debian 有很多版本，由于机器比较老，我使用的是 32 位的 dvd 映像进行的安装。<br>下载地址: <a href="https://cdimage.debian.org/debian-cd/current/i386/bt-dvd/">debian-12.5.0-i386-DVD-1.iso.torrent</a></p><h1 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h1><p>使用 Ventoy 正常安装即可。</p><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><p>由于使用的 DVD 映像进行的系统安装，在后续安装软件时会优先使用介质安装，需要在 <code>/etc/apt/source.list</code> 中关闭映像安装，如下在第一行中添加 <code>#</code> 进行注释(我在安装系统时选择的是华为的镜像源)。</p><pre><code class="lang-bash"># deb cdrom:[Debian GNU/Linux 12.5.0 _Bookworm_ - Official i386 DVD Binary-1 with firmware 20240210-11:28]/ bookworm contrib main non-free-firmwaredeb http://mirrors.huaweicloud.com/debian/ bookworm main non-free-firmwaredeb-src http://mirrors.huaweicloud.com/debian/ bookworm main non-free-firmwaredeb http://security.debian.org/debian-security bookworm-security main non-free-firmwaredeb-src http://security.debian.org/debian-security bookworm-security main non-free-firmware# bookworm-updates, to get updates before a point release is made;# see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backportsdeb http://mirrors.huaweicloud.com/debian/ bookworm-updates main non-free-firmwaredeb-src http://mirrors.huaweicloud.com/debian/ bookworm-updates main non-free-firmware</code></pre><h2 id="用户权限"><a href="#用户权限" class="headerlink" title="用户权限"></a>用户权限</h2><p>在安装系统时会设置两个用户，一个 root 用户，一个普通用户，而使用普通用户时默认无法使用<code>sudo</code>，所以需要安装<code>sudo</code>并添加权限。</p><ol><li>安装<code>sudo</code><br>切换至 root 用户并安装<code>sudo</code>:<pre><code class="lang-bash">su rootapt install sudo</code></pre></li><li>添加权限<br>网上介绍了两种方法，但我使用方法一的时候没有成功，建议直接使用方法二。<br>方法一: 切换至 root 用户并执行下面的命令。<pre><code class="lang-bash">sudo usermod -aG sudo username</code></pre>上面命令中的 username 换成自己的用户名。<br>方法二: 切换至 root 用户，在 <code>/etc/sudoer.d/</code> 目录下新建一个以自己用户名为文件名的文件。<pre><code class="lang-bash">touch /etc/sudoer.d/usernamenano /etc/sudoer.d/username</code></pre>添加以下内容:<pre><code class="lang-bash">username ALL=(ALL)ALL</code></pre>注意上面的 username 需要换成自己的用户名，然后 Ctrl+X 保存退出并切换回自己的用户就可以了。</li></ol><h2 id="配置语言"><a href="#配置语言" class="headerlink" title="配置语言"></a>配置语言</h2><p>在安装过程中如果选择系统语言为英语进行安装的话进入系统后还要设置语言为中文并安装中文输入法，折腾了一番成功了但是具体的步骤不知道是否合理。</p><ol><li>安装语言包<pre><code class="lang-bash">sudo apt updatesudo apt install locales</code></pre></li><li>配置 <code>locale</code><pre><code class="lang-bash">sudo dpkg-reconfigure locales</code></pre>在出现的对话框的表里一直下拉选择 <code>zh_CN.UTF-8</code> 。然后在下一个界面中选择 <code>zh_CN.UTF-8</code> 作为默认的 <code>locale</code> 。</li><li>安装中文字体(非必需)<pre><code class="lang-bash">sudo apt install fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy</code></pre></li><li>安装中文输入法<br>(1) 如果原来有安装先卸载<pre><code class="lang-bash">sudo apt purge fcitx* ibus*</code></pre>(2) 安装 fcitx5 中文拼音输入法<pre><code class="lang-bash">sudo apt install fcitx5 fcitx5-chinese-addons</code></pre>(3) 然后重启系统打开 fcitx 配置根据自己的需要进行配置即可。</li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;机器配置&quot;&gt;&lt;a href=&quot;#机器配置&quot; class=&quot;headerlink&quot; title=&quot;机器配置&quot;&gt;&lt;/a&gt;机器配置&lt;/h1&gt;&lt;p&gt;这台机器比较老，是200x年在日本买的富士通的 FMV-DESKPOWER，型号是 FMVFB70T。&lt;br&gt;配置如下:&lt;/</summary>
+      
+    
+    
+    
+    <category term="Note" scheme="http://shenguosai.github.io/categories/Note/"/>
+    
+    <category term="Linux" scheme="http://shenguosai.github.io/categories/Note/Linux/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Pura 70系列四款机型区别</title>
@@ -447,56 +491,6 @@
     <category term="EDA" scheme="http://shenguosai.github.io/tags/EDA/"/>
     
     <category term="Note" scheme="http://shenguosai.github.io/tags/Note/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Work Logs--20240130</title>
-    <link href="http://shenguosai.github.io/2024/01/30/Work-Logs-20240130/"/>
-    <id>http://shenguosai.github.io/2024/01/30/Work-Logs-20240130/</id>
-    <published>2024-01-30T10:00:00.000Z</published>
-    <updated>2024-03-04T03:11:53.077Z</updated>
-    
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">  <script id="hbeData" type="hbeData" data-hmacdigest="5739de8e3d71c055e58a569ca60b511c2b242b4f62e7f8ef726a877df399fe99">ae118af9461036e20f25663a30e189738734b433ecdcc685de42ade449b792d34bc8972806baa92858fa8c8179cc4f0cdad51b0f6d2e4688d806e1d895f634ddc3219fc23abbb5e49b2a3b0254457461a9e56f5091442fae415b599f95777f53349b5ac9c312d9f9d1912e24590acb55e898248e5f1fb86dc1d9976c1c1e6c8ecd7887d313f4407fbe3c890889a2d2809bb4758b29849793363c11583b4ca9bd52f72d00646e0765e1deeb8257354e35b1486ec2c81c151f323ad47e25a5e4315e22752ae0d2bfa35030b1a4e4583373bb896c9c8e403d683847dfb63251a37ec83a411798f3e5da471901e0e75c29d8526668ce930203040fb45b7a3abcfd0f8c6e7a9a4e5f98f3395df187c21d636068f229d5c8b395c18f8265282919c244768268b328a0bd57b7ee4b3e76cb5b28625e4e939ec5d6ecb65d2ca8523376c4592766e9db5ef914b28bf52d8f8da6f727399c1a18b17876a14384f9c261d3c5b759d348832ba1417bff6c76555f73eadcfaffc3b1a3abb843912f66af9d2a5b00ede719066e499430f7e50114340cbf3c75fb0ef70b9a1d4c86826bfa0781236e611b03a8ebcf1207b5b47df022246c0085c6059afa63923b1d45bdec7f9ab8947d88036ed0107701dd4f4291ac9470b2af4614d23d8045a187b285b6bc121e2acf1bb2a44364e5cf755a60373d2f8e5ded8d8db377615c9b0203c29acfeedd37fb156660cf1a53d18241591597c786a86d969c3c7a811f0c8717f05c19479049568ed0620f2f36dce1f152e6cdf018e92a83e25231b517276a373014e5565f163758a0c4db9a918d4fe28b67bc9071bcafb3d2390a2c2d82371af2c25514751b26bc9f4ec9524b8dab4768dced72cac7f6ae464856ccfa7f34a7a0213b3d5f483b45dcac301082978dab8f5563113abc0bbfaa833d9ab970256ceb1ca5c91694e00cbb0134e140cd275ae703dac5afb36a86887aaf1774f2a755a11c396d61199f7d095b66758afd2caf2e297fcdc7414746b9d0d03e81cf8f559def35d02a3c8741178e83bd555e2e04737264968684480f0a8de04fa62c10d3f5c2876b95d178c5f013145ff4f35fd973e116237d8be6f3f26f7f8bd75e5eda1fa9c11ebf07a67074aace6210aa67cf0c5a64b427164e0ea05ac09bad3ddfb405d6b241e7c53823a616a6b2f167a7833bd965acc604c2970c64f0ea5edaf412d45d0394087d88089ee6c3a4050168a5084bd8840ab440c638c844d51a8103fbf187c1e941b1cc51429a5ca7fc5f374658faa23281f71fd83bd8c68550745906892866b4c9423b8222f13bab6dfb92f8c10bdf02bdd512c4fc1b703ccb58561db74eba8928159e73270a8ee46cceeb78f9fdd4b87c5e4209708c49b91797385f6d605f24028f1d9bffd39a172d01f3e8aa34631d1d46a45738ad9c55b4bf8d88fa9d5d35c4c0aefc68ca58621b504766c7ac570454c194f5cf596fb001ccac9f0219d3fc9a5e4d3f9a726f81b3bcd36e7108648a29edf58b54c629089d7c596cf791d68b9cc61966fb4db2e1071e6901e344b963ae3bbae40edeb781ba09b342c893f2b7c3ee147d36f5b3d42b0b273b462f133d9ea9e0e30997d8f652dab9ef73309d76067493a7846299022842c25bcaa1adf43d36394147c0a5005f04370698fca5ae7ecc01626410e8a9117113fc197bae4baaebf7b30c23ae7f963549cfd73309cf5d9646384b470ad81c8430c5174661e92f9da039762e2fabc2ba41971043b7b181b6196190b8014884121888a9dae4bca885ef5c087d3609667f5c7c687aa31656600898c3b84567725dc845a10064c40757b1dbfb446e8099bcaf806346654bc50b5c6a9bb7cc7e6eca4e8f94b996fe111d917c58f9ee42579bcd9ae30c0b3e8a9ff7cdf1b90f9ab142d8f0c80330a121284bf04149f9b4ea66b423a55681185ca92fcc9a5dea85dd00d69e51a8b7c40e1406ea08333f60d55eb3f04afc33b2fb25100bc097682f2eb6b862ae2071aef4788dfdc588d178ab3fe3e3f31d3e9f42a27aa25e7201c54cf4fc64bda222b647b360d6229c80a06007a992e58075b55ed4fd613df85abe361a62d736a6563d78c2d494b1fd12e82c36cdb71bce46d41b90cb87575ffb395de1a785a98fcb6402b02a0118d23a91432b8fb90df5637e3a9386e19d9c7792445a601ac5050f7942270ff2e244d8a338eabccc4673fee1e2101edfba447bafbd147e1bf355db687b</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-    
-    
-    <summary type="html">有东西被加密了, 请输入密码查看.</summary>
-    
-    
-    
-    <category term="Projects" scheme="http://shenguosai.github.io/categories/Projects/"/>
-    
-    <category term="CXT2503S" scheme="http://shenguosai.github.io/categories/Projects/CXT2503S/"/>
-    
-    
-    <category term="WorkLogs" scheme="http://shenguosai.github.io/tags/WorkLogs/"/>
-    
-    <category term="Swiching Regulator" scheme="http://shenguosai.github.io/tags/Swiching-Regulator/"/>
-    
-    <category term="Buck-Boost" scheme="http://shenguosai.github.io/tags/Buck-Boost/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈几种带宽与增益</title>
-    <link href="http://shenguosai.github.io/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/"/>
-    <id>http://shenguosai.github.io/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/</id>
-    <published>2024-01-10T07:02:38.000Z</published>
-    <updated>2024-01-10T08:49:57.248Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天记录一下闭环增益、开环增益、环路增益，以及3dB带宽、单位增益带宽(UGB)、增益带宽积(GBW)。<br><span id="more"></span></p><h2 id="关于增益"><a href="#关于增益" class="headerlink" title="关于增益"></a>关于增益</h2><h3 id="闭环增益"><a href="#闭环增益" class="headerlink" title="闭环增益"></a>闭环增益</h3><p>对于一个闭环反馈系统，如下图:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110153857.png" alt="20240110153857"><br>闭环增益即传输函数为: $\frac{Y(s)}{X(s)}=\frac{H(s)}{1+\beta H(s)}$, 是 $\frac{开环增益}{1+环路增益}$。</p><h3 id="开环增益"><a href="#开环增益" class="headerlink" title="开环增益"></a>开环增益</h3><p>从上面图中可知，开环增益就是去除反馈对系统的作用，看运放的增益。</p><h3 id="环路增益"><a href="#环路增益" class="headerlink" title="环路增益"></a>环路增益</h3><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110154642.png" alt="20240110154642"><br>如图所示，输入置0，断开环路。<br>环路增益$\frac{V_F}{V_t}=\beta A$<br>根据巴克豪森判据判断系统是否稳定，所以仿真都是用stb仿环路稳定性，看<b>环路增益波特图</b>而不是看开环增益或者闭环增益。</p><p>那为什么到运放看稳定性就说开环增益了呢？<br>对于单个运放来说，由于运放一般工作在负反馈系统中，开环增益就相当于反馈系数为1的环路增益，所以到运放会说开环增益，其实还是在说环路增益。</p><p>那为什么说运放仿开环增益相位裕度够了就代表其接成反馈系统是稳定的呢？<br>拉扎维的10.2节完美解释了这个问题:<br>运放开环增益相当于反馈系数为1的环路增益:在反馈系统里，反馈系数最大为1，就是接成单位增益负反馈形势。这种情况下，系统的环路增益波特图与运放的完全重合，即相位裕度一样，所以可以稳定。<br>对于其它反馈系数小于1的系统来说，环路增益为$\beta A$，不管$\beta$如何变，环路增益的波特图中，极点的位置与运放极点位置一样，不会变，所以相频曲线没有任何改变。但是由于$\beta &lt;1$，幅频曲线下移，增益交点提前，相位裕度只会越来越大。<br>综上，运放单独仿真与它接在负反馈系统里相比，相位裕度是最差的情况了，即当反馈变弱时，结果是系统更稳定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110161104.png" alt="20240110161104"></p><h2 id="关于带宽"><a href="#关于带宽" class="headerlink" title="关于带宽"></a>关于带宽</h2><h3 id="3dB带宽"><a href="#3dB带宽" class="headerlink" title="3dB带宽"></a>3dB带宽</h3><p>3dB带宽就是运放的主极点处所对应的频率，幅度上对应比低频增益下降3个dB处。<br>推导:<br>运放传递函数:$A_v(s)=\frac{A_v(0)}{(1+s/\omega _0)(1+s/\omega _1)(1+s/\omega _2)···}$</p><p>假设次极点离主极点很远很远，那么在主极点$s=\omega _0$处，有:<br>$A_v(\omega _0)=20log(\frac{A_v(0)}{1+\omega _0/\omega _0})=20log(\frac{A_v(0))}{2}=20logA_v(0)-20log(2)\approx 20logA_v(0)-3dB$</p><p>所以叫做3dB带宽。</p><h3 id="单位增益带宽"><a href="#单位增益带宽" class="headerlink" title="单位增益带宽"></a>单位增益带宽</h3><p>顾名思义，就是运放$\frac{开环增益}{闭环负反馈系统环路增益}=1$时对应的频率。<br>为了推导方便，假设只有一个极点的运放，那么在它的单位增益带宽处，有:<br>$A_v(\omega _{UGB})=\frac{A_v(0)}{1+\frac{\omega _{UGB}}{\omega _0}}=1$<br>可得，$\omega _{UGB}=A_v(0)*\omega _0$</p><p>这里有一个结论: 闭环系统的3dB带宽等于环路增益的党委增益带宽。单位增益负反馈系统的3dB带宽等于该系统中所使用的运放的单位增益带宽。<br>推导:负反馈想要稳定，即相位裕度达到60°，单位增益带宽内一定只有一个极点。只看单位增益带宽内的情况，那么有:<br>环路增益: $\beta A(s)=\frac{\beta A_0}{1+\frac{s}{\omega _0}}$<br>闭环系统传输函数: $\frac{Y(s)}{X(s)}=\frac{A(s)}{1+\beta A(s)}=\frac{\frac{A_0}{1+\beta A_0}}{1+\frac{s}{(1+\beta A_0)\omega _0}}$<br>所以就闭环系统传输函数3dB带宽<b>(不是环路增益，是传输函数)</b>是$\omega _0<em>\beta A_0$，环路增益的单位增益带宽也是$\omega _0</em>\beta A_0$。<br>当系统为单位增益负反馈系统时，即反馈因子是1，系统3dB带宽是$\omega _0<em>A_0$,运放单位增益带宽也是$\omega _0</em>A_0$。</p><h3 id="增益带宽积-GBW"><a href="#增益带宽积-GBW" class="headerlink" title="增益带宽积(GBW)"></a>增益带宽积(GBW)</h3><p>增益与带宽的乘积。<br>重要结论:在单极点系统中，GBW是不变的，等于单位增益带宽，等于低频增益3dB带宽。因为只有一个极点的时候，极点之后，带宽每增大10倍，增益下降20dB，20dB就是10倍，一个增大十倍，一个减小十倍，自然不变。<br>结合单位增益带宽中的结论推导部分，可见，闭环系统传输函数的增益带宽积与开环的增益带宽积相等。(再次强调:是传输函数的增益带宽积，不是环路增益中的增益带宽积)<br>$A_0<em>\omega _0=\frac{A_0}{1+\beta A_0}</em>(1+\beta A_0)*\omega _0$</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;今天记录一下闭环增益、开环增益、环路增益，以及3dB带宽、单位增益带宽(UGB)、增益带宽积(GBW)。&lt;br&gt;</summary>
-    
-    
-    
-    <category term="Semiconductor" scheme="http://shenguosai.github.io/categories/Semiconductor/"/>
-    
-    <category term="Analog" scheme="http://shenguosai.github.io/categories/Semiconductor/Analog/"/>
-    
-    
-    <category term="反馈" scheme="http://shenguosai.github.io/tags/%E5%8F%8D%E9%A6%88/"/>
     
   </entry>
   
