@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2024-05-11T02:39:11.570Z</updated>
+  <updated>2024-05-11T03:00:45.716Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -21,17 +21,20 @@
     <link href="http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/"/>
     <id>http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/</id>
     <published>2024-05-11T02:39:11.000Z</published>
-    <updated>2024-05-11T02:39:11.570Z</updated>
+    <updated>2024-05-11T03:00:45.716Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/spoiler.css&quot; type=&quot;text/css&quot;&gt;&lt;script src=&quot;/js/spoiler.js&quot; type=&quot;text/javascript&quot; async&gt;&lt;/script&gt;</summary>
-      
+    <content type="html"><![CDATA[<h1 id="安装-Xrdp-使用-Xorg-进行远程登录"><a href="#安装-Xrdp-使用-Xorg-进行远程登录" class="headerlink" title="安装 Xrdp 使用 Xorg 进行远程登录"></a>安装 Xrdp 使用 Xorg 进行远程登录</h1><p>网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。</p><pre><code class="lang-bash">sudo apt install xrdp</code></pre><span id="more"></span><p>安装完成后该服务将自动开启，可通过下面命令确认是否开启:</p><pre><code class="lang-bash">sudo systemctl status xrdp</code></pre><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511104423.png" alt="20240511104423"><br>红框处显示 <code>active(running)</code> 则说明已开启。</p><h1 id="解决远程桌面连接上之后黑屏并闪退问题"><a href="#解决远程桌面连接上之后黑屏并闪退问题" class="headerlink" title="解决远程桌面连接上之后黑屏并闪退问题"></a>解决远程桌面连接上之后黑屏并闪退问题</h1><p>这个经常会有人说更换 test 版本的 xrdp 来解决，但是通过以下办法可以正常登录。<br>编辑<code>/etc/xrdp/startwm.sh</code></p><pre><code class="lang-bash">sudo vi /etc/xrdp/startwm.sh</code></pre><p>加入下面三行内容:</p><pre><code class="lang-bash">unset DBUS_SESSION_BUS_ADDRESSunset XDG_RUNTIME_DIR. $HOME/.profile</code></pre><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511104947.png" alt="20240511104947"><br>然后就可以通过 Xorg 登录看到桌面了。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511105324.png" alt="20240511105324"></p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
     
     
+    <summary type="html">&lt;h1 id=&quot;安装-Xrdp-使用-Xorg-进行远程登录&quot;&gt;&lt;a href=&quot;#安装-Xrdp-使用-Xorg-进行远程登录&quot; class=&quot;headerlink&quot; title=&quot;安装 Xrdp 使用 Xorg 进行远程登录&quot;&gt;&lt;/a&gt;安装 Xrdp 使用 Xorg 进行远程登录&lt;/h1&gt;&lt;p&gt;网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;sudo apt install xrdp
+&lt;/code&gt;&lt;/pre&gt;</summary>
+    
+    
+    
+    <category term="Note" scheme="http://shenguosai.github.io/categories/Note/"/>
+    
+    <category term="Linux" scheme="http://shenguosai.github.io/categories/Note/Linux/"/>
     
     
   </entry>
@@ -41,15 +44,70 @@
     <link href="http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/"/>
     <id>http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/</id>
     <published>2024-05-11T00:32:17.000Z</published>
-    <updated>2024-05-11T02:38:03.005Z</updated>
+    <updated>2024-05-11T03:00:30.563Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="机器配置"><a href="#机器配置" class="headerlink" title="机器配置"></a>机器配置</h1><p>这台机器比较老，是200x年在日本买的富士通的 FMV-DESKPOWER，型号是 FMVFB70T。<br>配置如下:</p><div class="table-container"><table><thead><tr><th>配件名称</th><th>型号</th><th>规格</th></tr></thead><tbody><tr><td>主板</td><td>FJNB023</td><td></td></tr><tr><td>CPU</td><td>Core(TM)2 Duo P8400</td><td>2.26GHz 2核2线程</td></tr><tr><td>Chipset</td><td>Intel GM45 Express</td><td>1066MHz</td></tr><tr><td>内存</td><td>型号不明，看实物为尔必达颗粒</td><td>DDR3-1066 PC3-8500 1G x2</td></tr><tr><td>硬盘</td><td>Seagate ST3500820AS</td><td>500G容量，7200转/s，5V 0.65A，12V 0.42A</td></tr><tr><td>LAN</td><td>Marvell 88E8055</td><td>1000BASE-T/100BASE-TX/10BASE-T,支持WOL</td></tr><tr><td>WIFI</td><td>Qualcomm Atheros AR928X</td><td>IEEE802.11/a/b/g/n</td></tr><tr><td>USB</td><td></td><td>USB2.0(4pin x5)</td></tr><tr><td>显示器</td><td></td><td>19inch，1440 x 900</td></tr></tbody></table></div><blockquote><p>官网建议最大内存 4G(2G x2)，是因为当时预装的 Windows Vista Home 是 32 位系统，最大支持 4G 内存，而根据 GN45 Express 的 Chipset 规格最大可支持 8G(4G x2) 内存。</p></blockquote><p>相关命令:</p><pre><code class="lang-bash">lscpu #使用程序将 sysfs 和 /proc/cpuinfo 中的详细 CPU 信息输出到屏幕sudo dmidecode -t 2 #主板信息sudo dmidecode -t 16 #内存信息lspci | grep Ethernet #有线网卡lspci | greo Wireless #无线网卡iwconfig #无线网卡</code></pre><h1 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h1><p>Debian 有很多版本，由于机器比较老，我使用的是 32 位的 dvd 映像进行的安装。<br>下载地址: <a href="https://cdimage.debian.org/debian-cd/current/i386/bt-dvd/">debian-12.5.0-i386-DVD-1.iso.torrent</a></p><h1 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h1><p>使用 Ventoy 正常安装即可。</p><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><p>由于使用的 DVD 映像进行的系统安装，在后续安装软件时会优先使用介质安装，需要在 <code>/etc/apt/source.list</code> 中关闭映像安装，如下在第一行中添加 <code>#</code> 进行注释(我在安装系统时选择的是华为的镜像源)。</p><pre><code class="lang-bash"># deb cdrom:[Debian GNU/Linux 12.5.0 _Bookworm_ - Official i386 DVD Binary-1 with firmware 20240210-11:28]/ bookworm contrib main non-free-firmwaredeb http://mirrors.huaweicloud.com/debian/ bookworm main non-free-firmwaredeb-src http://mirrors.huaweicloud.com/debian/ bookworm main non-free-firmwaredeb http://security.debian.org/debian-security bookworm-security main non-free-firmwaredeb-src http://security.debian.org/debian-security bookworm-security main non-free-firmware# bookworm-updates, to get updates before a point release is made;# see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backportsdeb http://mirrors.huaweicloud.com/debian/ bookworm-updates main non-free-firmwaredeb-src http://mirrors.huaweicloud.com/debian/ bookworm-updates main non-free-firmware</code></pre><h2 id="用户权限"><a href="#用户权限" class="headerlink" title="用户权限"></a>用户权限</h2><p>在安装系统时会设置两个用户，一个 root 用户，一个普通用户，而使用普通用户时默认无法使用<code>sudo</code>，所以需要安装<code>sudo</code>并添加权限。</p><ol><li>安装<code>sudo</code><br>切换至 root 用户并安装<code>sudo</code>:<pre><code class="lang-bash">su rootapt install sudo</code></pre></li><li>添加权限<br>网上介绍了两种方法，但我使用方法一的时候没有成功，建议直接使用方法二。<br>方法一: 切换至 root 用户并执行下面的命令。<pre><code class="lang-bash">sudo usermod -aG sudo username</code></pre>上面命令中的 username 换成自己的用户名。<br>方法二: 切换至 root 用户，在 <code>/etc/sudoer.d/</code> 目录下新建一个以自己用户名为文件名的文件。<pre><code class="lang-bash">touch /etc/sudoer.d/usernamenano /etc/sudoer.d/username</code></pre>添加以下内容:<pre><code class="lang-bash">username ALL=(ALL)ALL</code></pre>注意上面的 username 需要换成自己的用户名，然后 Ctrl+X 保存退出并切换回自己的用户就可以了。</li></ol><h2 id="配置语言"><a href="#配置语言" class="headerlink" title="配置语言"></a>配置语言</h2><p>在安装过程中如果选择系统语言为英语进行安装的话进入系统后还要设置语言为中文并安装中文输入法，折腾了一番成功了但是具体的步骤不知道是否合理。</p><ol><li>安装语言包<pre><code class="lang-bash">sudo apt updatesudo apt install locales</code></pre></li><li>配置 <code>locale</code><pre><code class="lang-bash">sudo dpkg-reconfigure locales</code></pre>在出现的对话框的表里一直下拉选择 <code>zh_CN.UTF-8</code> 。然后在下一个界面中选择 <code>zh_CN.UTF-8</code> 作为默认的 <code>locale</code> 。</li><li>安装中文字体(非必需)<pre><code class="lang-bash">sudo apt install fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy</code></pre></li><li>安装中文输入法<br>(1) 如果原来有安装先卸载<pre><code class="lang-bash">sudo apt purge fcitx* ibus*</code></pre>(2) 安装 fcitx5 中文拼音输入法<pre><code class="lang-bash">sudo apt install fcitx5 fcitx5-chinese-addons</code></pre>(3) 然后重启系统打开 fcitx 配置根据自己的需要进行配置即可。</li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    <content type="html"><![CDATA[<h1 id="机器配置"><a href="#机器配置" class="headerlink" title="机器配置"></a>机器配置</h1><p>这台机器比较老，是200x年在日本买的富士通的 FMV-DESKPOWER，型号是 FMVFB70T。<br>配置如下:</p><div class="table-container"><table><thead><tr><th>配件名称</th><th>型号</th><th>规格</th></tr></thead><tbody><tr><td>主板</td><td>FJNB023</td><td></td></tr><tr><td>CPU</td><td>Core(TM)2 Duo P8400</td><td>2.26GHz 2核2线程</td></tr><tr><td>Chipset</td><td>Intel GM45 Express</td><td>1066MHz</td></tr><tr><td>内存</td><td>型号不明，看实物为尔必达颗粒</td><td>DDR3-1066 PC3-8500 1G x2</td></tr><tr><td>硬盘</td><td>Seagate ST3500820AS</td><td>500G容量，7200转/s，5V 0.65A，12V 0.42A</td></tr><tr><td>LAN</td><td>Marvell 88E8055</td><td>1000BASE-T/100BASE-TX/10BASE-T,支持WOL</td></tr><tr><td>WIFI</td><td>Qualcomm Atheros AR928X</td><td>IEEE802.11/a/b/g/n</td></tr><tr><td>USB</td><td></td><td>USB2.0(4pin x5)</td></tr><tr><td>显示器</td><td></td><td>19inch，1440 x 900</td></tr></tbody></table></div><span id="more"></span><blockquote><p>官网建议最大内存 4G(2G x2)，是因为当时预装的 Windows Vista Home 是 32 位系统，最大支持 4G 内存，而根据 GN45 Express 的 Chipset 规格最大可支持 8G(4G x2) 内存。</p></blockquote><p>相关命令:</p><pre><code class="lang-bash">lscpu #使用程序将 sysfs 和 /proc/cpuinfo 中的详细 CPU 信息输出到屏幕sudo dmidecode -t 2 #主板信息sudo dmidecode -t 16 #内存信息lspci | grep Ethernet #有线网卡lspci | greo Wireless #无线网卡iwconfig #无线网卡</code></pre><h1 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h1><p>Debian 有很多版本，由于机器比较老，我使用的是 32 位的 dvd 映像进行的安装。<br>下载地址: <a href="https://cdimage.debian.org/debian-cd/current/i386/bt-dvd/">debian-12.5.0-i386-DVD-1.iso.torrent</a></p><h1 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h1><p>使用 Ventoy 正常安装即可。</p><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><p>由于使用的 DVD 映像进行的系统安装，在后续安装软件时会优先使用介质安装，需要在 <code>/etc/apt/source.list</code> 中关闭映像安装，如下在第一行中添加 <code>#</code> 进行注释(我在安装系统时选择的是华为的镜像源)。</p><pre><code class="lang-bash"># deb cdrom:[Debian GNU/Linux 12.5.0 _Bookworm_ - Official i386 DVD Binary-1 with firmware 20240210-11:28]/ bookworm contrib main non-free-firmwaredeb http://mirrors.huaweicloud.com/debian/ bookworm main non-free-firmwaredeb-src http://mirrors.huaweicloud.com/debian/ bookworm main non-free-firmwaredeb http://security.debian.org/debian-security bookworm-security main non-free-firmwaredeb-src http://security.debian.org/debian-security bookworm-security main non-free-firmware# bookworm-updates, to get updates before a point release is made;# see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backportsdeb http://mirrors.huaweicloud.com/debian/ bookworm-updates main non-free-firmwaredeb-src http://mirrors.huaweicloud.com/debian/ bookworm-updates main non-free-firmware</code></pre><h2 id="用户权限"><a href="#用户权限" class="headerlink" title="用户权限"></a>用户权限</h2><p>在安装系统时会设置两个用户，一个 root 用户，一个普通用户，而使用普通用户时默认无法使用<code>sudo</code>，所以需要安装<code>sudo</code>并添加权限。</p><ol><li>安装<code>sudo</code><br>切换至 root 用户并安装<code>sudo</code>:<pre><code class="lang-bash">su rootapt install sudo</code></pre></li><li>添加权限<br>网上介绍了两种方法，但我使用方法一的时候没有成功，建议直接使用方法二。<br>方法一: 切换至 root 用户并执行下面的命令。<pre><code class="lang-bash">sudo usermod -aG sudo username</code></pre>上面命令中的 username 换成自己的用户名。<br>方法二: 切换至 root 用户，在 <code>/etc/sudoer.d/</code> 目录下新建一个以自己用户名为文件名的文件。<pre><code class="lang-bash">touch /etc/sudoer.d/usernamenano /etc/sudoer.d/username</code></pre>添加以下内容:<pre><code class="lang-bash">username ALL=(ALL)ALL</code></pre>注意上面的 username 需要换成自己的用户名，然后 Ctrl+X 保存退出并切换回自己的用户就可以了。</li></ol><h2 id="配置语言"><a href="#配置语言" class="headerlink" title="配置语言"></a>配置语言</h2><p>在安装过程中如果选择系统语言为英语进行安装的话进入系统后还要设置语言为中文并安装中文输入法，折腾了一番成功了但是具体的步骤不知道是否合理。</p><ol><li>安装语言包<pre><code class="lang-bash">sudo apt updatesudo apt install locales</code></pre></li><li>配置 <code>locale</code><pre><code class="lang-bash">sudo dpkg-reconfigure locales</code></pre>在出现的对话框的表里一直下拉选择 <code>zh_CN.UTF-8</code> 。然后在下一个界面中选择 <code>zh_CN.UTF-8</code> 作为默认的 <code>locale</code> 。</li><li>安装中文字体(非必需)<pre><code class="lang-bash">sudo apt install fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy</code></pre></li><li>安装中文输入法<br>(1) 如果原来有安装先卸载<pre><code class="lang-bash">sudo apt purge fcitx* ibus*</code></pre>(2) 安装 fcitx5 中文拼音输入法<pre><code class="lang-bash">sudo apt install fcitx5 fcitx5-chinese-addons</code></pre>(3) 然后重启系统打开 fcitx 配置根据自己的需要进行配置即可。</li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;h1 id=&quot;机器配置&quot;&gt;&lt;a href=&quot;#机器配置&quot; class=&quot;headerlink&quot; title=&quot;机器配置&quot;&gt;&lt;/a&gt;机器配置&lt;/h1&gt;&lt;p&gt;这台机器比较老，是200x年在日本买的富士通的 FMV-DESKPOWER，型号是 FMVFB70T。&lt;br&gt;配置如下:&lt;/</summary>
-      
+    <summary type="html">&lt;h1 id=&quot;机器配置&quot;&gt;&lt;a href=&quot;#机器配置&quot; class=&quot;headerlink&quot; title=&quot;机器配置&quot;&gt;&lt;/a&gt;机器配置&lt;/h1&gt;&lt;p&gt;这台机器比较老，是200x年在日本买的富士通的 FMV-DESKPOWER，型号是 FMVFB70T。&lt;br&gt;配置如下:&lt;/p&gt;
+&lt;div class=&quot;table-container&quot;&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;配件名称&lt;/th&gt;
+&lt;th&gt;型号&lt;/th&gt;
+&lt;th&gt;规格&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;主板&lt;/td&gt;
+&lt;td&gt;FJNB023&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CPU&lt;/td&gt;
+&lt;td&gt;Core(TM)2 Duo P8400&lt;/td&gt;
+&lt;td&gt;2.26GHz 2核2线程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Chipset&lt;/td&gt;
+&lt;td&gt;Intel GM45 Express&lt;/td&gt;
+&lt;td&gt;1066MHz&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;内存&lt;/td&gt;
+&lt;td&gt;型号不明，看实物为尔必达颗粒&lt;/td&gt;
+&lt;td&gt;DDR3-1066 PC3-8500 1G x2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;硬盘&lt;/td&gt;
+&lt;td&gt;Seagate ST3500820AS&lt;/td&gt;
+&lt;td&gt;500G容量，7200转/s，5V 0.65A，12V 0.42A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LAN&lt;/td&gt;
+&lt;td&gt;Marvell 88E8055&lt;/td&gt;
+&lt;td&gt;1000BASE-T/100BASE-TX/10BASE-T,支持WOL&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WIFI&lt;/td&gt;
+&lt;td&gt;Qualcomm Atheros AR928X&lt;/td&gt;
+&lt;td&gt;IEEE802.11/a/b/g/n&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;USB&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;USB2.0(4pin x5)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;显示器&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;19inch，1440 x 900&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;</summary>
     
     
     
