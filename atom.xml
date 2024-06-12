@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2024-05-11T03:00:45.716Z</updated>
+  <updated>2024-06-12T07:37:18.389Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>QNAP-海报墙可刮削IP</title>
+    <link href="http://shenguosai.github.io/2024/06/12/QNAP-%E6%B5%B7%E6%8A%A5%E5%A2%99%E5%8F%AF%E5%88%AE%E5%89%8AIP/"/>
+    <id>http://shenguosai.github.io/2024/06/12/QNAP-%E6%B5%B7%E6%8A%A5%E5%A2%99%E5%8F%AF%E5%88%AE%E5%89%8AIP/</id>
+    <published>2024-06-12T07:25:21.000Z</published>
+    <updated>2024-06-12T07:37:18.389Z</updated>
+    
+    <content type="html"><![CDATA[<p>目前解决海报墙不可刮削问题的方法基本都是修改 hosts，因为墙屏蔽的是特殊 IP，而不是 themovie 等网站本身。</p><ol><li>修改 QNAP 的 hosts 文件:<br>这种方法比较简单方便，缺点就是每次威联通重启就会重置 hosts 文件。<br><code>sudo vi /etc/hosts</code><br>在 hosts 文件中指定域名的 IP 地址: <code>13.226.238.82 api.themoviedb.org</code></li><li>修改路由器的 hosts 文件:<br>这种方法一劳永逸，但是需要能够 ssh 路由器并取得 root 权限。<br>操作方法及添加内容与 1. 相同。</li></ol><p>在网上看到一个刮削网站的 IP 清单，将测试通过的记录如下:(摘自:<a href="https://post.smzdm.com/p/az6x9m00/">NAS干货分享 篇一：一招解决影片削挂问题，打造完美海报墙</a>)</p><pre><code class="lang-hosts">13.224.161.90 api.themoviedb.org104.16.61.155 image.themoviedb.org13.35.67.86 api.themoviedb.org54.192.151.79 www.themoviedb.org13.249.175.212 api.thetvdb.com13.35.161.120 api.thetvdb.com13.226.238.76 api.themoviedb.org13.35.7.102 api.themoviedb.org13.226.191.85 api.themoviedb.org52.85.79.89 api.themoviedb.org13.225.41.40 api.themoviedb.org13.226.251.88 api.themoviedb.org</code></pre><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;目前解决海报墙不可刮削问题的方法基本都是修改 hosts，因为墙屏蔽的是特殊 IP，而不是 themovie 等网站本身。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;修改 QNAP 的 hosts 文件:&lt;br&gt;这种方法比较简单方便，缺点就是每次威联通重启就会重置 hosts 文件。&lt;br</summary>
+      
+    
+    
+    
+    <category term="QNAP" scheme="http://shenguosai.github.io/categories/QNAP/"/>
+    
+    <category term="Video Station" scheme="http://shenguosai.github.io/categories/QNAP/Video-Station/"/>
+    
+    
+    <category term="QNAP" scheme="http://shenguosai.github.io/tags/QNAP/"/>
+    
+  </entry>
   
   <entry>
     <title>Debian Linux 使用 -- 远程桌面黑屏并闪退</title>
@@ -521,34 +549,6 @@
     <category term="Semicondcutor" scheme="http://shenguosai.github.io/tags/Semicondcutor/"/>
     
     <category term="Device" scheme="http://shenguosai.github.io/tags/Device/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>EDA工具使用备忘</title>
-    <link href="http://shenguosai.github.io/2024/02/01/EDA%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/"/>
-    <id>http://shenguosai.github.io/2024/02/01/EDA%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/</id>
-    <published>2024-02-01T00:49:38.000Z</published>
-    <updated>2024-03-04T03:12:15.320Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Cadence"><a href="#Cadence" class="headerlink" title="Cadence"></a>Cadence</h2><h4 id="Virtuoso"><a href="#Virtuoso" class="headerlink" title="Virtuoso"></a>Virtuoso</h4><ol><li><p>.cdsinit: 负责Cadence软件的初始化配置，包括加载快捷方式、嵌入Calibre软件接口等。</p><span id="more"></span><ul><li>示例存放目录:<code>Candence安装目录/tools/dfII/samples/local/cdsinit</code></li><li>读取顺序: <blockquote><p><em><font color="#d3d3d3">Cadence安装目录</font></em>/tools/dfII/samples/local/cdsinit =&gt; <em><font color="#d3d3d3">用户home目录</font></em>/.cdsinit =&gt; <em><font color="#d3d3d3">virtuoso启动目录</font></em>/.cdsinit</p></blockquote></li><li>设置默认读取的display.drf文件:    <pre>drLoadDrf(<em>filePath</em>)</pre></li><li><p>设置默认快捷键文件:</p><ul><li>添加单个快捷键文件 <pre>load("/home/IC/Desktop/workspace/analog_ic/set_env/bindKeys_ICSkillSharing.il")</pre></li><li><p>添加多个快捷键文件</p><pre><code class="lang-skill"> let((bindKeyFileList file path saveSkillPath)     bindKeyFileList = &#39;(         &quot;leBindKeys.il&quot;         &quot;schBindKey.il&quot;         &quot;bindKeys_ICSkillSharing.il&quot;     ) ) ; This is the path that is searched for the files     path = strcat( ; If you want to add another path add it here as a string         &quot;. ~/home/IC/Desktop/workspace/analog_ic/set_env &quot;         prependInstallPath(&quot;local&quot;)         prependInstallPath(&quot;samples/local&quot;)     ) saveSkillPath = getSkillPath() saveSkillPath(path) foreach(file bindKeyFileList     if(isFile(file) then         loadi(file)     ) ) setSkillPath(saveSkillPath)</code></pre></li></ul></li><li>快捷键设置:<ul><li>设置快捷键“0”消除高亮net|按“0”后鼠标点击欲消除的net: <pre>hiSetBindKey("Schematics" "<Key>0" "geEnterDeleteNetProbe()")</pre></li><li>设置快捷键“-”消除所有高亮net:  <pre>hiSetBindkey("Schematics" "<Key>-" "geDeleteAllProbe(getCurrentWindow() t)")</pre></li><li>设置快捷键“F6”打开Library Manager(启动Virtuoso后): <pre>hiSetBindKey("Command Interpreter" "<Key>F6" "ddsOpenLibManager()")</pre></li><li>设置快捷键“Shift+S”在上层schematic界面下编辑Symbol: <pre>hiSetBindKey("Schematics" "Shift<Ket>S" "schHiEditInPlace()")</pre></li><li>设置仿真结果默认存放目录为“/DATA/shenguosai/simulasion”: <pre>envSetVal("asimenv.startup" "projectDir" 'string "/DATA/shenguosai/simulasion")</pre></li><li>调用其它软件接口:<ul><li>Calibre<br><pre>load(“<em>Calibre_install_dir</em>/lib/calibre.skl”)</li><li>HSPICE<br><pre>load(“<em>HSPICE_install_dir</em>/interface/HSPICE.ile”)</li></ul></li></ul></li></ul></li><li><p>.cdsenv: 包含了Cadence软件的变量设置，用户通过对变量赋值，改变软件设置。</p><ul><li>示例存放目录: <code>Candence安装目录/tools/dfII/samples/.cdsenv</code></li><li>读取顺序: <blockquote><p><em><font color="#d3d3d3">Cadence安装目录</font></em>/tools/dfII/samples/.cdsenv =&gt; <em><font color="#d3d3d3">用户home目录</font></em>/.cdsenv =&gt; <em><font color="#d3d3d3">virtuoso启动目录</font></em>/.cdsenv</p></blockquote></li><li>设置仿真结果显示有效位数:(示例文件中有，通过搜索改变赋值即可,以下同)   <pre>auCore.misc labelDigits int 6</pre></li><li>改变仿真结果保存路径:   <pre>asimenv.startup projectDir string" ./simulation"</pre></li><li>按Library名称设置仿真结果保存路径:<br>   <pre>asimenv.startup appendLibNameToProjectDir boolean t</li><li>设置原理图和版图中的 label 默认字体改为 roman:<pre><code class="lang-skill">   schematic createLabelFontStyle cyclic &quot;roman&quot;   layout labelFontStyle cyclic &quot;roman&quot;</code></pre></li><li>设置版图网格点默认值:视工艺而定<pre><code class="lang-skill">   layout xSnapSpacing float 0.005   layout ySnapSpacing float 0.005</code></pre></li><li>设置仿真波形与坐标显示:<pre><code class="lang-skill">   viva.graph  titleFont  string  &quot;Default,14,-1,5,75,0,0,0,0,0&quot;   viva.rectGraph    background  string  &quot;white&quot;   viva.axis     font   string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;   viva.horizMarker font    string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;   viva.vertMarker     font    string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;   viva.referenceLineMarker    font  string    &quot;Default,14,-1,5,75,0,0,0,0,0&quot;   ...   viva.trace  lineThickness  string  &quot;Thick&quot;   viva.trace  lineStyle  string  &quot;solid&quot;   wavescan.trace  lineThickness  string  &quot;Thick&quot;   wavescan.trace  lineStyle  string  &quot;solid&quot;</code></pre>   其中<code>viva.axis font string &quot;Defaut,14,-1,5,75,0,0,0,0,0&quot;</code>中的 14 为字号；75 为颜色深度，可以理解为是否加粗，取值在0-99之间。<blockquote><p><b>注意</b>:仿真波形显示方法会与 PDK 中环境变量设置和 display.drf 文件中的设置有关，如果按照上面的方法设置完后不能达到实际效果，首先考虑是否是 PDK 自带脚本加载了其它软件变量或者使用的 display.drf 文件中做了相应修改，如果发现有问题可以修改 PDK 中环境变量或者 display.drf 文件的相应设置。</p></blockquote></li><li><p>实现在 Library Manager 界面双击 view 以只读方式打开:<br>   <pre>cdsLibManager.main dblClickEditCellView boolean nil</pre></p><blockquote><p><b>特别注意</b>: 可能按照上面的方法设置完.cdsenv文件之后，发现设置并未生效，这时候需要注意一个问题，<b>Cadence每次启动时都会加载 .cdsinit 文件，然而对于 .cdsenv 文件并非如此，而且 .cdsenv文件中的变量值会被覆盖，具体软件加载 .cdsenv 文件的顺序需要再用户的环境变量设置文件中定义。</b>一般叫做 .bashrc (使用 export 定义环境变量)或者 .cshrc (使用 setenv 定义环境变量)。</p></blockquote><pre><code class="lang-bash">   # 加载软件启动目录下的 .cdsenv 文件   export CDS_LOAD_ENV = CWD(setenv CDS_LOAD_ENV CWD)   # 首先加载用户主目录下的 .cdsenv 文件，然后加载软件启动目录下的 .cdsenv 文件。   export CDS_LOAD_ENV = addCWD(setenv CDS_LOAD_ENV addCWD)</code></pre></li></ul></li><li>display.drf: 一般在工艺库中会有初始化的显示文件。这里面会有电路的连线粗细及颜色，器件的一些显示，版图layout里面的layer颜色等等，还有ADE波形图里面的线的属性。总之就是显示相关的一些设置。<ul><li>文件的修改保存: 当修改过显示后，每次退出 virtuoso 会显示一个保存显示信息，这里输入名称，比如display_1.drf，这个文件默认保存在打开 virtuoso 的文件夹下面。</li><li>默认文件的设置: 在.cdsinit 文件里添加载入命令 <code>drLoadDrf(filepath)</code> 。</li></ul></li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;Cadence&quot;&gt;&lt;a href=&quot;#Cadence&quot; class=&quot;headerlink&quot; title=&quot;Cadence&quot;&gt;&lt;/a&gt;Cadence&lt;/h2&gt;&lt;h4 id=&quot;Virtuoso&quot;&gt;&lt;a href=&quot;#Virtuoso&quot; class=&quot;headerlink&quot; title=&quot;Virtuoso&quot;&gt;&lt;/a&gt;Virtuoso&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;.cdsinit: 负责Cadence软件的初始化配置，包括加载快捷方式、嵌入Calibre软件接口等。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Semiconductor" scheme="http://shenguosai.github.io/categories/Semiconductor/"/>
-    
-    <category term="EDA" scheme="http://shenguosai.github.io/categories/Semiconductor/EDA/"/>
-    
-    
-    <category term="Semiconductor" scheme="http://shenguosai.github.io/tags/Semiconductor/"/>
-    
-    <category term="EDA" scheme="http://shenguosai.github.io/tags/EDA/"/>
-    
-    <category term="Note" scheme="http://shenguosai.github.io/tags/Note/"/>
     
   </entry>
   

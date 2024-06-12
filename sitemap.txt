@@ -1,3 +1,4 @@
+http://shenguosai.github.io/2024/06/12/QNAP-%E6%B5%B7%E6%8A%A5%E5%A2%99%E5%8F%AF%E5%88%AE%E5%89%8AIP/
 http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/
 http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/
 http://shenguosai.github.io/2024/04/28/Pura-70%E7%B3%BB%E5%88%97%E5%9B%9B%E6%AC%BE%E6%9C%BA%E5%9E%8B%E5%8C%BA%E5%88%AB/
@@ -74,6 +75,7 @@ http://shenguosai.github.io/tags/%E6%8A%98%E8%85%BE/
 http://shenguosai.github.io/tags/%E5%8F%8D%E9%A6%88/
 http://shenguosai.github.io/tags/Children/
 http://shenguosai.github.io/tags/Windows/
+http://shenguosai.github.io/tags/QNAP/
 http://shenguosai.github.io/categories/%E5%88%86%E4%BA%AB/
 http://shenguosai.github.io/categories/Knowledge-Share/
 http://shenguosai.github.io/categories/Tutorial/
@@ -100,3 +102,5 @@ http://shenguosai.github.io/categories/%E7%BD%91%E7%BB%9C/%E8%BF%9C%E7%A8%8B%E6%
 http://shenguosai.github.io/categories/Education/
 http://shenguosai.github.io/categories/Note/Docker/
 http://shenguosai.github.io/categories/Note/SmartPhone/
+http://shenguosai.github.io/categories/QNAP/
+http://shenguosai.github.io/categories/QNAP/Video-Station/

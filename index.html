@@ -169,6 +169,124 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/06/12/QNAP-%E6%B5%B7%E6%8A%A5%E5%A2%99%E5%8F%AF%E5%88%AE%E5%89%8AIP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="sgs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/06/12/QNAP-%E6%B5%B7%E6%8A%A5%E5%A2%99%E5%8F%AF%E5%88%AE%E5%89%8AIP/" class="post-title-link" itemprop="url">QNAP-海报墙可刮削IP</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-06-12 15:25:21 / 修改时间：15:37:18" itemprop="dateCreated datePublished" datetime="2024-06-12T15:25:21+08:00">2024-06-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/QNAP/" itemprop="url" rel="index"><span itemprop="name">QNAP</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/QNAP/Video-Station/" itemprop="url" rel="index"><span itemprop="name">Video Station</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/06/12/QNAP-%E6%B5%B7%E6%8A%A5%E5%A2%99%E5%8F%AF%E5%88%AE%E5%89%8AIP/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/06/12/QNAP-%E6%B5%B7%E6%8A%A5%E5%A2%99%E5%8F%AF%E5%88%AE%E5%89%8AIP/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>655</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>目前解决海报墙不可刮削问题的方法基本都是修改 hosts，因为墙屏蔽的是特殊 IP，而不是 themovie 等网站本身。</p>
+<ol>
+<li>修改 QNAP 的 hosts 文件:<br>这种方法比较简单方便，缺点就是每次威联通重启就会重置 hosts 文件。<br><code>sudo vi /etc/hosts</code><br>在 hosts 文件中指定域名的 IP 地址: <code>13.226.238.82 api.themoviedb.org</code></li>
+<li>修改路由器的 hosts 文件:<br>这种方法一劳永逸，但是需要能够 ssh 路由器并取得 root 权限。<br>操作方法及添加内容与 1. 相同。</li>
+</ol>
+<p>在网上看到一个刮削网站的 IP 清单，将测试通过的记录如下:(摘自:<a target="_blank" rel="noopener" href="https://post.smzdm.com/p/az6x9m00/">NAS干货分享 篇一：一招解决影片削挂问题，打造完美海报墙</a>)</p>
+<pre><code class="lang-hosts">13.224.161.90 api.themoviedb.org
+104.16.61.155 image.themoviedb.org
+13.35.67.86 api.themoviedb.org
+54.192.151.79 www.themoviedb.org
+13.249.175.212 api.thetvdb.com
+13.35.161.120 api.thetvdb.com
+13.226.238.76 api.themoviedb.org
+13.35.7.102 api.themoviedb.org
+13.226.191.85 api.themoviedb.org
+52.85.79.89 api.themoviedb.org
+13.225.41.40 api.themoviedb.org
+13.226.251.88 api.themoviedb.org
+</code></pre>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1330,120 +1448,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/03/25/CentOS-7-%E5%AE%89%E8%A3%85docker%E5%92%8Cdocker-compose/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="sgs">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="乙未丁酉">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/03/25/CentOS-7-%E5%AE%89%E8%A3%85docker%E5%92%8Cdocker-compose/" class="post-title-link" itemprop="url">CentOS 7 安装docker和docker-compose</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-03-25 15:06:45" itemprop="dateCreated datePublished" datetime="2024-03-25T15:06:45+08:00">2024-03-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-03-26 14:12:51" itemprop="dateModified" datetime="2024-03-26T14:12:51+08:00">2024-03-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tutorial/" itemprop="url" rel="index"><span itemprop="name">Tutorial</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2024/03/25/CentOS-7-%E5%AE%89%E8%A3%85docker%E5%92%8Cdocker-compose/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2024/03/25/CentOS-7-%E5%AE%89%E8%A3%85docker%E5%92%8Cdocker-compose/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>708</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h1><p>更新 <code>yum</code></p>
-<pre><code class="lang-bash">yum update
-</code></pre>
-<p>安装配置时的依赖包</p>
-<pre><code class="lang-bash">yum install -y yum-utils device-mapper-persistent-data lvm2
-</code></pre>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/03/25/CentOS-7-%E5%AE%89%E8%A3%85docker%E5%92%8Cdocker-compose/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1515,20 +1519,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1569,7 +1573,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:15</span>
+    <span title="站点阅读时长">4:16</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
