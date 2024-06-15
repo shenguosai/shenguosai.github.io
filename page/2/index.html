@@ -169,6 +169,115 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/03/26/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9C%A8cmd%E4%B8%AD%E8%83%BD%E6%89%A7%E8%A1%8C%E4%BD%86%E6%98%AF%E5%9C%A8PowerShell%E4%B8%AD%E6%8A%A5%E9%94%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="sgs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/03/26/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9C%A8cmd%E4%B8%AD%E8%83%BD%E6%89%A7%E8%A1%8C%E4%BD%86%E6%98%AF%E5%9C%A8PowerShell%E4%B8%AD%E6%8A%A5%E9%94%99/" class="post-title-link" itemprop="url">Windows命令行在cmd中能执行但是在PowerShell中报错</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-03-26 08:50:58 / 修改时间：14:13:16" itemprop="dateCreated datePublished" datetime="2024-03-26T08:50:58+08:00">2024-03-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/03/26/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9C%A8cmd%E4%B8%AD%E8%83%BD%E6%89%A7%E8%A1%8C%E4%BD%86%E6%98%AF%E5%9C%A8PowerShell%E4%B8%AD%E6%8A%A5%E9%94%99/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/03/26/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9C%A8cmd%E4%B8%AD%E8%83%BD%E6%89%A7%E8%A1%8C%E4%BD%86%E6%98%AF%E5%9C%A8PowerShell%E4%B8%AD%E6%8A%A5%E9%94%99/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>637</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>使用ssh远程windows端的时候默认使用cmd，而用powershell可以使用很多linux的命令，像<code>ls</code>，<code>ps</code>，<code>cd</code>什么的(实际上只是映射了一下)。<br>使用管理员权限在<em>PowerShell</em>执行以下命令，使SSH连接Windows时默认使用<em>Powershell</em>。</p>
+<pre><code class="lang-powershell">New-ItemProperty -Path &quot;HKLM:\SOFTWARE\OpenSSH&quot; -Name DefaultShell -Value &quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -PropertyType String -Force
+</code></pre>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/03/26/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9C%A8cmd%E4%B8%AD%E8%83%BD%E6%89%A7%E8%A1%8C%E4%BD%86%E6%98%AF%E5%9C%A8PowerShell%E4%B8%AD%E6%8A%A5%E9%94%99/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/03/25/CentOS-7-%E5%AE%89%E8%A3%85docker%E5%92%8Cdocker-compose/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1131,115 +1240,6 @@ aea5d32a8c4839fc35a2ed4fbb53e70f  MiSetup2.2.0.6261_2717.exe
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/02/01/%E5%85%B3%E4%BA%8E%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%B7%A5%E8%89%BA%E4%B8%AD%E7%94%B5%E5%AE%B9%E5%99%A8%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="sgs">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="乙未丁酉">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/02/01/%E5%85%B3%E4%BA%8E%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%B7%A5%E8%89%BA%E4%B8%AD%E7%94%B5%E5%AE%B9%E5%99%A8%E4%BB%B6/" class="post-title-link" itemprop="url">关于半导体工艺中电容器件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-02-01 17:15:36" itemprop="dateCreated datePublished" datetime="2024-02-01T17:15:36+08:00">2024-02-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-03-02 22:55:50" itemprop="dateModified" datetime="2024-03-02T22:55:50+08:00">2024-03-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Knowledge-Share/" itemprop="url" rel="index"><span itemprop="name">Knowledge Share</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2024/02/01/%E5%85%B3%E4%BA%8E%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%B7%A5%E8%89%BA%E4%B8%AD%E7%94%B5%E5%AE%B9%E5%99%A8%E4%BB%B6/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2024/02/01/%E5%85%B3%E4%BA%8E%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%B7%A5%E8%89%BA%E4%B8%AD%E7%94%B5%E5%AE%B9%E5%99%A8%E4%BB%B6/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>647</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>半导体设计中常用的电容有: MIM, MOM, Varactor, NCAP, N/P MOS<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/02/01/%E5%85%B3%E4%BA%8E%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%B7%A5%E8%89%BA%E4%B8%AD%E7%94%B5%E5%AE%B9%E5%99%A8%E4%BB%B6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1311,7 +1311,7 @@ aea5d32a8c4839fc35a2ed4fbb53e70f  MiSetup2.2.0.6261_2717.exe
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1360,12 +1360,12 @@ aea5d32a8c4839fc35a2ed4fbb53e70f  MiSetup2.2.0.6261_2717.exe
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">281k</span>
+    <span title="站点总字数">286k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:16</span>
+    <span title="站点阅读时长">4:20</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
