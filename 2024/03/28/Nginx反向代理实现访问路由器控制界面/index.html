@@ -28,7 +28,7 @@
 <meta property="og:description" content="前两天把家里空闲的手机翻出来想着干点什么，两个小米 Note，一个 iPhone4，两个 iPhone6，一个三星 Galaxy A9 Pro和一个三星 Galaxy A32。  iPhone4 被我手残升级 iOS 搞成了砖，现在只能看白苹果了。。。 两个小米 Note 折腾了半天也没法解锁 BootLoader, 先放置了 一台 iPhone6 安装了“掌上看家” APP 在家里做个监控用来看">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-28T01:54:56.000Z">
-<meta property="article:modified_time" content="2024-04-24T00:35:56.094Z">
+<meta property="article:modified_time" content="2024-08-06T02:02:21.012Z">
 <meta property="article:author" content="sgs">
 <meta name="twitter:card" content="summary">
 
@@ -204,7 +204,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-24 08:35:56" itemprop="dateModified" datetime="2024-04-24T08:35:56+08:00">2024-04-24</time>
+                <time title="修改时间：2024-08-06 10:02:21" itemprop="dateModified" datetime="2024-08-06T10:02:21+08:00">2024-08-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -285,22 +285,31 @@ Darwin iPhone 18.7.0 Darwin Kernel Version 18.7.0: Fri Aug 19 23:28:26 PDT 2022;
 <h3 id="查看当前用户-shell"><a href="#查看当前用户-shell" class="headerlink" title="查看当前用户 shell"></a>查看当前用户 shell</h3><pre><code class="lang-bash">[root@iPhone ~]#echo $SHELL
 /bin/bash
 </code></pre>
-<h3 id="更改命令行提示符-PS1-及-常用命令"><a href="#更改命令行提示符-PS1-及-常用命令" class="headerlink" title="更改命令行提示符 PS1 及 常用命令"></a>更改命令行提示符 PS1 及 常用命令</h3>```conf<br>export PATH=’/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games’<h1 id="export-PS1-’-h-w-u-‘"><a href="#export-PS1-’-h-w-u-‘" class="headerlink" title="export PS1=’\h:\w \u$ ‘"></a>export PS1=’\h:\w \u$ ‘</h1>export PS1=’[\u@\h \W]$‘<br>umask 022</li>
+<h3 id="更改命令行提示符-PS1-及-常用命令"><a href="#更改命令行提示符-PS1-及-常用命令" class="headerlink" title="更改命令行提示符 PS1 及 常用命令"></a>更改命令行提示符 PS1 及 常用命令</h3></li>
 </ul>
-<p>export EDITOR=/usr/bin/editor<br>export PAGER=/usr/bin/pager</p>
-<p>for i in /etc/profile.d/*.sh ; do<br>    if [ -r “$i” ]; then<br>        . $i<br>    fi<br>done</p>
-<p>export LS_COLORS=’no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=01;32:<em>.cmd=01;35:</em>.exe=01;35:<em>.com=01;35:</em>.btm=01;35:<em>.bat=01;35:</em>.sh=01;35:<em>.csh=01;35:</em>.tar=01;31:<em>.tgz=01;31:</em>.arj=01;31:<em>.taz=01;31:</em>.lzh=01;31:<em>.zip=01;31:</em>.z=01;31:<em>.Z=01;31:</em>.gz=01;31:<em>.bz2=01;31:</em>.bz=01;31:<em>.tz=01;31:</em>.rpm=01;31:<em>.cpio=01;31:</em>.jpg=01;35:<em>.gif=01;35:</em>.bmp=01;35:<em>.xbm=01;35:</em>.xpm=01;35:<em>.png=01;35:</em>.tif=01;35:’<br>alias la=’ls -al’<br>alias ll=’ls -l’</p>
-<pre><code>&gt; 将第3行注释掉；
-&gt; 添加第3行；
-&gt; 添加15、16、17行；
-&gt; 其它都是默认的。
-&gt; **注:不知道原因，但是在这个系统里只能修改这个文件来配置 bash，在用户目录下使用`.bashrc`修改没有效果，应该是默认不 load `.bashrc`文件。**
+<pre><code class="lang-conf">export PATH=&#39;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games&#39;
+# export PS1=&#39;\h:\w \u\$ &#39;
+export PS1=&#39;[\u@\h \W]\$&#39;
+umask 022
 
-## 配置 VIM
-这个就在用户目录下使用`touch .vimrc`和`mkdir .vim`创建相关的配置文件和目录即可。
-.vimrc 配置如下:
-```vim
-set nu
+export EDITOR=/usr/bin/editor
+export PAGER=/usr/bin/pager
+
+for i in /etc/profile.d/*.sh ; do
+    if [ -r &quot;$i&quot; ]; then
+        . $i
+    fi
+done
+
+export LS_COLORS=&#39;no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=01;32:*.cmd=01;35:*.exe=01;35:*.com=01;35:*.btm=01;35:*.bat=01;35:*.sh=01;35:*.csh=01;35:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tz=01;31:*.rpm=01;31:*.cpio=01;31:*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.xbm=01;35:*.xpm=01;35:*.png=01;35:*.tif=01;35:&#39;
+alias la=&#39;ls -al&#39;
+alias ll=&#39;ls -l&#39;
+</code></pre>
+<blockquote>
+<p>将第3行注释掉；<br>添加第3行；<br>添加15、16、17行；<br>其它都是默认的。<br><strong>注:不知道原因，但是在这个系统里只能修改这个文件来配置 bash，在用户目录下使用<code>.bashrc</code>修改没有效果，应该是默认不 load <code>.bashrc</code>文件。</strong></p>
+</blockquote>
+<h2 id="配置-VIM"><a href="#配置-VIM" class="headerlink" title="配置 VIM"></a>配置 VIM</h2><p>这个就在用户目录下使用<code>touch .vimrc</code>和<code>mkdir .vim</code>创建相关的配置文件和目录即可。<br>.vimrc 配置如下:</p>
+<pre><code class="lang-vim">set nu
 set backspace=indent,eol,start
 &quot;set cursorline
 &quot;hi cursorline ctermbg=lightgray guibg=lightblue
@@ -343,7 +352,8 @@ inoremap &#123; &#123;&#125;&lt;ESC&gt;i
 inoremap &lt; &lt;&gt;&lt;ESC&gt;i
 inoremap &#39; &#39;&#39;&lt;ESC&gt;i
 inoremap &quot; &quot;&quot;&lt;ESC&gt;i
-</code></pre><h1 id="在越狱的-iPhone6-上安装-OpenSSH"><a href="#在越狱的-iPhone6-上安装-OpenSSH" class="headerlink" title="在越狱的 iPhone6 上安装 OpenSSH"></a>在越狱的 iPhone6 上安装 OpenSSH</h1><p>这个属于常规操作，在越狱的市场里下载就行。(略)</p>
+</code></pre>
+<h1 id="在越狱的-iPhone6-上安装-OpenSSH"><a href="#在越狱的-iPhone6-上安装-OpenSSH" class="headerlink" title="在越狱的 iPhone6 上安装 OpenSSH"></a>在越狱的 iPhone6 上安装 OpenSSH</h1><p>这个属于常规操作，在越狱的市场里下载就行。(略)</p>
 <h1 id="在越狱的-iPhone6-上安装-Nginx"><a href="#在越狱的-iPhone6-上安装-Nginx" class="headerlink" title="在越狱的 iPhone6 上安装 Nginx"></a>在越狱的 iPhone6 上安装 Nginx</h1><p>使用命令:</p>
 <pre><code class="lang-bash">apt-get install nginx
 </code></pre>
@@ -480,7 +490,7 @@ inoremap &quot; &quot;&quot;&lt;ESC&gt;i
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iPhone6-%E8%B6%8A%E7%8B%B1"><span class="nav-number">1.</span> <span class="nav-text">iPhone6 越狱</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8B%E8%B6%8A%E7%8B%B1%E7%9A%84-iPhone6"><span class="nav-number">2.</span> <span class="nav-text">配置一下越狱的 iPhone6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bash%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">bash设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4cat-etc-shells%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%94%AF%E6%8C%81%E7%9A%84-shell"><span class="nav-number">2.1.1.</span> <span class="nav-text">使用命令cat &#x2F;etc&#x2F;shells查看系统支持的 shell:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E9%BB%98%E8%AE%A4-shell-%E6%9B%B4%E6%94%B9%E4%B8%BA-bash"><span class="nav-number">2.1.2.</span> <span class="nav-text">将默认 shell 更改为 bash:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7-shell"><span class="nav-number">2.1.3.</span> <span class="nav-text">查看当前用户 shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8F%90%E7%A4%BA%E7%AC%A6-PS1-%E5%8F%8A-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.4.</span> <span class="nav-text">更改命令行提示符 PS1 及 常用命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#export-PS1-%E2%80%99-h-w-u-%E2%80%98"><span class="nav-number">3.</span> <span class="nav-text">export PS1&#x3D;’\h:\w \u$ ‘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E8%B6%8A%E7%8B%B1%E7%9A%84-iPhone6-%E4%B8%8A%E5%AE%89%E8%A3%85-OpenSSH"><span class="nav-number">4.</span> <span class="nav-text">在越狱的 iPhone6 上安装 OpenSSH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E8%B6%8A%E7%8B%B1%E7%9A%84-iPhone6-%E4%B8%8A%E5%AE%89%E8%A3%85-Nginx"><span class="nav-number">5.</span> <span class="nav-text">在越狱的 iPhone6 上安装 Nginx</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-Nginx-%E4%BD%BF%E5%85%B6%E8%AE%BF%E9%97%AE%E5%BD%93%E5%89%8D%E8%AE%BE%E5%A4%87%E6%97%B6%E6%8C%87%E5%90%91%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2"><span class="nav-number">6.</span> <span class="nav-text">配置 Nginx 使其访问当前设备时指向路由器管理界面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AE%A1%E7%90%86%E5%8F%B0"><span class="nav-number">7.</span> <span class="nav-text">外网访问路由器管理台</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iPhone6-%E8%B6%8A%E7%8B%B1"><span class="nav-number">1.</span> <span class="nav-text">iPhone6 越狱</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8B%E8%B6%8A%E7%8B%B1%E7%9A%84-iPhone6"><span class="nav-number">2.</span> <span class="nav-text">配置一下越狱的 iPhone6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bash%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">bash设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4cat-etc-shells%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%94%AF%E6%8C%81%E7%9A%84-shell"><span class="nav-number">2.1.1.</span> <span class="nav-text">使用命令cat &#x2F;etc&#x2F;shells查看系统支持的 shell:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E9%BB%98%E8%AE%A4-shell-%E6%9B%B4%E6%94%B9%E4%B8%BA-bash"><span class="nav-number">2.1.2.</span> <span class="nav-text">将默认 shell 更改为 bash:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7-shell"><span class="nav-number">2.1.3.</span> <span class="nav-text">查看当前用户 shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8F%90%E7%A4%BA%E7%AC%A6-PS1-%E5%8F%8A-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.4.</span> <span class="nav-text">更改命令行提示符 PS1 及 常用命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-VIM"><span class="nav-number">2.2.</span> <span class="nav-text">配置 VIM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E8%B6%8A%E7%8B%B1%E7%9A%84-iPhone6-%E4%B8%8A%E5%AE%89%E8%A3%85-OpenSSH"><span class="nav-number">3.</span> <span class="nav-text">在越狱的 iPhone6 上安装 OpenSSH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E8%B6%8A%E7%8B%B1%E7%9A%84-iPhone6-%E4%B8%8A%E5%AE%89%E8%A3%85-Nginx"><span class="nav-number">4.</span> <span class="nav-text">在越狱的 iPhone6 上安装 Nginx</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-Nginx-%E4%BD%BF%E5%85%B6%E8%AE%BF%E9%97%AE%E5%BD%93%E5%89%8D%E8%AE%BE%E5%A4%87%E6%97%B6%E6%8C%87%E5%90%91%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2"><span class="nav-number">5.</span> <span class="nav-text">配置 Nginx 使其访问当前设备时指向路由器管理界面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AE%A1%E7%90%86%E5%8F%B0"><span class="nav-number">6.</span> <span class="nav-text">外网访问路由器管理台</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

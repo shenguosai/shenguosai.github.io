@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240615144523.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240615144857.png">
 <meta property="article:published_time" content="2024-06-14T11:17:19.000Z">
-<meta property="article:modified_time" content="2024-06-15T07:10:00.529Z">
+<meta property="article:modified_time" content="2024-08-06T02:04:33.554Z">
 <meta property="article:author" content="sgs">
 <meta property="article:tag" content="Windows">
 <meta name="twitter:card" content="summary">
@@ -212,7 +212,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-06-15 15:10:00" itemprop="dateModified" datetime="2024-06-15T15:10:00+08:00">2024-06-15</time>
+                <time title="修改时间：2024-08-06 10:04:33" itemprop="dateModified" datetime="2024-08-06T10:04:33+08:00">2024-08-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -266,7 +266,8 @@
         <h1 id="创建-iStoreOS-虚拟机"><a href="#创建-iStoreOS-虚拟机" class="headerlink" title="创建 iStoreOS 虚拟机"></a>创建 iStoreOS 虚拟机</h1><p>今年 618 入坑威联通，终于知道为什么大家都推荐群晖了，软件使用还好但是配置方法确实不太人性化。话归正传:</p>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ol>
 <li>QTS 中要安装有 <code>Virtualization Station 虚拟化工作站</code>；</li>
-<li>下载 iStoreOS 映像文件，本次使用的是 <code>istoreos-22.03.6-2024052410-x86-64-squashfs-combined.vmdk</code>，可以到<a target="_blank" rel="noopener" href="https://fw.koolcenter.com/iStoreOS/x86_64/">这里</a>下载。我下载的 vmdk 文件，然后发现威联通不认 vmdk，又用威联通自带的工具转成了 img 映像。感觉应该是可以直接使用下载的 img 映像来安装。<h2 id="安装-iStoreOS-虚拟机系统"><a href="#安装-iStoreOS-虚拟机系统" class="headerlink" title="安装 iStoreOS 虚拟机系统"></a>安装 iStoreOS 虚拟机系统</h2>打开 Virtualization Station，点击”建立”，弹出如下对话框；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/iStoreOS1.png" alt="iStoreOS1"><br>虚拟机名称自己起一个喜欢的名字就可以，文件位置是虚拟机要安装的位置。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/iStoreOS2.png" alt="iStoreOS2"><br>自定义设置里选择”使用现有映像”，然后指定转换好的的 img 映像存放路径。<br>其它默认即可，最后会出来配置总览，确认无误后点击”建立”，iStoreOS 的虚拟机系统就建立成功了。<h2 id="配置-iSoreOS"><a href="#配置-iSoreOS" class="headerlink" title="配置 iSoreOS"></a>配置 iSoreOS</h2>由于我是使用 iStoreOS 作为旁路网关，除了配置以下网络之外其它默认即可:<br>首先在主路由中确认 iStoreOS 的 IP 地址，然后在浏览器中输入就可以进入到 iStaoreOS 的管理界面。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240615125041.png" alt="20240615125041"><br>点击”网络向导”根据个人需求选择上网方式即可，这里选择”配置为旁路由”。<br>然后将 IP 地址、子网掩码、网关、DNS 依次输入即可。<blockquote>
+<li>下载 iStoreOS 映像文件，本次使用的是 <code>istoreos-22.03.6-2024052410-x86-64-squashfs-combined.vmdk</code>，可以到<a target="_blank" rel="noopener" href="https://fw.koolcenter.com/iStoreOS/x86_64/">这里</a>下载。我下载的 vmdk 文件，然后发现威联通不认 vmdk，又用威联通自带的工具转成了 img 映像。感觉应该是可以直接使用下载的 img 映像来安装。<span id="more"></span>
+<h2 id="安装-iStoreOS-虚拟机系统"><a href="#安装-iStoreOS-虚拟机系统" class="headerlink" title="安装 iStoreOS 虚拟机系统"></a>安装 iStoreOS 虚拟机系统</h2>打开 Virtualization Station，点击”建立”，弹出如下对话框；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/iStoreOS1.png" alt="iStoreOS1"><br>虚拟机名称自己起一个喜欢的名字就可以，文件位置是虚拟机要安装的位置。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/iStoreOS2.png" alt="iStoreOS2"><br>自定义设置里选择”使用现有映像”，然后指定转换好的的 img 映像存放路径。<br>其它默认即可，最后会出来配置总览，确认无误后点击”建立”，iStoreOS 的虚拟机系统就建立成功了。<h2 id="配置-iSoreOS"><a href="#配置-iSoreOS" class="headerlink" title="配置 iSoreOS"></a>配置 iSoreOS</h2>由于我是使用 iStoreOS 作为旁路网关，除了配置以下网络之外其它默认即可:<br>首先在主路由中确认 iStoreOS 的 IP 地址，然后在浏览器中输入就可以进入到 iStaoreOS 的管理界面。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240615125041.png" alt="20240615125041"><br>点击”网络向导”根据个人需求选择上网方式即可，这里选择”配置为旁路由”。<br>然后将 IP 地址、子网掩码、网关、DNS 依次输入即可。<blockquote>
 <p>IP 地址: 192.168.50.73 (设置 iStorOS 的访问地址)<br>子网掩码: 255.255.255.0<br>网关: 192.168.50.1 (主路由的 IP 地址)<br>DNS: 192.168.50.1 (主路由的 IP 地址)<br>也可 ssh 登录使用命令<code>vi /etc/config/network</code>编辑。<br>编辑方法:<br>找到带有<code>lan</code>字符的位置，添加如下文本:</p>
 <pre><code class="lang-vi">option ipaddr &#39;192.168.50.73&#39;
 option netmask &#39;255.255.255.0&#39;
