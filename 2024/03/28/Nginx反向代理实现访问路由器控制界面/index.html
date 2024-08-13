@@ -28,7 +28,7 @@
 <meta property="og:description" content="前两天把家里空闲的手机翻出来想着干点什么，两个小米 Note，一个 iPhone4，两个 iPhone6，一个三星 Galaxy A9 Pro和一个三星 Galaxy A32。  iPhone4 被我手残升级 iOS 搞成了砖，现在只能看白苹果了。。。 两个小米 Note 折腾了半天也没法解锁 BootLoader, 先放置了 一台 iPhone6 安装了“掌上看家” APP 在家里做个监控用来看">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-28T01:54:56.000Z">
-<meta property="article:modified_time" content="2024-08-06T02:02:21.012Z">
+<meta property="article:modified_time" content="2024-08-13T08:42:49.848Z">
 <meta property="article:author" content="sgs">
 <meta name="twitter:card" content="summary">
 
@@ -204,7 +204,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-08-06 10:02:21" itemprop="dateModified" datetime="2024-08-06T10:02:21+08:00">2024-08-06</time>
+                <time title="修改时间：2024-08-13 16:42:49" itemprop="dateModified" datetime="2024-08-13T16:42:49+08:00">2024-08-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -369,6 +369,7 @@ inoremap &quot; &quot;&quot;&lt;ESC&gt;i
             root   html;
             index  index.html index.htm;
         &#125;
+    &#125;
 </code></pre>
 <p>其实其它都是 nginx.conf.default 中的内容，只要在<code>location</code>里面加入<code>proxy_pass http://192.168.3.1/;</code>这一句就可以，这样当访问此台设备的<code>80</code>端口时就会直接指向到路由器管理台的<code>192.168.3.1</code>了。</p>
 <h1 id="外网访问路由器管理台"><a href="#外网访问路由器管理台" class="headerlink" title="外网访问路由器管理台"></a>外网访问路由器管理台</h1><p>将设置了 nginx 的设备端口<code>80</code>映射到外网即可，比如当前设备的局域网 ip 为<code>192.168.3.111</code>，映射外网端口为<code>11111</code>。<br>这样在外网访问时只要输入网址: <code>http://domain或者IP:1111</code> 就可以实现外网直接访问路由器管理后台了。</p>
