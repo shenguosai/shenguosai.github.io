@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2024-08-12T01:43:18.291Z</updated>
+  <updated>2024-08-14T05:12:46.546Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Debian 12.6 - 安装TCP测试工具TCPing</title>
+    <link href="http://shenguosai.github.io/2024/08/14/Debian-12-6-%E5%AE%89%E8%A3%85TCP%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7TCPing/"/>
+    <id>http://shenguosai.github.io/2024/08/14/Debian-12-6-%E5%AE%89%E8%A3%85TCP%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7TCPing/</id>
+    <published>2024-08-14T05:00:46.000Z</published>
+    <updated>2024-08-14T05:12:46.546Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>TCPing</code>是基于 TCP 协议的一种<code>ping</code>命令，用来测试数据包能否通过 TCP 协议到达目标主机。他的一大特点，就是可以在禁<code>ping</code>的时候检测网络连通率。</p><h1 id="安装tcptraceroute"><a href="#安装tcptraceroute" class="headerlink" title="安装tcptraceroute"></a>安装<code>tcptraceroute</code></h1><p><code>TCPing</code>本质上是一个 shell 脚本，依赖<code>tcptraceroute</code>运行。</p><pre><code class="lang-bash">sudo apt install tcptraceroute</code></pre><h1 id="下载-TCPing"><a href="#下载-TCPing" class="headerlink" title="下载 TCPing"></a>下载 TCPing</h1><pre><code class="lang-bash">sudo wget http://www.vdberg.org/~richard/tcpping -O /usr/bin/tcping</code></pre><h1 id="配置权限"><a href="#配置权限" class="headerlink" title="配置权限"></a>配置权限</h1><pre><code class="lang-bash">sudo chmod +x /usr/bin/tcping</code></pre><h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><pre><code class="lang-bash">tcping 目标IP 目标端口</code></pre><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;code&gt;TCPing&lt;/code&gt;是基于 TCP 协议的一种&lt;code&gt;ping&lt;/code&gt;命令，用来测试数据包能否通过 TCP 协议到达目标主机。他的一大特点，就是可以在禁&lt;code&gt;ping&lt;/code&gt;的时候检测网络连通率。&lt;/p&gt;
+&lt;h1 id=&quot;安装tcpt</summary>
+      
+    
+    
+    
+    <category term="Note" scheme="http://shenguosai.github.io/categories/Note/"/>
+    
+    <category term="Linux" scheme="http://shenguosai.github.io/categories/Note/Linux/"/>
+    
+    
+    <category term="Note" scheme="http://shenguosai.github.io/tags/Note/"/>
+    
+    <category term="Linux" scheme="http://shenguosai.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>QNAP安装zerotier进行异地组网</title>
+    <link href="http://shenguosai.github.io/2024/08/14/QNAP%E5%AE%89%E8%A3%85zerotier%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%9C%B0%E7%BB%84%E7%BD%91/"/>
+    <id>http://shenguosai.github.io/2024/08/14/QNAP%E5%AE%89%E8%A3%85zerotier%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%9C%B0%E7%BB%84%E7%BD%91/</id>
+    <published>2024-08-14T02:56:19.000Z</published>
+    <updated>2024-08-14T04:59:28.560Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol><li>在 App Center 中安装 QVPN Service<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814122823.png" alt="20240814122823"></li><li>去 <a href="https://www.zerotier.com/download/">ZeroTier 官网</a> 下载相关的安装包<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123138.png" alt="20240814123138"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123221.png" alt="20240814123221"></li></ol><h1 id="从本地安装-ZeroTier"><a href="#从本地安装-ZeroTier" class="headerlink" title="从本地安装 ZeroTier"></a>从本地安装 ZeroTier</h1><h2 id="允许没有有效数字签名的程序安装"><a href="#允许没有有效数字签名的程序安装" class="headerlink" title="允许没有有效数字签名的程序安装"></a>允许没有有效数字签名的程序安装</h2><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123719.png" alt="20240814123719"></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol><li>打开 App Center，右上角”手动安装”；</li><li>点击”浏览”，选中安装包；</li><li>点击”安装”。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814124524.png" alt="20240814124524"><br>安装完成后，可以在所有应用中找到 Zerotier，但是和群晖不同，威联通上的 Zerotier 是无法点击打开的。(不明白为什么在”我的应用程序”中无法找到 Zerotier。)<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814124911.png" alt="20240814124911"></li></ol><h1 id="加入网络"><a href="#加入网络" class="headerlink" title="加入网络"></a>加入网络</h1><p>Zerotier 的注册及申请方法不在此赘述，威联通安装好 Zerotier 软件后需要使用命令行来加入网络。且必须获取管理员权限才能安装。</p><pre><code class="lang-bash">[user@QNAP ~]$ zerotier-cli join xxxxxxxxxxxxxxxxzerotier-cli: authtoken.secret not found or readable in /share/CACHEDEV1_DATA/.qpkg/zerotier (try again as root)[user@QNAP ~]$ sudo zerotier-cli join xxxxxxxxxxxxxxxxWe trust you have received the usual lecture from the local SystemAdministrator. It usually boils down to these three things:    #1) Respect the privacy of others.    #2) Think before you type.    #3) With great power comes great responsibility.Password:200 join OK</code></pre><p>看到<code>200 join OK</code>，即意味着这台 NAS 已经加入了 zerotier 网络，然后就可以返回 zerotier 的网页管理端对这台设备进行授权。</p><p>※: 不知道为什么在 Zerotier 管理页中已经能看到设备的 WAN IP了，但是却无法连通。放一段时间观察一下。</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;在 App Center 中安装 QVPN Service&lt;br&gt;&lt;img src=&quot;https://raw.g</summary>
+      
+    
+    
+    
+    <category term="QNAP" scheme="http://shenguosai.github.io/categories/QNAP/"/>
+    
+    
+    <category term="网络" scheme="http://shenguosai.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="折腾" scheme="http://shenguosai.github.io/tags/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="QNAP" scheme="http://shenguosai.github.io/tags/QNAP/"/>
+    
+  </entry>
   
   <entry>
     <title>QNAP虚拟机映像转换问题</title>
@@ -510,48 +568,6 @@
     
     
     <category term="Windows" scheme="http://shenguosai.github.io/tags/Windows/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>部署 Windows RDS 远程桌面服务(二)</title>
-    <link href="http://shenguosai.github.io/2024/03/02/%E9%83%A8%E7%BD%B2-Windows-RDS-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1-%E4%BA%8C/"/>
-    <id>http://shenguosai.github.io/2024/03/02/%E9%83%A8%E7%BD%B2-Windows-RDS-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1-%E4%BA%8C/</id>
-    <published>2024-03-02T12:35:58.000Z</published>
-    <updated>2024-03-02T14:52:37.505Z</updated>
-    
-    <content type="html"><![CDATA[<p>转自<a href="https://blog.csdn.net/m0_70919503/article/details/134965019">超详细的 部署Windows RDS 远程桌面服务来啦！！！确定不来看一下嘛~</a>，留待以后部署自己的远程桌面网关。</p><p>——-<em>开始正文</em>——-<br><span id="more"></span><br>用 Windows Server 2016 操作系统来完成 RDS 的部署，包括添加远程桌面服务角色，创建会话集合，发布 Remote App 程序，以及测试访问 Remote App 程序。<br>首先准备两台部署好域环境的虚拟机: Windows Server 2016 和 Windows 7</p><h3 id="添加远程桌面服务角色"><a href="#添加远程桌面服务角色" class="headerlink" title="添加远程桌面服务角色"></a>添加远程桌面服务角色</h3><p>打开 Windows Server 2016:<br>    (1) 点进服务器管理器，点击“添加角色和功能”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204322.png" alt="20240302204322"><br>    (2) 在安装类型选择“远程桌面服务安装”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204403.png" alt="20240302204403"><br>    (3) 在“选择部署类型”窗口中选择“标准部署”按键，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204503.png" alt="20240302204503"><br>    (4) 在“选择部署方案”窗口中，选择“基于会话的桌面部署”按键，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204559.png" alt="20240302204559"><br>    (5) 系统会自动安装和配置必需的角色服务，直接“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204643.png" alt="20240302204643"><br>    (6) 依次指定下面三个服务所在的服务器，在“指定 RD 连接代理服务器”窗口中，将服务器池中的当前服务器添加到右侧窗格中，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204837.png" alt="20240302204837"><br>    (7) 选择服务器池中的当前的服务器后，双击添加到右侧窗格中，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205006.png" alt="20240302205006"><br>    (8) 选择服务器池中的当前的服务器后，双击添加到右侧窗格中，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205108.png" alt="20240302205108"><br>    (9) 选择“需要时自动启动目标服务器”后，单击“部署”按键<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205210.png" alt="20240302205210"><br>    (10) 安装过程中系统自动重启，重新后会自动完成剩下的安装任务<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205308.png" alt="20240302205308"><br>登录自己的域账号<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205410.png" alt="20240302205410"></p><h3 id="创建会话集合"><a href="#创建会话集合" class="headerlink" title="创建会话集合"></a>创建会话集合</h3><pre><code>(1) 打开“服务器管理器”窗口，在左侧窗格单击刚安装好的“远程桌面服务”，在中间窗格选择“概述”选项，在右侧窗格单击“创建会话合集”![20240302205757](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205757.png)(2) 在“开始之前”窗口中，直接“下一步”(3) 自己取一个便于识别的名称后，单击“下一步”![20240302205902](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205902.png)(4) 将服务器池中的目标服务双击添加至右侧窗格中后，单击“下一步”![20240302205959](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205959.png)(5) 此页面可以点击“添加”按键可以添加需要授权的用户组，我们此处直接“下一步”![20240302210101](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210101.png)(6) 在“指定用户配置文件磁盘”窗口中，输入用户配置文件所在的位置后，单击“下一步”![20240302210201](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210201.png)(7) 确认信息无误后，单击“创建”![20240302210228](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210228.png)(8) 创建成功后单击“关闭”按键![20240302210300](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210300.png)</code></pre><h3 id="发布-Remote-App-程序"><a href="#发布-Remote-App-程序" class="headerlink" title="发布 Remote App 程序"></a>发布 Remote App 程序</h3><pre><code>(1) 打开“服务器管理器”窗口，单击左侧窗格“远程桌面服务”，在中间窗格单击刚创建的集合名称，单击“发布 Remote App 程序”![20240302210553](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210553.png)(2) 选择要发布集合的应用程序，咱选择发布自带的“画图”![20240302210640](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210640.png)(3) 确认要发布的 Remote App 程序列表是否正确，正确就单击“发布”按键![20240302210731](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210731.png)(4) 发布“画图”完成![20240302210802](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210802.png)</code></pre><h3 id="AD-服务端新建用户"><a href="#AD-服务端新建用户" class="headerlink" title="AD 服务端新建用户"></a>AD 服务端新建用户</h3><pre><code>(1) 打开“AD 用户和计算机”窗口![20240302210852](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210852.png)(2) 设置用户登录名称![20240302210913](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210913.png)(3) 设置用户登录密码![20240302210937](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210937.png)</code></pre><h3 id="访问-Remote-App-程序-测试"><a href="#访问-Remote-App-程序-测试" class="headerlink" title="访问 Remote App 程序(测试)"></a>访问 Remote App 程序(测试)</h3><p>进入 Windows 7 (客户端):<br>    (1) 在 Web 浏览器地址栏输入 URL: “<a href="http://FQDN/rdweb”，在打开的页面中单击“继续浏览此网站”">http://FQDN/rdweb”，在打开的页面中单击“继续浏览此网站”</a><br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211135.png" alt="20240302211135"><br>    (2) 输入”服务端域名\刚刚新建的用户的名字”，和登录密码后，点击“登录”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211242.png" alt="20240302211242"><br>        登录成功后出现“画图”程序图表即代表发布成功<br>        <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211336.png" alt="20240302211336"><br>    (3) 单击程序图标，在浏览器底部弹出的对话框单击“打开”按键<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211436.png" alt="20240302211436"><br>    (4) 点击“连接”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211505.png" alt="20240302211505"><br>    (5) 输入账号和登录密码<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211534.png" alt="20240302211534"><br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211551.png" alt="20240302211551"></p><p>以上便是所有内容，欢迎大家前来借鉴！</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;转自&lt;a href=&quot;https://blog.csdn.net/m0_70919503/article/details/134965019&quot;&gt;超详细的 部署Windows RDS 远程桌面服务来啦！！！确定不来看一下嘛~&lt;/a&gt;，留待以后部署自己的远程桌面网关。&lt;/p&gt;
-&lt;p&gt;——-&lt;em&gt;开始正文&lt;/em&gt;——-&lt;br&gt;</summary>
-    
-    
-    
-    <category term="Tutorial" scheme="http://shenguosai.github.io/categories/Tutorial/"/>
-    
-    
-    <category term="Windows" scheme="http://shenguosai.github.io/tags/Windows/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用PS在5寸相纸上排版1寸证件照</title>
-    <link href="http://shenguosai.github.io/2024/02/28/%E4%BD%BF%E7%94%A8PS%E5%9C%A85%E5%AF%B8%E7%9B%B8%E7%BA%B8%E4%B8%8A%E6%8E%92%E7%89%881%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7/"/>
-    <id>http://shenguosai.github.io/2024/02/28/%E4%BD%BF%E7%94%A8PS%E5%9C%A85%E5%AF%B8%E7%9B%B8%E7%BA%B8%E4%B8%8A%E6%8E%92%E7%89%881%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7/</id>
-    <published>2024-02-28T12:31:05.000Z</published>
-    <updated>2024-02-28T12:31:05.715Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/spoiler.css&quot; type=&quot;text/css&quot;&gt;&lt;script src=&quot;/js/spoiler.js&quot; type=&quot;text/javascript&quot; async&gt;&lt;/script&gt;</summary>
-      
-    
-    
-    
     
   </entry>
   

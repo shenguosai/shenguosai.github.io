@@ -169,6 +169,237 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/08/14/Debian-12-6-%E5%AE%89%E8%A3%85TCP%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7TCPing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="sgs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/08/14/Debian-12-6-%E5%AE%89%E8%A3%85TCP%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7TCPing/" class="post-title-link" itemprop="url">Debian 12.6 - 安装TCP测试工具TCPing</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-08-14 13:00:46 / 修改时间：13:12:46" itemprop="dateCreated datePublished" datetime="2024-08-14T13:00:46+08:00">2024-08-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/08/14/Debian-12-6-%E5%AE%89%E8%A3%85TCP%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7TCPing/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/08/14/Debian-12-6-%E5%AE%89%E8%A3%85TCP%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7TCPing/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>274</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><code>TCPing</code>是基于 TCP 协议的一种<code>ping</code>命令，用来测试数据包能否通过 TCP 协议到达目标主机。他的一大特点，就是可以在禁<code>ping</code>的时候检测网络连通率。</p>
+<h1 id="安装tcptraceroute"><a href="#安装tcptraceroute" class="headerlink" title="安装tcptraceroute"></a>安装<code>tcptraceroute</code></h1><p><code>TCPing</code>本质上是一个 shell 脚本，依赖<code>tcptraceroute</code>运行。</p>
+<pre><code class="lang-bash">sudo apt install tcptraceroute
+</code></pre>
+<h1 id="下载-TCPing"><a href="#下载-TCPing" class="headerlink" title="下载 TCPing"></a>下载 TCPing</h1><pre><code class="lang-bash">sudo wget http://www.vdberg.org/~richard/tcpping -O /usr/bin/tcping
+</code></pre>
+<h1 id="配置权限"><a href="#配置权限" class="headerlink" title="配置权限"></a>配置权限</h1><pre><code class="lang-bash">sudo chmod +x /usr/bin/tcping
+</code></pre>
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><pre><code class="lang-bash">tcping 目标IP 目标端口
+</code></pre>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/08/14/QNAP%E5%AE%89%E8%A3%85zerotier%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%9C%B0%E7%BB%84%E7%BD%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="sgs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/08/14/QNAP%E5%AE%89%E8%A3%85zerotier%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%9C%B0%E7%BB%84%E7%BD%91/" class="post-title-link" itemprop="url">QNAP安装zerotier进行异地组网</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-08-14 10:56:19 / 修改时间：12:59:28" itemprop="dateCreated datePublished" datetime="2024-08-14T10:56:19+08:00">2024-08-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/QNAP/" itemprop="url" rel="index"><span itemprop="name">QNAP</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/08/14/QNAP%E5%AE%89%E8%A3%85zerotier%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%9C%B0%E7%BB%84%E7%BD%91/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/08/14/QNAP%E5%AE%89%E8%A3%85zerotier%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%9C%B0%E7%BB%84%E7%BD%91/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>810</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
+<li>在 App Center 中安装 QVPN Service<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814122823.png" alt="20240814122823"></li>
+<li>去 <a target="_blank" rel="noopener" href="https://www.zerotier.com/download/">ZeroTier 官网</a> 下载相关的安装包<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123138.png" alt="20240814123138"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123221.png" alt="20240814123221"></li>
+</ol>
+<h1 id="从本地安装-ZeroTier"><a href="#从本地安装-ZeroTier" class="headerlink" title="从本地安装 ZeroTier"></a>从本地安装 ZeroTier</h1><h2 id="允许没有有效数字签名的程序安装"><a href="#允许没有有效数字签名的程序安装" class="headerlink" title="允许没有有效数字签名的程序安装"></a>允许没有有效数字签名的程序安装</h2><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123719.png" alt="20240814123719"></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li>打开 App Center，右上角”手动安装”；</li>
+<li>点击”浏览”，选中安装包；</li>
+<li>点击”安装”。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814124524.png" alt="20240814124524"><br>安装完成后，可以在所有应用中找到 Zerotier，但是和群晖不同，威联通上的 Zerotier 是无法点击打开的。(不明白为什么在”我的应用程序”中无法找到 Zerotier。)<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814124911.png" alt="20240814124911"></li>
+</ol>
+<h1 id="加入网络"><a href="#加入网络" class="headerlink" title="加入网络"></a>加入网络</h1><p>Zerotier 的注册及申请方法不在此赘述，威联通安装好 Zerotier 软件后需要使用命令行来加入网络。且必须获取管理员权限才能安装。</p>
+<pre><code class="lang-bash">[user@QNAP ~]$ zerotier-cli join xxxxxxxxxxxxxxxx
+zerotier-cli: authtoken.secret not found or readable in /share/CACHEDEV1_DATA/.qpkg/zerotier (try again as root)
+[user@QNAP ~]$ sudo zerotier-cli join xxxxxxxxxxxxxxxx
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+Password:
+200 join OK
+</code></pre>
+<p>看到<code>200 join OK</code>，即意味着这台 NAS 已经加入了 zerotier 网络，然后就可以返回 zerotier 的网页管理端对这台设备进行授权。</p>
+<p>※: 不知道为什么在 Zerotier 管理页中已经能看到设备的 WAN IP了，但是却无法连通。放一段时间观察一下。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/08/12/QNAP%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%98%A0%E5%83%8F%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1194,263 +1425,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/04/01/2024%E5%AD%A9%E5%AD%90%E7%94%B5%E8%AF%9D%E6%89%8B%E8%A1%A8%E6%9B%B4%E6%8D%A2%E6%96%B9%E6%A1%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="sgs">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="乙未丁酉">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/01/2024%E5%AD%A9%E5%AD%90%E7%94%B5%E8%AF%9D%E6%89%8B%E8%A1%A8%E6%9B%B4%E6%8D%A2%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">2024孩子电话手表更换方案</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-04-01 19:47:16 / 修改时间：19:50:37" itemprop="dateCreated datePublished" datetime="2024-04-01T19:47:16+08:00">2024-04-01</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2024/04/01/2024%E5%AD%A9%E5%AD%90%E7%94%B5%E8%AF%9D%E6%89%8B%E8%A1%A8%E6%9B%B4%E6%8D%A2%E6%96%B9%E6%A1%88/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2024/04/01/2024%E5%AD%A9%E5%AD%90%E7%94%B5%E8%AF%9D%E6%89%8B%E8%A1%A8%E6%9B%B4%E6%8D%A2%E6%96%B9%E6%A1%88/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>116</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="table-container">
-<table>
-<thead>
-<tr>
-<th>配置项</th>
-<th>Y3</th>
-<th>Y3C</th>
-<th>Y3 pro</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>内存</td>
-<td>1G</td>
-<td>1G</td>
-<td>1G</td>
-</tr>
-<tr>
-<td>容量</td>
-<td>8G</td>
-<td>16G</td>
-<td>8G</td>
-</tr>
-<tr>
-<td>摄像头像素</td>
-<td>200w</td>
-<td>200w</td>
-<td>500w</td>
-</tr>
-<tr>
-<td>儿童手表版微信、支付</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>防水等级</td>
-<td>2ATM</td>
-<td>IPX8</td>
-<td>2ATM</td>
-</tr>
-<tr>
-<td>背单词</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>NFC公交和乘车码对儿童手表来说目前是个伪需求，因为无法使用学生卡。</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/03/28/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E8%AE%BF%E9%97%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E6%8E%A7%E5%88%B6%E7%95%8C%E9%9D%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="sgs">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="乙未丁酉">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/03/28/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E8%AE%BF%E9%97%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E6%8E%A7%E5%88%B6%E7%95%8C%E9%9D%A2/" class="post-title-link" itemprop="url">Nginx反向代理实现访问路由器控制界面</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-03-28 09:54:56" itemprop="dateCreated datePublished" datetime="2024-03-28T09:54:56+08:00">2024-03-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-08-13 16:42:49" itemprop="dateModified" datetime="2024-08-13T16:42:49+08:00">2024-08-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/SmartPhone/" itemprop="url" rel="index"><span itemprop="name">SmartPhone</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2024/03/28/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E8%AE%BF%E9%97%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E6%8E%A7%E5%88%B6%E7%95%8C%E9%9D%A2/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2024/03/28/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E8%AE%BF%E9%97%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E6%8E%A7%E5%88%B6%E7%95%8C%E9%9D%A2/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>前两天把家里空闲的手机翻出来想着干点什么，两个小米 Note，一个 iPhone4，两个 iPhone6，一个三星 Galaxy A9 Pro和一个三星 Galaxy A32。</p>
-<ul>
-<li>iPhone4 被我手残升级 iOS 搞成了砖，现在只能看白苹果了。。。</li>
-<li>两个小米 Note 折腾了半天也没法解锁 BootLoader, 先放置了</li>
-<li>一台 iPhone6 安装了“掌上看家” APP 在家里做个监控用来看孩子有没有玩电子设备</li>
-<li>另一台 iPhone6 越狱出来做了一些小处理，本文重点来讲这个</li>
-<li>三星 Galaxy A9 Pro 已经解锁 BootLoader 成功还没想好干什么</li>
-<li>三星 Galaxy A32 还没折腾
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/03/28/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E8%AE%BF%E9%97%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E6%8E%A7%E5%88%B6%E7%95%8C%E9%9D%A2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1522,7 +1496,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1571,12 +1545,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">289k</span>
+    <span title="站点总字数">290k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:23</span>
+    <span title="站点阅读时长">4:24</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
