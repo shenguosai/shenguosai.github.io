@@ -194,7 +194,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2024-08-14 13:00:46 / 修改时间：13:12:46" itemprop="dateCreated datePublished" datetime="2024-08-14T13:00:46+08:00">2024-08-14</time>
+              <time title="创建时间：2024-08-14 13:00:46 / 修改时间：13:17:39" itemprop="dateCreated datePublished" datetime="2024-08-14T13:00:46+08:00">2024-08-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,17 +249,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><code>TCPing</code>是基于 TCP 协议的一种<code>ping</code>命令，用来测试数据包能否通过 TCP 协议到达目标主机。他的一大特点，就是可以在禁<code>ping</code>的时候检测网络连通率。</p>
-<h1 id="安装tcptraceroute"><a href="#安装tcptraceroute" class="headerlink" title="安装tcptraceroute"></a>安装<code>tcptraceroute</code></h1><p><code>TCPing</code>本质上是一个 shell 脚本，依赖<code>tcptraceroute</code>运行。</p>
-<pre><code class="lang-bash">sudo apt install tcptraceroute
-</code></pre>
-<h1 id="下载-TCPing"><a href="#下载-TCPing" class="headerlink" title="下载 TCPing"></a>下载 TCPing</h1><pre><code class="lang-bash">sudo wget http://www.vdberg.org/~richard/tcpping -O /usr/bin/tcping
-</code></pre>
-<h1 id="配置权限"><a href="#配置权限" class="headerlink" title="配置权限"></a>配置权限</h1><pre><code class="lang-bash">sudo chmod +x /usr/bin/tcping
-</code></pre>
-<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><pre><code class="lang-bash">tcping 目标IP 目标端口
-</code></pre>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+          <p><code>TCPing</code>是基于 TCP 协议的一种<code>ping</code>命令，用来测试数据包能否通过 TCP 协议到达目标主机。他的一大特点，就是可以在禁<code>ping</code>的时候检测网络连通率。<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/08/14/Debian-12-6-%E5%AE%89%E8%A3%85TCP%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7TCPing/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -303,7 +301,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2024-08-14 10:56:19 / 修改时间：12:59:28" itemprop="dateCreated datePublished" datetime="2024-08-14T10:56:19+08:00">2024-08-14</time>
+              <time title="创建时间：2024-08-14 10:56:19 / 修改时间：17:09:00" itemprop="dateCreated datePublished" datetime="2024-08-14T10:56:19+08:00">2024-08-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -335,7 +333,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>810</span>
+              <span>920</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -356,32 +354,15 @@
       
           <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
 <li>在 App Center 中安装 QVPN Service<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814122823.png" alt="20240814122823"></li>
-<li>去 <a target="_blank" rel="noopener" href="https://www.zerotier.com/download/">ZeroTier 官网</a> 下载相关的安装包<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123138.png" alt="20240814123138"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123221.png" alt="20240814123221"></li>
-</ol>
-<h1 id="从本地安装-ZeroTier"><a href="#从本地安装-ZeroTier" class="headerlink" title="从本地安装 ZeroTier"></a>从本地安装 ZeroTier</h1><h2 id="允许没有有效数字签名的程序安装"><a href="#允许没有有效数字签名的程序安装" class="headerlink" title="允许没有有效数字签名的程序安装"></a>允许没有有效数字签名的程序安装</h2><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123719.png" alt="20240814123719"></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
-<li>打开 App Center，右上角”手动安装”；</li>
-<li>点击”浏览”，选中安装包；</li>
-<li>点击”安装”。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814124524.png" alt="20240814124524"><br>安装完成后，可以在所有应用中找到 Zerotier，但是和群晖不同，威联通上的 Zerotier 是无法点击打开的。(不明白为什么在”我的应用程序”中无法找到 Zerotier。)<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814124911.png" alt="20240814124911"></li>
-</ol>
-<h1 id="加入网络"><a href="#加入网络" class="headerlink" title="加入网络"></a>加入网络</h1><p>Zerotier 的注册及申请方法不在此赘述，威联通安装好 Zerotier 软件后需要使用命令行来加入网络。且必须获取管理员权限才能安装。</p>
-<pre><code class="lang-bash">[user@QNAP ~]$ zerotier-cli join xxxxxxxxxxxxxxxx
-zerotier-cli: authtoken.secret not found or readable in /share/CACHEDEV1_DATA/.qpkg/zerotier (try again as root)
-[user@QNAP ~]$ sudo zerotier-cli join xxxxxxxxxxxxxxxx
-
-We trust you have received the usual lecture from the local System
-Administrator. It usually boils down to these three things:
-
-    #1) Respect the privacy of others.
-    #2) Think before you type.
-    #3) With great power comes great responsibility.
-
-Password:
-200 join OK
-</code></pre>
-<p>看到<code>200 join OK</code>，即意味着这台 NAS 已经加入了 zerotier 网络，然后就可以返回 zerotier 的网页管理端对这台设备进行授权。</p>
-<p>※: 不知道为什么在 Zerotier 管理页中已经能看到设备的 WAN IP了，但是却无法连通。放一段时间观察一下。</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<li>去 <a target="_blank" rel="noopener" href="https://www.zerotier.com/download/">ZeroTier 官网</a> 下载相关的安装包<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123138.png" alt="20240814123138"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123221.png" alt="20240814123221">
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/08/14/QNAP%E5%AE%89%E8%A3%85zerotier%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%9C%B0%E7%BB%84%E7%BD%91/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
