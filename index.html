@@ -169,6 +169,121 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/08/15/%E9%80%9A%E8%BF%87-ZeroTier-%E8%AE%BF%E9%97%AE%E6%89%80%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E5%85%B6%E5%AE%83%E8%AE%BE%E5%A4%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="sgs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/08/15/%E9%80%9A%E8%BF%87-ZeroTier-%E8%AE%BF%E9%97%AE%E6%89%80%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E5%85%B6%E5%AE%83%E8%AE%BE%E5%A4%87/" class="post-title-link" itemprop="url">通过 ZeroTier 访问所在局域网的其它设备</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-08-15 11:18:14 / 修改时间：11:37:09" itemprop="dateCreated datePublished" datetime="2024-08-15T11:18:14+08:00">2024-08-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/Zerotier/" itemprop="url" rel="index"><span itemprop="name">Zerotier</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/08/15/%E9%80%9A%E8%BF%87-ZeroTier-%E8%AE%BF%E9%97%AE%E6%89%80%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E5%85%B6%E5%AE%83%E8%AE%BE%E5%A4%87/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/08/15/%E9%80%9A%E8%BF%87-ZeroTier-%E8%AE%BF%E9%97%AE%E6%89%80%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E5%85%B6%E5%AE%83%E8%AE%BE%E5%A4%87/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>471</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>硬件: QNAP TS-464C<br>系统: iStore OS 虚拟机(Zerotier虚拟局域网网关)<br>软件: Zerotier<br>Zerotier 网段: 10.147.18.0/24<br>局域网网段: 192.168.3.0/24</p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="配置-Zerotier-设置"><a href="#配置-Zerotier-设置" class="headerlink" title="配置 Zerotier 设置"></a>配置 Zerotier 设置</h2><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112603.png" alt="20240815112603"></p>
+<h2 id="配置-Zerotier-网关"><a href="#配置-Zerotier-网关" class="headerlink" title="配置 Zerotier 网关"></a>配置 Zerotier 网关</h2><ol>
+<li>插件设置<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112706.png" alt="20240815112706"></li>
+<li>配置网关开启内核转发<br>先 ssh 登录到 iStore OS(Zerotier虚拟局域网网关，执行以下命令:<pre><code class="lang-bash">echo &#39;net.ipv4.ip_forward=1&#39; &gt;&gt; /etc/sysctl.conf
+sysctl -p
+</code></pre>
+<h2 id="访问方法"><a href="#访问方法" class="headerlink" title="访问方法"></a>访问方法</h2></li>
+<li>重启一下使用的外网设备的 Zerotier 服务；</li>
+<li>跟在局域网内访问相同，使用局域网地址访问即可。<h1 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h1></li>
+<li>网上说需要开启 Zerotier 网关的地址伪装，即<code>MASQUERADE</code>；<pre><code class="lang-bash">iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -j MASQUERADE
+</code></pre>
+</li>
+<li>配置静态路由表；</li>
+<li>防火墙放行 <code>9933</code> 端口。<br>上述三个步骤本次配置没有使用到，可能是 iStore OS 简化了配置，如果以后有需要使用 Linux 标准系统来使用的需求时再研究。</li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/08/14/Debian-12-6-%E5%AE%89%E8%A3%85TCP%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7TCPing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1296,120 +1411,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/04/15/%E4%BD%BF%E7%94%A8%E8%B6%8A%E7%8B%B1iPhone%E9%83%A8%E7%BD%B2ddns%E6%9C%8D%E5%8A%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="sgs">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="乙未丁酉">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/15/%E4%BD%BF%E7%94%A8%E8%B6%8A%E7%8B%B1iPhone%E9%83%A8%E7%BD%B2ddns%E6%9C%8D%E5%8A%A1/" class="post-title-link" itemprop="url">使用越狱iPhone部署ddns服务</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-04-15 20:21:42" itemprop="dateCreated datePublished" datetime="2024-04-15T20:21:42+08:00">2024-04-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-24 08:34:31" itemprop="dateModified" datetime="2024-04-24T08:34:31+08:00">2024-04-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/SmartPhone/" itemprop="url" rel="index"><span itemprop="name">SmartPhone</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2024/04/15/%E4%BD%BF%E7%94%A8%E8%B6%8A%E7%8B%B1iPhone%E9%83%A8%E7%BD%B2ddns%E6%9C%8D%E5%8A%A1/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2024/04/15/%E4%BD%BF%E7%94%A8%E8%B6%8A%E7%8B%B1iPhone%E9%83%A8%E7%BD%B2ddns%E6%9C%8D%E5%8A%A1/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="iPhone-越狱并获取root权限"><a href="#iPhone-越狱并获取root权限" class="headerlink" title="iPhone 越狱并获取root权限"></a>iPhone 越狱并获取root权限</h1><p>此处略，可以使用爱思助手 8.0 通过 Chimera 进行的越狱，此越狱方式并不完美，每次iPhone重启后所有越狱安装的app都会闪退，需要重新越狱一次才行。</p>
-<h1 id="在-CloudFlare-上建立一个二级域名"><a href="#在-CloudFlare-上建立一个二级域名" class="headerlink" title="在 CloudFlare 上建立一个二级域名"></a>在 CloudFlare 上建立一个二级域名</h1><p>首先，在 Cloudflare 上申请一个域名或者在其他网站申请托管到 Cloudflare 上，并建立用来作为 DDNS 用的 A 记录和 AAAA 记录。假设是:<br>A 记录:     ddns.example.com      1.1.1.1<br>AAAA 记录   ddns.example.com      2606:4700:4700::1111<br>IP 地址先可以随便填。<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/15/%E4%BD%BF%E7%94%A8%E8%B6%8A%E7%8B%B1iPhone%E9%83%A8%E7%BD%B2ddns%E6%9C%8D%E5%8A%A1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1481,14 +1482,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -1530,7 +1531,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">290k</span>
+    <span title="站点总字数">291k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
