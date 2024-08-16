@@ -1,3 +1,5 @@
+http://shenguosai.github.io/2024/08/17/%E4%BD%BF%E7%94%A8PS%E8%BD%AF%E4%BB%B6%E8%BF%9B%E8%A1%8C%E4%B8%80%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7%E7%89%87%E6%89%93%E5%8D%B0%E6%8E%92%E7%89%88/
+http://shenguosai.github.io/2023/12/03/Sublime-Text-Build-4169-%E6%B3%A8%E5%86%8C%E6%96%B9%E6%B3%95/
 http://shenguosai.github.io/2024/08/15/%E9%80%9A%E8%BF%87-ZeroTier-%E8%AE%BF%E9%97%AE%E6%89%80%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E5%85%B6%E5%AE%83%E8%AE%BE%E5%A4%87/
 http://shenguosai.github.io/2024/08/14/QNAP%E5%AE%89%E8%A3%85zerotier%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%9C%B0%E7%BB%84%E7%BD%91/
 http://shenguosai.github.io/2023/11/20/Hexo%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E4%B8%8E%E9%98%85%E8%AF%BB%E7%BB%9F%E8%AE%A1/
@@ -32,7 +34,6 @@ http://shenguosai.github.io/2024/02/01/EDA%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E
 http://shenguosai.github.io/2024/01/30/Work-Logs-20240130/
 http://shenguosai.github.io/2024/02/01/%E5%85%B3%E4%BA%8E%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%B7%A5%E8%89%BA%E4%B8%AD%E7%94%B5%E5%AE%B9%E5%99%A8%E4%BB%B6/
 http://shenguosai.github.io/2024/02/04/%E4%BD%BF%E7%94%A8curl%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E6%9F%A5%E8%AF%A2%E6%9C%AC%E5%9C%B0%E5%85%AC%E7%BD%91IP%E5%9C%B0%E5%9D%80/
-http://shenguosai.github.io/2024/02/28/%E4%BD%BF%E7%94%A8PS%E5%9C%A85%E5%AF%B8%E7%9B%B8%E7%BA%B8%E4%B8%8A%E6%8E%92%E7%89%881%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7/
 http://shenguosai.github.io/2024/02/26/Windows11-%E6%BF%80%E6%B4%BB%E6%96%B9%E6%B3%95/
 http://shenguosai.github.io/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/
 http://shenguosai.github.io/2023/08/17/%E5%87%A0%E7%A7%8D%E5%8A%9F%E7%8E%87%E7%AE%A1/
@@ -47,7 +48,6 @@ http://shenguosai.github.io/2023/12/12/%E5%9C%A8Windows11%E4%B8%AD%E6%89%BE%E5%9
 http://shenguosai.github.io/2023/12/06/VIM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%8A%B6%E6%80%81%E8%A1%8C/
 http://shenguosai.github.io/2023/12/03/%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F-Calibre/
 http://shenguosai.github.io/2023/12/01/%E8%8B%B1%E8%AF%AD-%E8%82%AF%E5%AE%9A%E5%8F%A5%E5%8F%98%E5%90%A6%E5%AE%9A%E5%8F%A5/
-http://shenguosai.github.io/2023/12/03/Sublime-Text-Build-4169-%E6%B3%A8%E5%86%8C%E6%96%B9%E6%B3%95/
 http://shenguosai.github.io/2023/11/27/%E5%8F%A4%E8%AF%97%E8%AF%8D%E6%AC%A3%E8%B5%8F%E2%80%9420231127/
 http://shenguosai.github.io/2023/09/13/Elecom-MR-C18BK-%E8%AF%BB%E5%8D%A1%E5%99%A8/
 http://shenguosai.github.io/2023/09/13/%E6%97%A0%E9%97%A8%E5%85%B3%C2%B7%E5%B9%B3%E5%B8%B8%E6%98%AF%E9%81%93/
@@ -82,9 +82,9 @@ http://shenguosai.github.io/tags/%E5%8F%8D%E9%A6%88/
 http://shenguosai.github.io/tags/Children/
 http://shenguosai.github.io/tags/Windows/
 http://shenguosai.github.io/tags/QNAP/
+http://shenguosai.github.io/tags/Photoshop/
 http://shenguosai.github.io/categories/%E5%88%86%E4%BA%AB/
 http://shenguosai.github.io/categories/Knowledge-Share/
-http://shenguosai.github.io/categories/Tutorial/
 http://shenguosai.github.io/categories/Semiconductor/
 http://shenguosai.github.io/categories/Article/
 http://shenguosai.github.io/categories/Electronic-Equipments/
@@ -111,3 +111,6 @@ http://shenguosai.github.io/categories/Note/Software/Adobe/
 http://shenguosai.github.io/categories/Note/Software/TVBox/
 http://shenguosai.github.io/categories/Note/Printer/
 http://shenguosai.github.io/categories/Note/Zerotier/
+http://shenguosai.github.io/categories/Software/
+http://shenguosai.github.io/categories/Software/Sublime/
+http://shenguosai.github.io/categories/Software/Adobe/

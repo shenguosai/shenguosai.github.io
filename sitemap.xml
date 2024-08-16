@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://shenguosai.github.io/2024/08/17/%E4%BD%BF%E7%94%A8PS%E8%BD%AF%E4%BB%B6%E8%BF%9B%E8%A1%8C%E4%B8%80%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7%E7%89%87%E6%89%93%E5%8D%B0%E6%8E%92%E7%89%88/</loc>
+    
+    <lastmod>2024-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://shenguosai.github.io/2023/12/03/Sublime-Text-Build-4169-%E6%B3%A8%E5%86%8C%E6%96%B9%E6%B3%95/</loc>
+    
+    <lastmod>2024-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://shenguosai.github.io/2024/08/15/%E9%80%9A%E8%BF%87-ZeroTier-%E8%AE%BF%E9%97%AE%E6%89%80%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E5%85%B6%E5%AE%83%E8%AE%BE%E5%A4%87/</loc>
     
     <lastmod>2024-08-15</lastmod>
@@ -308,15 +326,6 @@
   </url>
   
   <url>
-    <loc>http://shenguosai.github.io/2024/02/28/%E4%BD%BF%E7%94%A8PS%E5%9C%A85%E5%AF%B8%E7%9B%B8%E7%BA%B8%E4%B8%8A%E6%8E%92%E7%89%881%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7/</loc>
-    
-    <lastmod>2024-02-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://shenguosai.github.io/2024/02/26/Windows11-%E6%BF%80%E6%B4%BB%E6%96%B9%E6%B3%95/</loc>
     
     <lastmod>2024-02-26</lastmod>
@@ -443,15 +452,6 @@
   </url>
   
   <url>
-    <loc>http://shenguosai.github.io/2023/12/03/Sublime-Text-Build-4169-%E6%B3%A8%E5%86%8C%E6%96%B9%E6%B3%95/</loc>
-    
-    <lastmod>2023-12-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://shenguosai.github.io/2023/11/27/%E5%8F%A4%E8%AF%97%E8%AF%8D%E6%AC%A3%E8%B5%8F%E2%80%9420231127/</loc>
     
     <lastmod>2023-12-01</lastmod>
@@ -535,7 +535,7 @@
 
   <url>
     <loc>http://shenguosai.github.io/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -543,168 +543,175 @@
   
   <url>
     <loc>http://shenguosai.github.io/tags/Semiconductor/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/Calibre/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/Privacy/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/EDA/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/Note/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/docker/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/software/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/Life/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/WorkLogs/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/Swiching-Regulator/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/Buck-Boost/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/%E5%B7%A5%E8%89%BA/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/Poetry/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/Linux/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/Semicondcutor/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/Device/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/Semiconductor-Device/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/%E8%82%B2%E5%84%BF/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/%E6%8A%98%E8%85%BE/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/%E5%8F%8D%E9%A6%88/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/Children/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/Windows/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/QNAP/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://shenguosai.github.io/tags/Photoshop/</loc>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -713,203 +720,217 @@
   
   <url>
     <loc>http://shenguosai.github.io/categories/%E5%88%86%E4%BA%AB/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Knowledge-Share/</loc>
-    <lastmod>2024-08-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://shenguosai.github.io/categories/Tutorial/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Semiconductor/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Article/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Electronic-Equipments/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Semiconductor/post-sim/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Semiconductor/EDA/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Note/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Projects/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Semiconductor/Process/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Note/Windows/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Note/vim/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Document/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Note/Linux/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Projects/CXT2503S/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Semiconductor/Analog/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Education/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Note/Docker/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Note/SmartPhone/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/QNAP/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/QNAP/Video-Station/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/QNAP/Virtual-Station/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Note/Software/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Note/Hexo/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Note/Software/Adobe/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Note/Software/TVBox/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Note/Printer/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://shenguosai.github.io/categories/Note/Zerotier/</loc>
-    <lastmod>2024-08-15</lastmod>
+    <lastmod>2024-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://shenguosai.github.io/categories/Software/</loc>
+    <lastmod>2024-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://shenguosai.github.io/categories/Software/Sublime/</loc>
+    <lastmod>2024-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://shenguosai.github.io/categories/Software/Adobe/</loc>
+    <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

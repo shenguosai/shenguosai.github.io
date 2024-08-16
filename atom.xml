@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2024-08-15T03:39:16.700Z</updated>
+  <updated>2024-08-16T16:57:01.571Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用PS软件进行一寸证件照片打印排版</title>
+    <link href="http://shenguosai.github.io/2024/08/17/%E4%BD%BF%E7%94%A8PS%E8%BD%AF%E4%BB%B6%E8%BF%9B%E8%A1%8C%E4%B8%80%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7%E7%89%87%E6%89%93%E5%8D%B0%E6%8E%92%E7%89%88/"/>
+    <id>http://shenguosai.github.io/2024/08/17/%E4%BD%BF%E7%94%A8PS%E8%BD%AF%E4%BB%B6%E8%BF%9B%E8%A1%8C%E4%B8%80%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7%E7%89%87%E6%89%93%E5%8D%B0%E6%8E%92%E7%89%88/</id>
+    <published>2024-08-16T16:13:02.000Z</published>
+    <updated>2024-08-16T16:57:01.571Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>系统: Windows 11<br>软件: Adobe Photoshop 24.5.0 版</p><h1 id="打开要排版的照片"><a href="#打开要排版的照片" class="headerlink" title="打开要排版的照片"></a>打开要排版的照片</h1><p>用 PS 软件打开要排版的照片。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002004.png" alt="20240817002004"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002207.png" alt="20240817002207"></p><h1 id="制作一寸证件照图案"><a href="#制作一寸证件照图案" class="headerlink" title="制作一寸证件照图案"></a>制作一寸证件照图案</h1><h2 id="设置画布给照片周围加上一圈白边"><a href="#设置画布给照片周围加上一圈白边" class="headerlink" title="设置画布给照片周围加上一圈白边"></a>设置画布给照片周围加上一圈白边</h2><p>图像 =&gt; 画布大小<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002639.png" alt="20240817002639"><br>勾选相对，宽度和高度设置为 0.1 厘米，可根据实际情况调整，颜色选择白色，点击确定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002909.png" alt="20240817002909"></p><h2 id="裁剪图片"><a href="#裁剪图片" class="headerlink" title="裁剪图片"></a>裁剪图片</h2><p>图像 =&gt; 图像大小<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003221.png" alt="20240817003221"><br>勾选重新采样，一寸照片的宽度为 2.6 厘米，高度为 3.6 厘米，分辨率填写 300 像素/英寸。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003523.png" alt="20240817003523"><br>这样，照片就变为一寸大小了。</p><h2 id="定义图案"><a href="#定义图案" class="headerlink" title="定义图案"></a>定义图案</h2><p>编辑 =&gt; 定义图案<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003819.png" alt="20240817003819"><br>图案名称根据自己需要填写，点击确定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003856.png" alt="20240817003856"><br>这样，图案就被定义并存在 PS 软件内备用了。</p><h1 id="制作画布"><a href="#制作画布" class="headerlink" title="制作画布"></a>制作画布</h1><p>文件 =&gt; 新建(画布)<br>主要填写图中框出的三个数值，即宽度、高度和分辨率。<br>如果要排版 3x3 的画布: 宽度 = 2.6厘米 x 3 = 7.8厘米；高度 = 3.6厘米 x 3 = 10.8厘米；分辨率填 300 像素/英寸。<br>如果要排版 4x2 的画布: 宽度 = 2.6厘米 x 4 = 10.4厘米；高度 = 3.6厘米 x 2 =7.2厘米；分辨率填 300 像素/英寸。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817004230.png" alt="20240817004230"><br>点击创建，画布就创建好了，下图为 3x3 画布。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817004638.png" alt="20240817004638"></p><h1 id="将照片嵌入画布"><a href="#将照片嵌入画布" class="headerlink" title="将照片嵌入画布"></a>将照片嵌入画布</h1><p>如上图，点击右下角中间位置的圆圈图标”创建新的填充或调整图层”，然后点击”图案”。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005017.png" alt="20240817005017"><br>选择刚刚定义好的图案，一般会在最后一个。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005110.png" alt="20240817005110"><br>点击”确定”，这样排版就制作好了。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005413.png" alt="20240817005413"></p><h1 id="导出照片"><a href="#导出照片" class="headerlink" title="导出照片"></a>导出照片</h1><p>文件 =&gt; 导出 =&gt; 导出为<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005454.png" alt="20240817005454"><br>这里基本上没有什么需要设置的，点击”导出”，选择希望保存的位置和文件名即可。</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h1&gt;&lt;p&gt;系统: Windows 11&lt;br&gt;软件: Adobe Photoshop 24.5.0 版&lt;/p&gt;
+&lt;h1 id=&quot;打开要排版的照片&quot;&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="Software" scheme="http://shenguosai.github.io/categories/Software/"/>
+    
+    <category term="Adobe" scheme="http://shenguosai.github.io/categories/Software/Adobe/"/>
+    
+    
+    <category term="Photoshop" scheme="http://shenguosai.github.io/tags/Photoshop/"/>
+    
+  </entry>
   
   <entry>
     <title>通过 ZeroTier 访问所在局域网的其它设备</title>
@@ -541,32 +568,6 @@
     
     
     <category term="网络" scheme="http://shenguosai.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>小米Note刷机过程记录</title>
-    <link href="http://shenguosai.github.io/2024/03/04/%E5%B0%8F%E7%B1%B3Note%E5%88%B7%E6%9C%BA%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/"/>
-    <id>http://shenguosai.github.io/2024/03/04/%E5%B0%8F%E7%B1%B3Note%E5%88%B7%E6%9C%BA%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</id>
-    <published>2024-03-04T03:10:07.000Z</published>
-    <updated>2024-04-28T05:51:04.972Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h2><p>查了一下订单，2015年5月回国的时候给爸爸和我买了两台小米Note，应该用了没有多久就出问题了一直闲置在家。上网查了一下回收价只有2元，所以就像改造一下看能不能当个简单的服务器来使用。</p><h2 id="2-准备"><a href="#2-准备" class="headerlink" title="2. 准备"></a>2. 准备</h2><h3 id="2-1-小米手机助手"><a href="#2-1-小米手机助手" class="headerlink" title="2.1 小米手机助手"></a>2.1 小米手机助手</h3><p>近些年一直都没有关注小米，上网一查发现小米官网已经不开放手机助手的下载了，在网上找到这么一个网页:<a href="https://miuiver.com/mi-phone-assistant/">MiPhoneAssistant 小米手机助手下载合集</a>。<br>留个底:<br>由于小米助手官方已经很久没更新了，最近一次更新是 2021-10-28，所以强烈不建议在这之后发布的手机和 MIUI 版本上使用，大概率会有适配兼容问题，备份恢复功能很可能不能按预期工作，它只适合在老机型和 MIUI 老版本上使用！</p><p>下面是小米助手官方下载地址，版本由新到旧排列，可按个人喜好或需要选择。<br><a href="https://miuirom.xiaomi.com/rom/u1106245679/4.2.1028.10/MiAssistant-4.2.1028.10.zip">https://miuirom.xiaomi.com/rom/u1106245679/4.2.1028.10/MiAssistant-4.2.1028.10.zip</a><br><a href="https://miuirom.xiaomi.com/rom/u1106245679/3.2.522.32/MiAssistant-3.2.522.32.zip">https://miuirom.xiaomi.com/rom/u1106245679/3.2.522.32/MiAssistant-3.2.522.32.zip</a><br><a href="https://miuirom.xiaomi.com/rom/u491047765/2.3.0.4071/mipctoolexe-2.3.0.4071.exe">https://miuirom.xiaomi.com/rom/u491047765/2.3.0.4071/mipctoolexe-2.3.0.4071.exe</a><br><a href="https://miuirom.xiaomi.com/rom/u491047765/2.3.0.3101/mipctoolexe-2.3.0.3101.exe">https://miuirom.xiaomi.com/rom/u491047765/2.3.0.3101/mipctoolexe-2.3.0.3101.exe</a><br><a href="https://bigota.d.miui.com/MiFlash/MiSetup2.3.0.1031_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.3.0.1031_2717.exe</a><br><a href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.7241_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.7241_2717.exe</a><br><a href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.6261_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.6261_2717.exe</a><br><a href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.4091_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.4091_2717.exe</a><br><a href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.3171_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.3171_2717.exe</a><br><a href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.2131_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.2131_2717.exe</a><br><a href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.1301_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.1301_2717.exe</a><br><a href="https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.12251_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.12251_2717.exe</a><br><a href="https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.11211_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.11211_2717.exe</a></p><p>文件 MD5 校验值如下。</p><pre><code>b9aaa49dd92a828179b4994b1eb82136  MiAssistant-3.2.522.32.zip7bc76814006a340667dbe72669c66e1f  MiAssistant-4.2.1028.10.zipb4ebf49b441a3f4997fc1ac4a82486a5  mipctoolexe-2.3.0.3101.exed274427550884f389c7e417a13bfd3c1  mipctoolexe-2.3.0.4071.exed4580a3adff0db692f7a0420b568499f  MiSetup2.1.0.11211_2717.exe936fc4c41e247baf21528e13e26e577e  MiSetup2.1.0.12251_2717.exe8251f9670237d91f22cc70fa8f910086  MiSetup2.2.0.1301_2717.exe80a68985a0d063d32d7884d008a0a71e  MiSetup2.2.0.2131_2717.exe98c7c5185ee0cd2f1940fcc8a0f95f99  MiSetup2.2.0.3171_2717.exee1073d32737075b51709c9a2b1c0cc99  MiSetup2.2.0.4091_2717.exeaea5d32a8c4839fc35a2ed4fbb53e70f  MiSetup2.2.0.6261_2717.exe62d3bd3427038a67ea8772972da1f82f  MiSetup2.2.0.7241_2717.exe539cd92545f27978e2fe29aae527d4b2  MiSetup2.3.0.1031_2717.exe</code></pre><p>尝试了一下上面下载地址的前4个还可以下载，但是后面的已经无法打开了，会提示<code>403 Forbidden</code>。</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;1-背景&quot;&gt;&lt;a href=&quot;#1-背景&quot; class=&quot;headerlink&quot; title=&quot;1. 背景&quot;&gt;&lt;/a&gt;1. 背景&lt;/h2&gt;&lt;p&gt;查了一下订单，2015年5月回国的时候给爸爸和我买了两台小米Note，应该用了没有多久就出问题了一直闲置在家。上网查了一</summary>
-      
-    
-    
-    
-    <category term="Note" scheme="http://shenguosai.github.io/categories/Note/"/>
-    
-    <category term="SmartPhone" scheme="http://shenguosai.github.io/categories/Note/SmartPhone/"/>
-    
-    
-    <category term="折腾" scheme="http://shenguosai.github.io/tags/%E6%8A%98%E8%85%BE/"/>
     
   </entry>
   
