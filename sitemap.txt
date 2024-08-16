@@ -113,4 +113,3 @@ http://shenguosai.github.io/categories/Note/Printer/
 http://shenguosai.github.io/categories/Note/Zerotier/
 http://shenguosai.github.io/categories/Software/
 http://shenguosai.github.io/categories/Software/Sublime/
-http://shenguosai.github.io/categories/Software/Adobe/
