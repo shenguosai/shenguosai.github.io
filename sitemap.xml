@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://shenguosai.github.io/2024/08/28/%E7%9B%B8%E7%89%87%E5%B0%BA%E5%AF%B8/</loc>
+    <loc>http://shenguosai.github.io/2024/08/22/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E9%A1%BA%E5%BA%8F%E8%A1%A8/</loc>
     
     <lastmod>2024-08-27</lastmod>
     
@@ -11,7 +11,25 @@
   </url>
   
   <url>
-    <loc>http://shenguosai.github.io/2024/08/22/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E9%A1%BA%E5%BA%8F%E8%A1%A8/</loc>
+    <loc>http://shenguosai.github.io/2024/08/15/%E9%80%9A%E8%BF%87-ZeroTier-%E8%AE%BF%E9%97%AE%E6%89%80%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E5%85%B6%E5%AE%83%E8%AE%BE%E5%A4%87/</loc>
+    
+    <lastmod>2024-08-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://shenguosai.github.io/2023/09/04/SPICE%E7%AE%80%E5%8F%B2/</loc>
+    
+    <lastmod>2024-08-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://shenguosai.github.io/2024/08/28/%E7%9B%B8%E7%89%87%E5%B0%BA%E5%AF%B8/</loc>
     
     <lastmod>2024-08-27</lastmod>
     
@@ -317,15 +335,6 @@
   </url>
   
   <url>
-    <loc>http://shenguosai.github.io/2024/08/15/%E9%80%9A%E8%BF%87-ZeroTier-%E8%AE%BF%E9%97%AE%E6%89%80%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E5%85%B6%E5%AE%83%E8%AE%BE%E5%A4%87/</loc>
-    
-    <lastmod>2024-08-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://shenguosai.github.io/2024/08/17/%E4%BD%BF%E7%94%A8PS%E8%BD%AF%E4%BB%B6%E8%BF%9B%E8%A1%8C%E4%B8%80%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7%E7%89%87%E6%89%93%E5%8D%B0%E6%8E%92%E7%89%88/</loc>
     
     <lastmod>2024-08-27</lastmod>
@@ -524,15 +533,6 @@
   </url>
   
   <url>
-    <loc>http://shenguosai.github.io/2023/09/04/SPICE%E7%AE%80%E5%8F%B2/</loc>
-    
-    <lastmod>2023-12-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://shenguosai.github.io/links/index.html</loc>
     
     <lastmod>2023-08-02</lastmod>
@@ -558,13 +558,6 @@
     <priority>1.0</priority>
   </url>
 
-  
-  <url>
-    <loc>http://shenguosai.github.io/tags/Semiconductor/</loc>
-    <lastmod>2024-08-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
   
   <url>
     <loc>http://shenguosai.github.io/tags/Calibre/</loc>
@@ -769,14 +762,14 @@
     <priority>0.2</priority>
   </url>
   
-
-  
   <url>
-    <loc>http://shenguosai.github.io/categories/Knowledge-Share/</loc>
+    <loc>http://shenguosai.github.io/tags/Spice/</loc>
     <lastmod>2024-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
+  
+
   
   <url>
     <loc>http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/</loc>
@@ -835,13 +828,6 @@
   </url>
   
   <url>
-    <loc>http://shenguosai.github.io/categories/%E6%9D%82%E5%AD%A6%EF%BC%8C%E5%8E%86%E5%8F%B2/</loc>
-    <lastmod>2024-08-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://shenguosai.github.io/categories/%E6%96%87%E5%AD%A6%E7%88%B1%E5%A5%BD/</loc>
     <lastmod>2024-08-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -857,13 +843,6 @@
   
   <url>
     <loc>http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%A7%91%E6%99%AE/</loc>
-    <lastmod>2024-08-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%BA%94%E7%94%A8/</loc>
     <lastmod>2024-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -891,7 +870,7 @@
   </url>
   
   <url>
-    <loc>http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%BA%94%E7%94%A8/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/</loc>
+    <loc>http://shenguosai.github.io/categories/%E6%9D%82%E5%AD%A6/%E5%8E%86%E5%8F%B2/</loc>
     <lastmod>2024-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
