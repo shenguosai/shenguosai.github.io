@@ -169,6 +169,292 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="sgs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/" class="post-title-link" itemprop="url">Debian Linux 使用 -- 远程桌面黑屏并闪退</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-05-11 10:39:11" itemprop="dateCreated datePublished" datetime="2024-05-11T10:39:11+08:00">2024-05-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-08-27 23:50:44" itemprop="dateModified" datetime="2024-08-27T23:50:44+08:00">2024-08-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%BD%AF%E4%BB%B6%E5%BA%94%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">软件应用</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>371</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="安装-Xrdp-使用-Xorg-进行远程登录"><a href="#安装-Xrdp-使用-Xorg-进行远程登录" class="headerlink" title="安装 Xrdp 使用 Xorg 进行远程登录"></a>安装 Xrdp 使用 Xorg 进行远程登录</h1><p>网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。</p>
+<pre><code class="lang-bash">sudo apt install xrdp
+</code></pre>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="sgs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">Debian Linux 使用 -- 系统安装</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-05-11 08:32:17" itemprop="dateCreated datePublished" datetime="2024-05-11T08:32:17+08:00">2024-05-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-08-27 23:50:34" itemprop="dateModified" datetime="2024-08-27T23:50:34+08:00">2024-08-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%BD%AF%E4%BB%B6%E5%BA%94%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">软件应用</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="机器配置"><a href="#机器配置" class="headerlink" title="机器配置"></a>机器配置</h1><p>这台机器比较老，是200x年在日本买的富士通的 FMV-DESKPOWER，型号是 FMVFB70T。<br>配置如下:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>配件名称</th>
+<th>型号</th>
+<th>规格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主板</td>
+<td>FJNB023</td>
+<td></td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>Core(TM)2 Duo P8400</td>
+<td>2.26GHz 2核2线程</td>
+</tr>
+<tr>
+<td>Chipset</td>
+<td>Intel GM45 Express</td>
+<td>1066MHz</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>型号不明，看实物为尔必达颗粒</td>
+<td>DDR3-1066 PC3-8500 1G x2</td>
+</tr>
+<tr>
+<td>硬盘</td>
+<td>Seagate ST3500820AS</td>
+<td>500G容量，7200转/s，5V 0.65A，12V 0.42A</td>
+</tr>
+<tr>
+<td>LAN</td>
+<td>Marvell 88E8055</td>
+<td>1000BASE-T/100BASE-TX/10BASE-T,支持WOL</td>
+</tr>
+<tr>
+<td>WIFI</td>
+<td>Qualcomm Atheros AR928X</td>
+<td>IEEE802.11/a/b/g/n</td>
+</tr>
+<tr>
+<td>USB</td>
+<td></td>
+<td>USB2.0(4pin x5)</td>
+</tr>
+<tr>
+<td>显示器</td>
+<td></td>
+<td>19inch，1440 x 900</td>
+</tr>
+</tbody>
+</table>
+</div>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/04/28/Pura-70%E7%B3%BB%E5%88%97%E5%9B%9B%E6%AC%BE%E6%9C%BA%E5%9E%8B%E5%8C%BA%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -192,21 +478,27 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-04-28 13:49:31 / 修改时间：14:24:37" itemprop="dateCreated datePublished" datetime="2024-04-28T13:49:31+08:00">2024-04-28</time>
+              <time title="创建时间：2024-04-28 13:49:31" itemprop="dateCreated datePublished" datetime="2024-04-28T13:49:31+08:00">2024-04-28</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-08-27 23:54:23" itemprop="dateModified" datetime="2024-08-27T23:54:23+08:00">2024-08-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/SmartPhone/" itemprop="url" rel="index"><span itemprop="name">SmartPhone</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%AE%BE%E5%A4%87%E5%8F%8A%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">设备及使用</span></a>
                 </span>
             </span>
 
@@ -391,7 +683,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-24 08:34:31" itemprop="dateModified" datetime="2024-04-24T08:34:31+08:00">2024-04-24</time>
+                <time title="修改时间：2024-08-27 23:43:29" itemprop="dateModified" datetime="2024-08-27T23:43:29+08:00">2024-08-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -399,11 +691,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/SmartPhone/" itemprop="url" rel="index"><span itemprop="name">SmartPhone</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%AE%BE%E5%A4%87%E5%8F%8A%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">设备及使用</span></a>
                 </span>
             </span>
 
@@ -497,9 +789,28 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-04-01 19:47:16 / 修改时间：19:50:37" itemprop="dateCreated datePublished" datetime="2024-04-01T19:47:16+08:00">2024-04-01</time>
+              <time title="创建时间：2024-04-01 19:47:16" itemprop="dateCreated datePublished" datetime="2024-04-01T19:47:16+08:00">2024-04-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-08-27 23:24:58" itemprop="dateModified" datetime="2024-08-27T23:24:58+08:00">2024-08-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%AE%BE%E5%A4%87%E5%8F%8A%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">设备及使用</span></a>
+                </span>
             </span>
 
           
@@ -642,7 +953,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-08-13 16:42:49" itemprop="dateModified" datetime="2024-08-13T16:42:49+08:00">2024-08-13</time>
+                <time title="修改时间：2024-08-27 23:53:45" itemprop="dateModified" datetime="2024-08-27T23:53:45+08:00">2024-08-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -650,11 +961,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/SmartPhone/" itemprop="url" rel="index"><span itemprop="name">SmartPhone</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">网络服务</span></a>
                 </span>
             </span>
 
@@ -762,7 +1073,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-06-28 19:09:20" itemprop="dateModified" datetime="2024-06-28T19:09:20+08:00">2024-06-28</time>
+                <time title="修改时间：2024-08-27 23:47:38" itemprop="dateModified" datetime="2024-08-27T23:47:38+08:00">2024-08-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -770,11 +1081,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/SmartPhone/" itemprop="url" rel="index"><span itemprop="name">SmartPhone</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%AE%BE%E5%A4%87%E5%8F%8A%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">设备及使用</span></a>
                 </span>
             </span>
 
@@ -867,21 +1178,27 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-03-26 22:10:34 / 修改时间：22:58:46" itemprop="dateCreated datePublished" datetime="2024-03-26T22:10:34+08:00">2024-03-26</time>
+              <time title="创建时间：2024-03-26 22:10:34" itemprop="dateCreated datePublished" datetime="2024-03-26T22:10:34+08:00">2024-03-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-08-27 23:41:48" itemprop="dateModified" datetime="2024-08-27T23:41:48+08:00">2024-08-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%BD%AF%E4%BB%B6%E5%BA%94%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">软件应用</span></a>
                 </span>
             </span>
 
@@ -974,21 +1291,27 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-03-26 08:50:58 / 修改时间：14:13:16" itemprop="dateCreated datePublished" datetime="2024-03-26T08:50:58+08:00">2024-03-26</time>
+              <time title="创建时间：2024-03-26 08:50:58" itemprop="dateCreated datePublished" datetime="2024-03-26T08:50:58+08:00">2024-03-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-08-28 00:00:28" itemprop="dateModified" datetime="2024-08-28T00:00:28+08:00">2024-08-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%BD%AF%E4%BB%B6%E5%BA%94%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">软件应用</span></a>
                 </span>
             </span>
 
@@ -1091,7 +1414,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-08-15 11:14:28" itemprop="dateModified" datetime="2024-08-15T11:14:28+08:00">2024-08-15</time>
+                <time title="修改时间：2024-08-27 23:49:11" itemprop="dateModified" datetime="2024-08-27T23:49:11+08:00">2024-08-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1099,11 +1422,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%BD%AF%E4%BB%B6%E5%BA%94%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">软件应用</span></a>
                 </span>
             </span>
 
@@ -1155,228 +1478,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/03/25/CentOS-7-%E5%AE%89%E8%A3%85docker%E5%92%8Cdocker-compose/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/03/12/%E4%BD%BF%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E6%89%93%E5%8D%B0%E6%9C%BA%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="sgs">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="乙未丁酉">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/03/12/%E4%BD%BF%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E6%89%93%E5%8D%B0%E6%9C%BA%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0/" class="post-title-link" itemprop="url">使用端口映射实现局域网内打印机远程打印</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-03-12 15:42:56" itemprop="dateCreated datePublished" datetime="2024-03-12T15:42:56+08:00">2024-03-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-08-15 11:13:37" itemprop="dateModified" datetime="2024-08-15T11:13:37+08:00">2024-08-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/Printer/" itemprop="url" rel="index"><span itemprop="name">Printer</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2024/03/12/%E4%BD%BF%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E6%89%93%E5%8D%B0%E6%9C%BA%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2024/03/12/%E4%BD%BF%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E6%89%93%E5%8D%B0%E6%9C%BA%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>打印机是现在办公设备必不可少的工具，我们常常需要使用打印机复印或打印各种文件资料，尤其对一些正在加班且不能在家陪伴孩子写作业的父母来说，学会远程打印的方法十分必要。<br>打印机种类: 激光打印机<br>打印机型号: DCP-B7520DW<br>目前这款打印机不支持远程打印，所以需要将打印端口映射到外网才能实现远程打印。<br>局域网内电脑系统: Windows 10<br>远程打印电脑系统: Windows 11<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/03/12/%E4%BD%BF%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E6%89%93%E5%8D%B0%E6%9C%BA%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/03/06/ZeroTier-Documention/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="sgs">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="乙未丁酉">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/03/06/ZeroTier-Documention/" class="post-title-link" itemprop="url">ZeroTier Documention</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-03-06 10:09:35" itemprop="dateCreated datePublished" datetime="2024-03-06T10:09:35+08:00">2024-03-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-03-19 14:49:55" itemprop="dateModified" datetime="2024-03-19T14:49:55+08:00">2024-03-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Document/" itemprop="url" rel="index"><span itemprop="name">Document</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2024/03/06/ZeroTier-Documention/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2024/03/06/ZeroTier-Documention/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>190k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2:52</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://docs.zerotier.com/"><strong>ZeroTier Documentation</strong></a><br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/03/06/ZeroTier-Documention/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1467,20 +1568,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1516,12 +1617,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">291k</span>
+    <span title="站点总字数">294k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:25</span>
+    <span title="站点阅读时长">4:27</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>

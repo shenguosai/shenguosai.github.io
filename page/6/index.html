@@ -169,6 +169,244 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2023/08/21/%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%B0%90%E6%B3%A2%E5%A4%B1%E7%9C%9F-THD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="sgs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/21/%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%B0%90%E6%B3%A2%E5%A4%B1%E7%9C%9F-THD/" class="post-title-link" itemprop="url">放大器的谐波失真(THD)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-21 21:47:21" itemprop="dateCreated datePublished" datetime="2023-08-21T21:47:21+08:00">2023-08-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-08-27 23:27:56" itemprop="dateModified" datetime="2024-08-27T23:27:56+08:00">2024-08-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/" itemprop="url" rel="index"><span itemprop="name">半导体专业</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF/" itemprop="url" rel="index"><span itemprop="name">模拟电路</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/08/21/%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%B0%90%E6%B3%A2%E5%A4%B1%E7%9C%9F-THD/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/08/21/%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%B0%90%E6%B3%A2%E5%A4%B1%E7%9C%9F-THD/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文主要总结和收集关于放大器谐波失真的原因及改良方法。</p>
+<h2 id="一、什么是谐波失真"><a href="#一、什么是谐波失真" class="headerlink" title="一、什么是谐波失真"></a>一、什么是谐波失真</h2><blockquote>
+<p>THD是英文Total Harmonic Distortion的缩写，译成中文即为总谐波失真。</p>
+</blockquote>
+<h3 id="谐波失真是什么？"><a href="#谐波失真是什么？" class="headerlink" title="谐波失真是什么？"></a>谐波失真是什么？</h3><p>谐波失真的原因是电路电路的线性度不好。<br>理想线性电路的输入x和输出y可以使用一次方程表示：$y=ax+b$<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/21/%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%B0%90%E6%B3%A2%E5%A4%B1%E7%9C%9F-THD/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2023/08/19/%E3%80%8A%E6%88%91%E5%8F%AB%E8%B5%B5%E7%94%B2%E7%AC%AC%E3%80%8B%E7%89%87%E5%B0%BE%E5%90%8D%E8%A8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="sgs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乙未丁酉">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/19/%E3%80%8A%E6%88%91%E5%8F%AB%E8%B5%B5%E7%94%B2%E7%AC%AC%E3%80%8B%E7%89%87%E5%B0%BE%E5%90%8D%E8%A8%80/" class="post-title-link" itemprop="url">《我叫赵甲第》片尾名言及经典台词</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-19 14:04:53" itemprop="dateCreated datePublished" datetime="2023-08-19T14:04:53+08:00">2023-08-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-08-27 23:37:39" itemprop="dateModified" datetime="2024-08-27T23:37:39+08:00">2024-08-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%87%E5%AD%A6%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">文学爱好</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%87%E5%AD%A6%E7%88%B1%E5%A5%BD/%E5%90%8D%E8%A8%80%E5%90%8D%E5%8F%A5/" itemprop="url" rel="index"><span itemprop="name">名言名句</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/08/19/%E3%80%8A%E6%88%91%E5%8F%AB%E8%B5%B5%E7%94%B2%E7%AC%AC%E3%80%8B%E7%89%87%E5%B0%BE%E5%90%8D%E8%A8%80/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/08/19/%E3%80%8A%E6%88%91%E5%8F%AB%E8%B5%B5%E7%94%B2%E7%AC%AC%E3%80%8B%E7%89%87%E5%B0%BE%E5%90%8D%E8%A8%80/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="片尾名言"><a href="#片尾名言" class="headerlink" title="片尾名言"></a>片尾名言</h1><h4 id="第1集"><a href="#第1集" class="headerlink" title="第1集"></a>第1集</h4><blockquote>
+<p>生活的道路是自由美好的，可是我们迷了路，贪婪毒害了任性，用仇恨分割了世界。</p>
+<p><p align="right"> ——查理·卓别林《大独裁者》</p>
+<h4 id="第2集"><a href="#第2集" class="headerlink" title="第2集"></a>第2集</h4><p>一切都是瞬息，一切都将会过去，而那过去了的，就会成为亲切的怀恋。</p>
+<p><p align="right"> ——亚历山大·普希金《假如生活欺骗了你》</p>
+<h4 id="第3集"><a href="#第3集" class="headerlink" title="第3集"></a>第3集</h4><p>我姑且举灰黑的手装作喝干一杯酒，我将在不知道时候的时候独立远行。</p>
+<p><p align="right"> ——鲁迅《野草》</p>
+<h4 id="第4集"><a href="#第4集" class="headerlink" title="第4集"></a>第4集</h4><p>一旦走进深处，人与人就是相互的迷宫。</p>
+<p><p align="right"> ——史铁生《活出爱》<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/19/%E3%80%8A%E6%88%91%E5%8F%AB%E8%B5%B5%E7%94%B2%E7%AC%AC%E3%80%8B%E7%89%87%E5%B0%BE%E5%90%8D%E8%A8%80/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2023/08/17/%E6%97%A5%E6%9C%AC%E9%AC%BC%E5%AD%90%E5%90%8D%E7%A7%B0%E7%9A%84%E7%94%B1%E6%9D%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -200,7 +438,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-20 21:26:21" itemprop="dateModified" datetime="2023-11-20T21:26:21+08:00">2023-11-20</time>
+                <time title="修改时间：2024-08-27 23:40:28" itemprop="dateModified" datetime="2024-08-27T23:40:28+08:00">2024-08-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -208,7 +446,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Knowledge-Share/" itemprop="url" rel="index"><span itemprop="name">Knowledge Share</span></a>
+                  <a href="/categories/%E6%96%87%E5%AD%A6%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">文学爱好</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%87%E5%AD%A6%E7%88%B1%E5%A5%BD/%E5%90%8D%E8%A8%80%E5%90%8D%E5%8F%A5/" itemprop="url" rel="index"><span itemprop="name">名言名句</span></a>
                 </span>
             </span>
 
@@ -310,7 +552,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-01 17:16:59" itemprop="dateModified" datetime="2024-02-01T17:16:59+08:00">2024-02-01</time>
+                <time title="修改时间：2024-08-27 23:39:23" itemprop="dateModified" datetime="2024-08-27T23:39:23+08:00">2024-08-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -318,7 +560,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Knowledge-Share/" itemprop="url" rel="index"><span itemprop="name">Knowledge Share</span></a>
+                  <a href="/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/" itemprop="url" rel="index"><span itemprop="name">半导体专业</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF/" itemprop="url" rel="index"><span itemprop="name">模拟电路</span></a>
                 </span>
             </span>
 
@@ -419,7 +665,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-08-15 11:15:15" itemprop="dateModified" datetime="2024-08-15T11:15:15+08:00">2024-08-15</time>
+                <time title="修改时间：2024-08-27 23:53:23" itemprop="dateModified" datetime="2024-08-27T23:53:23+08:00">2024-08-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -427,11 +673,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">网络服务</span></a>
                 </span>
             </span>
 
@@ -535,17 +781,8 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-14 21:42:34" itemprop="dateModified" datetime="2023-08-14T21:42:34+08:00">2023-08-14</time>
+                <time title="修改时间：2024-08-27 23:50:55" itemprop="dateModified" datetime="2024-08-27T23:50:55+08:00">2024-08-27</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Article/" itemprop="url" rel="index"><span itemprop="name">Article</span></a>
-                </span>
-            </span>
 
           
   
@@ -586,15 +823,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          有东西被加密了, 请输入密码查看.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/08/10/Diary/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h2 id="2023年8月14日-晴空万里-人到中年"><a href="#2023年8月14日-晴空万里-人到中年" class="headerlink" title="2023年8月14日  晴空万里  人到中年"></a>2023年8月14日  晴空万里  人到中年</h2><p>今天又来到北京出差，早晨6点20出发，坐7点53分的G202经过3个多小时的颠簸，来到了首都的北京南站。<br>在北京南站坐上出租车，在下出租车的时候出了一点插曲，出租车司机停在了公司院区大门旁边的自行车道上，开门的时候没有注意观察，正好有一辆自行车逆行而过，擦到了出租车门。出租车司机还是很亲切的，让我走就可以，但是在我的坚持下最终还是给了司机师傅50元的赔偿。临行时在想：这点赔偿可能也不足以弥补司机师傅的损失，但为了自己的过失而进行补偿，心情还是蛮放松的。<br>从日本回国已过7年，逐渐的适应了中国的生活。也开始慢慢地理解了自己祖国的人们那种浮躁心态的来源，在一个14亿人口的大国，就生存本身而言，身边的每个人都是竞争对手。所以大家必须在有限的资源中为自己争取，这就是为何大家要插队，为何大家说话声音大，时刻像在争吵……<br>进入园区宾馆办完入住手续，正好12点多，去2楼吃了午饭，在房间休息了一会就去了办公室，匆匆一下午感觉什么都没有做。在晚饭的时候正好和领导聊了一会，感觉最近他又有一些心灰意冷，不再像上次那样意气风发。在日本也换过工作，现在是回国后找的第二份工作，这位领导身上有一种我一直想有却又达不到的特质，性格直率鲜明，但也并不缺迂回，但是主流还是向前冲的，头脑敏捷却没有城府，没有城府用在成年人身上可能有些贬义，也许这种性格的人不屑于城府。晚饭过后跟我讲了他们前一个项目如何与公司对赌然后最终失败，结果赔上了一年的奖金。我也挺喜欢这种意气风发，不顾后果的对赌，也许这就是赌博使人上瘾的原因所在吧。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
 
@@ -644,7 +874,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-04 10:15:37" itemprop="dateModified" datetime="2024-02-04T10:15:37+08:00">2024-02-04</time>
+                <time title="修改时间：2024-08-27 23:59:06" itemprop="dateModified" datetime="2024-08-27T23:59:06+08:00">2024-08-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -652,11 +882,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">网络服务</span></a>
                 </span>
             </span>
 
@@ -796,20 +1026,20 @@ sudo apt-get install vsftp
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -845,12 +1075,12 @@ sudo apt-get install vsftp
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">291k</span>
+    <span title="站点总字数">294k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:25</span>
+    <span title="站点阅读时长">4:27</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
@@ -905,6 +1135,59 @@ sudo apt-get install vsftp
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

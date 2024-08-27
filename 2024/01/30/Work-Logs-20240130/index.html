@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="有东西被加密了, 请输入密码查看.">
+  <meta name="description" content="完成项 VOL_GEN3电路功能分析: POWER_SEL_CTRL逻辑分析 部分电源域及启动时序分析 VIN启动 &#x3D;&gt; VDD_1和VDD_2紧跟着启动(不需要EN信号的使能)，但启动不完全； EN&#x3D;H &#x3D;&gt; C144_PLUS(VOL_GEN3的输出也是BG模块的电源)启动 &#x3D;&gt; BG输出开始启动，初始阶段只有0.8V(大约持续100us，参数待调)左右，之后缓慢上升 &#x3D;&amp;g">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Work Logs--20240130">
 <meta property="og:url" content="http://shenguosai.github.io/2024/01/30/Work-Logs-20240130/index.html">
 <meta property="og:site_name" content="乙未丁酉">
-<meta property="og:description" content="有东西被加密了, 请输入密码查看.">
+<meta property="og:description" content="完成项 VOL_GEN3电路功能分析: POWER_SEL_CTRL逻辑分析 部分电源域及启动时序分析 VIN启动 &#x3D;&gt; VDD_1和VDD_2紧跟着启动(不需要EN信号的使能)，但启动不完全； EN&#x3D;H &#x3D;&gt; C144_PLUS(VOL_GEN3的输出也是BG模块的电源)启动 &#x3D;&gt; BG输出开始启动，初始阶段只有0.8V(大约持续100us，参数待调)左右，之后缓慢上升 &#x3D;&amp;g">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240131101346.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240131101405.png">
 <meta property="article:published_time" content="2024-01-30T10:00:00.000Z">
-<meta property="article:modified_time" content="2024-03-04T03:11:53.077Z">
+<meta property="article:modified_time" content="2024-08-27T16:01:23.083Z">
 <meta property="article:author" content="sgs">
-<meta property="article:tag" content="WorkLogs">
-<meta property="article:tag" content="Swiching Regulator">
-<meta property="article:tag" content="Buck-Boost">
+<meta property="article:tag" content="开关电源">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240131101346.png">
 
 <link rel="canonical" href="http://shenguosai.github.io/2024/01/30/Work-Logs-20240130/">
 
@@ -207,7 +208,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-03-04 11:11:53" itemprop="dateModified" datetime="2024-03-04T11:11:53+08:00">2024-03-04</time>
+                <time title="修改时间：2024-08-28 00:01:23" itemprop="dateModified" datetime="2024-08-28T00:01:23+08:00">2024-08-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -215,11 +216,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Projects/" itemprop="url" rel="index"><span itemprop="name">Projects</span></a>
+                  <a href="/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/" itemprop="url" rel="index"><span itemprop="name">半导体专业</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Projects/CXT2503S/" itemprop="url" rel="index"><span itemprop="name">CXT2503S</span></a>
+                  <a href="/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF/" itemprop="url" rel="index"><span itemprop="name">模拟电路</span></a>
                 </span>
             </span>
 
@@ -262,18 +263,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="5739de8e3d71c055e58a569ca60b511c2b242b4f62e7f8ef726a877df399fe99">ae118af9461036e20f25663a30e189738734b433ecdcc685de42ade449b792d34bc8972806baa92858fa8c8179cc4f0cdad51b0f6d2e4688d806e1d895f634ddc3219fc23abbb5e49b2a3b0254457461a9e56f5091442fae415b599f95777f53349b5ac9c312d9f9d1912e24590acb55e898248e5f1fb86dc1d9976c1c1e6c8ecd7887d313f4407fbe3c890889a2d2809bb4758b29849793363c11583b4ca9bd52f72d00646e0765e1deeb8257354e35b1486ec2c81c151f323ad47e25a5e4315e22752ae0d2bfa35030b1a4e4583373bb896c9c8e403d683847dfb63251a37ec83a411798f3e5da471901e0e75c29d8526668ce930203040fb45b7a3abcfd0f8c6e7a9a4e5f98f3395df187c21d636068f229d5c8b395c18f8265282919c244768268b328a0bd57b7ee4b3e76cb5b28625e4e939ec5d6ecb65d2ca8523376c4592766e9db5ef914b28bf52d8f8da6f727399c1a18b17876a14384f9c261d3c5b759d348832ba1417bff6c76555f73eadcfaffc3b1a3abb843912f66af9d2a5b00ede719066e499430f7e50114340cbf3c75fb0ef70b9a1d4c86826bfa0781236e611b03a8ebcf1207b5b47df022246c0085c6059afa63923b1d45bdec7f9ab8947d88036ed0107701dd4f4291ac9470b2af4614d23d8045a187b285b6bc121e2acf1bb2a44364e5cf755a60373d2f8e5ded8d8db377615c9b0203c29acfeedd37fb156660cf1a53d18241591597c786a86d969c3c7a811f0c8717f05c19479049568ed0620f2f36dce1f152e6cdf018e92a83e25231b517276a373014e5565f163758a0c4db9a918d4fe28b67bc9071bcafb3d2390a2c2d82371af2c25514751b26bc9f4ec9524b8dab4768dced72cac7f6ae464856ccfa7f34a7a0213b3d5f483b45dcac301082978dab8f5563113abc0bbfaa833d9ab970256ceb1ca5c91694e00cbb0134e140cd275ae703dac5afb36a86887aaf1774f2a755a11c396d61199f7d095b66758afd2caf2e297fcdc7414746b9d0d03e81cf8f559def35d02a3c8741178e83bd555e2e04737264968684480f0a8de04fa62c10d3f5c2876b95d178c5f013145ff4f35fd973e116237d8be6f3f26f7f8bd75e5eda1fa9c11ebf07a67074aace6210aa67cf0c5a64b427164e0ea05ac09bad3ddfb405d6b241e7c53823a616a6b2f167a7833bd965acc604c2970c64f0ea5edaf412d45d0394087d88089ee6c3a4050168a5084bd8840ab440c638c844d51a8103fbf187c1e941b1cc51429a5ca7fc5f374658faa23281f71fd83bd8c68550745906892866b4c9423b8222f13bab6dfb92f8c10bdf02bdd512c4fc1b703ccb58561db74eba8928159e73270a8ee46cceeb78f9fdd4b87c5e4209708c49b91797385f6d605f24028f1d9bffd39a172d01f3e8aa34631d1d46a45738ad9c55b4bf8d88fa9d5d35c4c0aefc68ca58621b504766c7ac570454c194f5cf596fb001ccac9f0219d3fc9a5e4d3f9a726f81b3bcd36e7108648a29edf58b54c629089d7c596cf791d68b9cc61966fb4db2e1071e6901e344b963ae3bbae40edeb781ba09b342c893f2b7c3ee147d36f5b3d42b0b273b462f133d9ea9e0e30997d8f652dab9ef73309d76067493a7846299022842c25bcaa1adf43d36394147c0a5005f04370698fca5ae7ecc01626410e8a9117113fc197bae4baaebf7b30c23ae7f963549cfd73309cf5d9646384b470ad81c8430c5174661e92f9da039762e2fabc2ba41971043b7b181b6196190b8014884121888a9dae4bca885ef5c087d3609667f5c7c687aa31656600898c3b84567725dc845a10064c40757b1dbfb446e8099bcaf806346654bc50b5c6a9bb7cc7e6eca4e8f94b996fe111d917c58f9ee42579bcd9ae30c0b3e8a9ff7cdf1b90f9ab142d8f0c80330a121284bf04149f9b4ea66b423a55681185ca92fcc9a5dea85dd00d69e51a8b7c40e1406ea08333f60d55eb3f04afc33b2fb25100bc097682f2eb6b862ae2071aef4788dfdc588d178ab3fe3e3f31d3e9f42a27aa25e7201c54cf4fc64bda222b647b360d6229c80a06007a992e58075b55ed4fd613df85abe361a62d736a6563d78c2d494b1fd12e82c36cdb71bce46d41b90cb87575ffb395de1a785a98fcb6402b02a0118d23a91432b8fb90df5637e3a9386e19d9c7792445a601ac5050f7942270ff2e244d8a338eabccc4673fee1e2101edfba447bafbd147e1bf355db687b</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+        <h2 id="完成项"><a href="#完成项" class="headerlink" title="完成项"></a>完成项</h2><ol>
+<li>VOL_GEN3电路功能分析:</li>
+<li>POWER_SEL_CTRL逻辑分析</li>
+<li>部分电源域及启动时序分析<ul>
+<li>VIN启动 =&gt; VDD_1和VDD_2紧跟着启动(不需要EN信号的使能)，但启动不完全；</li>
+<li>EN=H =&gt; C144_PLUS(VOL_GEN3的输出也是BG模块的电源)启动 =&gt; BG输出开始启动，初始阶段只有0.8V(大约持续100us，参数待调)左右，之后缓慢上升 =&gt; 稳定于1.2V之后BG输出GOOD信号并配置VLO_GEN3使其完全启动；</li>
+<li>逻辑部分EN起主导作用，并在DC内部穿插多个模块，需要整理；</li>
+<li>非EN控制直接启动部分需列表。</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240131101346.png" alt="20240131101346"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240131101405.png" alt="20240131101405"></p>
+<h2 id="次日计划"><a href="#次日计划" class="headerlink" title="次日计划"></a>次日计划</h2><p>按照正常启动时POWER_SEL的控制逻辑A0A1时序 00=&gt;10=&gt;11 来进行内部参数调整，争取完成此模块的设计。</p>
+<ul>
+<li>注: A0A1 无 01 逻辑，因为 EN=H 后 A0 马上变 H，而 A1 则需要等到 BG 模块的输出 GOOD 信号变 H，EN=L 时 BG 模块不允许启动。</li>
+</ul>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
     
@@ -319,9 +325,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/WorkLogs/" rel="tag"># WorkLogs</a>
-              <a href="/tags/Swiching-Regulator/" rel="tag"># Swiching Regulator</a>
-              <a href="/tags/Buck-Boost/" rel="tag"># Buck-Boost</a>
+              <a href="/tags/%E5%BC%80%E5%85%B3%E7%94%B5%E6%BA%90/" rel="tag"># 开关电源</a>
           </div>
 
         
@@ -396,6 +400,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%88%90%E9%A1%B9"><span class="nav-number">1.</span> <span class="nav-text">完成项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A1%E6%97%A5%E8%AE%A1%E5%88%92"><span class="nav-number">2.</span> <span class="nav-text">次日计划</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -411,20 +416,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -460,12 +465,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">291k</span>
+    <span title="站点总字数">294k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:25</span>
+    <span title="站点阅读时长">4:27</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
