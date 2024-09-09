@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2024-09-04T07:09:19.401Z</updated>
+  <updated>2024-09-09T01:37:23.240Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关闭 Adobe Genuine Service Alert 正版验证</title>
+    <link href="http://shenguosai.github.io/2024/09/09/%E5%85%B3%E9%97%AD-Adobe-Genuine-Service-Alert-%E6%AD%A3%E7%89%88%E9%AA%8C%E8%AF%81/"/>
+    <id>http://shenguosai.github.io/2024/09/09/%E5%85%B3%E9%97%AD-Adobe-Genuine-Service-Alert-%E6%AD%A3%E7%89%88%E9%AA%8C%E8%AF%81/</id>
+    <published>2024-09-09T01:10:18.000Z</published>
+    <updated>2024-09-09T01:37:23.240Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="自用方法"><a href="#自用方法" class="headerlink" title="自用方法"></a>自用方法</h1><ol><li>单击 Windows 键，输入”服务”或”Service”，打开服务选项。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240909091647.png" alt="20240909091647"></li><li>在服务中找到 “Adobe Genuine Software Monitor Service” 服务。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240909091917.png" alt="20240909091917"></li><li>右键点击 =&gt; 左键属性，弹出属性对话框。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240909092020.png" alt="20240909092020"></li><li>将启动类型改为<strong>禁止</strong>，并在服务状态栏点击<strong>停止</strong>将服务状态改为<strong>已停止</strong>。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240909092245.png" alt="20240909092245"><br>这样就不会再出现弹窗了。<span id="more"></span><h1 id="网上博客中介绍的方法"><a href="#网上博客中介绍的方法" class="headerlink" title="网上博客中介绍的方法"></a>网上博客中介绍的方法</h1>网上介绍的方法都是要删掉 AdobeGCClient 正版检测文件并防止其重建，应为自用方法也可以实现，没有试过。</li><li>在弹出 Adobe Genuine Service Alert 提示时打开任务管理器；</li><li>“任务管理器 =&gt; 进程 =&gt; 后台进程”中找到类似 “Adobe Genuine Service” 的进程；</li><li>右击上面的进程 =&gt; 打开文件所在位置；( 我的位置是:C:\Program Files (x86)\Common Files\Adobe\AdobeGCClient\ )</li><li>在任务管理器结束2中的进程并将以下文件移除，Adobe Genuine Launcher.exe，AdobeGCClient.exe，AGMService.exe，AGSService.exe，网上没有明确指出删除哪些文件，所以建议将其移动到一个专门地方进行备份，防止 Adobe 因缺少某些文件导致无法使用；</li><li>新建几个空的文本文件，文件名与上面移除的文件名相同并将后缀改为 exe，以防止程序自动生成上述文件；</li><li>可以在打开 Windows 的防火墙将 Adobe 相关的启动文件断网，我没有在防火墙中发现可能是以前关掉了。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240909093621.png" alt="20240909093621"></li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;自用方法&quot;&gt;&lt;a href=&quot;#自用方法&quot; class=&quot;headerlink&quot; title=&quot;自用方法&quot;&gt;&lt;/a&gt;自用方法&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;单击 Windows 键，输入”服务”或”Service”，打开服务选项。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240909091647.png&quot; alt=&quot;20240909091647&quot;&gt;&lt;/li&gt;
+&lt;li&gt;在服务中找到 “Adobe Genuine Software Monitor Service” 服务。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240909091917.png&quot; alt=&quot;20240909091917&quot;&gt;&lt;/li&gt;
+&lt;li&gt;右键点击 =&amp;gt; 左键属性，弹出属性对话框。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240909092020.png&quot; alt=&quot;20240909092020&quot;&gt;&lt;/li&gt;
+&lt;li&gt;将启动类型改为&lt;strong&gt;禁止&lt;/strong&gt;，并在服务状态栏点击&lt;strong&gt;停止&lt;/strong&gt;将服务状态改为&lt;strong&gt;已停止&lt;/strong&gt;。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240909092245.png&quot; alt=&quot;20240909092245&quot;&gt;&lt;br&gt;这样就不会再出现弹窗了。</summary>
+    
+    
+    
+    <category term="技术兴趣" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/"/>
+    
+    <category term="软件应用" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%BD%AF%E4%BB%B6%E5%BA%94%E7%94%A8/"/>
+    
+    
+    <category term="Adobe" scheme="http://shenguosai.github.io/tags/Adobe/"/>
+    
+  </entry>
   
   <entry>
     <title>打开word时MathType报错:MathType has detected an error inAutoExecCls.Main: 文件未找到: MathPage.WLL.</title>
@@ -120,7 +147,7 @@
     <link href="http://shenguosai.github.io/2024/08/17/%E4%BD%BF%E7%94%A8PS%E8%BD%AF%E4%BB%B6%E8%BF%9B%E8%A1%8C%E4%B8%80%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7%E7%89%87%E6%89%93%E5%8D%B0%E6%8E%92%E7%89%88/"/>
     <id>http://shenguosai.github.io/2024/08/17/%E4%BD%BF%E7%94%A8PS%E8%BD%AF%E4%BB%B6%E8%BF%9B%E8%A1%8C%E4%B8%80%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7%E7%89%87%E6%89%93%E5%8D%B0%E6%8E%92%E7%89%88/</id>
     <published>2024-08-16T16:13:02.000Z</published>
-    <updated>2024-08-27T15:44:29.081Z</updated>
+    <updated>2024-09-09T01:13:39.527Z</updated>
     
     <content type="html"><![CDATA[<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>系统: Windows 11<br>软件: Adobe Photoshop 24.5.0 版<br><span id="more"></span></p><h1 id="打开要排版的照片"><a href="#打开要排版的照片" class="headerlink" title="打开要排版的照片"></a>打开要排版的照片</h1><p>用 PS 软件打开要排版的照片。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002004.png" alt="20240817002004"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002207.png" alt="20240817002207"></p><h1 id="制作一寸证件照图案"><a href="#制作一寸证件照图案" class="headerlink" title="制作一寸证件照图案"></a>制作一寸证件照图案</h1><h2 id="设置画布给照片周围加上一圈白边"><a href="#设置画布给照片周围加上一圈白边" class="headerlink" title="设置画布给照片周围加上一圈白边"></a>设置画布给照片周围加上一圈白边</h2><p>图像 =&gt; 画布大小<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002639.png" alt="20240817002639"><br>勾选相对，宽度和高度设置为 0.1 厘米，可根据实际情况调整，颜色选择白色，点击确定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002909.png" alt="20240817002909"></p><h2 id="裁剪图片"><a href="#裁剪图片" class="headerlink" title="裁剪图片"></a>裁剪图片</h2><p>图像 =&gt; 图像大小<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003221.png" alt="20240817003221"><br>勾选重新采样，一寸照片的宽度为 2.6 厘米，高度为 3.6 厘米，分辨率填写 300 像素/英寸。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003523.png" alt="20240817003523"><br>这样，照片就变为一寸大小了。</p><h2 id="定义图案"><a href="#定义图案" class="headerlink" title="定义图案"></a>定义图案</h2><p>编辑 =&gt; 定义图案<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003819.png" alt="20240817003819"><br>图案名称根据自己需要填写，点击确定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003856.png" alt="20240817003856"><br>这样，图案就被定义并存在 PS 软件内备用了。</p><h1 id="制作画布"><a href="#制作画布" class="headerlink" title="制作画布"></a>制作画布</h1><p>文件 =&gt; 新建(画布)<br>主要填写图中框出的三个数值，即宽度、高度和分辨率。<br>如果要排版 3x3 的画布: 宽度 = 2.6厘米 x 3 = 7.8厘米；高度 = 3.6厘米 x 3 = 10.8厘米；分辨率填 300 像素/英寸。<br>如果要排版 4x2 的画布: 宽度 = 2.6厘米 x 4 = 10.4厘米；高度 = 3.6厘米 x 2 =7.2厘米；分辨率填 300 像素/英寸。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817004230.png" alt="20240817004230"><br>点击创建，画布就创建好了，下图为 3x3 画布。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817004638.png" alt="20240817004638"></p><h1 id="将照片嵌入画布"><a href="#将照片嵌入画布" class="headerlink" title="将照片嵌入画布"></a>将照片嵌入画布</h1><p>如上图，点击右下角中间位置的圆圈图标”创建新的填充或调整图层”，然后点击”图案”。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005017.png" alt="20240817005017"><br>选择刚刚定义好的图案，一般会在最后一个。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005110.png" alt="20240817005110"><br>点击”确定”，这样排版就制作好了。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005413.png" alt="20240817005413"></p><h1 id="导出照片"><a href="#导出照片" class="headerlink" title="导出照片"></a>导出照片</h1><p>文件 =&gt; 导出 =&gt; 导出为<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005454.png" alt="20240817005454"><br>这里基本上没有什么需要设置的，点击”导出”，选择希望保存的位置和文件名即可。</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
     
@@ -134,7 +161,7 @@
     <category term="软件应用" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%BD%AF%E4%BB%B6%E5%BA%94%E7%94%A8/"/>
     
     
-    <category term="Photoshop" scheme="http://shenguosai.github.io/tags/Photoshop/"/>
+    <category term="Adobe" scheme="http://shenguosai.github.io/tags/Adobe/"/>
     
   </entry>
   
@@ -563,29 +590,6 @@
     
     
     <category term="iPhone" scheme="http://shenguosai.github.io/tags/iPhone/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>删除docker容器和镜像</title>
-    <link href="http://shenguosai.github.io/2024/03/26/%E5%88%A0%E9%99%A4docker%E5%AE%B9%E5%99%A8%E5%92%8C%E9%95%9C%E5%83%8F/"/>
-    <id>http://shenguosai.github.io/2024/03/26/%E5%88%A0%E9%99%A4docker%E5%AE%B9%E5%99%A8%E5%92%8C%E9%95%9C%E5%83%8F/</id>
-    <published>2024-03-26T14:10:34.000Z</published>
-    <updated>2024-08-27T15:41:48.792Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="什么是-Docker"><a href="#什么是-Docker" class="headerlink" title="什么是 Docker?"></a>什么是 Docker?</h1><p><code>Docker</code>是基于<code>Go语言</code>实现的在 2013 年发布的云开源项目，它利用了围绕容器这个现有的计算概念，特别是在<code>Linux</code>世界中，这些原始概念被称为<code>cgroups</code>和命名空间。<code>Docker</code>的技术之所以独特是因为它专注于开发人员和系统操作员的需求，以将应用程序依赖项与基础架构分开。<br><code>Docker</code>的主要目标是 “Build，Ship and Run Any App,Anywhere”，也就是通过对应用组件的封装、分发、部署、运行等生命周期的管理，使用户的 APP (可以是一个WEB应用或数据库应用等等) 及其运行环境能够做到“一次封装，到处运行”。<br>一句话概括，<code>Docker</code>的出现解决了运行环境和配置环境不一致的情况，从而更方便的做持续集成并有助于应用的整体发布。<br><span id="more"></span></p><h1 id="Docker-三要素-镜像、容器和仓库"><a href="#Docker-三要素-镜像、容器和仓库" class="headerlink" title="Docker 三要素: 镜像、容器和仓库"></a>Docker 三要素: 镜像、容器和仓库</h1><h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><p>在了解镜像这个概念之前，我们需要先大致了解一下联合文件系统:<code>UnionFS</code>，它是<code>Docker</code>镜像的基础，联合文件系统是一种分层，轻量级并且高性能的文件系统，它支持对文件系统的修改作为一次提交来一层一层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下，镜像可以通过分层来进行集成，我们可以基于一个基础的镜像，然后制作出各种各样满足我们需求的应用镜像。<br>同时，对于一个精简的<code>OS</code>，<code>rootfs</code>可以很小，有常见的命令就行，同时，底层又是直接使用的操作系统的内核，所以往往<code>Docker</code>中一个镜像的体积相对来说可以很小，比如一个完整版的<code>centos</code>可能要几个 G，但是<code>Docker</code>中的<code>centos</code>大概只有 300M.<br>对于docker镜像，官方的定义如下:</p><blockquote><p>An image is a read-only template with instructions for creating a Docker container. Often, an image is based on another image, with some additional customization. For example, you may build an image which is based on the ubuntu image, but installs the Apache web server and your application, as well as the configuration details needed to make your application run.‘<br>映像是一个只读模板，带有创建Docker容器的指令。通常，一个映像是基于另一个映像的，还需要进行一些额外的定制。例如，您可以构建一个基于ubuntu映像的映像，但是安装<code>Apache web</code>服务器和您的应用程序，以及使您的应用程序运行所需的配置细节。</p></blockquote><p>PS: <strong><font color="red">一个镜像可以创建多个容器</font></strong>。</p><h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><p>容器是用镜像创建的运行实例。<br>每个容器都可以被启动，开始，停止，删除，同时容器之间相互隔离，保证应用运行期间的安全。<br>我们可以把容器理解为一个精简版的<code>linux</code>操作系统，包括<code>root</code>用户权限，进程空间，用户空间和网络空间等等这些，然后加上再它之上运行的应用程序。<br>比如我们现在基于<code>mysql</code>镜像创建了一个容器，那么，这个容器其实并不是只有一个<code>mysql</code>程序，而是<code>mysql</code>同样也是安装运行在我们容器内的<code>linux</code>环境中的。</p><h2 id="容器和镜像的关系"><a href="#容器和镜像的关系" class="headerlink" title="容器和镜像的关系"></a>容器和镜像的关系</h2><p>再说这个问题之前，我们不妨先来看一下下面这段<code>java</code>代码:</p><pre><code class="lang-java">Person p = new Person();Person p1 = new Person();Person p2 = new Person();</code></pre><p>镜像在这里就是我们的Person，容器就是一个个Person类的实例。一个Person可以创建多个实例，一个镜像也可以创建多个容器。</p><h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><p>仓库相对来说就比较容易理解了，仓库(Repository)是集中存放镜像文件的场所。<br>仓库分为公开仓库和私有仓库，目前的话，全世界最大的仓库是Docker官方的 Docker Hub<br>由于一些不可抗拒的因素，导致我们如果从 Docker Hub 上下载公开的镜像是非常蛋疼的，这点大家可以参考你用百度网盘官方下载时的感觉。所以，国内我们一般使用阿里云或者网易云的镜像仓库。<br>镜像 容器 仓库 他们三者之间的关系图如下:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326223417.png" alt="20240326223417"></p><h1 id="Docker-容器的创建、启动"><a href="#Docker-容器的创建、启动" class="headerlink" title="Docker 容器的创建、启动"></a>Docker 容器的创建、启动</h1><p>docker 容器的启动有三种方式:</p><h2 id="交互方式-基于镜像新建容器并启动"><a href="#交互方式-基于镜像新建容器并启动" class="headerlink" title="交互方式: 基于镜像新建容器并启动"></a>交互方式: 基于镜像新建容器并启动</h2><p>例如我们可以启动一个容器，打印出当前的日历表:</p><pre><code class="lang-bash">docker run my/python:v1 cal   ## my/python:v1 为镜像名和标签</code></pre><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326223332.png" alt="20240326223332"><br>我们还可以通过制定参数，启动一个 bash 交互终端:</p><pre><code class="lang-bash">docker run -it my/python:v1 /bin/bash</code></pre><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326223619.png" alt="20240326223619"><br>参数<code>-t</code>让 Docker 分配一个伪终端并绑定在容器的标准输入上，<code>-i</code>让容器的标准输入保持打开。</p><p>使用<code>docker run</code>命令来启动容器，docker 在后台运行的标准操作包括<br>1.检查本地是否存在指定的镜像，不存在则从公有仓库下载;<br>2.使用镜像创建并启动容器;<br>3.分配一个文件系统，并在只读的镜像层外面挂载一层可读可写层;<br>4.从宿主主机配置的网桥接口中桥接一个虚拟接口道容器中去;<br>5.从地址池分配一个ip地址给容器;<br>6.执行用户指定的应用程序;<br>7.执行完毕之后容器被终止。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326223751.png" alt="20240326223751"><br><code>my/sinatra:v2</code>基于<code>training/sinatra</code>镜像进行修改后的镜像，<code>training/sinatra</code>为公有仓库上的镜像。</p><h2 id="短暂方式-直接将一个已经终止的容器启动运行起来"><a href="#短暂方式-直接将一个已经终止的容器启动运行起来" class="headerlink" title="短暂方式: 直接将一个已经终止的容器启动运行起来"></a>短暂方式: 直接将一个已经终止的容器启动运行起来</h2><p>可以使用<code>docker start</code>命令，直接将一个已经终止的容器启动运行起来。</p><pre><code class="lang-bash">[root@rocketmq-nameserver4 ~]# docker run my/python:v1 /bin/echo hello testhello test</code></pre><p>命令执行完，控制台会打印<code>hello test</code>，container 就终止了，不过并没有消失，<br>可以用<code>docker ps -n 5</code>看一下最新前 5 个的 container，第一个就是刚刚执行过的 container，可以再次执行一遍：<code>docker start container_id</code><br>不过这次控制台看不到<code>hello test</code>了，只能看到 ID，用<code>logs</code>命令才能看得到：<code>docker logs container_id</code>。<br>可以看到两个<code>hello test</code>了，因为这个 container 运行了两次。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326224054.png" alt="20240326224054"></p><h2 id="Daemen-方式-守护态运行"><a href="#Daemen-方式-守护态运行" class="headerlink" title="Daemen 方式(守护态运行)"></a>Daemen 方式(守护态运行)</h2><p>即让软件作为长时间服务运行，这就是 SAAS 啊！<br>例如我们启动 centos 后台容器，每隔一秒打印当天的日历。</p><pre><code class="lang-bash">$ docker run -d centos /bin/sh -c &quot;while true;do echo hello docker;sleep 1;done&quot;</code></pre><p>启动之后，我们使用<code>docker ps -n 5</code>查看容器的信息</p><p>要查看启动的centos容器中的输出，可以使用如下方式：</p><pre><code class="lang-bash">$ docker logs $CONTAINER_ID   ##在container外面查看它的输出$ docker attach $CONTAINER_ID   ##连接上容器实时查看</code></pre><h1 id="Docker-容器的终止"><a href="#Docker-容器的终止" class="headerlink" title="Docker 容器的终止"></a>Docker 容器的终止</h1><p>使用以下命令来终止一个运行中的容器。并且可以使用<code>docker ps -a</code>来看终止状态的容器。</p><pre><code class="lang-bash">docker stop $CONTAINER_ID</code></pre><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326224511.png" alt="20240326224511"><br>终止状态的容器，可以使用<code>docker start</code>来重新启动。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326224547.png" alt="20240326224547"><br>使用docker restart命令来重启一个容器。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326224612.png" alt="20240326224612"></p><h1 id="删除-Docker-容器"><a href="#删除-Docker-容器" class="headerlink" title="删除 Docker 容器"></a>删除 Docker 容器</h1><p>如果容器还在运行，将无法删除镜像，所以从删除容器开始。</p><ul><li>查看 Docker 所有容器状态<pre><code class="lang-bash">docker ps -a</code></pre><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326225006.png" alt="20240326225006"></li><li>停止容器运行<pre><code class="lang-bash">docker stop $CONTAINER_ID</code></pre><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326225218.png" alt="20240326225218"></li><li>删除容器<pre><code class="lang-bash">docker rm $CONTAINER_ID</code></pre><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326225338.png" alt="20240326225338"></li></ul><h1 id="删除-Docker-镜像"><a href="#删除-Docker-镜像" class="headerlink" title="删除 Docker 镜像"></a>删除 Docker 镜像</h1><ul><li>查看 docker 要删除的镜像<pre><code class="lang-bash">docker images</code></pre><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326225523.png" alt="20240326225523"></li><li>由于刚才已终止此镜像的容器，所以直接删除<pre><code class="lang-bash">docker rmi $IMAGE_ID</code></pre><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326225653.png" alt="20240326225653"></li></ul><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;什么是-Docker&quot;&gt;&lt;a href=&quot;#什么是-Docker&quot; class=&quot;headerlink&quot; title=&quot;什么是 Docker?&quot;&gt;&lt;/a&gt;什么是 Docker?&lt;/h1&gt;&lt;p&gt;&lt;code&gt;Docker&lt;/code&gt;是基于&lt;code&gt;Go语言&lt;/code&gt;实现的在 2013 年发布的云开源项目，它利用了围绕容器这个现有的计算概念，特别是在&lt;code&gt;Linux&lt;/code&gt;世界中，这些原始概念被称为&lt;code&gt;cgroups&lt;/code&gt;和命名空间。&lt;code&gt;Docker&lt;/code&gt;的技术之所以独特是因为它专注于开发人员和系统操作员的需求，以将应用程序依赖项与基础架构分开。&lt;br&gt;&lt;code&gt;Docker&lt;/code&gt;的主要目标是 “Build，Ship and Run Any App,Anywhere”，也就是通过对应用组件的封装、分发、部署、运行等生命周期的管理，使用户的 APP (可以是一个WEB应用或数据库应用等等) 及其运行环境能够做到“一次封装，到处运行”。&lt;br&gt;一句话概括，&lt;code&gt;Docker&lt;/code&gt;的出现解决了运行环境和配置环境不一致的情况，从而更方便的做持续集成并有助于应用的整体发布。&lt;br&gt;</summary>
-    
-    
-    
-    <category term="技术兴趣" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/"/>
-    
-    <category term="软件应用" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%BD%AF%E4%BB%B6%E5%BA%94%E7%94%A8/"/>
-    
-    
-    <category term="Docker" scheme="http://shenguosai.github.io/tags/Docker/"/>
     
   </entry>
   
