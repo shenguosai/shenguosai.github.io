@@ -28,7 +28,7 @@
 <meta property="og:description" content="前两天把家里空闲的手机翻出来想着干点什么，两个小米 Note，一个 iPhone4，两个 iPhone6，一个三星 Galaxy A9 Pro和一个三星 Galaxy A32。  iPhone4 被我手残升级 iOS 搞成了砖，现在只能看白苹果了。。。 两个小米 Note 折腾了半天也没法解锁 BootLoader, 先放置了 一台 iPhone6 安装了“掌上看家” APP 在家里做个监控用来看">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-28T01:54:56.000Z">
-<meta property="article:modified_time" content="2024-09-24T01:53:54.904Z">
+<meta property="article:modified_time" content="2024-09-24T02:15:17.957Z">
 <meta property="article:author" content="sgs">
 <meta property="article:tag" content="Nginx">
 <meta property="article:tag" content="iPhone">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-09-24 09:53:54" itemprop="dateModified" datetime="2024-09-24T09:53:54+08:00">2024-09-24</time>
+                <time title="修改时间：2024-09-24 10:15:17" itemprop="dateModified" datetime="2024-09-24T10:15:17+08:00">2024-09-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -242,7 +242,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
+              <span>3.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -365,7 +365,7 @@ inoremap &quot; &quot;&quot;&lt;ESC&gt;i
 <pre><code class="lang-bash">apt-get install nginx
 </code></pre>
 <p>就会下载软件和相应的依赖包，当时没有记录，应该是下载了<code>nginx</code>，<code>nginx-common</code>，<code>nginx-core</code>等文件。</p>
-<h1 id="配置-Nginx-使其访问当前设备时指向路由器管理界面"><a href="#配置-Nginx-使其访问当前设备时指向路由器管理界面" class="headerlink" title="配置 Nginx 使其访问当前设备时指向路由器管理界面"></a>配置 Nginx 使其访问当前设备时指向路由器管理界面</h1><p>安装完成后在<code>/etc/nginx</code>目录中会有<code>nginx.conf</code>和<code>nginx.conf.defaut</code>两个文件，其中<code>nginx.conf</code>是 Nginx 实际运行时使用的配置文件，<code>nginx.conf.default</code>应该是个模板示例。</p>
+<h1 id="配置-Nginx-使其访问当前设备时指向路由器管理界面"><a href="#配置-Nginx-使其访问当前设备时指向路由器管理界面" class="headerlink" title="配置 Nginx 使其访问当前设备时指向路由器管理界面"></a>配置 Nginx 使其访问当前设备时指向路由器管理界面</h1><h2 id="修改-Nginx-配置文件"><a href="#修改-Nginx-配置文件" class="headerlink" title="修改 Nginx 配置文件"></a>修改 Nginx 配置文件</h2><p>安装完成后在<code>/etc/nginx</code>目录中会有<code>nginx.conf</code>和<code>nginx.conf.defaut</code>两个文件，其中<code>nginx.conf</code>是 Nginx 实际运行时使用的配置文件，<code>nginx.conf.default</code>应该是个模板示例。</p>
 <ol>
 <li><code>cp nginx.conf.default nginx.conf</code>使用模板覆盖原来的<code>nginx.conf</code>；</li>
 <li>在 http 模块的 server 里加入语句: <code>proxy_pass http://192.168.3.1/; #即反向代理要访问的地址</code>。<br>示例如下:<br>/etc/nginx/nginx.conf 文件设置如下:<pre><code class="lang-conf"> server &#123;
@@ -381,6 +381,15 @@ inoremap &quot; &quot;&quot;&lt;ESC&gt;i
 </code></pre>
 其实其它都是 nginx.conf.default 中的内容，只要在<code>location</code>里面加入<code>proxy_pass http://192.168.3.1/;</code>这一句就可以，这样当访问此台设备的<code>80</code>端口时就会直接指向到路由器管理台的<code>192.168.3.1</code>了。</li>
 </ol>
+<h2 id="Nginx-常用命令"><a href="#Nginx-常用命令" class="headerlink" title="Nginx 常用命令"></a>Nginx 常用命令</h2><p>因为没有找到 Nginx 的 plist 文件来启停服务，所以需要使用软件命令来进行操作。<br>首先可以使用<code>nginx -h</code>来查询命令使用方法。<br>常用命令:</p>
+<pre><code class="lang-bash">nginx # 启动 Nginx
+nginx -s reopen # 重新启动 Nginx
+nginx -s reload # 在不关闭 Nginx 的情况下重新加载 /etc/nginx/nginx.conf 配置文件
+nginx -s stop # 关闭 Nginx
+nginx -t # 测试配置文件 /etc/nginx/nginx.conf
+nginx -T # 测试 配置文件 /etc/nginx/nginx.conf 并将其输出到屏幕
+nginx -v # 输出版本信息
+</code></pre>
 <h1 id="外网访问路由器管理台"><a href="#外网访问路由器管理台" class="headerlink" title="外网访问路由器管理台"></a>外网访问路由器管理台</h1><p>将设置了 nginx 的设备端口<code>80</code>映射到外网即可，比如当前设备的局域网 ip 为<code>192.168.3.111</code>，映射外网端口为<code>11111</code>。<br>这样在外网访问时只要输入网址: <code>http://domain或者IP:1111</code> 就可以实现外网直接访问路由器管理后台了。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
@@ -504,7 +513,7 @@ inoremap &quot; &quot;&quot;&lt;ESC&gt;i
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iPhone6-%E8%B6%8A%E7%8B%B1"><span class="nav-number">1.</span> <span class="nav-text">iPhone6 越狱</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8B%E8%B6%8A%E7%8B%B1%E7%9A%84-iPhone6"><span class="nav-number">2.</span> <span class="nav-text">配置一下越狱的 iPhone6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bash%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">bash设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4cat-etc-shells%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%94%AF%E6%8C%81%E7%9A%84-shell"><span class="nav-number">2.1.1.</span> <span class="nav-text">使用命令cat &#x2F;etc&#x2F;shells查看系统支持的 shell:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E9%BB%98%E8%AE%A4-shell-%E6%9B%B4%E6%94%B9%E4%B8%BA-bash"><span class="nav-number">2.1.2.</span> <span class="nav-text">将默认 shell 更改为 bash:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7-shell"><span class="nav-number">2.1.3.</span> <span class="nav-text">查看当前用户 shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8F%90%E7%A4%BA%E7%AC%A6-PS1-%E5%8F%8A-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.4.</span> <span class="nav-text">更改命令行提示符 PS1 及 常用命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-VIM"><span class="nav-number">2.2.</span> <span class="nav-text">配置 VIM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E8%B6%8A%E7%8B%B1%E7%9A%84-iPhone6-%E4%B8%8A%E5%AE%89%E8%A3%85-OpenSSH"><span class="nav-number">3.</span> <span class="nav-text">在越狱的 iPhone6 上安装 OpenSSH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E8%B6%8A%E7%8B%B1%E7%9A%84-iPhone6-%E4%B8%8A%E5%AE%89%E8%A3%85-Nginx"><span class="nav-number">4.</span> <span class="nav-text">在越狱的 iPhone6 上安装 Nginx</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-Nginx-%E4%BD%BF%E5%85%B6%E8%AE%BF%E9%97%AE%E5%BD%93%E5%89%8D%E8%AE%BE%E5%A4%87%E6%97%B6%E6%8C%87%E5%90%91%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2"><span class="nav-number">5.</span> <span class="nav-text">配置 Nginx 使其访问当前设备时指向路由器管理界面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AE%A1%E7%90%86%E5%8F%B0"><span class="nav-number">6.</span> <span class="nav-text">外网访问路由器管理台</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iPhone6-%E8%B6%8A%E7%8B%B1"><span class="nav-number">1.</span> <span class="nav-text">iPhone6 越狱</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8B%E8%B6%8A%E7%8B%B1%E7%9A%84-iPhone6"><span class="nav-number">2.</span> <span class="nav-text">配置一下越狱的 iPhone6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bash%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">bash设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4cat-etc-shells%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%94%AF%E6%8C%81%E7%9A%84-shell"><span class="nav-number">2.1.1.</span> <span class="nav-text">使用命令cat &#x2F;etc&#x2F;shells查看系统支持的 shell:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E9%BB%98%E8%AE%A4-shell-%E6%9B%B4%E6%94%B9%E4%B8%BA-bash"><span class="nav-number">2.1.2.</span> <span class="nav-text">将默认 shell 更改为 bash:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7-shell"><span class="nav-number">2.1.3.</span> <span class="nav-text">查看当前用户 shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8F%90%E7%A4%BA%E7%AC%A6-PS1-%E5%8F%8A-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.4.</span> <span class="nav-text">更改命令行提示符 PS1 及 常用命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-VIM"><span class="nav-number">2.2.</span> <span class="nav-text">配置 VIM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E8%B6%8A%E7%8B%B1%E7%9A%84-iPhone6-%E4%B8%8A%E5%AE%89%E8%A3%85-OpenSSH"><span class="nav-number">3.</span> <span class="nav-text">在越狱的 iPhone6 上安装 OpenSSH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E8%B6%8A%E7%8B%B1%E7%9A%84-iPhone6-%E4%B8%8A%E5%AE%89%E8%A3%85-Nginx"><span class="nav-number">4.</span> <span class="nav-text">在越狱的 iPhone6 上安装 Nginx</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-Nginx-%E4%BD%BF%E5%85%B6%E8%AE%BF%E9%97%AE%E5%BD%93%E5%89%8D%E8%AE%BE%E5%A4%87%E6%97%B6%E6%8C%87%E5%90%91%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2"><span class="nav-number">5.</span> <span class="nav-text">配置 Nginx 使其访问当前设备时指向路由器管理界面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-Nginx-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">5.1.</span> <span class="nav-text">修改 Nginx 配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">5.2.</span> <span class="nav-text">Nginx 常用命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AE%A1%E7%90%86%E5%8F%B0"><span class="nav-number">6.</span> <span class="nav-text">外网访问路由器管理台</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
