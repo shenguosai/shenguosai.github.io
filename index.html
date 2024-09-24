@@ -200,7 +200,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-09-11 09:45:06" itemprop="dateModified" datetime="2024-09-11T09:45:06+08:00">2024-09-11</time>
+                <time title="修改时间：2024-09-24 10:32:37" itemprop="dateModified" datetime="2024-09-24T10:32:37+08:00">2024-09-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -256,11 +256,8 @@
 
       
           <h1 id="自用方法"><a href="#自用方法" class="headerlink" title="自用方法"></a>自用方法</h1><ol>
-<li>单击 Windows 键，输入”服务”或”Service”，打开服务选项。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240909091647.png" alt="20240909091647"></li>
-<li>在服务中找到 “Adobe Genuine Software Monitor Service” 服务。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240909091917.png" alt="20240909091917"></li>
-<li>右键点击 =&gt; 左键属性，弹出属性对话框。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240909092020.png" alt="20240909092020"></li>
-<li>将启动类型改为<strong>禁止</strong>，并在服务状态栏点击<strong>停止</strong>将服务状态改为<strong>已停止</strong>。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240909092245.png" alt="20240909092245"></li>
-<li>防火墙设置规则让 Adobe Genuine Launcher.exe，AdobeGCClient.exe，AGMService.exe，AGSService.exe 无法联网。<br>打开 Windows 防火墙 =&gt; 入站规则 =&gt; 新建规则 =&gt; 程序(下一步) =&gt; 此程序路径中选择程序路径 (C:\Program Files (x86)\Common Files\Adobe\AdobeGCClient)并打开 =&gt; 操作:阻止连接 =&gt; 输入名称即可。<br>同样方法设置出站规则。<br>这样就不会再出现弹窗了。
+<li>单击 Windows 键，输入”服务”或”Service”，打开服务选项。</li>
+<li>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/09/09/%E5%85%B3%E9%97%AD-Adobe-Genuine-Service-Alert-%E6%AD%A3%E7%89%88%E9%AA%8C%E8%AF%81/#more" rel="contents">
@@ -310,10 +307,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-09-04 15:00:33 / 修改时间：15:09:19" itemprop="dateCreated datePublished" datetime="2024-09-04T15:00:33+08:00">2024-09-04</time>
+              <time title="创建时间：2024-09-04 15:00:33" itemprop="dateCreated datePublished" datetime="2024-09-04T15:00:33+08:00">2024-09-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-09-24 10:33:04" itemprop="dateModified" datetime="2024-09-24T10:33:04+08:00">2024-09-24</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -367,13 +370,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h1><p>不知道为什么打开 Work 时出现了 MathType 的报错。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240904150316.png" alt="20240904150316"><br>连续点击两次”确定”报错对话框消失，如果点击 MathType 按钮会再次出现报错信息。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240904150429.png" alt="20240904150429"></p>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>找到 MathPage.wll 文件将其复制到 Office 指定目录下。</p>
-<ol>
-<li>MathPage.wll<br>如果是 64 位的 Office，就去复制<code>C:\Program Files (x86)\MathType\Office Support\64\</code>中的 <code>MathPage.wll</code>。<br>如果是 32 位的 Office，就去复制<code>C:\Program Files (x86)\MathType\Office Support\32\</code>中的 <code>MathPage.wll</code>。</li>
-<li>Office 指定目录<br>将上面的文件复制到目录: <code>C:\Program Files\Microsoft Office\root\Office16</code>中即可正常。</li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+          <h1 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h1><p>不知道为什么打开 Work 时出现了 MathType 的报错。<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/09/04/%E6%89%93%E5%BC%80word%E6%97%B6MathType%E6%8A%A5%E9%94%99-MathType-has-detected-an-error-inAutoExecCls-Main-%E6%96%87%E4%BB%B6%E6%9C%AA%E6%89%BE%E5%88%B0-MathPage-WLL/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1417,7 +1422,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:34</span>
+    <span title="站点阅读时长">4:35</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
