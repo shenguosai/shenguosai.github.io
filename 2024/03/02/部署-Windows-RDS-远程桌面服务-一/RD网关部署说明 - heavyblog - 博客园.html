@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://www.cnblogs.com/heavyhe/p/4547058.html -->
+<html lang="zh-cn" style="--olcb-folder-code-block-max-height: 80vh; --cnb-code-bg: rgb(245, 245, 245); --cnb-code-font-size: 12px; --cnb-code-color: rgb(68, 68, 68);" version="4"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <meta name="description" content="RD网关部署说明 文档变更记录 日期版本作者内容备注2013/11/120.1背景新建2013/11/260.2实验步骤章节补充图片及过程2013/11/270.3调研用代码可以实现的步骤2013/11/290.4一、背景实现通过RD网关服务器实现外网访问内网的远程桌面。1.1远程桌面网关远程桌面网">
+    <meta property="og:description" content="RD网关部署说明 文档变更记录 日期版本作者内容备注2013/11/120.1背景新建2013/11/260.2实验步骤章节补充图片及过程2013/11/270.3调研用代码可以实现的步骤2013/11/290.4一、背景实现通过RD网关服务器实现外网访问内网的远程桌面。1.1远程桌面网关远程桌面网">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RD网关部署说明 - heavyblog - 博客园</title>
+        <link rel="canonical" href="https://www.cnblogs.com/heavyhe/p/4547058.html">
+    <link id="favicon" rel="shortcut icon" href="https://common.cnblogs.com/favicon.svg" type="image/svg+xml">
+    
+    <style>#home :not(.cnblogs_code):not(.cnblogs_Highlighter)>pre:not([highlighted]):not([class*="brush:"]) code:not(.hljs), :not(.cnblogs_code):not(.cnblogs_Highlighter)>pre:not([highlighted]):not([class*="brush:"]) code:not(.hljs) {background: rgb(245, 245, 245);
+        padding: 12px;
+        border: 1px solid rgb(204, 204, 204);
+        border-radius: 3px;
+        border-color: transparent;
+        color: rgb(68, 68, 68);
+        font-family: "Courier New", sans-serif;
+        font-size: 12px</style><link rel="stylesheet" href="./RD网关部署说明 - heavyblog - 博客园_files/blog-common.min.css">
+    
+
+    <link id="MainCss" rel="stylesheet" href="./RD网关部署说明 - heavyblog - 博客园_files/bundle-simplememory.min.css">
+        <link id="highlighter-theme-cnblogs" type="text/css" rel="stylesheet" href="./RD网关部署说明 - heavyblog - 博客园_files/cnblogs.css">
+    
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./RD网关部署说明 - heavyblog - 博客园_files/bundle-simplememory-mobile.min.css">
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/heavyhe/rss">
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/heavyhe/rsd.xml">
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/heavyhe/wlwmanifest.xml">
+    <script>
+        var currentBlogId = 229081;
+        var currentBlogApp = 'heavyhe';
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'SimpleMemory';
+        var visitorUserId = '';
+        var hasCustomScript = false;
+        window.cb_enable_mathjax = false;
+        window.mathEngine = 0;
+        window.codeHighlightEngine = 1;
+        window.enableCodeLineNumber = false;
+        window.codeHighlightTheme = 'cnblogs';
+        window.darkModeCodeHighlightTheme = 'vs2015';
+        window.isDarkCodeHighlightTheme = false;
+        window.isDarkModeCodeHighlightThemeDark = true;
+        window.isDisableCodeHighlighter = false;
+        window.enableCodeThemeTypeFollowSystem = false;
+        window.enableMacStyleCodeBlock = false;
+    </script>
+        <script>
+            window.currentPostId = 4547058;
+            window.currentPostDateAdded = '2015-06-02 17:21';
+        </script>
+    <script src="./RD网关部署说明 - heavyblog - 博客园_files/jquery-3.3.1.min.js.下载"></script>
+    <script src="./RD网关部署说明 - heavyblog - 博客园_files/blog-common.min.js.下载"></script><style>.medium-zoom-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 300ms;
+  will-change: opacity;
+}
+
+.medium-zoom--opened .medium-zoom-overlay {
+  cursor: pointer;
+  cursor: zoom-out;
+  opacity: 1;
+}
+
+.medium-zoom-image {
+  cursor: pointer;
+  cursor: zoom-in;
+  /*
+    The `transition` is marked as "!important" for the animation to happen
+    even though it's overriden by another inline `transition` style attribute.
+
+    This is problematic with frameworks that generate inline styles on their
+    images (e.g. Gatsby).
+
+    See https://github.com/francoischalifour/medium-zoom/issues/110
+   */
+  transition: transform 300ms cubic-bezier(0.2, 0, 0.2, 1) !important;
+}
+
+.medium-zoom-image--hidden {
+  visibility: hidden;
+}
+
+.medium-zoom-image--opened {
+  position: relative;
+  cursor: pointer;
+  cursor: zoom-out;
+  will-change: transform;
+}
+</style><script id="hljs-script" src="./RD网关部署说明 - heavyblog - 博客园_files/highlight.min.js.下载" type="text/javascript" async=""></script>
+    
+<meta property="og:image" content="https://images0.cnblogs.com/blog/759190/201506/021720006646500.png"><meta http-equiv="origin-trial" content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"></head>
+<body class="skin-simplememory has-navbar has-bannerbar">
+    <a name="top"></a>
+        <a href="https://click.aliyun.com/m/1000390857/" onclick="countCreativeClicks(&#39;C0-阿里云-年度大降价&#39;)" target="_blank" rel="nofollow">
+            <div class="bannerbar forpc" style="background-size: contain;background-image: url(https://img2024.cnblogs.com/blog/35695/202401/35695-20240115080717588-2053061285.jpg);">
+                <img src="./RD网关部署说明 - heavyblog - 博客园_files/35695-20240229193418159-1353765233.jpg" style="" onload="countCreativeImpressions(&#39;C0-阿里云-年度大降价&#39;)">
+                
+                
+                <span id="c0_impression" style="display:none"></span>
+            </div>
+        </a>
+        <div id="bannerbar" class="bannerbar-mobile bannerbar-text-mobile formobile">
+                <a href="https://click.aliyun.com/m/1000390859/" onclick="countCreativeClicks(&#39;M2-阿里云-年度大降价&#39;)" rel="nofollow">
+                    <img src="./RD网关部署说明 - heavyblog - 博客园_files/35695-20240229194148864-904414861.jpg" alt="" onload="countCreativeImpressionsOnMobile(&#39;M2-阿里云-年度大降价&#39;)">
+                    <span id="m2_impression" style="display:none"></span>
+                </a>
+        </div>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding">
+                    <a href="https://www.cnblogs.com/" title="开发者的网上家园" role="banner">
+                        <img src="./RD网关部署说明 - heavyblog - 博客园_files/logo.svg" alt="博客园Logo">
+                    </a>
+                </li>
+                <li><a href="https://cnblogs.vip/">会员</a></li>
+                <li><a href="https://www.cnblogs.com/cmt/p/17974346">周边</a></li>
+                <li>
+                    <a href="https://news.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-news&#39;)">新闻</a>
+                </li>
+                <li>
+                    <a href="https://q.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-q&#39;)">博问</a>
+                </li>
+                <li>
+                    <a href="https://ai.hanghang.com/page/4649915" target="_blank">AI培训</a>
+                </li>
+                <li><a href="https://market.cnblogs.com/" target="_blank">云市场</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search dropdown" action="https://zzk.cnblogs.com/s" method="get" role="search">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="search" tabindex="3" autocomplete="off">
+                        <button id="zzk_search_button" onclick="window.navbarSearchManager.triggerActiveOption()">
+                            <img id="search_icon" class="focus-hidden" src="./RD网关部署说明 - heavyblog - 博客园_files/search.svg" alt="搜索">
+                            <img class="hidden focus-visible" src="./RD网关部署说明 - heavyblog - 博客园_files/enter.svg" alt="搜索">
+                        </button>
+                        <ul id="navbar_search_options" class="dropdown-menu quick-search-menu">
+                            <li tabindex="0" class="active" onclick="zzkSearch(event, document.getElementById(&#39;zzk_search_input&#39;).value)">
+                                <div class="keyword-wrapper">
+                                    <img src="./RD网关部署说明 - heavyblog - 博客园_files/search.svg" alt="搜索">
+                                    <div class="keyword"></div>
+                                </div>
+                                <span class="search-area">所有博客</span>
+                            </li>
+                                    <li tabindex="1" onclick="zzkBlogSearch(event, &#39;heavyhe&#39;, document.getElementById(&#39;zzk_search_input&#39;).value)">
+                                        <div class="keyword-wrapper">
+                                            <img src="./RD网关部署说明 - heavyblog - 博客园_files/search.svg" alt="搜索">
+                                            <div class="keyword"></div>
+                                        </div>
+                                        <span class="search-area">当前博客</span>
+                                    </li>
+                        </ul>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔" style="display: none;">
+                        <img id="new_post_icon" class="navbar-icon" src="./RD网关部署说明 - heavyblog - 博客园_files/newpost.svg" alt="写随笔">
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客" style="display: none;">
+                        <img id="myblog_icon" class="navbar-icon" src="./RD网关部署说明 - heavyblog - 博客园_files/myblog.svg" alt="我的博客">
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息" style="display: none;">
+                        <img id="msg_icon" class="navbar-icon" src="./RD网关部署说明 - heavyblog - 博客园_files/message.svg" alt="短消息">
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <a id="navbar_lite_mode_indicator" data-current-page="blog" style="display: none" href="javascript:void(0)" alt="简洁模式" title="简洁模式启用，您在访问他人博客时会使用简洁款皮肤展示">
+                        <img class="navbar-icon" src="./RD网关部署说明 - heavyblog - 博客园_files/lite-mode-on.svg" alt="简洁模式">
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown" style="display: none;">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="./RD网关部署说明 - heavyblog - 博客园_files/avatar-default.svg" alt="用户头像">
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="./RD网关部署说明 - heavyblog - 博客园_files/lite-mode-check.svg" class="hide" style="display: none;"><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup" style="display: inline;">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()" style="display: inline;">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/heavyhe/"><img id="blogLogo" src="./RD网关部署说明 - heavyblog - 博客园_files/logo.gif" alt="返回主页"></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/heavyhe">写出一片蓝蓝天......</a>
+</h1>
+<h2>记录成长每一步</h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/heavyhe/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/heavyblog">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/heavyhe/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<span id="stats_post_count">随笔 - 164&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 2&nbsp; </span>
+<span id="stats-total-view-count">阅读 - 
+<span title="总阅读数: 92652">
+92652</span></span>
+
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class="postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/heavyhe/p/4547058.html">
+    <span role="heading" aria-level="2">RD网关部署说明</span>
+    
+
+</a><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body blogpost-body-html">
+<p style="text-align: center"><span style="font-size: 16pt"><strong>RD网关部署说明 </strong></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>文档变更记录 </strong></p>
+<div>
+<div class="table-wrapper"><table style="border-collapse: collapse" border="0"><colgroup><col style="width: 114px"><col style="width: 73px"><col style="width: 66px"><col style="width: 202px"><col style="width: 114px"></colgroup>
+<tbody valign="top">
+<tr style="background: rgba(166, 166, 166, 1)">
+<td style="padding-left: 7px; padding-right: 7px; border: 0.5pt solid">
+<p><span style="font-family: 宋体; font-size: 10pt"><strong><a name="OLE_LINK1" rel="noopener"></a>日期</strong></span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: 0.5pt solid; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-family: 宋体; font-size: 10pt"><strong>版本</strong></span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: 0.5pt solid; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-family: 宋体; font-size: 10pt"><strong>作者</strong></span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: 0.5pt solid; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-family: 宋体; font-size: 10pt"><strong>内容</strong></span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: 0.5pt solid; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-family: 宋体; font-size: 10pt"><strong>备注</strong></span></p>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">2013/11/12</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">0.1</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-family: 宋体; font-size: 10pt">背景</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">新建</span></p>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">2013/11/26</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">0.2</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">实验步骤章节补充图片及过程</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">2013/11/27</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">0.3</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">调研用代码可以实现的步骤</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-family: 宋体; font-size: 10pt">2013/11/29</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">0.4</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>一、背景<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<p>实现通过RD网关服务器实现外网访问内网的远程桌面。</p>
+<p>&nbsp;</p>
+<h2>1.1远程桌面网关<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>远程桌面网关（RD 网关）是一项角色服务，使授权远程用户可以从任何连接到 Internet 并且可以运行远程桌面连接 (RDC) 客户端的设备连接到内部企业网络或专用网络上的资源。网络资源可以是远程桌面会话主机（RD 会话主机）服务器、运行 RemoteApp 程序的RD 会话主机服务器或启用了远程桌面的计算机。</p>
+<p>RD 网关使用 HTTPS 上的远程桌面协议 (RDP) 在 Internet 上的远程用户与运行其生产力应用程序的内部网络资源之间建立安全的加密连接。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>1.2为什么使用远程桌面网关？<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p><strong>RD 网关有许多优点，其中包括： </strong></p>
+<p>通过 RD 网关，远程用户可以使用加密连接，<strong>通过 Internet 连接到内部网络资源，而不必配置虚拟专用网络 (VPN) 连接。 </strong></p>
+<p>&nbsp;</p>
+<p>RD 网关提供全面的安全配置模型，使您可以控制对特定内部网络资源的访问。<strong>RD 网关提供点对点的 RDP 连接，而不是允许远程用户访问所有内部网络资源。</strong></p>
+<p>&nbsp;</p>
+<p>通过 RD 网关，大多数远程用户可以连接到在专用网络中的防火墙后面或跨网络地址转换程序 (NAT) 托管的内部网络资源。在此方案中，<strong>通过 RD 网关，不必对 RD 网关服务器或客户端执行其他配置。 </strong></p>
+<p>&nbsp;</p>
+<p>在此版本的 Windows Server 之前，采用安全措施来阻止远程用户跨防火墙和 NAT 连接到内部网络资源。这是由于出于网络安全考虑，通常阻止端口 3389（用于 RDP 连接的端口）。RD 网关使用 HTTP 安全套接字层/传输层安全 (SSL/TLS) 隧道将 RDP 通信传输到端口 443。由于大多数公司打开端口 443 来支持 Internet 连接，所以，RD 网关利用此网络设计提供跨多个防火墙的远程访问连接。</p>
+<p>&nbsp;</p>
+<p>通过远程桌面网关管理器可以配置授权策略，以定义远程用户要连接到内部网络资源必须满足的条件。例如，可以指定：</p>
+<p>&nbsp;</p>
+<p>可以连接到内部网络资源的用户（即，可以连接的用户组）。</p>
+<p>&nbsp;</p>
+<p>用户可以连接到的网络资源（计算机组）。</p>
+<p>&nbsp;</p>
+<p>客户端计算机是否必须是 Active Directory 安全组的成员。</p>
+<p>&nbsp;</p>
+<p>是否允许设备的重定向。</p>
+<p>&nbsp;</p>
+<p>客户端需要使用智能卡身份验证还是密码身份验证，还是可以使用任一方法。</p>
+<p>&nbsp;</p>
+<p>可以将 RD 网关服务器和远程桌面服务客户端配置为使用网络访问保护 (NAP) 来进一步增强安全性。NAP 是 Windows Server® 2008 R2、Windows Server® 2008、Windows® 7、Windows Vista® 和 Windows(R) XP Service Pack 3 中包含的运行状况策略创建、强制和补救技术。通过 NAP，系统管理员可以强制运行状况要求，可以包括软件要求、安全更新要求、所需的计算机配置以及其他设置。</p>
+<p>&nbsp;</p>
+<p>note备注</p>
+<p>如果 RD 网关强制 NAP，则运行 Windows Server 2008 R2 或 Windows Server 2008 的计算机不能作为 NAP 客户端使用。如果 RD 网关强制 NAP，则仅运行 Windows 7、Windows Vista 或 Windows XP SP3 的计算机可以作为 NAP 客户端使用。</p>
+<p>有关如何将 RD 网关配置为使用 NAP 对连接到 RD 网关服务器的远程桌面服务客户端强制运行状况策略的信息，请参阅 Windows Server 2008 R2 技术中心上的"远程桌面服务"页 [http://go.microsoft.com/fwlink/?linkid=140433（可能为英文网页）]。</p>
+<p>&nbsp;</p>
+<p>可以将 RD 网关服务器与 Microsoft Internet Security and Acceleration (ISA) 服务器一起使用来提高安全性。在此方案中，可以在专用网络中（而不是在外围网络中）托管 RD 网关服务器，且可以在外围网络中托管 ISA 服务器。远程桌面服务客户端与 ISA 服务器之间的安全套接字层 (SSL) 连接可以在连接到 Internet 的 ISA 服务器上终止。</p>
+<p>&nbsp;</p>
+<p>有关如何将 ISA 服务器配置为 RD 网关服务器方案的 SSL 终结设备的信息，请参阅 Windows Server 2008 R2 技术中心上的"远程桌面服务"页 [http://go.microsoft.com/fwlink/?linkid=140433（可能为英文网页）]。</p>
+<p>&nbsp;</p>
+<p>远程桌面网关管理器提供的工具帮助您监视 RD 网关服务器状态和事件。通过使用远程桌面网关管理器，可以指定为了进行审核要监视的事件（例如尝试连接到 RD 网关服务器不成功）。</p>
+<p>&nbsp;</p>
+<h2>1.3配置远程桌面网关<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>此清单列出了要成功地为 RD 网关核心方案配置 RD 网关需要完成的任务。通过此方案，可以配置 RD 网关服务器，使远程用户可以通过 RD 网关服务器，从 Internet 访问内部公司网络资源或专用网络资源。在此方案中，内部网络资源可以是远程桌面会话主机（RD 会话主机）服务器、运行 RemoteApp 程序的RD 会话主机服务器或启用了远程桌面的计算机。</p>
+<p>&nbsp;</p>
+<div>
+<div class="table-wrapper"><table style="border-collapse: collapse" border="0"><colgroup><col style="width: 284px"><col style="width: 284px"></colgroup>
+<tbody valign="top">
+<tr style="background: rgba(191, 191, 191, 1)">
+<td style="padding-left: 7px; padding-right: 7px; border: 0.5pt solid">
+<p><span style="font-size: 10pt"><strong>配置步骤</strong></span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: 0.5pt solid; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">安装远程桌面网关角色服务。</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">获取 RD 网关服务器的证书。</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">创建远程桌面连接授权策略 (RD CAP)。</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">创建远程桌面资源授权策略 (RD RAP)。</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">配置 RD 网关的远程桌面服务客户端。</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>有关 RD 网关的详细信息，请参见 Windows Server 2008 R2 TechCenter 上的远程桌面服务页 (<a href="http://go.microsoft.com/fwlink/?LinkId=140433" rel="noopener">http://go.microsoft.com/fwlink/?LinkId=140433</a>)。</p>
+<p>&nbsp;</p>
+<h2>1.4安装远程桌面网关的先决条件<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p><strong>若要正常使用 RD 网关，必须满足下列先决条件： </strong></p>
+<p><span style="background-color: rgba(255, 255, 0, 1)">必须拥有安装了 Windows Server 2008 R2 的服务器。</span></p>
+<p>&nbsp;</p>
+<p>在您要配置的 RD 网关服务器上具有<span style="background-color: rgba(255, 255, 0, 1)">本地"管理员"组成员身份</span>（或同等身份），是完成此过程的最低要求。 查看有关使用适当帐户和组成员关系的详细信息，请访问本地默认组和域默认组 (http://go.microsoft.com/fwlink/?LinkId=83477)（可能为英文链接）。</p>
+<p>&nbsp;</p>
+<p><span style="background-color: rgba(255, 255, 0, 1)">必须为 RD 网关服务器获取安全套接字层 (SSL) 证书</span>（如果还没有该证书）。默认情况下，在 RD 网关 服务器上，Internet 信息服务 (IIS) 服务使用传输层安全 (TLS) 1.0 对通过 Internet 在客户端与 RD 网关服务器之间进行的通信加密。若要正常使用 TLS，必须在 RD 网关服务器上安装 SSL 证书。</p>
+<p>&nbsp;</p>
+<p><strong>note备注 </strong></p>
+<p>如果可以使用其他方法获取符合 RD 网关的要求的外部信任证书，则不需要在组织中部署证书颁发机构 (CA) 基础结构。如果您的公司没有独立 CA 或企业 CA，并且您没有受信任公用 CA 颁发的兼容证书，则可以为 RD 网关服务器创建并导入自签名证书，以便进行技术评估和测试。有关详细信息，请参阅为远程桌面网关服务器创建自签名证书。</p>
+<p>有关 RD 网关 的证书要求以及如何获取并安装证书的信息，请参阅获取远程桌面网关服务器的证书。</p>
+<p>&nbsp;</p>
+<p><span style="background-color: rgba(255, 255, 0, 1)">如果配置的 RD 网关授权策略要求客户端计算机上的用户是 Active Directory 安全组的成员，才能连接到 RD 网关服务器，则 RD 网关服务器必须也是 Active Directory 域的成员。</span></p>
+<p>&nbsp;</p>
+<p><strong>角色、角色服务和功能的依存关系 </strong></p>
+<p>若要正常使用 RD 网关，要求安装并运行多个角色服务和功能。使用服务器管理器安装 RD 网关角色服务时，将自动安装并启动下列附加的角色、角色服务和功能（如果尚未安装）：</p>
+<p><span style="background-color: rgba(255, 255, 0, 1)">HTTP 代理上的远程过程调用 (RPC)</span></p>
+<p><span style="background-color: rgba(255, 255, 0, 1)">Web 服务器 (IIS) [Internet 信息服务]</span></p>
+<p><span style="background-color: rgba(255, 255, 0, 1)">若要正常使用 HTTP 代理上的 RPC 功能，必须安装并运行 IIS。</span></p>
+<p>&nbsp;</p>
+<p><strong>网络策略和访问服务 </strong></p>
+<p>还可以将 RD 网关配置为使用另一台运行网络策略服务器 (NPS) 服务的服务器上存储的远程桌面连接授权策略 (RD CAP)。这样，您将使用运行 NPS 的服务器（以前称为远程身份验证拨入用户服务 (RADIUS) 服务器）来集中存储、管理和验证RD CAP。如果已为远程访问方案（例如 VPN 和拨号网络）部署了运行 NPS 的服务器，则对 RD 网关方案同样使用这个现有的运行 NPS 的服务器，可以增强您的部署。</p>
+<h1>二、实验环境<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<h2>2.1 实验环境<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<div>
+<div class="table-wrapper"><table style="border-collapse: collapse" border="0"><colgroup><col style="width: 120px"><col style="width: 139px"><col style="width: 141px"><col style="width: 169px"></colgroup>
+<tbody valign="top">
+<tr style="background: rgba(191, 191, 191, 1)">
+<td style="padding-left: 7px; padding-right: 7px; border: 0.5pt solid">
+<p style="text-align: center"><span style="font-size: 10pt"><strong>服务器名称</strong></span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: 0.5pt solid; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p style="text-align: center"><span style="font-size: 10pt"><strong>系统</strong></span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: 0.5pt solid; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p style="text-align: center"><span style="font-size: 10pt"><strong>功能</strong></span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: 0.5pt solid; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p style="text-align: center"><span style="font-size: 10pt"><strong>备注</strong></span></p>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">AD </span></p>
+<p><span style="font-size: 10pt; background-color: rgba(255, 255, 0, 1)">192.168.10.1</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">Windows Server 2012</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">AD域服务，<span style="background-color: rgba(255, 255, 0, 1)">AD证书服务</span></span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">VMHost2上虚机</span></p>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">RD </span></p>
+<p><span style="font-size: 10pt; background-color: rgba(255, 255, 0, 1)">192.168.10.14 </span></p>
+<p><span style="font-size: 10pt; background-color: rgba(0, 255, 0, 1)">10.0.1.1</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">Windows Server 2012</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">RD网关服务器</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">VMHost2上虚机</span></p>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt; text-decoration: line-through">RD01 </span></p>
+<p><span style="font-size: 10pt; text-decoration: line-through"><span style="background-color: rgba(255, 255, 0, 1)">192.168.0.15</span> </span></p>
+<p><span style="font-size: 10pt; background-color: rgba(0, 255, 0, 1); text-decoration: line-through">10.0.1.3</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt; text-decoration: line-through">Windows Server 2012</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt; text-decoration: line-through">RD网关服务器</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt; text-decoration: line-through">VMHost2上虚机</span></p>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">Win-TTLSA6FVTKG </span></p>
+<p><span style="font-size: 10pt; background-color: rgba(255, 255, 0, 1)">192.168.10.22</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">Windows 7 32 sp1</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">远程桌面 </span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">VMHost1上虚机</span></p>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">Win-J3SKRGLCDLT </span></p>
+<p><span style="font-size: 10pt; background-color: rgba(0, 255, 0, 1)">10.0.1.2</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">Windows 7 32 sp1</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">客户端</span></p>
+</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">
+<p><span style="font-size: 10pt">VMHost3上虚机</span></p>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: 0.5pt solid; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: 0.5pt solid; border-right: 0.5pt solid">&nbsp;</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>2.2 拓扑图<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720006646500.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>三、实验步骤<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<h2>3.1 AD证书服务安装与配置<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<h3>3.1.1 添加ADCS角色和功能<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h3>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720037583045.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720062733948.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720085552377.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720099778079.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<h3>3.1.2 ADCS配置<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h3>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720116649394.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720134612210.png" alt="" class="medium-zoom-image"></p>
+<p>此处要选【企业CA】</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720147273397.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720163679697.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720177734928.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720198528529.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720215708087.png" alt="" class="medium-zoom-image"></p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720233836674.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720248674161.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720268983749.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720276807919.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<h3>3.1.3 创建针对计算机的证书模板<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h3>
+<p>在AD中，创建证书模板。</p>
+<p>【服务器管理器】-【工具】-【证书颁发机构】。</p>
+<p><span style="background-color: rgba(255, 255, 0, 1)">右键【证书模板】-【新建】-【要颁发的证书模板】。</span></p>
+<ol>
+<li>
+<div style="text-align: justify"><span style="color: rgba(0, 176, 240, 1); font-size: 10pt">右击【证书模板】-【管理】-右击【计算机】-【复制模板】，在【常规】tab定义模板名称，在【使用者名称】选择【在请求中提供】，点击【应用】-【确定】 </span></div>
+</li>
+</ol>
+<p><span style="color: rgba(0, 176, 240, 1)">2. 右键【证书模板】-【新建】-【要颁发的证书模板】，选择模板名称为步骤一中创建的模板，点击确定</span></p>
+<p>&nbsp;</p>
+<h2>3.2 安装远程桌面网关服务<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720283987007.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720293366692.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720303054622.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720317271325.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720328679538.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720340862011.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720348671883.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720359616083.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720371807555.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720379778900.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720387119056.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720397589243.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720405233345.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720417581588.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720423987417.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>3.3 配置远程桌面网关服务器<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>以下所有配置均在RD网关服务器上进行。</p>
+<h3>3.3.1证书<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h3>
+<p>在【控制台】完成申请证书的相关操作。证书已由前面的ADCS证书服务配置完成。</p>
+<p>申请完证书后。</p>
+<p>首先，要对RD网关服务器进行导入证书。</p>
+<p>其次，要把证书保存到本地硬盘，再拷贝到客户端进行安装，可进行静默安装。</p>
+<p>&nbsp;</p>
+<h4>3.3.1.1申请证书<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h4>
+<p>【开始】-【运行】mmc</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720433675346.png" alt="" class="medium-zoom-image"></p>
+<p>【文件】-【添加/删除管理单元】，选择【证书】，点击【添加】。</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720441176975.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720448835375.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720456024463.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720468679948.png" alt="" class="medium-zoom-image"></p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720475399320.png" alt="" class="medium-zoom-image"></p>
+<p>右键【个人】-【证书】-【所有任务】-【申请新证书】</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720483527436.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720498677465.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720521481597.png" alt="" class="medium-zoom-image"></p>
+<p><span style="color: rgba(0, 176, 240, 1)">点击下一步 </span></p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720528831753.jpg" alt="" class="medium-zoom-image"></p>
+<p><span style="color: rgba(0, 176, 240, 1)">选择新创建的模板下的【注册此证书需要详细信息。单击这里以配置设置】，弹出如下窗口 </span></p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720543369996.jpg" alt="" class="medium-zoom-image"></p>
+<p><span style="color: rgba(0, 176, 240, 1)">在类型处选择【公用名】，在值处填写路由器的外网地址，点击【添加】按钮，点击【应用】-【确定】 </span></p>
+<p>证书申请完成。</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720552735384.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4>3.3.1.2导出证书<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h4>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720575553813.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720584619957.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021720592274059.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721002426002.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721009927631.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>将导出的证书拷贝到客户端进行安装。</p>
+<p>&nbsp;</p>
+<h4>3.3.1.3导入证书<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h4>
+<p><span style="color: rgba(0, 176, 240, 1)">【开始】-【运行】输入【tsgateway.msc】调用RD网关管理器 </span></p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721017737503.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721026178160.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721032423519.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721039616904.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3>3.3.2策略<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h3>
+<p>&nbsp;</p>
+<h4>3.3.2.1 创建策略<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h4>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721046336276.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721052733106.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721059452478.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721068367149.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721078363321.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721086647208.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721092271781.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721098838679.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721107587580.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721116801496.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721125236854.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721132738483.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721140231113.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721146959484.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>3.4 客户端配置<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<h3>3.4.1 导入证书<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h3>
+<p>从RD网关上拷贝导出的证书文件到客户端，双击进行安装。</p>
+<p>&nbsp;</p>
+<h3>3.4.2 Hosts文件修改<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h3>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721153204842.png" alt="" class="medium-zoom-image"></p>
+<h3>3.4.3 mstsc设置<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h3>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721161024714.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p><img src="./RD网关部署说明 - heavyblog - 博客园_files/021721170702643.png" alt="" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>3.5 测试远程桌面登录<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>3.6 RD网关服务器场<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>四、参考资料<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<p><a href="http://wangchunhai.blog.51cto.com/225186/1139388" rel="noopener">http://wangchunhai.blog.51cto.com/225186/1139388</a></p>
+<p>证书服务安装</p>
+<p><a href="http://lixun.blog.51cto.com/4198640/942447" rel="noopener">http://lixun.blog.51cto.com/4198640/942447</a></p>
+<p>&nbsp;</p>
+<p>证书</p>
+<p><a href="http://technet.microsoft.com/zh-cn/library/cc725949(v=ws.10).aspx" rel="noopener">http://technet.microsoft.com/zh-cn/library/cc725949(v=ws.10).aspx</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://technet.microsoft.com/zh-cn/library/cc725706(v=ws.10).aspx" rel="noopener">http://technet.microsoft.com/zh-cn/library/cc725706(v=ws.10).aspx</a></p>
+<p>&nbsp;</p>
+<p>配置远程桌面网关服务器</p>
+<p><a href="http://technet.microsoft.com/zh-cn/library/cc754191(v=ws.10).aspx" rel="noopener">http://technet.microsoft.com/zh-cn/library/cc754191(v=ws.10).aspx</a></p>
+<p>&nbsp;</p>
+<p>TMG发布远程桌面网关服务器</p>
+<p><a href="http://hi.baidu.com/comet82/item/e62dc17664760f480c0a0701" rel="noopener">http://hi.baidu.com/comet82/item/e62dc17664760f480c0a0701</a></p>
+<p>&nbsp;</p>
+<p>安装ADCS</p>
+<p><a href="http://yuelei.blog.51cto.com/202879/309092/" rel="noopener">http://yuelei.blog.51cto.com/202879/309092/</a></p>
+<p>配置CA证书</p>
+<p><a href="http://235898457.blog.51cto.com/512763/307612" rel="noopener">http://235898457.blog.51cto.com/512763/307612</a></p>
+<p>&nbsp;</p>
+<p>RD网关负载均衡</p>
+<p><a href="http://blog.sina.com.cn/s/blog_643754960101b79n.html" rel="noopener">http://blog.sina.com.cn/s/blog_643754960101b79n.html</a></p>
+<p>&nbsp;</p>
+</div>
+<div class="clear"></div>
+<div id="blog_post_info_block" role="contentinfo">
+
+
+<div id="BlogPostCategory">
+    分类: 
+            <a href="https://www.cnblogs.com/heavyhe/category/696916.html" target="_blank">Windows Server</a>
+,             <a href="https://www.cnblogs.com/heavyhe/category/696883.html" target="_blank">虚拟化</a>
+</div>
+
+    <div id="blog_post_info">
+<div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4547058,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+        <a id="green_channel_follow" onclick="follow(&#39;e948b295-d6fd-e411-b908-9dcfd8948a71&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareManager.wechatShare()">微信分享</a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/heavyhe/" target="_blank"><img src="./RD网关部署说明 - heavyblog - 博客园_files/20150602165327.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/heavyhe/">heavyblog</a>
+            <br>
+            <a href="https://home.cnblogs.com/u/heavyhe/followers/">粉丝 - <span class="follower-count">8</span></a>
+            <a href="https://home.cnblogs.com/u/heavyhe/followees/">关注 - <span class="following-count">1</span></a><br>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow" class="follow-tip">
+                <a href="javascript:void(0);" onclick="follow(&#39;e948b295-d6fd-e411-b908-9dcfd8948a71&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(4547058,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(4547058,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+        <div id="vip_tip"><a class="tip" href="https://cnblogs.vip/" target="_blank">升级成为会员</a></div>
+</div>
+
+<script type="text/javascript">
+    currentDiggType = 0;
+</script>
+</div>
+    <div class="clear"></div>
+    <div id="post_next_prev">
+
+    <a href="https://www.cnblogs.com/heavyhe/p/4546992.html" class="p_n_p_prefix">« </a> 上一篇：    <a href="https://www.cnblogs.com/heavyhe/p/4546992.html" data-featured-image="" title="发布于 2015-06-02 17:04">Git学习笔记</a>
+    <br>
+    <a href="https://www.cnblogs.com/heavyhe/p/4547061.html" class="p_n_p_prefix">» </a> 下一篇：    <a href="https://www.cnblogs.com/heavyhe/p/4547061.html" data-featured-image="" title="发布于 2015-06-02 17:23">SVN版本冲突解决</a>
+
+</div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date" data-last-update-days="3196.163410672956" data-date-created="BlogServer.Application.Dto.BlogPost.BlogPostDto" data-date-updated="2015-06-02 17:22" aria-expanded="false">2015-06-02 17:21</span>&nbsp;
+<a href="https://www.cnblogs.com/heavyhe">heavyblog</a>&nbsp;
+阅读(<span id="post_view_count">14194</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=4547058" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(4547058);return false;">收藏</a>&nbsp;
+<a href="javascript:void(0)" onclick="reportManager.report({ currentUserId: &#39;&#39;, targetType: &#39;blogPost&#39;, targetId: &#39;4547058&#39;, targetLink: &#39;https://www.cnblogs.com/heavyhe/p/4547058.html&#39;, title: &#39;RD网关部署说明&#39; })">举报</a>
+</div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+<script>
+    var cb_entryId = 4547058, cb_entryCreatedDate = '2015-06-02 17:21', cb_postType = 1, cb_postTitle = 'RD网关部署说明';
+    var allowComments = true, cb_blogId = 229081, cb_blogApp = 'heavyhe', cb_blogUserGuid = 'e948b295-d6fd-e411-b908-9dcfd8948a71';
+    mermaidRender.render()
+    markdown_highlight()
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");    
+</script>
+<a id="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav">
+            <a class="comment-nav-left forpc" href="https://cnblogs.vip/" target="_blank">会员力量，点亮园子希望</a>
+        <div class="comment-nav-right">
+            <span id="span_refresh_tips"></span><a href="https://www.cnblogs.com/heavyhe/p/4547058.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/heavyhe/p/4547058.html#top">返回顶部</a>
+        </div>
+    </div>
+    <div id="comment_form_container"><div class="login_tips">
+    登录后才能查看或发表评论，立即 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return account.login(&#39;!comments&#39;);">登录</a> 或者
+    <a href="https://www.cnblogs.com/">逛逛</a> 博客园首页
+</div>
+</div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+        <div id="cnblogs_ch"></div>
+    <div id="opt_under_post"></div>
+        <div id="cnblogs_c1" class="under-post-card">
+            <a href="https://click.aliyun.com/m/1000390858/" rel="nofollow" target="_blank" onclick="countCreativeClicks(&#39;C1-阿里云-年度大降价&#39;)">
+                <img src="./RD网关部署说明 - heavyblog - 博客园_files/35695-20240229194456450-851239093.jpg" onload="countCreativeImpressions(&#39;C1-阿里云-年度大降价&#39;)" alt="">
+                <span id="c1_impression" style="display:none"></span>
+            </a>
+        </div>
+    <div id="under_post_card1"><div class="under-post-card">
+<b>编辑推荐：</b>
+<br>
+
+· <a href="https://www.cnblogs.com/whuanle/p/18045341" target="_blank">万字长文学会对接 AI 模型：Semantic Kernel 和 Kernel Memory</a>
+    <br>
+· <a href="https://www.cnblogs.com/huangxincheng/p/18034164" target="_blank">.NET 高级调试之 sos 命令输出看不懂怎么办</a>
+    <br>
+· <a href="https://www.cnblogs.com/artech/p/18031075/mvc_app_model_3" target="_blank">ASP.NET Core MVC 应用模型的构建[3]: Controller 的收集</a>
+    <br>
+· <a href="https://www.cnblogs.com/coco1s/p/18036372" target="_blank">现代 CSS 解决方案：accent-color 强调色</a>
+    <br>
+· <a href="https://www.cnblogs.com/wucy/p/18025196/aspnetcore_webapi_formatter" target="_blank">细聊 ASP.NET Core WebAPI 格式化程序</a>
+    <br>
+</div></div>
+    <div id="under_post_card2"><div class="itnews under-post-card">
+    <b>阅读排行：</b>
+    <br>
+ ·          <a href="https://www.cnblogs.com/whuanle/p/18045341" target="_blank">万字长文学会对接 AI 模型：Semantic Kernel 和 Kernel Memory，工良出</a>
+        <br>
+ ·          <a href="https://www.cnblogs.com/Wayne123/p/18046322" target="_blank">10个技巧，3分钟教会你高效寻找开源项目</a>
+        <br>
+ ·          <a href="https://www.cnblogs.com/vipstone/p/18046635" target="_blank">面试官：说说SSO单点登录的实现原理？</a>
+        <br>
+ ·          <a href="https://www.cnblogs.com/nebulagraph/p/18046680" target="_blank">万字带你走过数据库的这激荡的三年</a>
+        <br>
+ ·          <a href="https://www.cnblogs.com/jiang-xiao-bei/p/18045759" target="_blank">面试必备：一线大厂Redis缓存设计规范与性能优化</a>
+        <br>
+</div></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+        var commentManager = new blogCommentManager();
+        commentManager.renderComments(0);
+        fixPostBody();
+        window.footnoteTipManager.generateFootnoteTips();
+
+            window.tocManager.displayDisableTocTips = false;
+            window.tocManager.generateToc();
+            
+                setTimeout(function() { countViews(cb_blogId, cb_entryId); }, 50);
+            
+            deliverT2();
+            deliverC1C2();
+            loadNewsAndKb();
+            
+                LoadPostCategoriesTags(cb_blogId, cb_entryId);
+            
+            LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+            GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+            loadOptUnderPost();
+            GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+                </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+    <h3 class="catListTitle">公告</h3>
+<div id="blog-news">    
+    <div id="sidebar_news_content">
+<div id="profile_block">
+    昵称：
+    <a href="https://home.cnblogs.com/u/heavyhe/">
+        heavyblog
+    </a>
+    <br>
+    园龄：
+    <a href="https://home.cnblogs.com/u/heavyhe/" title="入园时间：2015-05-19">
+        8年9个月
+    </a>
+    <br>
+    粉丝：
+    <a class="follower-count" href="https://home.cnblogs.com/u/heavyhe/followers/">
+        8
+    </a>
+    <br>
+    关注：
+    <a class="folowing-count" href="https://home.cnblogs.com/u/heavyhe/followees/">
+        1
+    </a>
+    <div id="p_b_follow" class="follow-tip">
+<a href="javascript:void(0)" onclick="follow(&#39;e948b295-d6fd-e411-b908-9dcfd8948a71&#39;)">+加关注</a></div>
+    <script>getFollowStatus('e948b295-d6fd-e411-b908-9dcfd8948a71');</script>
+</div>
+</div>
+</div>
+<script>loadBlogNews();</script>
+
+ 
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="">
+
+<table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar" border="0">
+    <tbody>
+        <tr>
+            <td colspan="7">
+                <table class="CalTitle" cellspacing="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2024/02/02&#39;); return false;">&lt;</a>
+                            </td>
+                            <td align="center">2024年3月</td>
+                            <td align="right" class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2024/04/02&#39;); return false;">&gt;</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    <tr>
+        <th class="CalDayHeader" align="center" abbr="日" scope="col">日</th>
+        <th class="CalDayHeader" align="center" abbr="一" scope="col">一</th>
+        <th class="CalDayHeader" align="center" abbr="二" scope="col">二</th>
+        <th class="CalDayHeader" align="center" abbr="三" scope="col">三</th>
+        <th class="CalDayHeader" align="center" abbr="四" scope="col">四</th>
+        <th class="CalDayHeader" align="center" abbr="五" scope="col">五</th>
+        <th class="CalDayHeader" align="center" abbr="六" scope="col">六</th>
+    </tr>
+            <tr>
+                            <td class="CalOtherMonthDay" align="center">25</td>
+                            <td class="CalOtherMonthDay" align="center">26</td>
+                            <td class="CalOtherMonthDay" align="center">27</td>
+                            <td class="CalOtherMonthDay" align="center">28</td>
+                            <td class="CalOtherMonthDay" align="center">29</td>
+                        <td class="" align="center">
+                            1
+                        </td>
+                    <td class="CalTodayDay" align="center">
+                        2
+                    </td>
+            </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            3
+                        </td>
+                            <td class="" align="center">
+                                4
+                            </td>
+                            <td class="" align="center">
+                                5
+                            </td>
+                            <td class="" align="center">
+                                6
+                            </td>
+                            <td class="" align="center">
+                                7
+                            </td>
+                            <td class="" align="center">
+                                8
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            9
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            10
+                        </td>
+                            <td class="" align="center">
+                                11
+                            </td>
+                            <td class="" align="center">
+                                12
+                            </td>
+                            <td class="" align="center">
+                                13
+                            </td>
+                            <td class="" align="center">
+                                14
+                            </td>
+                            <td class="" align="center">
+                                15
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            16
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            17
+                        </td>
+                            <td class="" align="center">
+                                18
+                            </td>
+                            <td class="" align="center">
+                                19
+                            </td>
+                            <td class="" align="center">
+                                20
+                            </td>
+                            <td class="" align="center">
+                                21
+                            </td>
+                            <td class="" align="center">
+                                22
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            23
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            24
+                        </td>
+                            <td class="" align="center">
+                                25
+                            </td>
+                            <td class="" align="center">
+                                26
+                            </td>
+                            <td class="" align="center">
+                                27
+                            </td>
+                            <td class="" align="center">
+                                28
+                            </td>
+                            <td class="" align="center">
+                                29
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            30
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            31
+                        </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                1
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                2
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                3
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                4
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                5
+                            </td>
+                        <td class="CalOtherMonthDay" align="center">
+                            6
+                        </td>
+                </tr>
+    </tbody>
+</table></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><!-- 搜索 -->
+<div id="sidebar_search" class="sidebar-block">
+    <div class="mySearch my-search">
+        <h3 class="catListTitle">搜索</h3>
+        <div id="sidebar_search_box">
+            <div id="widget_my_zzk" class="div_my_zzk">
+                <input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk">
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<!-- 常用链接 -->
+<div id="sidebar_shortcut" class="sidebar-block"><div class="catListLink">
+<h3 class="catListTitle">
+常用链接
+</h3>
+<ul>
+    <li><a href="https://www.cnblogs.com/heavyhe/p/" title="我的博客的随笔列表">我的随笔</a></li>
+<li><a href="https://www.cnblogs.com/heavyhe/MyComments.html" title="我的发表过的评论列表">我的评论</a></li>
+<li><a href="https://www.cnblogs.com/heavyhe/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li>
+<li><a href="https://www.cnblogs.com/heavyhe/comments" title="我的博客的评论列表">最新评论</a></li>
+<li><a href="https://www.cnblogs.com/heavyhe/tag/" title="我的博客的标签列表">我的标签</a></li>
+
+</ul>
+</div>
+
+</div>
+
+<!-- 最新随笔 -->
+
+
+<!-- 我的标签 -->
+<div id="sidebar_toptags" class="sidebar-block"></div>
+
+<!-- 积分与排名 -->
+
+
+<!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 -->
+<div id="sidebar_categories">
+
+    <div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+        <h3 class="catListTitle">
+            
+    <a class="sidebar-card-title-a" href="https://www.cnblogs.com/heavyhe/post-categories">随笔分类</a>
+
+
+
+        </h3>
+
+        <ul>
+
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696858.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">.NET(6)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696862.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">AngularJS(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696861.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">ASP.NET5(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696863.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">Bower(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696889.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">CloudStack(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696887.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">CSS(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696910.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">Git(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696866.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">Grunt(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696865.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">Gulp(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696897.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">Hadoop(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/757695.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">JavaScript(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696860.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">JS框架(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696873.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">MVC6(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696891.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">OpenStack(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/749666.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">SQL Server(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696917.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">SVN(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696859.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">VS2015(6)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696916.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">Windows Server(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696882.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">大数据(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696879.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">网络(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696883.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">虚拟化(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/heavyhe/category/696881.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">云计算(1)</a>
+ 
+                </li>                
+            <li>
+                <a href="javascript:void(0)" onclick="sideColumnManager.loadMore(this)">更多</a>
+            </li>
+        </ul>
+
+
+    </div>    
+    <div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+        <h3 class="catListTitle">
+            
+随笔档案
+
+
+        </h3>
+
+        <ul>
+
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/p/archive/2015/11" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2015年11月(4)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/p/archive/2015/10" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2015年10月(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/p/archive/2015/07" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2015年7月(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/p/archive/2015/06" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2015年6月(21)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/p/archive/2014/04" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2014年4月(6)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/p/archive/2013/05" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2013年5月(7)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/p/archive/2013/04" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2013年4月(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/p/archive/2013/01" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2013年1月(29)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/p/archive/2012/12" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2012年12月(10)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/p/archive/2012/11" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2012年11月(8)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/p/archive/2011/12" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2011年12月(7)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/p/archive/2011/10" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2011年10月(46)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/p/archive/2011/09" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2011年9月(21)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/heavyhe/p/archive/2011/08" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2011年8月(1)</a>
+ 
+                </li>                
+            
+        </ul>
+
+
+    </div>    
+</div>
+
+<!-- 最新评论 -->
+<!-- 阅读排行榜 -->
+<div id="sidebar_topviewedposts" class="sidebar-block"><div class="catListView">
+    <h3 class="catListTitle">
+        <a href="https://www.cnblogs.com/heavyhe/most-viewed" class="sidebar-card-title-a">
+    阅读排行榜
+</a>
+
+    </h3>
+    <div id="TopViewPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/heavyhe/p/4546955.html">
+                            1. 在Ubuntu14.04上OpenStack Juno安装部署(16605)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/heavyhe/p/4547058.html">
+                            2. RD网关部署说明(14194)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/heavyhe/archive/2013/01/24/4547207.html">
+                            3. windows下如何查看磁盘IO性能(8315)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/heavyhe/p/4546851.html">
+                            4. ASP.NET5和MVC6新特性学习(4178)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/heavyhe/p/4546757.html">
+                            5. 使用BootStrap进行开发(2870)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div></div>
+
+<!-- 评论排行榜 -->
+<div id="sidebar_topcommentedposts" class="sidebar-block"><div class="catListFeedback">
+    <h3 class="catListTitle">
+        <a href="https://www.cnblogs.com/heavyhe/most-commented" class="sidebar-card-title-a">评论排行榜</a>
+
+    </h3>
+    <div id="TopFeedbackPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/heavyhe/p/4546757.html">
+                            1. 使用BootStrap进行开发(1)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/heavyhe/archive/2011/10/15/4547293.html">
+                            2. 当程序员转行去做销售(1)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div></div>
+
+<!-- 推荐排行榜 -->
+<div id="sidebar_topdiggedposts" class="sidebar-block">
+<div id="topdigg_posts_wrap">
+    <div class="catListView">
+        <h3 class="catListTitle">
+            <a href="https://www.cnblogs.com/heavyhe/most-liked" class="sidebar-card-title-a">推荐排行榜</a>
+
+        </h3>
+        <div id="TopDiggPostsBlock">
+            <ul style="word-break: break-all">
+                        <li>
+                            <a href="https://www.cnblogs.com/heavyhe/p/4546992.html">
+                                1. Git学习笔记(1)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/heavyhe/archive/2013/05/08/4547203.html">
+                                2. IIS是如何处理ASP.NET请求的(1)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/heavyhe/archive/2012/12/06/4547244.html">
+                                3. RDP协议分析(1)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/heavyhe/archive/2011/10/15/4547293.html">
+                                4. 当程序员转行去做销售(1)
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+</div></div><div id="sidebar_recentcomments" class="sidebar-block"><div class="catListComment">
+<h3 class="catListTitle"><a href="https://www.cnblogs.com/heavyhe/comments" class="sidebar-card-title-a">最新评论</a></h3>
+    <div class="RecentCommentBlock">
+        <ul>
+                <li class="recent_comment_title"><a href="https://www.cnblogs.com/heavyhe/archive/2011/10/15/4547293.html">1. Re:当程序员转行去做销售</a></li>
+                <li class="recent_comment_body"><p>老哥现在还在干销售吗</p>
+</li>
+                <li class="recent_comment_author">--土小狗</li>
+                <li class="recent_comment_title"><a href="https://www.cnblogs.com/heavyhe/p/4546757.html">2. Re:使用BootStrap进行开发</a></li>
+                <li class="recent_comment_body">请问，下载上面的模板后怎么使用，谢谢</li>
+                <li class="recent_comment_author">--学文练武</li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+
+</div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright © 2024 heavyblog
+<br><span id="poweredby">Powered by .NET 8.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8C838EyK0EpKpQQcC9VwxBnbkK4nURRnHfHP89wP2ur8gnvLZ63EIqMJ7-Mzc8dh3Zrh_PJXN7AGIs20_kfUPhJU-EWaJa50cP6dDOA4HLwmcEC94Dih__sbJQqa8uGq7fBFJchds1Ac1h8ikJiL8u8">
+    <script async="" src="./RD网关部署说明 - heavyblog - 博客园_files/js"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-M95P3TTWJZ');
+</script>
+<script defer="" src="./RD网关部署说明 - heavyblog - 博客园_files/hm.js.下载"></script>
+
+
+<div style="z-index: 998; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: none; flex-direction: column; align-items: center; justify-content: center">
+<div style="background: #fff;padding: 30px; margin: 30px; border-radius: 16px;">
+  <div style="width: 200px; height: 200px; background: rgba(255, 255, 255, 0.8); position: absolute; top: -100px; right: -100px; border-radius: 100px"></div>
+  <div style="text-align: center; font-size: 18px; margin-bottom: 10px;">点击右上角即可分享</div>
+  <img src="./RD网关部署说明 - heavyblog - 博客园_files/35695-20230906145857937-1471873834.gif" alt="微信分享提示">
+</div>   
+    </div></body></html>
