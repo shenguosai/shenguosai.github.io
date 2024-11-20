@@ -20,21 +20,18 @@
     var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="CXT4644完成项 VOL_GEN3电路功能分析: POWER_SEL_CTRL逻辑分析 部分电源域及启动时序分析 VIN启动 &#x3D;&gt; VDD_1和VDD_2紧跟着启动(不需要EN信号的使能)，但启动不完全； EN&#x3D;H &#x3D;&gt; C144_PLUS(VOL_GEN3的输出也是BG模块的电源)启动 &#x3D;&gt; BG输出开始启动，初始阶段只有0.8V(大约持续100us，参数待调)左右，之后缓">
+  <meta name="description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Work Logs--20240130">
 <meta property="og:url" content="http://shenguosai.github.io/2024/01/30/Work-Logs-20240130/index.html">
 <meta property="og:site_name" content="小人驿站">
-<meta property="og:description" content="CXT4644完成项 VOL_GEN3电路功能分析: POWER_SEL_CTRL逻辑分析 部分电源域及启动时序分析 VIN启动 &#x3D;&gt; VDD_1和VDD_2紧跟着启动(不需要EN信号的使能)，但启动不完全； EN&#x3D;H &#x3D;&gt; C144_PLUS(VOL_GEN3的输出也是BG模块的电源)启动 &#x3D;&gt; BG输出开始启动，初始阶段只有0.8V(大约持续100us，参数待调)左右，之后缓">
+<meta property="og:description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240131101346.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240131101405.png">
 <meta property="article:published_time" content="2024-01-30T10:00:00.000Z">
-<meta property="article:modified_time" content="2024-11-20T04:29:35.270Z">
+<meta property="article:modified_time" content="2024-11-20T14:38:51.249Z">
 <meta property="article:author" content="市井一俗人">
-<meta property="article:tag" content="开关电源">
+<meta property="article:tag" content="Work">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240131101346.png">
 
 <link rel="canonical" href="http://shenguosai.github.io/2024/01/30/Work-Logs-20240130/">
 
@@ -208,7 +205,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-11-20 12:29:35" itemprop="dateModified" datetime="2024-11-20T12:29:35+08:00">2024-11-20</time>
+                <time title="修改时间：2024-11-20 22:38:51" itemprop="dateModified" datetime="2024-11-20T22:38:51+08:00">2024-11-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,7 +241,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>706</span>
+              <span>735</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -263,30 +260,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="CXT4644"><a href="#CXT4644" class="headerlink" title="CXT4644"></a>CXT4644</h1><h2 id="完成项"><a href="#完成项" class="headerlink" title="完成项"></a>完成项</h2><ol>
-<li>VOL_GEN3电路功能分析:</li>
-<li>POWER_SEL_CTRL逻辑分析</li>
-<li>部分电源域及启动时序分析<ul>
-<li>VIN启动 =&gt; VDD_1和VDD_2紧跟着启动(不需要EN信号的使能)，但启动不完全；</li>
-<li>EN=H =&gt; C144_PLUS(VOL_GEN3的输出也是BG模块的电源)启动 =&gt; BG输出开始启动，初始阶段只有0.8V(大约持续100us，参数待调)左右，之后缓慢上升 =&gt; 稳定于1.2V之后BG输出GOOD信号并配置VLO_GEN3使其完全启动；</li>
-<li>逻辑部分EN起主导作用，并在DC内部穿插多个模块，需要整理；</li>
-<li>非EN控制直接启动部分需列表。</li>
-</ul>
-</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240131101346.png" alt="20240131101346"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240131101405.png" alt="20240131101405"></p>
-<h2 id="次日计划"><a href="#次日计划" class="headerlink" title="次日计划"></a>次日计划</h2><p>按照正常启动时POWER_SEL的控制逻辑A0A1时序 00=&gt;10=&gt;11 来进行内部参数调整，争取完成此模块的设计。</p>
-<ul>
-<li>注: A0A1 无 01 逻辑，因为 EN=H 后 A0 马上变 H，而 A1 则需要等到 BG 模块的输出 GOOD 信号变 H，EN=L 时 BG 模块不允许启动。</li>
-</ul>
-<h1 id="CXT4710-Buckboost"><a href="#CXT4710-Buckboost" class="headerlink" title="CXT4710-Buckboost"></a>CXT4710-Buckboost</h1><h2 id="2024年11月20日"><a href="#2024年11月20日" class="headerlink" title="2024年11月20日"></a>2024年11月20日</h2><h3 id="电路设计"><a href="#电路设计" class="headerlink" title="电路设计"></a>电路设计</h3><ol>
-<li>确认 EN=&gt;BG PG 的启动时间；（TOP：354us；BG：151us）</li>
-<li>追踪 EN_Delay 信号的源头及原理，如果追不出来则在电路和版图中放上 VIN UVLO 信号做 PWM 的使能的预备，防止芯片无法启动时可做 FIB 及简单改版；</li>
-<li>PWM 启动的第一个 Pulse 的时机需要确认，目前在一个无根据的位置，是否需要调整到 VC 信号上升到 Current Limiti 下限位置。<h3 id="版图"><a href="#版图" class="headerlink" title="版图"></a>版图</h3></li>
-<li>SMIC18 BCDM 工艺中的 P 管，包括 LDMOS 的 N+ 衬底都与 Deep NWell 物理相连，无法起到隔离的效果；</li>
-<li>POWER MOS 的尺寸与实际有偏差，委托聚跃修正。</li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="6955005e5d0b147cc6ebb1145ce6f37062c230e957974dc3ed5050e6aceab848">ae118af9461036e20f25663a30e1897387e75e8f4e4f03c2f53006f64e35d556db8c7ffd9a6bef2c52605d7717778dc23b07e82f5cf6691413ae7bc832841d578c94d6fdf48e593f7753becdd6b9a95f7727ce820d2cc272120df66dc2b30daf20e7620d998edd4de8ad21ea6f8c941e0e5b9057ce04ad791e541c3b691f98d55e08daa3a9118d69556bbd157377799f21223276757aff3cd0bb7699fcca49e53fd9f861404f2a5bbead4158ae726061c20a7f589a4e521ec51210ee14d0f25c775bf61f8577dd456d35428e2c5e6a39b088a0e7f8fd3aea364cf811e679191ac41fc63e305b65d5d35a033e10962dc39ce7b1e9875cdf372ca1f5c994f660081c1f618561b71c94912cfe6288110dc2e84df4d864d19a276fd6ebacf911901e81bac0bf09eef607e5e1dd448d88aeeb61cc5ba2c68eb3864e16a59a99c45817ab4979b3526198adfe4f90c5ca8d22ed2cab521caf6fedb9bc606cc99445f38bb28401965d1f77951132232f81a2c37d5009ada255e5b7797becb61eaa938a42361ecbcc5fb3bc8cee305829a3c019ff3b90af1ffd517284377b1e634f00b3ecb80d7dd88c27030ed6bd4bdd834174b2ee134e63bf26435a80121b668916620e765c14b1f4bad95a98446ba492e3bc8b9f5c837cd7af985dc52bc6237eda1803246758b7d07ab66e2bc8cf4026e44c7bd485e55d9246d3b51ea492290b4c53dd8351a823f63956d4f400230342b964471340096d3d6312474f63c576a0f0fafc8d99f1211b29f9c6fc6e7a809d8e741fe1cad77c94878e06400faf3d7a4b112a6fd85f4d456934e1c69726c29dba08eafec6ddaa70c9770a67dc824c17d2b3810600685d53619d407a13a30da81c7c6660ebd41d1f8807069510e8ec16fc37357c030e3920789e3113b74f9c47d60a70e2744e40430752cabb7c1a7b1fd7045a221c7bda304399f1d3af2854c5cf70049a48f080a902efc295acaf14eddee32c057ed6aaf820e1adabf3dbce798271de425e74d62a0692f8af390bf13023bb4b8fcc4a194278d99079a9212b91b198723b7c7a2b8e57c5dd6aef8d5e10c91f9e4da23a691e1b32f5b191d7c042de34f759808c74eb6f7203d4360397418c8b7052feb9dac65128a40f29376464217677c0aae33b0f3caf42896436b0c2e4eb822394deb74a470761869f8ddc18507dfdc22fccff7dd2a552c3587d02a19f71ba0153bddf0d8d587e3e9cdf10f513f8d7fb4e0889457a825a85309417c354586e97e3450c16045a22cd164a9c34a10f64d279459ed48918dbd5fe2f9dc59fdeee369c75b4ccbc9a9927e73a307e09b1f63909ad10de2d719e9989f5e8033aed0ee8063f4ccac25af740f3799c72e9bdcf9dffa5eeb55e89bc2f5852e8b3baae9ac1b3394e120eec069468e6801c616b635e053f69b58dae6af56b4bebccd4459d9a66303eb8add5cc1c553c62f2387085f0826ec2577d23177a8a54fa742b4f1656033df57e36781b974f6922665bb92ee078c820f86fa0108c837459698f6e768bd7fabec783274d19b13386aabb3389fc667a01a307cb1b3f321562c919769b608f5894dcba7d96d5bc7168b6cffa297925434d3356e661a55277c210c8edd1f7bd28fd576cfe09920d7b67d36d00370697aadfbf43827dae87e62b5ecd8d9e2cd2f95a9f3ccf51a2c47746ed00c8c94764df11856422d1fd4bd7fefb5caecb43aeddd85d6e3012a20ff46637a8fbf65e7e8507d0bdb6cd34257fea2e81f5cc516a72c2a1eaf11513f4298dc6de195a0a65d4ea5033e2e380eebf246a6f9c373fbba54458577f485b27d8a2173ea96367728fdd6e43634fd66f63196b302be1a78f164a8dffd184442e78adc47bdcd22de305bdede39190b1c806a980054eb8c97f633626fec748d80e451f77b4041cf22e173e97f08b0034da58b91902b5f19e79bcafcd25704dcc674a79e12297eac069183cc43001468799268346049465297dc035523e73ddae6403dd8071b92559a5397189fbdc9b509eba87569e9c0a86a5a8849ba4738c1351861d0ced4b8518f58687ccc9a401dd28cb94c227ef516accfc3109d7fd0fd5c0adb2a4de14599c0b85f0c23423c07741f8dddb704b0cf8176b8014b9568626c49208ffabdf31eb3799d1549e0a6c8e19749e07c9596bbbb1eaf82cad19b9c90182437cbfba738d834e5811375cc40483b0a4fddfd5575ed4ebac4f40c2a4677c0460f6c277337f4840ef7d5c51145c4325ed94b7bd49499c46d7ace51bd0ddcae3c777dc48dd761d0a758c238aac571ed7779874f46b3ee48de8ffae844c25b976e9db91fffdd5d61e3702793d06bbdfd75ba3db0d514d9490923b2f0bafa2396d28638d047cf453c81d79eb62e349900996b0b31024420b58e8ff97ac6417f0e442e98f48cd73922634a47d7b12fbc640036f30f8223dc67ff3e0295b174d6ca54c84749eeefb05431f11315a45989dd72b96f7a9b423819911a2494dec8cc2c3942f7d3e823ce3dcfe183dbeef8f35cef4c9dda27df4e1296b6c8b22e88c4f4d4020d7ded0f0f74a1238b25b75c49acbe892cc7e28c4b5c86e7d69941bdbfff6d2fc61ad2e946521a0aaef62ef718e122cadbcb39d48e209bc1801c8976fd0141d7dbf9af92365131f40ec3e53dc93e8ed1e9227bb0fa7b2d7c34dd0b9baae670048df3b6d39cd5c7df7aa65878cab35e45dafb4b5e8cd267182024654fe70ac25e33f212aaddd812ad93b605cb23e8dedbc67a25a1baa62797a8341dd7b4a8347ba984ea073e6539dba3d904046fb2023b957adbf3d6341a457d5f5f03b14e3646aea4b0272bec70944793758918970f5e6fab8be9de2ccaf402a97bbca913ef9a5a8cb27763055a14bd1e5c2b83a08bf599faf8d217899b6461c6a6919bfa3c6ab04576c035d3cc5f51fd58bcdfd7ca2605fe7ced5e298b798615449f7124740b14fd3a1bb293443807a21c2f43dffcf880dd9ec969bd416ae65fec71fd6d5d7ac705427f7af9e146f451b8fe3a3798f060d48173e69e570bebb698d0d25172dcd52e7034f739060246d44b72b61dfb4cae5c5965b7d44c8428599b17fc0e1101bfc1d9b48554258a7112c430803c72339d7c89dee840ccb81510dbea1b009e6882b47fe33801764f4fc1fbfa17784c0a03828bf1298a3f488789258337069fcfc8a43d0672130b741b30f87fabb28d2985da6b697d4e85dc0ad25b027097f13f668de0fa265b314f8bbd1a9a1a099244fdb4a982a2a56455948390abb7ba2f87bd44114213d69b623a39302696a2ce8becdb33e51d4733644309e5ae70b67c20cc5d364512bbda0724e368c7ec549d16f12c422914c626599ec0d8781d89c054b5c9b7bb9cde1adfa1241fbd3affecf7bb2a6a6e7324be6e32a49fa85d356936df0286ddcf6f599e5afc3c6bdb8eab86192beeb94ddfa82ff9a34675af916d041efa5feafb9b9f3c28d12abd6baffac17e38d61a907d314afbf3145a21ea3ed2a9a3451d8ffbaeeb068825dd7c77217891123b3c630f1e84e1abe55e0f145a7883858e2ab09e317dbcf13956a971135f78bb9098119213e79309788e825ff9a10b17c002c22b551f3c7a3a1b95a5eac7a91ae59e457c1cdd8cdf2d123febedbc6e521d891debf63fc908bff8b2a7157138c679779ab998160fb9431855530f1ce3a59617fb49c0a7c6ec47981f074932abed4257fffb96057ae480cd0cb67fa575b1e3cdfc49fa6a87f8e9007835cb2dc43bf1a124d04a0a89aab2665fca891bb72d5d478b456b6379dcef035f7390e4e9711c450da121f7996f5ac3ee3d67025ef16791cce647840a395ff828a66188fb199a34c2ef6641c699786b19042d666b6ad24742e6e9c5bcf085fbc1c99e56c76545530faf07f8a6e7be13459ce22439350bc60bce47df20e00feaf3bce6d8532f6c0059e3f383e2f3a326f5f988e654dd31fc70b989bc4027d55c332691a4e832f2fe7ee523bda6ade887dd6a95e81e37df0db9e1556a3451a2b3d4cc33959d08345</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
     </div>
 
     
@@ -332,7 +317,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%BC%80%E5%85%B3%E7%94%B5%E6%BA%90/" rel="tag"># 开关电源</a>
+              <a href="/tags/Work/" rel="tag"># Work</a>
           </div>
 
         
@@ -407,7 +392,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CXT4644"><span class="nav-number">1.</span> <span class="nav-text">CXT4644</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%88%90%E9%A1%B9"><span class="nav-number">1.1.</span> <span class="nav-text">完成项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A1%E6%97%A5%E8%AE%A1%E5%88%92"><span class="nav-number">1.2.</span> <span class="nav-text">次日计划</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CXT4710-Buckboost"><span class="nav-number">2.</span> <span class="nav-text">CXT4710-Buckboost</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2024%E5%B9%B411%E6%9C%8820%E6%97%A5"><span class="nav-number">2.1.</span> <span class="nav-text">2024年11月20日</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.1.1.</span> <span class="nav-text">电路设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%88%E5%9B%BE"><span class="nav-number">2.1.2.</span> <span class="nav-text">版图</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
