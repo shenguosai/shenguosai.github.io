@@ -883,7 +883,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-29 17:56:03" itemprop="dateModified" datetime="2024-10-29T17:56:03+08:00">2024-10-29</time>
+                <time title="修改时间：2024-11-20 12:29:35" itemprop="dateModified" datetime="2024-11-20T12:29:35+08:00">2024-11-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -919,7 +919,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>405</span>
+              <span>706</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -938,7 +938,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="完成项"><a href="#完成项" class="headerlink" title="完成项"></a>完成项</h2><ol>
+          <h1 id="CXT4644"><a href="#CXT4644" class="headerlink" title="CXT4644"></a>CXT4644</h1><h2 id="完成项"><a href="#完成项" class="headerlink" title="完成项"></a>完成项</h2><ol>
 <li>VOL_GEN3电路功能分析:</li>
 <li>POWER_SEL_CTRL逻辑分析</li>
 <li>部分电源域及启动时序分析<ul>
@@ -954,6 +954,13 @@
 <ul>
 <li>注: A0A1 无 01 逻辑，因为 EN=H 后 A0 马上变 H，而 A1 则需要等到 BG 模块的输出 GOOD 信号变 H，EN=L 时 BG 模块不允许启动。</li>
 </ul>
+<h1 id="CXT4710-Buckboost"><a href="#CXT4710-Buckboost" class="headerlink" title="CXT4710-Buckboost"></a>CXT4710-Buckboost</h1><h2 id="2024年11月20日"><a href="#2024年11月20日" class="headerlink" title="2024年11月20日"></a>2024年11月20日</h2><h3 id="电路设计"><a href="#电路设计" class="headerlink" title="电路设计"></a>电路设计</h3><ol>
+<li>确认 EN=&gt;BG PG 的启动时间；（TOP：354us；BG：151us）</li>
+<li>追踪 EN_Delay 信号的源头及原理，如果追不出来则在电路和版图中放上 VIN UVLO 信号做 PWM 的使能的预备，防止芯片无法启动时可做 FIB 及简单改版；</li>
+<li>PWM 启动的第一个 Pulse 的时机需要确认，目前在一个无根据的位置，是否需要调整到 VC 信号上升到 Current Limiti 下限位置。<h3 id="版图"><a href="#版图" class="headerlink" title="版图"></a>版图</h3></li>
+<li>SMIC18 BCDM 工艺中的 P 管，包括 LDMOS 的 N+ 衬底都与 Deep NWell 物理相连，无法起到隔离的效果；</li>
+<li>POWER MOS 的尺寸与实际有偏差，委托聚跃修正。</li>
+</ol>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
@@ -1432,7 +1439,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:43</span>
+    <span title="站点阅读时长">4:44</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
