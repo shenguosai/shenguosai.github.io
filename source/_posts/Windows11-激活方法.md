@@ -10,6 +10,7 @@ categories:
 
 ### 两个激活秘钥
 ```J8WVF-9X3GM-4WVYC-VDHQG-42CXT```
+
 ```7Y64F-88DCY-Y6WTC-H33D2-64QHF```
 我使用的是第一个，第二个是否有效没有验证。
 
