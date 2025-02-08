@@ -14,12 +14,11 @@ hexo分支(仓库默认分支): 用于备份博客部署文件，共自己维护
 ```bash
 git clone -b hexo git@github.com:shenguosai/shenguosai.github.io.git
 ```
+
 执行完上述命令后目录下会出现一个 ```shenguosai.github.io``` 的目录。
 
 ## 初始化博客目录
-
-```shenguosai.github.io``` 目录只是一个普通的 git 管理目录，需要把该目录初始化为 Hexo 目录。
-
+拉取过来的 ```shenguosai.github.io``` 目录只是一个普通的 git 管理目录，需要把该目录初始化为 Hexo 目录。
 ```bash
 cd shenguosai.github.io
 npm install hexo
