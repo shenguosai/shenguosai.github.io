@@ -171,119 +171,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="市井一俗人">
-      <meta itemprop="description" content="谈笑有鸿儒，往来无白丁。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小人驿站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/" class="post-title-link" itemprop="url">浅谈几种带宽与增益</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-01-10 15:02:38" itemprop="dateCreated datePublished" datetime="2024-01-10T15:02:38+08:00">2024-01-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-08 15:32:25" itemprop="dateModified" datetime="2025-02-08T15:32:25+08:00">2025-02-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/" itemprop="url" rel="index"><span itemprop="name">半导体专业</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF/" itemprop="url" rel="index"><span itemprop="name">模拟电路</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>今天记录一下闭环增益、开环增益、环路增益，以及3dB带宽、单位增益带宽(UGB)、增益带宽积(GBW)。<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/01/05/TVBox%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1444,6 +1331,120 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2023/12/01/%E8%8B%B1%E8%AF%AD-%E8%82%AF%E5%AE%9A%E5%8F%A5%E5%8F%98%E5%90%A6%E5%AE%9A%E5%8F%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="市井一俗人">
+      <meta itemprop="description" content="谈笑有鸿儒，往来无白丁。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小人驿站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/12/01/%E8%8B%B1%E8%AF%AD-%E8%82%AF%E5%AE%9A%E5%8F%A5%E5%8F%98%E5%90%A6%E5%AE%9A%E5%8F%A5/" class="post-title-link" itemprop="url">英语--肯定句变否定句</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-12-01 08:50:58" itemprop="dateCreated datePublished" datetime="2023-12-01T08:50:58+08:00">2023-12-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-02-08 15:32:25" itemprop="dateModified" datetime="2025-02-08T15:32:25+08:00">2025-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">杂学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E5%AD%A6/%E7%A4%BE%E7%A7%91%E6%95%99%E8%82%B2%E7%AD%89/" itemprop="url" rel="index"><span itemprop="name">社科教育等</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/12/01/%E8%8B%B1%E8%AF%AD-%E8%82%AF%E5%AE%9A%E5%8F%A5%E5%8F%98%E5%90%A6%E5%AE%9A%E5%8F%A5/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/12/01/%E8%8B%B1%E8%AF%AD-%E8%82%AF%E5%AE%9A%E5%8F%A5%E5%8F%98%E5%90%A6%E5%AE%9A%E5%8F%A5/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="肯定句变否定句规则"><a href="#肯定句变否定句规则" class="headerlink" title="肯定句变否定句规则:"></a>肯定句变否定句规则:</h3><h4 id="一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。"><a href="#一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。" class="headerlink" title="一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。"></a>一、<font color=red>有</font>be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。</h4><p>例如:<br>|<center>肯定句</center>|<center>否定句</center>|<br>|——|——|<br>|I am a student.|I am not a student.<br>|Amy is a good girl.|Amy <u>is not</u><em><u><font color=red>(isn\’t)</font></u></em> a good girl.<br>|These flowers are very beautiful.|These flowers <u>are not</u><em><u><font color=red>(aren\’t)</font></u></em> very beautiful.<br>|I can swim.|I <u>can not</u><em><u><font color=red>(can\’t)</font></u></em> swim.<br>|There are some books on the table.|There <u>are not</u><em><u><font color=red>(aren\’t)</font></u></em> any books on the table.<br>|Jack is a doctor.|Jack <u>is not</u><em><u><font color=red>(isn\’t)</font></u></em> a doctor.<br>|I was a student ten years ago.|I <u>was not</u><em><u><font color=red>(wasn\’t)</font></u></em> a student ten years ago.</p>
+<p><b>注:&ensp;(1) some、and用于肯定句中，any、or用于否定句中；</b><br><b>　 &ensp;(2) was是is的过去式，were是are的过去式。</b><br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/12/01/%E8%8B%B1%E8%AF%AD-%E8%82%AF%E5%AE%9A%E5%8F%A5%E5%8F%98%E5%90%A6%E5%AE%9A%E5%8F%A5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -1569,12 +1570,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">314k</span>
+    <span title="站点总字数">315k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:45</span>
+    <span title="站点阅读时长">4:46</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
