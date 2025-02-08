@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2025-02-08T09:01:50.842Z</updated>
+  <updated>2025-02-08T09:18:16.165Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用多终端发布 hexo 博客</title>
+    <link href="http://shenguosai.github.io/2025/02/08/%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%8F%91%E5%B8%83-hexo-%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://shenguosai.github.io/2025/02/08/%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%8F%91%E5%B8%83-hexo-%E5%8D%9A%E5%AE%A2/</id>
+    <published>2025-02-08T09:18:16.000Z</published>
+    <updated>2025-02-08T09:18:16.165Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/spoiler.css&quot; type=&quot;text/css&quot;&gt;&lt;script src=&quot;/js/spoiler.js&quot; type=&quot;text/javascript&quot; async&gt;&lt;/script&gt;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>2025年大年初三济南一日游</title>
@@ -478,29 +498,6 @@
     
     
     <category term="QNAP" scheme="http://shenguosai.github.io/tags/QNAP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Debian Linux 使用 -- 远程桌面黑屏并闪退</title>
-    <link href="http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/"/>
-    <id>http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/</id>
-    <published>2024-05-11T02:39:11.000Z</published>
-    <updated>2025-02-08T07:32:25.862Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="安装-Xrdp-使用-Xorg-进行远程登录"><a href="#安装-Xrdp-使用-Xorg-进行远程登录" class="headerlink" title="安装 Xrdp 使用 Xorg 进行远程登录"></a>安装 Xrdp 使用 Xorg 进行远程登录</h1><p>网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install xrdp<br></code></pre></td></tr></table></figure><br><span id="more"></span><br>安装完成后该服务将自动开启，可通过下面命令确认是否开启:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl status xrdp<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511104423.png" alt="20240511104423"><br>红框处显示 <code>active(running)</code> 则说明已开启。</p><h1 id="解决远程桌面连接上之后黑屏并闪退问题"><a href="#解决远程桌面连接上之后黑屏并闪退问题" class="headerlink" title="解决远程桌面连接上之后黑屏并闪退问题"></a>解决远程桌面连接上之后黑屏并闪退问题</h1><p>这个经常会有人说更换 test 版本的 xrdp 来解决，但是通过以下办法可以正常登录。<br>编辑<code>/etc/xrdp/startwm.sh</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vi /etc/xrdp/startwm.sh<br></code></pre></td></tr></table></figure><br>加入下面三行内容:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">unset</span> DBUS_SESSION_BUS_ADDRESS<br><span class="hljs-built_in">unset</span> XDG_RUNTIME_DIR<br>. <span class="hljs-variable">$HOME</span>/.profile<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511104947.png" alt="20240511104947"><br>然后就可以通过 Xorg 登录看到桌面了。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511105324.png" alt="20240511105324"></p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;安装-Xrdp-使用-Xorg-进行远程登录&quot;&gt;&lt;a href=&quot;#安装-Xrdp-使用-Xorg-进行远程登录&quot; class=&quot;headerlink&quot; title=&quot;安装 Xrdp 使用 Xorg 进行远程登录&quot;&gt;&lt;/a&gt;安装 Xrdp 使用 Xorg 进行远程登录&lt;/h1&gt;&lt;p&gt;网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;sudo apt install xrdp&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br&gt;</summary>
-    
-    
-    
-    <category term="技术兴趣" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/"/>
-    
-    <category term="软件应用" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%BD%AF%E4%BB%B6%E5%BA%94%E7%94%A8/"/>
-    
-    
-    <category term="Linux" scheme="http://shenguosai.github.io/tags/Linux/"/>
     
   </entry>
   
