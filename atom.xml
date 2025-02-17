@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2025-02-08T10:07:40.584Z</updated>
+  <updated>2025-02-17T06:49:43.786Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【转】PassWall2配置</title>
+    <link href="http://shenguosai.github.io/2025/02/17/%E3%80%90%E8%BD%AC%E3%80%91PassWall2%E9%85%8D%E7%BD%AE/"/>
+    <id>http://shenguosai.github.io/2025/02/17/%E3%80%90%E8%BD%AC%E3%80%91PassWall2%E9%85%8D%E7%BD%AE/</id>
+    <published>2025-02-17T06:16:54.000Z</published>
+    <updated>2025-02-17T06:49:43.786Z</updated>
+    
+    <content type="html"><![CDATA[<p>PassWall2 能够给我们带来什么？</p><ol><li>解决 DNS 泄露</li><li>IPv4/IPv6 双栈共存</li><li>去广告</li><li>无缝访问 github、国外论文网站<h1 id="一、-规则管理"><a href="#一、-规则管理" class="headerlink" title="一、 规则管理"></a>一、 规则管理</h1></li><li>删除默认的所有规则，探后添加 Reject、Direct、Proxy 规则；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217142557.png" alt="20250217142557"><br>这里有更好的规则，可以替代 passwall2 自带的: <a href="https://github.com/Loyalsoldier/v2ray-rules-dat">https://github.com/Loyalsoldier/v2ray-rules-dat</a><br>将 geoip 文件链接更改为: <a href="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat">https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat</a><br>将 geosite 文件链接更改为: <a href="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat">https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat</a></li><li>Reject 规则填入域名；<br>geosite:category-ads-all<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143100.png" alt="20250217143100"></li><li>Direct 规则填入；<br>域名:<br>xn—ngstr-lra8j.com<br>geosite:private<br>geosite:cn<br>IP：<br>geoip:private<br>geoip:cn<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143216.png" alt="20250217143216"></li><li>Proxy 规则填入域名；<br>geosite:geolocation-!cn<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143336.png" alt="20250217143336"><br>规则的顺序一定要这样排列:<br>1、 Reject<br>2、 Direct<br>3、 Proxy<br><strong>注释:</strong><br>geosite:category-ads-all 去广告<br>xn—ngstr-lra8j.com 谷歌商店<br>geosite:private 内网地址<br>geosite:cn 国内域名<br>geoip:private 内网IP<br>geoip:cn 国内IP<br>geosite:geolocation-!cn 国外域名<h1 id="二、-高级设置"><a href="#二、-高级设置" class="headerlink" title="二、 高级设置"></a>二、 高级设置</h1></li><li>如果不使用UDP代理，就把UDP不转发端口改成-所有，即可</li><li>设置TCP转发端口为：仅网页 ，也就是仅允许代理80、443这两个端口</li><li>TCP代理方式可以改成TPROXY，也可以默认REDIRECT（勾选IPv6透明代理(TProxy)后，会自动变更为TPROXY）</li><li>如果你的节点支持IPv4/IPv6互通或者有IPv6的出口IP，可以勾选IPv6透明代理(TProxy)，反之不勾选<h1 id="三、-修改节点配置-Xray-分流-分流总结点"><a href="#三、-修改节点配置-Xray-分流-分流总结点" class="headerlink" title="三、 修改节点配置 Xray 分流:[分流总结点]"></a>三、 修改节点配置 Xray 分流:[分流总结点]</h1><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217144013.png" alt="20250217144013"><br>1、Reject设置为：黑洞（丢弃）<br>2、Direct设置为：直连（绕过）<br>3、Proxy设置为：默认（代理）<br>3、*默认设置为：按照自己需求选择一个节点<br>4、域名解析策略设置为：AsIs （也就是跳过IP匹配、只匹配域名）— 可能是版本原因，没找到相关设置项<h1 id="四、-基本配置"><a href="#四、-基本配置" class="headerlink" title="四、 基本配置"></a>四、 基本配置</h1></li><li>远程 DNS 协议: DoH</li><li>勾选 Fake DNS<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217144233.png" alt="20250217144233"></li><li>主要—-节点设置为：Xray 分流：[分流总节点]</li><li>以上都配置好之后，勾选上主开关保存应用即可<br><strong>注释：</strong><br>1、远程 DNS 出站一定要设置为：远程（走代理），不然你走直连大概率是不通的，但是 DOH 走代理都是会增加延迟<br>2、勾选 FakeDNS 后，在 Proxy 规则内的域名，匹配上的会返回一个假 IP 作为 DNS 响应（例如198.18.0.0/16），最后将域名请求发送给节点服务器 VPS 在它的网络环境中进行解析IP<br>3、不在Proxy规则内的域名则会使用设置的 CloudFlare 远程 DNS 进行本地 DNS 解析真实 IP ，最后将这个真实 IP 发送给节点服务器 VPS ，而如果遇到解析出的是被污染的 IP ，由于开启了嗅探功能，会探测 HTTP 请求里的域名，所以就算本地解析出的 IP 是被污染也不影响<br>4、如何判断是走 FakeDNS 还是走远程 DNS ，电脑运行 CMD 窗口，输入<code>nslookup youtube.com</code>回车，输入<code>nslookup ipleak.net</code>回车<br>上述都配置完成后，就能够解决 DNS 泄露、污染问题和去广告，并且支持双栈 IPv4/IPv6 上网，不需要再去套任何插件和关闭或禁止解析 IPv6 DNS 记录等。<h1 id="五、-Steam-设置"><a href="#五、-Steam-设置" class="headerlink" title="五、 Steam 设置"></a>五、 Steam 设置</h1>上述的配置完成后，发现 steam 下载走的是代理，需要通过以下操作解决。<br>1.在 Direct 规则中的域名添加 geosite:category-games，这样可以使 steam、epic 等软件都走直连。<br>2.为了避免走直连后 steam 社区、商店打不开，需要指定其域名走代理。添加 steam 分流规则，其中域名为<code>store.steampowered.com</code>、<code>steamcommunity.com</code>。<br>3.将 steam 规则排在 direct 上方，即最终规则顺序为 reject、steam、direct、proxy。</li></ol><p>【转自】<a href="https://nanodesu.net/archives/36/">Pass Wall2（完美配置教程）)</a></p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;PassWall2 能够给我们带来什么？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;解决 DNS 泄露&lt;/li&gt;
+&lt;li&gt;IPv4/IPv6 双栈共存&lt;/li&gt;
+&lt;li&gt;去广告&lt;/li&gt;
+&lt;li&gt;无缝访问 github、国外论文网站&lt;h1 id=&quot;一、-规则管理&quot;&gt;&lt;a href=&quot;#一、</summary>
+      
+    
+    
+    
+    <category term="技术兴趣" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/"/>
+    
+    <category term="网络服务" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="网络" scheme="http://shenguosai.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>使用多终端发布 hexo 博客</title>
@@ -475,29 +506,6 @@
     
     
     <category term="QNAP" scheme="http://shenguosai.github.io/tags/QNAP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Debian Linux 使用 -- 远程桌面黑屏并闪退</title>
-    <link href="http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/"/>
-    <id>http://shenguosai.github.io/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/</id>
-    <published>2024-05-11T02:39:11.000Z</published>
-    <updated>2025-02-08T07:32:25.862Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="安装-Xrdp-使用-Xorg-进行远程登录"><a href="#安装-Xrdp-使用-Xorg-进行远程登录" class="headerlink" title="安装 Xrdp 使用 Xorg 进行远程登录"></a>安装 Xrdp 使用 Xorg 进行远程登录</h1><p>网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install xrdp<br></code></pre></td></tr></table></figure><br><span id="more"></span><br>安装完成后该服务将自动开启，可通过下面命令确认是否开启:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl status xrdp<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511104423.png" alt="20240511104423"><br>红框处显示 <code>active(running)</code> 则说明已开启。</p><h1 id="解决远程桌面连接上之后黑屏并闪退问题"><a href="#解决远程桌面连接上之后黑屏并闪退问题" class="headerlink" title="解决远程桌面连接上之后黑屏并闪退问题"></a>解决远程桌面连接上之后黑屏并闪退问题</h1><p>这个经常会有人说更换 test 版本的 xrdp 来解决，但是通过以下办法可以正常登录。<br>编辑<code>/etc/xrdp/startwm.sh</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vi /etc/xrdp/startwm.sh<br></code></pre></td></tr></table></figure><br>加入下面三行内容:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">unset</span> DBUS_SESSION_BUS_ADDRESS<br><span class="hljs-built_in">unset</span> XDG_RUNTIME_DIR<br>. <span class="hljs-variable">$HOME</span>/.profile<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511104947.png" alt="20240511104947"><br>然后就可以通过 Xorg 登录看到桌面了。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511105324.png" alt="20240511105324"></p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;安装-Xrdp-使用-Xorg-进行远程登录&quot;&gt;&lt;a href=&quot;#安装-Xrdp-使用-Xorg-进行远程登录&quot; class=&quot;headerlink&quot; title=&quot;安装 Xrdp 使用 Xorg 进行远程登录&quot;&gt;&lt;/a&gt;安装 Xrdp 使用 Xorg 进行远程登录&lt;/h1&gt;&lt;p&gt;网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;sudo apt install xrdp&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br&gt;</summary>
-    
-    
-    
-    <category term="技术兴趣" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/"/>
-    
-    <category term="软件应用" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%BD%AF%E4%BB%B6%E5%BA%94%E7%94%A8/"/>
-    
-    
-    <category term="Linux" scheme="http://shenguosai.github.io/tags/Linux/"/>
     
   </entry>
   
