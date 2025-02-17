@@ -1,5 +1,5 @@
 ---
-title: <转>【Darwin】越狱后玩耍IPhone系统
+title: 【转】越狱后玩耍IPhone系统(Darwin)
 date: 2024-03-27 17:21:46
 tags: iPhone
 categories:
