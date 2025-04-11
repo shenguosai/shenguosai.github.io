@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2025-04-11T07:48:18.331Z</updated>
+  <updated>2025-04-11T09:04:48.479Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PVE修改IP地址</title>
+    <link href="http://shenguosai.github.io/2025/04/11/PVE%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80/"/>
+    <id>http://shenguosai.github.io/2025/04/11/PVE%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80/</id>
+    <published>2025-04-11T08:36:48.000Z</published>
+    <updated>2025-04-11T09:04:48.479Z</updated>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h1 id="登入-PVE-后台命令行"><a href="#登入-PVE-后台命令行" class="headerlink" title="登入 PVE 后台命令行"></a>登入 PVE 后台命令行</h1><p>方法一: 在局域网的电脑浏览器输入PVE的IP地址登录后台，从左边的菜单找到“PVE”—“_Shell”菜单，进入网页版的ssh界面下；或者在主机的控制台下输入root密码后登录到ssh下；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411165444.png" alt="20250411165444"><br>方法二: 使用 ssh 工具登入，如 Mobaxterm 。</p><h1 id="编辑-etc-network-interfaces"><a href="#编辑-etc-network-interfaces" class="headerlink" title="编辑 /etc/network/interfaces"></a>编辑 /etc/network/interfaces</h1><p><code>vi /etc/network/interfaces</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411165645.png" alt="20250411165645"></p><h1 id="编辑-etc-issue"><a href="#编辑-etc-issue" class="headerlink" title="编辑 /etc/issue"></a>编辑 /etc/issue</h1><p><code>vi /etc/issue</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411170326.png" alt="20250411170326"></p><h1 id="编辑-etc-hosts"><a href="#编辑-etc-hosts" class="headerlink" title="编辑 /etc/hosts"></a>编辑 /etc/hosts</h1><p><code>vi /etc/hosts</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411170433.png" alt="20250411170433"></p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;h1 id=&quot;登入-PVE-后台命令行&quot;&gt;&lt;a href=&quot;#登入-PVE-后台命令行&quot; class=&quot;headerlink&quot; title=&quot;登入 PVE 后台命令行&quot;&gt;&lt;/a&gt;登入 PVE 后台命令行&lt;/h1&gt;&lt;p&gt;方法一: 在</summary>
+      
+    
+    
+    
+    <category term="技术兴趣" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/"/>
+    
+    <category term="网络服务" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="PVE" scheme="http://shenguosai.github.io/tags/PVE/"/>
+    
+  </entry>
   
   <entry>
     <title>PVE添加并挂载系统盘以外的磁盘</title>
@@ -465,32 +492,6 @@
     
     
     <category term="Zerotier" scheme="http://shenguosai.github.io/tags/Zerotier/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Debian 12.6 - 安装TCP测试工具TCPing</title>
-    <link href="http://shenguosai.github.io/2024/08/14/Debian-12-6-%E5%AE%89%E8%A3%85TCP%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7TCPing/"/>
-    <id>http://shenguosai.github.io/2024/08/14/Debian-12-6-%E5%AE%89%E8%A3%85TCP%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7TCPing/</id>
-    <published>2024-08-14T05:00:46.000Z</published>
-    <updated>2025-02-08T07:32:25.862Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plaintext"><figcaption><span>TCP 协议的一种```ping```命令，用来测试数据包能否通过 TCP 协议到达目标主机。他的一大特点，就是可以在禁```ping```的时候检测网络连通率。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs TCPing```是基于">&lt;!--more--&gt;<br># 安装```tcptraceroute```<br>```TCPing```本质上是一个 shell 脚本，依赖```tcptraceroute```运行。<br>```bash<br>sudo apt install tcptraceroute<br></code></pre></td></tr></table></figure><h1 id="下载-TCPing"><a href="#下载-TCPing" class="headerlink" title="下载 TCPing"></a>下载 TCPing</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo wget http://www.vdberg.org/~richard/tcpping -O /usr/bin/tcping<br></code></pre></td></tr></table></figure><h1 id="配置权限"><a href="#配置权限" class="headerlink" title="配置权限"></a>配置权限</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">chmod</span> +x /usr/bin/tcping<br></code></pre></td></tr></table></figure><h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tcping 目标IP 目标端口<br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;figcaption&gt;&lt;span&gt;TCP 协议的一种```ping```命令，用来测试数据包能否通过 TCP 协议到达目标主机。他的一大特点，就是可以在禁```ping```的时候检测网络连通率。&lt;/spa</summary>
-      
-    
-    
-    
-    <category term="技术兴趣" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/"/>
-    
-    <category term="软件应用" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%BD%AF%E4%BB%B6%E5%BA%94%E7%94%A8/"/>
-    
-    
-    <category term="Linux" scheme="http://shenguosai.github.io/tags/Linux/"/>
     
   </entry>
   
