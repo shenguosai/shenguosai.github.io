@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2025-04-12T06:53:25.908Z</updated>
+  <updated>2025-04-12T07:28:52.785Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -17,9 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>PVE(三)调整存储方式，删除lvmthin并将local-lvm合并到local内</title>
+    <link href="http://shenguosai.github.io/2025/04/12/PVE(%E4%B8%89)%E8%B0%83%E6%95%B4%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F%EF%BC%8C%E5%88%A0%E9%99%A4lvmthin%E5%B9%B6%E5%B0%86local-lvm%E5%90%88%E5%B9%B6%E5%88%B0local%E5%86%85/"/>
+    <id>http://shenguosai.github.io/2025/04/12/PVE(%E4%B8%89)%E8%B0%83%E6%95%B4%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F%EF%BC%8C%E5%88%A0%E9%99%A4lvmthin%E5%B9%B6%E5%B0%86local-lvm%E5%90%88%E5%B9%B6%E5%88%B0local%E5%86%85/</id>
+    <published>2025-04-12T07:00:12.000Z</published>
+    <updated>2025-04-12T07:28:52.785Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="关于-local-和-local-lvm"><a href="#关于-local-和-local-lvm" class="headerlink" title="关于 local 和 local-lvm"></a>关于 local 和 local-lvm</h1><p>查了很多相关资料，到现在还没有彻底的搞明白，根据目前的理解如下:</p><ol><li>lcoal-lvm 就是网上说的 lvm-thin，lvm-thin 算是 local-lvm 的存储类别，根据网上的说法，它的优点是可以设置比物理空间更大的空间，但这个家用基本上不会用到，它的缺点是缺少文件层的缓存机制，映像了IO效率。</li><li>很多教程会给出下面的文件结构:(由于我的已经删掉了，网上找来的配置)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@pve:~<span class="hljs-comment"># lsblk</span><br>NAME               MAJ:MIN RM    SIZE RO TYPE MOUNTPOINT<br>sda                  8:0    0     80G  0 disk <br>├─sda1               8:1    0   1007K  0 part <br>├─sda2               8:2    0    512M  0 part <br>└─sda3               8:3    0   79.5G  0 part <br>  ├─pve-swap       253:0    0      4G  0 lvm  [SWAP]<br>  ├─pve-root       253:1    0   19.8G  0 lvm  /<br>  ├─pve-data_tmeta 253:2    0      1G  0 lvm  <br>  │ └─pve-data     253:4    0   43.9G  0 lvm  <br>  └─pve-data_tdata 253:3    0   43.9G  0 lvm  <br>    └─pve-data     253:4    0   43.9G  0 lvm<br></code></pre></td></tr></table></figure>这里正式搞不明白的地方之一，感觉上 pve-data 就是这个 local-lvm</li><li>删除 local-lvm 之后才知道，这俩还是分开的好，因为 local 存储里面有 proxmox 的系统文件，简单说就是 pve 系统是安装在这个目录里面，如果把虚拟机的磁盘什么的都放在这里，当遇到磁盘容量耗尽的情况会导致 pve 系统无法启动。<br>但我已经删掉了，所以才会有这篇笔记。。。<h1 id="删除-local-lvm"><a href="#删除-local-lvm" class="headerlink" title="删除 local-lvm"></a>删除 local-lvm</h1>首先笔记 local: 数据中心 =&gt; 存储 =&gt; local =&gt; 点击上面的编辑<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250412152227.png" alt="20250412152227"><br>点选所有内容:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250412152324.png" alt="20250412152324"><br>使用命令<code>lvremove /dev/pve/data</code>删除 lvm-thin。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@pve-korea:~<span class="hljs-comment"># lvremove /dev/pve/data</span><br>Do you really want to remove active logical volume pve/data? [y/n]: y<br>  Logical volume <span class="hljs-string">&quot;data&quot;</span> successfully removed.<br></code></pre></td></tr></table></figure>然后使用命令<code>lvextend -rl +100%FREE /dev/pve/root</code>将 lvm-thin 的空间转移给 pve-root，即 local。<br>删除之后磁盘空间编程了这样:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@pve-korea:~<span class="hljs-comment"># lsblk</span><br>NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS<br>sda            8:0    0 238.5G  0 disk<br>└─sda1         8:1    0 238.5G  0 part /mnt/sp600<br>nvme0n1      259:0    0 476.9G  0 disk<br>├─nvme0n1p1  259:1    0  1007K  0 part<br>├─nvme0n1p2  259:2    0     1G  0 part /boot/efi<br>└─nvme0n1p3  259:3    0 475.9G  0 part<br>  ├─pve-swap 252:0    0     8G  0 lvm  [SWAP]<br>  └─pve-root 252:1    0 467.9G  0 lvm  /<br></code></pre></td></tr></table></figure><h1 id="在-web-管理页面中修改储存配置"><a href="#在-web-管理页面中修改储存配置" class="headerlink" title="在 web 管理页面中修改储存配置"></a>在 web 管理页面中修改储存配置</h1>在网页中删除 lvm-thin<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250412152835.png" alt="20250412152835"></li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;关于-local-和-local-lvm&quot;&gt;&lt;a href=&quot;#关于-local-和-local-lvm&quot; class=&quot;headerlink&quot; title=&quot;关于 local 和 local-lvm&quot;&gt;&lt;/a&gt;关于 local 和 local-lvm&lt;/h1&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="技术兴趣" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/"/>
+    
+    <category term="网络服务" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="PVE" scheme="http://shenguosai.github.io/tags/PVE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>PVE(二)修改IP地址</title>
-    <link href="http://shenguosai.github.io/2025/04/11/PVE%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80/"/>
-    <id>http://shenguosai.github.io/2025/04/11/PVE%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80/</id>
+    <link href="http://shenguosai.github.io/2025/04/11/PVE(%E4%BA%8C)%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80/"/>
+    <id>http://shenguosai.github.io/2025/04/11/PVE(%E4%BA%8C)%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80/</id>
     <published>2025-04-11T08:36:48.000Z</published>
     <updated>2025-04-12T06:53:25.908Z</updated>
     
@@ -41,8 +67,8 @@
   
   <entry>
     <title>PVE(一)添加并挂载系统盘以外的磁盘</title>
-    <link href="http://shenguosai.github.io/2025/04/11/PVE%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/"/>
-    <id>http://shenguosai.github.io/2025/04/11/PVE%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/</id>
+    <link href="http://shenguosai.github.io/2025/04/11/PVE(%E4%B8%80)%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/"/>
+    <id>http://shenguosai.github.io/2025/04/11/PVE(%E4%B8%80)%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/</id>
     <published>2025-04-11T06:49:21.000Z</published>
     <updated>2025-04-12T06:49:47.146Z</updated>
     
@@ -465,29 +491,6 @@
     
     
     <category term="Adobe" scheme="http://shenguosai.github.io/tags/Adobe/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>通过 ZeroTier 访问所在局域网的其它设备</title>
-    <link href="http://shenguosai.github.io/2024/08/15/%E9%80%9A%E8%BF%87-ZeroTier-%E8%AE%BF%E9%97%AE%E6%89%80%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E5%85%B6%E5%AE%83%E8%AE%BE%E5%A4%87/"/>
-    <id>http://shenguosai.github.io/2024/08/15/%E9%80%9A%E8%BF%87-ZeroTier-%E8%AE%BF%E9%97%AE%E6%89%80%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E5%85%B6%E5%AE%83%E8%AE%BE%E5%A4%87/</id>
-    <published>2024-08-15T03:18:14.000Z</published>
-    <updated>2025-02-08T07:32:25.972Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>硬件: QNAP TS-464C<br>系统: iStore OS 虚拟机(Zerotier虚拟局域网网关)<br>软件: Zerotier<br>Zerotier 网段: 10.147.18.0/24<br>局域网网段: 192.168.3.0/24<br><span id="more"></span></p><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="配置-Zerotier-设置"><a href="#配置-Zerotier-设置" class="headerlink" title="配置 Zerotier 设置"></a>配置 Zerotier 设置</h2><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112603.png" alt="20240815112603"></p><h2 id="配置-Zerotier-网关"><a href="#配置-Zerotier-网关" class="headerlink" title="配置 Zerotier 网关"></a>配置 Zerotier 网关</h2><ol><li>插件设置<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112706.png" alt="20240815112706"></li><li>配置网关开启内核转发<br>先 ssh 登录到 iStore OS(Zerotier虚拟局域网网关，执行以下命令:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;net.ipv4.ip_forward=1&#x27;</span> &gt;&gt; /etc/sysctl.conf<br>sysctl -p<br></code></pre></td></tr></table></figure><h2 id="访问方法"><a href="#访问方法" class="headerlink" title="访问方法"></a>访问方法</h2></li><li>重启一下使用的外网设备的 Zerotier 服务；</li><li>跟在局域网内访问相同，使用局域网地址访问即可。<h1 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h1></li><li>网上说需要开启 Zerotier 网关的地址伪装，即<code>MASQUERADE</code>；<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -j MASQUERADE<br></code></pre></td></tr></table></figure></li><li>配置静态路由表；</li><li>防火墙放行 <code>9933</code> 端口。<br>上述三个步骤本次配置没有使用到，可能是 iStore OS 简化了配置，如果以后有需要使用 Linux 标准系统来使用的需求时再研究。</li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h1&gt;&lt;p&gt;硬件: QNAP TS-464C&lt;br&gt;系统: iStore OS 虚拟机(Zerotier虚拟局域网网关)&lt;br&gt;软件: Zerotier&lt;br&gt;Zerotier 网段: 10.147.18.0/24&lt;br&gt;局域网网段: 192.168.3.0/24&lt;br&gt;</summary>
-    
-    
-    
-    <category term="技术兴趣" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/"/>
-    
-    <category term="网络服务" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-    <category term="Zerotier" scheme="http://shenguosai.github.io/tags/Zerotier/"/>
     
   </entry>
   

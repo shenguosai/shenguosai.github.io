@@ -23,7 +23,7 @@
   <meta name="description" content="最近买了一个内存 16G，NVME 硬盘 512G 的 N305 的中柏小主机，想用来做家庭服务器。以前折腾黑群晖时使用了 ESXi 6.5，但是过程确实比较费劲，收费而且支持的驱动还少，所以这次准备用 PVE 来实现，开源而且支持硬件丰富。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PVE(一)添加并挂载系统盘以外的磁盘">
-<meta property="og:url" content="http://shenguosai.github.io/2025/04/11/PVE%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/index.html">
+<meta property="og:url" content="http://shenguosai.github.io/2025/04/11/PVE(%E4%B8%80)%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/index.html">
 <meta property="og:site_name" content="小人驿站">
 <meta property="og:description" content="最近买了一个内存 16G，NVME 硬盘 512G 的 N305 的中柏小主机，想用来做家庭服务器。以前折腾黑群晖时使用了 ESXi 6.5，但是过程确实比较费劲，收费而且支持的驱动还少，所以这次准备用 PVE 来实现，开源而且支持硬件丰富。">
 <meta property="og:locale" content="zh_CN">
@@ -38,7 +38,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411151716.png">
 
-<link rel="canonical" href="http://shenguosai.github.io/2025/04/11/PVE%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/">
+<link rel="canonical" href="http://shenguosai.github.io/2025/04/11/PVE(%E4%B8%80)%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/">
 
 
 <script id="page-configurations">
@@ -129,7 +129,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">72</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">73</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -180,7 +180,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2025/04/11/PVE%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2025/04/11/PVE(%E4%B8%80)%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -235,8 +235,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2025/04/11/PVE%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2025/04/11/PVE%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/" itemprop="commentCount"></span>
+    <a title="valine" href="/2025/04/11/PVE(%E4%B8%80)%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2025/04/11/PVE(%E4%B8%80)%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -306,7 +306,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://shenguosai.github.io/2025/04/11/PVE%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/" title="PVE(一)添加并挂载系统盘以外的磁盘">http://shenguosai.github.io/2025/04/11/PVE添加并挂载系统盘以外的磁盘/</a>
+    <a href="http://shenguosai.github.io/2025/04/11/PVE(%E4%B8%80)%E6%B7%BB%E5%8A%A0%E5%B9%B6%E6%8C%82%E8%BD%BD%E7%B3%BB%E7%BB%9F%E7%9B%98%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A3%81%E7%9B%98/" title="PVE(一)添加并挂载系统盘以外的磁盘">http://shenguosai.github.io/2025/04/11/PVE(一)添加并挂载系统盘以外的磁盘/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -330,7 +330,7 @@
       <i class="fa fa-chevron-left"></i> AIDA64 许可证密钥 序列号激活码 v7.60.7300
     </a></div>
       <div class="post-nav-item">
-    <a href="/2025/04/11/PVE%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80/" rel="next" title="PVE(二)修改IP地址">
+    <a href="/2025/04/11/PVE(%E4%BA%8C)%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80/" rel="next" title="PVE(二)修改IP地址">
       PVE(二)修改IP地址 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -408,7 +408,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -462,12 +462,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">339k</span>
+    <span title="站点总字数">341k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:08</span>
+    <span title="站点阅读时长">5:10</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
