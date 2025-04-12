@@ -1,5 +1,5 @@
 ---
-title: PVE修改IP地址
+title: PVE(二)修改IP地址
 date: 2025-04-11 16:36:48
 tags: PVE
 categories:
