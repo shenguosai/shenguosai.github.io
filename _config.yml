@@ -114,7 +114,8 @@ encrypt: #hexo-blog-encrypt
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://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@github.com/shenguosai/shenguosai.github.io.git
+# repo: https://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@github.com/shenguosai/shenguosai.github.io.git
+  repo: git@github.com:shenguosai/shenguosai.github.io.git
   branch: master
 
 symbols_count_time:
