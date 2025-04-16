@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="QNAP 安装 Aria2QNAP 型号TS-464C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QNAP安装Aria2并使用油猴网盘直链进行RPC推送下载网盘资源">
+<meta property="og:url" content="http://shenguosai.github.io/2024/09/03/QNAP%E5%AE%89%E8%A3%85Aria2%E5%B9%B6%E4%BD%BF%E7%94%A8%E6%B2%B9%E7%8C%B4%E7%BD%91%E7%9B%98%E7%9B%B4%E9%93%BE%E8%BF%9B%E8%A1%8CRPC%E6%8E%A8%E9%80%81%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%9B%98%E8%B5%84%E6%BA%90/index.html">
+<meta property="og:site_name" content="小人驿站">
+<meta property="og:description" content="QNAP 安装 Aria2QNAP 型号TS-464C">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903104658.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903104931.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903151604.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903152350.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903152044.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903153346.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903153732.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903155210.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903155907.png">
+<meta property="article:published_time" content="2024-09-03T02:37:18.000Z">
+<meta property="article:modified_time" content="2025-04-16T15:34:47.352Z">
+<meta property="article:author" content="市井一俗人">
+<meta property="article:tag" content="QNAP">
+<meta property="article:tag" content="Aria2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903104658.png">
+
+<link rel="canonical" href="http://shenguosai.github.io/2024/09/03/QNAP%E5%AE%89%E8%A3%85Aria2%E5%B9%B6%E4%BD%BF%E7%94%A8%E6%B2%B9%E7%8C%B4%E7%BD%91%E7%9B%98%E7%9B%B4%E9%93%BE%E8%BF%9B%E8%A1%8CRPC%E6%8E%A8%E9%80%81%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%9B%98%E8%B5%84%E6%BA%90/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>QNAP安装Aria2并使用油猴网盘直链进行RPC推送下载网盘资源 | 小人驿站</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="小人驿站" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小人驿站</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">模拟电路工程师</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">75</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">38</span></a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/09/03/QNAP%E5%AE%89%E8%A3%85Aria2%E5%B9%B6%E4%BD%BF%E7%94%A8%E6%B2%B9%E7%8C%B4%E7%BD%91%E7%9B%98%E7%9B%B4%E9%93%BE%E8%BF%9B%E8%A1%8CRPC%E6%8E%A8%E9%80%81%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%9B%98%E8%B5%84%E6%BA%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="市井一俗人">
+      <meta itemprop="description" content="怀出世之心，行入世之事。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小人驿站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          QNAP安装Aria2并使用油猴网盘直链进行RPC推送下载网盘资源
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-09-03 10:37:18" itemprop="dateCreated datePublished" datetime="2024-09-03T10:37:18+08:00">2024-09-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-16 23:34:47" itemprop="dateModified" datetime="2025-04-16T23:34:47+08:00">2025-04-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">网络服务</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/09/03/QNAP%E5%AE%89%E8%A3%85Aria2%E5%B9%B6%E4%BD%BF%E7%94%A8%E6%B2%B9%E7%8C%B4%E7%BD%91%E7%9B%98%E7%9B%B4%E9%93%BE%E8%BF%9B%E8%A1%8CRPC%E6%8E%A8%E9%80%81%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%9B%98%E8%B5%84%E6%BA%90/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/09/03/QNAP%E5%AE%89%E8%A3%85Aria2%E5%B9%B6%E4%BD%BF%E7%94%A8%E6%B2%B9%E7%8C%B4%E7%BD%91%E7%9B%98%E7%9B%B4%E9%93%BE%E8%BF%9B%E8%A1%8CRPC%E6%8E%A8%E9%80%81%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%9B%98%E8%B5%84%E6%BA%90/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="QNAP-安装-Aria2"><a href="#QNAP-安装-Aria2" class="headerlink" title="QNAP 安装 Aria2"></a>QNAP 安装 Aria2</h1><h2 id="QNAP-型号"><a href="#QNAP-型号" class="headerlink" title="QNAP 型号"></a>QNAP 型号</h2><p>TS-464C<br><span id="more"></span></p>
+<h2 id="加入第三方资源库"><a href="#加入第三方资源库" class="headerlink" title="加入第三方资源库"></a>加入第三方资源库</h2><ol>
+<li>AppCenter =&gt; 设置 =&gt; 程序来源 =&gt; 添加</li>
+<li>输入名称(MyQNAP)和URL(<a target="_blank" rel="noopener" href="https://www.myqnap.org/repo.xml">https://www.myqnap.org/repo.xml</a>)</li>
+<li>点击确定即可完成<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903104658.png" alt="20240903104658"><h2 id="下载并安装-Aria2"><a href="#下载并安装-Aria2" class="headerlink" title="下载并安装 Aria2"></a>下载并安装 Aria2</h2></li>
+<li>在 AppCenter 中点击 MyQNAP =&gt; 所有应用 =&gt; 下载</li>
+<li>找到 Aria2 1.37 并点击下载<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903104931.png" alt="20240903104931"><h1 id="配置并使用-Aria2"><a href="#配置并使用-Aria2" class="headerlink" title="配置并使用 Aria2"></a>配置并使用 Aria2</h1><h2 id="Aria2-命令行下载常用命令及选项"><a href="#Aria2-命令行下载常用命令及选项" class="headerlink" title="Aria2 命令行下载常用命令及选项"></a>Aria2 命令行下载常用命令及选项</h2>下载并安装完成后就可以使用命令行进行下载了，常用命令如下。<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3></li>
+</ol>
+<ul>
+<li><code>aria2c url</code>: 下载文件，url代表文件下载链接</li>
+<li><code>aria2c -S file.torrent</code>: 显示 file.torrent 文件的信息</li>
+<li><code>aria2c –stop</code>: 停止所有下载</li>
+<li><code>aria2c –pause</code>: 暂停所有下载</li>
+<li><code>aria2c –resume</code>: 恢复暂停的下载</li>
+<li><code>aria2c –version</code>: 显示版本信息<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3></li>
+<li><code>-x n</code>: 最大使用 n 个线程下载文件</li>
+<li><code>-s n</code>: 使用 n 个连接数进行下载</li>
+<li><code>-o filename</code>: 指定下载文件的文件名</li>
+<li><code>-d directory</code>: 指定文件的下载目录</li>
+<li><code>-c</code>: 断点续传</li>
+<li><code>-m n</code>: 最大下载连接数为 n</li>
+<li><code>–max-download-limit=100K</code>: 限制下载速度为 100K/S</li>
+</ul>
+<p>以上是 Aria2 的常用命令和选项。你可以在终端中输入“man aria2c”命令来查看完整的命令和选项列表。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><ul>
+<li>直接下载<br><code>aria2c http://dl_dir.qq.com/qqfile/qq/QQ2011/QQ2011.exe</code></li>
+<li>后台下载<br><code>aria2c -D url</code><br><code>aria2c –deamon=true url</code></li>
+<li>重命名下载<br><code>aria2c --out=QQ http://dl_dir.qq.com/qqfile/qq/QQ2011/QQ2011.exe</code><br><code>aria2c -o QQ http://dl_dir.qq.com/qqfile/qq/QQ2011/QQ2011.exe</code></li>
+<li>分段下载<br><code>aria2c -x 2 http://dl_dir.qq.com/qqfile/qq/QQ2011/QQ2011.exe</code></li>
+<li>配合使用<br><code>aria2c -s 2 -x 2 -j 10 http://dl_dir.qq.com/qqfile/qq/QQ2011/QQ2011.exe</code><br>-s这个参数的意思是使用几个线程进行下载，-x是最大使用几个线程下载，-j就是同时下载几个文件。</li>
+<li>断点续传<br><code>aria2c -c http://dl_dir.qq.com/qqfile/qq/QQ2011/QQ2011.exe</code></li>
+<li>验证文件正确性<br><code>`aria2c -c -x16 -s20 -j20 --checksum=md5=xxxxxxxxxxxxx http://dl_dir.qq.com/qqfile/qq/QQ2011/QQ2011.exe</code></li>
+<li>bt 下载<br><code>aria2c ‘path/xxx.torrnet‘</code></li>
+<li>磁力链下载<ul>
+<li>列出种子内容<br><code>aria2c -S target.torrent</code></li>
+<li>下载种子内编号为 1、4、5、6、7 的文件<br><code>aria2c --select-file=1,4-7 target.torrent</code></li>
+<li>设置 bt 端口<br><code>aria2c --listen-port=51413 ‘xxx.torrent’</code></li>
+<li>设置 dht 端口<br><code>aria2c --dht-listen-port=51413 ‘xxx.torrent’</code><h2 id="Aria2-配置文件"><a href="#Aria2-配置文件" class="headerlink" title="Aria2 配置文件"></a>Aria2 配置文件</h2><h3 id="配置文件路径"><a href="#配置文件路径" class="headerlink" title="配置文件路径"></a>配置文件路径</h3>不同的系统可能会有所不同，按上述方法安装的 Aria2 的配置文件路径为: <code>/opt/AriaII/aria2.conf</code><h3 id="配置文件详解"><a href="#配置文件详解" class="headerlink" title="配置文件详解"></a>配置文件详解</h3></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">##此部分主要分为几部分##</span><br><span class="hljs-comment">#1、文件保存</span><br><span class="hljs-comment">#2、下载链接</span><br><span class="hljs-comment">#3、进度保存</span><br><span class="hljs-comment">#4、RPC相关</span><br><span class="hljs-comment">#5、BT\PT下载相关</span><br><br><span class="hljs-comment">##===================================##</span><br><span class="hljs-comment">## 文件保存相关 ##</span><br><span class="hljs-comment">##===================================##</span><br><br><span class="hljs-comment"># 文件保存目录</span><br><span class="hljs-built_in">dir</span>=../download<br><span class="hljs-comment"># 启用磁盘缓存, 0为禁用缓存, 需1.16以上版本, 默认:16M</span><br>disk-cache=16M<br><span class="hljs-comment"># 断点续传</span><br><span class="hljs-built_in">continue</span>=<span class="hljs-literal">true</span><br><span class="hljs-comment">#日志保存</span><br><span class="hljs-built_in">log</span>=aria2.log<br><br><span class="hljs-comment"># 文件预分配方式, 能有效降低磁盘碎片, 默认:prealloc</span><br><span class="hljs-comment"># 预分配所需时间: none &lt; falloc ? trunc &lt; prealloc</span><br><span class="hljs-comment"># falloc和trunc则需要文件系统和内核支持</span><br><span class="hljs-comment"># NTFS建议使用falloc, EXT3/4建议trunc, MAC 下需要注释此项</span><br>file-allocation=prealloc<br><br><span class="hljs-comment">##===================================##</span><br><span class="hljs-comment">## 下载连接相关 ##</span><br><span class="hljs-comment">##===================================##</span><br><br><span class="hljs-comment"># 最大同时下载任务数, 运行时可修改, 默认:5</span><br>max-concurrent-downloads=100<br><span class="hljs-comment"># 同一服务器连接数, 添加时可指定, 默认:1</span><br><span class="hljs-comment"># 官方的aria2最高设置为16, 如果需要设置任意数值请重新编译aria2</span><br>max-connection-per-server=16<br><br><span class="hljs-comment"># 整体下载速度限制, 运行时可修改, 默认:0（不限制）</span><br>max-overall-download-limit=0<br><span class="hljs-comment"># 单个任务下载速度限制, 默认:0（不限制）</span><br>max-download-limit=0<br><span class="hljs-comment"># 整体上传速度限制, 运行时可修改, 默认:0（不限制）</span><br>max-overall-upload-limit=0<br><span class="hljs-comment"># 单个任务上传速度限制, 默认:0（不限制）</span><br>max-upload-limit=0<br><br><span class="hljs-comment"># 禁用IPv6, 默认:false</span><br>disable-ipv6=<span class="hljs-literal">false</span><br><br><span class="hljs-comment"># 最小文件分片大小, 添加时可指定, 取值范围1M -1024M, 默认:20M</span><br><span class="hljs-comment"># 假定size=10M, 文件为20MiB 则使用两个来源下载; 文件为15MiB 则使用一个来源下载</span><br>min-split-size=10M<br><br><span class="hljs-comment"># 单个任务最大线程数, 添加时可指定, 默认:5</span><br><span class="hljs-comment"># 建议同max-connection-per-server设置为相同值</span><br><span class="hljs-built_in">split</span>=16<br><br><span class="hljs-comment">##===================================##</span><br><span class="hljs-comment">## 进度保存相关 ##</span><br><span class="hljs-comment">##===================================##</span><br><br><span class="hljs-comment"># 从会话文件中读取下载任务</span><br>input-file=aria2.session<br><span class="hljs-comment"># 在Aria2退出时保存错误的、未完成的下载任务到会话文件</span><br>save-session=aria2.session<br><span class="hljs-comment"># 定时保存会话, 0为退出时才保存, 需1.16.1以上版本, 默认:0</span><br>save-session-interval=60<br><br><span class="hljs-comment">##===================================##</span><br><span class="hljs-comment">## RPC相关设置 ##</span><br><span class="hljs-comment">##此部分必须启用，否则无法使用WebUI</span><br><span class="hljs-comment">##===================================##</span><br><br><span class="hljs-comment"># 启用RPC, 默认:false</span><br>enable-rpc=<span class="hljs-literal">true</span><br><span class="hljs-comment"># 允许所有来源, 默认:false</span><br>rpc-allow-origin-all=<span class="hljs-literal">true</span><br><span class="hljs-comment"># 允许外部访问, 默认:false</span><br>rpc-listen-all=<span class="hljs-literal">true</span><br><span class="hljs-comment"># RPC端口, 仅当默认端口被占用时修改</span><br><br>rpc-listen-port=6800<br><span class="hljs-comment"># 设置的RPC授权令牌, v1.18.4新增功能, 取代 --rpc-user 和 --rpc-passwd 选项</span><br>rpc-secret=000789456<br><br><span class="hljs-comment"># 设置的RPC访问用户名, 此选项新版已废弃, 建议改用 --rpc-secret 选项</span><br><span class="hljs-comment">#rpc-user=&lt;USER&gt;</span><br><span class="hljs-comment"># 设置的RPC访问密码, 此选项新版已废弃, 建议改用 --rpc-secret 选项</span><br><span class="hljs-comment">#rpc-passwd=&lt;PASSWD&gt;</span><br><br><span class="hljs-comment"># 启动SSL</span><br><span class="hljs-comment"># rpc-secure=true</span><br><span class="hljs-comment"># 证书文件, 如果启用SSL则需要配置证书文件, 例如用https连接aria2</span><br><span class="hljs-comment"># rpc-certificate=</span><br><span class="hljs-comment"># rpc-private-key=</span><br><br><span class="hljs-comment">##===================================##</span><br><span class="hljs-comment">## BT/PT下载相关 ##</span><br><span class="hljs-comment">##===================================##</span><br><br><span class="hljs-comment"># 当下载的是一个种子(以.torrent结尾)时, 自动开始BT任务, 默认:true</span><br>follow-torrent=<span class="hljs-literal">true</span><br><span class="hljs-comment"># BT监听端口, 当端口被屏蔽时使用, 默认:6881-6999</span><br>listen-port=51413<br><span class="hljs-comment"># 单个种子最大连接数, 默认:55</span><br><span class="hljs-comment">#bt-max-peers=55</span><br><span class="hljs-comment"># 打开DHT功能, PT需要禁用, 默认:true</span><br>enable-dht=<span class="hljs-literal">true</span><br><span class="hljs-comment"># 打开IPv6 DHT功能, PT需要禁用</span><br>enable-dht6=<span class="hljs-literal">true</span><br><span class="hljs-comment"># DHT网络监听端口, 默认:6881-6999</span><br>dht-listen-port=6881-6999<br><br><span class="hljs-comment"># 本地节点查找, PT需要禁用, 默认:false</span><br>bt-enable-lpd=<span class="hljs-literal">true</span><br><span class="hljs-comment"># 种子交换, PT需要禁用, 默认:true</span><br>enable-peer-exchange=<span class="hljs-literal">true</span><br><span class="hljs-comment"># 每个种子限速, 对少种的PT很有用, 默认:50K</span><br>bt-request-peer-speed-limit=50K<br><br><span class="hljs-comment"># 客户端伪装, PT需要</span><br>peer-id-prefix=-TR2770-<br>user-agent=Transmission/2.77<br><br><span class="hljs-comment"># 当种子的分享率达到这个数时, 自动停止做种, 0为一直做种, 默认:1.0</span><br>seed-ratio=0<br><span class="hljs-comment"># 强制保存会话, 即使任务已经完成, 默认:false</span><br><span class="hljs-comment"># 较新的版本开启后会在任务完成后依然保留.aria2文件</span><br>force-save=<span class="hljs-literal">true</span><br><span class="hljs-comment"># BT校验相关, 默认:true</span><br><span class="hljs-comment">#bt-hash-check-seed=true</span><br><span class="hljs-comment"># 继续之前的BT任务时, 无需再次校验, 默认:false</span><br>bt-seed-unverified=<span class="hljs-literal">true</span><br><span class="hljs-comment"># 保存磁力链接元数据为种子文件(.torrent文件), 默认:false</span><br>bt-save-metadata=<span class="hljs-literal">true</span><br><span class="hljs-comment"># 单个种子最大连接数, 默认:55 0表示不限制</span><br>bt-max-peers=0<br><span class="hljs-comment"># 最小做种时间, 单位:分</span><br><span class="hljs-comment"># seed-time = 60</span><br><span class="hljs-comment"># 分离做种任务</span><br>bt-detach-seed-only=<span class="hljs-literal">true</span><br><span class="hljs-comment">#BT Tracker List ;下载地址：https://github.com/ngosang/trackerslist</span><br>bt-tracker=udp://tracker.coppersurfer.tk:6969/announce,udp://tracker.internetwarriors.net:1337/announce,udp://tracker.opentrackr.org:1337/announce<br></code></pre></td></tr></table></figure>
+<h3 id="我的配置文件"><a href="#我的配置文件" class="headerlink" title="我的配置文件"></a>我的配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">max-concurrent-downloads=100<br>max-connection-per-server=16<br><span class="hljs-built_in">split</span>=16<br>min-split-size=10M<br>enable-rpc=<span class="hljs-literal">true</span><br>rpc-listen-all=<span class="hljs-literal">true</span><br>rpc-allow-origin-all=<span class="hljs-literal">true</span><br><span class="hljs-comment"># 上面这行非常重要，默认为 false，如果不设置为 True 则只能从特定的 IP 或域名访问，一开始就是因为没有这句在 WebUI AriaNg 里面怎么设置都显示未连接。只有协议设置为websocket时才能连接，但是使用 WebUI 也无法下载到正确的文件。加上这句后 http 协议就可以连接并且进行 RPC 推送了。</span><br>rpc-secret=7ixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxrIZ<br></code></pre></td></tr></table></figure>
+<h1 id="WebUI-Aginx"><a href="#WebUI-Aginx" class="headerlink" title="WebUI(Aginx)"></a>WebUI(Aginx)</h1><ol>
+<li>QNAP 中开启网站服务<br>控制台 =&gt; 应用程序 =&gt; Web 服务器 =&gt; 勾选”启用Web服务器”<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903151604.png" alt="20240903151604"><br>设置默认即可。<br>开启了网站服务之后，QNAP 的共享文件夹中就会多出一个 “Web” 的文件夹。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903152350.png" alt="20240903152350"></li>
+<li>配置网站服务的虚拟机<br>虚拟主机 =&gt; 勾选”启用虚拟主机” =&gt; 点击”创建虚拟机”<br>主机名称: 可以自定义，这里使用 Aria2<br>根目录: 点击右部倒三角选择网页所在目录<br>协议: 选择 HTTP 即可<br>端口号: WebUI 的访问端口，注意与 Aria2 RPC 端口不同，要另外使用空闲端口，这里使用 6801。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903152044.png" alt="20240903152044"><br>这里单独说一下”根目录”，在按上述方法安装了 QNAP 之后，Arial 会被建立一个软链接 <code>/opt/AriaII</code>，其真实路径为<code>/share/CACHEDEV1_DATA/.qpkg/AriaII/</code>，在这个目录里面有一个 “www” 的文件夹，这就是 AriaNg 的网站文件，我开始时将它移动到了 “Web” 文件夹里，配置好之后就不想去动了。其实完全可以在虚拟机的”根目录”里直接指定这里的路径，即<code>/opt/AriaII/wwww</code>，这样指定的话我估计就可以直接使用安装的 App 的”打开”按钮(其访问地址为:<a target="_blank" rel="noopener" href="http://192.168.3.74/AriaII)来进行访问。可能还需要一些配置，因为对建站不是很熟所以不确定，也没有尝试。">http://192.168.3.74/AriaII)来进行访问。可能还需要一些配置，因为对建站不是很熟所以不确定，也没有尝试。</a></li>
+<li>配置 AriaNg<br>配置完网站服务后就可以使用在浏览器中打开控制页面了。(访问地址:<a target="_blank" rel="noopener" href="http://192.168.3.74:6801">http://192.168.3.74:6801</a>)<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903153346.png" alt="20240903153346"><br>但是现在打开后”Aria2 状态”会显示红色的”未连接”。要进行一些配置来连接 Aria2 服务。<br>首先，点击 “AriaNg 设置” =&gt; 选择全局右边的 RPC<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903153732.png" alt="20240903153732"><br>Aria2 RPC 别名: 可自定义，也可以空着自己会变成”地址:端口”<br>Aria2 RPC 地址: 安装 Aria2 服务的主机地址或IP<br>Aria2 协议: 选择”Http”<br>Aria2 RPC Http 请求方法: POST<br>Aria2 RPC 请求头:这个不了解是什么，留空不影响使用<br>Aria2 RPC 秘钥: 这个秘钥在 Aria2 配置文件 <code>/opt/AriaII/aria2.conf</code> 中的 <code>rpc-secret=</code> 行中，可自定义设置，然后点击”重新加载 AriaNg”即可。<br>这里再重复一遍，要在配置文件<code>/opt/AriaII/aria2.conf</code>中加入<code>rpc-allow-origin-all=true</code>才可以在任何主机访问，我被这个地方卡了很长时间。</li>
+<li>使用油猴脚本获取网盘资源直链<ul>
+<li>首先要安装一个浏览器的油猴脚本管理插件，篡改猴或者暴力猴什么的都可以。我使用的是<a target="_blank" rel="noopener" href="https://microsoftedge.microsoft.com/addons/detail/%E7%AF%A1%E6%94%B9%E7%8C%B4/iikmkjmpaadaobahmlepeloendndfphd?hl=zh-CN">篡改猴</a>。在<a target="_blank" rel="noopener" href="https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home?hl=zh-CN">Edge插件商店</a>中直接搜索”tampermonkey”，前三个应该都可以使用。</li>
+<li>然后，到<a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN">Greasyfork</a>中下载脚本，我选择的是<a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN/scripts/436446-%E7%BD%91%E7%9B%98%E7%9B%B4%E9%93%BE%E4%B8%8B%E8%BD%BD%E5%8A%A9%E6%89%8B">网盘直链下载助手</a></li>
+<li>再打开网盘(这里以夸克网盘为例)的资源页就会开到多出一个”下载助手”的按钮。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903155210.png" alt="20240903155210"><br>点击按钮或者查看脚本说明就会知道:<br>API 下载: IDM 或浏览器自带下载。<br>Aria 下载: 这个可以得到资源链接使用命令行或者 Aria2 工具进行下载。<br>RPC 下载: 这个就是使用 RPC 远程推送下载链接进行下载，设置方法见”助手设置”。<br>cURL 下载: 使用终端命令行工具<code>curl</code>下载时的链接，直链地址与 Aria 下载的是一样的，只是前面命令变成了<code>curl</code>，而不是<code>aria2c</code>。<br>BC 下载: 这个使用比特彗星(BitCommet)下载的链接，没有用过。<br>助手设置: 这里就是 RPC 推送的设置选项了，与 AriaNg 上的设置基本一致，格式略有差别。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240903155907.png" alt="20240903155907"></li>
+</ul>
+</li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>买包烟</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="市井一俗人 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="市井一俗人 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>市井一俗人
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://shenguosai.github.io/2024/09/03/QNAP%E5%AE%89%E8%A3%85Aria2%E5%B9%B6%E4%BD%BF%E7%94%A8%E6%B2%B9%E7%8C%B4%E7%BD%91%E7%9B%98%E7%9B%B4%E9%93%BE%E8%BF%9B%E8%A1%8CRPC%E6%8E%A8%E9%80%81%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%9B%98%E8%B5%84%E6%BA%90/" title="QNAP安装Aria2并使用油猴网盘直链进行RPC推送下载网盘资源">http://shenguosai.github.io/2024/09/03/QNAP安装Aria2并使用油猴网盘直链进行RPC推送下载网盘资源/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/QNAP/" rel="tag"># QNAP</a>
+              <a href="/tags/Aria2/" rel="tag"># Aria2</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/08/28/%E7%9B%B8%E7%89%87%E5%B0%BA%E5%AF%B8/" rel="prev" title="相片尺寸">
+      <i class="fa fa-chevron-left"></i> 相片尺寸
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/09/04/%E6%89%93%E5%BC%80word%E6%97%B6MathType%E6%8A%A5%E9%94%99-MathType-has-detected-an-error-inAutoExecCls-Main-%E6%96%87%E4%BB%B6%E6%9C%AA%E6%89%BE%E5%88%B0-MathPage-WLL/" rel="next" title="打开word时MathType报错:MathType has detected an error inAutoExecCls.Main: 文件未找到: MathPage.WLL.">
+      打开word时MathType报错:MathType has detected an error inAutoExecCls.Main: 文件未找到: MathPage.WLL. <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#QNAP-%E5%AE%89%E8%A3%85-Aria2"><span class="nav-number">1.</span> <span class="nav-text">QNAP 安装 Aria2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#QNAP-%E5%9E%8B%E5%8F%B7"><span class="nav-number">1.1.</span> <span class="nav-text">QNAP 型号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B5%84%E6%BA%90%E5%BA%93"><span class="nav-number">1.2.</span> <span class="nav-text">加入第三方资源库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%B9%B6%E5%AE%89%E8%A3%85-Aria2"><span class="nav-number">1.3.</span> <span class="nav-text">下载并安装 Aria2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%B9%B6%E4%BD%BF%E7%94%A8-Aria2"><span class="nav-number">2.</span> <span class="nav-text">配置并使用 Aria2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Aria2-%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8B%E8%BD%BD%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%80%89%E9%A1%B9"><span class="nav-number">2.1.</span> <span class="nav-text">Aria2 命令行下载常用命令及选项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.1.</span> <span class="nav-text">命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E9%A1%B9"><span class="nav-number">2.1.2.</span> <span class="nav-text">选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.1.3.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aria2-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">Aria2 配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84"><span class="nav-number">2.2.1.</span> <span class="nav-text">配置文件路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.2.2.</span> <span class="nav-text">配置文件详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.3.</span> <span class="nav-text">我的配置文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WebUI-Aginx"><span class="nav-number">3.</span> <span class="nav-text">WebUI(Aginx)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="市井一俗人"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">市井一俗人</p>
+  <div class="site-description" itemprop="description">怀出世之心，行入世之事。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:shenguosai@gmail.com" title="E-Mail → mailto:shenguosai@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">市井一俗人</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">345k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5:14</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '0dJ6KzQjpKzOPUi998D88vE3-gzGzoHsz',
+      appKey     : 'LseOZQMpqtwJKZALm9XXl9hA',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
