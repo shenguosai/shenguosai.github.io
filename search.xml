@@ -73,33 +73,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Cadence使用Calibre进行后仿</title>
-    <url>/2023/12/18/Cadence%E4%BD%BF%E7%94%A8Calibre%E8%BF%9B%E8%A1%8C%E5%90%8E%E4%BB%BF/</url>
-    <content><![CDATA[<ol>
-<li>通过 Virtuoso 的 Layout XL =&gt; Calibre =&gt; Run PEX 进入 Calibre PEX，并将工艺厂提供的 xRC(Rule) 文件设置好 Calibre PEX。<span id="more"></span></li>
-<li>为了减少寄生参数，以及提高后仿效率，建议在 Calibre PEX =&gt; PEX Options =&gt; Netlist =&gt; Reduction and CC 中将 Enable MinRes reduction 和 Enable MinCap Reduction 选中，并在 COMBINE 和 REMOVE 后的框中填写所需数值，一般 Cap 的 Combine 为 0.5fF，Remove 为 0.1fF。Res 的 Combine 为 1Ω，Remove 为 0.1Ω。</li>
-<li>在 Outputs 选项中，Outputs =&gt; Netlist 框中，Format 选 CALIBREVIEW(可增加 Geometry 可在 PEX 运行完后弹出寄生参数的总结)，Use Names From : SCHEMATIC 。</li>
-<li>点击 Run PEX 开始寄生参数提取，之后进入 Calibre View Setup 界面。</li>
-<li>Calibre View Setup 设置中，Output 选项填被提取寄生参数的 library，Calibre View Type 选择 masklayout 意味着直接以 layout 的摆放位置提取寄生参数，选择 Schematic 意味着以 schematic 的位置生成寄生参数，建议选择 schematic，这可以在后仿中如前仿一样直接查看 schematic 的电路仿真信息，Create Terminal =&gt; if matching terminal exists on symbol，Device Placement =&gt; Layout Location，设置完毕，点击 OK 。</li>
-<li>提取寄生参数完毕后，如果有错误可能是 calibre 中部分线短路了，手动改正即可，可通过 calibre view type 更改类型为 masklayout 可以避免这种错误，但是后仿不能通过直接点击。</li>
-<li>在 testbench 中新建 config view，将 config 中的 view to use 更改为提取的寄生参数 calibre，加入 calibre 提取出来的参数，同时 ADE L =&gt; Setup =&gt; Design 更改类型为 config，即可开始后仿。</li>
-<li>仿真结束后，可以直接在 schematic 中查看信号线。</li>
-</ol>
-<p>生成 calibre 耗费时间过长，可以直接更改 calibre view type 为 masklayout，但是此种方法对于查看结果没那么方便。<br>或者直接在 pex 设置中，Output =&gt; Netlist =&gt; Format 更改为 SPECTRE 生成网表。</p>
-<ol>
-<li>该方法生成的网表不一定能直接用于 spectre 仿真，需要先将该网表的 pin 顺序更正。更改方法为，首先需要先用前仿电路跑一次仿真生成网表，然后在 simulation 这个文件夹中找到 input.scs 的网表，将该网表中的 pin 复制到后仿的网表中。</li>
-<li>后仿生成的网表更改完毕，在 testbench 中新建 config view，将 config 中的 view to use 更改为 Specify SPICE Source File，同时选择后仿的网表即可，这就是用网表仿真，速度快，但是不方便查看信号，但是利于排除寄生电容，需要排除哪项将其注释即可。</li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>半导体专业</category>
-        <category>EDA工具</category>
-      </categories>
-      <tags>
-        <tag>Calibre</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AIDA64 许可证密钥 序列号激活码 v7.60.7300</title>
     <url>/2025/03/06/AIDA64-%E8%AE%B8%E5%8F%AF%E8%AF%81%E5%AF%86%E9%92%A5-%E5%BA%8F%E5%88%97%E5%8F%B7%E6%BF%80%E6%B4%BB%E7%A0%81-v7-60-7300/</url>
     <content><![CDATA[<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250306151434.png" alt="20250306151434"><br><span id="more"></span></p>
@@ -172,6 +145,33 @@
       </tags>
   </entry>
   <entry>
+    <title>Cadence使用Calibre进行后仿</title>
+    <url>/2023/12/18/Cadence%E4%BD%BF%E7%94%A8Calibre%E8%BF%9B%E8%A1%8C%E5%90%8E%E4%BB%BF/</url>
+    <content><![CDATA[<ol>
+<li>通过 Virtuoso 的 Layout XL =&gt; Calibre =&gt; Run PEX 进入 Calibre PEX，并将工艺厂提供的 xRC(Rule) 文件设置好 Calibre PEX。<span id="more"></span></li>
+<li>为了减少寄生参数，以及提高后仿效率，建议在 Calibre PEX =&gt; PEX Options =&gt; Netlist =&gt; Reduction and CC 中将 Enable MinRes reduction 和 Enable MinCap Reduction 选中，并在 COMBINE 和 REMOVE 后的框中填写所需数值，一般 Cap 的 Combine 为 0.5fF，Remove 为 0.1fF。Res 的 Combine 为 1Ω，Remove 为 0.1Ω。</li>
+<li>在 Outputs 选项中，Outputs =&gt; Netlist 框中，Format 选 CALIBREVIEW(可增加 Geometry 可在 PEX 运行完后弹出寄生参数的总结)，Use Names From : SCHEMATIC 。</li>
+<li>点击 Run PEX 开始寄生参数提取，之后进入 Calibre View Setup 界面。</li>
+<li>Calibre View Setup 设置中，Output 选项填被提取寄生参数的 library，Calibre View Type 选择 masklayout 意味着直接以 layout 的摆放位置提取寄生参数，选择 Schematic 意味着以 schematic 的位置生成寄生参数，建议选择 schematic，这可以在后仿中如前仿一样直接查看 schematic 的电路仿真信息，Create Terminal =&gt; if matching terminal exists on symbol，Device Placement =&gt; Layout Location，设置完毕，点击 OK 。</li>
+<li>提取寄生参数完毕后，如果有错误可能是 calibre 中部分线短路了，手动改正即可，可通过 calibre view type 更改类型为 masklayout 可以避免这种错误，但是后仿不能通过直接点击。</li>
+<li>在 testbench 中新建 config view，将 config 中的 view to use 更改为提取的寄生参数 calibre，加入 calibre 提取出来的参数，同时 ADE L =&gt; Setup =&gt; Design 更改类型为 config，即可开始后仿。</li>
+<li>仿真结束后，可以直接在 schematic 中查看信号线。</li>
+</ol>
+<p>生成 calibre 耗费时间过长，可以直接更改 calibre view type 为 masklayout，但是此种方法对于查看结果没那么方便。<br>或者直接在 pex 设置中，Output =&gt; Netlist =&gt; Format 更改为 SPECTRE 生成网表。</p>
+<ol>
+<li>该方法生成的网表不一定能直接用于 spectre 仿真，需要先将该网表的 pin 顺序更正。更改方法为，首先需要先用前仿电路跑一次仿真生成网表，然后在 simulation 这个文件夹中找到 input.scs 的网表，将该网表中的 pin 复制到后仿的网表中。</li>
+<li>后仿生成的网表更改完毕，在 testbench 中新建 config view，将 config 中的 view to use 更改为 Specify SPICE Source File，同时选择后仿的网表即可，这就是用网表仿真，速度快，但是不方便查看信号，但是利于排除寄生电容，需要排除哪项将其注释即可。</li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>半导体专业</category>
+        <category>EDA工具</category>
+      </categories>
+      <tags>
+        <tag>Calibre</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS 7 安装docker和docker-compose</title>
     <url>/2024/03/25/CentOS-7-%E5%AE%89%E8%A3%85docker%E5%92%8Cdocker-compose/</url>
     <content><![CDATA[<h1 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h1><p>更新 <code>yum</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum update<br></code></pre></td></tr></table></figure><br>安装配置时的依赖包<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum install -y yum-utils device-mapper-persistent-data lvm2<br></code></pre></td></tr></table></figure><br><span id="more"></span><br>配置阿里云的<code>yum</code>源<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo<br></code></pre></td></tr></table></figure><br>查看仓库中所有的docker版本<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum list docker-ce --showduplicates | <span class="hljs-built_in">sort</span> -r<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240325151136.png" alt="20240325151136"><br>默认使用<code>yum install docker-ce</code>安装最新版的docker，当然也可以指定安装特定的版本<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum install docker-ce-24.0* -y<br></code></pre></td></tr></table></figure><br>验证是否安装成功<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker --version<br></code></pre></td></tr></table></figure><br>或者<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker -v<br></code></pre></td></tr></table></figure></p>
@@ -183,22 +183,6 @@
       </categories>
       <tags>
         <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Debian 12.6 - 安装TCP测试工具TCPing</title>
-    <url>/2024/08/14/Debian-12-6-%E5%AE%89%E8%A3%85TCP%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7TCPing/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><figcaption><span>TCP 协议的一种```ping```命令，用来测试数据包能否通过 TCP 协议到达目标主机。他的一大特点，就是可以在禁```ping```的时候检测网络连通率。</span></figcaption><table><tr><td class="code"><pre><code class="hljs TCPing```是基于">&lt;!--more--&gt;<br># 安装```tcptraceroute```<br>```TCPing```本质上是一个 shell 脚本，依赖```tcptraceroute```运行。<br>```bash<br>sudo apt install tcptraceroute<br></code></pre></td></tr></table></figure>
-<h1 id="下载-TCPing"><a href="#下载-TCPing" class="headerlink" title="下载 TCPing"></a>下载 TCPing</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo wget http://www.vdberg.org/~richard/tcpping -O /usr/bin/tcping<br></code></pre></td></tr></table></figure>
-<h1 id="配置权限"><a href="#配置权限" class="headerlink" title="配置权限"></a>配置权限</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">chmod</span> +x /usr/bin/tcping<br></code></pre></td></tr></table></figure>
-<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">tcping 目标IP 目标端口<br></code></pre></td></tr></table></figure>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>软件应用</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -313,24 +297,26 @@
       </tags>
   </entry>
   <entry>
+    <title>Debian 12.6 - 安装TCP测试工具TCPing</title>
+    <url>/2024/08/14/Debian-12-6-%E5%AE%89%E8%A3%85TCP%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7TCPing/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><figcaption><span>TCP 协议的一种```ping```命令，用来测试数据包能否通过 TCP 协议到达目标主机。他的一大特点，就是可以在禁```ping```的时候检测网络连通率。</span></figcaption><table><tr><td class="code"><pre><code class="hljs TCPing```是基于">&lt;!--more--&gt;<br># 安装```tcptraceroute```<br>```TCPing```本质上是一个 shell 脚本，依赖```tcptraceroute```运行。<br>```bash<br>sudo apt install tcptraceroute<br></code></pre></td></tr></table></figure>
+<h1 id="下载-TCPing"><a href="#下载-TCPing" class="headerlink" title="下载 TCPing"></a>下载 TCPing</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo wget http://www.vdberg.org/~richard/tcpping -O /usr/bin/tcping<br></code></pre></td></tr></table></figure>
+<h1 id="配置权限"><a href="#配置权限" class="headerlink" title="配置权限"></a>配置权限</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">chmod</span> +x /usr/bin/tcping<br></code></pre></td></tr></table></figure>
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">tcping 目标IP 目标端口<br></code></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>软件应用</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Diary</title>
     <url>/2023/08/10/Diary/</url>
     <content><![CDATA[<h2 id="2023年8月14日-晴空万里-人到中年"><a href="#2023年8月14日-晴空万里-人到中年" class="headerlink" title="2023年8月14日  晴空万里  人到中年"></a>2023年8月14日  晴空万里  人到中年</h2><p>今天又来到北京出差，早晨6点20出发，坐7点53分的G202经过3个多小时的颠簸，来到了首都的北京南站。<br>在北京南站坐上出租车，在下出租车的时候出了一点插曲，出租车司机停在了公司院区大门旁边的自行车道上，开门的时候没有注意观察，正好有一辆自行车逆行而过，擦到了出租车门。出租车司机还是很亲切的，让我走就可以，但是在我的坚持下最终还是给了司机师傅50元的赔偿。临行时在想：这点赔偿可能也不足以弥补司机师傅的损失，但为了自己的过失而进行补偿，心情还是蛮放松的。<br>从日本回国已过7年，逐渐的适应了中国的生活。也开始慢慢地理解了自己祖国的人们那种浮躁心态的来源，在一个14亿人口的大国，就生存本身而言，身边的每个人都是竞争对手。所以大家必须在有限的资源中为自己争取，这就是为何大家要插队，为何大家说话声音大，时刻像在争吵……<br>进入园区宾馆办完入住手续，正好12点多，去2楼吃了午饭，在房间休息了一会就去了办公室，匆匆一下午感觉什么都没有做。在晚饭的时候正好和领导聊了一会，感觉最近他又有一些心灰意冷，不再像上次那样意气风发。在日本也换过工作，现在是回国后找的第二份工作，这位领导身上有一种我一直想有却又达不到的特质，性格直率鲜明，但也并不缺迂回，但是主流还是向前冲的，头脑敏捷却没有城府，没有城府用在成年人身上可能有些贬义，也许这种性格的人不屑于城府。晚饭过后跟我讲了他们前一个项目如何与公司对赌然后最终失败，结果赔上了一年的奖金。我也挺喜欢这种意气风发，不顾后果的对赌，也许这就是赌博使人上瘾的原因所在吧。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-  </entry>
-  <entry>
-    <title>Elecom MR-C18BK 读卡器</title>
-    <url>/2023/09/13/Elecom-MR-C18BK-%E8%AF%BB%E5%8D%A1%E5%99%A8/</url>
-    <content><![CDATA[<p>这两天帮父亲新接手的球馆弄监控，花了一番功夫终于把已经停产的十几年前的监控摄像头搞定，发现里面的TF卡却坏掉了。于是在京东上买了BanQ的Joy联名TF卡，买来之后插上读卡器发现无法识别，申请换新之后还是无法识别，这才开始怀疑自己的读卡器是不是有问题。但是前两天刚试过家里的4G的TF卡读取是没有问题的。<br>于是从同事那里借来较新的读卡器发现成功读出来了，就怀疑自己应该也是十几年前买的读卡器是不是不支持大容量TF卡，于是到主页上查找了一番，发现Micro SD卡容量最大支持到16GB。<br><span id="more"></span><br><br><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230913194643.png" alt="20230913194643"><br><br><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230913194802.png" alt="20230913194802"><br><br><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230913194820.png" alt="20230913194820"><br><br></p>
-<p><a href="https://www2.elecom.co.jp/data-media/memory-rw/mr-c18/">商品说明链接</a></p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>设备及使用</category>
-      </categories>
-      <tags>
-        <tag>监控</tag>
-      </tags>
   </entry>
   <entry>
     <title>EDA工具使用备忘</title>
@@ -404,6 +390,42 @@
       </tags>
   </entry>
   <entry>
+    <title>Elecom MR-C18BK 读卡器</title>
+    <url>/2023/09/13/Elecom-MR-C18BK-%E8%AF%BB%E5%8D%A1%E5%99%A8/</url>
+    <content><![CDATA[<p>这两天帮父亲新接手的球馆弄监控，花了一番功夫终于把已经停产的十几年前的监控摄像头搞定，发现里面的TF卡却坏掉了。于是在京东上买了BanQ的Joy联名TF卡，买来之后插上读卡器发现无法识别，申请换新之后还是无法识别，这才开始怀疑自己的读卡器是不是有问题。但是前两天刚试过家里的4G的TF卡读取是没有问题的。<br>于是从同事那里借来较新的读卡器发现成功读出来了，就怀疑自己应该也是十几年前买的读卡器是不是不支持大容量TF卡，于是到主页上查找了一番，发现Micro SD卡容量最大支持到16GB。<br><span id="more"></span><br><br><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230913194643.png" alt="20230913194643"><br><br><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230913194802.png" alt="20230913194802"><br><br><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230913194820.png" alt="20230913194820"><br><br></p>
+<p><a href="https://www2.elecom.co.jp/data-media/memory-rw/mr-c18/">商品说明链接</a></p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>设备及使用</category>
+      </categories>
+      <tags>
+        <tag>监控</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo字数统计与阅读统计</title>
+    <url>/2023/11/20/Hexo%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E4%B8%8E%E9%98%85%E8%AF%BB%E7%BB%9F%E8%AE%A1/</url>
+    <content><![CDATA[<ol>
+<li>安装<code>hexo-wordcount</code>插件<br><code>npm install hexo-wordcount --save</code></li>
+<li>安装<code>hexo-symbols-count-time</code>插件<br><code>npm install hexo-symbols-count-time --save</code></li>
+<li>安装<code>eslint</code><br><code>npm install eslint --save</code><span id="more"></span></li>
+<li>在hexo配置文件中添加<code>symbols_count_time</code>配置语句<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">symbols_count_time:</span><br> <span class="hljs-attr">symbols:</span> <span class="hljs-literal">true</span>               <span class="hljs-comment"># 文字字数统计</span><br> <span class="hljs-attr">time:</span> <span class="hljs-literal">true</span>                  <span class="hljs-comment"># 文章阅读时长</span><br> <span class="hljs-attr">total_symbols:</span> <span class="hljs-literal">true</span>         <span class="hljs-comment"># 站点总字数统计</span><br> <span class="hljs-attr">total_time:</span> <span class="hljs-literal">true</span>            <span class="hljs-comment"># 站点总阅读时长</span><br> <span class="hljs-attr">exclude_codeblock:</span> <span class="hljs-literal">false</span>    <span class="hljs-comment"># 排除代码字数统计</span><br></code></pre></td></tr></table></figure></li>
+<li>在主题配置文件中添加<code>symbols_count_time</code>配置语句<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">symbols_count_time:</span><br> <span class="hljs-attr">separated_meta:</span> <span class="hljs-literal">true</span>        <span class="hljs-comment"># 是否另起一行(true的话不和发表时间等同一行)</span><br> <span class="hljs-attr">item_text_post:</span> <span class="hljs-literal">true</span>        <span class="hljs-comment"># 首页文章统计数量前是否显示文字描述(本文字数、阅读时长)</span><br> <span class="hljs-attr">item_text_total:</span> <span class="hljs-literal">false</span>      <span class="hljs-comment"># 页面底部统计数量前是否显示文字描述(站点总字数、站点阅读时长)</span><br> <span class="hljs-attr">awl:</span> <span class="hljs-number">4</span>                      <span class="hljs-comment"># Average Word Lenth</span><br> <span class="hljs-attr">wpm:</span> <span class="hljs-number">275</span>                    <span class="hljs-comment"># Words Per Minute（每分钟阅读词数</span><br> <span class="hljs-attr">suffix:</span> <span class="hljs-string">mins.</span><br></code></pre></td></tr></table></figure></li>
+<li>在主题配置文件中配置wordcount<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">post_wordcount:</span>          <span class="hljs-comment"># 字数统计</span><br> <span class="hljs-attr">item_text:</span> <span class="hljs-literal">true</span>         <span class="hljs-comment"># 是否显示文字</span><br> <span class="hljs-attr">wordcount:</span> <span class="hljs-literal">true</span>         <span class="hljs-comment"># 显示字数</span><br> <span class="hljs-attr">min2read:</span> <span class="hljs-literal">true</span>          <span class="hljs-comment"># 显示阅读时间</span><br> <span class="hljs-attr">totalcount:</span> <span class="hljs-literal">true</span>        <span class="hljs-comment"># 显示总数</span><br> <span class="hljs-attr">seperated_meta:</span> <span class="hljs-literal">true</span>    <span class="hljs-comment"># 是否分开</span><br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>设置完成！</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>网络服务</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在自己搭建的hexo博客上发布文章</title>
     <url>/2025/02/08/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/</url>
     <content><![CDATA[<ol>
@@ -434,28 +456,6 @@
 <p>用户名和邮箱根据注册github的信息自行修改。</p>
 <h3 id="SSH密钥"><a href="#SSH密钥" class="headerlink" title="SSH密钥"></a>SSH密钥</h3><p>挂载到GitHub上时，为了方便，我们要创建<code>ssh</code>密钥，使用ssh连接更为方便的推送。<br>方法：<code>ssh-keygen -C &quot;xxxx@xxx.com&quot;</code>就会生成密钥，Linux用户在<code>~/.ssh/</code>中，Windows用户在<code>C:/Users/xxx/.ssh/</code>中。<br>在github上绑定公钥:<code>Settings-&gt;SSH and GPG keys-&gt;SSH keys-&gt;New SSH key</code><br>将生成的<code>id_rsa.pub</code>中的文本内容复制到<code>Key</code>框中，点击<code>Add SSH key</code>。<br><em><font color="grey" size=1 >此处说明需要添加图片，设置好图床后添加。</font></em><br>输入<code>ssh -T git@github.com</code>，如果如下所示，出现你的用户名即配置成功。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">shenguosai@LAPTOP-FBGFH99L /mnt/d/99_Git/blog$ ssh -T git@github.com<br>X11 forwarding request failed on channel 0<br>Hi shenguosai! You<span class="hljs-string">&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></code></pre></td></tr></table></figure></p>
 <h3 id="Token"><a href="#Token" class="headerlink" title="Token"></a>Token</h3><h2 id="2-开始挂载"><a href="#2-开始挂载" class="headerlink" title="2.开始挂载"></a>2.开始挂载</h2><p>打开博客目录下的<code>.config.yml</code>(hexo的配置文件)，下拉到最下方。<br><figure class="highlight dts"><table><tr><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">deploy:</span><br><span class="hljs-symbol">  type:</span> git<br><span class="hljs-symbol">  repo:</span> https:<span class="hljs-comment">//ghp_xxxxxx@github.com/shenguosai/shenguosai.github.io.git</span><br><span class="hljs-symbol">  branch:</span> master<br></code></pre></td></tr></table></figure><br><code>ghp_xxxxxx</code>即上面申请的token。<br>然后输入<code>hexo cl</code>清除缓存，完成代码为<code>hexo clean</code>。<br>清除缓存后输入<code>hexo g</code>生成静态网页，然后输入<code>hexo d</code>推送到<strong>GitHub</strong>。</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>网络服务</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo字数统计与阅读统计</title>
-    <url>/2023/11/20/Hexo%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E4%B8%8E%E9%98%85%E8%AF%BB%E7%BB%9F%E8%AE%A1/</url>
-    <content><![CDATA[<ol>
-<li>安装<code>hexo-wordcount</code>插件<br><code>npm install hexo-wordcount --save</code></li>
-<li>安装<code>hexo-symbols-count-time</code>插件<br><code>npm install hexo-symbols-count-time --save</code></li>
-<li>安装<code>eslint</code><br><code>npm install eslint --save</code><span id="more"></span></li>
-<li>在hexo配置文件中添加<code>symbols_count_time</code>配置语句<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">symbols_count_time:</span><br> <span class="hljs-attr">symbols:</span> <span class="hljs-literal">true</span>               <span class="hljs-comment"># 文字字数统计</span><br> <span class="hljs-attr">time:</span> <span class="hljs-literal">true</span>                  <span class="hljs-comment"># 文章阅读时长</span><br> <span class="hljs-attr">total_symbols:</span> <span class="hljs-literal">true</span>         <span class="hljs-comment"># 站点总字数统计</span><br> <span class="hljs-attr">total_time:</span> <span class="hljs-literal">true</span>            <span class="hljs-comment"># 站点总阅读时长</span><br> <span class="hljs-attr">exclude_codeblock:</span> <span class="hljs-literal">false</span>    <span class="hljs-comment"># 排除代码字数统计</span><br></code></pre></td></tr></table></figure></li>
-<li>在主题配置文件中添加<code>symbols_count_time</code>配置语句<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">symbols_count_time:</span><br> <span class="hljs-attr">separated_meta:</span> <span class="hljs-literal">true</span>        <span class="hljs-comment"># 是否另起一行(true的话不和发表时间等同一行)</span><br> <span class="hljs-attr">item_text_post:</span> <span class="hljs-literal">true</span>        <span class="hljs-comment"># 首页文章统计数量前是否显示文字描述(本文字数、阅读时长)</span><br> <span class="hljs-attr">item_text_total:</span> <span class="hljs-literal">false</span>      <span class="hljs-comment"># 页面底部统计数量前是否显示文字描述(站点总字数、站点阅读时长)</span><br> <span class="hljs-attr">awl:</span> <span class="hljs-number">4</span>                      <span class="hljs-comment"># Average Word Lenth</span><br> <span class="hljs-attr">wpm:</span> <span class="hljs-number">275</span>                    <span class="hljs-comment"># Words Per Minute（每分钟阅读词数</span><br> <span class="hljs-attr">suffix:</span> <span class="hljs-string">mins.</span><br></code></pre></td></tr></table></figure></li>
-<li>在主题配置文件中配置wordcount<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">post_wordcount:</span>          <span class="hljs-comment"># 字数统计</span><br> <span class="hljs-attr">item_text:</span> <span class="hljs-literal">true</span>         <span class="hljs-comment"># 是否显示文字</span><br> <span class="hljs-attr">wordcount:</span> <span class="hljs-literal">true</span>         <span class="hljs-comment"># 显示字数</span><br> <span class="hljs-attr">min2read:</span> <span class="hljs-literal">true</span>          <span class="hljs-comment"># 显示阅读时间</span><br> <span class="hljs-attr">totalcount:</span> <span class="hljs-literal">true</span>        <span class="hljs-comment"># 显示总数</span><br> <span class="hljs-attr">seperated_meta:</span> <span class="hljs-literal">true</span>    <span class="hljs-comment"># 是否分开</span><br></code></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>设置完成！</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
       <categories>
         <category>技术兴趣</category>
@@ -772,36 +772,6 @@
       </tags>
   </entry>
   <entry>
-    <title>QNAP安装zerotier进行异地组网</title>
-    <url>/2024/08/14/QNAP%E5%AE%89%E8%A3%85zerotier%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%9C%B0%E7%BB%84%E7%BD%91/</url>
-    <content><![CDATA[<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
-<li>在 App Center 中安装 QVPN Service</li>
-<li><span id="more"></span>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814122823.png" alt="20240814122823"></li>
-<li>去 <a href="https://www.zerotier.com/download/">ZeroTier 官网</a> 下载相关的安装包<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123138.png" alt="20240814123138"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123221.png" alt="20240814123221"><h1 id="从本地安装-ZeroTier"><a href="#从本地安装-ZeroTier" class="headerlink" title="从本地安装 ZeroTier"></a>从本地安装 ZeroTier</h1><h2 id="允许没有有效数字签名的程序安装"><a href="#允许没有有效数字签名的程序安装" class="headerlink" title="允许没有有效数字签名的程序安装"></a>允许没有有效数字签名的程序安装</h2><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123719.png" alt="20240814123719"><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2></li>
-<li>打开 App Center，右上角”手动安装”；</li>
-<li>点击”浏览”，选中安装包；</li>
-<li>点击”安装”。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814124524.png" alt="20240814124524"><br>安装完成后，可以在所有应用中找到 Zerotier，但是和群晖不同，威联通上的 Zerotier 是无法点击打开的。(不明白为什么在”我的应用程序”中无法找到 Zerotier。)<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814124911.png" alt="20240814124911"></li>
-</ol>
-<h1 id="加入网络"><a href="#加入网络" class="headerlink" title="加入网络"></a>加入网络</h1><p>Zerotier 的注册及申请方法不在此赘述，威联通安装好 Zerotier 软件后需要使用命令行来加入网络。且必须获取管理员权限才能安装。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[user@QNAP ~]$ zerotier-cli <span class="hljs-built_in">join</span> xxxxxxxxxxxxxxxx<br>zerotier-cli: authtoken.secret not found or readable <span class="hljs-keyword">in</span> /share/CACHEDEV1_DATA/.qpkg/zerotier (try again as root)<br>[user@QNAP ~]$ sudo zerotier-cli <span class="hljs-built_in">join</span> xxxxxxxxxxxxxxxx<br><br>We trust you have received the usual lecture from the <span class="hljs-built_in">local</span> System<br>Administrator. It usually boils down to these three things:<br><br>    <span class="hljs-comment">#1) Respect the privacy of others.</span><br>    <span class="hljs-comment">#2) Think before you type.</span><br>    <span class="hljs-comment">#3) With great power comes great responsibility.</span><br><br>Password:<br>200 <span class="hljs-built_in">join</span> OK<br></code></pre></td></tr></table></figure><br>看到<code>200 join OK</code>，即意味着这台 NAS 已经加入了 zerotier 网络，然后就可以返回 zerotier 的网页管理端对这台设备进行授权。</p>
-<h1 id="设置防火墙允许访问"><a href="#设置防火墙允许访问" class="headerlink" title="设置防火墙允许访问"></a>设置防火墙允许访问</h1><p>如果 QNAP 安装了防火墙<code>QuFirewall</code>，则需要添加一条规则允许 ZeroTier 虚拟局域网网段允许访问。</p>
-<ol>
-<li>打开<code>QuFirewall</code></li>
-<li>点击”编辑”修改规则<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814150010.png" alt="20240814150010"></li>
-<li>点击”添加规则”；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814170631.png" alt="20240814170631"></li>
-<li>输入虚拟局域网的网段地址，子网掩码选<code>255.255.255.0/24</code>即可。其它设置不用更改，点击”应用”，防火墙就允许虚拟局域网网段访问了。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814170809.png" alt="20240814170809"></li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>网络服务</category>
-      </categories>
-      <tags>
-        <tag>QNAP</tag>
-        <tag>Zerotier</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>QNAP安装Aria2并使用油猴网盘直链进行RPC推送下载网盘资源</title>
     <url>/2024/09/03/QNAP%E5%AE%89%E8%A3%85Aria2%E5%B9%B6%E4%BD%BF%E7%94%A8%E6%B2%B9%E7%8C%B4%E7%BD%91%E7%9B%98%E7%9B%B4%E9%93%BE%E8%BF%9B%E8%A1%8CRPC%E6%8E%A8%E9%80%81%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%9B%98%E8%B5%84%E6%BA%90/</url>
     <content><![CDATA[<h1 id="QNAP-安装-Aria2"><a href="#QNAP-安装-Aria2" class="headerlink" title="QNAP 安装 Aria2"></a>QNAP 安装 Aria2</h1><h2 id="QNAP-型号"><a href="#QNAP-型号" class="headerlink" title="QNAP 型号"></a>QNAP 型号</h2><p>TS-464C<br><span id="more"></span></p>
@@ -866,6 +836,36 @@
       <tags>
         <tag>QNAP</tag>
         <tag>Aria2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>QNAP安装zerotier进行异地组网</title>
+    <url>/2024/08/14/QNAP%E5%AE%89%E8%A3%85zerotier%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%9C%B0%E7%BB%84%E7%BD%91/</url>
+    <content><![CDATA[<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
+<li>在 App Center 中安装 QVPN Service</li>
+<li><span id="more"></span>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814122823.png" alt="20240814122823"></li>
+<li>去 <a href="https://www.zerotier.com/download/">ZeroTier 官网</a> 下载相关的安装包<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123138.png" alt="20240814123138"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123221.png" alt="20240814123221"><h1 id="从本地安装-ZeroTier"><a href="#从本地安装-ZeroTier" class="headerlink" title="从本地安装 ZeroTier"></a>从本地安装 ZeroTier</h1><h2 id="允许没有有效数字签名的程序安装"><a href="#允许没有有效数字签名的程序安装" class="headerlink" title="允许没有有效数字签名的程序安装"></a>允许没有有效数字签名的程序安装</h2><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123719.png" alt="20240814123719"><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2></li>
+<li>打开 App Center，右上角”手动安装”；</li>
+<li>点击”浏览”，选中安装包；</li>
+<li>点击”安装”。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814124524.png" alt="20240814124524"><br>安装完成后，可以在所有应用中找到 Zerotier，但是和群晖不同，威联通上的 Zerotier 是无法点击打开的。(不明白为什么在”我的应用程序”中无法找到 Zerotier。)<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814124911.png" alt="20240814124911"></li>
+</ol>
+<h1 id="加入网络"><a href="#加入网络" class="headerlink" title="加入网络"></a>加入网络</h1><p>Zerotier 的注册及申请方法不在此赘述，威联通安装好 Zerotier 软件后需要使用命令行来加入网络。且必须获取管理员权限才能安装。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[user@QNAP ~]$ zerotier-cli <span class="hljs-built_in">join</span> xxxxxxxxxxxxxxxx<br>zerotier-cli: authtoken.secret not found or readable <span class="hljs-keyword">in</span> /share/CACHEDEV1_DATA/.qpkg/zerotier (try again as root)<br>[user@QNAP ~]$ sudo zerotier-cli <span class="hljs-built_in">join</span> xxxxxxxxxxxxxxxx<br><br>We trust you have received the usual lecture from the <span class="hljs-built_in">local</span> System<br>Administrator. It usually boils down to these three things:<br><br>    <span class="hljs-comment">#1) Respect the privacy of others.</span><br>    <span class="hljs-comment">#2) Think before you type.</span><br>    <span class="hljs-comment">#3) With great power comes great responsibility.</span><br><br>Password:<br>200 <span class="hljs-built_in">join</span> OK<br></code></pre></td></tr></table></figure><br>看到<code>200 join OK</code>，即意味着这台 NAS 已经加入了 zerotier 网络，然后就可以返回 zerotier 的网页管理端对这台设备进行授权。</p>
+<h1 id="设置防火墙允许访问"><a href="#设置防火墙允许访问" class="headerlink" title="设置防火墙允许访问"></a>设置防火墙允许访问</h1><p>如果 QNAP 安装了防火墙<code>QuFirewall</code>，则需要添加一条规则允许 ZeroTier 虚拟局域网网段允许访问。</p>
+<ol>
+<li>打开<code>QuFirewall</code></li>
+<li>点击”编辑”修改规则<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814150010.png" alt="20240814150010"></li>
+<li>点击”添加规则”；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814170631.png" alt="20240814170631"></li>
+<li>输入虚拟局域网的网段地址，子网掩码选<code>255.255.255.0/24</code>即可。其它设置不用更改，点击”应用”，防火墙就允许虚拟局域网网段访问了。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814170809.png" alt="20240814170809"></li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>网络服务</category>
+      </categories>
+      <tags>
+        <tag>QNAP</tag>
+        <tag>Zerotier</tag>
       </tags>
   </entry>
   <entry>
@@ -1193,27 +1193,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Windows11 激活方法</title>
-    <url>/2024/02/26/Windows11-%E6%BF%80%E6%B4%BB%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>今天将笔记本自带的 win11 家庭版升级到专业版时无意中在知乎中找到了一个方法，一试还真的有效，因为远程运行了一个网站的程序，不知道自己的电脑是不是成为别人的肉鸡了，但是激活方式确实是有效的。风险性后面再研究吧。<br><span id="more"></span></p>
-<h3 id="两个激活秘钥"><a href="#两个激活秘钥" class="headerlink" title="两个激活秘钥"></a>两个激活秘钥</h3><figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">J8WVF</span>-<span class="hljs-number">9</span>X3GM-<span class="hljs-number">4</span>WVYC-VDHQG-<span class="hljs-number">42</span>CXT<br><span class="hljs-attribute">7Y64F</span>-<span class="hljs-number">88</span>DCY-Y6WTC-H33D2-<span class="hljs-number">64</span>QHF<br></code></pre></td></tr></table></figure>
-<p>我使用的是第一个，第二个是否有效没有验证。</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ol>
-<li>右键“此电脑”，依次点击“属性” =&gt; “产品秘钥和激活” =&gt; “更改产品秘钥”，输入上述秘钥；</li>
-<li>win + R，输入powershell，回车。在弹窗中输入命令:<code>irm massgrave.dev/get.ps1 | iex</code></li>
-<li>会弹出下面的窗口<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240226105515.png" alt="20240226105515"><br>简单解释一下: 按1，Windows永久激活；按2，office永久激活；按3，Windows激活到2038年；按4，180天的kms激活工具；……</li>
-<li>然后重复1就会看到“已激活”字样。</li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>软件应用</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>VIM学习笔记--状态行</title>
     <url>/2023/12/06/VIM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%8A%B6%E6%80%81%E8%A1%8C/</url>
     <content><![CDATA[<center>状态行参数列表</center>
@@ -1377,6 +1356,27 @@
       </tags>
   </entry>
   <entry>
+    <title>Windows11 激活方法</title>
+    <url>/2024/02/26/Windows11-%E6%BF%80%E6%B4%BB%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>今天将笔记本自带的 win11 家庭版升级到专业版时无意中在知乎中找到了一个方法，一试还真的有效，因为远程运行了一个网站的程序，不知道自己的电脑是不是成为别人的肉鸡了，但是激活方式确实是有效的。风险性后面再研究吧。<br><span id="more"></span></p>
+<h3 id="两个激活秘钥"><a href="#两个激活秘钥" class="headerlink" title="两个激活秘钥"></a>两个激活秘钥</h3><figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">J8WVF</span>-<span class="hljs-number">9</span>X3GM-<span class="hljs-number">4</span>WVYC-VDHQG-<span class="hljs-number">42</span>CXT<br><span class="hljs-attribute">7Y64F</span>-<span class="hljs-number">88</span>DCY-Y6WTC-H33D2-<span class="hljs-number">64</span>QHF<br></code></pre></td></tr></table></figure>
+<p>我使用的是第一个，第二个是否有效没有验证。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ol>
+<li>右键“此电脑”，依次点击“属性” =&gt; “产品秘钥和激活” =&gt; “更改产品秘钥”，输入上述秘钥；</li>
+<li>win + R，输入powershell，回车。在弹窗中输入命令:<code>irm massgrave.dev/get.ps1 | iex</code></li>
+<li>会弹出下面的窗口<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240226105515.png" alt="20240226105515"><br>简单解释一下: 按1，Windows永久激活；按2，office永久激活；按3，Windows激活到2038年；按4，180天的kms激活工具；……</li>
+<li>然后重复1就会看到“已激活”字样。</li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>软件应用</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Windows命令行在cmd中能执行但是在PowerShell中报错</title>
     <url>/2024/03/26/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9C%A8cmd%E4%B8%AD%E8%83%BD%E6%89%A7%E8%A1%8C%E4%BD%86%E6%98%AF%E5%9C%A8PowerShell%E4%B8%AD%E6%8A%A5%E9%94%99/</url>
     <content><![CDATA[<p>使用ssh远程windows端的时候默认使用cmd，而用powershell可以使用很多linux的命令，像<code>ls</code>，<code>ps</code>，<code>cd</code>什么的(实际上只是映射了一下)。<br>使用管理员权限在<em>PowerShell</em>执行以下命令，使SSH连接Windows时默认使用<em>Powershell</em>。<br><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">New-ItemProperty</span> <span class="hljs-literal">-Path</span> <span class="hljs-string">&quot;HKLM:\SOFTWARE\OpenSSH&quot;</span> <span class="hljs-literal">-Name</span> DefaultShell <span class="hljs-literal">-Value</span> <span class="hljs-string">&quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot;</span> <span class="hljs-literal">-PropertyType</span> String <span class="hljs-literal">-Force</span><br></code></pre></td></tr></table></figure><br><span id="more"></span><br>但是今天远程Windows下开启<code>http-server</code>服务时却遇到一个奇怪的问题。</p>
@@ -1529,6 +1529,150 @@
       </tags>
   </entry>
   <entry>
+    <title>【转】越狱后玩耍IPhone系统(Darwin)</title>
+    <url>/2024/03/27/%E3%80%90%E8%BD%AC%E3%80%91%E8%B6%8A%E7%8B%B1%E5%90%8E%E7%8E%A9%E8%80%8DIPhone%E7%B3%BB%E7%BB%9F(Darwin)/</url>
+    <content><![CDATA[<p>无意中找到一个介绍越狱后iOS的说明， 受益匪浅， 转一下:<a href="https://www.cnblogs.com/franknihao/p/7360695.html">【Darwin】 越狱后玩耍IPhone系统</a><br><span id="more"></span><br>大家都知道 iOS 是自 Mac OS 修改而来的。而 Mac OS 和 iOS 的共同核心是 Darwin, 其基于 FreeBSD 发展而来, 整体而言也是个类Unix系统。之前把自己的手机越狱之后正好开始接触 Linux 这类 OS， 然后觉得很有意思就去网上找了些资料来自己玩自己的手机， 也做了一些笔记。说来惭愧， 当时手机系统版本还是 8.3。而后来也因为没什么时间加上这部分笔记维护在另外一个笔记本上， 导致一直没有时间记录下来【捂脸】。本来想等 10.3 的越狱出来， 把Pad越狱之后再来详细研究的， 无奈 10.3 越狱也迟迟不出， 不得已， 只好现在来记录一下了。。<br>没有什么干货的技术知识， 全部都是一点个人的爱折腾手机的小兴趣， 系统版本又老。。嗯就这样吧。</p>
+<h1 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h1><p>IPhone 越狱后， 第一标志当然就是在桌面上看到了 Cydia。作为折腾手机的第一步， 当然是要让手机有本地命令行来装逼了。如果没记错的话， 几年前越狱的时候还是会附带一个命令行工具的， 现在好像必须得自己下载安装了。进入 Cydia， 搜索安装 MTerminal 这个命令行工具。其他也有一些命令行工具比如 mobileTerminal 什么的， 不过那些好像都已经过时了， 新系统们都打不开。打开 MTerminal 默认用户是 mobile， 退出时自动也会退出这个用户， 不用担心用户进程会留存在机器上。还有一点比较有意思的是 MTerminal 的非键盘区域， 点击靠上下左右的边部区域就像是键盘上按上下左右方向键， 所以可以进行退格和重复上条命令等操作。至于 Tab 键自动补全命令什么的操作至今还未发现。。<br>有了命令行， 但是在手机上敲命令太蛋疼了， 我们最好能通过电脑连入手机， 这样方便多了。第一个想到的当然是通过 SSH。在 Cydia 安装 openSSH， 之后就可以通过 22 端口远程连接手机了。一般可以直接用 root 用户连入手机， 进入之后的第一件事<br><strong>千万要记得改root账户的密码， 所有越狱后的IPhone手机root用户的默认密码都是一样的！！！都是 alpine ！不马上改掉， 那随便什么人都可以直接连入你的 IPhone， 你就没有任何安全可言了。</strong><br>改完密码之后， 就可以对字符界面的 iOS 做一些改造让它看起来更像是一台服务器了。</p>
+<h1 id="适当改造"><a href="#适当改造" class="headerlink" title="适当改造"></a>适当改造</h1><p>首先可以在<code>/etc/profile</code>中加上对环境变量 PS1 的定义， 这个变量决定的是字符提示行的样式。这个文件是什么作用在 Linux 笔记中说过了， 就不说了， 样式可以选择<code>[\u@\h \W]\$</code>这款。在文件中加上<code>export PS1=&#39;[\u@\h \W]\$&#39;</code>即可。<br>默认的<code>ls</code>命令出来的文件没有任何颜色特效， 看起来很累。可以加上<code>LS_COLORS</code>这个环境变量， 至于具体的值怎么写可以参见已经配置好的 CentOS 系统等等， 我这里给出一个参考:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> LS_COLORS=<span class="hljs-string">&#x27;no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=01;32:*.cmd=01;35:*.exe=01;35:*.com=01;35:*.btm=01;35:*.bat=01;35:*.sh=01;35:*.csh=01;35:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tz=01;31:*.rpm=01;31:*.cpio=01;31:*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.xbm=01;35:*.xpm=01;35:*.png=01;35:*.tif=01;35:&#x27;</span><br></code></pre></td></tr></table></figure><br>在设置好了配置文件之后<code>source</code>之以生效， 至于<code>ls</code>的颜色， 如果还是没有效果记得看一下<code>ls</code>有没有默认<code>alias ls=&#39;ls --color&#39;</code>， 必须带上<code>color</code>参数<code>ls</code>才会显色。<br>忘记了系统是否自带了 vim 程序， 应该是没有， 那就需要安装。vim 的样式文件 vimrc 不放在<code>/etc/vimrc</code>， 而是放到<code>/usr/share/vim/</code>目录下面去。</p>
+<h1 id="常用工具安装"><a href="#常用工具安装" class="headerlink" title="常用工具安装"></a>常用工具安装</h1><p>在 CentOS 上习惯了用<code>yum</code>安装包， 但是这里没有<code>yum</code>， 只有<code>apt-get</code>。用法是类似的:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">apt-get install &lt;PackageName&gt;　　<span class="hljs-comment"># 安装某个包</span><br>apt-get update　　<span class="hljs-comment"># 更新 apt 源（是不是有点眼熟， 其实估计 Cydi 里面的更新源就是运行了下这个命令）</span><br>apt-get remove &lt;PackageName&gt;　　<span class="hljs-comment"># 卸载某个包</span><br></code></pre></td></tr></table></figure><br>在update过后， apt会把所有更新到的包信息放到缓存里面， 如果想要从最新的包信息中搜寻某个特定的包可以执行:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">apt-cache search &lt;PackageName&gt;<br></code></pre></td></tr></table></figure><br>这条命令用的还是模糊搜索， 可以帮助你寻找想要装的包名到底叫什么。由于一般人记的肯定是命令名而不是包名， 所以下面给出的是一些命令和它们所在包的名字。如果想用这些命令就<code>apt-get install</code>安装这些包吧:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Tools Name</th>
+<th>Package Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ifconfig, netstat, route</td>
+<td>network-cmds</td>
+</tr>
+<tr>
+<td>curl</td>
+<td>curl</td>
+</tr>
+<tr>
+<td>top</td>
+<td>top</td>
+</tr>
+<tr>
+<td>wget</td>
+<td>wget</td>
+</tr>
+<tr>
+<td>finger,last,ps</td>
+<td>adv-cmds</td>
+</tr>
+<tr>
+<td>vim</td>
+<td>vim</td>
+</tr>
+<tr>
+<td>locate</td>
+<td>mlocate</td>
+</tr>
+<tr>
+<td>lrz,lsz (命令名和 linux上 略有出入， linux 上是直接 rz， sz， 这里多个 l )</td>
+<td>org.thebigboss.lrzsz</td>
+</tr>
+<tr>
+<td>gcc</td>
+<td>iphon-gcc</td>
+</tr>
+<tr>
+<td>less</td>
+<td>less</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>这里稍微提醒一句， 如果通过SSH经电脑连入手机操作， 虽然是在电脑上打命令， 不过网络走的还是手机的路， 所以要注意手机别开 4G 跑流量了。。。<br>另外装了一个新包之后不知道有什么用或者怎么用时可以到手机端 Cydia—已安装—&lt;包名&gt; 里面， 划到最下面的文件系统内容中， 看这个包具体安装了的哪些文件， 有什么文件被安装到了<code>/usr/bin</code>这种目录下， 那个文件自然就是一个命令了。</p>
+<h1 id="一些酷酷的事情"><a href="#一些酷酷的事情" class="headerlink" title="一些酷酷的事情"></a>一些酷酷的事情</h1><p>上面装的一些东西都是管理机器必须的， 实用的工具。还有一些比较花哨， 适合用于装逼的工具。比如下面: </p>
+<h2 id="远程打开程序"><a href="#远程打开程序" class="headerlink" title="远程打开程序"></a>远程打开程序</h2><p>bigboss源上有个叫做 open(com.conadkramer.open) 的插件， 装上之后可以在 SSH 里输入<code>open &lt;APPID&gt;</code>命令来远程让手机打开一个 APP。APPID 是每个 APP 目录下的 plist.xml 文件中记录的<code>CFBundleIdent.fier</code>的值， 比如 safari 的话就是 com.Apple.mobilesafari ， 系统自带的音乐的话就是 com.Apple.Music。</p>
+<h2 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h2><p><code>netstat -ntlp</code>在这个系统里不管用， 要用只能用<code>netstat -an</code>。而<code>-p</code>在这里的 netstat 是 protocol 的意思。所以你可以<code>netstat -ntlp TCP</code>来显示所有 TCP 连接的情况。</p>
+<h2 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h2><p>Cydia 中搜索一下 Python， 似乎可以找到一个 python2.5.1 版本的包， 虽然老了点， 但是勉强凑合可以用。至于用源码进行安装我没有试过， 估计也可以吧。装上 python 之后就可以更加剧烈地折腾手机了。比方说为了安全性考虑， 我的手机平时都是关闭 22 端口的， 想要开启的时候再开。于是就写了一个 python 脚本， 做成命令来手动开关 22 端口的访问。</p>
+<h2 id="启停服务"><a href="#启停服务" class="headerlink" title="启停服务"></a>启停服务</h2><p>其实上面说的那个 python 脚本就是调用了启停服务的命令。在<code>/System/Library/LaunchDaemons</code>和<code>/System/Library/LaunchAgents</code>下面有很多跟服务相关的 plist 文件。<code>LaunchDaemons</code>指系统启动时自动启动的程序， 而<code>LaunchAgents</code>中存放的是针对某个用户登录时自动启动的程序的配置。<br>想要启动或停止一个服务， 可以这么操作: 　　<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">launchctl load/unload -w &lt;plist的路径&gt;<br></code></pre></td></tr></table></figure><br>因为指定了 plist 文件的路径， 所以 plist 文件未必一定要在那两个指定目录下， 完全可以拷贝出来然后自己手动指定它的路径以启动。</p>
+<h2 id="查看服务状态"><a href="#查看服务状态" class="headerlink" title="查看服务状态"></a>查看服务状态</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">launchctl list | grep ssh <span class="hljs-comment"># 查看ssh的服务开启状态</span><br></code></pre></td></tr></table></figure>
+<h2 id="媒体和-APP-文件的位置-系统版本比较老，-估计新版本系统已经有变化了"><a href="#媒体和-APP-文件的位置-系统版本比较老，-估计新版本系统已经有变化了" class="headerlink" title="媒体和 APP 文件的位置(系统版本比较老， 估计新版本系统已经有变化了)"></a>媒体和 APP 文件的位置(系统版本比较老， 估计新版本系统已经有变化了)</h2><p>自带播放器的音乐和视频文件都放在<code>/private/var/mobile/Media/ITunes_Control</code>里面， 但是文件名是被点窜过的， 要用一定的手段来定位寻找特定的文件。（比如看大小， 看修改日期， MP3 文件的话还可以解析其标签来判断是什么歌等等）<br>用户的 APP 的文件基本上都放在<code>/private/var/mobile/Container/Data/Application/&lt;一个被点窜过的目录名&gt;</code>。因为目录名是一串没有规律的， 很难定位哪个目录对应哪个 APP。办法还是有的， 比如可以通过脚本把每个目录的大小算出来， 然后比较一下手机里的信息。还有定位特定的文件等等， 方法就靠灵活自己想了 。</p>
+<h1 id="如何通过-usb-直接连系统后台"><a href="#如何通过-usb-直接连系统后台" class="headerlink" title="如何通过 usb 直接连系统后台"></a>如何通过 usb 直接连系统后台</h1><p>上面连接进 iOS 系统都是通过了 WIFI 这个媒介。虽然方便一些， 但是存在速度稍慢， 安全性有疑问等问题。其实我们可以通过一些手段通过 USB 来模拟 SSH 连接， 这样通过一条数据线， 即使没有WIFI也可以做到连接系统了。<br>做法是首先确保系统中有合适的驱动。Mac 之类的机器就不用说了肯定是有的， 像没有装 itunes 的 windows 机器的话可以下载安装<code>AppleApplicationSupport</code>和<code>AppleMobileDeviceSupport</code>这两个驱动程序， 只要有这两个就行， 也不用安装整个庞大的 itunes了。<br>然后， 我们下载一个名叫<em>usbmxud</em>的工具。这个百度一下就能下载到了， 然后在命令行运行一下这个工具中的一个脚本:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">python &lt;usbmuxd目录&gt;/python-client/tcprelay.py -t 22:10022<br></code></pre></td></tr></table></figure><br>然后这个程序就会在 PC 端开启本地的 10022 端口， 并把这个端口映射到 iOS 端的 22 端口。只要 iOS 开了 22 端口， 就可以在本地通过工具 ssh 连接 10022 端口就可以了。<br>同理， 不仅限于 22 端口， 其他任何 iOS 上的端口都可以进行映射。非常好用。</p>
+<h1 id="iOS上一些重要文件的位置等"><a href="#iOS上一些重要文件的位置等" class="headerlink" title="iOS上一些重要文件的位置等"></a>iOS上一些重要文件的位置等</h1><p>这位大神的博客还挺有参考价值的。<br><a href="http://www.cnblogs.com/ygm900/category/538781.html">http://www.cnblogs.com/ygm900/category/538781.html</a></p>
+<blockquote>
+<p>短信数据库的存放位置在ios的: //private/var/mobile/Library/SMS/sms.db<br>联系人数据库存放的位置在ios的: //private/var/mobile/Library/AddressBook/AddressBook.sqlitedb<br>联系人的头像估计存放在这里: //private/var/mobile/Library/AddressBook/AddressBookImages.sqlitedb<br>通话记录数据库的存放路径是: //private/var/wireless/Library/CallHistory/call_history.db<br>备忘录数据库的存放路径是: //private/var/mobile/Library/Notes/notes.sqlite<br>safira 浏览器的收藏夹数据库存放路径是: //private/var/mobile/Library/Safari/Bookmarks.db<br>日历数据库的存放路径是: //private/var/mobile/Library/Calendar/Calendar.sqlitedb</p>
+</blockquote>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>设备及使用</category>
+      </categories>
+      <tags>
+        <tag>iPhone</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>中国历史顺序表</title>
+    <url>/2024/08/22/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E9%A1%BA%E5%BA%8F%E8%A1%A8/</url>
+    <content><![CDATA[<h1 id="中国历史顺序表"><a href="#中国历史顺序表" class="headerlink" title="中国历史顺序表"></a>中国历史顺序表</h1><h2 id="原始社会-170万年前-公元前21世纪"><a href="#原始社会-170万年前-公元前21世纪" class="headerlink" title="原始社会(170万年前~公元前21世纪)"></a>原始社会(170万年前~公元前21世纪)</h2><h3 id="旧石器时代-约170万年前-1万年前"><a href="#旧石器时代-约170万年前-1万年前" class="headerlink" title="旧石器时代(约170万年前~1万年前)"></a>旧石器时代(约170万年前~1万年前)</h3><ul>
+<li>约 170 万年前，元谋人生活在云南元谋一带</li>
+<li>约 80 万年前，蓝田人生活在山西蓝田一带</li>
+<li>约 70~20 万年前，北京人生活在北京周口店一带</li>
+<li>约 3 万年前，山顶洞人生活在北京周口店一带<span id="more"></span>
+<h3 id="新石器时代-1万年前-4千年前"><a href="#新石器时代-1万年前-4千年前" class="headerlink" title="新石器时代(1万年前~4千年前)"></a>新石器时代(1万年前~4千年前)</h3></li>
+<li>约 7000~5000 年前，河姆渡、半坡母系氏族公社</li>
+<li>约 5000~4000 年前，大汶口文化中晚期—父系氏族公社<h3 id="三皇五帝"><a href="#三皇五帝" class="headerlink" title="三皇五帝"></a>三皇五帝</h3>三皇五帝已不可考，众说纷纭。<br>三皇:天皇、地皇、人皇<blockquote>
+<blockquote>
+<p>燧人、伏羲、神农 — 出自《尚书大传》<br>伏羲、女娲、神农 — 出自《春秋运斗枢》<br>伏羲、祝融、黄帝 — 出自《风俗通义》<br>伏羲　神农、黄帝 — 出自《三字经》<br>有巢氏、燧人氏 — 出自《庄子》、《纲鉴易知录》<br>五帝:东方青帝灵威仰、南方赤帝赤熛怒、中央黄帝含枢纽、西方白帝白招拒、北方黑帝汁光纪<br>太昊、炎帝、黄帝、少昊、颛顼 — 出自《吕氏春秋》<br>黄帝、颛顼、帝喾、尧、舜 — 出自《史记》《大戴礼记》<br>黄帝、少昊、颛顼、帝喾、尧 — 出自《资治通鉴外纪》</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h2 id="奴隶社会-公元前2070年-公元前476年"><a href="#奴隶社会-公元前2070年-公元前476年" class="headerlink" title="奴隶社会(公元前2070年~公元前476年)"></a>奴隶社会(公元前2070年~公元前476年)</h2><ul>
+<li>夏: 公元前 2070 年 ~ 公元前 1600 年，禹之子启建夏，世袭取代禅让</li>
+<li>商: 公元前 1601 年 ~ 公元前 1046 年，商汤灭夏，商朝建立</li>
+<li>西周: 公元前 1046 年 ~ 公元前 771 年，周武王灭商，西周开始</li>
+<li>东周: 公元前 770 年 ~ 公元前 476 年，俗称东周列国，分为前期和后期。<ul>
+<li>东周前期俗称春秋时期，公元前 770 年 ~ 公元前 476 年，春秋时期诸侯争相称霸；</li>
+<li>东周后期俗称战国时期，公元前 475 年 ~ 公元前 221 年。中国社会有奴隶制进入封建社会，出现战国七雄。<h2 id="封建社会-公元前475年-公元1840年"><a href="#封建社会-公元前475年-公元1840年" class="headerlink" title="封建社会(公元前475年~公元1840年)"></a>封建社会(公元前475年~公元1840年)</h2></li>
+</ul>
+</li>
+<li>秦: 公元前 221 年 ~ 公元前 206 年，秦于战国七雄中崛起吞并六国，首建集权制帝国。</li>
+<li>汉: 公元前 206 年 ~ 公元 220 年<ul>
+<li>西汉: 公元前 206 年 ~ 公元 8 年，刘邦垓下之战灭项羽，称帝与长安。</li>
+<li>新莽: 公元 9 年 ~ 公元 25 年，公元 8 年底，王莽篡位称帝，改国号为”新”。</li>
+<li>东汉: 公元 25 年 ~ 公元 220 年，刘秀灭王莽，夺回政权，建都洛阳。</li>
+</ul>
+</li>
+<li>三国: 公元 220 年 ~ 公元 280 年，东汉后期，曹操挟天子以令诸侯，出现三国鼎立。</li>
+<li>西晋: 公元 266 年 ~ 公元 316年</li>
+<li>东晋: 公元 317 年 ~ 公元 420 年</li>
+<li>南北朝: 公元 420 年 ~ 公元 589 年</li>
+<li>隋: 公元 581 年 ~ 公元 618 年</li>
+<li>唐: 公元 618 年 ~ 公元 907 年</li>
+<li>五代十国:<ul>
+<li>五代: 公元 907 年 ~ 公元 960 年</li>
+<li>十国: 公元 902 年 ~ 公元 979 年</li>
+</ul>
+</li>
+<li>北宋: 公元 960 年 ~ 1127 年</li>
+<li>南宋: 1127 年 ~ 1276 年</li>
+<li>元: 1271 年 ~ 1368 年</li>
+<li>明: 1368 年 ~ 1644 年</li>
+<li>清: 1636 年 ~ 1911 年<h2 id="近代史"><a href="#近代史" class="headerlink" title="近代史"></a>近代史</h2>近代史从 1840 年鸦片战争开始。</li>
+<li>民国: 1912 年 ~ 1949 年，中华民国成立。<h2 id="现代史"><a href="#现代史" class="headerlink" title="现代史"></a>现代史</h2>现代史从 1949 年中华人民共和国成立开始。</li>
+<li>中华人民共和国: 1949 年 ~ 至今</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>※※<br>三皇五帝始，尧舜禹相传。夏商与西周，东周分两段。春秋和战国，一统秦两汉。<br>三分魏蜀吴，二晋前后延。南北朝并立，隋唐五代传。宋元明清后，皇朝至此完。</p>
+</blockquote>
+</blockquote>
+<h1 id="中国历史大事纪"><a href="#中国历史大事纪" class="headerlink" title="中国历史大事纪"></a>中国历史大事纪</h1><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>杂学</category>
+        <category>历史</category>
+      </categories>
+  </entry>
+  <entry>
     <title>【转】PassWall2配置</title>
     <url>/2025/02/17/%E3%80%90%E8%BD%AC%E3%80%91PassWall2%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p>PassWall2 能够给我们带来什么？</p>
@@ -1565,6 +1709,46 @@
       </categories>
       <tags>
         <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用PS软件进行一寸证件照片打印排版</title>
+    <url>/2024/08/17/%E4%BD%BF%E7%94%A8PS%E8%BD%AF%E4%BB%B6%E8%BF%9B%E8%A1%8C%E4%B8%80%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7%E7%89%87%E6%89%93%E5%8D%B0%E6%8E%92%E7%89%88/</url>
+    <content><![CDATA[<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>系统: Windows 11<br>软件: Adobe Photoshop 24.5.0 版<br><span id="more"></span></p>
+<h1 id="打开要排版的照片"><a href="#打开要排版的照片" class="headerlink" title="打开要排版的照片"></a>打开要排版的照片</h1><p>用 PS 软件打开要排版的照片。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002004.png" alt="20240817002004"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002207.png" alt="20240817002207"></p>
+<h1 id="制作一寸证件照图案"><a href="#制作一寸证件照图案" class="headerlink" title="制作一寸证件照图案"></a>制作一寸证件照图案</h1><h2 id="设置画布给照片周围加上一圈白边"><a href="#设置画布给照片周围加上一圈白边" class="headerlink" title="设置画布给照片周围加上一圈白边"></a>设置画布给照片周围加上一圈白边</h2><p>图像 =&gt; 画布大小<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002639.png" alt="20240817002639"><br>勾选相对，宽度和高度设置为 0.1 厘米，可根据实际情况调整，颜色选择白色，点击确定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002909.png" alt="20240817002909"></p>
+<h2 id="裁剪图片"><a href="#裁剪图片" class="headerlink" title="裁剪图片"></a>裁剪图片</h2><p>图像 =&gt; 图像大小<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003221.png" alt="20240817003221"><br>勾选重新采样，一寸照片的宽度为 2.6 厘米，高度为 3.6 厘米，分辨率填写 300 像素/英寸。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003523.png" alt="20240817003523"><br>这样，照片就变为一寸大小了。</p>
+<h2 id="定义图案"><a href="#定义图案" class="headerlink" title="定义图案"></a>定义图案</h2><p>编辑 =&gt; 定义图案<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003819.png" alt="20240817003819"><br>图案名称根据自己需要填写，点击确定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003856.png" alt="20240817003856"><br>这样，图案就被定义并存在 PS 软件内备用了。</p>
+<h1 id="制作画布"><a href="#制作画布" class="headerlink" title="制作画布"></a>制作画布</h1><p>文件 =&gt; 新建(画布)<br>主要填写图中框出的三个数值，即宽度、高度和分辨率。<br>如果要排版 3x3 的画布: 宽度 = 2.6厘米 x 3 = 7.8厘米；高度 = 3.6厘米 x 3 = 10.8厘米；分辨率填 300 像素/英寸。<br>如果要排版 4x2 的画布: 宽度 = 2.6厘米 x 4 = 10.4厘米；高度 = 3.6厘米 x 2 =7.2厘米；分辨率填 300 像素/英寸。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817004230.png" alt="20240817004230"><br>点击创建，画布就创建好了，下图为 3x3 画布。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817004638.png" alt="20240817004638"></p>
+<h1 id="将照片嵌入画布"><a href="#将照片嵌入画布" class="headerlink" title="将照片嵌入画布"></a>将照片嵌入画布</h1><p>如上图，点击右下角中间位置的圆圈图标”创建新的填充或调整图层”，然后点击”图案”。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005017.png" alt="20240817005017"><br>选择刚刚定义好的图案，一般会在最后一个。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005110.png" alt="20240817005110"><br>点击”确定”，这样排版就制作好了。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005413.png" alt="20240817005413"></p>
+<h1 id="导出照片"><a href="#导出照片" class="headerlink" title="导出照片"></a>导出照片</h1><p>文件 =&gt; 导出 =&gt; 导出为<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005454.png" alt="20240817005454"><br>这里基本上没有什么需要设置的，点击”导出”，选择希望保存的位置和文件名即可。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>图片处理</category>
+      </categories>
+      <tags>
+        <tag>Adobe</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用curl命令行工具查询本地公网IP地址</title>
+    <url>/2024/02/04/%E4%BD%BF%E7%94%A8curl%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E6%9F%A5%E8%AF%A2%E6%9C%AC%E5%9C%B0%E5%85%AC%E7%BD%91IP%E5%9C%B0%E5%9D%80/</url>
+    <content><![CDATA[<p>在 Linux 中 curl 是一个利用 URL 规则在命令行下工作的文件传输工具，同时也可以查询本机公网 IP 地址，具体使用方法如下:<br><span id="more"></span></p>
+<ol>
+<li>使用<code>curl ipinfo.io</code>查询:<br><pre>curl ipinfo.io</pre><br>返回值<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"> [root@MiWiFi-R3D-srv ~]<span class="hljs-comment"># curl ipinfo.io</span><br>&#123;<br> <span class="hljs-string">&quot;ip&quot;</span>: <span class="hljs-string">&quot;1.203.179.218&quot;</span>,// 此处是本机公网ip地址<br> <span class="hljs-string">&quot;city&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,// 城市名<br> <span class="hljs-string">&quot;region&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,// 区域名<br> <span class="hljs-string">&quot;country&quot;</span>: <span class="hljs-string">&quot;CN&quot;</span>,// 国家代号<br> <span class="hljs-string">&quot;loc&quot;</span>: <span class="hljs-string">&quot;39.9075,116.3972&quot;</span>,// 经纬度坐标<br> <span class="hljs-string">&quot;org&quot;</span>: <span class="hljs-string">&quot;AS4847 China Networks Inter-Exchange&quot;</span>,// 运营商信息<br> <span class="hljs-string">&quot;timezone&quot;</span>: <span class="hljs-string">&quot;Asia/Shanghai&quot;</span>,// 时区<br> <span class="hljs-string">&quot;readme&quot;</span>: <span class="hljs-string">&quot;https://ipinfo.io/missingauth&quot;</span>//提示ipinfo.io官网地址<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>使用<code>curl ifconfig.me</code>查询<br><pre>curl ifconfig.me</pre><br>返回值<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@MiWiFi-R3D-srv ~]<span class="hljs-comment"># curl ifconfig.me</span><br>1.203.179.218 //只显示本机公网IP地址<br>[root@MiWiFi-R3D-srv ~]<span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure></li>
+<li>使用<code>ipinfo.io</code>加<code>ip</code>地址，可查血这个 ip 的信息<br><pre>curl ipinfo.io/192.168.32.84</pre><br>返回值<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"> [root@MiWiFi-R3D-srv ~]<span class="hljs-comment"># curl  ipinfo.io/103.208.15.138</span><br>&#123;<br> <span class="hljs-string">&quot;ip&quot;</span>: <span class="hljs-string">&quot;103.208.15.138&quot;</span>,//被查询的IP地址<br> <span class="hljs-string">&quot;city&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,//所属城市<br> <span class="hljs-string">&quot;region&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,//所属区域<br> <span class="hljs-string">&quot;country&quot;</span>: <span class="hljs-string">&quot;CN&quot;</span>,//国家代码<br> <span class="hljs-string">&quot;loc&quot;</span>: <span class="hljs-string">&quot;39.9075,116.3972&quot;</span>,//经纬度坐标<br> <span class="hljs-string">&quot;org&quot;</span>: <span class="hljs-string">&quot;AS9808 China Mobile Communications Group Co., Ltd.&quot;</span>,//运营商信息<br> <span class="hljs-string">&quot;timezone&quot;</span>: <span class="hljs-string">&quot;Asia/Shanghai&quot;</span>,//时区<br> <span class="hljs-string">&quot;readme&quot;</span>: <span class="hljs-string">&quot;https://ipinfo.io/missingauth&quot;</span>//ipinfo.io官网地址<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>此命令在 Windows 的命令提示符中也可以使用<br>使用方法如下:<figure class="highlight cmd"><table><tr><td class="code"><pre><code class="hljs cmd"><span class="hljs-function"> C:\<span class="hljs-title">Users</span>\<span class="hljs-title">User</span>&gt;<span class="hljs-title">curl</span> <span class="hljs-title">ipinfo.io</span></span><br><span class="hljs-function">&#123;</span><br><span class="hljs-function"> &quot;<span class="hljs-title">ip</span>&quot;: &quot;1.203.179.218&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">city</span>&quot;: &quot;<span class="hljs-title">Beijing</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">region</span>&quot;: &quot;<span class="hljs-title">Beijing</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">country</span>&quot;: &quot;<span class="hljs-title">CN</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">loc</span>&quot;: &quot;39.9075,116.3972&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">org</span>&quot;: &quot;<span class="hljs-title">AS4847</span> <span class="hljs-title">China</span> <span class="hljs-title">Networks</span> <span class="hljs-title">Inter</span>-<span class="hljs-title">Exchange</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">timezone</span>&quot;: &quot;<span class="hljs-title">Asia</span>/<span class="hljs-title">Shanghai</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">readme</span>&quot;: &quot;<span class="hljs-title">https</span>://<span class="hljs-title">ipinfo.io</span>/<span class="hljs-title">missingauth</span>&quot;</span><br><span class="hljs-function">&#125;</span><br></code></pre></td></tr></table></figure></li>
+<li>最简单的是使用 <a href="https://ip138.com/">https://ip138.com/</a> 网址进行本机公网IP地址查询<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240204101450.png" alt="20240204101450"></li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>网络服务</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -3112,190 +3296,6 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </tags>
   </entry>
   <entry>
-    <title>【转】越狱后玩耍IPhone系统(Darwin)</title>
-    <url>/2024/03/27/%E3%80%90%E8%BD%AC%E3%80%91%E8%B6%8A%E7%8B%B1%E5%90%8E%E7%8E%A9%E8%80%8DIPhone%E7%B3%BB%E7%BB%9F(Darwin)/</url>
-    <content><![CDATA[<p>无意中找到一个介绍越狱后iOS的说明， 受益匪浅， 转一下:<a href="https://www.cnblogs.com/franknihao/p/7360695.html">【Darwin】 越狱后玩耍IPhone系统</a><br><span id="more"></span><br>大家都知道 iOS 是自 Mac OS 修改而来的。而 Mac OS 和 iOS 的共同核心是 Darwin, 其基于 FreeBSD 发展而来, 整体而言也是个类Unix系统。之前把自己的手机越狱之后正好开始接触 Linux 这类 OS， 然后觉得很有意思就去网上找了些资料来自己玩自己的手机， 也做了一些笔记。说来惭愧， 当时手机系统版本还是 8.3。而后来也因为没什么时间加上这部分笔记维护在另外一个笔记本上， 导致一直没有时间记录下来【捂脸】。本来想等 10.3 的越狱出来， 把Pad越狱之后再来详细研究的， 无奈 10.3 越狱也迟迟不出， 不得已， 只好现在来记录一下了。。<br>没有什么干货的技术知识， 全部都是一点个人的爱折腾手机的小兴趣， 系统版本又老。。嗯就这样吧。</p>
-<h1 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h1><p>IPhone 越狱后， 第一标志当然就是在桌面上看到了 Cydia。作为折腾手机的第一步， 当然是要让手机有本地命令行来装逼了。如果没记错的话， 几年前越狱的时候还是会附带一个命令行工具的， 现在好像必须得自己下载安装了。进入 Cydia， 搜索安装 MTerminal 这个命令行工具。其他也有一些命令行工具比如 mobileTerminal 什么的， 不过那些好像都已经过时了， 新系统们都打不开。打开 MTerminal 默认用户是 mobile， 退出时自动也会退出这个用户， 不用担心用户进程会留存在机器上。还有一点比较有意思的是 MTerminal 的非键盘区域， 点击靠上下左右的边部区域就像是键盘上按上下左右方向键， 所以可以进行退格和重复上条命令等操作。至于 Tab 键自动补全命令什么的操作至今还未发现。。<br>有了命令行， 但是在手机上敲命令太蛋疼了， 我们最好能通过电脑连入手机， 这样方便多了。第一个想到的当然是通过 SSH。在 Cydia 安装 openSSH， 之后就可以通过 22 端口远程连接手机了。一般可以直接用 root 用户连入手机， 进入之后的第一件事<br><strong>千万要记得改root账户的密码， 所有越狱后的IPhone手机root用户的默认密码都是一样的！！！都是 alpine ！不马上改掉， 那随便什么人都可以直接连入你的 IPhone， 你就没有任何安全可言了。</strong><br>改完密码之后， 就可以对字符界面的 iOS 做一些改造让它看起来更像是一台服务器了。</p>
-<h1 id="适当改造"><a href="#适当改造" class="headerlink" title="适当改造"></a>适当改造</h1><p>首先可以在<code>/etc/profile</code>中加上对环境变量 PS1 的定义， 这个变量决定的是字符提示行的样式。这个文件是什么作用在 Linux 笔记中说过了， 就不说了， 样式可以选择<code>[\u@\h \W]\$</code>这款。在文件中加上<code>export PS1=&#39;[\u@\h \W]\$&#39;</code>即可。<br>默认的<code>ls</code>命令出来的文件没有任何颜色特效， 看起来很累。可以加上<code>LS_COLORS</code>这个环境变量， 至于具体的值怎么写可以参见已经配置好的 CentOS 系统等等， 我这里给出一个参考:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> LS_COLORS=<span class="hljs-string">&#x27;no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=01;32:*.cmd=01;35:*.exe=01;35:*.com=01;35:*.btm=01;35:*.bat=01;35:*.sh=01;35:*.csh=01;35:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tz=01;31:*.rpm=01;31:*.cpio=01;31:*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.xbm=01;35:*.xpm=01;35:*.png=01;35:*.tif=01;35:&#x27;</span><br></code></pre></td></tr></table></figure><br>在设置好了配置文件之后<code>source</code>之以生效， 至于<code>ls</code>的颜色， 如果还是没有效果记得看一下<code>ls</code>有没有默认<code>alias ls=&#39;ls --color&#39;</code>， 必须带上<code>color</code>参数<code>ls</code>才会显色。<br>忘记了系统是否自带了 vim 程序， 应该是没有， 那就需要安装。vim 的样式文件 vimrc 不放在<code>/etc/vimrc</code>， 而是放到<code>/usr/share/vim/</code>目录下面去。</p>
-<h1 id="常用工具安装"><a href="#常用工具安装" class="headerlink" title="常用工具安装"></a>常用工具安装</h1><p>在 CentOS 上习惯了用<code>yum</code>安装包， 但是这里没有<code>yum</code>， 只有<code>apt-get</code>。用法是类似的:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">apt-get install &lt;PackageName&gt;　　<span class="hljs-comment"># 安装某个包</span><br>apt-get update　　<span class="hljs-comment"># 更新 apt 源（是不是有点眼熟， 其实估计 Cydi 里面的更新源就是运行了下这个命令）</span><br>apt-get remove &lt;PackageName&gt;　　<span class="hljs-comment"># 卸载某个包</span><br></code></pre></td></tr></table></figure><br>在update过后， apt会把所有更新到的包信息放到缓存里面， 如果想要从最新的包信息中搜寻某个特定的包可以执行:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">apt-cache search &lt;PackageName&gt;<br></code></pre></td></tr></table></figure><br>这条命令用的还是模糊搜索， 可以帮助你寻找想要装的包名到底叫什么。由于一般人记的肯定是命令名而不是包名， 所以下面给出的是一些命令和它们所在包的名字。如果想用这些命令就<code>apt-get install</code>安装这些包吧:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Tools Name</th>
-<th>Package Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ifconfig, netstat, route</td>
-<td>network-cmds</td>
-</tr>
-<tr>
-<td>curl</td>
-<td>curl</td>
-</tr>
-<tr>
-<td>top</td>
-<td>top</td>
-</tr>
-<tr>
-<td>wget</td>
-<td>wget</td>
-</tr>
-<tr>
-<td>finger,last,ps</td>
-<td>adv-cmds</td>
-</tr>
-<tr>
-<td>vim</td>
-<td>vim</td>
-</tr>
-<tr>
-<td>locate</td>
-<td>mlocate</td>
-</tr>
-<tr>
-<td>lrz,lsz (命令名和 linux上 略有出入， linux 上是直接 rz， sz， 这里多个 l )</td>
-<td>org.thebigboss.lrzsz</td>
-</tr>
-<tr>
-<td>gcc</td>
-<td>iphon-gcc</td>
-</tr>
-<tr>
-<td>less</td>
-<td>less</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>这里稍微提醒一句， 如果通过SSH经电脑连入手机操作， 虽然是在电脑上打命令， 不过网络走的还是手机的路， 所以要注意手机别开 4G 跑流量了。。。<br>另外装了一个新包之后不知道有什么用或者怎么用时可以到手机端 Cydia—已安装—&lt;包名&gt; 里面， 划到最下面的文件系统内容中， 看这个包具体安装了的哪些文件， 有什么文件被安装到了<code>/usr/bin</code>这种目录下， 那个文件自然就是一个命令了。</p>
-<h1 id="一些酷酷的事情"><a href="#一些酷酷的事情" class="headerlink" title="一些酷酷的事情"></a>一些酷酷的事情</h1><p>上面装的一些东西都是管理机器必须的， 实用的工具。还有一些比较花哨， 适合用于装逼的工具。比如下面: </p>
-<h2 id="远程打开程序"><a href="#远程打开程序" class="headerlink" title="远程打开程序"></a>远程打开程序</h2><p>bigboss源上有个叫做 open(com.conadkramer.open) 的插件， 装上之后可以在 SSH 里输入<code>open &lt;APPID&gt;</code>命令来远程让手机打开一个 APP。APPID 是每个 APP 目录下的 plist.xml 文件中记录的<code>CFBundleIdent.fier</code>的值， 比如 safari 的话就是 com.Apple.mobilesafari ， 系统自带的音乐的话就是 com.Apple.Music。</p>
-<h2 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h2><p><code>netstat -ntlp</code>在这个系统里不管用， 要用只能用<code>netstat -an</code>。而<code>-p</code>在这里的 netstat 是 protocol 的意思。所以你可以<code>netstat -ntlp TCP</code>来显示所有 TCP 连接的情况。</p>
-<h2 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h2><p>Cydia 中搜索一下 Python， 似乎可以找到一个 python2.5.1 版本的包， 虽然老了点， 但是勉强凑合可以用。至于用源码进行安装我没有试过， 估计也可以吧。装上 python 之后就可以更加剧烈地折腾手机了。比方说为了安全性考虑， 我的手机平时都是关闭 22 端口的， 想要开启的时候再开。于是就写了一个 python 脚本， 做成命令来手动开关 22 端口的访问。</p>
-<h2 id="启停服务"><a href="#启停服务" class="headerlink" title="启停服务"></a>启停服务</h2><p>其实上面说的那个 python 脚本就是调用了启停服务的命令。在<code>/System/Library/LaunchDaemons</code>和<code>/System/Library/LaunchAgents</code>下面有很多跟服务相关的 plist 文件。<code>LaunchDaemons</code>指系统启动时自动启动的程序， 而<code>LaunchAgents</code>中存放的是针对某个用户登录时自动启动的程序的配置。<br>想要启动或停止一个服务， 可以这么操作: 　　<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">launchctl load/unload -w &lt;plist的路径&gt;<br></code></pre></td></tr></table></figure><br>因为指定了 plist 文件的路径， 所以 plist 文件未必一定要在那两个指定目录下， 完全可以拷贝出来然后自己手动指定它的路径以启动。</p>
-<h2 id="查看服务状态"><a href="#查看服务状态" class="headerlink" title="查看服务状态"></a>查看服务状态</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">launchctl list | grep ssh <span class="hljs-comment"># 查看ssh的服务开启状态</span><br></code></pre></td></tr></table></figure>
-<h2 id="媒体和-APP-文件的位置-系统版本比较老，-估计新版本系统已经有变化了"><a href="#媒体和-APP-文件的位置-系统版本比较老，-估计新版本系统已经有变化了" class="headerlink" title="媒体和 APP 文件的位置(系统版本比较老， 估计新版本系统已经有变化了)"></a>媒体和 APP 文件的位置(系统版本比较老， 估计新版本系统已经有变化了)</h2><p>自带播放器的音乐和视频文件都放在<code>/private/var/mobile/Media/ITunes_Control</code>里面， 但是文件名是被点窜过的， 要用一定的手段来定位寻找特定的文件。（比如看大小， 看修改日期， MP3 文件的话还可以解析其标签来判断是什么歌等等）<br>用户的 APP 的文件基本上都放在<code>/private/var/mobile/Container/Data/Application/&lt;一个被点窜过的目录名&gt;</code>。因为目录名是一串没有规律的， 很难定位哪个目录对应哪个 APP。办法还是有的， 比如可以通过脚本把每个目录的大小算出来， 然后比较一下手机里的信息。还有定位特定的文件等等， 方法就靠灵活自己想了 。</p>
-<h1 id="如何通过-usb-直接连系统后台"><a href="#如何通过-usb-直接连系统后台" class="headerlink" title="如何通过 usb 直接连系统后台"></a>如何通过 usb 直接连系统后台</h1><p>上面连接进 iOS 系统都是通过了 WIFI 这个媒介。虽然方便一些， 但是存在速度稍慢， 安全性有疑问等问题。其实我们可以通过一些手段通过 USB 来模拟 SSH 连接， 这样通过一条数据线， 即使没有WIFI也可以做到连接系统了。<br>做法是首先确保系统中有合适的驱动。Mac 之类的机器就不用说了肯定是有的， 像没有装 itunes 的 windows 机器的话可以下载安装<code>AppleApplicationSupport</code>和<code>AppleMobileDeviceSupport</code>这两个驱动程序， 只要有这两个就行， 也不用安装整个庞大的 itunes了。<br>然后， 我们下载一个名叫<em>usbmxud</em>的工具。这个百度一下就能下载到了， 然后在命令行运行一下这个工具中的一个脚本:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">python &lt;usbmuxd目录&gt;/python-client/tcprelay.py -t 22:10022<br></code></pre></td></tr></table></figure><br>然后这个程序就会在 PC 端开启本地的 10022 端口， 并把这个端口映射到 iOS 端的 22 端口。只要 iOS 开了 22 端口， 就可以在本地通过工具 ssh 连接 10022 端口就可以了。<br>同理， 不仅限于 22 端口， 其他任何 iOS 上的端口都可以进行映射。非常好用。</p>
-<h1 id="iOS上一些重要文件的位置等"><a href="#iOS上一些重要文件的位置等" class="headerlink" title="iOS上一些重要文件的位置等"></a>iOS上一些重要文件的位置等</h1><p>这位大神的博客还挺有参考价值的。<br><a href="http://www.cnblogs.com/ygm900/category/538781.html">http://www.cnblogs.com/ygm900/category/538781.html</a></p>
-<blockquote>
-<p>短信数据库的存放位置在ios的: //private/var/mobile/Library/SMS/sms.db<br>联系人数据库存放的位置在ios的: //private/var/mobile/Library/AddressBook/AddressBook.sqlitedb<br>联系人的头像估计存放在这里: //private/var/mobile/Library/AddressBook/AddressBookImages.sqlitedb<br>通话记录数据库的存放路径是: //private/var/wireless/Library/CallHistory/call_history.db<br>备忘录数据库的存放路径是: //private/var/mobile/Library/Notes/notes.sqlite<br>safira 浏览器的收藏夹数据库存放路径是: //private/var/mobile/Library/Safari/Bookmarks.db<br>日历数据库的存放路径是: //private/var/mobile/Library/Calendar/Calendar.sqlitedb</p>
-</blockquote>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>设备及使用</category>
-      </categories>
-      <tags>
-        <tag>iPhone</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>中国历史顺序表</title>
-    <url>/2024/08/22/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E9%A1%BA%E5%BA%8F%E8%A1%A8/</url>
-    <content><![CDATA[<h1 id="中国历史顺序表"><a href="#中国历史顺序表" class="headerlink" title="中国历史顺序表"></a>中国历史顺序表</h1><h2 id="原始社会-170万年前-公元前21世纪"><a href="#原始社会-170万年前-公元前21世纪" class="headerlink" title="原始社会(170万年前~公元前21世纪)"></a>原始社会(170万年前~公元前21世纪)</h2><h3 id="旧石器时代-约170万年前-1万年前"><a href="#旧石器时代-约170万年前-1万年前" class="headerlink" title="旧石器时代(约170万年前~1万年前)"></a>旧石器时代(约170万年前~1万年前)</h3><ul>
-<li>约 170 万年前，元谋人生活在云南元谋一带</li>
-<li>约 80 万年前，蓝田人生活在山西蓝田一带</li>
-<li>约 70~20 万年前，北京人生活在北京周口店一带</li>
-<li>约 3 万年前，山顶洞人生活在北京周口店一带<span id="more"></span>
-<h3 id="新石器时代-1万年前-4千年前"><a href="#新石器时代-1万年前-4千年前" class="headerlink" title="新石器时代(1万年前~4千年前)"></a>新石器时代(1万年前~4千年前)</h3></li>
-<li>约 7000~5000 年前，河姆渡、半坡母系氏族公社</li>
-<li>约 5000~4000 年前，大汶口文化中晚期—父系氏族公社<h3 id="三皇五帝"><a href="#三皇五帝" class="headerlink" title="三皇五帝"></a>三皇五帝</h3>三皇五帝已不可考，众说纷纭。<br>三皇:天皇、地皇、人皇<blockquote>
-<blockquote>
-<p>燧人、伏羲、神农 — 出自《尚书大传》<br>伏羲、女娲、神农 — 出自《春秋运斗枢》<br>伏羲、祝融、黄帝 — 出自《风俗通义》<br>伏羲　神农、黄帝 — 出自《三字经》<br>有巢氏、燧人氏 — 出自《庄子》、《纲鉴易知录》<br>五帝:东方青帝灵威仰、南方赤帝赤熛怒、中央黄帝含枢纽、西方白帝白招拒、北方黑帝汁光纪<br>太昊、炎帝、黄帝、少昊、颛顼 — 出自《吕氏春秋》<br>黄帝、颛顼、帝喾、尧、舜 — 出自《史记》《大戴礼记》<br>黄帝、少昊、颛顼、帝喾、尧 — 出自《资治通鉴外纪》</p>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-<h2 id="奴隶社会-公元前2070年-公元前476年"><a href="#奴隶社会-公元前2070年-公元前476年" class="headerlink" title="奴隶社会(公元前2070年~公元前476年)"></a>奴隶社会(公元前2070年~公元前476年)</h2><ul>
-<li>夏: 公元前 2070 年 ~ 公元前 1600 年，禹之子启建夏，世袭取代禅让</li>
-<li>商: 公元前 1601 年 ~ 公元前 1046 年，商汤灭夏，商朝建立</li>
-<li>西周: 公元前 1046 年 ~ 公元前 771 年，周武王灭商，西周开始</li>
-<li>东周: 公元前 770 年 ~ 公元前 476 年，俗称东周列国，分为前期和后期。<ul>
-<li>东周前期俗称春秋时期，公元前 770 年 ~ 公元前 476 年，春秋时期诸侯争相称霸；</li>
-<li>东周后期俗称战国时期，公元前 475 年 ~ 公元前 221 年。中国社会有奴隶制进入封建社会，出现战国七雄。<h2 id="封建社会-公元前475年-公元1840年"><a href="#封建社会-公元前475年-公元1840年" class="headerlink" title="封建社会(公元前475年~公元1840年)"></a>封建社会(公元前475年~公元1840年)</h2></li>
-</ul>
-</li>
-<li>秦: 公元前 221 年 ~ 公元前 206 年，秦于战国七雄中崛起吞并六国，首建集权制帝国。</li>
-<li>汉: 公元前 206 年 ~ 公元 220 年<ul>
-<li>西汉: 公元前 206 年 ~ 公元 8 年，刘邦垓下之战灭项羽，称帝与长安。</li>
-<li>新莽: 公元 9 年 ~ 公元 25 年，公元 8 年底，王莽篡位称帝，改国号为”新”。</li>
-<li>东汉: 公元 25 年 ~ 公元 220 年，刘秀灭王莽，夺回政权，建都洛阳。</li>
-</ul>
-</li>
-<li>三国: 公元 220 年 ~ 公元 280 年，东汉后期，曹操挟天子以令诸侯，出现三国鼎立。</li>
-<li>西晋: 公元 266 年 ~ 公元 316年</li>
-<li>东晋: 公元 317 年 ~ 公元 420 年</li>
-<li>南北朝: 公元 420 年 ~ 公元 589 年</li>
-<li>隋: 公元 581 年 ~ 公元 618 年</li>
-<li>唐: 公元 618 年 ~ 公元 907 年</li>
-<li>五代十国:<ul>
-<li>五代: 公元 907 年 ~ 公元 960 年</li>
-<li>十国: 公元 902 年 ~ 公元 979 年</li>
-</ul>
-</li>
-<li>北宋: 公元 960 年 ~ 1127 年</li>
-<li>南宋: 1127 年 ~ 1276 年</li>
-<li>元: 1271 年 ~ 1368 年</li>
-<li>明: 1368 年 ~ 1644 年</li>
-<li>清: 1636 年 ~ 1911 年<h2 id="近代史"><a href="#近代史" class="headerlink" title="近代史"></a>近代史</h2>近代史从 1840 年鸦片战争开始。</li>
-<li>民国: 1912 年 ~ 1949 年，中华民国成立。<h2 id="现代史"><a href="#现代史" class="headerlink" title="现代史"></a>现代史</h2>现代史从 1949 年中华人民共和国成立开始。</li>
-<li>中华人民共和国: 1949 年 ~ 至今</li>
-</ul>
-<blockquote>
-<blockquote>
-<p>※※<br>三皇五帝始，尧舜禹相传。夏商与西周，东周分两段。春秋和战国，一统秦两汉。<br>三分魏蜀吴，二晋前后延。南北朝并立，隋唐五代传。宋元明清后，皇朝至此完。</p>
-</blockquote>
-</blockquote>
-<h1 id="中国历史大事纪"><a href="#中国历史大事纪" class="headerlink" title="中国历史大事纪"></a>中国历史大事纪</h1><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>杂学</category>
-        <category>历史</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>使用PS软件进行一寸证件照片打印排版</title>
-    <url>/2024/08/17/%E4%BD%BF%E7%94%A8PS%E8%BD%AF%E4%BB%B6%E8%BF%9B%E8%A1%8C%E4%B8%80%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7%E7%89%87%E6%89%93%E5%8D%B0%E6%8E%92%E7%89%88/</url>
-    <content><![CDATA[<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>系统: Windows 11<br>软件: Adobe Photoshop 24.5.0 版<br><span id="more"></span></p>
-<h1 id="打开要排版的照片"><a href="#打开要排版的照片" class="headerlink" title="打开要排版的照片"></a>打开要排版的照片</h1><p>用 PS 软件打开要排版的照片。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002004.png" alt="20240817002004"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002207.png" alt="20240817002207"></p>
-<h1 id="制作一寸证件照图案"><a href="#制作一寸证件照图案" class="headerlink" title="制作一寸证件照图案"></a>制作一寸证件照图案</h1><h2 id="设置画布给照片周围加上一圈白边"><a href="#设置画布给照片周围加上一圈白边" class="headerlink" title="设置画布给照片周围加上一圈白边"></a>设置画布给照片周围加上一圈白边</h2><p>图像 =&gt; 画布大小<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002639.png" alt="20240817002639"><br>勾选相对，宽度和高度设置为 0.1 厘米，可根据实际情况调整，颜色选择白色，点击确定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817002909.png" alt="20240817002909"></p>
-<h2 id="裁剪图片"><a href="#裁剪图片" class="headerlink" title="裁剪图片"></a>裁剪图片</h2><p>图像 =&gt; 图像大小<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003221.png" alt="20240817003221"><br>勾选重新采样，一寸照片的宽度为 2.6 厘米，高度为 3.6 厘米，分辨率填写 300 像素/英寸。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003523.png" alt="20240817003523"><br>这样，照片就变为一寸大小了。</p>
-<h2 id="定义图案"><a href="#定义图案" class="headerlink" title="定义图案"></a>定义图案</h2><p>编辑 =&gt; 定义图案<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003819.png" alt="20240817003819"><br>图案名称根据自己需要填写，点击确定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817003856.png" alt="20240817003856"><br>这样，图案就被定义并存在 PS 软件内备用了。</p>
-<h1 id="制作画布"><a href="#制作画布" class="headerlink" title="制作画布"></a>制作画布</h1><p>文件 =&gt; 新建(画布)<br>主要填写图中框出的三个数值，即宽度、高度和分辨率。<br>如果要排版 3x3 的画布: 宽度 = 2.6厘米 x 3 = 7.8厘米；高度 = 3.6厘米 x 3 = 10.8厘米；分辨率填 300 像素/英寸。<br>如果要排版 4x2 的画布: 宽度 = 2.6厘米 x 4 = 10.4厘米；高度 = 3.6厘米 x 2 =7.2厘米；分辨率填 300 像素/英寸。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817004230.png" alt="20240817004230"><br>点击创建，画布就创建好了，下图为 3x3 画布。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817004638.png" alt="20240817004638"></p>
-<h1 id="将照片嵌入画布"><a href="#将照片嵌入画布" class="headerlink" title="将照片嵌入画布"></a>将照片嵌入画布</h1><p>如上图，点击右下角中间位置的圆圈图标”创建新的填充或调整图层”，然后点击”图案”。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005017.png" alt="20240817005017"><br>选择刚刚定义好的图案，一般会在最后一个。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005110.png" alt="20240817005110"><br>点击”确定”，这样排版就制作好了。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005413.png" alt="20240817005413"></p>
-<h1 id="导出照片"><a href="#导出照片" class="headerlink" title="导出照片"></a>导出照片</h1><p>文件 =&gt; 导出 =&gt; 导出为<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240817005454.png" alt="20240817005454"><br>这里基本上没有什么需要设置的，点击”导出”，选择希望保存的位置和文件名即可。</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>图片处理</category>
-      </categories>
-      <tags>
-        <tag>Adobe</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用curl命令行工具查询本地公网IP地址</title>
-    <url>/2024/02/04/%E4%BD%BF%E7%94%A8curl%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E6%9F%A5%E8%AF%A2%E6%9C%AC%E5%9C%B0%E5%85%AC%E7%BD%91IP%E5%9C%B0%E5%9D%80/</url>
-    <content><![CDATA[<p>在 Linux 中 curl 是一个利用 URL 规则在命令行下工作的文件传输工具，同时也可以查询本机公网 IP 地址，具体使用方法如下:<br><span id="more"></span></p>
-<ol>
-<li>使用<code>curl ipinfo.io</code>查询:<br><pre>curl ipinfo.io</pre><br>返回值<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"> [root@MiWiFi-R3D-srv ~]<span class="hljs-comment"># curl ipinfo.io</span><br>&#123;<br> <span class="hljs-string">&quot;ip&quot;</span>: <span class="hljs-string">&quot;1.203.179.218&quot;</span>,// 此处是本机公网ip地址<br> <span class="hljs-string">&quot;city&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,// 城市名<br> <span class="hljs-string">&quot;region&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,// 区域名<br> <span class="hljs-string">&quot;country&quot;</span>: <span class="hljs-string">&quot;CN&quot;</span>,// 国家代号<br> <span class="hljs-string">&quot;loc&quot;</span>: <span class="hljs-string">&quot;39.9075,116.3972&quot;</span>,// 经纬度坐标<br> <span class="hljs-string">&quot;org&quot;</span>: <span class="hljs-string">&quot;AS4847 China Networks Inter-Exchange&quot;</span>,// 运营商信息<br> <span class="hljs-string">&quot;timezone&quot;</span>: <span class="hljs-string">&quot;Asia/Shanghai&quot;</span>,// 时区<br> <span class="hljs-string">&quot;readme&quot;</span>: <span class="hljs-string">&quot;https://ipinfo.io/missingauth&quot;</span>//提示ipinfo.io官网地址<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li>使用<code>curl ifconfig.me</code>查询<br><pre>curl ifconfig.me</pre><br>返回值<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@MiWiFi-R3D-srv ~]<span class="hljs-comment"># curl ifconfig.me</span><br>1.203.179.218 //只显示本机公网IP地址<br>[root@MiWiFi-R3D-srv ~]<span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure></li>
-<li>使用<code>ipinfo.io</code>加<code>ip</code>地址，可查血这个 ip 的信息<br><pre>curl ipinfo.io/192.168.32.84</pre><br>返回值<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"> [root@MiWiFi-R3D-srv ~]<span class="hljs-comment"># curl  ipinfo.io/103.208.15.138</span><br>&#123;<br> <span class="hljs-string">&quot;ip&quot;</span>: <span class="hljs-string">&quot;103.208.15.138&quot;</span>,//被查询的IP地址<br> <span class="hljs-string">&quot;city&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,//所属城市<br> <span class="hljs-string">&quot;region&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,//所属区域<br> <span class="hljs-string">&quot;country&quot;</span>: <span class="hljs-string">&quot;CN&quot;</span>,//国家代码<br> <span class="hljs-string">&quot;loc&quot;</span>: <span class="hljs-string">&quot;39.9075,116.3972&quot;</span>,//经纬度坐标<br> <span class="hljs-string">&quot;org&quot;</span>: <span class="hljs-string">&quot;AS9808 China Mobile Communications Group Co., Ltd.&quot;</span>,//运营商信息<br> <span class="hljs-string">&quot;timezone&quot;</span>: <span class="hljs-string">&quot;Asia/Shanghai&quot;</span>,//时区<br> <span class="hljs-string">&quot;readme&quot;</span>: <span class="hljs-string">&quot;https://ipinfo.io/missingauth&quot;</span>//ipinfo.io官网地址<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li>此命令在 Windows 的命令提示符中也可以使用<br>使用方法如下:<figure class="highlight cmd"><table><tr><td class="code"><pre><code class="hljs cmd"><span class="hljs-function"> C:\<span class="hljs-title">Users</span>\<span class="hljs-title">User</span>&gt;<span class="hljs-title">curl</span> <span class="hljs-title">ipinfo.io</span></span><br><span class="hljs-function">&#123;</span><br><span class="hljs-function"> &quot;<span class="hljs-title">ip</span>&quot;: &quot;1.203.179.218&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">city</span>&quot;: &quot;<span class="hljs-title">Beijing</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">region</span>&quot;: &quot;<span class="hljs-title">Beijing</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">country</span>&quot;: &quot;<span class="hljs-title">CN</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">loc</span>&quot;: &quot;39.9075,116.3972&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">org</span>&quot;: &quot;<span class="hljs-title">AS4847</span> <span class="hljs-title">China</span> <span class="hljs-title">Networks</span> <span class="hljs-title">Inter</span>-<span class="hljs-title">Exchange</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">timezone</span>&quot;: &quot;<span class="hljs-title">Asia</span>/<span class="hljs-title">Shanghai</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">readme</span>&quot;: &quot;<span class="hljs-title">https</span>://<span class="hljs-title">ipinfo.io</span>/<span class="hljs-title">missingauth</span>&quot;</span><br><span class="hljs-function">&#125;</span><br></code></pre></td></tr></table></figure></li>
-<li>最简单的是使用 <a href="https://ip138.com/">https://ip138.com/</a> 网址进行本机公网IP地址查询<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240204101450.png" alt="20240204101450"></li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>网络服务</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用iStoreOS中的KMS服务激活Windows和Office</title>
     <url>/2025/01/16/%E4%BD%BF%E7%94%A8iStoreOS%E4%B8%AD%E7%9A%84KMS%E6%9C%8D%E5%8A%A1%E6%BF%80%E6%B4%BBWindows%E5%92%8COffice/</url>
     <content><![CDATA[<h2 id="安装-iStoreOS-路由系统"><a href="#安装-iStoreOS-路由系统" class="headerlink" title="安装 iStoreOS 路由系统"></a>安装 iStoreOS 路由系统</h2><p>本机环境，在威联通 NAS 的虚拟机中安装了 iStoreOS。</p>
@@ -3363,24 +3363,6 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </tags>
   </entry>
   <entry>
-    <title>使用多终端发布 hexo 博客</title>
-    <url>/2025/02/08/%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%8F%91%E5%B8%83-hexo-%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h1 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h1><p>master分支: 保存博客静态资源，提供博客页面供人访问。<br>hexo分支(仓库默认分支): 用于备份博客部署文件，共自己维护更新。<br><span id="more"></span></p>
-<h1 id="在新设备中建立环境"><a href="#在新设备中建立环境" class="headerlink" title="在新设备中建立环境"></a>在新设备中建立环境</h1><h2 id="拉取hexo分支"><a href="#拉取hexo分支" class="headerlink" title="拉取hexo分支"></a>拉取hexo分支</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> -b hexo git@github.com:shenguosai/shenguosai.github.io.git<br></code></pre></td></tr></table></figure>
-<p>执行完上述命令后目录下会出现一个 <code>shenguosai.github.io</code> 的目录。</p>
-<h2 id="初始化博客目录"><a href="#初始化博客目录" class="headerlink" title="初始化博客目录"></a>初始化博客目录</h2><p>拉取过来的 <code>shenguosai.github.io</code> 目录只是一个普通的 git 管理目录，需要把该目录初始化为 Hexo 目录。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> shenguosai.github.io<br>npm install hexo<br>npm install<br>npm install hexo-deployer-git<br></code></pre></td></tr></table></figure><br>可能是以前在其它目录使用的关系，只运行了 ‘npm install hexo’ 之后就可以使用了。</p>
-<h2 id="安装插件-可省略"><a href="#安装插件-可省略" class="headerlink" title="安装插件(可省略)"></a>安装插件(可省略)</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install hexo-generator-searchdb --save <span class="hljs-comment"># 本地搜索插件</span><br>npm install hexo-asset-image --save <span class="hljs-comment"># 图片插件</span><br>npm install hexo-generator-sitemap --save <span class="hljs-comment"># 谷歌站点地图插件</span><br>npm install hexo-generator-baidu-sitemap --save <span class="hljs-comment"># 百度站点地图插件</span><br></code></pre></td></tr></table></figure>
-<h1 id="在不同终端中写博客的流程"><a href="#在不同终端中写博客的流程" class="headerlink" title="在不同终端中写博客的流程"></a>在不同终端中写博客的流程</h1><p>每次更新博客时不只要更新 master 分支中的静态文件，hexo 分支中的配置文件也需要同步。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git pull <span class="hljs-comment"># 每次写博客前拉取最新的 hexo 分支代码</span><br>hexo n  <span class="hljs-string">&#x27;新文章&#x27;</span> <span class="hljs-comment"># 开始写博客</span><br>hexo clean &amp;&amp; hexo g <span class="hljs-comment"># 清空并生成新的静态文件和缓存文件</span><br>git add .<br>git commit -m <span class="hljs-string">&#x27;备注&#x27;</span><br>git push <span class="hljs-comment"># 提交到 hexo 分支</span><br>hexo d <span class="hljs-comment"># 提交到 master 分支</span><br></code></pre></td></tr></table></figure></p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>网络服务</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用端口映射实现局域网内打印机远程打印</title>
     <url>/2024/03/12/%E4%BD%BF%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E6%89%93%E5%8D%B0%E6%9C%BA%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0/</url>
     <content><![CDATA[<p>打印机是现在办公设备必不可少的工具，我们常常需要使用打印机复印或打印各种文件资料，尤其对一些正在加班且不能在家陪伴孩子写作业的父母来说，学会远程打印的方法十分必要。<br>打印机种类: 激光打印机<br>打印机型号: DCP-B7520DW<br>目前这款打印机不支持远程打印，所以需要将打印端口映射到外网才能实现远程打印。<br>局域网内电脑系统: Windows 10<br>远程打印电脑系统: Windows 11<br><span id="more"></span><br>电脑进行远程打印可以用一下两种方法:</p>
@@ -3398,27 +3380,21 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </tags>
   </entry>
   <entry>
-    <title>使用越狱iPhone部署ddns服务</title>
-    <url>/2024/04/15/%E4%BD%BF%E7%94%A8%E8%B6%8A%E7%8B%B1iPhone%E9%83%A8%E7%BD%B2ddns%E6%9C%8D%E5%8A%A1/</url>
-    <content><![CDATA[<h1 id="iPhone-越狱并获取root权限"><a href="#iPhone-越狱并获取root权限" class="headerlink" title="iPhone 越狱并获取root权限"></a>iPhone 越狱并获取root权限</h1><p>此处略，可以使用爱思助手 8.0 通过 Chimera 进行的越狱，此越狱方式并不完美，每次iPhone重启后所有越狱安装的app都会闪退，需要重新越狱一次才行。</p>
-<h1 id="在-CloudFlare-上建立一个二级域名"><a href="#在-CloudFlare-上建立一个二级域名" class="headerlink" title="在 CloudFlare 上建立一个二级域名"></a>在 CloudFlare 上建立一个二级域名</h1><p>首先，在 Cloudflare 上申请一个域名或者在其他网站申请托管到 Cloudflare 上，并建立用来作为 DDNS 用的 A 记录和 AAAA 记录。假设是:<br>A 记录:     ddns.example.com      1.1.1.1<br>AAAA 记录   ddns.example.com      2606:4700:4700::1111<br>IP 地址先可以随便填。<br><span id="more"></span></p>
-<h1 id="取得所需的-ZONE-ID、API-Token-和-RECORD-ID"><a href="#取得所需的-ZONE-ID、API-Token-和-RECORD-ID" class="headerlink" title="取得所需的 ZONE_ID、API_Token 和 RECORD_ID"></a>取得所需的 ZONE_ID、API_Token 和 RECORD_ID</h1><p>ZONE_ID 就在域名概述页的右下侧，名字为区域 ID。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240415210230.png" alt="20240415210230"><br>然后在同一页面的下方点击获取 API 令牌。<br>点击创建令牌，使用“编辑区域 DNS”的模板，选择相应的域名，点击显示摘要，并创建令牌。<br>把生成的 API_Token 保存好。<br>接着打开一个 Linux 终端，执行以下代码:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">ZONE_ID=<span class="hljs-string">&quot;你的 Zone ID&quot;</span><br>API_TOKEN=<span class="hljs-string">&quot;你的API Token&quot;</span><br>curl -X GET <span class="hljs-string">&quot;https://api.cloudflare.com/client/v4/zones/<span class="hljs-variable">$ZONE_ID</span>/dns_records?name=ddns.example.com&quot;</span> \<br>-H <span class="hljs-string">&quot;Authorization: Bearer <span class="hljs-variable">$API_TOKEN</span>&quot;</span> \<br>-H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span><br></code></pre></td></tr></table></figure><br>注意替换上述代码中的 ZONE_ID，API_Token，二级域名。<br>在返回的结果中，找到“name”与相应二级域名相符的 RECORD_ID。</p>
-<h1 id="建立-Shell-脚本"><a href="#建立-Shell-脚本" class="headerlink" title="建立 Shell 脚本"></a>建立 Shell 脚本</h1><p>在你想运行的位置比如<code>root</code>目录建立一个脚本文件:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> cfddns &amp;&amp; <span class="hljs-built_in">cd</span> cfddns<br><span class="hljs-built_in">touch</span> ddns.sh<br></code></pre></td></tr></table></figure><br>然后用编辑器打开:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">vim ddns.sh<br></code></pre></td></tr></table></figure><br>复制一下代码并保存退出:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br>NEW_IP=`curl -s http://ipv4.ddnspod.com`<br>CURRENT_IP=`<span class="hljs-built_in">cat</span> $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/current_ip.txt`<br>CURRENT_TIME=$(<span class="hljs-built_in">date</span> +<span class="hljs-string">&quot;%F %T&quot;</span>)<br>DDNS=<span class="hljs-string">&quot;home.starnest.eu.org&quot;</span><br>ZONE_ID=<span class="hljs-string">&quot;1234567890abcdef1234567890abcdef&quot;</span><br>API_TOKEN=<span class="hljs-string">&quot;1234567890abcdef1234567890abcdef&quot;</span><br>RECORD_ID=<span class="hljs-string">&quot;1234567890abcdef1234567890abcdef&quot;</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IP</span>&quot;</span> = <span class="hljs-string">&quot;<span class="hljs-variable">$CURRENT_IP</span>&quot;</span> ]<br><span class="hljs-keyword">then</span><br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[<span class="hljs-variable">$CURRENT_TIME</span>] No Change in IP Adddress&quot;</span> &gt;&gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/crontab_log.txt<br><span class="hljs-keyword">else</span><br>curl -k -X PUT <span class="hljs-string">&quot;https://api.cloudflare.com/client/v4/zones/<span class="hljs-variable">$ZONE_ID</span>/dns_records/<span class="hljs-variable">$RECORD_ID</span>&quot;</span> \<br>     -H <span class="hljs-string">&quot;Authorization: Bearer <span class="hljs-variable">$API_TOKEN</span>&quot;</span> \<br>     -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \<br>     --data <span class="hljs-string">&#x27;&#123;&quot;type&quot;:&quot;A&quot;,&quot;name&quot;:&quot;&#x27;</span><span class="hljs-variable">$DDNS</span><span class="hljs-string">&#x27;&quot;,&quot;content&quot;:&quot;&#x27;</span><span class="hljs-variable">$NEW_IP</span><span class="hljs-string">&#x27;&quot;,&quot;ttl&quot;:1,&quot;proxied&quot;:false&#125;&#x27;</span> &gt; /dev/null<br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$NEW_IP</span> &gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/current_ip.txt<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[<span class="hljs-variable">$CURRENT_TIME</span>] IP changed to <span class="hljs-variable">$NEW_IP</span>&quot;</span> &gt;&gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/crontab_log.txt<br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure><br>若想同时适用对 ipv6 有效则使用下面的脚本(未测试):<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br><span class="hljs-comment"># 简单的使用Clodflare API来实现DDNS的脚本</span><br>NEW_IPv4=$(curl -s http://ipv4.icanhazip.com)<br>NEW_IPv6=$(curl -s http://ipv6.icanhazip.com)<br>CURRENT_IPv4=$(<span class="hljs-built_in">cat</span> $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/current_ipv4.txt)<br>CURRENT_IPv6=$(<span class="hljs-built_in">cat</span> $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/current_ipv6.txt)<br>CURRENT_TIME=$(<span class="hljs-built_in">date</span> +<span class="hljs-string">&quot;%F %T&quot;</span>)<br><span class="hljs-comment"># 填入DDNS域名</span><br>DDNS=<span class="hljs-string">&quot;ddns.example.com&quot;</span><br><span class="hljs-comment"># ZONE_ID在Clouflare域名页面上获取</span><br>ZONE_ID=<span class="hljs-string">&quot;1234567890abcdef1234567890abcdef&quot;</span><br><span class="hljs-comment"># API_TOKEN在Clouflare个人资料页面上创建</span><br>API_TOKEN=<span class="hljs-string">&quot;1234567890abcdef1234567890abcdef&quot;</span><br><span class="hljs-comment"># RECORD_ID获取应执行以下代码：</span><br><span class="hljs-comment"># ZONE_ID=&quot;你的 Zone ID&quot;</span><br><span class="hljs-comment"># API_TOKEN=&quot;你的API Token&quot;</span><br><span class="hljs-comment"># curl -X GET &quot;https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records?name=example.com&quot; \</span><br><span class="hljs-comment">#     -H &quot;Authorization: Bearer $API_TOKEN&quot; \</span><br><span class="hljs-comment">#     -H &quot;Content-Type: application/json&quot;</span><br>RECORD_ID=<span class="hljs-string">&quot;1234567890abcdef1234567890abcdef&quot;</span><br><span class="hljs-keyword">if</span> [ -z <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv4</span>&quot;</span> ] &amp;&amp; [ -z <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv6</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[<span class="hljs-variable">$CURRENT_TIME</span>] Failed to get IP address&quot;</span> &gt;&gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/crontab_log.txt<br>  <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">elif</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv4</span>&quot;</span> = <span class="hljs-string">&quot;<span class="hljs-variable">$CURRENT_IPv4</span>&quot;</span> ] &amp;&amp; [ <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv6</span>&quot;</span> = <span class="hljs-string">&quot;<span class="hljs-variable">$CURRENT_IPv6</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[<span class="hljs-variable">$CURRENT_TIME</span>] No change in IP address&quot;</span> &gt;&gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/crontab_log.txt<br><span class="hljs-keyword">else</span><br>  <span class="hljs-keyword">if</span> [ -n <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv4</span>&quot;</span> ] &amp;&amp; [ <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv4</span>&quot;</span> != <span class="hljs-string">&quot;<span class="hljs-variable">$CURRENT_IPv4</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>    curl -k -X PUT <span class="hljs-string">&quot;https://api.cloudflare.com/client/v4/zones/<span class="hljs-variable">$ZONE_ID</span>/dns_records/<span class="hljs-variable">$RECORD_ID</span>&quot;</span> \<br>      -H <span class="hljs-string">&quot;Authorization: Bearer <span class="hljs-variable">$API_TOKEN</span>&quot;</span> \<br>      -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \<br>      --data <span class="hljs-string">&#x27;&#123;&quot;type&quot;:&quot;A&quot;,&quot;name&quot;:&quot;&#x27;</span><span class="hljs-variable">$DDNS</span><span class="hljs-string">&#x27;&quot;,&quot;content&quot;:&quot;&#x27;</span><span class="hljs-variable">$NEW_IPv4</span><span class="hljs-string">&#x27;&quot;,&quot;ttl&quot;:1,&quot;proxied&quot;:false&#125;&#x27;</span> &gt; /dev/null<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv4</span>&quot;</span> &gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/current_ipv4.txt<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[<span class="hljs-variable">$CURRENT_TIME</span>] IPv4 address changed to <span class="hljs-variable">$NEW_IPv4</span>&quot;</span> &gt;&gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/crontab_log.txt<br>  <span class="hljs-keyword">fi</span><br>  <span class="hljs-keyword">if</span> [ -n <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv6</span>&quot;</span> ] &amp;&amp; [ <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv6</span>&quot;</span> != <span class="hljs-string">&quot;<span class="hljs-variable">$CURRENT_IPv6</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>    curl -k -X PUT <span class="hljs-string">&quot;https://api.cloudflare.com/client/v4/zones/<span class="hljs-variable">$ZONE_ID</span>/dns_records/<span class="hljs-variable">$RECORD_ID</span>&quot;</span> \<br>      -H <span class="hljs-string">&quot;Authorization: Bearer <span class="hljs-variable">$API_TOKEN</span>&quot;</span> \<br>      -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \<br>      --data <span class="hljs-string">&#x27;&#123;&quot;type&quot;:&quot;AAAA&quot;,&quot;name&quot;:&quot;&#x27;</span><span class="hljs-variable">$DDNS</span><span class="hljs-string">&#x27;&quot;,&quot;content&quot;:&quot;&#x27;</span><span class="hljs-variable">$NEW_IPv6</span><span class="hljs-string">&#x27;&quot;,&quot;ttl&quot;:1,&quot;proxied&quot;:false&#125;&#x27;</span> &gt; /dev/null<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv6</span>&quot;</span> &gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/current_ipv6.txt<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[<span class="hljs-variable">$CURRENT_TIME</span>] IPv6 address changed to <span class="hljs-variable">$NEW_IPv6</span>&quot;</span> &gt;&gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/crontab_log.txt<br>  <span class="hljs-keyword">fi</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure></p>
-<h1 id="执行-Shell-脚本并设置定时任务"><a href="#执行-Shell-脚本并设置定时任务" class="headerlink" title="执行 Shell 脚本并设置定时任务"></a>执行 Shell 脚本并设置定时任务</h1><h2 id="手动执行确认"><a href="#手动执行确认" class="headerlink" title="手动执行确认"></a>手动执行确认</h2><p>先手动执行一次脚本，然后检查 Cloudflare 解析记录和同文件夹下生成的 crontab_log.txt，确认 IP 是否正确更新。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">/bin/sh ddns.sh<br></code></pre></td></tr></table></figure></p>
-<h2 id="设置定时任务"><a href="#设置定时任务" class="headerlink" title="设置定时任务"></a>设置定时任务</h2><p>若上述脚本执行无误，则使用 plist 设置定时任务。<br>首先，要新增被管理项需要新增一个<code>.plist</code>放入苹果的管理文件夹下，然后使其被加载后执行。苹果根据用户的角色提供了不同的 Launtch 存放位置。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">~/Library/LaunchAgents          <span class="hljs-comment"># 当前用户定义的任务</span><br>/Library/LaunchAgents           <span class="hljs-comment"># 系统管理员定义的任务</span><br>/Library/LaunchDaemons          <span class="hljs-comment"># 管理员定义的系统守护进程任务</span><br>/System/Library/LaunchAgents    <span class="hljs-comment"># 苹果定义的任务</span><br>/System/Library/LaunchDaemons   <span class="hljs-comment"># 苹果定义的系统守护进程任务</span><br></code></pre></td></tr></table></figure><br>很显然，我们最好不要使用下面两个位置的，我这里使用的是<code>/Library/LaunchDaemons</code>。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /Library/LaunchDaemons<br><span class="hljs-built_in">touch</span> starnest.ddns.plist   <span class="hljs-comment">#前面的名字随便起，最后以`.plist`结尾</span><br></code></pre></td></tr></table></figure><br>然后编辑<code>starnest.ddns.plist</code>文件:<br><figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">plist</span> <span class="hljs-keyword">PUBLIC</span> <span class="hljs-string">&quot;-//Apple Computer//DTD PLIST 1.0//EN&quot;</span> <span class="hljs-string">&quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">plist</span> <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;1.0&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dict</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>Label<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>starnest.ddns<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>ProgramArguments<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">array</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>/bin/sh<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>/var/root/script_service/ddns/ddns.sh<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">array</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>RunAtLoad<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">true</span>/&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>StartInterval<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">integer</span>&gt;</span>180<span class="hljs-tag">&lt;/<span class="hljs-name">integer</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dict</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">plist</span>&gt;</span><br></code></pre></td></tr></table></figure></p>
-<blockquote>
-<p>上面的 StartInterval 中的时间不是很确定，使用<code>date</code>命令测试时 interger 设置为 1 会没 10 秒执行一次任务，但是 ddns 脚本中设置 180 应该是 30 分钟执行一次，但根据日志结果来看是 1 小时 3~4 次，时间不是太固定。但对 ddns 来说每小时 3~4 的频度足够了。</p>
-<h2 id="启动定时任务"><a href="#启动定时任务" class="headerlink" title="启动定时任务"></a>启动定时任务</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">launchctl load /Library/LaunchDaemons/starnest.ddns.plist<br></code></pre></td></tr></table></figure>
-<p>确认是否启动成功<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">launchctl list | grep starnest<br></code></pre></td></tr></table></figure><br><figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">-       </span>0       starnest.ddns<br></code></pre></td></tr></table></figure><br>第一列的 PID，第二列是 status，当 status 显示为 0 时表示任务正常进行。<br>我刚开始 status 显示 127，这个可以用以下命令来初步确认问题。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">launchctl error 127<br></code></pre></td></tr></table></figure><br><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-number">127</span>: The specified service did <span class="hljs-keyword">not</span> ship <span class="hljs-keyword">with</span> <span class="hljs-keyword">the</span> operating <span class="hljs-keyword">system</span><br></code></pre></td></tr></table></figure><br>最后发现是<code>plist</code>文件中脚本路径发生的错误。</p>
-</blockquote>
+    <title>使用多终端发布 hexo 博客</title>
+    <url>/2025/02/08/%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%8F%91%E5%B8%83-hexo-%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h1 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h1><p>master分支: 保存博客静态资源，提供博客页面供人访问。<br>hexo分支(仓库默认分支): 用于备份博客部署文件，共自己维护更新。<br><span id="more"></span></p>
+<h1 id="在新设备中建立环境"><a href="#在新设备中建立环境" class="headerlink" title="在新设备中建立环境"></a>在新设备中建立环境</h1><h2 id="拉取hexo分支"><a href="#拉取hexo分支" class="headerlink" title="拉取hexo分支"></a>拉取hexo分支</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> -b hexo git@github.com:shenguosai/shenguosai.github.io.git<br></code></pre></td></tr></table></figure>
+<p>执行完上述命令后目录下会出现一个 <code>shenguosai.github.io</code> 的目录。</p>
+<h2 id="初始化博客目录"><a href="#初始化博客目录" class="headerlink" title="初始化博客目录"></a>初始化博客目录</h2><p>拉取过来的 <code>shenguosai.github.io</code> 目录只是一个普通的 git 管理目录，需要把该目录初始化为 Hexo 目录。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> shenguosai.github.io<br>npm install hexo<br>npm install<br>npm install hexo-deployer-git<br></code></pre></td></tr></table></figure><br>可能是以前在其它目录使用的关系，只运行了 ‘npm install hexo’ 之后就可以使用了。</p>
+<h2 id="安装插件-可省略"><a href="#安装插件-可省略" class="headerlink" title="安装插件(可省略)"></a>安装插件(可省略)</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install hexo-generator-searchdb --save <span class="hljs-comment"># 本地搜索插件</span><br>npm install hexo-asset-image --save <span class="hljs-comment"># 图片插件</span><br>npm install hexo-generator-sitemap --save <span class="hljs-comment"># 谷歌站点地图插件</span><br>npm install hexo-generator-baidu-sitemap --save <span class="hljs-comment"># 百度站点地图插件</span><br></code></pre></td></tr></table></figure>
+<h1 id="在不同终端中写博客的流程"><a href="#在不同终端中写博客的流程" class="headerlink" title="在不同终端中写博客的流程"></a>在不同终端中写博客的流程</h1><p>每次更新博客时不只要更新 master 分支中的静态文件，hexo 分支中的配置文件也需要同步。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git pull <span class="hljs-comment"># 每次写博客前拉取最新的 hexo 分支代码</span><br>hexo n  <span class="hljs-string">&#x27;新文章&#x27;</span> <span class="hljs-comment"># 开始写博客</span><br>hexo clean &amp;&amp; hexo g <span class="hljs-comment"># 清空并生成新的静态文件和缓存文件</span><br>git add .<br>git commit -m <span class="hljs-string">&#x27;备注&#x27;</span><br>git push <span class="hljs-comment"># 提交到 hexo 分支</span><br>hexo d <span class="hljs-comment"># 提交到 master 分支</span><br></code></pre></td></tr></table></figure></p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
       <categories>
         <category>技术兴趣</category>
-        <category>设备及使用</category>
+        <category>网络服务</category>
       </categories>
       <tags>
-        <tag>iPhone</tag>
-        <tag>DDNS</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -3449,6 +3425,30 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </categories>
       <tags>
         <tag>器件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用越狱iPhone部署ddns服务</title>
+    <url>/2024/04/15/%E4%BD%BF%E7%94%A8%E8%B6%8A%E7%8B%B1iPhone%E9%83%A8%E7%BD%B2ddns%E6%9C%8D%E5%8A%A1/</url>
+    <content><![CDATA[<h1 id="iPhone-越狱并获取root权限"><a href="#iPhone-越狱并获取root权限" class="headerlink" title="iPhone 越狱并获取root权限"></a>iPhone 越狱并获取root权限</h1><p>此处略，可以使用爱思助手 8.0 通过 Chimera 进行的越狱，此越狱方式并不完美，每次iPhone重启后所有越狱安装的app都会闪退，需要重新越狱一次才行。</p>
+<h1 id="在-CloudFlare-上建立一个二级域名"><a href="#在-CloudFlare-上建立一个二级域名" class="headerlink" title="在 CloudFlare 上建立一个二级域名"></a>在 CloudFlare 上建立一个二级域名</h1><p>首先，在 Cloudflare 上申请一个域名或者在其他网站申请托管到 Cloudflare 上，并建立用来作为 DDNS 用的 A 记录和 AAAA 记录。假设是:<br>A 记录:     ddns.example.com      1.1.1.1<br>AAAA 记录   ddns.example.com      2606:4700:4700::1111<br>IP 地址先可以随便填。<br><span id="more"></span></p>
+<h1 id="取得所需的-ZONE-ID、API-Token-和-RECORD-ID"><a href="#取得所需的-ZONE-ID、API-Token-和-RECORD-ID" class="headerlink" title="取得所需的 ZONE_ID、API_Token 和 RECORD_ID"></a>取得所需的 ZONE_ID、API_Token 和 RECORD_ID</h1><p>ZONE_ID 就在域名概述页的右下侧，名字为区域 ID。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240415210230.png" alt="20240415210230"><br>然后在同一页面的下方点击获取 API 令牌。<br>点击创建令牌，使用“编辑区域 DNS”的模板，选择相应的域名，点击显示摘要，并创建令牌。<br>把生成的 API_Token 保存好。<br>接着打开一个 Linux 终端，执行以下代码:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">ZONE_ID=<span class="hljs-string">&quot;你的 Zone ID&quot;</span><br>API_TOKEN=<span class="hljs-string">&quot;你的API Token&quot;</span><br>curl -X GET <span class="hljs-string">&quot;https://api.cloudflare.com/client/v4/zones/<span class="hljs-variable">$ZONE_ID</span>/dns_records?name=ddns.example.com&quot;</span> \<br>-H <span class="hljs-string">&quot;Authorization: Bearer <span class="hljs-variable">$API_TOKEN</span>&quot;</span> \<br>-H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span><br></code></pre></td></tr></table></figure><br>注意替换上述代码中的 ZONE_ID，API_Token，二级域名。<br>在返回的结果中，找到“name”与相应二级域名相符的 RECORD_ID。</p>
+<h1 id="建立-Shell-脚本"><a href="#建立-Shell-脚本" class="headerlink" title="建立 Shell 脚本"></a>建立 Shell 脚本</h1><p>在你想运行的位置比如<code>root</code>目录建立一个脚本文件:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> cfddns &amp;&amp; <span class="hljs-built_in">cd</span> cfddns<br><span class="hljs-built_in">touch</span> ddns.sh<br></code></pre></td></tr></table></figure><br>然后用编辑器打开:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">vim ddns.sh<br></code></pre></td></tr></table></figure><br>复制一下代码并保存退出:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br>NEW_IP=`curl -s http://ipv4.ddnspod.com`<br>CURRENT_IP=`<span class="hljs-built_in">cat</span> $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/current_ip.txt`<br>CURRENT_TIME=$(<span class="hljs-built_in">date</span> +<span class="hljs-string">&quot;%F %T&quot;</span>)<br>DDNS=<span class="hljs-string">&quot;home.starnest.eu.org&quot;</span><br>ZONE_ID=<span class="hljs-string">&quot;1234567890abcdef1234567890abcdef&quot;</span><br>API_TOKEN=<span class="hljs-string">&quot;1234567890abcdef1234567890abcdef&quot;</span><br>RECORD_ID=<span class="hljs-string">&quot;1234567890abcdef1234567890abcdef&quot;</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IP</span>&quot;</span> = <span class="hljs-string">&quot;<span class="hljs-variable">$CURRENT_IP</span>&quot;</span> ]<br><span class="hljs-keyword">then</span><br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[<span class="hljs-variable">$CURRENT_TIME</span>] No Change in IP Adddress&quot;</span> &gt;&gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/crontab_log.txt<br><span class="hljs-keyword">else</span><br>curl -k -X PUT <span class="hljs-string">&quot;https://api.cloudflare.com/client/v4/zones/<span class="hljs-variable">$ZONE_ID</span>/dns_records/<span class="hljs-variable">$RECORD_ID</span>&quot;</span> \<br>     -H <span class="hljs-string">&quot;Authorization: Bearer <span class="hljs-variable">$API_TOKEN</span>&quot;</span> \<br>     -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \<br>     --data <span class="hljs-string">&#x27;&#123;&quot;type&quot;:&quot;A&quot;,&quot;name&quot;:&quot;&#x27;</span><span class="hljs-variable">$DDNS</span><span class="hljs-string">&#x27;&quot;,&quot;content&quot;:&quot;&#x27;</span><span class="hljs-variable">$NEW_IP</span><span class="hljs-string">&#x27;&quot;,&quot;ttl&quot;:1,&quot;proxied&quot;:false&#125;&#x27;</span> &gt; /dev/null<br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$NEW_IP</span> &gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/current_ip.txt<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[<span class="hljs-variable">$CURRENT_TIME</span>] IP changed to <span class="hljs-variable">$NEW_IP</span>&quot;</span> &gt;&gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/crontab_log.txt<br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure><br>若想同时适用对 ipv6 有效则使用下面的脚本(未测试):<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br><span class="hljs-comment"># 简单的使用Clodflare API来实现DDNS的脚本</span><br>NEW_IPv4=$(curl -s http://ipv4.icanhazip.com)<br>NEW_IPv6=$(curl -s http://ipv6.icanhazip.com)<br>CURRENT_IPv4=$(<span class="hljs-built_in">cat</span> $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/current_ipv4.txt)<br>CURRENT_IPv6=$(<span class="hljs-built_in">cat</span> $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/current_ipv6.txt)<br>CURRENT_TIME=$(<span class="hljs-built_in">date</span> +<span class="hljs-string">&quot;%F %T&quot;</span>)<br><span class="hljs-comment"># 填入DDNS域名</span><br>DDNS=<span class="hljs-string">&quot;ddns.example.com&quot;</span><br><span class="hljs-comment"># ZONE_ID在Clouflare域名页面上获取</span><br>ZONE_ID=<span class="hljs-string">&quot;1234567890abcdef1234567890abcdef&quot;</span><br><span class="hljs-comment"># API_TOKEN在Clouflare个人资料页面上创建</span><br>API_TOKEN=<span class="hljs-string">&quot;1234567890abcdef1234567890abcdef&quot;</span><br><span class="hljs-comment"># RECORD_ID获取应执行以下代码：</span><br><span class="hljs-comment"># ZONE_ID=&quot;你的 Zone ID&quot;</span><br><span class="hljs-comment"># API_TOKEN=&quot;你的API Token&quot;</span><br><span class="hljs-comment"># curl -X GET &quot;https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records?name=example.com&quot; \</span><br><span class="hljs-comment">#     -H &quot;Authorization: Bearer $API_TOKEN&quot; \</span><br><span class="hljs-comment">#     -H &quot;Content-Type: application/json&quot;</span><br>RECORD_ID=<span class="hljs-string">&quot;1234567890abcdef1234567890abcdef&quot;</span><br><span class="hljs-keyword">if</span> [ -z <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv4</span>&quot;</span> ] &amp;&amp; [ -z <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv6</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[<span class="hljs-variable">$CURRENT_TIME</span>] Failed to get IP address&quot;</span> &gt;&gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/crontab_log.txt<br>  <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">elif</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv4</span>&quot;</span> = <span class="hljs-string">&quot;<span class="hljs-variable">$CURRENT_IPv4</span>&quot;</span> ] &amp;&amp; [ <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv6</span>&quot;</span> = <span class="hljs-string">&quot;<span class="hljs-variable">$CURRENT_IPv6</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[<span class="hljs-variable">$CURRENT_TIME</span>] No change in IP address&quot;</span> &gt;&gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/crontab_log.txt<br><span class="hljs-keyword">else</span><br>  <span class="hljs-keyword">if</span> [ -n <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv4</span>&quot;</span> ] &amp;&amp; [ <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv4</span>&quot;</span> != <span class="hljs-string">&quot;<span class="hljs-variable">$CURRENT_IPv4</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>    curl -k -X PUT <span class="hljs-string">&quot;https://api.cloudflare.com/client/v4/zones/<span class="hljs-variable">$ZONE_ID</span>/dns_records/<span class="hljs-variable">$RECORD_ID</span>&quot;</span> \<br>      -H <span class="hljs-string">&quot;Authorization: Bearer <span class="hljs-variable">$API_TOKEN</span>&quot;</span> \<br>      -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \<br>      --data <span class="hljs-string">&#x27;&#123;&quot;type&quot;:&quot;A&quot;,&quot;name&quot;:&quot;&#x27;</span><span class="hljs-variable">$DDNS</span><span class="hljs-string">&#x27;&quot;,&quot;content&quot;:&quot;&#x27;</span><span class="hljs-variable">$NEW_IPv4</span><span class="hljs-string">&#x27;&quot;,&quot;ttl&quot;:1,&quot;proxied&quot;:false&#125;&#x27;</span> &gt; /dev/null<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv4</span>&quot;</span> &gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/current_ipv4.txt<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[<span class="hljs-variable">$CURRENT_TIME</span>] IPv4 address changed to <span class="hljs-variable">$NEW_IPv4</span>&quot;</span> &gt;&gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/crontab_log.txt<br>  <span class="hljs-keyword">fi</span><br>  <span class="hljs-keyword">if</span> [ -n <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv6</span>&quot;</span> ] &amp;&amp; [ <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv6</span>&quot;</span> != <span class="hljs-string">&quot;<span class="hljs-variable">$CURRENT_IPv6</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>    curl -k -X PUT <span class="hljs-string">&quot;https://api.cloudflare.com/client/v4/zones/<span class="hljs-variable">$ZONE_ID</span>/dns_records/<span class="hljs-variable">$RECORD_ID</span>&quot;</span> \<br>      -H <span class="hljs-string">&quot;Authorization: Bearer <span class="hljs-variable">$API_TOKEN</span>&quot;</span> \<br>      -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \<br>      --data <span class="hljs-string">&#x27;&#123;&quot;type&quot;:&quot;AAAA&quot;,&quot;name&quot;:&quot;&#x27;</span><span class="hljs-variable">$DDNS</span><span class="hljs-string">&#x27;&quot;,&quot;content&quot;:&quot;&#x27;</span><span class="hljs-variable">$NEW_IPv6</span><span class="hljs-string">&#x27;&quot;,&quot;ttl&quot;:1,&quot;proxied&quot;:false&#125;&#x27;</span> &gt; /dev/null<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$NEW_IPv6</span>&quot;</span> &gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/current_ipv6.txt<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[<span class="hljs-variable">$CURRENT_TIME</span>] IPv6 address changed to <span class="hljs-variable">$NEW_IPv6</span>&quot;</span> &gt;&gt; $(<span class="hljs-built_in">dirname</span> <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)/crontab_log.txt<br>  <span class="hljs-keyword">fi</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure></p>
+<h1 id="执行-Shell-脚本并设置定时任务"><a href="#执行-Shell-脚本并设置定时任务" class="headerlink" title="执行 Shell 脚本并设置定时任务"></a>执行 Shell 脚本并设置定时任务</h1><h2 id="手动执行确认"><a href="#手动执行确认" class="headerlink" title="手动执行确认"></a>手动执行确认</h2><p>先手动执行一次脚本，然后检查 Cloudflare 解析记录和同文件夹下生成的 crontab_log.txt，确认 IP 是否正确更新。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">/bin/sh ddns.sh<br></code></pre></td></tr></table></figure></p>
+<h2 id="设置定时任务"><a href="#设置定时任务" class="headerlink" title="设置定时任务"></a>设置定时任务</h2><p>若上述脚本执行无误，则使用 plist 设置定时任务。<br>首先，要新增被管理项需要新增一个<code>.plist</code>放入苹果的管理文件夹下，然后使其被加载后执行。苹果根据用户的角色提供了不同的 Launtch 存放位置。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">~/Library/LaunchAgents          <span class="hljs-comment"># 当前用户定义的任务</span><br>/Library/LaunchAgents           <span class="hljs-comment"># 系统管理员定义的任务</span><br>/Library/LaunchDaemons          <span class="hljs-comment"># 管理员定义的系统守护进程任务</span><br>/System/Library/LaunchAgents    <span class="hljs-comment"># 苹果定义的任务</span><br>/System/Library/LaunchDaemons   <span class="hljs-comment"># 苹果定义的系统守护进程任务</span><br></code></pre></td></tr></table></figure><br>很显然，我们最好不要使用下面两个位置的，我这里使用的是<code>/Library/LaunchDaemons</code>。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /Library/LaunchDaemons<br><span class="hljs-built_in">touch</span> starnest.ddns.plist   <span class="hljs-comment">#前面的名字随便起，最后以`.plist`结尾</span><br></code></pre></td></tr></table></figure><br>然后编辑<code>starnest.ddns.plist</code>文件:<br><figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">plist</span> <span class="hljs-keyword">PUBLIC</span> <span class="hljs-string">&quot;-//Apple Computer//DTD PLIST 1.0//EN&quot;</span> <span class="hljs-string">&quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">plist</span> <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;1.0&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dict</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>Label<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>starnest.ddns<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>ProgramArguments<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">array</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>/bin/sh<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>/var/root/script_service/ddns/ddns.sh<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">array</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>RunAtLoad<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">true</span>/&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>StartInterval<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">integer</span>&gt;</span>180<span class="hljs-tag">&lt;/<span class="hljs-name">integer</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dict</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">plist</span>&gt;</span><br></code></pre></td></tr></table></figure></p>
+<blockquote>
+<p>上面的 StartInterval 中的时间不是很确定，使用<code>date</code>命令测试时 interger 设置为 1 会没 10 秒执行一次任务，但是 ddns 脚本中设置 180 应该是 30 分钟执行一次，但根据日志结果来看是 1 小时 3~4 次，时间不是太固定。但对 ddns 来说每小时 3~4 的频度足够了。</p>
+<h2 id="启动定时任务"><a href="#启动定时任务" class="headerlink" title="启动定时任务"></a>启动定时任务</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">launchctl load /Library/LaunchDaemons/starnest.ddns.plist<br></code></pre></td></tr></table></figure>
+<p>确认是否启动成功<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">launchctl list | grep starnest<br></code></pre></td></tr></table></figure><br><figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">-       </span>0       starnest.ddns<br></code></pre></td></tr></table></figure><br>第一列的 PID，第二列是 status，当 status 显示为 0 时表示任务正常进行。<br>我刚开始 status 显示 127，这个可以用以下命令来初步确认问题。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">launchctl error 127<br></code></pre></td></tr></table></figure><br><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-number">127</span>: The specified service did <span class="hljs-keyword">not</span> ship <span class="hljs-keyword">with</span> <span class="hljs-keyword">the</span> operating <span class="hljs-keyword">system</span><br></code></pre></td></tr></table></figure><br>最后发现是<code>plist</code>文件中脚本路径发生的错误。</p>
+</blockquote>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>设备及使用</category>
+      </categories>
+      <tags>
+        <tag>iPhone</tag>
+        <tag>DDNS</tag>
       </tags>
   </entry>
   <entry>
@@ -3538,23 +3538,6 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </categories>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在Windows11中找回照片查看器打开图片</title>
-    <url>/2023/12/12/%E5%9C%A8Windows11%E4%B8%AD%E6%89%BE%E5%9B%9E%E7%85%A7%E7%89%87%E6%9F%A5%E7%9C%8B%E5%99%A8%E6%89%93%E5%BC%80%E5%9B%BE%E7%89%87/</url>
-    <content><![CDATA[<ol>
-<li>使用快捷键<code>Win + R</code>打开运行窗口， 输入<code>regedit</code>命令回车打开注册表<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212234749.png" alt="20231212234749"><span id="more"></span></li>
-<li>找到<code>HKEY_LOCAL_MACHINE</code> -&gt; <code>SOFTWARE</code>-&gt;<code>Microsoft</code> -&gt; <code>Windows Photo Viewer</code> -&gt; <code>Capabilities</code> -&gt; <code>FileAssociations</code>，右键=&gt;新建=&gt;字符串值，名称填写<code>.jpg</code>，数值填写<code>PhotoViewer.FileAssoc.Tiff</code>，同理添加 <code>.png</code>  <code>.jpeg</code>，数值相同。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212234917.png" alt="20231212234917"></li>
-<li>添加之后就可以使用Windows照片查看器看图。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212235008.png" alt="20231212235008"></li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>软件应用</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
       </tags>
   </entry>
   <entry>
@@ -3674,6 +3657,23 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </tags>
   </entry>
   <entry>
+    <title>在Windows11中找回照片查看器打开图片</title>
+    <url>/2023/12/12/%E5%9C%A8Windows11%E4%B8%AD%E6%89%BE%E5%9B%9E%E7%85%A7%E7%89%87%E6%9F%A5%E7%9C%8B%E5%99%A8%E6%89%93%E5%BC%80%E5%9B%BE%E7%89%87/</url>
+    <content><![CDATA[<ol>
+<li>使用快捷键<code>Win + R</code>打开运行窗口， 输入<code>regedit</code>命令回车打开注册表<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212234749.png" alt="20231212234749"><span id="more"></span></li>
+<li>找到<code>HKEY_LOCAL_MACHINE</code> -&gt; <code>SOFTWARE</code>-&gt;<code>Microsoft</code> -&gt; <code>Windows Photo Viewer</code> -&gt; <code>Capabilities</code> -&gt; <code>FileAssociations</code>，右键=&gt;新建=&gt;字符串值，名称填写<code>.jpg</code>，数值填写<code>PhotoViewer.FileAssoc.Tiff</code>，同理添加 <code>.png</code>  <code>.jpeg</code>，数值相同。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212234917.png" alt="20231212234917"></li>
+<li>添加之后就可以使用Windows照片查看器看图。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212235008.png" alt="20231212235008"></li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>软件应用</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>寒窑赋</title>
     <url>/2025/03/03/%E5%AF%92%E7%AA%91%E8%B5%8B/</url>
     <content><![CDATA[<p>民间传说吕蒙正为劝诫太子（即宋真宗）而作此赋。其开篇即以自身经历为例：”昔居洛阳，破窑残卷，日投僧院，夜宿寒窑……今居朝堂，身披紫袍，腰悬玉带。”通过对比昔日困顿与今朝显达，强调”时运”对人生的决定性作用。作品虽非宋人原作，但反映了封建社会知识分子对命运无常的认知，亦暗含劝人安贫乐道的教化意图。<br><span id="more"></span></p>
@@ -3765,6 +3765,28 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </tags>
   </entry>
   <entry>
+    <title>文言文十大名篇</title>
+    <url>/2025/02/18/%E6%96%87%E8%A8%80%E6%96%87%E5%8D%81%E5%A4%A7%E5%90%8D%E7%AF%87/</url>
+    <content><![CDATA[<h1 id="陋室铭"><a href="#陋室铭" class="headerlink" title="陋室铭"></a>陋室铭</h1><p>[唐:刘禹锡]<br>山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云:何陋之有？<br><span id="more"></span></p>
+<h1 id="爱莲说"><a href="#爱莲说" class="headerlink" title="爱莲说"></a>爱莲说</h1><p>[宋:周敦颐]<br>水木草陆之花，可爱者甚蕃。晋陶渊明独爱菊。自李唐来，世人甚爱牡丹。予独爱莲之出淤泥而不染，濯清涟而不妖，中通外直，不蔓不枝，香远益清，亭亭净植，可远观而不可亵玩焉。<br>予谓菊，花之隐逸者也；牡丹，花之富贵者也；莲，花之君子者也。噫！菊之爱，陶后鲜有闻。莲之爱，同予者何人？牡丹之爱，宜乎众矣！</p>
+<h1 id="岳阳楼记"><a href="#岳阳楼记" class="headerlink" title="岳阳楼记"></a>岳阳楼记</h1><p>[宋:范仲淹]<br>庆历四年春，滕子京谪守巴陵郡。越明年，政通人和，百废具兴，乃重修岳阳楼，增其旧制，刻唐贤今人诗赋于其上。属(zhǔ)予作文以记之。<br>予观夫巴陵胜状，在洞庭一湖。衔远山，吞长江，浩浩汤汤(shāng)，横无涯际。朝晖夕阴，气象万千。此则岳阳楼之大观也，前人之述备矣。然则北通巫峡，南极潇湘，迁客骚人，多会于此，览物之情，得无异乎？<br>若夫淫雨霏霏，连月不开，阴风怒号，浊浪排空；日星隐耀，山岳潜形；商旅不行，樯倾楫摧；薄雾冥冥，虎啸猿啼。登斯楼也，则有去国怀乡，忧谗畏讥，满目萧然，感极而悲者矣。<br>至若春和景明，波澜不惊，上下天光，一碧万顷；沙鸥翔集，锦鳞游泳；岸芷汀兰，郁郁青青。而或长烟一空，皓月千里，浮光跃金，静影沉璧，渔歌互答，此乐何极！登斯楼也，则有心旷神怡，宠辱偕忘，把酒临风，其喜洋洋者矣。<br>嗟夫！予尝求古仁人之心，或异二者之为，何哉？不以物喜，不以己悲；居庙堂之高则忧其民，处江湖之远则忧其君。是进亦忧，退亦忧。然则何时而乐耶？其必曰”先天下之忧而忧，后天下之乐而乐”乎？噫！微斯人，吾谁与归？<br>时六年九月十五日</p>
+<h1 id="桃花源记"><a href="#桃花源记" class="headerlink" title="桃花源记"></a>桃花源记</h1><p>[魏晋:陶渊明]<br>晋太元中，武陵人捕鱼为业。缘溪行，忘路之远近。忽逢桃花林，夹岸数百步，中无杂树，芳草鲜美，落英缤纷。渔人甚异之，复前行，欲穷其林。<br>林尽水源，便得一山，山有小口，仿佛若有光。便舍船，从口入。初极狭，才通人。复行数十步，豁然开朗。土地平旷，屋舍俨然，有良田美池桑竹之属。阡陌交通，鸡犬相闻。其中往来种作，男女衣着，悉如外人。黄发垂髫，并怡然自乐。<br>见渔人，乃大惊，问所从来。具答之。便要还家，设酒杀鸡作食。村中闻有此人，咸来问讯。自云先世避秦时之乱，率妻子邑人来此绝境，不复出焉，遂与外人间隔。问今是何世，乃不知有汉，无论魏晋。此人一一为具言所闻，皆叹惋。余人各复延至其家，皆出酒食。停数日，辞去。此中人语云:”不足为外人道也。”<br>既出，得其船，便扶向路，处处志之。及郡下，诣太守，说如此。太守即遣人随其往，寻向所志，遂迷，不复得路。<br>南阳刘子骥，高尚士也，闻之，欣然规往。未果，寻病终。后遂无问津者。</p>
+<h1 id="兰亭集序"><a href="#兰亭集序" class="headerlink" title="兰亭集序"></a>兰亭集序</h1><p>[魏晋:王羲之]<br>永和九年，岁在葵丑，暮春之初，会于会稽山阴之兰亭，修禊(xì)事也。群贤毕至，少(shào)长(zhǎng)咸集。此地有崇山峻岭，茂林修竹；又有清流激湍，映带左右，引以为流觞(shāng)曲水，列坐其次。虽无丝竹管弦之盛，一觞一咏，亦足以畅舒幽情。<br>是日也，天朗气清，惠风和畅，仰观宇宙之大，俯察品类之盛，所以游目骋怀，足以极视听之娱，信可乐也。<br>夫人之相与，俯仰一世，或取诸怀抱，晤言一室之内；或因寄所托，放浪形骸之外。虽取舍万殊，静躁不同，当其欣于所遇，暂得于己，快然自足，不知老之将至。及其所之既倦，情随事迁，感慨系之矣。向之所欣，俯仰之间，已为陈迹，犹不能不以之兴怀。况修短随化，终期于尽。古人云:”死生亦大矣。”岂不痛哉！<br>每揽昔人兴感之由，若合一契，未尝不临文嗟悼，不能喻之于怀。固知一死生为虚诞，齐彭殇为妄作。后之视今，亦犹今之视昔。悲夫！故列叙时人，录其所述，虽世殊事异，所以兴怀，其致一也。后之览者，亦将有感于斯文。</p>
+<h1 id="小石潭记"><a href="#小石潭记" class="headerlink" title="小石潭记"></a>小石潭记</h1><p>[唐:柳宗元]<br>从小丘西行百二十步，隔篁竹，闻水声，如鸣佩环，心乐之。伐竹取道，下见小潭，水尤清冽。全石以为底，近岸，卷(quán)石底以出，为坻，为屿，为嵁(kān)，为岩。青树翠蔓，蒙络摇缀，参差披拂。<br>潭中鱼可百许头，皆若空游无所依。日光下澈，影布石上。佁(yǐ)然不动，俶(chǜ)尔远逝，往来翕忽，似与游者相乐。<br>潭西南而望，斗折蛇行，明灭可见。其岸势犬牙差(cī)互，不可知起源。<br>坐潭上，四面竹树环合，寂寥无人，凄神寒骨，悄怆幽邃。以其境过清，不可久居，乃记之而去。<br>同游者:吴武陵，龚古，余弟宗玄。隶而从者，崔氏二小生；曰恕己，曰奉壹。</p>
+<h1 id="马说"><a href="#马说" class="headerlink" title="马说"></a>马说</h1><p>[唐:韩愈]<br>世有伯乐，然后有千里马。千里马常有，而伯乐不常有。故虽有名马，祗辱于奴隶人之手，骈死于槽枥之间，不以千里称也。<br>马之千里者，一食或尽粟一石。食马者不知其能千里而食也。是马也，虽有千里之能，食不饱，力不足，才美不外见，且欲与常马等不可得，安求其能千里也？<br>策之不以其道，食之不能尽其才，鸣之而不能通其意，执策而临之，曰:”天下无马！”呜呼！其真无马耶？其真不知马也！</p>
+<h1 id="五柳先生传"><a href="#五柳先生传" class="headerlink" title="五柳先生传"></a>五柳先生传</h1><p>[魏晋:陶渊明]<br>先生不知何许人也，亦不详其姓字，宅边有五柳树，因以为号焉。闲静少言，不慕荣利。好读书，不求甚解；每有会意，便欣然忘食。性嗜酒，家贫不能常得。亲旧知其如此，或置酒而招之；造饮辄尽，期在必醉。既醉而退，曾(zēng)不吝情去留。环堵萧然，不蔽风日；箪(dān)瓢屡空，晏如也。常著文章自娱，颇示以志。忘怀得失，以此自终。<br>赞曰:黔娄之妻有言:”不戚戚于贫贱，不汲汲于富贵。”其言兹若人之俦(chóu)乎？衔觞赋诗，以乐其志。无怀氏之民欤？葛天氏之民欤？</p>
+<h1 id="出师表"><a href="#出师表" class="headerlink" title="出师表"></a>出师表</h1><p>[蜀汉:诸葛亮]<br>先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者，盖追先帝之殊遇，欲报之于陛下也。诚宜开张圣听，以光先帝遗德，恢弘志士之气，不宜妄自菲薄，引喻失义，以塞忠谏之路也。<br>宫中府中，俱为一体；陟(zhì)罚臧否，不宜异同；若有作奸犯科及为忠善者，宜付有司论其刑赏，以昭陛下平明之理；不宜偏私，使内外异法也。<br>侍中、侍郎郭攸之、费祎(yī)、董允等，此皆良实，志虑忠纯，是以先帝简拔以遗陛下；愚以为宫中之事，事无大小，悉以咨之，然后施行，必能裨补阙漏，有所广益。<br>将军向宠，性行淑均，晓畅军事，试用于昔日，先帝称之曰”能”，是以众议举宠为督；愚以为营中之事，悉以咨之，必能使行阵和睦，优劣得所。<br>亲贤臣，远小人，此先汉所以兴隆也；亲小人，远贤臣，此后汉所以倾颓也。先帝在时，每与臣论此事，未尝不叹息痛恨于桓、灵也。侍中、尚书、长史、参军，此悉贞良死节之臣，愿陛下亲之信之，则汉室之隆，可计日而待也。</p>
+<h1 id="滕王阁序"><a href="#滕王阁序" class="headerlink" title="滕王阁序"></a>滕王阁序</h1><p>[唐:王勃]<br>豫章故郡，洪都新府。星分翼轸(zhěn)，地接衡庐。襟三江而带五湖，控蛮荆而引瓯越。物华天宝，龙光射斗牛之墟；人杰地灵，徐孺下陈蕃之榻。雄州雾列，俊采星驰。台隍枕夷夏之交，宾主尽东南之美。都督阎公之雅望，棨(qǐ)戟(jǐ)遥临；宇文新州之懿范，襜(chān)帷暂驻。十旬休假，胜友如云；千里逢迎，高朋满座。腾蛟起凤，孟学士之词宗；紫电青霜，王将军之武库。家君作宰，路出名区；童子何知，躬逢胜饯。<br>时维九月，序属三秋。潦水尽而寒潭清，烟光凝而暮山紫。俨骖(cān)騑(fēi)于上路，访风景于崇阿；临帝子之长洲，得天人之旧馆。层峦耸翠，上出重霄；飞阁流丹，下临无地。鹤汀凫(fú)渚(zhǔ)，穷岛屿之萦回；桂殿兰宫，即冈峦之体势。<br>披绣闼(tà)，俯雕甍(méng)，山原旷其盈视，川泽纡(yū)其骇瞩。闾阎扑地，钟鸣鼎食之家；舸舰迷津，青雀黄龙之舳(zhú)。云销雨霁，彩彻区明。落霞与孤鹜齐飞，秋水共长天一色。渔舟唱晚，响穷彭蠡(lí)之滨；雁阵惊寒，声断衡阳之浦。<br>遥襟甫畅，逸兴遄(chuán)飞。爽籁发而清风生，纤(xiān)歌凝而白云遏(è)。睢(suī)园绿竹，气凌彭泽之樽；邺水朱华，光照临川之笔。四美具，二难并。穷睇(dì)眄(miǎn)于中天，极娱游于暇日。天高地迥，觉宇宙之无穷；兴尽悲来，识盈虚之有数。望长安于日下，目吴会于云间。地势极而南溟深，天柱高而北辰远。关山难越，谁悲失路之人？萍水相逢，尽是他乡之客。怀帝阍(hūn)而不见，奉宣室以何年？<br>嗟乎！时运不济，命途多舛。冯唐易老，李广难封。屈贾谊于长沙，非无圣主；窜梁鸿于海曲，岂乏明时？所赖君子见机，达人知命。老当益壮，宁移白首之心？穷且益坚，不坠青云之志。酌贪泉而觉爽，处涸辙以犹欢。北海虽赊，扶摇可接；东隅已逝，桑榆非晚。孟尝高洁，空余报国之情；阮籍猖狂，岂效穷途之哭！<br>勃，三尺微命，一介书生。无路请缨，等终军之弱冠；有怀投笔，慕宗悫(què)之长风。舍簪笏(hù)于百龄，奉晨昏于万里。非谢家之宝树，接孟氏之芳邻。他日趋庭，叨(tāo)陪鲤对；今兹捧袂，喜托龙门。杨意不逢，抚凌云而自惜；钟期既遇，奏流水以何惭？<br>呜呼！胜地不常，盛筵难再；兰亭已矣，梓泽丘墟。临别赠言，幸承恩于伟饯；登高作赋，是所望于群公。敢竭鄙怀，恭疏短引；一言均赋，四韵俱成。请洒潘江，各倾陆海云尔。<br>滕王高阁临江渚，佩玉鸣鸾罢歌舞。<br>画栋朝飞南浦云，珠帘暮卷西山雨。<br>闲云潭影日悠悠，物换星移几度秋。<br>阁中帝子今何在？槛外长江空自流。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>文学爱好</category>
+        <category>古文</category>
+      </categories>
+      <tags>
+        <tag>文言文</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>放大器的谐波失真(THD)</title>
     <url>/2023/08/21/%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%B0%90%E6%B3%A2%E5%A4%B1%E7%9C%9F-THD/</url>
     <content><![CDATA[<p>本文主要总结和收集关于放大器谐波失真的原因及改良方法。</p>
@@ -3805,28 +3827,6 @@ A good rule of thumb would be to express your known link speeds in units of <cod
         <category>半导体专业</category>
         <category>模拟电路</category>
       </categories>
-  </entry>
-  <entry>
-    <title>文言文十大名篇</title>
-    <url>/2025/02/18/%E6%96%87%E8%A8%80%E6%96%87%E5%8D%81%E5%A4%A7%E5%90%8D%E7%AF%87/</url>
-    <content><![CDATA[<h1 id="陋室铭"><a href="#陋室铭" class="headerlink" title="陋室铭"></a>陋室铭</h1><p>[唐:刘禹锡]<br>山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云:何陋之有？<br><span id="more"></span></p>
-<h1 id="爱莲说"><a href="#爱莲说" class="headerlink" title="爱莲说"></a>爱莲说</h1><p>[宋:周敦颐]<br>水木草陆之花，可爱者甚蕃。晋陶渊明独爱菊。自李唐来，世人甚爱牡丹。予独爱莲之出淤泥而不染，濯清涟而不妖，中通外直，不蔓不枝，香远益清，亭亭净植，可远观而不可亵玩焉。<br>予谓菊，花之隐逸者也；牡丹，花之富贵者也；莲，花之君子者也。噫！菊之爱，陶后鲜有闻。莲之爱，同予者何人？牡丹之爱，宜乎众矣！</p>
-<h1 id="岳阳楼记"><a href="#岳阳楼记" class="headerlink" title="岳阳楼记"></a>岳阳楼记</h1><p>[宋:范仲淹]<br>庆历四年春，滕子京谪守巴陵郡。越明年，政通人和，百废具兴，乃重修岳阳楼，增其旧制，刻唐贤今人诗赋于其上。属(zhǔ)予作文以记之。<br>予观夫巴陵胜状，在洞庭一湖。衔远山，吞长江，浩浩汤汤(shāng)，横无涯际。朝晖夕阴，气象万千。此则岳阳楼之大观也，前人之述备矣。然则北通巫峡，南极潇湘，迁客骚人，多会于此，览物之情，得无异乎？<br>若夫淫雨霏霏，连月不开，阴风怒号，浊浪排空；日星隐耀，山岳潜形；商旅不行，樯倾楫摧；薄雾冥冥，虎啸猿啼。登斯楼也，则有去国怀乡，忧谗畏讥，满目萧然，感极而悲者矣。<br>至若春和景明，波澜不惊，上下天光，一碧万顷；沙鸥翔集，锦鳞游泳；岸芷汀兰，郁郁青青。而或长烟一空，皓月千里，浮光跃金，静影沉璧，渔歌互答，此乐何极！登斯楼也，则有心旷神怡，宠辱偕忘，把酒临风，其喜洋洋者矣。<br>嗟夫！予尝求古仁人之心，或异二者之为，何哉？不以物喜，不以己悲；居庙堂之高则忧其民，处江湖之远则忧其君。是进亦忧，退亦忧。然则何时而乐耶？其必曰”先天下之忧而忧，后天下之乐而乐”乎？噫！微斯人，吾谁与归？<br>时六年九月十五日</p>
-<h1 id="桃花源记"><a href="#桃花源记" class="headerlink" title="桃花源记"></a>桃花源记</h1><p>[魏晋:陶渊明]<br>晋太元中，武陵人捕鱼为业。缘溪行，忘路之远近。忽逢桃花林，夹岸数百步，中无杂树，芳草鲜美，落英缤纷。渔人甚异之，复前行，欲穷其林。<br>林尽水源，便得一山，山有小口，仿佛若有光。便舍船，从口入。初极狭，才通人。复行数十步，豁然开朗。土地平旷，屋舍俨然，有良田美池桑竹之属。阡陌交通，鸡犬相闻。其中往来种作，男女衣着，悉如外人。黄发垂髫，并怡然自乐。<br>见渔人，乃大惊，问所从来。具答之。便要还家，设酒杀鸡作食。村中闻有此人，咸来问讯。自云先世避秦时之乱，率妻子邑人来此绝境，不复出焉，遂与外人间隔。问今是何世，乃不知有汉，无论魏晋。此人一一为具言所闻，皆叹惋。余人各复延至其家，皆出酒食。停数日，辞去。此中人语云:”不足为外人道也。”<br>既出，得其船，便扶向路，处处志之。及郡下，诣太守，说如此。太守即遣人随其往，寻向所志，遂迷，不复得路。<br>南阳刘子骥，高尚士也，闻之，欣然规往。未果，寻病终。后遂无问津者。</p>
-<h1 id="兰亭集序"><a href="#兰亭集序" class="headerlink" title="兰亭集序"></a>兰亭集序</h1><p>[魏晋:王羲之]<br>永和九年，岁在葵丑，暮春之初，会于会稽山阴之兰亭，修禊(xì)事也。群贤毕至，少(shào)长(zhǎng)咸集。此地有崇山峻岭，茂林修竹；又有清流激湍，映带左右，引以为流觞(shāng)曲水，列坐其次。虽无丝竹管弦之盛，一觞一咏，亦足以畅舒幽情。<br>是日也，天朗气清，惠风和畅，仰观宇宙之大，俯察品类之盛，所以游目骋怀，足以极视听之娱，信可乐也。<br>夫人之相与，俯仰一世，或取诸怀抱，晤言一室之内；或因寄所托，放浪形骸之外。虽取舍万殊，静躁不同，当其欣于所遇，暂得于己，快然自足，不知老之将至。及其所之既倦，情随事迁，感慨系之矣。向之所欣，俯仰之间，已为陈迹，犹不能不以之兴怀。况修短随化，终期于尽。古人云:”死生亦大矣。”岂不痛哉！<br>每揽昔人兴感之由，若合一契，未尝不临文嗟悼，不能喻之于怀。固知一死生为虚诞，齐彭殇为妄作。后之视今，亦犹今之视昔。悲夫！故列叙时人，录其所述，虽世殊事异，所以兴怀，其致一也。后之览者，亦将有感于斯文。</p>
-<h1 id="小石潭记"><a href="#小石潭记" class="headerlink" title="小石潭记"></a>小石潭记</h1><p>[唐:柳宗元]<br>从小丘西行百二十步，隔篁竹，闻水声，如鸣佩环，心乐之。伐竹取道，下见小潭，水尤清冽。全石以为底，近岸，卷(quán)石底以出，为坻，为屿，为嵁(kān)，为岩。青树翠蔓，蒙络摇缀，参差披拂。<br>潭中鱼可百许头，皆若空游无所依。日光下澈，影布石上。佁(yǐ)然不动，俶(chǜ)尔远逝，往来翕忽，似与游者相乐。<br>潭西南而望，斗折蛇行，明灭可见。其岸势犬牙差(cī)互，不可知起源。<br>坐潭上，四面竹树环合，寂寥无人，凄神寒骨，悄怆幽邃。以其境过清，不可久居，乃记之而去。<br>同游者:吴武陵，龚古，余弟宗玄。隶而从者，崔氏二小生；曰恕己，曰奉壹。</p>
-<h1 id="马说"><a href="#马说" class="headerlink" title="马说"></a>马说</h1><p>[唐:韩愈]<br>世有伯乐，然后有千里马。千里马常有，而伯乐不常有。故虽有名马，祗辱于奴隶人之手，骈死于槽枥之间，不以千里称也。<br>马之千里者，一食或尽粟一石。食马者不知其能千里而食也。是马也，虽有千里之能，食不饱，力不足，才美不外见，且欲与常马等不可得，安求其能千里也？<br>策之不以其道，食之不能尽其才，鸣之而不能通其意，执策而临之，曰:”天下无马！”呜呼！其真无马耶？其真不知马也！</p>
-<h1 id="五柳先生传"><a href="#五柳先生传" class="headerlink" title="五柳先生传"></a>五柳先生传</h1><p>[魏晋:陶渊明]<br>先生不知何许人也，亦不详其姓字，宅边有五柳树，因以为号焉。闲静少言，不慕荣利。好读书，不求甚解；每有会意，便欣然忘食。性嗜酒，家贫不能常得。亲旧知其如此，或置酒而招之；造饮辄尽，期在必醉。既醉而退，曾(zēng)不吝情去留。环堵萧然，不蔽风日；箪(dān)瓢屡空，晏如也。常著文章自娱，颇示以志。忘怀得失，以此自终。<br>赞曰:黔娄之妻有言:”不戚戚于贫贱，不汲汲于富贵。”其言兹若人之俦(chóu)乎？衔觞赋诗，以乐其志。无怀氏之民欤？葛天氏之民欤？</p>
-<h1 id="出师表"><a href="#出师表" class="headerlink" title="出师表"></a>出师表</h1><p>[蜀汉:诸葛亮]<br>先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者，盖追先帝之殊遇，欲报之于陛下也。诚宜开张圣听，以光先帝遗德，恢弘志士之气，不宜妄自菲薄，引喻失义，以塞忠谏之路也。<br>宫中府中，俱为一体；陟(zhì)罚臧否，不宜异同；若有作奸犯科及为忠善者，宜付有司论其刑赏，以昭陛下平明之理；不宜偏私，使内外异法也。<br>侍中、侍郎郭攸之、费祎(yī)、董允等，此皆良实，志虑忠纯，是以先帝简拔以遗陛下；愚以为宫中之事，事无大小，悉以咨之，然后施行，必能裨补阙漏，有所广益。<br>将军向宠，性行淑均，晓畅军事，试用于昔日，先帝称之曰”能”，是以众议举宠为督；愚以为营中之事，悉以咨之，必能使行阵和睦，优劣得所。<br>亲贤臣，远小人，此先汉所以兴隆也；亲小人，远贤臣，此后汉所以倾颓也。先帝在时，每与臣论此事，未尝不叹息痛恨于桓、灵也。侍中、尚书、长史、参军，此悉贞良死节之臣，愿陛下亲之信之，则汉室之隆，可计日而待也。</p>
-<h1 id="滕王阁序"><a href="#滕王阁序" class="headerlink" title="滕王阁序"></a>滕王阁序</h1><p>[唐:王勃]<br>豫章故郡，洪都新府。星分翼轸(zhěn)，地接衡庐。襟三江而带五湖，控蛮荆而引瓯越。物华天宝，龙光射斗牛之墟；人杰地灵，徐孺下陈蕃之榻。雄州雾列，俊采星驰。台隍枕夷夏之交，宾主尽东南之美。都督阎公之雅望，棨(qǐ)戟(jǐ)遥临；宇文新州之懿范，襜(chān)帷暂驻。十旬休假，胜友如云；千里逢迎，高朋满座。腾蛟起凤，孟学士之词宗；紫电青霜，王将军之武库。家君作宰，路出名区；童子何知，躬逢胜饯。<br>时维九月，序属三秋。潦水尽而寒潭清，烟光凝而暮山紫。俨骖(cān)騑(fēi)于上路，访风景于崇阿；临帝子之长洲，得天人之旧馆。层峦耸翠，上出重霄；飞阁流丹，下临无地。鹤汀凫(fú)渚(zhǔ)，穷岛屿之萦回；桂殿兰宫，即冈峦之体势。<br>披绣闼(tà)，俯雕甍(méng)，山原旷其盈视，川泽纡(yū)其骇瞩。闾阎扑地，钟鸣鼎食之家；舸舰迷津，青雀黄龙之舳(zhú)。云销雨霁，彩彻区明。落霞与孤鹜齐飞，秋水共长天一色。渔舟唱晚，响穷彭蠡(lí)之滨；雁阵惊寒，声断衡阳之浦。<br>遥襟甫畅，逸兴遄(chuán)飞。爽籁发而清风生，纤(xiān)歌凝而白云遏(è)。睢(suī)园绿竹，气凌彭泽之樽；邺水朱华，光照临川之笔。四美具，二难并。穷睇(dì)眄(miǎn)于中天，极娱游于暇日。天高地迥，觉宇宙之无穷；兴尽悲来，识盈虚之有数。望长安于日下，目吴会于云间。地势极而南溟深，天柱高而北辰远。关山难越，谁悲失路之人？萍水相逢，尽是他乡之客。怀帝阍(hūn)而不见，奉宣室以何年？<br>嗟乎！时运不济，命途多舛。冯唐易老，李广难封。屈贾谊于长沙，非无圣主；窜梁鸿于海曲，岂乏明时？所赖君子见机，达人知命。老当益壮，宁移白首之心？穷且益坚，不坠青云之志。酌贪泉而觉爽，处涸辙以犹欢。北海虽赊，扶摇可接；东隅已逝，桑榆非晚。孟尝高洁，空余报国之情；阮籍猖狂，岂效穷途之哭！<br>勃，三尺微命，一介书生。无路请缨，等终军之弱冠；有怀投笔，慕宗悫(què)之长风。舍簪笏(hù)于百龄，奉晨昏于万里。非谢家之宝树，接孟氏之芳邻。他日趋庭，叨(tāo)陪鲤对；今兹捧袂，喜托龙门。杨意不逢，抚凌云而自惜；钟期既遇，奏流水以何惭？<br>呜呼！胜地不常，盛筵难再；兰亭已矣，梓泽丘墟。临别赠言，幸承恩于伟饯；登高作赋，是所望于群公。敢竭鄙怀，恭疏短引；一言均赋，四韵俱成。请洒潘江，各倾陆海云尔。<br>滕王高阁临江渚，佩玉鸣鸾罢歌舞。<br>画栋朝飞南浦云，珠帘暮卷西山雨。<br>闲云潭影日悠悠，物换星移几度秋。<br>阁中帝子今何在？槛外长江空自流。</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>文学爱好</category>
-        <category>古文</category>
-      </categories>
-      <tags>
-        <tag>文言文</tag>
-      </tags>
   </entry>
   <entry>
     <title>无门关·平常是道</title>
@@ -3913,6 +3913,22 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>木心－《从前慢》</title>
+    <url>/2025/04/16/%E6%9C%A8%E5%BF%83%EF%BC%8D%E3%80%8A%E4%BB%8E%E5%89%8D%E6%85%A2%E3%80%8B/</url>
+    <content><![CDATA[<p>记得早先少年时<br>大家诚诚恳恳<br>说一句 是一句</p>
+<p>清早上火车站<br>长街黑暗无行人<br>卖豆浆的小店冒着热气</p>
+<p>从前的日色变得慢<br>车、马、邮件都慢<br>一生只够爱一个人</p>
+<p>从前的锁也好看<br>钥匙精美有样子<br>你锁了，人家就懂了<br>我发现很多人的失落</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>文学爱好</category>
+        <category>诗歌</category>
+      </categories>
+      <tags>
+        <tag>木心</tag>
       </tags>
   </entry>
   <entry>
@@ -4045,22 +4061,6 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </tags>
   </entry>
   <entry>
-    <title>木心－《从前慢》</title>
-    <url>/2025/04/16/%E6%9C%A8%E5%BF%83%EF%BC%8D%E3%80%8A%E4%BB%8E%E5%89%8D%E6%85%A2%E3%80%8B/</url>
-    <content><![CDATA[<p>记得早先少年时<br>大家诚诚恳恳<br>说一句 是一句</p>
-<p>清早上火车站<br>长街黑暗无行人<br>卖豆浆的小店冒着热气</p>
-<p>从前的日色变得慢<br>车、马、邮件都慢<br>一生只够爱一个人</p>
-<p>从前的锁也好看<br>钥匙精美有样子<br>你锁了，人家就懂了<br>我发现很多人的失落</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>文学爱好</category>
-        <category>诗歌</category>
-      </categories>
-      <tags>
-        <tag>木心</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>洛神赋</title>
     <url>/2025/02/19/%E6%B4%9B%E7%A5%9E%E8%B5%8B/</url>
     <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>《洛神赋》是三国时期曹魏文学家曹植创作的辞赋，原名《感鄄赋》，亦作《感甄赋》。曹植在221年，被贬为鄄城侯，次年改封鄄城王（今山东省菏泽市鄄城县），一直郁郁不得志，借神话传说中的洛水之神宓妃，抒发心中的积郁而作。魏明帝曹睿即位以后，因古代“鄄”通“甄”，他认为《感鄄赋》犯了自己母亲的讳，太露骨，得改，与大臣商议，遂更名为《洛神赋》。<br><span id="more"></span><br>此赋虚构了作者自己与洛神的邂逅和彼此间的思慕爱恋，洛神形象美丽绝伦，人神之恋飘渺迷离，但由于人神道殊而不能结合，最后抒发了无限的悲伤怅惘之情。全篇大致可分为六段：第一段写作者从洛阳回封地时，在恍惚之际看到洛神伫立山崖；第二段写洛神容仪服饰之美；第三段写作者爱慕洛神既识礼仪又善言辞，虽相互赠答，但担心遇合受阻；第四段写洛神为“君王”之诚所感后将来而未至的情状和举动；第五段写洛神来临扈从之多，终以人神道殊含恨离去；第六段写洛神去后作者顾望思慕不忍离去的深情。全赋辞采华美，描写细腻，想象丰富，情思绻缱，若有寄托。</p>
@@ -4075,6 +4075,30 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </categories>
       <tags>
         <tag>文言文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>浅谈几种带宽与增益</title>
+    <url>/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/</url>
+    <content><![CDATA[<p>今天记录一下闭环增益、开环增益、环路增益，以及3dB带宽、单位增益带宽(UGB)、增益带宽积(GBW)。<br><span id="more"></span></p>
+<h2 id="关于增益"><a href="#关于增益" class="headerlink" title="关于增益"></a>关于增益</h2><h3 id="闭环增益"><a href="#闭环增益" class="headerlink" title="闭环增益"></a>闭环增益</h3><p>对于一个闭环反馈系统，如下图:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110153857.png" alt="20240110153857"><br>闭环增益即传输函数为: $\frac{Y(s)}{X(s)}=\frac{H(s)}{1+\beta H(s)}$, 是 $\frac{开环增益}{1+环路增益}$。</p>
+<h3 id="开环增益"><a href="#开环增益" class="headerlink" title="开环增益"></a>开环增益</h3><p>从上面图中可知，开环增益就是去除反馈对系统的作用，看运放的增益。</p>
+<h3 id="环路增益"><a href="#环路增益" class="headerlink" title="环路增益"></a>环路增益</h3><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110154642.png" alt="20240110154642"><br>如图所示，输入置0，断开环路。<br>环路增益$\frac{V_F}{V_t}=\beta A$<br>根据巴克豪森判据判断系统是否稳定，所以仿真都是用stb仿环路稳定性，看<b>环路增益波特图</b>而不是看开环增益或者闭环增益。</p>
+<p>那为什么到运放看稳定性就说开环增益了呢？<br>对于单个运放来说，由于运放一般工作在负反馈系统中，开环增益就相当于反馈系数为1的环路增益，所以到运放会说开环增益，其实还是在说环路增益。</p>
+<p>那为什么说运放仿开环增益相位裕度够了就代表其接成反馈系统是稳定的呢？<br>拉扎维的10.2节完美解释了这个问题:<br>运放开环增益相当于反馈系数为1的环路增益:在反馈系统里，反馈系数最大为1，就是接成单位增益负反馈形势。这种情况下，系统的环路增益波特图与运放的完全重合，即相位裕度一样，所以可以稳定。<br>对于其它反馈系数小于1的系统来说，环路增益为$\beta A$，不管$\beta$如何变，环路增益的波特图中，极点的位置与运放极点位置一样，不会变，所以相频曲线没有任何改变。但是由于$\beta &lt;1$，幅频曲线下移，增益交点提前，相位裕度只会越来越大。<br>综上，运放单独仿真与它接在负反馈系统里相比，相位裕度是最差的情况了，即当反馈变弱时，结果是系统更稳定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110161104.png" alt="20240110161104"></p>
+<h2 id="关于带宽"><a href="#关于带宽" class="headerlink" title="关于带宽"></a>关于带宽</h2><h3 id="3dB带宽"><a href="#3dB带宽" class="headerlink" title="3dB带宽"></a>3dB带宽</h3><p>3dB带宽就是运放的主极点处所对应的频率，幅度上对应比低频增益下降3个dB处。<br>推导:<br>运放传递函数:$A_v(s)=\frac{A_v(0)}{(1+s/\omega _0)(1+s/\omega _1)(1+s/\omega _2)···}$</p>
+<p>假设次极点离主极点很远很远，那么在主极点$s=\omega _0$处，有:<br>$A_v(\omega _0)=20log(\frac{A_v(0)}{1+\omega _0/\omega _0})=20log(\frac{A_v(0))}{2}=20logA_v(0)-20log(2)\approx 20logA_v(0)-3dB$</p>
+<p>所以叫做3dB带宽。</p>
+<h3 id="单位增益带宽"><a href="#单位增益带宽" class="headerlink" title="单位增益带宽"></a>单位增益带宽</h3><p>顾名思义，就是运放$\frac{开环增益}{闭环负反馈系统环路增益}=1$时对应的频率。<br>为了推导方便，假设只有一个极点的运放，那么在它的单位增益带宽处，有:<br>$A<em>v(\omega </em>{UGB})=\frac{A<em>v(0)}{1+\frac{\omega </em>{UGB}}{\omega <em>0}}=1$<br>可得，$\omega </em>{UGB}=A_v(0)*\omega _0$</p>
+<p>这里有一个结论: 闭环系统的3dB带宽等于环路增益的党委增益带宽。单位增益负反馈系统的3dB带宽等于该系统中所使用的运放的单位增益带宽。<br>推导:负反馈想要稳定，即相位裕度达到60°，单位增益带宽内一定只有一个极点。只看单位增益带宽内的情况，那么有:<br>环路增益: $\beta A(s)=\frac{\beta A_0}{1+\frac{s}{\omega _0}}$<br>闭环系统传输函数: $\frac{Y(s)}{X(s)}=\frac{A(s)}{1+\beta A(s)}=\frac{\frac{A_0}{1+\beta A_0}}{1+\frac{s}{(1+\beta A_0)\omega _0}}$<br>所以就闭环系统传输函数3dB带宽<b>(不是环路增益，是传输函数)</b>是$\omega _0<em>\beta A_0$，环路增益的单位增益带宽也是$\omega _0</em>\beta A_0$。<br>当系统为单位增益负反馈系统时，即反馈因子是1，系统3dB带宽是$\omega _0<em>A_0$,运放单位增益带宽也是$\omega _0</em>A_0$。</p>
+<h3 id="增益带宽积-GBW"><a href="#增益带宽积-GBW" class="headerlink" title="增益带宽积(GBW)"></a>增益带宽积(GBW)</h3><p>增益与带宽的乘积。<br>重要结论:在单极点系统中，GBW是不变的，等于单位增益带宽，等于低频增益3dB带宽。因为只有一个极点的时候，极点之后，带宽每增大10倍，增益下降20dB，20dB就是10倍，一个增大十倍，一个减小十倍，自然不变。<br>结合单位增益带宽中的结论推导部分，可见，闭环系统传输函数的增益带宽积与开环的增益带宽积相等。(再次强调:是传输函数的增益带宽积，不是环路增益中的增益带宽积)<br>$A_0<em>\omega _0=\frac{A_0}{1+\beta A_0}</em>(1+\beta A_0)*\omega _0$</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>半导体专业</category>
+        <category>模拟电路</category>
+      </categories>
+      <tags>
+        <tag>反馈</tag>
       </tags>
   </entry>
   <entry>
@@ -4389,6 +4413,30 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </categories>
   </entry>
   <entry>
+    <title>通过 ZeroTier 访问所在局域网的其它设备</title>
+    <url>/2024/08/15/%E9%80%9A%E8%BF%87-ZeroTier-%E8%AE%BF%E9%97%AE%E6%89%80%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E5%85%B6%E5%AE%83%E8%AE%BE%E5%A4%87/</url>
+    <content><![CDATA[<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>硬件: QNAP TS-464C<br>系统: iStore OS 虚拟机(Zerotier虚拟局域网网关)<br>软件: Zerotier<br>Zerotier 网段: 10.147.18.0/24<br>局域网网段: 192.168.3.0/24<br><span id="more"></span></p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="配置-Zerotier-设置"><a href="#配置-Zerotier-设置" class="headerlink" title="配置 Zerotier 设置"></a>配置 Zerotier 设置</h2><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112603.png" alt="20240815112603"></p>
+<h2 id="配置-Zerotier-网关"><a href="#配置-Zerotier-网关" class="headerlink" title="配置 Zerotier 网关"></a>配置 Zerotier 网关</h2><ol>
+<li>插件设置<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112706.png" alt="20240815112706"></li>
+<li>配置网关开启内核转发<br>先 ssh 登录到 iStore OS(Zerotier虚拟局域网网关，执行以下命令:<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;net.ipv4.ip_forward=1&#x27;</span> &gt;&gt; /etc/sysctl.conf<br>sysctl -p<br></code></pre></td></tr></table></figure>
+<h2 id="访问方法"><a href="#访问方法" class="headerlink" title="访问方法"></a>访问方法</h2></li>
+<li>重启一下使用的外网设备的 Zerotier 服务；</li>
+<li>跟在局域网内访问相同，使用局域网地址访问即可。<h1 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h1></li>
+<li>网上说需要开启 Zerotier 网关的地址伪装，即<code>MASQUERADE</code>；<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -j MASQUERADE<br></code></pre></td></tr></table></figure></li>
+<li>配置静态路由表；</li>
+<li>防火墙放行 <code>9933</code> 端口。<br>上述三个步骤本次配置没有使用到，可能是 iStore OS 简化了配置，如果以后有需要使用 Linux 标准系统来使用的需求时再研究。</li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>网络服务</category>
+      </categories>
+      <tags>
+        <tag>Zerotier</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>英语--肯定句变否定句</title>
     <url>/2023/12/01/%E8%8B%B1%E8%AF%AD-%E8%82%AF%E5%AE%9A%E5%8F%A5%E5%8F%98%E5%90%A6%E5%AE%9A%E5%8F%A5/</url>
     <content><![CDATA[<h3 id="肯定句变否定句规则"><a href="#肯定句变否定句规则" class="headerlink" title="肯定句变否定句规则:"></a>肯定句变否定句规则:</h3><h4 id="一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。"><a href="#一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。" class="headerlink" title="一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。"></a>一、<font color=red>有</font>be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。</h4><p>例如:<br>|<center>肯定句</center>|<center>否定句</center>|<br>|——|——|<br>|I am a student.|I am not a student.<br>|Amy is a good girl.|Amy <u>is not</u><em><u><font color=red>(isn\’t)</font></u></em> a good girl.<br>|These flowers are very beautiful.|These flowers <u>are not</u><em><u><font color=red>(aren\’t)</font></u></em> very beautiful.<br>|I can swim.|I <u>can not</u><em><u><font color=red>(can\’t)</font></u></em> swim.<br>|There are some books on the table.|There <u>are not</u><em><u><font color=red>(aren\’t)</font></u></em> any books on the table.<br>|Jack is a doctor.|Jack <u>is not</u><em><u><font color=red>(isn\’t)</font></u></em> a doctor.<br>|I was a student ten years ago.|I <u>was not</u><em><u><font color=red>(wasn\’t)</font></u></em> a student ten years ago.</p>
@@ -4483,54 +4531,6 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </categories>
       <tags>
         <tag>英语</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>浅谈几种带宽与增益</title>
-    <url>/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/</url>
-    <content><![CDATA[<p>今天记录一下闭环增益、开环增益、环路增益，以及3dB带宽、单位增益带宽(UGB)、增益带宽积(GBW)。<br><span id="more"></span></p>
-<h2 id="关于增益"><a href="#关于增益" class="headerlink" title="关于增益"></a>关于增益</h2><h3 id="闭环增益"><a href="#闭环增益" class="headerlink" title="闭环增益"></a>闭环增益</h3><p>对于一个闭环反馈系统，如下图:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110153857.png" alt="20240110153857"><br>闭环增益即传输函数为: $\frac{Y(s)}{X(s)}=\frac{H(s)}{1+\beta H(s)}$, 是 $\frac{开环增益}{1+环路增益}$。</p>
-<h3 id="开环增益"><a href="#开环增益" class="headerlink" title="开环增益"></a>开环增益</h3><p>从上面图中可知，开环增益就是去除反馈对系统的作用，看运放的增益。</p>
-<h3 id="环路增益"><a href="#环路增益" class="headerlink" title="环路增益"></a>环路增益</h3><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110154642.png" alt="20240110154642"><br>如图所示，输入置0，断开环路。<br>环路增益$\frac{V_F}{V_t}=\beta A$<br>根据巴克豪森判据判断系统是否稳定，所以仿真都是用stb仿环路稳定性，看<b>环路增益波特图</b>而不是看开环增益或者闭环增益。</p>
-<p>那为什么到运放看稳定性就说开环增益了呢？<br>对于单个运放来说，由于运放一般工作在负反馈系统中，开环增益就相当于反馈系数为1的环路增益，所以到运放会说开环增益，其实还是在说环路增益。</p>
-<p>那为什么说运放仿开环增益相位裕度够了就代表其接成反馈系统是稳定的呢？<br>拉扎维的10.2节完美解释了这个问题:<br>运放开环增益相当于反馈系数为1的环路增益:在反馈系统里，反馈系数最大为1，就是接成单位增益负反馈形势。这种情况下，系统的环路增益波特图与运放的完全重合，即相位裕度一样，所以可以稳定。<br>对于其它反馈系数小于1的系统来说，环路增益为$\beta A$，不管$\beta$如何变，环路增益的波特图中，极点的位置与运放极点位置一样，不会变，所以相频曲线没有任何改变。但是由于$\beta &lt;1$，幅频曲线下移，增益交点提前，相位裕度只会越来越大。<br>综上，运放单独仿真与它接在负反馈系统里相比，相位裕度是最差的情况了，即当反馈变弱时，结果是系统更稳定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110161104.png" alt="20240110161104"></p>
-<h2 id="关于带宽"><a href="#关于带宽" class="headerlink" title="关于带宽"></a>关于带宽</h2><h3 id="3dB带宽"><a href="#3dB带宽" class="headerlink" title="3dB带宽"></a>3dB带宽</h3><p>3dB带宽就是运放的主极点处所对应的频率，幅度上对应比低频增益下降3个dB处。<br>推导:<br>运放传递函数:$A_v(s)=\frac{A_v(0)}{(1+s/\omega _0)(1+s/\omega _1)(1+s/\omega _2)···}$</p>
-<p>假设次极点离主极点很远很远，那么在主极点$s=\omega _0$处，有:<br>$A_v(\omega _0)=20log(\frac{A_v(0)}{1+\omega _0/\omega _0})=20log(\frac{A_v(0))}{2}=20logA_v(0)-20log(2)\approx 20logA_v(0)-3dB$</p>
-<p>所以叫做3dB带宽。</p>
-<h3 id="单位增益带宽"><a href="#单位增益带宽" class="headerlink" title="单位增益带宽"></a>单位增益带宽</h3><p>顾名思义，就是运放$\frac{开环增益}{闭环负反馈系统环路增益}=1$时对应的频率。<br>为了推导方便，假设只有一个极点的运放，那么在它的单位增益带宽处，有:<br>$A<em>v(\omega </em>{UGB})=\frac{A<em>v(0)}{1+\frac{\omega </em>{UGB}}{\omega <em>0}}=1$<br>可得，$\omega </em>{UGB}=A_v(0)*\omega _0$</p>
-<p>这里有一个结论: 闭环系统的3dB带宽等于环路增益的党委增益带宽。单位增益负反馈系统的3dB带宽等于该系统中所使用的运放的单位增益带宽。<br>推导:负反馈想要稳定，即相位裕度达到60°，单位增益带宽内一定只有一个极点。只看单位增益带宽内的情况，那么有:<br>环路增益: $\beta A(s)=\frac{\beta A_0}{1+\frac{s}{\omega _0}}$<br>闭环系统传输函数: $\frac{Y(s)}{X(s)}=\frac{A(s)}{1+\beta A(s)}=\frac{\frac{A_0}{1+\beta A_0}}{1+\frac{s}{(1+\beta A_0)\omega _0}}$<br>所以就闭环系统传输函数3dB带宽<b>(不是环路增益，是传输函数)</b>是$\omega _0<em>\beta A_0$，环路增益的单位增益带宽也是$\omega _0</em>\beta A_0$。<br>当系统为单位增益负反馈系统时，即反馈因子是1，系统3dB带宽是$\omega _0<em>A_0$,运放单位增益带宽也是$\omega _0</em>A_0$。</p>
-<h3 id="增益带宽积-GBW"><a href="#增益带宽积-GBW" class="headerlink" title="增益带宽积(GBW)"></a>增益带宽积(GBW)</h3><p>增益与带宽的乘积。<br>重要结论:在单极点系统中，GBW是不变的，等于单位增益带宽，等于低频增益3dB带宽。因为只有一个极点的时候，极点之后，带宽每增大10倍，增益下降20dB，20dB就是10倍，一个增大十倍，一个减小十倍，自然不变。<br>结合单位增益带宽中的结论推导部分，可见，闭环系统传输函数的增益带宽积与开环的增益带宽积相等。(再次强调:是传输函数的增益带宽积，不是环路增益中的增益带宽积)<br>$A_0<em>\omega _0=\frac{A_0}{1+\beta A_0}</em>(1+\beta A_0)*\omega _0$</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>半导体专业</category>
-        <category>模拟电路</category>
-      </categories>
-      <tags>
-        <tag>反馈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>通过 ZeroTier 访问所在局域网的其它设备</title>
-    <url>/2024/08/15/%E9%80%9A%E8%BF%87-ZeroTier-%E8%AE%BF%E9%97%AE%E6%89%80%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E5%85%B6%E5%AE%83%E8%AE%BE%E5%A4%87/</url>
-    <content><![CDATA[<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>硬件: QNAP TS-464C<br>系统: iStore OS 虚拟机(Zerotier虚拟局域网网关)<br>软件: Zerotier<br>Zerotier 网段: 10.147.18.0/24<br>局域网网段: 192.168.3.0/24<br><span id="more"></span></p>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="配置-Zerotier-设置"><a href="#配置-Zerotier-设置" class="headerlink" title="配置 Zerotier 设置"></a>配置 Zerotier 设置</h2><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112603.png" alt="20240815112603"></p>
-<h2 id="配置-Zerotier-网关"><a href="#配置-Zerotier-网关" class="headerlink" title="配置 Zerotier 网关"></a>配置 Zerotier 网关</h2><ol>
-<li>插件设置<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112706.png" alt="20240815112706"></li>
-<li>配置网关开启内核转发<br>先 ssh 登录到 iStore OS(Zerotier虚拟局域网网关，执行以下命令:<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;net.ipv4.ip_forward=1&#x27;</span> &gt;&gt; /etc/sysctl.conf<br>sysctl -p<br></code></pre></td></tr></table></figure>
-<h2 id="访问方法"><a href="#访问方法" class="headerlink" title="访问方法"></a>访问方法</h2></li>
-<li>重启一下使用的外网设备的 Zerotier 服务；</li>
-<li>跟在局域网内访问相同，使用局域网地址访问即可。<h1 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h1></li>
-<li>网上说需要开启 Zerotier 网关的地址伪装，即<code>MASQUERADE</code>；<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -j MASQUERADE<br></code></pre></td></tr></table></figure></li>
-<li>配置静态路由表；</li>
-<li>防火墙放行 <code>9933</code> 端口。<br>上述三个步骤本次配置没有使用到，可能是 iStore OS 简化了配置，如果以后有需要使用 Linux 标准系统来使用的需求时再研究。</li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>网络服务</category>
-      </categories>
-      <tags>
-        <tag>Zerotier</tag>
       </tags>
   </entry>
   <entry>
