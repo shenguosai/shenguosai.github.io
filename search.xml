@@ -186,6 +186,42 @@
       </tags>
   </entry>
   <entry>
+    <title>Debian 12.6 - 安装TCP测试工具TCPing</title>
+    <url>/2024/08/14/Debian-12-6-%E5%AE%89%E8%A3%85TCP%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7TCPing/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><figcaption><span>TCP 协议的一种```ping```命令，用来测试数据包能否通过 TCP 协议到达目标主机。他的一大特点，就是可以在禁```ping```的时候检测网络连通率。</span></figcaption><table><tr><td class="code"><pre><code class="hljs TCPing```是基于">&lt;!--more--&gt;<br># 安装```tcptraceroute```<br>```TCPing```本质上是一个 shell 脚本，依赖```tcptraceroute```运行。<br>```bash<br>sudo apt install tcptraceroute<br></code></pre></td></tr></table></figure>
+<h1 id="下载-TCPing"><a href="#下载-TCPing" class="headerlink" title="下载 TCPing"></a>下载 TCPing</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo wget http://www.vdberg.org/~richard/tcpping -O /usr/bin/tcping<br></code></pre></td></tr></table></figure>
+<h1 id="配置权限"><a href="#配置权限" class="headerlink" title="配置权限"></a>配置权限</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">chmod</span> +x /usr/bin/tcping<br></code></pre></td></tr></table></figure>
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">tcping 目标IP 目标端口<br></code></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>软件应用</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Debian Linux 使用 -- 远程桌面黑屏并闪退</title>
+    <url>/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/</url>
+    <content><![CDATA[<h1 id="安装-Xrdp-使用-Xorg-进行远程登录"><a href="#安装-Xrdp-使用-Xorg-进行远程登录" class="headerlink" title="安装 Xrdp 使用 Xorg 进行远程登录"></a>安装 Xrdp 使用 Xorg 进行远程登录</h1><p>网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo apt install xrdp<br></code></pre></td></tr></table></figure><br><span id="more"></span><br>安装完成后该服务将自动开启，可通过下面命令确认是否开启:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo systemctl status xrdp<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511104423.png" alt="20240511104423"><br>红框处显示 <code>active(running)</code> 则说明已开启。</p>
+<h1 id="解决远程桌面连接上之后黑屏并闪退问题"><a href="#解决远程桌面连接上之后黑屏并闪退问题" class="headerlink" title="解决远程桌面连接上之后黑屏并闪退问题"></a>解决远程桌面连接上之后黑屏并闪退问题</h1><p>这个经常会有人说更换 test 版本的 xrdp 来解决，但是通过以下办法可以正常登录。<br>编辑<code>/etc/xrdp/startwm.sh</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo vi /etc/xrdp/startwm.sh<br></code></pre></td></tr></table></figure><br>加入下面三行内容:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">unset</span> DBUS_SESSION_BUS_ADDRESS<br><span class="hljs-built_in">unset</span> XDG_RUNTIME_DIR<br>. <span class="hljs-variable">$HOME</span>/.profile<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511104947.png" alt="20240511104947"><br>然后就可以通过 Xorg 登录看到桌面了。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511105324.png" alt="20240511105324"></p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>软件应用</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Diary</title>
+    <url>/2023/08/10/Diary/</url>
+    <content><![CDATA[<h2 id="2023年8月14日-晴空万里-人到中年"><a href="#2023年8月14日-晴空万里-人到中年" class="headerlink" title="2023年8月14日  晴空万里  人到中年"></a>2023年8月14日  晴空万里  人到中年</h2><p>今天又来到北京出差，早晨6点20出发，坐7点53分的G202经过3个多小时的颠簸，来到了首都的北京南站。<br>在北京南站坐上出租车，在下出租车的时候出了一点插曲，出租车司机停在了公司院区大门旁边的自行车道上，开门的时候没有注意观察，正好有一辆自行车逆行而过，擦到了出租车门。出租车司机还是很亲切的，让我走就可以，但是在我的坚持下最终还是给了司机师傅50元的赔偿。临行时在想：这点赔偿可能也不足以弥补司机师傅的损失，但为了自己的过失而进行补偿，心情还是蛮放松的。<br>从日本回国已过7年，逐渐的适应了中国的生活。也开始慢慢地理解了自己祖国的人们那种浮躁心态的来源，在一个14亿人口的大国，就生存本身而言，身边的每个人都是竞争对手。所以大家必须在有限的资源中为自己争取，这就是为何大家要插队，为何大家说话声音大，时刻像在争吵……<br>进入园区宾馆办完入住手续，正好12点多，去2楼吃了午饭，在房间休息了一会就去了办公室，匆匆一下午感觉什么都没有做。在晚饭的时候正好和领导聊了一会，感觉最近他又有一些心灰意冷，不再像上次那样意气风发。在日本也换过工作，现在是回国后找的第二份工作，这位领导身上有一种我一直想有却又达不到的特质，性格直率鲜明，但也并不缺迂回，但是主流还是向前冲的，头脑敏捷却没有城府，没有城府用在成年人身上可能有些贬义，也许这种性格的人不屑于城府。晚饭过后跟我讲了他们前一个项目如何与公司对赌然后最终失败，结果赔上了一年的奖金。我也挺喜欢这种意气风发，不顾后果的对赌，也许这就是赌博使人上瘾的原因所在吧。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+  </entry>
+  <entry>
     <title>Debian Linux 使用 -- 系统安装</title>
     <url>/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<h1 id="机器配置"><a href="#机器配置" class="headerlink" title="机器配置"></a>机器配置</h1><p>这台机器比较老，是200x年在日本买的富士通的 FMV-DESKPOWER，型号是 FMVFB70T。<br>配置如下:</p>
@@ -283,42 +319,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Debian Linux 使用 -- 远程桌面黑屏并闪退</title>
-    <url>/2024/05/11/Debian-Linux-%E4%BD%BF%E7%94%A8-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%BB%91%E5%B1%8F%E5%B9%B6%E9%97%AA%E9%80%80/</url>
-    <content><![CDATA[<h1 id="安装-Xrdp-使用-Xorg-进行远程登录"><a href="#安装-Xrdp-使用-Xorg-进行远程登录" class="headerlink" title="安装 Xrdp 使用 Xorg 进行远程登录"></a>安装 Xrdp 使用 Xorg 进行远程登录</h1><p>网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo apt install xrdp<br></code></pre></td></tr></table></figure><br><span id="more"></span><br>安装完成后该服务将自动开启，可通过下面命令确认是否开启:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo systemctl status xrdp<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511104423.png" alt="20240511104423"><br>红框处显示 <code>active(running)</code> 则说明已开启。</p>
-<h1 id="解决远程桌面连接上之后黑屏并闪退问题"><a href="#解决远程桌面连接上之后黑屏并闪退问题" class="headerlink" title="解决远程桌面连接上之后黑屏并闪退问题"></a>解决远程桌面连接上之后黑屏并闪退问题</h1><p>这个经常会有人说更换 test 版本的 xrdp 来解决，但是通过以下办法可以正常登录。<br>编辑<code>/etc/xrdp/startwm.sh</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo vi /etc/xrdp/startwm.sh<br></code></pre></td></tr></table></figure><br>加入下面三行内容:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">unset</span> DBUS_SESSION_BUS_ADDRESS<br><span class="hljs-built_in">unset</span> XDG_RUNTIME_DIR<br>. <span class="hljs-variable">$HOME</span>/.profile<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511104947.png" alt="20240511104947"><br>然后就可以通过 Xorg 登录看到桌面了。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511105324.png" alt="20240511105324"></p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>软件应用</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Debian 12.6 - 安装TCP测试工具TCPing</title>
-    <url>/2024/08/14/Debian-12-6-%E5%AE%89%E8%A3%85TCP%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7TCPing/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><figcaption><span>TCP 协议的一种```ping```命令，用来测试数据包能否通过 TCP 协议到达目标主机。他的一大特点，就是可以在禁```ping```的时候检测网络连通率。</span></figcaption><table><tr><td class="code"><pre><code class="hljs TCPing```是基于">&lt;!--more--&gt;<br># 安装```tcptraceroute```<br>```TCPing```本质上是一个 shell 脚本，依赖```tcptraceroute```运行。<br>```bash<br>sudo apt install tcptraceroute<br></code></pre></td></tr></table></figure>
-<h1 id="下载-TCPing"><a href="#下载-TCPing" class="headerlink" title="下载 TCPing"></a>下载 TCPing</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo wget http://www.vdberg.org/~richard/tcpping -O /usr/bin/tcping<br></code></pre></td></tr></table></figure>
-<h1 id="配置权限"><a href="#配置权限" class="headerlink" title="配置权限"></a>配置权限</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">chmod</span> +x /usr/bin/tcping<br></code></pre></td></tr></table></figure>
-<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">tcping 目标IP 目标端口<br></code></pre></td></tr></table></figure>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>软件应用</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Diary</title>
-    <url>/2023/08/10/Diary/</url>
-    <content><![CDATA[<h2 id="2023年8月14日-晴空万里-人到中年"><a href="#2023年8月14日-晴空万里-人到中年" class="headerlink" title="2023年8月14日  晴空万里  人到中年"></a>2023年8月14日  晴空万里  人到中年</h2><p>今天又来到北京出差，早晨6点20出发，坐7点53分的G202经过3个多小时的颠簸，来到了首都的北京南站。<br>在北京南站坐上出租车，在下出租车的时候出了一点插曲，出租车司机停在了公司院区大门旁边的自行车道上，开门的时候没有注意观察，正好有一辆自行车逆行而过，擦到了出租车门。出租车司机还是很亲切的，让我走就可以，但是在我的坚持下最终还是给了司机师傅50元的赔偿。临行时在想：这点赔偿可能也不足以弥补司机师傅的损失，但为了自己的过失而进行补偿，心情还是蛮放松的。<br>从日本回国已过7年，逐渐的适应了中国的生活。也开始慢慢地理解了自己祖国的人们那种浮躁心态的来源，在一个14亿人口的大国，就生存本身而言，身边的每个人都是竞争对手。所以大家必须在有限的资源中为自己争取，这就是为何大家要插队，为何大家说话声音大，时刻像在争吵……<br>进入园区宾馆办完入住手续，正好12点多，去2楼吃了午饭，在房间休息了一会就去了办公室，匆匆一下午感觉什么都没有做。在晚饭的时候正好和领导聊了一会，感觉最近他又有一些心灰意冷，不再像上次那样意气风发。在日本也换过工作，现在是回国后找的第二份工作，这位领导身上有一种我一直想有却又达不到的特质，性格直率鲜明，但也并不缺迂回，但是主流还是向前冲的，头脑敏捷却没有城府，没有城府用在成年人身上可能有些贬义，也许这种性格的人不屑于城府。晚饭过后跟我讲了他们前一个项目如何与公司对赌然后最终失败，结果赔上了一年的奖金。我也挺喜欢这种意气风发，不顾后果的对赌，也许这就是赌博使人上瘾的原因所在吧。</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-  </entry>
-  <entry>
     <title>EDA工具使用备忘</title>
     <url>/2024/02/01/EDA%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/</url>
     <content><![CDATA[<h2 id="Cadence"><a href="#Cadence" class="headerlink" title="Cadence"></a>Cadence</h2><h4 id="Virtuoso"><a href="#Virtuoso" class="headerlink" title="Virtuoso"></a>Virtuoso</h4><ol>
@@ -404,6 +404,24 @@
       </tags>
   </entry>
   <entry>
+    <title>在自己搭建的hexo博客上发布文章</title>
+    <url>/2025/02/08/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<ol>
+<li>在<code>/source/_posts</code>目录下建立<code>.md</code>文件并撰写内容；<br>编辑文章时要在第一行中加上<code>title</code>，如果不按此格式来写的话在<code>hexo</code>博客中就会显示这篇文章没有名字。<span id="more"></span>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">文章题目</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure></li>
+<li>命名完成后，将终端当前目录更改为<code>/source/_posts</code><br>输入<code>hexo g</code>(完整命令为<code>hexo generate</code>)，生成静态文件；<br>输入<code>hexo s</code>(完整命令为<code>hexo server</code>)，启动local服务器，主要用于本地预览。完成后打开浏览器输入<a href="">http://localhost:4000</a>，就会发现多了刚才写的那篇博客。<br>输入<code>hexo d</code>(完整命令为<code>hexo deploy</code>)，将本地文件发布到github仓库上。</li>
+<li>每次对hexo博客上的<code>.md</code>文件进行更改后都要重复步骤2，这样更改的内容才能在hexo博客上显示。</li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>网络服务</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo字数统计与阅读统计</title>
     <url>/2023/11/20/Hexo%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E4%B8%8E%E9%98%85%E8%AF%BB%E7%BB%9F%E8%AE%A1/</url>
     <content><![CDATA[<ol>
@@ -416,24 +434,6 @@
 </li>
 </ol>
 <p>设置完成！</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>网络服务</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在自己搭建的hexo博客上发布文章</title>
-    <url>/2025/02/08/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<ol>
-<li>在<code>/source/_posts</code>目录下建立<code>.md</code>文件并撰写内容；<br>编辑文章时要在第一行中加上<code>title</code>，如果不按此格式来写的话在<code>hexo</code>博客中就会显示这篇文章没有名字。<span id="more"></span>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">文章题目</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure></li>
-<li>命名完成后，将终端当前目录更改为<code>/source/_posts</code><br>输入<code>hexo g</code>(完整命令为<code>hexo generate</code>)，生成静态文件；<br>输入<code>hexo s</code>(完整命令为<code>hexo server</code>)，启动local服务器，主要用于本地预览。完成后打开浏览器输入<a href="">http://localhost:4000</a>，就会发现多了刚才写的那篇博客。<br>输入<code>hexo d</code>(完整命令为<code>hexo deploy</code>)，将本地文件发布到github仓库上。</li>
-<li>每次对hexo博客上的<code>.md</code>文件进行更改后都要重复步骤2，这样更改的内容才能在hexo博客上显示。</li>
-</ol>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
       <categories>
         <category>技术兴趣</category>
@@ -463,6 +463,93 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo设置博客文章加密</title>
+    <url>/2023/08/10/Hexo%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/</url>
+    <content><![CDATA[<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>Hexo搭配使用<a href="https://www.npmjs.com/package/hexo-blog-encrypt">hexo-blog-encrypt</a>插件可以写一些比较私密的博客，通过密码验证的方式让其他人不能随意浏览。</p>
+<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>在<code>blog\</code>目录运行以下代码：<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install hexo-blog-encrypt<br></code></pre></td></tr></table></figure><br><span id="more"></span></p>
+<h1 id="一般配置"><a href="#一般配置" class="headerlink" title="一般配置"></a>一般配置</h1><ol>
+<li>在根目录的配置文件<code>_config.yml</code>中添加以下代码：<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">encrypt:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure></li>
+<li>设置加密之后，需要在新建博文时在文章头部添加加密的信息设置：<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs config">---<br>title: &#123;&#123; title &#125;&#125;<br>date: &#123;&#123; date &#125;&#125;<br>tags: <br>categories: <br>password: <br>message: <br>---<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>密码。</span></figcaption><table><tr><td class="code"><pre><code class="hljs password```:">```message```：输入密码界面的提示说明。<br><br># 针对Tag的加密<br>将以下代码复制到根目录下的```_config.yml```:<br>```yml<br>encrypt: #hexo-blog-encrypt<br>  enable: true<br>  abstract: 有东西被加密了, 请输入密码查看.<br>  message: 您好, 这里需要密码.<br>  tags:<br>  - &#123;name: TagName1, password: 密码A&#125;<br>  - &#123;name: TagName2, password: 密码B&#125;<br>  wrong_pass_message: 抱歉, 这个密码看着不太对, 请再试试.<br>  wrong_hash_message: 抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>网络服务</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx反向代理实现访问路由器控制界面</title>
+    <url>/2024/03/28/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E8%AE%BF%E9%97%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E6%8E%A7%E5%88%B6%E7%95%8C%E9%9D%A2/</url>
+    <content><![CDATA[<p>前两天把家里空闲的手机翻出来想着干点什么，两个小米 Note，一个 iPhone4，两个 iPhone6，一个三星 Galaxy A9 Pro和一个三星 Galaxy A32。</p>
+<ul>
+<li>iPhone4 被我手残升级 iOS 搞成了砖，现在只能看白苹果了。。。</li>
+<li>两个小米 Note 折腾了半天也没法解锁 BootLoader, 先放置了</li>
+<li>一台 iPhone6 安装了“掌上看家” APP 在家里做个监控用来看孩子有没有玩电子设备</li>
+<li>另一台 iPhone6 越狱出来做了一些小处理，本文重点来讲这个</li>
+<li>三星 Galaxy A9 Pro 已经解锁 BootLoader 成功还没想好干什么</li>
+<li>三星 Galaxy A32 还没折腾<span id="more"></span>
+</li>
+</ul>
+<p>废话少说，今天来聊聊用越狱的 iPhone6 安装 nginx 实现反向代理访问华为路由器 AX3 Pro 的管理界面。</p>
+<h1 id="iPhone6-越狱"><a href="#iPhone6-越狱" class="headerlink" title="iPhone6 越狱"></a>iPhone6 越狱</h1><p>这个没有记录，等后期越狱另外一台 iPhone6 的时候再详细描述。</p>
+<h1 id="配置一下越狱的-iPhone6"><a href="#配置一下越狱的-iPhone6" class="headerlink" title="配置一下越狱的 iPhone6"></a>配置一下越狱的 iPhone6</h1><p>这个跟本篇设置关联不大，主要是配置了 bash 和 Vim。<br>越狱后的 iPhone 系统内核是 Drawin，使用 Linux 命令<code>uname -a</code>就可以查看:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@iPhone ~]<span class="hljs-comment">#uname -a</span><br>Darwin iPhone 18.7.0 Darwin Kernel Version 18.7.0: Fri Aug 19 23:28:26 PDT 2022; root:xnu-4903.272.5~1/RELEASE_ARM64_T7000 iPhone7,1 arm Darwin<br></code></pre></td></tr></table></figure></p>
+<h2 id="bash设置"><a href="#bash设置" class="headerlink" title="bash设置"></a>bash设置</h2><p>iPhone 越狱后默认的 shell 是 zsh，由于一直习惯于使用 bash，就换成了 bash。</p>
+<h3 id="使用命令cat-etc-shells查看系统支持的-shell"><a href="#使用命令cat-etc-shells查看系统支持的-shell" class="headerlink" title="使用命令cat /etc/shells查看系统支持的 shell:"></a>使用命令<code>cat /etc/shells</code>查看系统支持的 shell:</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@iPhone ~]<span class="hljs-comment">#cat /etc/shells</span><br><span class="hljs-comment"># /etc/shells: valid login shells</span><br>/bin/sh<br>/usr/bin/sh<br>/bin/zsh<br>/usr/bin/zsh<br>/bin/bash<br>/usr/bin/bash<br>/usr/bin/dash<br></code></pre></td></tr></table></figure>
+<h3 id="将默认-shell-更改为-bash"><a href="#将默认-shell-更改为-bash" class="headerlink" title="将默认 shell 更改为 bash:"></a>将默认 shell 更改为 bash:</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">chsh -s /bin/bash<br></code></pre></td></tr></table></figure>
+<h3 id="查看当前用户-shell"><a href="#查看当前用户-shell" class="headerlink" title="查看当前用户 shell"></a>查看当前用户 shell</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@iPhone ~]<span class="hljs-comment">#echo $SHELL</span><br>/bin/bash<br></code></pre></td></tr></table></figure>
+<h3 id="更改命令行提示符-PS1-及-常用命令"><a href="#更改命令行提示符-PS1-及-常用命令" class="headerlink" title="更改命令行提示符 PS1 及 常用命令"></a>更改命令行提示符 PS1 及 常用命令</h3><pre><code><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs conf">export PATH=&#x27;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games&#x27;<br># export PS1=&#x27;\h:\w \u\$ &#x27;<br>export PS1=&#x27;[\u@\h \W]\$&#x27;<br>umask 022<br><br>export EDITOR=/usr/bin/editor<br>export PAGER=/usr/bin/pager<br><br>for i in /etc/profile.d/*.sh ; do<br>    if [ -r &quot;$i&quot; ]; then<br>        . $i<br>    fi<br>done<br><br>export LS_COLORS=&#x27;no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=01;32:*.cmd=01;35:*.exe=01;35:*.com=01;35:*.btm=01;35:*.bat=01;35:*.sh=01;35:*.csh=01;35:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tz=01;31:*.rpm=01;31:*.cpio=01;31:*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.xbm=01;35:*.xpm=01;35:*.png=01;35:*.tif=01;35:&#x27;<br>alias la=&#x27;ls -al&#x27;<br>alias ll=&#x27;ls -l&#x27;<br></code></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>将第3行注释掉；<br>添加第3行；<br>添加15、16、17行；<br>其它都是默认的。<br><strong>注:不知道原因，但是在这个系统里只能修改这个文件(/etc/profile)来配置 bash，在用户目录下使用<code>.bashrc</code>修改没有效果，应该是默认不 load <code>.bashrc</code>文件。</strong></p>
+</blockquote>
+<h2 id="配置-VIM"><a href="#配置-VIM" class="headerlink" title="配置 VIM"></a>配置 VIM</h2><p>这个就在用户目录下使用<code>touch .vimrc</code>和<code>mkdir .vim</code>创建相关的配置文件和目录即可。<br>.vimrc 配置如下:</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">set</span> <span class="hljs-keyword">nu</span><br><span class="hljs-keyword">set</span> backspace=<span class="hljs-built_in">indent</span>,eol,start<br><span class="hljs-comment">&quot;set cursorline</span><br><span class="hljs-comment">&quot;hi cursorline ctermbg=lightgray guibg=lightblue</span><br><br><span class="hljs-keyword">set</span> nobackup<br><span class="hljs-keyword">set</span> noswapfile<br><span class="hljs-keyword">set</span> nowritebackup<br><span class="hljs-keyword">set</span> noundofile<br><br><span class="hljs-keyword">set</span> nocompatible<br><span class="hljs-keyword">set</span> wrap<br><span class="hljs-keyword">set</span> laststatus=<span class="hljs-number">2</span><br><span class="hljs-keyword">set</span> statusline=%<span class="hljs-keyword">f</span>%<span class="hljs-keyword">m</span>%r%h%<span class="hljs-keyword">w</span>\ [FORMAT=%&#123;&amp;ff&#125;]\ [TYPE=%Y]\ [POS=%<span class="hljs-keyword">l</span>,%v][%<span class="hljs-keyword">p</span>%%]\ [LEN=%L]<br><span class="hljs-keyword">set</span> ruler<br><span class="hljs-keyword">set</span> mouse=<span class="hljs-keyword">a</span><br><span class="hljs-keyword">set</span> showcmd<br><span class="hljs-keyword">set</span> cmdheight=<span class="hljs-number">2</span><br><span class="hljs-keyword">set</span> <span class="hljs-keyword">history</span>=<span class="hljs-number">1000</span><br><br><span class="hljs-keyword">set</span> completeopt=preview,<span class="hljs-keyword">menu</span><br><span class="hljs-keyword">set</span> clipboard+=unnamed<br><span class="hljs-keyword">set</span> autoindent<br><span class="hljs-keyword">set</span> tabstop=<span class="hljs-number">2</span><br><span class="hljs-keyword">set</span> softtabstop=<span class="hljs-number">2</span><br><span class="hljs-keyword">set</span> <span class="hljs-built_in">shiftwidth</span>=<span class="hljs-number">2</span><br><span class="hljs-keyword">set</span> noexpandtab<br><br><span class="hljs-keyword">syntax</span> <span class="hljs-keyword">on</span><br><span class="hljs-keyword">filetype</span> <span class="hljs-keyword">on</span><br><span class="hljs-keyword">filetype</span> plugin <span class="hljs-keyword">on</span><br><br><span class="hljs-keyword">if</span> <span class="hljs-keyword">version</span> &gt;= <span class="hljs-number">603</span><br>    <span class="hljs-keyword">set</span> helplang=<span class="hljs-keyword">cn</span><br>    <span class="hljs-keyword">set</span> encoding=utf-<span class="hljs-number">8</span><br><span class="hljs-keyword">endif</span><br><br><span class="hljs-keyword">inoremap</span> ( ()<span class="hljs-symbol">&lt;ESC&gt;</span>i<br><span class="hljs-keyword">inoremap</span> [ []<span class="hljs-symbol">&lt;ESC&gt;</span>i<br><span class="hljs-keyword">inoremap</span> &#123; &#123;&#125;<span class="hljs-symbol">&lt;ESC&gt;</span>i<br><span class="hljs-keyword">inoremap</span> &lt; &lt;&gt;<span class="hljs-symbol">&lt;ESC&gt;</span>i<br><span class="hljs-keyword">inoremap</span> <span class="hljs-string">&#x27; &#x27;</span><span class="hljs-string">&#x27;&lt;ESC&gt;i</span><br><span class="hljs-string">inoremap &quot; &quot;&quot;&lt;ESC&gt;i</span><br></code></pre></td></tr></table></figure>
+<h1 id="在越狱的-iPhone6-上安装-OpenSSH"><a href="#在越狱的-iPhone6-上安装-OpenSSH" class="headerlink" title="在越狱的 iPhone6 上安装 OpenSSH"></a>在越狱的 iPhone6 上安装 OpenSSH</h1><p>这个属于常规操作，在越狱的市场里下载就行。(略)</p>
+<h1 id="在越狱的-iPhone6-上安装-Nginx"><a href="#在越狱的-iPhone6-上安装-Nginx" class="headerlink" title="在越狱的 iPhone6 上安装 Nginx"></a>在越狱的 iPhone6 上安装 Nginx</h1><p>使用命令:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">apt-get install nginx<br></code></pre></td></tr></table></figure><br>就会下载软件和相应的依赖包，当时没有记录，应该是下载了<code>nginx</code>，<code>nginx-common</code>，<code>nginx-core</code>等文件。</p>
+<h1 id="配置-Nginx-使其访问当前设备时指向路由器管理界面"><a href="#配置-Nginx-使其访问当前设备时指向路由器管理界面" class="headerlink" title="配置 Nginx 使其访问当前设备时指向路由器管理界面"></a>配置 Nginx 使其访问当前设备时指向路由器管理界面</h1><h2 id="修改-Nginx-配置文件"><a href="#修改-Nginx-配置文件" class="headerlink" title="修改 Nginx 配置文件"></a>修改 Nginx 配置文件</h2><p>安装完成后在<code>/etc/nginx</code>目录中会有<code>nginx.conf</code>和<code>nginx.conf.defaut</code>两个文件，其中<code>nginx.conf</code>是 Nginx 实际运行时使用的配置文件，<code>nginx.conf.default</code>应该是个模板示例。</p>
+<ol>
+<li><code>cp nginx.conf.default nginx.conf</code>使用模板覆盖原来的<code>nginx.conf</code>；</li>
+<li>在 http 模块的 server 里加入语句: <code>proxy_pass http://192.168.3.1/; #即反向代理要访问的地址</code>。<br>示例如下:<br>/etc/nginx/nginx.conf 文件设置如下:<figure class="highlight nginx"><table><tr><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br><span class="hljs-attribute">listen</span>       <span class="hljs-number">80</span>;<br><span class="hljs-attribute">server_name</span>  localhost;<br><span class="hljs-comment">#charset koi8-r;</span><br><span class="hljs-comment">#access_log  logs/host.access.log  main;</span><br><span class="hljs-section">location</span> / &#123;<br>    <span class="hljs-attribute">proxy_pass</span> http://192.168.3.1/;<br>    <span class="hljs-attribute">root</span>   html;<br>    <span class="hljs-attribute">index</span>  index.html index.htm;<br>&#125;<br></code></pre></td></tr></table></figure>
+其实其它都是 nginx.conf.default 中的内容，只要在<code>location</code>里面加入<code>proxy_pass http://192.168.3.1/;</code>这一句就可以，这样当访问此台设备的<code>80</code>端口时就会直接指向到路由器管理台的<code>192.168.3.1</code>了。</li>
+</ol>
+<h2 id="Nginx-常用命令"><a href="#Nginx-常用命令" class="headerlink" title="Nginx 常用命令"></a>Nginx 常用命令</h2><p>因为没有找到 Nginx 的 plist 文件来启停服务，所以需要使用软件命令来进行操作。<br>首先可以使用<code>nginx -h</code>来查询命令使用方法。<br>常用命令:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">nginx <span class="hljs-comment"># 启动 Nginx</span><br>nginx -s reopen <span class="hljs-comment"># 重新启动 Nginx</span><br>nginx -s reload <span class="hljs-comment"># 在不关闭 Nginx 的情况下重新加载 /etc/nginx/nginx.conf 配置文件</span><br>nginx -s stop <span class="hljs-comment"># 关闭 Nginx</span><br>nginx -t <span class="hljs-comment"># 测试配置文件 /etc/nginx/nginx.conf</span><br>nginx -T <span class="hljs-comment"># 测试 配置文件 /etc/nginx/nginx.conf 并将其输出到屏幕</span><br>nginx -v <span class="hljs-comment"># 输出版本信息</span><br></code></pre></td></tr></table></figure></p>
+<h1 id="外网访问路由器管理台"><a href="#外网访问路由器管理台" class="headerlink" title="外网访问路由器管理台"></a>外网访问路由器管理台</h1><p>将设置了 nginx 的设备端口<code>80</code>映射到外网即可，比如当前设备的局域网 ip 为<code>192.168.3.111</code>，映射外网端口为<code>11111</code>。<br>这样在外网访问时只要输入网址: <code>http://domain或者IP:1111</code> 就可以实现外网直接访问路由器管理后台了。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>网络服务</category>
+      </categories>
+      <tags>
+        <tag>iPhone</tag>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PVE(三)调整存储方式，删除lvmthin并将local-lvm合并到local内</title>
+    <url>/2025/04/12/PVE(%E4%B8%89)%E8%B0%83%E6%95%B4%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F%EF%BC%8C%E5%88%A0%E9%99%A4lvmthin%E5%B9%B6%E5%B0%86local-lvm%E5%90%88%E5%B9%B6%E5%88%B0local%E5%86%85/</url>
+    <content><![CDATA[<h1 id="关于-local-和-local-lvm"><a href="#关于-local-和-local-lvm" class="headerlink" title="关于 local 和 local-lvm"></a>关于 local 和 local-lvm</h1><p>查了很多相关资料，到现在还没有彻底的搞明白，根据目前的理解如下:</p>
+<ol>
+<li>lcoal-lvm 就是网上说的 lvm-thin，lvm-thin 算是 local-lvm 的存储类别，根据网上的说法，它的优点是可以设置比物理空间更大的空间，但这个家用基本上不会用到，它的缺点是缺少文件层的缓存机制，映像了IO效率。<span id="more"></span></li>
+<li>很多教程会给出下面的文件结构:(由于我的已经删掉了，网上找来的配置)<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">root@pve:~<span class="hljs-comment"># lsblk</span><br>NAME               MAJ:MIN RM    SIZE RO TYPE MOUNTPOINT<br>sda                  8:0    0     80G  0 disk <br>├─sda1               8:1    0   1007K  0 part <br>├─sda2               8:2    0    512M  0 part <br>└─sda3               8:3    0   79.5G  0 part <br>  ├─pve-swap       253:0    0      4G  0 lvm  [SWAP]<br>  ├─pve-root       253:1    0   19.8G  0 lvm  /<br>  ├─pve-data_tmeta 253:2    0      1G  0 lvm  <br>  │ └─pve-data     253:4    0   43.9G  0 lvm  <br>  └─pve-data_tdata 253:3    0   43.9G  0 lvm  <br>    └─pve-data     253:4    0   43.9G  0 lvm<br></code></pre></td></tr></table></figure>
+这里正式搞不明白的地方之一，感觉上 pve-data 就是这个 local-lvm</li>
+<li>删除 local-lvm 之后才知道，这俩还是分开的好，因为 local 存储里面有 proxmox 的系统文件，简单说就是 pve 系统是安装在这个目录里面，如果把虚拟机的磁盘什么的都放在这里，当遇到磁盘容量耗尽的情况会导致 pve 系统无法启动。<br>但我已经删掉了，所以才会有这篇笔记。。。<h1 id="删除-local-lvm"><a href="#删除-local-lvm" class="headerlink" title="删除 local-lvm"></a>删除 local-lvm</h1>首先笔记 local: 数据中心 =&gt; 存储 =&gt; local =&gt; 点击上面的编辑<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250412152227.png" alt="20250412152227"><br>点选所有内容:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250412152324.png" alt="20250412152324"><br>使用命令<code>lvremove /dev/pve/data</code>删除 lvm-thin。<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">root@pve-korea:~<span class="hljs-comment"># lvremove /dev/pve/data</span><br>Do you really want to remove active logical volume pve/data? [y/n]: y<br>  Logical volume <span class="hljs-string">&quot;data&quot;</span> successfully removed.<br></code></pre></td></tr></table></figure>
+然后使用命令<code>lvextend -rl +100%FREE /dev/pve/root</code>将 lvm-thin 的空间转移给 pve-root，即 local。<br>删除之后磁盘空间编程了这样:<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">root@pve-korea:~<span class="hljs-comment"># lsblk</span><br>NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS<br>sda            8:0    0 238.5G  0 disk<br>└─sda1         8:1    0 238.5G  0 part /mnt/sp600<br>nvme0n1      259:0    0 476.9G  0 disk<br>├─nvme0n1p1  259:1    0  1007K  0 part<br>├─nvme0n1p2  259:2    0     1G  0 part /boot/efi<br>└─nvme0n1p3  259:3    0 475.9G  0 part<br>  ├─pve-swap 252:0    0     8G  0 lvm  [SWAP]<br>  └─pve-root 252:1    0 467.9G  0 lvm  /<br></code></pre></td></tr></table></figure>
+<h1 id="在-web-管理页面中修改储存配置"><a href="#在-web-管理页面中修改储存配置" class="headerlink" title="在 web 管理页面中修改储存配置"></a>在 web 管理页面中修改储存配置</h1>在网页中删除 lvm-thin<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250412152835.png" alt="20250412152835"></li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>网络服务</category>
+      </categories>
+      <tags>
+        <tag>PVE</tag>
       </tags>
   </entry>
   <entry>
@@ -547,72 +634,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Nginx反向代理实现访问路由器控制界面</title>
-    <url>/2024/03/28/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E8%AE%BF%E9%97%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E6%8E%A7%E5%88%B6%E7%95%8C%E9%9D%A2/</url>
-    <content><![CDATA[<p>前两天把家里空闲的手机翻出来想着干点什么，两个小米 Note，一个 iPhone4，两个 iPhone6，一个三星 Galaxy A9 Pro和一个三星 Galaxy A32。</p>
-<ul>
-<li>iPhone4 被我手残升级 iOS 搞成了砖，现在只能看白苹果了。。。</li>
-<li>两个小米 Note 折腾了半天也没法解锁 BootLoader, 先放置了</li>
-<li>一台 iPhone6 安装了“掌上看家” APP 在家里做个监控用来看孩子有没有玩电子设备</li>
-<li>另一台 iPhone6 越狱出来做了一些小处理，本文重点来讲这个</li>
-<li>三星 Galaxy A9 Pro 已经解锁 BootLoader 成功还没想好干什么</li>
-<li>三星 Galaxy A32 还没折腾<span id="more"></span>
-</li>
-</ul>
-<p>废话少说，今天来聊聊用越狱的 iPhone6 安装 nginx 实现反向代理访问华为路由器 AX3 Pro 的管理界面。</p>
-<h1 id="iPhone6-越狱"><a href="#iPhone6-越狱" class="headerlink" title="iPhone6 越狱"></a>iPhone6 越狱</h1><p>这个没有记录，等后期越狱另外一台 iPhone6 的时候再详细描述。</p>
-<h1 id="配置一下越狱的-iPhone6"><a href="#配置一下越狱的-iPhone6" class="headerlink" title="配置一下越狱的 iPhone6"></a>配置一下越狱的 iPhone6</h1><p>这个跟本篇设置关联不大，主要是配置了 bash 和 Vim。<br>越狱后的 iPhone 系统内核是 Drawin，使用 Linux 命令<code>uname -a</code>就可以查看:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@iPhone ~]<span class="hljs-comment">#uname -a</span><br>Darwin iPhone 18.7.0 Darwin Kernel Version 18.7.0: Fri Aug 19 23:28:26 PDT 2022; root:xnu-4903.272.5~1/RELEASE_ARM64_T7000 iPhone7,1 arm Darwin<br></code></pre></td></tr></table></figure></p>
-<h2 id="bash设置"><a href="#bash设置" class="headerlink" title="bash设置"></a>bash设置</h2><p>iPhone 越狱后默认的 shell 是 zsh，由于一直习惯于使用 bash，就换成了 bash。</p>
-<h3 id="使用命令cat-etc-shells查看系统支持的-shell"><a href="#使用命令cat-etc-shells查看系统支持的-shell" class="headerlink" title="使用命令cat /etc/shells查看系统支持的 shell:"></a>使用命令<code>cat /etc/shells</code>查看系统支持的 shell:</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@iPhone ~]<span class="hljs-comment">#cat /etc/shells</span><br><span class="hljs-comment"># /etc/shells: valid login shells</span><br>/bin/sh<br>/usr/bin/sh<br>/bin/zsh<br>/usr/bin/zsh<br>/bin/bash<br>/usr/bin/bash<br>/usr/bin/dash<br></code></pre></td></tr></table></figure>
-<h3 id="将默认-shell-更改为-bash"><a href="#将默认-shell-更改为-bash" class="headerlink" title="将默认 shell 更改为 bash:"></a>将默认 shell 更改为 bash:</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">chsh -s /bin/bash<br></code></pre></td></tr></table></figure>
-<h3 id="查看当前用户-shell"><a href="#查看当前用户-shell" class="headerlink" title="查看当前用户 shell"></a>查看当前用户 shell</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@iPhone ~]<span class="hljs-comment">#echo $SHELL</span><br>/bin/bash<br></code></pre></td></tr></table></figure>
-<h3 id="更改命令行提示符-PS1-及-常用命令"><a href="#更改命令行提示符-PS1-及-常用命令" class="headerlink" title="更改命令行提示符 PS1 及 常用命令"></a>更改命令行提示符 PS1 及 常用命令</h3><pre><code><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs conf">export PATH=&#x27;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games&#x27;<br># export PS1=&#x27;\h:\w \u\$ &#x27;<br>export PS1=&#x27;[\u@\h \W]\$&#x27;<br>umask 022<br><br>export EDITOR=/usr/bin/editor<br>export PAGER=/usr/bin/pager<br><br>for i in /etc/profile.d/*.sh ; do<br>    if [ -r &quot;$i&quot; ]; then<br>        . $i<br>    fi<br>done<br><br>export LS_COLORS=&#x27;no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=01;32:*.cmd=01;35:*.exe=01;35:*.com=01;35:*.btm=01;35:*.bat=01;35:*.sh=01;35:*.csh=01;35:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tz=01;31:*.rpm=01;31:*.cpio=01;31:*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.xbm=01;35:*.xpm=01;35:*.png=01;35:*.tif=01;35:&#x27;<br>alias la=&#x27;ls -al&#x27;<br>alias ll=&#x27;ls -l&#x27;<br></code></pre></td></tr></table></figure>
-</code></pre><blockquote>
-<p>将第3行注释掉；<br>添加第3行；<br>添加15、16、17行；<br>其它都是默认的。<br><strong>注:不知道原因，但是在这个系统里只能修改这个文件(/etc/profile)来配置 bash，在用户目录下使用<code>.bashrc</code>修改没有效果，应该是默认不 load <code>.bashrc</code>文件。</strong></p>
-</blockquote>
-<h2 id="配置-VIM"><a href="#配置-VIM" class="headerlink" title="配置 VIM"></a>配置 VIM</h2><p>这个就在用户目录下使用<code>touch .vimrc</code>和<code>mkdir .vim</code>创建相关的配置文件和目录即可。<br>.vimrc 配置如下:</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">set</span> <span class="hljs-keyword">nu</span><br><span class="hljs-keyword">set</span> backspace=<span class="hljs-built_in">indent</span>,eol,start<br><span class="hljs-comment">&quot;set cursorline</span><br><span class="hljs-comment">&quot;hi cursorline ctermbg=lightgray guibg=lightblue</span><br><br><span class="hljs-keyword">set</span> nobackup<br><span class="hljs-keyword">set</span> noswapfile<br><span class="hljs-keyword">set</span> nowritebackup<br><span class="hljs-keyword">set</span> noundofile<br><br><span class="hljs-keyword">set</span> nocompatible<br><span class="hljs-keyword">set</span> wrap<br><span class="hljs-keyword">set</span> laststatus=<span class="hljs-number">2</span><br><span class="hljs-keyword">set</span> statusline=%<span class="hljs-keyword">f</span>%<span class="hljs-keyword">m</span>%r%h%<span class="hljs-keyword">w</span>\ [FORMAT=%&#123;&amp;ff&#125;]\ [TYPE=%Y]\ [POS=%<span class="hljs-keyword">l</span>,%v][%<span class="hljs-keyword">p</span>%%]\ [LEN=%L]<br><span class="hljs-keyword">set</span> ruler<br><span class="hljs-keyword">set</span> mouse=<span class="hljs-keyword">a</span><br><span class="hljs-keyword">set</span> showcmd<br><span class="hljs-keyword">set</span> cmdheight=<span class="hljs-number">2</span><br><span class="hljs-keyword">set</span> <span class="hljs-keyword">history</span>=<span class="hljs-number">1000</span><br><br><span class="hljs-keyword">set</span> completeopt=preview,<span class="hljs-keyword">menu</span><br><span class="hljs-keyword">set</span> clipboard+=unnamed<br><span class="hljs-keyword">set</span> autoindent<br><span class="hljs-keyword">set</span> tabstop=<span class="hljs-number">2</span><br><span class="hljs-keyword">set</span> softtabstop=<span class="hljs-number">2</span><br><span class="hljs-keyword">set</span> <span class="hljs-built_in">shiftwidth</span>=<span class="hljs-number">2</span><br><span class="hljs-keyword">set</span> noexpandtab<br><br><span class="hljs-keyword">syntax</span> <span class="hljs-keyword">on</span><br><span class="hljs-keyword">filetype</span> <span class="hljs-keyword">on</span><br><span class="hljs-keyword">filetype</span> plugin <span class="hljs-keyword">on</span><br><br><span class="hljs-keyword">if</span> <span class="hljs-keyword">version</span> &gt;= <span class="hljs-number">603</span><br>    <span class="hljs-keyword">set</span> helplang=<span class="hljs-keyword">cn</span><br>    <span class="hljs-keyword">set</span> encoding=utf-<span class="hljs-number">8</span><br><span class="hljs-keyword">endif</span><br><br><span class="hljs-keyword">inoremap</span> ( ()<span class="hljs-symbol">&lt;ESC&gt;</span>i<br><span class="hljs-keyword">inoremap</span> [ []<span class="hljs-symbol">&lt;ESC&gt;</span>i<br><span class="hljs-keyword">inoremap</span> &#123; &#123;&#125;<span class="hljs-symbol">&lt;ESC&gt;</span>i<br><span class="hljs-keyword">inoremap</span> &lt; &lt;&gt;<span class="hljs-symbol">&lt;ESC&gt;</span>i<br><span class="hljs-keyword">inoremap</span> <span class="hljs-string">&#x27; &#x27;</span><span class="hljs-string">&#x27;&lt;ESC&gt;i</span><br><span class="hljs-string">inoremap &quot; &quot;&quot;&lt;ESC&gt;i</span><br></code></pre></td></tr></table></figure>
-<h1 id="在越狱的-iPhone6-上安装-OpenSSH"><a href="#在越狱的-iPhone6-上安装-OpenSSH" class="headerlink" title="在越狱的 iPhone6 上安装 OpenSSH"></a>在越狱的 iPhone6 上安装 OpenSSH</h1><p>这个属于常规操作，在越狱的市场里下载就行。(略)</p>
-<h1 id="在越狱的-iPhone6-上安装-Nginx"><a href="#在越狱的-iPhone6-上安装-Nginx" class="headerlink" title="在越狱的 iPhone6 上安装 Nginx"></a>在越狱的 iPhone6 上安装 Nginx</h1><p>使用命令:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">apt-get install nginx<br></code></pre></td></tr></table></figure><br>就会下载软件和相应的依赖包，当时没有记录，应该是下载了<code>nginx</code>，<code>nginx-common</code>，<code>nginx-core</code>等文件。</p>
-<h1 id="配置-Nginx-使其访问当前设备时指向路由器管理界面"><a href="#配置-Nginx-使其访问当前设备时指向路由器管理界面" class="headerlink" title="配置 Nginx 使其访问当前设备时指向路由器管理界面"></a>配置 Nginx 使其访问当前设备时指向路由器管理界面</h1><h2 id="修改-Nginx-配置文件"><a href="#修改-Nginx-配置文件" class="headerlink" title="修改 Nginx 配置文件"></a>修改 Nginx 配置文件</h2><p>安装完成后在<code>/etc/nginx</code>目录中会有<code>nginx.conf</code>和<code>nginx.conf.defaut</code>两个文件，其中<code>nginx.conf</code>是 Nginx 实际运行时使用的配置文件，<code>nginx.conf.default</code>应该是个模板示例。</p>
-<ol>
-<li><code>cp nginx.conf.default nginx.conf</code>使用模板覆盖原来的<code>nginx.conf</code>；</li>
-<li>在 http 模块的 server 里加入语句: <code>proxy_pass http://192.168.3.1/; #即反向代理要访问的地址</code>。<br>示例如下:<br>/etc/nginx/nginx.conf 文件设置如下:<figure class="highlight nginx"><table><tr><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br><span class="hljs-attribute">listen</span>       <span class="hljs-number">80</span>;<br><span class="hljs-attribute">server_name</span>  localhost;<br><span class="hljs-comment">#charset koi8-r;</span><br><span class="hljs-comment">#access_log  logs/host.access.log  main;</span><br><span class="hljs-section">location</span> / &#123;<br>    <span class="hljs-attribute">proxy_pass</span> http://192.168.3.1/;<br>    <span class="hljs-attribute">root</span>   html;<br>    <span class="hljs-attribute">index</span>  index.html index.htm;<br>&#125;<br></code></pre></td></tr></table></figure>
-其实其它都是 nginx.conf.default 中的内容，只要在<code>location</code>里面加入<code>proxy_pass http://192.168.3.1/;</code>这一句就可以，这样当访问此台设备的<code>80</code>端口时就会直接指向到路由器管理台的<code>192.168.3.1</code>了。</li>
-</ol>
-<h2 id="Nginx-常用命令"><a href="#Nginx-常用命令" class="headerlink" title="Nginx 常用命令"></a>Nginx 常用命令</h2><p>因为没有找到 Nginx 的 plist 文件来启停服务，所以需要使用软件命令来进行操作。<br>首先可以使用<code>nginx -h</code>来查询命令使用方法。<br>常用命令:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">nginx <span class="hljs-comment"># 启动 Nginx</span><br>nginx -s reopen <span class="hljs-comment"># 重新启动 Nginx</span><br>nginx -s reload <span class="hljs-comment"># 在不关闭 Nginx 的情况下重新加载 /etc/nginx/nginx.conf 配置文件</span><br>nginx -s stop <span class="hljs-comment"># 关闭 Nginx</span><br>nginx -t <span class="hljs-comment"># 测试配置文件 /etc/nginx/nginx.conf</span><br>nginx -T <span class="hljs-comment"># 测试 配置文件 /etc/nginx/nginx.conf 并将其输出到屏幕</span><br>nginx -v <span class="hljs-comment"># 输出版本信息</span><br></code></pre></td></tr></table></figure></p>
-<h1 id="外网访问路由器管理台"><a href="#外网访问路由器管理台" class="headerlink" title="外网访问路由器管理台"></a>外网访问路由器管理台</h1><p>将设置了 nginx 的设备端口<code>80</code>映射到外网即可，比如当前设备的局域网 ip 为<code>192.168.3.111</code>，映射外网端口为<code>11111</code>。<br>这样在外网访问时只要输入网址: <code>http://domain或者IP:1111</code> 就可以实现外网直接访问路由器管理后台了。</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>网络服务</category>
-      </categories>
-      <tags>
-        <tag>iPhone</tag>
-        <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo设置博客文章加密</title>
-    <url>/2023/08/10/Hexo%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/</url>
-    <content><![CDATA[<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>Hexo搭配使用<a href="https://www.npmjs.com/package/hexo-blog-encrypt">hexo-blog-encrypt</a>插件可以写一些比较私密的博客，通过密码验证的方式让其他人不能随意浏览。</p>
-<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>在<code>blog\</code>目录运行以下代码：<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install hexo-blog-encrypt<br></code></pre></td></tr></table></figure><br><span id="more"></span></p>
-<h1 id="一般配置"><a href="#一般配置" class="headerlink" title="一般配置"></a>一般配置</h1><ol>
-<li>在根目录的配置文件<code>_config.yml</code>中添加以下代码：<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">encrypt:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure></li>
-<li>设置加密之后，需要在新建博文时在文章头部添加加密的信息设置：<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs config">---<br>title: &#123;&#123; title &#125;&#125;<br>date: &#123;&#123; date &#125;&#125;<br>tags: <br>categories: <br>password: <br>message: <br>---<br></code></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><figcaption><span>密码。</span></figcaption><table><tr><td class="code"><pre><code class="hljs password```:">```message```：输入密码界面的提示说明。<br><br># 针对Tag的加密<br>将以下代码复制到根目录下的```_config.yml```:<br>```yml<br>encrypt: #hexo-blog-encrypt<br>  enable: true<br>  abstract: 有东西被加密了, 请输入密码查看.<br>  message: 您好, 这里需要密码.<br>  tags:<br>  - &#123;name: TagName1, password: 密码A&#125;<br>  - &#123;name: TagName2, password: 密码B&#125;<br>  wrong_pass_message: 抱歉, 这个密码看着不太对, 请再试试.<br>  wrong_hash_message: 抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.<br></code></pre></td></tr></table></figure>
-</li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>网络服务</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PVE(四)解决升级(apt-get update)报错问题</title>
     <url>/2025/05/08/PVE(%E5%9B%9B)%E8%A7%A3%E5%86%B3%E5%8D%87%E7%BA%A7(apt-get-update)%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<h1 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h1><p>使用 Proxmox VE 默认的 APT 更新源，在 WEB 更新管理面板点击“刷新”后，会显示错误。这是因为默认的更新源为 Proxmox VE 企业版的订阅，如果我们没有购买订阅，就会提示签名错误，从而使得 APT 更新失败，解决的方法很简单，就是更换软件源就可以了。 Proxmox 官方提供了对应不同版本的源，可以根据自己的情况进行选择。</p>
@@ -629,40 +650,21 @@
       </tags>
   </entry>
   <entry>
-    <title>PVE(二)修改IP地址</title>
-    <url>/2025/04/11/PVE(%E4%BA%8C)%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80/</url>
-    <content><![CDATA[<h1 id="登入-PVE-后台命令行"><a href="#登入-PVE-后台命令行" class="headerlink" title="登入 PVE 后台命令行"></a>登入 PVE 后台命令行</h1><p>方法一: 在局域网的电脑浏览器输入PVE的IP地址登录后台，从左边的菜单找到“PVE”—“_Shell”菜单，进入网页版的ssh界面下；或者在主机的控制台下输入root密码后登录到ssh下；<br><span id="more"></span><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411165444.png" alt="20250411165444"><br>方法二: 使用 ssh 工具登入，如 Mobaxterm 。</p>
-<h1 id="编辑-etc-network-interfaces"><a href="#编辑-etc-network-interfaces" class="headerlink" title="编辑 /etc/network/interfaces"></a>编辑 /etc/network/interfaces</h1><p><code>vi /etc/network/interfaces</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411165645.png" alt="20250411165645"></p>
-<h1 id="编辑-etc-issue"><a href="#编辑-etc-issue" class="headerlink" title="编辑 /etc/issue"></a>编辑 /etc/issue</h1><p><code>vi /etc/issue</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411170326.png" alt="20250411170326"></p>
-<h1 id="编辑-etc-hosts"><a href="#编辑-etc-hosts" class="headerlink" title="编辑 /etc/hosts"></a>编辑 /etc/hosts</h1><p><code>vi /etc/hosts</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411170433.png" alt="20250411170433"></p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>网络服务</category>
-      </categories>
-      <tags>
-        <tag>PVE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PVE(三)调整存储方式，删除lvmthin并将local-lvm合并到local内</title>
-    <url>/2025/04/12/PVE(%E4%B8%89)%E8%B0%83%E6%95%B4%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F%EF%BC%8C%E5%88%A0%E9%99%A4lvmthin%E5%B9%B6%E5%B0%86local-lvm%E5%90%88%E5%B9%B6%E5%88%B0local%E5%86%85/</url>
-    <content><![CDATA[<h1 id="关于-local-和-local-lvm"><a href="#关于-local-和-local-lvm" class="headerlink" title="关于 local 和 local-lvm"></a>关于 local 和 local-lvm</h1><p>查了很多相关资料，到现在还没有彻底的搞明白，根据目前的理解如下:</p>
+    <title>QNAP-海报墙可刮削IP</title>
+    <url>/2024/06/12/QNAP-%E6%B5%B7%E6%8A%A5%E5%A2%99%E5%8F%AF%E5%88%AE%E5%89%8AIP/</url>
+    <content><![CDATA[<p>目前解决海报墙不可刮削问题的方法基本都是修改 hosts，因为墙屏蔽的是特殊 IP，而不是 themovie 等网站本身。</p>
 <ol>
-<li>lcoal-lvm 就是网上说的 lvm-thin，lvm-thin 算是 local-lvm 的存储类别，根据网上的说法，它的优点是可以设置比物理空间更大的空间，但这个家用基本上不会用到，它的缺点是缺少文件层的缓存机制，映像了IO效率。<span id="more"></span></li>
-<li>很多教程会给出下面的文件结构:(由于我的已经删掉了，网上找来的配置)<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">root@pve:~<span class="hljs-comment"># lsblk</span><br>NAME               MAJ:MIN RM    SIZE RO TYPE MOUNTPOINT<br>sda                  8:0    0     80G  0 disk <br>├─sda1               8:1    0   1007K  0 part <br>├─sda2               8:2    0    512M  0 part <br>└─sda3               8:3    0   79.5G  0 part <br>  ├─pve-swap       253:0    0      4G  0 lvm  [SWAP]<br>  ├─pve-root       253:1    0   19.8G  0 lvm  /<br>  ├─pve-data_tmeta 253:2    0      1G  0 lvm  <br>  │ └─pve-data     253:4    0   43.9G  0 lvm  <br>  └─pve-data_tdata 253:3    0   43.9G  0 lvm  <br>    └─pve-data     253:4    0   43.9G  0 lvm<br></code></pre></td></tr></table></figure>
-这里正式搞不明白的地方之一，感觉上 pve-data 就是这个 local-lvm</li>
-<li>删除 local-lvm 之后才知道，这俩还是分开的好，因为 local 存储里面有 proxmox 的系统文件，简单说就是 pve 系统是安装在这个目录里面，如果把虚拟机的磁盘什么的都放在这里，当遇到磁盘容量耗尽的情况会导致 pve 系统无法启动。<br>但我已经删掉了，所以才会有这篇笔记。。。<h1 id="删除-local-lvm"><a href="#删除-local-lvm" class="headerlink" title="删除 local-lvm"></a>删除 local-lvm</h1>首先笔记 local: 数据中心 =&gt; 存储 =&gt; local =&gt; 点击上面的编辑<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250412152227.png" alt="20250412152227"><br>点选所有内容:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250412152324.png" alt="20250412152324"><br>使用命令<code>lvremove /dev/pve/data</code>删除 lvm-thin。<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">root@pve-korea:~<span class="hljs-comment"># lvremove /dev/pve/data</span><br>Do you really want to remove active logical volume pve/data? [y/n]: y<br>  Logical volume <span class="hljs-string">&quot;data&quot;</span> successfully removed.<br></code></pre></td></tr></table></figure>
-然后使用命令<code>lvextend -rl +100%FREE /dev/pve/root</code>将 lvm-thin 的空间转移给 pve-root，即 local。<br>删除之后磁盘空间编程了这样:<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">root@pve-korea:~<span class="hljs-comment"># lsblk</span><br>NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS<br>sda            8:0    0 238.5G  0 disk<br>└─sda1         8:1    0 238.5G  0 part /mnt/sp600<br>nvme0n1      259:0    0 476.9G  0 disk<br>├─nvme0n1p1  259:1    0  1007K  0 part<br>├─nvme0n1p2  259:2    0     1G  0 part /boot/efi<br>└─nvme0n1p3  259:3    0 475.9G  0 part<br>  ├─pve-swap 252:0    0     8G  0 lvm  [SWAP]<br>  └─pve-root 252:1    0 467.9G  0 lvm  /<br></code></pre></td></tr></table></figure>
-<h1 id="在-web-管理页面中修改储存配置"><a href="#在-web-管理页面中修改储存配置" class="headerlink" title="在 web 管理页面中修改储存配置"></a>在 web 管理页面中修改储存配置</h1>在网页中删除 lvm-thin<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250412152835.png" alt="20250412152835"></li>
+<li>修改 QNAP 的 hosts 文件:<br>这种方法比较简单方便，缺点就是每次威联通重启就会重置 hosts 文件。<br><code>sudo vi /etc/hosts</code><br>在 hosts 文件中指定域名的 IP 地址: <code>13.226.238.82 api.themoviedb.org</code></li>
+<li>修改路由器的 hosts 文件:<br>这种方法一劳永逸，但是需要能够 ssh 路由器并取得 root 权限。<br>操作方法及添加内容与 1. 相同。</li>
 </ol>
+<p>在网上看到一个刮削网站的 IP 清单，将测试通过的记录如下:(摘自:<a href="https://post.smzdm.com/p/az6x9m00/">NAS干货分享 篇一：一招解决影片削挂问题，打造完美海报墙</a>)<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs hosts">13.224.161.90 api.themoviedb.org<br>104.16.61.155 image.themoviedb.org<br>13.35.67.86 api.themoviedb.org<br>54.192.151.79 www.themoviedb.org<br>13.249.175.212 api.thetvdb.com<br>13.35.161.120 api.thetvdb.com<br>13.226.238.76 api.themoviedb.org<br>13.35.7.102 api.themoviedb.org<br>13.226.191.85 api.themoviedb.org<br>52.85.79.89 api.themoviedb.org<br>13.225.41.40 api.themoviedb.org<br>13.226.251.88 api.themoviedb.org<br></code></pre></td></tr></table></figure></p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
       <categories>
         <category>技术兴趣</category>
         <category>网络服务</category>
       </categories>
       <tags>
-        <tag>PVE</tag>
+        <tag>QNAP</tag>
       </tags>
   </entry>
   <entry>
@@ -770,14 +772,35 @@
       </tags>
   </entry>
   <entry>
-    <title>QNAP-海报墙可刮削IP</title>
-    <url>/2024/06/12/QNAP-%E6%B5%B7%E6%8A%A5%E5%A2%99%E5%8F%AF%E5%88%AE%E5%89%8AIP/</url>
-    <content><![CDATA[<p>目前解决海报墙不可刮削问题的方法基本都是修改 hosts，因为墙屏蔽的是特殊 IP，而不是 themovie 等网站本身。</p>
-<ol>
-<li>修改 QNAP 的 hosts 文件:<br>这种方法比较简单方便，缺点就是每次威联通重启就会重置 hosts 文件。<br><code>sudo vi /etc/hosts</code><br>在 hosts 文件中指定域名的 IP 地址: <code>13.226.238.82 api.themoviedb.org</code></li>
-<li>修改路由器的 hosts 文件:<br>这种方法一劳永逸，但是需要能够 ssh 路由器并取得 root 权限。<br>操作方法及添加内容与 1. 相同。</li>
-</ol>
-<p>在网上看到一个刮削网站的 IP 清单，将测试通过的记录如下:(摘自:<a href="https://post.smzdm.com/p/az6x9m00/">NAS干货分享 篇一：一招解决影片削挂问题，打造完美海报墙</a>)<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs hosts">13.224.161.90 api.themoviedb.org<br>104.16.61.155 image.themoviedb.org<br>13.35.67.86 api.themoviedb.org<br>54.192.151.79 www.themoviedb.org<br>13.249.175.212 api.thetvdb.com<br>13.35.161.120 api.thetvdb.com<br>13.226.238.76 api.themoviedb.org<br>13.35.7.102 api.themoviedb.org<br>13.226.191.85 api.themoviedb.org<br>52.85.79.89 api.themoviedb.org<br>13.225.41.40 api.themoviedb.org<br>13.226.251.88 api.themoviedb.org<br></code></pre></td></tr></table></figure></p>
+    <title>PVE(二)修改IP地址</title>
+    <url>/2025/04/11/PVE(%E4%BA%8C)%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80/</url>
+    <content><![CDATA[<h1 id="登入-PVE-后台命令行"><a href="#登入-PVE-后台命令行" class="headerlink" title="登入 PVE 后台命令行"></a>登入 PVE 后台命令行</h1><p>方法一: 在局域网的电脑浏览器输入PVE的IP地址登录后台，从左边的菜单找到“PVE”—“_Shell”菜单，进入网页版的ssh界面下；或者在主机的控制台下输入root密码后登录到ssh下；<br><span id="more"></span><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411165444.png" alt="20250411165444"><br>方法二: 使用 ssh 工具登入，如 Mobaxterm 。</p>
+<h1 id="编辑-etc-network-interfaces"><a href="#编辑-etc-network-interfaces" class="headerlink" title="编辑 /etc/network/interfaces"></a>编辑 /etc/network/interfaces</h1><p><code>vi /etc/network/interfaces</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411165645.png" alt="20250411165645"></p>
+<h1 id="编辑-etc-issue"><a href="#编辑-etc-issue" class="headerlink" title="编辑 /etc/issue"></a>编辑 /etc/issue</h1><p><code>vi /etc/issue</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411170326.png" alt="20250411170326"></p>
+<h1 id="编辑-etc-hosts"><a href="#编辑-etc-hosts" class="headerlink" title="编辑 /etc/hosts"></a>编辑 /etc/hosts</h1><p><code>vi /etc/hosts</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411170433.png" alt="20250411170433"></p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>网络服务</category>
+      </categories>
+      <tags>
+        <tag>PVE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>QNAP虚拟机安装ubuntu 18.04 无法登录远程桌面</title>
+    <url>/2024/08/08/QNAP%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85ubuntu-18-04-%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/</url>
+    <content><![CDATA[<h1 id="在-QNAP-上安装-Ubuntu-Linux-工作站"><a href="#在-QNAP-上安装-Ubuntu-Linux-工作站" class="headerlink" title="在 QNAP 上安装 Ubuntu Linux 工作站"></a>在 QNAP 上安装 Ubuntu Linux 工作站</h1><p>本来想在 QNAP 上使用 “Vitualization Station 虚拟化工作站”中安装一个 Linux 服务器版系统跑一些服务，但是尝试了 Debian 12.6 和 Ubuntu 18.04 都卡在了磁盘分区的设置上，感觉像是识别不到硬盘，无法安装文件系统。<br>没有办法只有转战 QNAP 自带的 Ubuntu Linux 工作站了，通过跟客服咨询，这个 App 只有桌面版无法安装 Server 版。<br>既然安装了桌面版，那当然要设置成能够远程登录了。<br><span id="more"></span></p>
+<h1 id="安装-xrdp-服务器等软件"><a href="#安装-xrdp-服务器等软件" class="headerlink" title="安装 xrdp 服务器等软件"></a>安装 xrdp 服务器等软件</h1><p>由于一直登录不上，所以搞清楚原因之前杂七杂八装了很多，也不知道哪个是非必需的，总之目前安装上的软件如下:(安装命令从上到下为个人感觉必要性高低)<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo apt-get update<br>sudo apt-get install xrdp<br>sudo apt-get install xfce4 xfce4-goodies<br>sudo apt-get install vnc4server tightvnc<br>sudo apt-get install xorg<br></code></pre></td></tr></table></figure><br>刚开始的时候只安装了 xrdp 和 xfce4，感觉只用这两个就可以了，但是由于后面一直登录不上不知道原因所以又装了一大堆。<br>还有好像可以不用 xfce4，直接连接 GNOME 的远程桌面，那样的话我感觉才 xfce4 都不需要安装，没有详细研究先不讨论。</p>
+<p>安装完之后打开服务，由于使用 zerotier 进行组网，所以没有进行端口映射和防火墙的设置。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo systemctl start xrdp<br></code></pre></td></tr></table></figure></p>
+<h1 id="无法登录远程桌面及解决方法"><a href="#无法登录远程桌面及解决方法" class="headerlink" title="无法登录远程桌面及解决方法"></a>无法登录远程桌面及解决方法</h1><p>通过 Win11 连接远程桌面的时候发现输入完登录信息点击”OK”按钮之后就一直没有任何反应，通过查看服务状态<code>systemctl status xdrp</code>。发现错误信息:<code>[ERROR] xrdp_wm_log_msg: Error connecting to sesman: 127.0.0.1 port: 3350</code> 。<br>通过搜索，在 Github 上找到了<a href="https://github.com/neutrinolabs/xrdp/issues/1777">答案</a>，虽然对原理不是很理解，但是觉得说的很有道理于是开始尝试。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240808153629.png" alt="20240808153629"><br>这是在设置的时候有点问题，本人设置步骤如下:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sysctl -a | grep disable_ipv6<br></code></pre></td></tr></table></figure></p>
+<blockquote>
+<p>sysctl: reading key “net.ipv6.conf.all.stable_secret”<br>net.ipv6.conf.all.disable_ipv6 = 1<br>sysctl: reading key “net.ipv6.conf.default.stable_secret”<br>net.ipv6.conf.default.disable_ipv6 = 1<br>sysctl: reading key “net.ipv6.conf.eth0.stable_secret”<br>net.ipv6.conf.eth0.disable_ipv6 = 0<br>sysctl: reading key “net.ipv6.conf.eth1.stable_secret”<br>net.ipv6.conf.eth1.disable_ipv6 = 0<br>sysctl: reading key “net.ipv6.conf.eth2.stable_secret”<br>net.ipv6.conf.eth2.disable_ipv6 = 0<br>sysctl: reading key “net.ipv6.conf.lo.stable_secret”<br>net.ipv6.conf.lo.disable_ipv6 = 1<br>sysctl: reading key “net.ipv6.conf.ztjlhq7oim.stable_secret”<br>net.ipv6.conf.ztjlhq7oim.disable_ipv6 = 1</p>
+</blockquote>
+<p>于是根据上面的解答解答需要将<code>net.ipv6.conf.eth0.disable_ipv6</code>、<code>net.ipv6.conf.eth1.disable_ipv6</code>、<code>net.ipv6.conf.eth2.disable_ipv6</code>的值设为 1。</p>
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo sysctl -w net.ipv6.conf.eth0.disable_ipv6=1<br>sudo sysctl -w net.ipv6.conf.eth1.disable_ipv6=1<br>sudo sysctl -w net.ipv6.conf.eth2.disable_ipv6=1<br></code></pre></td></tr></table></figure>
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>设置<code>/etc/sysctl.conf</code>文件<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo vi /etc/sysctl.conf<br></code></pre></td></tr></table></figure><br>在文件末尾加入下面三行:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">net.ipv6.conf.all.disable_ipv6=0<br>net.ipv6.conf.default.disable_ipv6=0<br>net.ipv6.conf.lo.disable_ipv6=0<br></code></pre></td></tr></table></figure><br>使配置修改生效<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo sysctl -p<br></code></pre></td></tr></table></figure><br>经实验，上述两种方法只能暂时禁用<code>ipv6</code>，重启之后就会失效。长期生效方法:<a href="https://linux.cn/article-12689-1.html">如何在 Ubuntu Linux 上禁用 IPv6</a></p>
+<p>然后就登录进去了，虽然是 xfce 桌面。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240808154353.png" alt="20240808154353"></p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
       <categories>
         <category>技术兴趣</category>
@@ -855,29 +878,6 @@
       </tags>
   </entry>
   <entry>
-    <title>QNAP虚拟机安装ubuntu 18.04 无法登录远程桌面</title>
-    <url>/2024/08/08/QNAP%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85ubuntu-18-04-%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/</url>
-    <content><![CDATA[<h1 id="在-QNAP-上安装-Ubuntu-Linux-工作站"><a href="#在-QNAP-上安装-Ubuntu-Linux-工作站" class="headerlink" title="在 QNAP 上安装 Ubuntu Linux 工作站"></a>在 QNAP 上安装 Ubuntu Linux 工作站</h1><p>本来想在 QNAP 上使用 “Vitualization Station 虚拟化工作站”中安装一个 Linux 服务器版系统跑一些服务，但是尝试了 Debian 12.6 和 Ubuntu 18.04 都卡在了磁盘分区的设置上，感觉像是识别不到硬盘，无法安装文件系统。<br>没有办法只有转战 QNAP 自带的 Ubuntu Linux 工作站了，通过跟客服咨询，这个 App 只有桌面版无法安装 Server 版。<br>既然安装了桌面版，那当然要设置成能够远程登录了。<br><span id="more"></span></p>
-<h1 id="安装-xrdp-服务器等软件"><a href="#安装-xrdp-服务器等软件" class="headerlink" title="安装 xrdp 服务器等软件"></a>安装 xrdp 服务器等软件</h1><p>由于一直登录不上，所以搞清楚原因之前杂七杂八装了很多，也不知道哪个是非必需的，总之目前安装上的软件如下:(安装命令从上到下为个人感觉必要性高低)<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo apt-get update<br>sudo apt-get install xrdp<br>sudo apt-get install xfce4 xfce4-goodies<br>sudo apt-get install vnc4server tightvnc<br>sudo apt-get install xorg<br></code></pre></td></tr></table></figure><br>刚开始的时候只安装了 xrdp 和 xfce4，感觉只用这两个就可以了，但是由于后面一直登录不上不知道原因所以又装了一大堆。<br>还有好像可以不用 xfce4，直接连接 GNOME 的远程桌面，那样的话我感觉才 xfce4 都不需要安装，没有详细研究先不讨论。</p>
-<p>安装完之后打开服务，由于使用 zerotier 进行组网，所以没有进行端口映射和防火墙的设置。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo systemctl start xrdp<br></code></pre></td></tr></table></figure></p>
-<h1 id="无法登录远程桌面及解决方法"><a href="#无法登录远程桌面及解决方法" class="headerlink" title="无法登录远程桌面及解决方法"></a>无法登录远程桌面及解决方法</h1><p>通过 Win11 连接远程桌面的时候发现输入完登录信息点击”OK”按钮之后就一直没有任何反应，通过查看服务状态<code>systemctl status xdrp</code>。发现错误信息:<code>[ERROR] xrdp_wm_log_msg: Error connecting to sesman: 127.0.0.1 port: 3350</code> 。<br>通过搜索，在 Github 上找到了<a href="https://github.com/neutrinolabs/xrdp/issues/1777">答案</a>，虽然对原理不是很理解，但是觉得说的很有道理于是开始尝试。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240808153629.png" alt="20240808153629"><br>这是在设置的时候有点问题，本人设置步骤如下:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sysctl -a | grep disable_ipv6<br></code></pre></td></tr></table></figure></p>
-<blockquote>
-<p>sysctl: reading key “net.ipv6.conf.all.stable_secret”<br>net.ipv6.conf.all.disable_ipv6 = 1<br>sysctl: reading key “net.ipv6.conf.default.stable_secret”<br>net.ipv6.conf.default.disable_ipv6 = 1<br>sysctl: reading key “net.ipv6.conf.eth0.stable_secret”<br>net.ipv6.conf.eth0.disable_ipv6 = 0<br>sysctl: reading key “net.ipv6.conf.eth1.stable_secret”<br>net.ipv6.conf.eth1.disable_ipv6 = 0<br>sysctl: reading key “net.ipv6.conf.eth2.stable_secret”<br>net.ipv6.conf.eth2.disable_ipv6 = 0<br>sysctl: reading key “net.ipv6.conf.lo.stable_secret”<br>net.ipv6.conf.lo.disable_ipv6 = 1<br>sysctl: reading key “net.ipv6.conf.ztjlhq7oim.stable_secret”<br>net.ipv6.conf.ztjlhq7oim.disable_ipv6 = 1</p>
-</blockquote>
-<p>于是根据上面的解答解答需要将<code>net.ipv6.conf.eth0.disable_ipv6</code>、<code>net.ipv6.conf.eth1.disable_ipv6</code>、<code>net.ipv6.conf.eth2.disable_ipv6</code>的值设为 1。</p>
-<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo sysctl -w net.ipv6.conf.eth0.disable_ipv6=1<br>sudo sysctl -w net.ipv6.conf.eth1.disable_ipv6=1<br>sudo sysctl -w net.ipv6.conf.eth2.disable_ipv6=1<br></code></pre></td></tr></table></figure>
-<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>设置<code>/etc/sysctl.conf</code>文件<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo vi /etc/sysctl.conf<br></code></pre></td></tr></table></figure><br>在文件末尾加入下面三行:<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">net.ipv6.conf.all.disable_ipv6=0<br>net.ipv6.conf.default.disable_ipv6=0<br>net.ipv6.conf.lo.disable_ipv6=0<br></code></pre></td></tr></table></figure><br>使配置修改生效<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo sysctl -p<br></code></pre></td></tr></table></figure><br>经实验，上述两种方法只能暂时禁用<code>ipv6</code>，重启之后就会失效。长期生效方法:<a href="https://linux.cn/article-12689-1.html">如何在 Ubuntu Linux 上禁用 IPv6</a></p>
-<p>然后就登录进去了，虽然是 xfce 桌面。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240808154353.png" alt="20240808154353"></p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>网络服务</category>
-      </categories>
-      <tags>
-        <tag>QNAP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>QNAP安装zerotier进行异地组网</title>
     <url>/2024/08/14/QNAP%E5%AE%89%E8%A3%85zerotier%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%9C%B0%E7%BB%84%E7%BD%91/</url>
     <content><![CDATA[<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
@@ -905,31 +905,6 @@
       <tags>
         <tag>QNAP</tag>
         <tag>Zerotier</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>QNAP虚拟机映像转换问题</title>
-    <url>/2024/08/12/QNAP%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%98%A0%E5%83%8F%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>QNAP 的虚拟机必须要使用自己转换出的<code>.img</code>，下面记录一下自己安装虚拟机的映像转换过程。<br><span id="more"></span></p>
-<h1 id="IMG文件"><a href="#IMG文件" class="headerlink" title="IMG文件"></a>IMG文件</h1><p>QNAP 上安装了iStoreOS 系统的旁路由虚拟机，先使用 <a href="https://www.starwindsoftware.com/starwind-v2v-converter#download">StarWind V2V Convertor</a> 软件将<code>IMG</code>文件转换为 QNAP Virtual Station 中可以使用的 <code>.vdi</code> 或 <code>.vdmk</code> 文件，然后使用 QNAP Vistual Station 内置的转换工具进行转换，转换完就是其可以使用的 <code>.img</code> 文件了。</p>
-<blockquote>
-<p>这个系统已安装成功！</p>
-</blockquote>
-<h1 id="ISO文件"><a href="#ISO文件" class="headerlink" title="ISO文件"></a>ISO文件</h1><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p><code>.iso</code> 文件网上的信息很少，唯一有点用处的如下<a href="https://blog.csdn.net/LiniLing/article/details/119864889">将ISO镜像转换成VDI、VDH和VMDK格式</a>:</p>
-<ol>
-<li>首先，要先下载两个软件: <a href="https://downloads2.broadcom.com/?file=VMware-workstation-full-17.5.2-23775571.exe&amp;oid=30581048&amp;id=sQ9ZBRmMMB_QK60kfaL-tcNlwWCDromgou84_F7-Mkxcey9zd6BIhyhHVbcjvGfqYxM=&amp;verify=1722998592-oxwenmxozDwNlEOLBkXvPXCUcQOw2EOmWEej20K6%2FeU%3D">VMWare</a> 和 <a href="https://download.virtualbox.org/virtualbox/7.0.20/VirtualBox-7.0.20-163906-Win.exe">VirtualBox</a></li>
-<li>在 VMWare 中使用<code>.iso</code>映像安装好虚拟机；</li>
-<li>选中安装好的虚拟机，文件=&gt;导出为OVF，然后会生成 4 个文件；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240812092446.png" alt="20240812092446"></li>
-<li>打开 VirtualBox 软件，</li>
-<li>上述方法由于还没有实践过，未验证成功，等验证成功后再补充完整步骤。<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><strong>.iso</strong>的文件大概介绍如下：iso格式，ISO是一种光盘镜像文件，无法直接使用，需要利用一些工具进行解压后才能使用。ISO一般都是将光盘文件做成一个文件，而有一些光盘软件设定只能从光驱进行安装，那么直接解压后还是不能使用，需要用到虚拟光驱软件（虚拟光驱的软件很多，Daemon Tools是一款不错的虚拟光驱软件）<br><strong>.img</strong>文件大概介绍如下：img格式，IMG是一种文件压缩格式（archive format），.IMG这个文件格式可视为.ISO格式的一种超集合。由于.ISO只能压缩使用ISO9660和UDF这两种文件系统的存储媒介，意即.ISO只能拿来压缩CD或DVD，因此才发展出了.IMG，它是以.ISO格式为基础另外新增可压缩使用其它文件系统的存储媒介的能力，.IMG可向后兼容于.ISO，如果是拿来压缩CD或DVD，则使用.IMG和.ISO这两种格式所压缩出来的内容是一样的。<br>从上面的介绍，可以看出.img是.iso的一种超集合，两者解压得到的东西是一样的，所以将一个.iso转化为.img，可以直接将.iso重命名为.img即可。<br>重命名为<code>.img</code>之后确实可以通过 StarWind V2V Convertor 软件转化为 <code>.vmdk</code> 文件了，并且也能够通过 QNAP Virtual Station 的转换工具转换为其可以使用的 <code>.img</code> 文件，也能开始引导安装，但是安装(Debian 12.6 和 Ubuntu 18.04)到磁盘分区的时候出现错误无法识别到硬盘，可能是设置哪里有问题，后续尝试成功后补充。</li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>网络服务</category>
-      </categories>
-      <tags>
-        <tag>QNAP</tag>
       </tags>
   </entry>
   <entry>
@@ -1174,6 +1149,31 @@
       </tags>
   </entry>
   <entry>
+    <title>QNAP虚拟机映像转换问题</title>
+    <url>/2024/08/12/QNAP%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%98%A0%E5%83%8F%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>QNAP 的虚拟机必须要使用自己转换出的<code>.img</code>，下面记录一下自己安装虚拟机的映像转换过程。<br><span id="more"></span></p>
+<h1 id="IMG文件"><a href="#IMG文件" class="headerlink" title="IMG文件"></a>IMG文件</h1><p>QNAP 上安装了iStoreOS 系统的旁路由虚拟机，先使用 <a href="https://www.starwindsoftware.com/starwind-v2v-converter#download">StarWind V2V Convertor</a> 软件将<code>IMG</code>文件转换为 QNAP Virtual Station 中可以使用的 <code>.vdi</code> 或 <code>.vdmk</code> 文件，然后使用 QNAP Vistual Station 内置的转换工具进行转换，转换完就是其可以使用的 <code>.img</code> 文件了。</p>
+<blockquote>
+<p>这个系统已安装成功！</p>
+</blockquote>
+<h1 id="ISO文件"><a href="#ISO文件" class="headerlink" title="ISO文件"></a>ISO文件</h1><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p><code>.iso</code> 文件网上的信息很少，唯一有点用处的如下<a href="https://blog.csdn.net/LiniLing/article/details/119864889">将ISO镜像转换成VDI、VDH和VMDK格式</a>:</p>
+<ol>
+<li>首先，要先下载两个软件: <a href="https://downloads2.broadcom.com/?file=VMware-workstation-full-17.5.2-23775571.exe&amp;oid=30581048&amp;id=sQ9ZBRmMMB_QK60kfaL-tcNlwWCDromgou84_F7-Mkxcey9zd6BIhyhHVbcjvGfqYxM=&amp;verify=1722998592-oxwenmxozDwNlEOLBkXvPXCUcQOw2EOmWEej20K6%2FeU%3D">VMWare</a> 和 <a href="https://download.virtualbox.org/virtualbox/7.0.20/VirtualBox-7.0.20-163906-Win.exe">VirtualBox</a></li>
+<li>在 VMWare 中使用<code>.iso</code>映像安装好虚拟机；</li>
+<li>选中安装好的虚拟机，文件=&gt;导出为OVF，然后会生成 4 个文件；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240812092446.png" alt="20240812092446"></li>
+<li>打开 VirtualBox 软件，</li>
+<li>上述方法由于还没有实践过，未验证成功，等验证成功后再补充完整步骤。<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><strong>.iso</strong>的文件大概介绍如下：iso格式，ISO是一种光盘镜像文件，无法直接使用，需要利用一些工具进行解压后才能使用。ISO一般都是将光盘文件做成一个文件，而有一些光盘软件设定只能从光驱进行安装，那么直接解压后还是不能使用，需要用到虚拟光驱软件（虚拟光驱的软件很多，Daemon Tools是一款不错的虚拟光驱软件）<br><strong>.img</strong>文件大概介绍如下：img格式，IMG是一种文件压缩格式（archive format），.IMG这个文件格式可视为.ISO格式的一种超集合。由于.ISO只能压缩使用ISO9660和UDF这两种文件系统的存储媒介，意即.ISO只能拿来压缩CD或DVD，因此才发展出了.IMG，它是以.ISO格式为基础另外新增可压缩使用其它文件系统的存储媒介的能力，.IMG可向后兼容于.ISO，如果是拿来压缩CD或DVD，则使用.IMG和.ISO这两种格式所压缩出来的内容是一样的。<br>从上面的介绍，可以看出.img是.iso的一种超集合，两者解压得到的东西是一样的，所以将一个.iso转化为.img，可以直接将.iso重命名为.img即可。<br>重命名为<code>.img</code>之后确实可以通过 StarWind V2V Convertor 软件转化为 <code>.vmdk</code> 文件了，并且也能够通过 QNAP Virtual Station 的转换工具转换为其可以使用的 <code>.img</code> 文件，也能开始引导安装，但是安装(Debian 12.6 和 Ubuntu 18.04)到磁盘分区的时候出现错误无法识别到硬盘，可能是设置哪里有问题，后续尝试成功后补充。</li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>网络服务</category>
+      </categories>
+      <tags>
+        <tag>QNAP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TVBox的安装与使用</title>
     <url>/2024/01/05/TVBox%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><a href="/download/TVBox_takagen99_20231231-1656.apk">apk下载</a></p>
@@ -1184,28 +1184,6 @@
       </categories>
       <tags>
         <tag>TVBox</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu系统搭建FTP服务器</title>
-    <url>/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
-    <content><![CDATA[<p><code>Ubuntu发行版本：20.04.6 LTS</code></p>
-<h2 id="安装-vsftpd-软件包"><a href="#安装-vsftpd-软件包" class="headerlink" title="安装 vsftpd 软件包"></a>安装 <a href="https://so.csdn.net/so/search?q=vsftpd&amp;spm=1001.2101.3001.7020">vsftpd</a> 软件包</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo apt-get update<br>sudo apt-get install vsftp<br></code></pre></td></tr></table></figure>
-<span id="more"></span>
-<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230807224413.png" alt="20230807224413"><br>查看版本确认是否安装成功：<code>vsftpd -v</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230807224623.png" alt="20230807224623"></p>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>在终端打开vsftpd配置文件：<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo vim /etc/vsftpd.conf<br></code></pre></td></tr></table></figure><br>修改配置如下：<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs conf">anonymous_enable=NO             #禁止匿名用户<br>local_enable=YES                #允许本地用户访问<br>chroot_local_user=YES           #防止FTP用户访问其主目录之外的任何文件<br>write_enable=YES                #上传与删除文件及文件夹权限<br><br>allow_writeable_chroot=YES      #允许用户在FTP根目录下创建和修改文件夹及文件<br>port_enable=YES                 #开启主动模式<br>pasv_enable=YES                 #开启被动模式<br>#设置FTP端口范围，以便在打开了防火墙的情况下开放对应端口<br>pasv_min_port=39000<br>pasv_max_port=40000<br></code></pre></td></tr></table></figure><br>保存文件，并重启vsftpd服务，使更改生效。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo systemctl restart vsftpd<br></code></pre></td></tr></table></figure></p>
-<h2 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h2><p>如果是VPS要在网页控制面板中开启相应端口。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230808003301.png" alt="20230808003301"><br>防火墙打开FTP服务所需端口号。</p>
-<h2 id="添加FTP用户"><a href="#添加FTP用户" class="headerlink" title="添加FTP用户"></a>添加FTP用户</h2><p>创建名为guest的用户并设置密码：<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo useradd -d /home/ftp -s /bin/bash guest      <span class="hljs-comment">#新建ftp用户,-d:指定目录，-s：指定shell</span><br>sudo passwd guest       <span class="hljs-comment">#新建ftp用户密码</span><br></code></pre></td></tr></table></figure><br>记得要将用户登录所在的文件夹的权限赋予ftp用户，否则无法进行上传和删除。</p>
-<h2 id="附录1：主动模式与被动模式的区别"><a href="#附录1：主动模式与被动模式的区别" class="headerlink" title="附录1：主动模式与被动模式的区别"></a>附录1：主动模式与被动模式的区别</h2><h4 id="1-FTP有控制连接和数据连接"><a href="#1-FTP有控制连接和数据连接" class="headerlink" title="1.FTP有控制连接和数据连接"></a>1.FTP有控制连接和数据连接</h4><p>控制连接标准端口为21，用于发送FTP命令信息。<br>数据连接标准端口为20，用于上传、下载数据。<br>FTP协议与其它协议不同之处就在于客户端访问FTP服务器需要建立两个TCP连接，一个用来传输FTP命令，一个用来传输数据。</p>
-<h4 id="2-PORT-主动-模式"><a href="#2-PORT-主动-模式" class="headerlink" title="2.PORT(主动)模式"></a>2.PORT(主动)模式</h4><p>所谓主动模式，是指FTP服务器主动去连接客户端的数据端口来传输数据。<br>第一步：客户端提交PORT命令访问服务端的21端口，并分配一个数据端口监听(1027端口)；<br>第二步：服务器返回确认；<br>第三步：FTP服务器向客户端发送TCP连接请求，目标端口为1027，源端口为20。建立起传输数据的连接。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/Port_Mode.jpg" alt="Port_Mode"></p>
-<h4 id="3-PASV-被动-模式"><a href="#3-PASV-被动-模式" class="headerlink" title="3.PASV(被动)模式"></a>3.PASV(被动)模式</h4><p>所谓被动模式，是指FTP服务器“被动”等待客户端来连接自己的数据端口。<br>第一步：客户端的命令端口与服务器的命令端口建立连接，并发送命令“PAVS”；<br>第二步：服务器返回命令“PORT 2024”告诉客户端服务器用来监听数据连接的端口；<br>第三步：客户端初始化一个从自己的数据端口到服务器指定的数据端口的数据连接；<br>第四步：服务器给客户端的数据端口返回一个“ACK”响应。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/PASV_Mode.jpg" alt="PASV_Mode"></p>
-<h2 id="附录2：vsftpd配置文件翻译"><a href="#附录2：vsftpd配置文件翻译" class="headerlink" title="附录2：vsftpd配置文件翻译"></a>附录2：vsftpd配置文件翻译</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs conf"># 示例配置文件，地址： /etc/vsftpd.conf<br>#<br># vsftpd的默认编译设置比较谨慎，这个示例文件会放宽一些限制，使ftp服务更加易用。<br># 同时建议查看vsftpd.conf.5文件以了解所有编译默认值。<br>#<br># 特别提醒：这个示例文件并不包含vsftpd选项的所有内容，建议阅读vsftpd.conf.5手册页以充分了解vsftpd的功能。<br>#<br>#<br># <br># 用来设置vsftpd是否以独立守护进程运行。<br># 如果设置为&quot;listen=YES&quot;，则表示vsftpd将作为独立守护进程运行；<br># 如果设置为&quot;listen=NO&quot;，则表示vsftpd将不会以独立守护进程运行，而是通过inetd或者initscript启动。<br>listen=NO<br>#<br># 设置vsftpd是否启用IPv6监听。<br># 如果设置为&quot;listen_ipv6=YES&quot;，则表示vsftpd将启用IPv6监听；<br># 如果设置为&quot;listen_ipv6=NO&quot;，则表示vsftpd将不会启用IPv6监听。<br># 默认情况下，IPv6监听地址为&quot;::&quot;，同时可以接受IPv6和IPv4客户端的连接。<br># 如果你只需要监听IPv4或IPv6地址，则不需要同时启用两种监听，如果你需要同时监听特定的IPv4和IPv6地址，则需要运行两个vsftpd实例，并使用两个不同的配置文件来进行配置。<br>listen_ipv6=YES<br>#<br># 设置是否允许匿名FTP登录。<br>anonymous_enable=NO<br>#<br># 设置是否允许本地用户登录FTP服务器。<br>local_enable=YES<br>#<br># 设置是否允许FTP用户执行写入操作。<br># write_enable=YES<br>#<br># 设置本地用户的默认umask值。<br># umask是一个三位八进制数，用来控制新建文件或目录的访问权限。<br># 在FTP服务器中，local_umask选项用来设置本地用户上传文件或创建目录时的默认权限。<br># 默认情况下，local_umask的值为077，表示新建的文件或目录权限为只有所有者可读、可写、可执行，其他用户无权访问。<br># 如果你的用户希望默认权限为所有者可读、可写、可执行，其他用户可读、可执行，则可以将local_umask的值设置为022。<br>local_umask=022<br>#<br># 设置是否允许匿名FTP用户上传文件。<br># 如果将该选项的注释去掉（即将“#”删去），并将其值设置为YES，则表示允许匿名FTP用户上传文件。<br># 但是，这个选项只有在全局写入权限被激活时才会生效。此外，你还需要创建一个由FTP用户可写的目录，以便匿名FTP用户可以上传文件。<br># 需要注意的是，开启匿名FTP用户上传文件功能可能存在一定的安全风险，因此需要谨慎使用。<br># anon_upload_enable=YES<br>#<br># 设置是否允许匿名FTP用户创建新目录。<br># 如果将该选项的注释去掉（即将“#”删去），并将其值设置为YES，则表示允许匿名FTP用户创建新目录。<br># 需要注意的是，开启匿名FTP用户创建新目录功能可能存在一定的安全风险，因此需要谨慎使用。<br># anon_mkdir_write_enable=YES<br>#<br># 这段配置文件是用来设置是否启用目录消息功能。<br># 如果设置为YES，则表示启用目录消息功能。当远程用户进入某个目录时，会显示该目录的消息。<br>dirmessage_enable=YES<br>#<br># 设置是否启用本地时间功能。<br># 启用本地时间功能后，vsftpd将会在目录列表中显示本地时间而非GMT时间。<br>use_localtime=YES<br>#<br># 启用上传和下载日志记录功能。<br># 启用该功能后，vsftpd会记录每个用户的上传和下载操作，并将其记录到指定的日志文件中。<br>xferlog_enable=YES<br>#<br># 设置数据传输的端口号。<br># 将其值设置为YES，则表示数据传输使用的端口号为20。<br>connect_from_port_20=YES<br>#<br># 设置匿名用户上传的文件的所有者。<br># 设置为YES，则表示上传的文件将会被转换为指定用户的所有权。<br># chown_uploads=YES<br># 设置为指定的用户名。<br># chown_username=whoever<br>#<br># 设置vsftpd日志文件的路径。该路径必须具有可写权限，并且对于vsftpd进程来说，必须具有可访问权限。<br># xferlog_file=/var/log/vsftpd.log<br>#<br># 设置vsftpd日志文件的格式。设备为YES则存储为标准ftpd xferlog格式。<br># xferlog_std_format=YES<br>#<br># 设置vsftpd空闲会话超时的时间（以秒为单位）。<br># idle_session_timeout=600<br>#<br># 设置vsftpd数据连接超时的时间（以秒为单位）。<br># data_connection_timeout=120<br>#<br># vsftpd建议在系统中定义一个唯一的用户，供FTP服务器使用，作为完全隔离和无特权的用户。<br># nopriv_user选项可以用来指定该用户的用户名。<br># nopriv_user=ftpsecure<br>#<br># 用于启用异步ABOR请求的识别。<br># 异步ABOR请求是一种FTP客户端请求，用于取消当前正在进行的数据传输操作。<br># 启用该选项可以提高FTP服务器的性能，但也会增加安全风险。因为异步ABOR请求的代码比较复杂，可能会被黑客利用进行恶意攻击。<br># 所以，如果安全性是首要考虑因素，则不建议启用该选项。<br># async_abor_enable=YES<br>#<br># 用于控制FTP服务器是否启用ASCII模式下的文件转换功能。<br># 默认情况下，FTP服务器会假装允许ASCII模式，但实际上会忽略该请求。<br># 如果需要启用ASCII模式下的文件转换功能，则可以将ascii_upload_enable和ascii_download_enable选项的注释去掉，并将它们的值设置为YES。<br># 在ASCII模式下，FTP服务器会将文本文件中的换行符和回车符进行转换，以便在不同操作系统之间进行传输。<br># 但是，需要注意的是，ASCII模式下可能存在一些安全风险。例如，攻击者可以利用SIZE命令在ASCII模式下发送一个超大文件名，导致FTP服务器崩溃。<br># 因此，建议谨慎使用ASCII模式，并确保FTP服务器已经做好了相应的安全措施。<br># ascii_upload_enable=YES<br># ascii_download_enable=YES<br>#<br># vsftpd的登录横幅的设置，你可以理解为登录成功后的欢迎词。<br># ftpd_banner=Welcome to blah FTP service.<br>#<br># 设备是否拒绝匿名电子邮件地址<br># 有助于减轻利用匿名访问FTP服务器进行的拒绝服务（DoS）攻击。如果检测到被禁止的电子邮件地址，服务器将拒绝该用户的访问。<br># deny_email_enable=YES<br># 如果启用了拒绝匿名电子邮件地址的选项，则通过从指定的文件“/etc/vsftpd.banned_emails”读取被禁止的电子邮件地址列表。<br># banned_email_file=/etc/vsftpd.banned_emails<br>#<br># 设备限制本地用户仅访问其home目录。<br># 如果启用，则本地用户将仅访问其home目录和其子目录，无法访问其他目录。<br># chroot_local_user=YES<br>#<br># 是否允许本地用户，是否将本地用户限制在其主目录中，如果设置为YES，则不会将列在chroot_list_file中的用户限制在其主目录中。<br># chroot_local_user=YES<br># 是否启用chroot_list_file列表，用于指定哪些用户不应该被限制在主目录中。<br># chroot_list_enable=YES<br># 指定了chroot_list_file列表的路径和名称。一行一个用户名。<br># chroot_list_file=/etc/vsftpd.chroot_list<br>#<br># 否启用ls命令的递归选项“-R”，该选项可以在列出目录内容时递归地列出子目录。<br># 默认情况下，该选项被禁用以避免远程用户在大型站点上引起过多的I/O。<br># ls_recurse_enable=YES<br>#<br># 自定义配置：<br>#<br># 指定了一个空目录作为安全chroot() jail。<br># 在某些情况下，vsftpd不需要访问文件系统，因此可以将FTP用户限制在这个空目录中，以增强安全性。该目录应该为空，并且不应该被FTP用户写入。<br>secure_chroot_dir=/var/run/vsftpd/empty<br>#<br># 指定vsftpd将使用的PAM服务的名称。<br># 默认情况下，pam_service_name的值为“vsftpd”，这意味着vsftpd将使用名为“vsftpd”的PAM服务来进行认证。<br># 如果需要使用其他的PAM服务，可以修改该选项的值。<br>pam_service_name=vsftpd<br>#<br># 用于指定在SSL加密连接中使用的RSA证书的位置。<br># 通过设置rsa_cert_file和rsa_private_key_file选项来指定RSA证书和私钥的位置。<br># 其中，rsa_cert_file选项用于指定证书文件的位置，而rsa_private_key_file选项用于指定私钥文件的位置。<br>rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem<br>rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key<br># 是否启用SSL加密连接。<br>ssl_enable=NO<br>#<br># 指定是否在vsftpd中使用UTF-8编码的文件系统。<br># utf8_filesystem=YES<br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>网络服务</category>
-      </categories>
-      <tags>
-        <tag>FTP</tag>
       </tags>
   </entry>
   <entry>
@@ -1372,6 +1350,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Ubuntu系统搭建FTP服务器</title>
+    <url>/2023/08/07/Ubuntu%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAFTP%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    <content><![CDATA[<p><code>Ubuntu发行版本：20.04.6 LTS</code></p>
+<h2 id="安装-vsftpd-软件包"><a href="#安装-vsftpd-软件包" class="headerlink" title="安装 vsftpd 软件包"></a>安装 <a href="https://so.csdn.net/so/search?q=vsftpd&amp;spm=1001.2101.3001.7020">vsftpd</a> 软件包</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo apt-get update<br>sudo apt-get install vsftp<br></code></pre></td></tr></table></figure>
+<span id="more"></span>
+<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230807224413.png" alt="20230807224413"><br>查看版本确认是否安装成功：<code>vsftpd -v</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230807224623.png" alt="20230807224623"></p>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>在终端打开vsftpd配置文件：<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo vim /etc/vsftpd.conf<br></code></pre></td></tr></table></figure><br>修改配置如下：<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs conf">anonymous_enable=NO             #禁止匿名用户<br>local_enable=YES                #允许本地用户访问<br>chroot_local_user=YES           #防止FTP用户访问其主目录之外的任何文件<br>write_enable=YES                #上传与删除文件及文件夹权限<br><br>allow_writeable_chroot=YES      #允许用户在FTP根目录下创建和修改文件夹及文件<br>port_enable=YES                 #开启主动模式<br>pasv_enable=YES                 #开启被动模式<br>#设置FTP端口范围，以便在打开了防火墙的情况下开放对应端口<br>pasv_min_port=39000<br>pasv_max_port=40000<br></code></pre></td></tr></table></figure><br>保存文件，并重启vsftpd服务，使更改生效。<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo systemctl restart vsftpd<br></code></pre></td></tr></table></figure></p>
+<h2 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h2><p>如果是VPS要在网页控制面板中开启相应端口。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230808003301.png" alt="20230808003301"><br>防火墙打开FTP服务所需端口号。</p>
+<h2 id="添加FTP用户"><a href="#添加FTP用户" class="headerlink" title="添加FTP用户"></a>添加FTP用户</h2><p>创建名为guest的用户并设置密码：<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo useradd -d /home/ftp -s /bin/bash guest      <span class="hljs-comment">#新建ftp用户,-d:指定目录，-s：指定shell</span><br>sudo passwd guest       <span class="hljs-comment">#新建ftp用户密码</span><br></code></pre></td></tr></table></figure><br>记得要将用户登录所在的文件夹的权限赋予ftp用户，否则无法进行上传和删除。</p>
+<h2 id="附录1：主动模式与被动模式的区别"><a href="#附录1：主动模式与被动模式的区别" class="headerlink" title="附录1：主动模式与被动模式的区别"></a>附录1：主动模式与被动模式的区别</h2><h4 id="1-FTP有控制连接和数据连接"><a href="#1-FTP有控制连接和数据连接" class="headerlink" title="1.FTP有控制连接和数据连接"></a>1.FTP有控制连接和数据连接</h4><p>控制连接标准端口为21，用于发送FTP命令信息。<br>数据连接标准端口为20，用于上传、下载数据。<br>FTP协议与其它协议不同之处就在于客户端访问FTP服务器需要建立两个TCP连接，一个用来传输FTP命令，一个用来传输数据。</p>
+<h4 id="2-PORT-主动-模式"><a href="#2-PORT-主动-模式" class="headerlink" title="2.PORT(主动)模式"></a>2.PORT(主动)模式</h4><p>所谓主动模式，是指FTP服务器主动去连接客户端的数据端口来传输数据。<br>第一步：客户端提交PORT命令访问服务端的21端口，并分配一个数据端口监听(1027端口)；<br>第二步：服务器返回确认；<br>第三步：FTP服务器向客户端发送TCP连接请求，目标端口为1027，源端口为20。建立起传输数据的连接。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/Port_Mode.jpg" alt="Port_Mode"></p>
+<h4 id="3-PASV-被动-模式"><a href="#3-PASV-被动-模式" class="headerlink" title="3.PASV(被动)模式"></a>3.PASV(被动)模式</h4><p>所谓被动模式，是指FTP服务器“被动”等待客户端来连接自己的数据端口。<br>第一步：客户端的命令端口与服务器的命令端口建立连接，并发送命令“PAVS”；<br>第二步：服务器返回命令“PORT 2024”告诉客户端服务器用来监听数据连接的端口；<br>第三步：客户端初始化一个从自己的数据端口到服务器指定的数据端口的数据连接；<br>第四步：服务器给客户端的数据端口返回一个“ACK”响应。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/PASV_Mode.jpg" alt="PASV_Mode"></p>
+<h2 id="附录2：vsftpd配置文件翻译"><a href="#附录2：vsftpd配置文件翻译" class="headerlink" title="附录2：vsftpd配置文件翻译"></a>附录2：vsftpd配置文件翻译</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs conf"># 示例配置文件，地址： /etc/vsftpd.conf<br>#<br># vsftpd的默认编译设置比较谨慎，这个示例文件会放宽一些限制，使ftp服务更加易用。<br># 同时建议查看vsftpd.conf.5文件以了解所有编译默认值。<br>#<br># 特别提醒：这个示例文件并不包含vsftpd选项的所有内容，建议阅读vsftpd.conf.5手册页以充分了解vsftpd的功能。<br>#<br>#<br># <br># 用来设置vsftpd是否以独立守护进程运行。<br># 如果设置为&quot;listen=YES&quot;，则表示vsftpd将作为独立守护进程运行；<br># 如果设置为&quot;listen=NO&quot;，则表示vsftpd将不会以独立守护进程运行，而是通过inetd或者initscript启动。<br>listen=NO<br>#<br># 设置vsftpd是否启用IPv6监听。<br># 如果设置为&quot;listen_ipv6=YES&quot;，则表示vsftpd将启用IPv6监听；<br># 如果设置为&quot;listen_ipv6=NO&quot;，则表示vsftpd将不会启用IPv6监听。<br># 默认情况下，IPv6监听地址为&quot;::&quot;，同时可以接受IPv6和IPv4客户端的连接。<br># 如果你只需要监听IPv4或IPv6地址，则不需要同时启用两种监听，如果你需要同时监听特定的IPv4和IPv6地址，则需要运行两个vsftpd实例，并使用两个不同的配置文件来进行配置。<br>listen_ipv6=YES<br>#<br># 设置是否允许匿名FTP登录。<br>anonymous_enable=NO<br>#<br># 设置是否允许本地用户登录FTP服务器。<br>local_enable=YES<br>#<br># 设置是否允许FTP用户执行写入操作。<br># write_enable=YES<br>#<br># 设置本地用户的默认umask值。<br># umask是一个三位八进制数，用来控制新建文件或目录的访问权限。<br># 在FTP服务器中，local_umask选项用来设置本地用户上传文件或创建目录时的默认权限。<br># 默认情况下，local_umask的值为077，表示新建的文件或目录权限为只有所有者可读、可写、可执行，其他用户无权访问。<br># 如果你的用户希望默认权限为所有者可读、可写、可执行，其他用户可读、可执行，则可以将local_umask的值设置为022。<br>local_umask=022<br>#<br># 设置是否允许匿名FTP用户上传文件。<br># 如果将该选项的注释去掉（即将“#”删去），并将其值设置为YES，则表示允许匿名FTP用户上传文件。<br># 但是，这个选项只有在全局写入权限被激活时才会生效。此外，你还需要创建一个由FTP用户可写的目录，以便匿名FTP用户可以上传文件。<br># 需要注意的是，开启匿名FTP用户上传文件功能可能存在一定的安全风险，因此需要谨慎使用。<br># anon_upload_enable=YES<br>#<br># 设置是否允许匿名FTP用户创建新目录。<br># 如果将该选项的注释去掉（即将“#”删去），并将其值设置为YES，则表示允许匿名FTP用户创建新目录。<br># 需要注意的是，开启匿名FTP用户创建新目录功能可能存在一定的安全风险，因此需要谨慎使用。<br># anon_mkdir_write_enable=YES<br>#<br># 这段配置文件是用来设置是否启用目录消息功能。<br># 如果设置为YES，则表示启用目录消息功能。当远程用户进入某个目录时，会显示该目录的消息。<br>dirmessage_enable=YES<br>#<br># 设置是否启用本地时间功能。<br># 启用本地时间功能后，vsftpd将会在目录列表中显示本地时间而非GMT时间。<br>use_localtime=YES<br>#<br># 启用上传和下载日志记录功能。<br># 启用该功能后，vsftpd会记录每个用户的上传和下载操作，并将其记录到指定的日志文件中。<br>xferlog_enable=YES<br>#<br># 设置数据传输的端口号。<br># 将其值设置为YES，则表示数据传输使用的端口号为20。<br>connect_from_port_20=YES<br>#<br># 设置匿名用户上传的文件的所有者。<br># 设置为YES，则表示上传的文件将会被转换为指定用户的所有权。<br># chown_uploads=YES<br># 设置为指定的用户名。<br># chown_username=whoever<br>#<br># 设置vsftpd日志文件的路径。该路径必须具有可写权限，并且对于vsftpd进程来说，必须具有可访问权限。<br># xferlog_file=/var/log/vsftpd.log<br>#<br># 设置vsftpd日志文件的格式。设备为YES则存储为标准ftpd xferlog格式。<br># xferlog_std_format=YES<br>#<br># 设置vsftpd空闲会话超时的时间（以秒为单位）。<br># idle_session_timeout=600<br>#<br># 设置vsftpd数据连接超时的时间（以秒为单位）。<br># data_connection_timeout=120<br>#<br># vsftpd建议在系统中定义一个唯一的用户，供FTP服务器使用，作为完全隔离和无特权的用户。<br># nopriv_user选项可以用来指定该用户的用户名。<br># nopriv_user=ftpsecure<br>#<br># 用于启用异步ABOR请求的识别。<br># 异步ABOR请求是一种FTP客户端请求，用于取消当前正在进行的数据传输操作。<br># 启用该选项可以提高FTP服务器的性能，但也会增加安全风险。因为异步ABOR请求的代码比较复杂，可能会被黑客利用进行恶意攻击。<br># 所以，如果安全性是首要考虑因素，则不建议启用该选项。<br># async_abor_enable=YES<br>#<br># 用于控制FTP服务器是否启用ASCII模式下的文件转换功能。<br># 默认情况下，FTP服务器会假装允许ASCII模式，但实际上会忽略该请求。<br># 如果需要启用ASCII模式下的文件转换功能，则可以将ascii_upload_enable和ascii_download_enable选项的注释去掉，并将它们的值设置为YES。<br># 在ASCII模式下，FTP服务器会将文本文件中的换行符和回车符进行转换，以便在不同操作系统之间进行传输。<br># 但是，需要注意的是，ASCII模式下可能存在一些安全风险。例如，攻击者可以利用SIZE命令在ASCII模式下发送一个超大文件名，导致FTP服务器崩溃。<br># 因此，建议谨慎使用ASCII模式，并确保FTP服务器已经做好了相应的安全措施。<br># ascii_upload_enable=YES<br># ascii_download_enable=YES<br>#<br># vsftpd的登录横幅的设置，你可以理解为登录成功后的欢迎词。<br># ftpd_banner=Welcome to blah FTP service.<br>#<br># 设备是否拒绝匿名电子邮件地址<br># 有助于减轻利用匿名访问FTP服务器进行的拒绝服务（DoS）攻击。如果检测到被禁止的电子邮件地址，服务器将拒绝该用户的访问。<br># deny_email_enable=YES<br># 如果启用了拒绝匿名电子邮件地址的选项，则通过从指定的文件“/etc/vsftpd.banned_emails”读取被禁止的电子邮件地址列表。<br># banned_email_file=/etc/vsftpd.banned_emails<br>#<br># 设备限制本地用户仅访问其home目录。<br># 如果启用，则本地用户将仅访问其home目录和其子目录，无法访问其他目录。<br># chroot_local_user=YES<br>#<br># 是否允许本地用户，是否将本地用户限制在其主目录中，如果设置为YES，则不会将列在chroot_list_file中的用户限制在其主目录中。<br># chroot_local_user=YES<br># 是否启用chroot_list_file列表，用于指定哪些用户不应该被限制在主目录中。<br># chroot_list_enable=YES<br># 指定了chroot_list_file列表的路径和名称。一行一个用户名。<br># chroot_list_file=/etc/vsftpd.chroot_list<br>#<br># 否启用ls命令的递归选项“-R”，该选项可以在列出目录内容时递归地列出子目录。<br># 默认情况下，该选项被禁用以避免远程用户在大型站点上引起过多的I/O。<br># ls_recurse_enable=YES<br>#<br># 自定义配置：<br>#<br># 指定了一个空目录作为安全chroot() jail。<br># 在某些情况下，vsftpd不需要访问文件系统，因此可以将FTP用户限制在这个空目录中，以增强安全性。该目录应该为空，并且不应该被FTP用户写入。<br>secure_chroot_dir=/var/run/vsftpd/empty<br>#<br># 指定vsftpd将使用的PAM服务的名称。<br># 默认情况下，pam_service_name的值为“vsftpd”，这意味着vsftpd将使用名为“vsftpd”的PAM服务来进行认证。<br># 如果需要使用其他的PAM服务，可以修改该选项的值。<br>pam_service_name=vsftpd<br>#<br># 用于指定在SSL加密连接中使用的RSA证书的位置。<br># 通过设置rsa_cert_file和rsa_private_key_file选项来指定RSA证书和私钥的位置。<br># 其中，rsa_cert_file选项用于指定证书文件的位置，而rsa_private_key_file选项用于指定私钥文件的位置。<br>rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem<br>rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key<br># 是否启用SSL加密连接。<br>ssl_enable=NO<br>#<br># 指定是否在vsftpd中使用UTF-8编码的文件系统。<br># utf8_filesystem=YES<br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>网络服务</category>
+      </categories>
+      <tags>
+        <tag>FTP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Windows11 激活方法</title>
     <url>/2024/02/26/Windows11-%E6%BF%80%E6%B4%BB%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<p>今天将笔记本自带的 win11 家庭版升级到专业版时无意中在知乎中找到了一个方法，一试还真的有效，因为远程运行了一个网站的程序，不知道自己的电脑是不是成为别人的肉鸡了，但是激活方式确实是有效的。风险性后面再研究吧。<br><span id="more"></span></p>
@@ -1416,26 +1416,55 @@
       </tags>
   </entry>
   <entry>
-    <title>Work Logs</title>
-    <url>/2024/01/30/Work-Logs/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="36b0705c8d827f4f02d0334e6c2d0fe1db3fedd0ae9a7c6609ef29e7918c30eb">ae118af9461036e20f25663a30e1897387e75e8f4e4f03c2f53006f64e35d556db8c7ffd9a6bef2c52605d7717778dc23b07e82f5cf6691413ae7bc832841d578c94d6fdf48e593f7753becdd6b9a95f7727ce820d2cc272120df66dc2b30daf20e7620d998edd4de8ad21ea6f8c941e0e5b9057ce04ad791e541c3b691f98d55e08daa3a9118d69556bbd157377799f21223276757aff3cd0bb7699fcca49e53fd9f861404f2a5bbead4158ae726061c20a7f589a4e521ec51210ee14d0f25c775bf61f8577dd456d35428e2c5e6a39b088a0e7f8fd3aea364cf811e679191ac41fc63e305b65d5d35a033e10962dc39ce7b1e9875cdf372ca1f5c994f660081c1f618561b71c94912cfe6288110dc2e84df4d864d19a276fd6ebacf911901e81bac0bf09eef607e5e1dd448d88aeeb61cc5ba2c68eb3864e16a59a99c45817ab4979b3526198adfe4f90c5ca8d22ed2cab521caf6fedb9bc606cc99445f38bb28401965d1f77951132232f81a2c37d5009ada255e5b7797becb61eaa938a42361ecbcc5fb3bc8cee305829a3c019ff3b90af1ffd517284377b1e634f00b3ecb80d7dd88c27030ed6bd4bdd834174b2ee134e63bf26435a80121b668916620e765c14b1f4bad95a98446ba492e3bc8b9f5c837cd7af985dc52bc6237eda1803246758b7d07ab66e2bc8cf4026e44c7bd485e55d9246d3b51ea492290b4c53dd8351a823f63956d4f400230342b964471340096d3d6312474f63c576a0f0fafc8d99f1211b29f9c6fc6e7a809d8e741fe1cad77c94878e06400faf3d7a4b112a6fd85f4d456934e1c69726c29dba08eafec6ddaa70c9770a67dc824c17d2b3810600685d53619d407a13a30da81c7c6660ebd41d1f8807069510e8ec16fc37357c030e3920789e3113b74f9c47d60a70e2744e40430752cabb7c1a7b1fd7045a221c7bda304399f1d3af2854c5cf70049a48f080a902efc295acaf14eddee32c057ed6aaf820e1adabf3dbce798271de425e74d62a0692f8af390bf13023bb4b8fcc4a194278d99079a9212b91b198723b7c7a2b8e57c5dd6aef8d5e10c91f9e4da23a691e1b32f5b191d7c042de34f759808c74eb6f7203d4360397418c8b7052feb9dac65128a40f29376464217677c0aae33b0f3caf42896436b0c2e4eb822394deb74a470761869f8ddc18507dfdc22fccff7dd2a552c3587d02a19f71ba0153bddf0d8d587e3e9cdf10f513f8d7fb4e0889457a825a85309417c354586e97e3450c16045a22cd164a9c34a10f64d279459ed48918dbd5fe2f9dc59fdeee369c75b4ccbc9a9927e73a307e09b1f63909ad10de2d719e9989f5e8033aed0ee8063f4ccac25af740f3799c72e9bdcf9dffa5eeb55e89bc2f5852e8b3baae9ac1b3394e120eec069468e6801c616b635e053f69b58dae6af56b4bebccd4459d9a66303eb8add5cc1c553c62f2387085f0826ec2577d23177a8a54fa742b4f1656033df57e36781b974f6922665bb92ee078c820f86fa0108c837459698f6e768bd7fabec783274d19b13386aabb3389fc667a01a307cb1b3f321562c919769b608f5894dcba7d96d5bc7168b6cffa297925434d3356e661a55277c210c8edd1f7bd28fd576cfe09920d7b67d36d00370697aadfbf43827dae87e62b5ecd8d9e2cd2f95a9f3ccf51a2c47746ed00c8c94764df11856422d1fd4bd7fefb5caecb43aeddd85d6e3012a20ff46637a8fbf65e7e8507d0bdb6cd34257fea2e81f5cc516a72c2a1eaf11513f4298dc6de195a0a65d4ea5033e2e380eebf246a6f9c373fbba54458577f485b27d8a2173ea96367728fdd6e43634fd66f63196b302be1a78f164a8dffd184442e78adc47bdcd22de305bdede39190b1c806a980054eb8c97f633626fec748d80e451f77b4041cf22e173e97f08b0034da58b91902b5f19e79bcafcd25704dcc674a79e12297eac069183cc43001468799268346049465297dc035523e73ddae6403dd8071b92559a5397189fbdc9b509eba87569e9c0a86a5a8849ba4738c1351861d0ced4b8518f58687ccc9a401dd28cb94c227ef516accfc3109d7fd0fd5c0adb2a4de14599c0b85f0c23423c07741f8dddb704b0cf8176b8014b9568626c49208ffabdf31eb3799d1549e0a6c8e19749e07c9596bbbb1eaf82cad19b9c90182437cbfba738d834e5811375cc40483b0a4fddfd5575ed4ebac4f40c2a4677c0460f6c277337f4840ef7d5c51145c4325ed94b7bd49499c46d7ace51bd0ddcae3c777dc48dd761d0a758c238aac571ed7779874f46b3ee48de8ffae844c25b976e9db91fffdd5d61e3702793d06bbdfd75ba3db0d514d9490923b2f0bafa2396d28638d047cf453c81d79eb62e349900996b0b31024420b58e8ff97ac6417f0e442e98f48cd73922634a47d7b12fbc640036f30f8223dc67ff3e0295b174d6ca54c84749eeefb05431f11315a45989dd72b96f7a9b423819911a2494dec8cc2c3942f7d3e823ce3dcfe183dbeef8f35cef4c9dda27df4e1296b6c8b22e88c4f4d4020d7ded0f0f74a1238b25b75c49acbe892cc7e28c4b5c86e7d69941bdbfff6d2fc61ad2e946521a0aaef62ef718e122cadbcb39d48e209bc1801c8976fd0141d7dbf9af92365131f40ec3e53dc93e8ed1e9227bb0fa7b2d7c34dd0b9baae670048df3b6d39cd5c7df7aa65878cab35e45dafb4b5e8cd267182024654fe70ac25e33f212aaddd812ad93b605cb23e8dedbc67a25a1baa62797a8341dd7b4a8347ba984ea073e6539dba3d904046fb2023b957adbf3d6341a457d5f5f03b14e3646aea4b0272bec70944793758918970f5e6fab8be9de2ccaf402a97bbca913ef9a5a8cb27763055a14bd1e5c2b83a08bf599faf8d217899b6461c6a6919bfa3c6ab04576c035d3cc5f51fd58bcdfd7ca2605fe7ced5e298b798615449f7124740b14fd3a1bb293443807a21c2f43dffcf880dd9ec969bd416ae65fec71fd6d5d7ac705427f7af9e146f451b8fe3a3798f060d48173e69e570bebb698d0d25172dcd52e7034f739060246d44b72b61dfb4cae5c5965b7d44c8428599b17fc0e1101bfc1d9b48554258a7112c430803c72339d7c89dee840ccb81510dbea1b009e6882b47fe33801764f4fc1fbfa17784c0a03828bf1298a3f488789258337069fcfc8a43d0672130b741b30f87fabb28d2985da6b697d4e85dc0ad25b027097f13f668de0fa265b314f8bbd1a9a1a099244fdb4a982a2a56455948390abb7ba2f87bd44114213d69b623a39302696a2ce8becdb33e51d4733644309e5ae70b67c20cc5d364512bbda0724e368c7ec549d16f12c422914c626599ec0d8781d89c054b5c9b7bb9cde1adfa1241fbd3affecf7bb2a6a6e7324be6e32a49fa85d356936df0286d5d22c229b2ab22b33d9c9ef7b9764dbcb9a7e459a55e91ad33388943c033a13efc94d441cf73439a1b2450d2e591ab87bddb02cfcfb11b56970f2787bc155dcff2ee22ea94bbea44350fc366ec0d87c8bf96f362a790e767008bb1e517b37b566b1e40adce4a9712e8d5ac8ee72d6ff8a86a43876dbf23d6566660a6074ecc429acdf8782174a2b0458a5a8c2841f163aafa67d846568f51040ee9370f2473777c4ab0eeec57b44571eba9a8d0a60a2ed0bbed7b245a8f67b3c164d5fa0bdea334906074acbd0e8d8b5d88f4921ca47ddc833e93eecd05eddb60f17d87d141944b9360f61af13801ff500381d97941583d708fc77684576035b1c9bc0f0825e8dd3143d7a0afc0a469ba3765c8db0a8da02f8e1d45bab10aa6c44ba37a05bec1e717b3f69732cc36ee37217ef726647d9b57ca7bc0aa5705b440dc6a655b1f2d7ac7a9db6c46eb2af7760bfa6173419eb5e3de838d5fe3a632b6aeb27aff0cc215862e187caf87b78cc1e0ccc7a32120fb1cf51a7406cd6e95b3e0238678e66fa8f31e4af85c07a8ac5fe32e682b9baa6e356b5d68b830bc737e0594723c461bc0bef91203f0e430cdbcc2c07cafd1d422b146bd040666b10c2e81ba6fcf67b59f9f82f3a5059c5fe4fd30211b3fc4724d0e0c77ba86766e467dfead2d76821e00fad917203aeaaf8ab896cf03e8a576a36be40bd7a1220d4822d8997414c972874c7814b22af9dda7ba1f2013065652e3c37f9638ff38b2800f13bcc3ca8f48a74398ca4668e0a39407e7ab916a24114a08b96989ad870b4cefe00cbbc656f3ba9e8625066cbc181db1ff20be22f444a18cbb135ccbd1fefb75c00dbf7f6102a2b70044fa1edd25545eaae133a8abea5b0c63669c51d2e093c67f64152b7a6a63a2f7cc3001ca202ebfd730bd71dcc711a62ace2ee27e1af0767c778b7541eecd710c2a03914741316e73fa84111aa326cd49ee17c40f6f12032d9b94be9b9f59601c35013d649e710e64f5398ec41689125cbdd74edf8bec4962d02c9e64237a743595d6f781d6ce6b9c545256f08681313fa5fb68f0344cb9e081f5eebf2a6ffd2757763c70ddac2a0d4b98afaa5cadc324b48106d15ba1f7ddd38c8a843235e693c14865a843e26a4d564219a5dd532d3da34ced9b1d1bd559e227353b327d77a3a41b002e5391fea281aca537aca43b4dbcf2fa114420ef44f47057641b5ba7e11f99a5aaf64984aa4f055198013a7626448e917eb2b427546eece74416390e9b0518313997439392867e6539f3b33b2c029716f07140f31a083afd881d55fb8052d8aadb8514c984d403fce2a94bc950d441357c846d523f9793d54b3430c632b6fe501e27acbdc45a664d53e9906e39e6422b4b26648e4e4d358812c209335205ff2d27c19db7c15ae48f6964fe1f58dfc43ddb92cc0be34c7c44de252578f3d9c7d5503859bb08c223cd7e6d3cea2f115003f53785f8cf20ed21601e87436948b5d93949cee3494037898033930221e0855d86924f8976d8c324066e4e593992502dcd213e90d1858eb6a676ea111dab1bae2500614acde1beb1f4b3</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    <title>smic工艺中带有ckt后缀的器件</title>
+    <url>/2023/12/08/smic%E5%B7%A5%E8%89%BA%E4%B8%AD%E5%B8%A6%E6%9C%89ckt%E5%90%8E%E7%BC%80%E7%9A%84%E5%99%A8%E4%BB%B6/</url>
+    <content><![CDATA[<p>在SMIC的PDK中存在后面带ckt和不带ckt的PDK，其中不带ckt的器件模型是bsim4，而带ckt的器件模型是subckt。网上查询，subckt就是sub circuit，即子电路的意思。<br>查询并猜想如下:<br>不带ckt: 类理想器件，即只针对此种器件建模；<br>带ckt: 考虑其内部构造所产生的各种寄生成分，并且包含寄生器件参数随电路参数的变化</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
       <categories>
         <category>半导体专业</category>
-        <category>模拟电路</category>
+        <category>Fab</category>
       </categories>
       <tags>
-        <tag>Work</tag>
+        <tag>PDK</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【转】PassWall2配置</title>
+    <url>/2025/02/17/%E3%80%90%E8%BD%AC%E3%80%91PassWall2%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>PassWall2 能够给我们带来什么？</p>
+<ol>
+<li>解决 DNS 泄露</li>
+<li>IPv4/IPv6 双栈共存</li>
+<li>去广告</li>
+<li>无缝访问 github、国外论文网站<span id="more"></span>
+</li>
+</ol>
+<h1 id="一、-规则管理"><a href="#一、-规则管理" class="headerlink" title="一、 规则管理"></a>一、 规则管理</h1><ol>
+<li>删除默认的所有规则，探后添加 Reject、Direct、Proxy 规则；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217142557.png" alt="20250217142557"><br>这里有更好的规则，可以替代 passwall2 自带的:<br><a href="https://github.com/Loyalsoldier/v2ray-rules-dat">https://github.com/Loyalsoldier/v2ray-rules-dat</a><br>将 geoip 文件链接更改为:<br><a href="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat">https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat</a><br>将 geosite 文件链接更改为:<br><a href="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat">https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat</a></li>
+<li>Reject 规则填入域名；<br>geosite:category-ads-all<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143100.png" alt="20250217143100"></li>
+<li>Direct 规则填入；<br>域名:<br>xn—ngstr-lra8j.com<br>geosite:private<br>geosite:cn<br>IP：<br>geoip:private<br>geoip:cn<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143216.png" alt="20250217143216"></li>
+<li>Proxy 规则填入域名；<br>geosite:geolocation-!cn<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143336.png" alt="20250217143336"></li>
+</ol>
+<p>规则的顺序一定要这样排列:<br>1、 Reject<br>2、 Direct<br>3、 Proxy</p>
+<p><strong>注释:</strong><br>geosite:category-ads-all 去广告<br>xn—ngstr-lra8j.com 谷歌商店<br>geosite:private 内网地址<br>geosite:cn 国内域名<br>geoip:private 内网IP<br>geoip:cn 国内IP<br>geosite:geolocation-!cn 国外域名</p>
+<h1 id="二、-高级设置"><a href="#二、-高级设置" class="headerlink" title="二、 高级设置"></a>二、 高级设置</h1><p>1、如果不使用UDP代理，就把UDP不转发端口改成-所有，即可<br>2、设置TCP转发端口为：仅网页 ，也就是仅允许代理80、443这两个端口<br>3、TCP代理方式可以改成TPROXY，也可以默认REDIRECT（勾选IPv6透明代理(TProxy)后，会自动变更为TPROXY）<br>4、如果你的节点支持IPv4/IPv6互通或者有IPv6的出口IP，可以勾选IPv6透明代理(TProxy)，反之不勾选</p>
+<h1 id="三、-修改节点配置-Xray-分流-分流总结点"><a href="#三、-修改节点配置-Xray-分流-分流总结点" class="headerlink" title="三、 修改节点配置 Xray 分流:[分流总结点]"></a>三、 修改节点配置 Xray 分流:[分流总结点]</h1><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217144013.png" alt="20250217144013"><br>1、Reject设置为：黑洞（丢弃）<br>2、Direct设置为：直连（绕过）<br>3、Proxy设置为：默认（代理）<br>3、*默认设置为：按照自己需求选择一个节点<br>4、域名解析策略设置为：AsIs （也就是跳过IP匹配、只匹配域名）— 可能是版本原因，没找到相关设置项</p>
+<h1 id="四、-基本配置"><a href="#四、-基本配置" class="headerlink" title="四、 基本配置"></a>四、 基本配置</h1><ol>
+<li>远程 DNS 协议: DoH</li>
+<li>勾选 Fake DNS<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217144233.png" alt="20250217144233"></li>
+<li>主要—-节点设置为：Xray 分流：[分流总节点]</li>
+<li>以上都配置好之后，勾选上主开关保存应用即可</li>
+</ol>
+<p><strong>注释：</strong><br>1、远程 DNS 出站一定要设置为：远程（走代理），不然你走直连大概率是不通的，但是 DOH 走代理都是会增加延迟<br>2、勾选 FakeDNS 后，在 Proxy 规则内的域名，匹配上的会返回一个假 IP 作为 DNS 响应（例如198.18.0.0/16），最后将域名请求发送给节点服务器 VPS 在它的网络环境中进行解析IP<br>3、不在Proxy规则内的域名则会使用设置的 CloudFlare 远程 DNS 进行本地 DNS 解析真实 IP ，最后将这个真实 IP 发送给节点服务器 VPS ，而如果遇到解析出的是被污染的 IP ，由于开启了嗅探功能，会探测 HTTP 请求里的域名，所以就算本地解析出的 IP 是被污染也不影响<br>4、如何判断是走 FakeDNS 还是走远程 DNS ，电脑运行 CMD 窗口，输入<code>nslookup youtube.com</code>回车，输入<code>nslookup ipleak.net</code>回车<br>上述都配置完成后，就能够解决 DNS 泄露、污染问题和去广告，并且支持双栈 IPv4/IPv6 上网，不需要再去套任何插件和关闭或禁止解析 IPv6 DNS 记录等。</p>
+<h1 id="五、-Steam-设置"><a href="#五、-Steam-设置" class="headerlink" title="五、 Steam 设置"></a>五、 Steam 设置</h1><p>上述的配置完成后，发现 steam 下载走的是代理，需要通过以下操作解决。<br>1、在 Direct 规则中的域名添加 geosite:category-games，这样可以使 steam、epic 等软件都走直连。<br>2、为了避免走直连后 steam 社区、商店打不开，需要指定其域名走代理。添加 steam 分流规则，其中域名为<code>store.steampowered.com</code>、<code>steamcommunity.com</code>。<br>3、将 steam 规则排在 direct 上方，即最终规则顺序为 reject、steam、direct、proxy。</p>
+<p>【转自】<a href="https://nanodesu.net/archives/36/">Pass Wall2（完美配置教程）)</a></p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>网络服务</category>
+      </categories>
+      <tags>
+        <tag>网络</tag>
       </tags>
   </entry>
   <entry>
@@ -1532,42 +1561,26 @@
       </tags>
   </entry>
   <entry>
-    <title>【转】PassWall2配置</title>
-    <url>/2025/02/17/%E3%80%90%E8%BD%AC%E3%80%91PassWall2%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p>PassWall2 能够给我们带来什么？</p>
-<ol>
-<li>解决 DNS 泄露</li>
-<li>IPv4/IPv6 双栈共存</li>
-<li>去广告</li>
-<li>无缝访问 github、国外论文网站<span id="more"></span>
-</li>
-</ol>
-<h1 id="一、-规则管理"><a href="#一、-规则管理" class="headerlink" title="一、 规则管理"></a>一、 规则管理</h1><ol>
-<li>删除默认的所有规则，探后添加 Reject、Direct、Proxy 规则；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217142557.png" alt="20250217142557"><br>这里有更好的规则，可以替代 passwall2 自带的:<br><a href="https://github.com/Loyalsoldier/v2ray-rules-dat">https://github.com/Loyalsoldier/v2ray-rules-dat</a><br>将 geoip 文件链接更改为:<br><a href="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat">https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat</a><br>将 geosite 文件链接更改为:<br><a href="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat">https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat</a></li>
-<li>Reject 规则填入域名；<br>geosite:category-ads-all<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143100.png" alt="20250217143100"></li>
-<li>Direct 规则填入；<br>域名:<br>xn—ngstr-lra8j.com<br>geosite:private<br>geosite:cn<br>IP：<br>geoip:private<br>geoip:cn<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143216.png" alt="20250217143216"></li>
-<li>Proxy 规则填入域名；<br>geosite:geolocation-!cn<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143336.png" alt="20250217143336"></li>
-</ol>
-<p>规则的顺序一定要这样排列:<br>1、 Reject<br>2、 Direct<br>3、 Proxy</p>
-<p><strong>注释:</strong><br>geosite:category-ads-all 去广告<br>xn—ngstr-lra8j.com 谷歌商店<br>geosite:private 内网地址<br>geosite:cn 国内域名<br>geoip:private 内网IP<br>geoip:cn 国内IP<br>geosite:geolocation-!cn 国外域名</p>
-<h1 id="二、-高级设置"><a href="#二、-高级设置" class="headerlink" title="二、 高级设置"></a>二、 高级设置</h1><p>1、如果不使用UDP代理，就把UDP不转发端口改成-所有，即可<br>2、设置TCP转发端口为：仅网页 ，也就是仅允许代理80、443这两个端口<br>3、TCP代理方式可以改成TPROXY，也可以默认REDIRECT（勾选IPv6透明代理(TProxy)后，会自动变更为TPROXY）<br>4、如果你的节点支持IPv4/IPv6互通或者有IPv6的出口IP，可以勾选IPv6透明代理(TProxy)，反之不勾选</p>
-<h1 id="三、-修改节点配置-Xray-分流-分流总结点"><a href="#三、-修改节点配置-Xray-分流-分流总结点" class="headerlink" title="三、 修改节点配置 Xray 分流:[分流总结点]"></a>三、 修改节点配置 Xray 分流:[分流总结点]</h1><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217144013.png" alt="20250217144013"><br>1、Reject设置为：黑洞（丢弃）<br>2、Direct设置为：直连（绕过）<br>3、Proxy设置为：默认（代理）<br>3、*默认设置为：按照自己需求选择一个节点<br>4、域名解析策略设置为：AsIs （也就是跳过IP匹配、只匹配域名）— 可能是版本原因，没找到相关设置项</p>
-<h1 id="四、-基本配置"><a href="#四、-基本配置" class="headerlink" title="四、 基本配置"></a>四、 基本配置</h1><ol>
-<li>远程 DNS 协议: DoH</li>
-<li>勾选 Fake DNS<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217144233.png" alt="20250217144233"></li>
-<li>主要—-节点设置为：Xray 分流：[分流总节点]</li>
-<li>以上都配置好之后，勾选上主开关保存应用即可</li>
-</ol>
-<p><strong>注释：</strong><br>1、远程 DNS 出站一定要设置为：远程（走代理），不然你走直连大概率是不通的，但是 DOH 走代理都是会增加延迟<br>2、勾选 FakeDNS 后，在 Proxy 规则内的域名，匹配上的会返回一个假 IP 作为 DNS 响应（例如198.18.0.0/16），最后将域名请求发送给节点服务器 VPS 在它的网络环境中进行解析IP<br>3、不在Proxy规则内的域名则会使用设置的 CloudFlare 远程 DNS 进行本地 DNS 解析真实 IP ，最后将这个真实 IP 发送给节点服务器 VPS ，而如果遇到解析出的是被污染的 IP ，由于开启了嗅探功能，会探测 HTTP 请求里的域名，所以就算本地解析出的 IP 是被污染也不影响<br>4、如何判断是走 FakeDNS 还是走远程 DNS ，电脑运行 CMD 窗口，输入<code>nslookup youtube.com</code>回车，输入<code>nslookup ipleak.net</code>回车<br>上述都配置完成后，就能够解决 DNS 泄露、污染问题和去广告，并且支持双栈 IPv4/IPv6 上网，不需要再去套任何插件和关闭或禁止解析 IPv6 DNS 记录等。</p>
-<h1 id="五、-Steam-设置"><a href="#五、-Steam-设置" class="headerlink" title="五、 Steam 设置"></a>五、 Steam 设置</h1><p>上述的配置完成后，发现 steam 下载走的是代理，需要通过以下操作解决。<br>1、在 Direct 规则中的域名添加 geosite:category-games，这样可以使 steam、epic 等软件都走直连。<br>2、为了避免走直连后 steam 社区、商店打不开，需要指定其域名走代理。添加 steam 分流规则，其中域名为<code>store.steampowered.com</code>、<code>steamcommunity.com</code>。<br>3、将 steam 规则排在 direct 上方，即最终规则顺序为 reject、steam、direct、proxy。</p>
-<p>【转自】<a href="https://nanodesu.net/archives/36/">Pass Wall2（完美配置教程）)</a></p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    <title>Work Logs</title>
+    <url>/2024/01/30/Work-Logs/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="36b0705c8d827f4f02d0334e6c2d0fe1db3fedd0ae9a7c6609ef29e7918c30eb">ae118af9461036e20f25663a30e1897387e75e8f4e4f03c2f53006f64e35d556db8c7ffd9a6bef2c52605d7717778dc23b07e82f5cf6691413ae7bc832841d578c94d6fdf48e593f7753becdd6b9a95f7727ce820d2cc272120df66dc2b30daf20e7620d998edd4de8ad21ea6f8c941e0e5b9057ce04ad791e541c3b691f98d55e08daa3a9118d69556bbd157377799f21223276757aff3cd0bb7699fcca49e53fd9f861404f2a5bbead4158ae726061c20a7f589a4e521ec51210ee14d0f25c775bf61f8577dd456d35428e2c5e6a39b088a0e7f8fd3aea364cf811e679191ac41fc63e305b65d5d35a033e10962dc39ce7b1e9875cdf372ca1f5c994f660081c1f618561b71c94912cfe6288110dc2e84df4d864d19a276fd6ebacf911901e81bac0bf09eef607e5e1dd448d88aeeb61cc5ba2c68eb3864e16a59a99c45817ab4979b3526198adfe4f90c5ca8d22ed2cab521caf6fedb9bc606cc99445f38bb28401965d1f77951132232f81a2c37d5009ada255e5b7797becb61eaa938a42361ecbcc5fb3bc8cee305829a3c019ff3b90af1ffd517284377b1e634f00b3ecb80d7dd88c27030ed6bd4bdd834174b2ee134e63bf26435a80121b668916620e765c14b1f4bad95a98446ba492e3bc8b9f5c837cd7af985dc52bc6237eda1803246758b7d07ab66e2bc8cf4026e44c7bd485e55d9246d3b51ea492290b4c53dd8351a823f63956d4f400230342b964471340096d3d6312474f63c576a0f0fafc8d99f1211b29f9c6fc6e7a809d8e741fe1cad77c94878e06400faf3d7a4b112a6fd85f4d456934e1c69726c29dba08eafec6ddaa70c9770a67dc824c17d2b3810600685d53619d407a13a30da81c7c6660ebd41d1f8807069510e8ec16fc37357c030e3920789e3113b74f9c47d60a70e2744e40430752cabb7c1a7b1fd7045a221c7bda304399f1d3af2854c5cf70049a48f080a902efc295acaf14eddee32c057ed6aaf820e1adabf3dbce798271de425e74d62a0692f8af390bf13023bb4b8fcc4a194278d99079a9212b91b198723b7c7a2b8e57c5dd6aef8d5e10c91f9e4da23a691e1b32f5b191d7c042de34f759808c74eb6f7203d4360397418c8b7052feb9dac65128a40f29376464217677c0aae33b0f3caf42896436b0c2e4eb822394deb74a470761869f8ddc18507dfdc22fccff7dd2a552c3587d02a19f71ba0153bddf0d8d587e3e9cdf10f513f8d7fb4e0889457a825a85309417c354586e97e3450c16045a22cd164a9c34a10f64d279459ed48918dbd5fe2f9dc59fdeee369c75b4ccbc9a9927e73a307e09b1f63909ad10de2d719e9989f5e8033aed0ee8063f4ccac25af740f3799c72e9bdcf9dffa5eeb55e89bc2f5852e8b3baae9ac1b3394e120eec069468e6801c616b635e053f69b58dae6af56b4bebccd4459d9a66303eb8add5cc1c553c62f2387085f0826ec2577d23177a8a54fa742b4f1656033df57e36781b974f6922665bb92ee078c820f86fa0108c837459698f6e768bd7fabec783274d19b13386aabb3389fc667a01a307cb1b3f321562c919769b608f5894dcba7d96d5bc7168b6cffa297925434d3356e661a55277c210c8edd1f7bd28fd576cfe09920d7b67d36d00370697aadfbf43827dae87e62b5ecd8d9e2cd2f95a9f3ccf51a2c47746ed00c8c94764df11856422d1fd4bd7fefb5caecb43aeddd85d6e3012a20ff46637a8fbf65e7e8507d0bdb6cd34257fea2e81f5cc516a72c2a1eaf11513f4298dc6de195a0a65d4ea5033e2e380eebf246a6f9c373fbba54458577f485b27d8a2173ea96367728fdd6e43634fd66f63196b302be1a78f164a8dffd184442e78adc47bdcd22de305bdede39190b1c806a980054eb8c97f633626fec748d80e451f77b4041cf22e173e97f08b0034da58b91902b5f19e79bcafcd25704dcc674a79e12297eac069183cc43001468799268346049465297dc035523e73ddae6403dd8071b92559a5397189fbdc9b509eba87569e9c0a86a5a8849ba4738c1351861d0ced4b8518f58687ccc9a401dd28cb94c227ef516accfc3109d7fd0fd5c0adb2a4de14599c0b85f0c23423c07741f8dddb704b0cf8176b8014b9568626c49208ffabdf31eb3799d1549e0a6c8e19749e07c9596bbbb1eaf82cad19b9c90182437cbfba738d834e5811375cc40483b0a4fddfd5575ed4ebac4f40c2a4677c0460f6c277337f4840ef7d5c51145c4325ed94b7bd49499c46d7ace51bd0ddcae3c777dc48dd761d0a758c238aac571ed7779874f46b3ee48de8ffae844c25b976e9db91fffdd5d61e3702793d06bbdfd75ba3db0d514d9490923b2f0bafa2396d28638d047cf453c81d79eb62e349900996b0b31024420b58e8ff97ac6417f0e442e98f48cd73922634a47d7b12fbc640036f30f8223dc67ff3e0295b174d6ca54c84749eeefb05431f11315a45989dd72b96f7a9b423819911a2494dec8cc2c3942f7d3e823ce3dcfe183dbeef8f35cef4c9dda27df4e1296b6c8b22e88c4f4d4020d7ded0f0f74a1238b25b75c49acbe892cc7e28c4b5c86e7d69941bdbfff6d2fc61ad2e946521a0aaef62ef718e122cadbcb39d48e209bc1801c8976fd0141d7dbf9af92365131f40ec3e53dc93e8ed1e9227bb0fa7b2d7c34dd0b9baae670048df3b6d39cd5c7df7aa65878cab35e45dafb4b5e8cd267182024654fe70ac25e33f212aaddd812ad93b605cb23e8dedbc67a25a1baa62797a8341dd7b4a8347ba984ea073e6539dba3d904046fb2023b957adbf3d6341a457d5f5f03b14e3646aea4b0272bec70944793758918970f5e6fab8be9de2ccaf402a97bbca913ef9a5a8cb27763055a14bd1e5c2b83a08bf599faf8d217899b6461c6a6919bfa3c6ab04576c035d3cc5f51fd58bcdfd7ca2605fe7ced5e298b798615449f7124740b14fd3a1bb293443807a21c2f43dffcf880dd9ec969bd416ae65fec71fd6d5d7ac705427f7af9e146f451b8fe3a3798f060d48173e69e570bebb698d0d25172dcd52e7034f739060246d44b72b61dfb4cae5c5965b7d44c8428599b17fc0e1101bfc1d9b48554258a7112c430803c72339d7c89dee840ccb81510dbea1b009e6882b47fe33801764f4fc1fbfa17784c0a03828bf1298a3f488789258337069fcfc8a43d0672130b741b30f87fabb28d2985da6b697d4e85dc0ad25b027097f13f668de0fa265b314f8bbd1a9a1a099244fdb4a982a2a56455948390abb7ba2f87bd44114213d69b623a39302696a2ce8becdb33e51d4733644309e5ae70b67c20cc5d364512bbda0724e368c7ec549d16f12c422914c626599ec0d8781d89c054b5c9b7bb9cde1adfa1241fbd3affecf7bb2a6a6e7324be6e32a49fa85d356936df0286d5d22c229b2ab22b33d9c9ef7b9764dbcb9a7e459a55e91ad33388943c033a13efc94d441cf73439a1b2450d2e591ab87bddb02cfcfb11b56970f2787bc155dcff2ee22ea94bbea44350fc366ec0d87c8bf96f362a790e767008bb1e517b37b566b1e40adce4a9712e8d5ac8ee72d6ff8a86a43876dbf23d6566660a6074ecc429acdf8782174a2b0458a5a8c2841f163aafa67d846568f51040ee9370f2473777c4ab0eeec57b44571eba9a8d0a60a2ed0bbed7b245a8f67b3c164d5fa0bdea334906074acbd0e8d8b5d88f4921ca47ddc833e93eecd05eddb60f17d87d141944b9360f61af13801ff500381d97941583d708fc77684576035b1c9bc0f0825e8dd3143d7a0afc0a469ba3765c8db0a8da02f8e1d45bab10aa6c44ba37a05bec1e717b3f69732cc36ee37217ef726647d9b57ca7bc0aa5705b440dc6a655b1f2d7ac7a9db6c46eb2af7760bfa6173419eb5e3de838d5fe3a632b6aeb27aff0cc215862e187caf87b78cc1e0ccc7a32120fb1cf51a7406cd6e95b3e0238678e66fa8f31e4af85c07a8ac5fe32e682b9baa6e356b5d68b830bc737e0594723c461bc0bef91203f0e430cdbcc2c07cafd1d422b146bd040666b10c2e81ba6fcf67b59f9f82f3a5059c5fe4fd30211b3fc4724d0e0c77ba86766e467dfead2d76821e00fad917203aeaaf8ab896cf03e8a576a36be40bd7a1220d4822d8997414c972874c7814b22af9dda7ba1f2013065652e3c37f9638ff38b2800f13bcc3ca8f48a74398ca4668e0a39407e7ab916a24114a08b96989ad870b4cefe00cbbc656f3ba9e8625066cbc181db1ff20be22f444a18cbb135ccbd1fefb75c00dbf7f6102a2b70044fa1edd25545eaae133a8abea5b0c63669c51d2e093c67f64152b7a6a63a2f7cc3001ca202ebfd730bd71dcc711a62ace2ee27e1af0767c778b7541eecd710c2a03914741316e73fa84111aa326cd49ee17c40f6f12032d9b94be9b9f59601c35013d649e710e64f5398ec41689125cbdd74edf8bec4962d02c9e64237a743595d6f781d6ce6b9c545256f08681313fa5fb68f0344cb9e081f5eebf2a6ffd2757763c70ddac2a0d4b98afaa5cadc324b48106d15ba1f7ddd38c8a843235e693c14865a843e26a4d564219a5dd532d3da34ced9b1d1bd559e227353b327d77a3a41b002e5391fea281aca537aca43b4dbcf2fa114420ef44f47057641b5ba7e11f99a5aaf64984aa4f055198013a7626448e917eb2b427546eece74416390e9b0518313997439392867e6539f3b33b2c029716f07140f31a083afd881d55fb8052d8aadb8514c984d403fce2a94bc950d441357c846d523f9793d54b3430c632b6fe501e27acbdc45a664d53e9906e39e6422b4b26648e4e4d358812c209335205ff2d27c19db7c15ae48f6964fe1f58dfc43ddb92cc0be34c7c44de252578f3d9c7d5503859bb08c223cd7e6d3cea2f115003f53785f8cf20ed21601e87436948b5d93949cee3494037898033930221e0855d86924f8976d8c324066e4e593992502dcd213e90d1858eb6a676ea111dab1bae2500614acde1beb1f4b3</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
-        <category>技术兴趣</category>
-        <category>网络服务</category>
+        <category>半导体专业</category>
+        <category>模拟电路</category>
       </categories>
       <tags>
-        <tag>网络</tag>
+        <tag>Work</tag>
       </tags>
   </entry>
   <entry>
@@ -1652,19 +1665,6 @@
       </tags>
   </entry>
   <entry>
-    <title>smic工艺中带有ckt后缀的器件</title>
-    <url>/2023/12/08/smic%E5%B7%A5%E8%89%BA%E4%B8%AD%E5%B8%A6%E6%9C%89ckt%E5%90%8E%E7%BC%80%E7%9A%84%E5%99%A8%E4%BB%B6/</url>
-    <content><![CDATA[<p>在SMIC的PDK中存在后面带ckt和不带ckt的PDK，其中不带ckt的器件模型是bsim4，而带ckt的器件模型是subckt。网上查询，subckt就是sub circuit，即子电路的意思。<br>查询并猜想如下:<br>不带ckt: 类理想器件，即只针对此种器件建模；<br>带ckt: 考虑其内部构造所产生的各种寄生成分，并且包含寄生器件参数随电路参数的变化</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>半导体专业</category>
-        <category>Fab</category>
-      </categories>
-      <tags>
-        <tag>PDK</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>中国历史顺序表</title>
     <url>/2024/08/22/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E9%A1%BA%E5%BA%8F%E8%A1%A8/</url>
     <content><![CDATA[<h1 id="中国历史顺序表"><a href="#中国历史顺序表" class="headerlink" title="中国历史顺序表"></a>中国历史顺序表</h1><h2 id="原始社会-170万年前-公元前21世纪"><a href="#原始社会-170万年前-公元前21世纪" class="headerlink" title="原始社会(170万年前~公元前21世纪)"></a>原始社会(170万年前~公元前21世纪)</h2><h3 id="旧石器时代-约170万年前-1万年前"><a href="#旧石器时代-约170万年前-1万年前" class="headerlink" title="旧石器时代(约170万年前~1万年前)"></a>旧石器时代(约170万年前~1万年前)</h3><ul>
@@ -1728,6 +1728,26 @@
       </categories>
   </entry>
   <entry>
+    <title>使用curl命令行工具查询本地公网IP地址</title>
+    <url>/2024/02/04/%E4%BD%BF%E7%94%A8curl%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E6%9F%A5%E8%AF%A2%E6%9C%AC%E5%9C%B0%E5%85%AC%E7%BD%91IP%E5%9C%B0%E5%9D%80/</url>
+    <content><![CDATA[<p>在 Linux 中 curl 是一个利用 URL 规则在命令行下工作的文件传输工具，同时也可以查询本机公网 IP 地址，具体使用方法如下:<br><span id="more"></span></p>
+<ol>
+<li>使用<code>curl ipinfo.io</code>查询:<br><pre>curl ipinfo.io</pre><br>返回值<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"> [root@MiWiFi-R3D-srv ~]<span class="hljs-comment"># curl ipinfo.io</span><br>&#123;<br> <span class="hljs-string">&quot;ip&quot;</span>: <span class="hljs-string">&quot;1.203.179.218&quot;</span>,// 此处是本机公网ip地址<br> <span class="hljs-string">&quot;city&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,// 城市名<br> <span class="hljs-string">&quot;region&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,// 区域名<br> <span class="hljs-string">&quot;country&quot;</span>: <span class="hljs-string">&quot;CN&quot;</span>,// 国家代号<br> <span class="hljs-string">&quot;loc&quot;</span>: <span class="hljs-string">&quot;39.9075,116.3972&quot;</span>,// 经纬度坐标<br> <span class="hljs-string">&quot;org&quot;</span>: <span class="hljs-string">&quot;AS4847 China Networks Inter-Exchange&quot;</span>,// 运营商信息<br> <span class="hljs-string">&quot;timezone&quot;</span>: <span class="hljs-string">&quot;Asia/Shanghai&quot;</span>,// 时区<br> <span class="hljs-string">&quot;readme&quot;</span>: <span class="hljs-string">&quot;https://ipinfo.io/missingauth&quot;</span>//提示ipinfo.io官网地址<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>使用<code>curl ifconfig.me</code>查询<br><pre>curl ifconfig.me</pre><br>返回值<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@MiWiFi-R3D-srv ~]<span class="hljs-comment"># curl ifconfig.me</span><br>1.203.179.218 //只显示本机公网IP地址<br>[root@MiWiFi-R3D-srv ~]<span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure></li>
+<li>使用<code>ipinfo.io</code>加<code>ip</code>地址，可查血这个 ip 的信息<br><pre>curl ipinfo.io/192.168.32.84</pre><br>返回值<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"> [root@MiWiFi-R3D-srv ~]<span class="hljs-comment"># curl  ipinfo.io/103.208.15.138</span><br>&#123;<br> <span class="hljs-string">&quot;ip&quot;</span>: <span class="hljs-string">&quot;103.208.15.138&quot;</span>,//被查询的IP地址<br> <span class="hljs-string">&quot;city&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,//所属城市<br> <span class="hljs-string">&quot;region&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,//所属区域<br> <span class="hljs-string">&quot;country&quot;</span>: <span class="hljs-string">&quot;CN&quot;</span>,//国家代码<br> <span class="hljs-string">&quot;loc&quot;</span>: <span class="hljs-string">&quot;39.9075,116.3972&quot;</span>,//经纬度坐标<br> <span class="hljs-string">&quot;org&quot;</span>: <span class="hljs-string">&quot;AS9808 China Mobile Communications Group Co., Ltd.&quot;</span>,//运营商信息<br> <span class="hljs-string">&quot;timezone&quot;</span>: <span class="hljs-string">&quot;Asia/Shanghai&quot;</span>,//时区<br> <span class="hljs-string">&quot;readme&quot;</span>: <span class="hljs-string">&quot;https://ipinfo.io/missingauth&quot;</span>//ipinfo.io官网地址<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>此命令在 Windows 的命令提示符中也可以使用<br>使用方法如下:<figure class="highlight cmd"><table><tr><td class="code"><pre><code class="hljs cmd"><span class="hljs-function"> C:\<span class="hljs-title">Users</span>\<span class="hljs-title">User</span>&gt;<span class="hljs-title">curl</span> <span class="hljs-title">ipinfo.io</span></span><br><span class="hljs-function">&#123;</span><br><span class="hljs-function"> &quot;<span class="hljs-title">ip</span>&quot;: &quot;1.203.179.218&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">city</span>&quot;: &quot;<span class="hljs-title">Beijing</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">region</span>&quot;: &quot;<span class="hljs-title">Beijing</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">country</span>&quot;: &quot;<span class="hljs-title">CN</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">loc</span>&quot;: &quot;39.9075,116.3972&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">org</span>&quot;: &quot;<span class="hljs-title">AS4847</span> <span class="hljs-title">China</span> <span class="hljs-title">Networks</span> <span class="hljs-title">Inter</span>-<span class="hljs-title">Exchange</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">timezone</span>&quot;: &quot;<span class="hljs-title">Asia</span>/<span class="hljs-title">Shanghai</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">readme</span>&quot;: &quot;<span class="hljs-title">https</span>://<span class="hljs-title">ipinfo.io</span>/<span class="hljs-title">missingauth</span>&quot;</span><br><span class="hljs-function">&#125;</span><br></code></pre></td></tr></table></figure></li>
+<li>最简单的是使用 <a href="https://ip138.com/">https://ip138.com/</a> 网址进行本机公网IP地址查询<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240204101450.png" alt="20240204101450"></li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>网络服务</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用PS软件进行一寸证件照片打印排版</title>
     <url>/2024/08/17/%E4%BD%BF%E7%94%A8PS%E8%BD%AF%E4%BB%B6%E8%BF%9B%E8%A1%8C%E4%B8%80%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7%E7%89%87%E6%89%93%E5%8D%B0%E6%8E%92%E7%89%88/</url>
     <content><![CDATA[<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>系统: Windows 11<br>软件: Adobe Photoshop 24.5.0 版<br><span id="more"></span></p>
@@ -1748,23 +1768,23 @@
       </tags>
   </entry>
   <entry>
-    <title>使用curl命令行工具查询本地公网IP地址</title>
-    <url>/2024/02/04/%E4%BD%BF%E7%94%A8curl%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E6%9F%A5%E8%AF%A2%E6%9C%AC%E5%9C%B0%E5%85%AC%E7%BD%91IP%E5%9C%B0%E5%9D%80/</url>
-    <content><![CDATA[<p>在 Linux 中 curl 是一个利用 URL 规则在命令行下工作的文件传输工具，同时也可以查询本机公网 IP 地址，具体使用方法如下:<br><span id="more"></span></p>
-<ol>
-<li>使用<code>curl ipinfo.io</code>查询:<br><pre>curl ipinfo.io</pre><br>返回值<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"> [root@MiWiFi-R3D-srv ~]<span class="hljs-comment"># curl ipinfo.io</span><br>&#123;<br> <span class="hljs-string">&quot;ip&quot;</span>: <span class="hljs-string">&quot;1.203.179.218&quot;</span>,// 此处是本机公网ip地址<br> <span class="hljs-string">&quot;city&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,// 城市名<br> <span class="hljs-string">&quot;region&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,// 区域名<br> <span class="hljs-string">&quot;country&quot;</span>: <span class="hljs-string">&quot;CN&quot;</span>,// 国家代号<br> <span class="hljs-string">&quot;loc&quot;</span>: <span class="hljs-string">&quot;39.9075,116.3972&quot;</span>,// 经纬度坐标<br> <span class="hljs-string">&quot;org&quot;</span>: <span class="hljs-string">&quot;AS4847 China Networks Inter-Exchange&quot;</span>,// 运营商信息<br> <span class="hljs-string">&quot;timezone&quot;</span>: <span class="hljs-string">&quot;Asia/Shanghai&quot;</span>,// 时区<br> <span class="hljs-string">&quot;readme&quot;</span>: <span class="hljs-string">&quot;https://ipinfo.io/missingauth&quot;</span>//提示ipinfo.io官网地址<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li>使用<code>curl ifconfig.me</code>查询<br><pre>curl ifconfig.me</pre><br>返回值<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@MiWiFi-R3D-srv ~]<span class="hljs-comment"># curl ifconfig.me</span><br>1.203.179.218 //只显示本机公网IP地址<br>[root@MiWiFi-R3D-srv ~]<span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure></li>
-<li>使用<code>ipinfo.io</code>加<code>ip</code>地址，可查血这个 ip 的信息<br><pre>curl ipinfo.io/192.168.32.84</pre><br>返回值<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"> [root@MiWiFi-R3D-srv ~]<span class="hljs-comment"># curl  ipinfo.io/103.208.15.138</span><br>&#123;<br> <span class="hljs-string">&quot;ip&quot;</span>: <span class="hljs-string">&quot;103.208.15.138&quot;</span>,//被查询的IP地址<br> <span class="hljs-string">&quot;city&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,//所属城市<br> <span class="hljs-string">&quot;region&quot;</span>: <span class="hljs-string">&quot;Beijing&quot;</span>,//所属区域<br> <span class="hljs-string">&quot;country&quot;</span>: <span class="hljs-string">&quot;CN&quot;</span>,//国家代码<br> <span class="hljs-string">&quot;loc&quot;</span>: <span class="hljs-string">&quot;39.9075,116.3972&quot;</span>,//经纬度坐标<br> <span class="hljs-string">&quot;org&quot;</span>: <span class="hljs-string">&quot;AS9808 China Mobile Communications Group Co., Ltd.&quot;</span>,//运营商信息<br> <span class="hljs-string">&quot;timezone&quot;</span>: <span class="hljs-string">&quot;Asia/Shanghai&quot;</span>,//时区<br> <span class="hljs-string">&quot;readme&quot;</span>: <span class="hljs-string">&quot;https://ipinfo.io/missingauth&quot;</span>//ipinfo.io官网地址<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li>此命令在 Windows 的命令提示符中也可以使用<br>使用方法如下:<figure class="highlight cmd"><table><tr><td class="code"><pre><code class="hljs cmd"><span class="hljs-function"> C:\<span class="hljs-title">Users</span>\<span class="hljs-title">User</span>&gt;<span class="hljs-title">curl</span> <span class="hljs-title">ipinfo.io</span></span><br><span class="hljs-function">&#123;</span><br><span class="hljs-function"> &quot;<span class="hljs-title">ip</span>&quot;: &quot;1.203.179.218&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">city</span>&quot;: &quot;<span class="hljs-title">Beijing</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">region</span>&quot;: &quot;<span class="hljs-title">Beijing</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">country</span>&quot;: &quot;<span class="hljs-title">CN</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">loc</span>&quot;: &quot;39.9075,116.3972&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">org</span>&quot;: &quot;<span class="hljs-title">AS4847</span> <span class="hljs-title">China</span> <span class="hljs-title">Networks</span> <span class="hljs-title">Inter</span>-<span class="hljs-title">Exchange</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">timezone</span>&quot;: &quot;<span class="hljs-title">Asia</span>/<span class="hljs-title">Shanghai</span>&quot;,</span><br><span class="hljs-function"> &quot;<span class="hljs-title">readme</span>&quot;: &quot;<span class="hljs-title">https</span>://<span class="hljs-title">ipinfo.io</span>/<span class="hljs-title">missingauth</span>&quot;</span><br><span class="hljs-function">&#125;</span><br></code></pre></td></tr></table></figure></li>
-<li>最简单的是使用 <a href="https://ip138.com/">https://ip138.com/</a> 网址进行本机公网IP地址查询<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240204101450.png" alt="20240204101450"></li>
+    <title>使用photoshop24.5.0将照片底色改为纯白色</title>
+    <url>/2024/10/21/%E4%BD%BF%E7%94%A8photoshop24-5-0%E5%B0%86%E7%85%A7%E7%89%87%E5%BA%95%E8%89%B2%E6%94%B9%E4%B8%BA%E7%BA%AF%E7%99%BD%E8%89%B2/</url>
+    <content><![CDATA[<ol>
+<li>打开 Adobe Photoshop 24.5.0 软件；<span id="more"></span></li>
+<li>文件 =&gt; 打开 =&gt; 选择要处理的图片；</li>
+<li>点击图片下方的”移除背景”；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20241021140008.png" alt="20241021140008"><br>移除背景后的图片如下:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20241021140104.png" alt="20241021140104"></li>
+<li>点击右下角”创建新图层”；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20241021140204.png" alt="20241021140204"></li>
+<li>选择”油漆桶工具”，然后选择底色照片(这里是白色)，然后点击图片，就增加了纯白的图层；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20241021140339.png" alt="20241021140339"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20241021140454.png" alt="20241021140454"></li>
+<li>将新建的图层移到原图层下方，就得到了白底的照片。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20241021140602.png" alt="20241021140602"></li>
 </ol>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
       <categories>
         <category>技术兴趣</category>
-        <category>网络服务</category>
+        <category>图片处理</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
+        <tag>Adobe</tag>
       </tags>
   </entry>
   <entry>
@@ -3359,26 +3379,6 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </tags>
   </entry>
   <entry>
-    <title>使用photoshop24.5.0将照片底色改为纯白色</title>
-    <url>/2024/10/21/%E4%BD%BF%E7%94%A8photoshop24-5-0%E5%B0%86%E7%85%A7%E7%89%87%E5%BA%95%E8%89%B2%E6%94%B9%E4%B8%BA%E7%BA%AF%E7%99%BD%E8%89%B2/</url>
-    <content><![CDATA[<ol>
-<li>打开 Adobe Photoshop 24.5.0 软件；<span id="more"></span></li>
-<li>文件 =&gt; 打开 =&gt; 选择要处理的图片；</li>
-<li>点击图片下方的”移除背景”；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20241021140008.png" alt="20241021140008"><br>移除背景后的图片如下:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20241021140104.png" alt="20241021140104"></li>
-<li>点击右下角”创建新图层”；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20241021140204.png" alt="20241021140204"></li>
-<li>选择”油漆桶工具”，然后选择底色照片(这里是白色)，然后点击图片，就增加了纯白的图层；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20241021140339.png" alt="20241021140339"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20241021140454.png" alt="20241021140454"></li>
-<li>将新建的图层移到原图层下方，就得到了白底的照片。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20241021140602.png" alt="20241021140602"></li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>图片处理</category>
-      </categories>
-      <tags>
-        <tag>Adobe</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用多终端发布 hexo 博客</title>
     <url>/2025/02/08/%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%8F%91%E5%B8%83-hexo-%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h1 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h1><p>master分支: 保存博客静态资源，提供博客页面供人访问。<br>hexo分支(仓库默认分支): 用于备份博客部署文件，共自己维护更新。<br><span id="more"></span></p>
@@ -3394,23 +3394,6 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </categories>
       <tags>
         <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用端口映射实现局域网内打印机远程打印</title>
-    <url>/2024/03/12/%E4%BD%BF%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E6%89%93%E5%8D%B0%E6%9C%BA%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0/</url>
-    <content><![CDATA[<p>打印机是现在办公设备必不可少的工具，我们常常需要使用打印机复印或打印各种文件资料，尤其对一些正在加班且不能在家陪伴孩子写作业的父母来说，学会远程打印的方法十分必要。<br>打印机种类: 激光打印机<br>打印机型号: DCP-B7520DW<br>目前这款打印机不支持远程打印，所以需要将打印端口映射到外网才能实现远程打印。<br>局域网内电脑系统: Windows 10<br>远程打印电脑系统: Windows 11<br><span id="more"></span><br>电脑进行远程打印可以用一下两种方法:</p>
-<ol>
-<li>使用zerotier将主路由加入到虚拟局域网中，这样家中所有设备都可以通过虚拟局域网进行访问，此种方式如能将手机也加入到zerotier的虚拟局域网中亦可以实现手机端的远程打印。</li>
-<li>将打印机数据传输端口通过路由器进行端口映射来实现，此种方法目前还未能实现手机端的远程打印。<br>下面详细讲述第2中方法的实现步骤:<h4 id="一、设置映射"><a href="#一、设置映射" class="headerlink" title="一、设置映射"></a>一、设置映射</h4>首先保证局域网内能正常打印，进入<strong>控制面板</strong>——<strong>设备和打印机</strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312160611.png" alt="20240312160611"><br>找到对应的打印机，右键<strong>打印机属性</strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312160725.png" alt="20240312160725"><br>选择<strong>端口</strong>，找到对应的打印机，点击<strong>配置端口</strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312160925.png" alt="20240312160925"><br>查看打印机的IP地址和端口号；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312161050.png" alt="20240312161050"><br>这个地方有一个问题，我的打印机原来默认是LPR协议，端口应该是515；现在我将它改成的Raw协议，Raw协议默认使用9100，9101，9102端口，这里选择默认的9100端口。<br>然后将你所使用的端口，这里是9100通过路由器的设置映射到外网，我家里使用的是华为的AX3 Pro路由器，设置界面如下，外部端口填写你想设置的端口即可(1~65535):<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312161449.png" alt="20240312161449"><br>点击保存即设置成功。<h4 id="二、远程打印电脑的设置"><a href="#二、远程打印电脑的设置" class="headerlink" title="二、远程打印电脑的设置"></a>二、远程打印电脑的设置</h4>点击<strong>开始</strong>——<strong>设置</strong>——选择<strong>蓝牙和其他设备</strong>——点击<strong>打印机和扫描仪</strong><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312162315.png" alt="20240312162315"><br>点击<strong>打印机和扫描仪</strong>——点击<strong>添加设备</strong><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312162447.png" alt="20240312162447"><br>点击<strong>手动添加</strong>——选择<strong>通过手动设置添加本地打印机或网络打印机</strong>，<strong>下一步</strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312162952.png" alt="20240312162952"><br>选择<strong>创建新端口</strong>，端口类型选择<strong>Standard TCP/IP Port</strong>，下一步；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312163246.png" alt="20240312163246"><br><strong>主机名或IP地址</strong>和<strong>端口名称</strong>，填写自己的公网IP或域名地址。(由于现在供应商提供的公网IP是会变的，所以建议使用DDNS在此处填写自己的DDNS域名。)<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312164131.png" alt="20240312164131"><br>设置类型选择<strong>自定义</strong>，点击<strong>设置</strong>，<strong>原始设置</strong>里的<strong>端口号</strong>填入上面映射到外网的外部端口号，<strong>确定</strong>然后<strong>下一步</strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312165944.png" alt="20240312165944"><br>然后就是安装驱动程序，点击<strong>从磁盘安装</strong>，<strong>制造商文件复制来源</strong>选择对应打印机驱动的安装目录里，这里要求选择<code>.inf</code>文件。<br>我这边驱动目录下的路径是<code>D:\51_Installer\DCP-B7520DW\Y17C_C1_ULWL_PP-inst-H1\xmlpaper\BRXM17A.INF</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312171646.png" alt="20240312171646"><br>根据我的打印机型号，选择<code>Brother DCP-B7520DW XML Paper1</code>。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312172309.png" alt="20240312172309"><br>选择<strong>替换当前的驱动程序</strong>，下一步，<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312172405.png" alt="20240312172405"><br>给打印机自定义一个名字，下一步；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312174733.png" alt="20240312174733"><br>选择<strong>不共享这台打印机</strong>，下一步；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312174819.png" alt="20240312174819"><br>点击<strong>完成</strong>。也可以打印测试页看是否成功。</li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>网络服务</category>
-      </categories>
-      <tags>
-        <tag>远程打印</tag>
       </tags>
   </entry>
   <entry>
@@ -3435,6 +3418,23 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       <tags>
         <tag>iPhone</tag>
         <tag>DDNS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用端口映射实现局域网内打印机远程打印</title>
+    <url>/2024/03/12/%E4%BD%BF%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E6%89%93%E5%8D%B0%E6%9C%BA%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0/</url>
+    <content><![CDATA[<p>打印机是现在办公设备必不可少的工具，我们常常需要使用打印机复印或打印各种文件资料，尤其对一些正在加班且不能在家陪伴孩子写作业的父母来说，学会远程打印的方法十分必要。<br>打印机种类: 激光打印机<br>打印机型号: DCP-B7520DW<br>目前这款打印机不支持远程打印，所以需要将打印端口映射到外网才能实现远程打印。<br>局域网内电脑系统: Windows 10<br>远程打印电脑系统: Windows 11<br><span id="more"></span><br>电脑进行远程打印可以用一下两种方法:</p>
+<ol>
+<li>使用zerotier将主路由加入到虚拟局域网中，这样家中所有设备都可以通过虚拟局域网进行访问，此种方式如能将手机也加入到zerotier的虚拟局域网中亦可以实现手机端的远程打印。</li>
+<li>将打印机数据传输端口通过路由器进行端口映射来实现，此种方法目前还未能实现手机端的远程打印。<br>下面详细讲述第2中方法的实现步骤:<h4 id="一、设置映射"><a href="#一、设置映射" class="headerlink" title="一、设置映射"></a>一、设置映射</h4>首先保证局域网内能正常打印，进入<strong>控制面板</strong>——<strong>设备和打印机</strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312160611.png" alt="20240312160611"><br>找到对应的打印机，右键<strong>打印机属性</strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312160725.png" alt="20240312160725"><br>选择<strong>端口</strong>，找到对应的打印机，点击<strong>配置端口</strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312160925.png" alt="20240312160925"><br>查看打印机的IP地址和端口号；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312161050.png" alt="20240312161050"><br>这个地方有一个问题，我的打印机原来默认是LPR协议，端口应该是515；现在我将它改成的Raw协议，Raw协议默认使用9100，9101，9102端口，这里选择默认的9100端口。<br>然后将你所使用的端口，这里是9100通过路由器的设置映射到外网，我家里使用的是华为的AX3 Pro路由器，设置界面如下，外部端口填写你想设置的端口即可(1~65535):<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312161449.png" alt="20240312161449"><br>点击保存即设置成功。<h4 id="二、远程打印电脑的设置"><a href="#二、远程打印电脑的设置" class="headerlink" title="二、远程打印电脑的设置"></a>二、远程打印电脑的设置</h4>点击<strong>开始</strong>——<strong>设置</strong>——选择<strong>蓝牙和其他设备</strong>——点击<strong>打印机和扫描仪</strong><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312162315.png" alt="20240312162315"><br>点击<strong>打印机和扫描仪</strong>——点击<strong>添加设备</strong><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312162447.png" alt="20240312162447"><br>点击<strong>手动添加</strong>——选择<strong>通过手动设置添加本地打印机或网络打印机</strong>，<strong>下一步</strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312162952.png" alt="20240312162952"><br>选择<strong>创建新端口</strong>，端口类型选择<strong>Standard TCP/IP Port</strong>，下一步；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312163246.png" alt="20240312163246"><br><strong>主机名或IP地址</strong>和<strong>端口名称</strong>，填写自己的公网IP或域名地址。(由于现在供应商提供的公网IP是会变的，所以建议使用DDNS在此处填写自己的DDNS域名。)<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312164131.png" alt="20240312164131"><br>设置类型选择<strong>自定义</strong>，点击<strong>设置</strong>，<strong>原始设置</strong>里的<strong>端口号</strong>填入上面映射到外网的外部端口号，<strong>确定</strong>然后<strong>下一步</strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312165944.png" alt="20240312165944"><br>然后就是安装驱动程序，点击<strong>从磁盘安装</strong>，<strong>制造商文件复制来源</strong>选择对应打印机驱动的安装目录里，这里要求选择<code>.inf</code>文件。<br>我这边驱动目录下的路径是<code>D:\51_Installer\DCP-B7520DW\Y17C_C1_ULWL_PP-inst-H1\xmlpaper\BRXM17A.INF</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312171646.png" alt="20240312171646"><br>根据我的打印机型号，选择<code>Brother DCP-B7520DW XML Paper1</code>。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312172309.png" alt="20240312172309"><br>选择<strong>替换当前的驱动程序</strong>，下一步，<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312172405.png" alt="20240312172405"><br>给打印机自定义一个名字，下一步；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312174733.png" alt="20240312174733"><br>选择<strong>不共享这台打印机</strong>，下一步；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312174819.png" alt="20240312174819"><br>点击<strong>完成</strong>。也可以打印测试页看是否成功。</li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>网络服务</category>
+      </categories>
+      <tags>
+        <tag>远程打印</tag>
       </tags>
   </entry>
   <entry>
@@ -3725,6 +3725,57 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </tags>
   </entry>
   <entry>
+    <title>常用的瞬时电感电流采样方法</title>
+    <url>/2025/05/12/%E5%B8%B8%E7%94%A8%E7%9A%84%E7%9E%AC%E6%97%B6%E7%94%B5%E6%84%9F%E7%94%B5%E6%B5%81%E9%87%87%E6%A0%B7%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="常用的瞬时电感电流采样方法"><a href="#常用的瞬时电感电流采样方法" class="headerlink" title="常用的瞬时电感电流采样方法"></a>常用的瞬时电感电流采样方法</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ol>
+<li>电阻采样<br><a href="/download/电阻采样.pdf">Forghani-zadeh H P, Rincon-Mora G A. Current-sensing techniques for DC-DC converters[C]. The 2002 45th Midwest Symposium on Circuits and Systems, 2002. MWSCAS-2002.: Vol. 2. Tulsa, OK, USA: IEEE, 2002: II-577-II-580.</a></li>
+<li>DCR 采样<br><a href="/download/DCR采样.pdf">Michal V. Absolute Value, 1% Linear and Lossless Current-Sensing Circuit for the Step-Down DC-DC Converters With Integrated Power Stage[J]. IEEE Journal of Solid-State Circuits, 2014, 49(5): 1256-1270.</a></li>
+<li>R<sub>dson</sub> 采样<br><a href="/download/Rdson采样.pdf">Zhang Y, Zane R, Prodic A, et al. Online Calibration of MOSFET On-State Resistance for Precise Current Sensing[J]. IEEE Power Electronics Letters, 2004, 2(3): 100-103.</a></li>
+<li>Sense-FET 采样<br><a href="/download/Sense-FET采样.pdf">Su Y P, Chen W C, Huang Y P, et al. Pseudo-Ramp Current Balance (PRCB) Technique With Offset Cancellation Control (OCC) in Dual-Phase DC-DC Buck Converter[J]. IEEE Transactions on Very Large Scale Integration (VLSI) Systems, 2014, 22(10): 2192-2205.</a></li>
+</ol>
+<h2 id="各种采样方式的优缺点"><a href="#各种采样方式的优缺点" class="headerlink" title="各种采样方式的优缺点"></a>各种采样方式的优缺点</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">采样方式</th>
+<th style="text-align:center">优点</th>
+<th style="text-align:center">缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">电阻采样</td>
+<td style="text-align:center">结构简单</td>
+<td style="text-align:center">电阻精度要求高，重载损耗大</td>
+</tr>
+<tr>
+<td style="text-align:center">DCR 采样</td>
+<td style="text-align:center">采样精度高，无功率损耗</td>
+<td style="text-align:center">RC 值较大，常需放置在片外</td>
+</tr>
+<tr>
+<td style="text-align:center">功率管 R<sub>dson</sub> 采样</td>
+<td style="text-align:center">无功率损耗</td>
+<td style="text-align:center">精度低，无法采样全周期电流</td>
+</tr>
+<tr>
+<td style="text-align:center">Sense-FET 采样</td>
+<td style="text-align:center">损耗较小</td>
+<td style="text-align:center">精度低，匹配要求高</td>
+</tr>
+</tbody>
+</table>
+</div>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>半导体专业</category>
+        <category>模拟电路</category>
+      </categories>
+      <tags>
+        <tag>DC-DC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>抽取寄生时屏蔽掉在spice model中已经存在的寄生电容</title>
     <url>/2023/12/03/%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F%E6%97%B6%E5%B1%8F%E8%94%BD%E6%8E%89%E5%9C%A8spice-model%E4%B8%AD%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AF%84%E7%94%9F%E7%94%B5%E5%AE%B9/</url>
     <content><![CDATA[<p>在提取寄生参数时，除了需要关注金属导体的寄生电容外，还需要分析mos器件的节点寄生参数提取是否准确。<br>下面是一个典型的 nmos 4端器件:</p>
@@ -3759,6 +3810,25 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </categories>
       <tags>
         <tag>Calibre</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>打开word时MathType报错:MathType has detected an error inAutoExecCls.Main: 文件未找到: MathPage.WLL.</title>
+    <url>/2024/09/04/%E6%89%93%E5%BC%80word%E6%97%B6MathType%E6%8A%A5%E9%94%99-MathType-has-detected-an-error-inAutoExecCls-Main-%E6%96%87%E4%BB%B6%E6%9C%AA%E6%89%BE%E5%88%B0-MathPage-WLL/</url>
+    <content><![CDATA[<h1 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h1><p>不知道为什么打开 Work 时出现了 MathType 的报错。<br><span id="more"></span><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240904150316.png" alt="20240904150316"><br>连续点击两次”确定”报错对话框消失，如果点击 MathType 按钮会再次出现报错信息。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240904150429.png" alt="20240904150429"></p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>找到 MathPage.wll 文件将其复制到 Office 指定目录下。</p>
+<ol>
+<li>MathPage.wll<br>如果是 64 位的 Office，就去复制<code>C:\Program Files (x86)\MathType\Office Support\64\</code>中的 <code>MathPage.wll</code>。<br>如果是 32 位的 Office，就去复制<code>C:\Program Files (x86)\MathType\Office Support\32\</code>中的 <code>MathPage.wll</code>。</li>
+<li>Office 指定目录<br>将上面的文件复制到目录: <code>C:\Program Files\Microsoft Office\root\Office16</code>中即可正常。</li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>技术兴趣</category>
+        <category>软件应用</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>MathType</tag>
       </tags>
   </entry>
   <entry>
@@ -3868,25 +3938,6 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </categories>
   </entry>
   <entry>
-    <title>打开word时MathType报错:MathType has detected an error inAutoExecCls.Main: 文件未找到: MathPage.WLL.</title>
-    <url>/2024/09/04/%E6%89%93%E5%BC%80word%E6%97%B6MathType%E6%8A%A5%E9%94%99-MathType-has-detected-an-error-inAutoExecCls-Main-%E6%96%87%E4%BB%B6%E6%9C%AA%E6%89%BE%E5%88%B0-MathPage-WLL/</url>
-    <content><![CDATA[<h1 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h1><p>不知道为什么打开 Work 时出现了 MathType 的报错。<br><span id="more"></span><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240904150316.png" alt="20240904150316"><br>连续点击两次”确定”报错对话框消失，如果点击 MathType 按钮会再次出现报错信息。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240904150429.png" alt="20240904150429"></p>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>找到 MathPage.wll 文件将其复制到 Office 指定目录下。</p>
-<ol>
-<li>MathPage.wll<br>如果是 64 位的 Office，就去复制<code>C:\Program Files (x86)\MathType\Office Support\64\</code>中的 <code>MathPage.wll</code>。<br>如果是 32 位的 Office，就去复制<code>C:\Program Files (x86)\MathType\Office Support\32\</code>中的 <code>MathPage.wll</code>。</li>
-<li>Office 指定目录<br>将上面的文件复制到目录: <code>C:\Program Files\Microsoft Office\root\Office16</code>中即可正常。</li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>技术兴趣</category>
-        <category>软件应用</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-        <tag>MathType</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>日本鬼子名称的由来</title>
     <url>/2023/08/17/%E6%97%A5%E6%9C%AC%E9%AC%BC%E5%AD%90%E5%90%8D%E7%A7%B0%E7%9A%84%E7%94%B1%E6%9D%A5/</url>
     <content><![CDATA[<p>　　中日甲午战争的记者会上，日本人想嘲讽和羞辱中国人，事先准备好了一副对联的上联让与会的中国代表当场对出下联。</p>
@@ -3945,47 +3996,6 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </categories>
       <tags>
         <tag>木心</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>洛神赋</title>
-    <url>/2025/02/19/%E6%B4%9B%E7%A5%9E%E8%B5%8B/</url>
-    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>《洛神赋》是三国时期曹魏文学家曹植创作的辞赋，原名《感鄄赋》，亦作《感甄赋》。曹植在221年，被贬为鄄城侯，次年改封鄄城王（今山东省菏泽市鄄城县），一直郁郁不得志，借神话传说中的洛水之神宓妃，抒发心中的积郁而作。魏明帝曹睿即位以后，因古代“鄄”通“甄”，他认为《感鄄赋》犯了自己母亲的讳，太露骨，得改，与大臣商议，遂更名为《洛神赋》。<br><span id="more"></span><br>此赋虚构了作者自己与洛神的邂逅和彼此间的思慕爱恋，洛神形象美丽绝伦，人神之恋飘渺迷离，但由于人神道殊而不能结合，最后抒发了无限的悲伤怅惘之情。全篇大致可分为六段：第一段写作者从洛阳回封地时，在恍惚之际看到洛神伫立山崖；第二段写洛神容仪服饰之美；第三段写作者爱慕洛神既识礼仪又善言辞，虽相互赠答，但担心遇合受阻；第四段写洛神为“君王”之诚所感后将来而未至的情状和举动；第五段写洛神来临扈从之多，终以人神道殊含恨离去；第六段写洛神去后作者顾望思慕不忍离去的深情。全赋辞采华美，描写细腻，想象丰富，情思绻缱，若有寄托。</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>黄初三年，余朝(cháo)京师，还(huán)济洛川。古人有言:斯水之神，名曰宓(fú)妃。感宋玉对楚王神女之事，遂作此赋。其辞曰:<br>余从京域，言归东藩，背一阙(què)，越轘(huán)辕，经通谷，陵景山。日既西倾，车殆马烦。尔乃税(tuō)驾乎蘅皋(gāo),秣驷乎芝田，容与乎阳林，流眄(miǎn)乎洛川。于是精移神骇，忽焉思散。俯则未察，仰以殊观。睹一丽人，于岩之畔。乃援御者而告之曰:”尔有觌(dí)于彼者乎？彼何人斯，若此之艳也！”御者对曰:”臣闻河洛之神，名曰宓妃。然则君王之所见也，无乃是乎！其状若何？臣愿闻之。”<br>余告之曰:其形也，翩若惊鸿，婉若游龙。荣曜(yào)秋菊，华茂春松。髣(fǎng)髴(fú)兮若轻云之蔽月，飘飘兮若流风之回雪。。远而望之，皎若太阳升朝霞；迫而察之，灼若芙蕖出绿波。秾纤(xiān)得衷，修短合度。肩若削成，腰如约素。延颈秀项，皓质呈露。芳泽无加，铅华弗御。云髻峨峨，修眉联娟。丹唇外朗，皓齿内鲜。明眸善睐，靥辅承权。環姿艳逸，仪静体闲。柔情绰态，媚于语言。奇服旷世，骨像应图。披罗衣之璀粲兮，珥瑶碧之华琚。戴金翠之首饰，缀明珠以耀躯。践远游之文履，曳雾绡(xiāo)之轻裾(jū)。微幽兰之芳蔼兮，步踟蹰于山隅。于是忽焉纵体，以遨以嬉。左倚采旄(máo)，右荫桂旗。攘皓腕于神浒兮，采湍濑之玄芝。<br>余情悦其淑美兮，心振荡而不怡。无良媒以接欢兮，托微波而通辞。愿诚素之先达兮，解玉佩以要之。嗟佳人之信修兮，羌习礼而明诗。抗琼珶以和予兮，指潜渊而为期。执眷眷之款实兮，惧斯灵之我欺。感交甫之弃言兮，怅犹豫而狐疑。收和颜而静志兮，申礼防以自持。<br>于是洛灵感焉，徙倚彷徨。神光离合，乍阴乍阳。竦轻躯以鹤立，若将飞而未翔。践椒涂之郁烈，步蘅薄而流芳。超长吟以永慕兮，声哀厉而弥长。尔乃众灵杂遝(tà)，命俦(chóu)啸侣。或戏清流，或翔神渚(zhǔ)，或采明珠，或拾翠羽。从南湘之二妃，携汉滨之游女。叹匏瓜之无匹兮，咏牵牛之独处。扬轻袿之猗靡兮，翳修袖以延伫。体迅飞凫，飘忽若神。凌波微步，罗袜生尘。动无常则，若为若安；进止难期，若往若还。转眄流精，光润玉颜。含辞未吐，气若幽兰。华容婀娜，令我忘餐。<br>于是屏翳收风，川后静波。冯夷鸣鼓，女娲清歌。腾文鱼以警乘，鸣玉鸾以偕逝。六龙俨其齐首，载云车之容裔。鲸鲵(ní)踊而夹毂(gǔ)，水禽翔而为卫。于是越北沚，过南冈，纡(yū)素领，回清扬。动朱唇以徐言，陈交接之大纲。恨人神之道殊兮，怨盛年之莫当。抗罗袂以掩涕兮，泪流襟之浪浪。悼良会之永绝兮，哀一逝而异乡。无微情以效爱兮，献江南之明珰。虽潜处于太阴，长寄心于君王。忽不悟其所舍，怅神宵而蔽光。<br>于是背下陵高，足往神留。遗情想象，顾望怀愁。冀灵体之复形，御轻舟而上溯。浮长川而忘返，思绵绵而增慕。夜耿耿而不寐，沾繁霜而至曙。命仆夫而就驾，吾将归乎东路。揽騑(fēi)辔(pèi)以抗策，怅盘桓而不能去。</p>
-<h1 id="译文"><a href="#译文" class="headerlink" title="译文"></a>译文</h1><p>黄初三年，我来到京都朝觐，归渡洛水。古人曾说此水之神名叫宓妃。因有感于宋玉对楚王所说的神女之事，于是作了这篇赋。赋文云：<br>　　我从京都洛阳出发，向东回归封地鄄城，通过伊阙山，将其抛于背后，越过轘辕，途经通谷，登上景山。这时日已西下，车困马乏。于是就在长满杜蘅草的岸边卸了车，在生着芝草的地里喂马。自己则漫步于阳林，纵目眺望水波浩渺的洛川。于是不觉精神恍惚，思绪飘散。低头时还没有看见什么，一抬头，却发现了异常的景象，只见一个绝妙佳人，立于山岩之旁。我不禁拉着身边的车夫对他说：“你看见那个人了吗？那是什么人，竟如此艳丽！”车夫回答说：“臣听说河洛之神的名字叫宓妃，然而现在君王所看见的，莫非就是她！她的形状怎样，臣倒很想听听。”<br>　　我告诉他说：她的形影，翩然若惊飞的鸿雁，婉约若游动的蛟龙。容光焕发如秋日下的菊花，体态丰茂如春风中的青松。她时隐时现像轻云笼月，浮动飘忽似回风旋雪。远而望之，明洁如朝霞中升起的旭日；近而视之，鲜丽如绿波间绽开的新荷。她体态适中，高矮合度，肩窄如削，腰细如束，秀美的颈项露出白皙的皮肤。既不施脂，也不敷粉，发髻高耸如云，长眉弯曲细长，红唇鲜润，牙齿洁白，一双善于顾盼的闪亮的眼睛，两个面颧下甜甜的酒窝。她姿态优雅妩媚，举止温文娴静，情态柔美和顺，语辞得体可人。洛神服饰奇艳绝世，风骨体貌与图上画的一样。她身披明丽的罗衣，带着精美的佩玉。头戴金银翡翠首饰，缀以周身闪亮的明珠。她脚著饰有花纹的远游鞋，拖着薄雾般的裙裾，隐隐散发出幽兰的清香，在山边徘徊倘佯。忽然又飘然轻举，且行且戏，左面倚着彩旄，右面有桂旗庇荫，在河滩上伸出素手，采撷水流边的黑色芝草。<br>　　我钟情于她的淑美，不觉心旌摇曳而不安。因为没有合适的媒人去说情，只能借助微波来传递话语。但愿自己真诚的心意能先于别人陈达，我解下玉佩向她发出邀请。可叹佳人实在美好，既明礼义又善言辞，她举着琼玉向我作出回答，并指着深深的水流以为期待。我怀着眷眷之诚，又恐受这位神女的欺骗。因有感于郑交甫曾遇神女背弃诺言之事，心中不觉惆怅、犹豫和迟疑，于是敛容定神，以礼义自持。<br>　　这时洛神深受感动，低回徘徊，神光时离时合，忽明忽暗。她像鹤立般地耸起轻盈的躯体，如将飞而未翔；又踏着充满花椒浓香的小道，走过杜蘅草丛而使芳气流动。忽又怅然长吟以表示深沉的思慕，声音哀惋而悠长。于是众神纷至杂沓，呼朋引类，有的戏嬉于清澈的水流，有的飞翔于神异的小渚，有的在采集明珠，有的在俯拾翠鸟的羽毛。洛神身旁跟着娥皇、女英南湘二妃，她手挽汉水之神，为匏瓜星的无偶而叹息，为牵牛星的独处而哀咏。时而扬起随风飘动的上衣，用长袖蔽光远眺，久久伫立；时而又身体轻捷如飞凫，飘忽游移无定。她在水波上行走，罗袜溅起的水沫如同尘埃。她动止没有规律，像危急又像安闲；进退难以预知，像离开又像回返。她双目流转光亮，容颜焕发泽润，话未出口，却已气香如兰。她的体貌婀娜多姿，令我看了茶饭不思。<br>　　在这时风神屏翳收敛了晚风，水神川后止息了波涛，冯夷击响了神鼓，女娲发出清泠的歌声。飞腾的文鱼警卫着洛神的车乘，众神随着叮当作响的玉鸾一齐离去。六龙齐头并进，驾着云车从容前行。鲸鲵腾跃在车驾两旁，水禽绕翔护卫。车乘走过北面的沙洲，越过南面的山冈，洛神转动白洁的脖颈，回过清秀的眉目，朱唇微启，缓缓地陈诉着往来交接的纲要。只怨恨人神有别，彼此虽然都处在盛年而无法如愿以偿。说着不禁举起罗袖掩面而泣，止不住泪水涟涟沾湿了衣襟，哀念欢乐的相会就此永绝，如今一别身处两地，不曾以细微的柔情来表达爱慕之心，只能赠以明珰作为永久的纪念。自己虽然深处太阴，却时时怀念着君王。洛神说毕忽然不知去处，我为众灵一时消失隐去光彩而深感惆怅。<br>　　于是我舍低登高，脚步虽移，心神却仍留在原地。余情绻缱，不时思念着相会的情景和洛神的容貌；回首顾盼，更是愁绪萦怀。满心希望洛神能再次出现，就不顾一切地驾着轻舟逆流而上。行舟于悠长的洛水以至忘了回归，思恋之情却绵绵不断，越来越强，以至整夜心绪难平无法入睡，身上沾满了浓霜直至天明。我不得已命仆夫备马就车，踏上向东回返的道路，但当手执马缰，举鞭欲策之时，却又怅然若失，徘徊依恋，无法离去。</p>
-<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>洛神：传说古帝宓（fú）羲氏之女溺死洛水而为神，故名洛神，又名宓妃。<br>黄初：魏文帝曹丕年号，公元220年。<br>黄初三年：即公元222年。<br>京师：京城，指魏都洛阳。<br>济：渡。洛川：即洛水，源出陕西，东南入河南，流经洛阳。<br>斯水：此水，指洛川。<br>宋玉对楚王神女之事：传为宋玉所作的《高唐赋》和《神女赋》，都记载宋玉与楚襄王对答梦遇巫山神女事。<br>京域：京都地区，指洛阳。<br>言：语助词。东藩：东方藩国，指曹植的封地。黄初三年，曹植被立为鄄（juàn）城（即今山东鄄城县）王，城在洛阳东北方向，故称东藩。<br>伊阙：山名，又称阙塞山、龙门山，在河南洛阳南。<br>轘（huán）辕：山名，在今河南偃师县东南。<br>通谷：山谷名。在洛阳城南。<br>陵：登。景山：山名，在今偃师县南。<br>殆：通“怠”，懈怠。一说指危险。烦：疲乏。<br>尔乃：承接连词，于是就。税驾：停车。税，舍、置。驾，车乘总称。蘅皋：生着杜蘅的河岸。蘅，杜蘅，香草名。皋，岸。<br>秣驷：喂马。驷，一车四马，此泛指驾车之马。芝田：种着灵芝草的田地，此处指野草繁茂之地。一说为地名，指河南巩县西南的芝田镇。<br>容与：悠然安闲貌。阳林：地名。<br>流眄：纵目四望。眄，斜视。一作“流盼”，目光流转顾盼。<br>精移神骇：神情恍惚。骇，散。<br>忽焉：急速貌。思散：思绪分散，精神不集中。<br>殊观：少见的异常现象。<br>岩之畔：山岩边。<br>援：以手牵引。御者：车夫。<br>觌（dí）：看见。<br>“翩若”二句：翩然若惊飞的鸿雁，蜿蜒如游动的蛟龙。翩，鸟疾飞的样子，此处指飘忽摇曳的样子。惊鸿，惊飞的鸿雁。婉，蜿蜒曲折。这两句是写洛神的体态轻盈宛转。<br>“荣曜（yào）”二句：容光焕发如秋日下的菊花，体态丰茂如春风中的松树。荣，丰盛。曜，日光照耀。华茂，华美茂盛。这两句是写洛神容光焕发充满生气。<br>“仿佛”二句：时隐时现象轻云遮住月亮，浮动飘忽似回风旋舞雪花。仿佛，若隐若现的样子。飘飖，飞翔貌。回，回旋，旋转。这两句是写洛神的体态婀娜，行动飘忽。<br>皎：洁白光亮。太阳升朝霞：太阳升起于朝霞之中。<br>迫：靠近。灼：鲜明，鲜艳。芙蕖：一作“芙蓉”，荷花。渌（lù）：水清貌。以上两句是说，不论远远凝望还是靠近观看，洛神都是姿容绝艳。<br>秾：花木繁盛。此指人体丰腴。纤：细小。此指人体苗条。<br>修短：长短，高矮。以上两句是说洛神的高矮肥瘦都恰到好处。<br>“肩若”二句：肩窄如削，腰细如束。削成，形容两肩瘦削下垂的样子。约素，一束白绢。素，白细丝织品。这两句是写洛神的肩膀和腰肢线条圆美。<br>延、秀：均指长。颈：脖子的前部。项：脖子的后部。<br>皓：洁白。呈露：显现，外露。<br>“芳泽”二句：既不施脂，也不敷粉。泽，润肤的油脂。铅华，粉。古代烧铅成粉，故称铅华。不御，不施。御，用。<br>云髻：发髻如云。峨峨：高耸貌。<br>联娟：微曲貌。<br>“丹唇”二句：红唇鲜润，牙齿洁白。朗，明润。鲜，光洁。<br>眸：目中瞳子。睐（lài）：顾盼。<br>靥（yè）：酒窝。辅：面颊。承权：在颧骨之下。权，颧骨。<br>瓌：同“瑰”，奇妙。艳逸：艳丽飘逸。<br>仪：仪态。闲：娴雅。<br>绰：绰约，美好。<br>奇服：奇丽的服饰。旷世：举世唯有。旷，空。<br>骨像：骨格形貌。应图：指与画中人相当。<br>璀粲：鲜明貌。一说为衣动的声音。<br>珥：珠玉耳饰。此用作动词，作佩戴解。瑶、碧：均为美玉。华琚：刻有花纹的佩玉。琚：佩玉名。<br>翠：翡翠。首饰：指钗簪一类饰物。<br>践：穿，着。远游：鞋名。文履：饰有花纹图案的鞋。<br>曳：拖。雾绡：轻薄如雾的绡。绡，生丝。裾：裙边。<br>微：轻微。芳蔼：香气。<br>踟蹰：徘徊。隅：角。<br>“于是”二句：忽然又飘然轻举，且行且戏。纵体，身体轻举貌。遨，游。<br>采旄（máo）：彩旗。采，同“彩”。旄，旗竿上旄牛尾饰物，此处指旗。<br>桂旗：以桂木做旗竿的旗，形容旗的华美。<br>攘：此指挽袖伸出。神浒：为神所游之水边地。浒，水边泽畔。<br>湍濑：石上急流。玄芝：黑色芝草，相传为神草。<br>“余情”二句：我喜欢她的淑美，又担心不被接受，不觉心旌摇曳而不安。振荡，形容心动荡不安。怡，悦。<br>“无良媒”二句：没有合适的媒人去通接欢情，就只能借助微波来传递话语。微波，一说指目光。<br>诚素：真诚的情意。素，同“愫”，情愫。<br>要：同“邀”，约请。<br>信修：确实美好。修，美好。<br>羌：发语词。习礼：懂得礼法。明诗：善于言辞。这句意指有很好的文化教养。<br>抗：举起。琼珶（dì）：美玉。和：应答。<br>“指潜渊”句：指深水发誓，约期相会。潜渊，深渊，一说指洛神所居之地。期，会。<br>眷眷：依恋貌。款实：诚实。<br>斯灵：此神，指宓妃。我欺：即欺我。<br>交甫：郑交甫。《文选》李善注引《神仙传》：“切仙一出，游于江滨，逢郑交甫。交甫不知何人也，目而挑之，女遂解佩与之。交甫行数步，空怀无佩，女亦不见。”弃言：背弃承诺。<br>狐疑：疑虑不定。因为想到郑交甫曾经被仙女遗弃，故此内心产生了疑虑。<br>收和颜：收起和悦的容颜。静志：镇定情志。<br>申：施展。礼防：礼法，礼能防乱，故称礼防。自持：自我约束。<br>徙倚：留连徘徊。<br>“神光”二句：洛神身上放出的光彩忽聚忽散，忽明忽暗。<br>竦（sǒng）：耸。鹤立：形容身躯轻盈飘举，如鹤之立。<br>椒途：涂有椒泥的道路，一说指长满香椒的道路。椒，花椒，有浓香。<br>蘅薄：杜蘅丛生地。流芳：散发香气。<br>“超长吟”二句：怅然长吟以表示深沉的思慕，声音哀惋而悠长。超，惆怅。永慕，长久思慕。厉，疾。弥，久。<br>众灵：众仙。杂沓：纷纭，多而乱的样子。<br>命俦啸侣：招呼同伴。俦，伙伴、同类。<br>渚：水中高地。<br>翠羽：翠鸟的羽毛。<br>南湘之二妃：指娥皇和女英。据刘向《列女传》载，尧以长女娥皇和次女女英嫁舜，后舜南巡，死于苍梧。二妃往寻，自投湘水而死，为湘水之神。<br>汉滨之游女：汉水之女神，即前注中郑交甫所遇之神女。<br>“叹匏瓜”二句：为匏瓜星的无偶而叹息，为牵牛星的独处而哀咏。匏瓜，星名，又名天鸡，在河鼓星东。无匹，无偶。牵牛，星名，又名天鼓，与织女星各处天河之旁。相传每年七月七日才得一会。<br>袿（guī）：妇女的上衣。猗（yī）靡：随风飘动貌。<br>翳（yì）：遮蔽。延伫：久立。<br>凫：野鸭。<br>“凌波”二句：在水波上细步行走，溅起的水沫附在罗袜上如同尘埃。凌，踏。尘，指细微四散的水沫。<br>难期：难料。<br>“转眄”句：转眼顾盼之间流露出奕奕神采。流精，形容目光流转而有光彩。<br>“气若”句：形容气息香馨如兰。<br>屏翳：传说中的众神之一，司职说法不一，或以为是云师，或以为是雷师，或以为是雨师，在此篇中被曹植视作风神。川后：传说中的河神。<br>冯（píng）夷：传说中的水神。<br>女娲：女神名，相传笙簧是她所造，所以这里说“女娲清歌”。<br>“腾文鱼”二句：飞腾的文鱼警卫着洛神的车乘，众神随着叮当作响的玉鸾一齐离去。腾，升。文鱼，神话中一种能飞的鱼。警乘，警卫车乘。玉銮，鸾鸟形的玉制车铃，动则发声。偕逝，俱往。<br>六龙：相传神出游多驾六龙。俨：庄严的样子。齐首：六龙齐头并进。<br>云车：相传神以云为车。容裔：即“容与”，舒缓安详貌。<br>鲸鲵（ní）：即鲸鱼。水栖哺乳动物，雄者称鲸，雌者称鲵。毂（gǔ）：车轮中用以贯轴的圆木，这里指车。<br>沚：水中小块陆地。<br>“纡素领”二句：洛神不断回首顾盼。纡，回。素领，白皙的颈项。清扬，形容女性清秀的眉目。<br>交接：结交往来。<br>盛年：少壮之年。莫当：无匹，无偶，即两人不能结合。<br>“抗罗袂”二句：举起罗袖掩面而泣，止不住泪水涟涟沾湿了衣襟。抗，举。袂，衣袖。浪浪，水流不断貌。<br>“悼良会”二句：痛惜这样美好的相会永不再有，哀叹长别从此身处两地。<br>效爱：致爱慕之意。<br>明珰：以明月珠作的耳珰。<br>“虽潜”二句：虽然幽居于神仙之所，但将永远怀念着君王。潜处，深处，幽居。太阴，众神所居之处。君王，指曹植。<br>“忽不悟”二句：洛神说毕忽然不知去处，我为众灵一时消失隐去光彩而深感惆怅。不悟，不见，未察觉。所舍，停留、止息之处。宵，通“消”，消失。蔽光，隐去光彩。<br>背下：离开低地。陵高：登上高处。<br>遗情：留情，情思留连。想像：指思念洛神的美好形象。<br>灵体：指洛神。<br>上溯：逆流而上。<br>长川：指洛水。<br>耿耿：心神不安的样子。<br>“揽騑辔”二句：当手执马缰，举鞭欲策之时，却又怅然若失，徘徊依恋，无法离去。騑（fēi），车旁之马。古代驾车称辕外之马为騑或骖，此泛指驾车之马。辔，马缰绳。抗策，犹举鞭。盘桓，徘徊不进貌</p>
-<h1 id="赏析"><a href="#赏析" class="headerlink" title="赏析"></a>赏析</h1><p><strong>浪漫色彩</strong><br>　　曹植在诗歌和辞赋创作方面有杰出成就，其赋继承两汉以来抒情小赋的传统，又吸收楚辞的浪漫主义精神，为辞赋的发展开辟了一个新的境界。《洛神赋》为曹植辞赋中杰出作品。作者以浪漫主义的手法，通过梦幻的境界，描写人神之间的真挚爱情，但终因“人神殊道”无从结合而惆怅分离。<br>　　周洪亮主编的《璇玑辞》选用曹植《洛神赋》中：“翩若惊鸿，婉若游龙，荣曜秋菊，华茂春松。髣髴兮若轻云之蔽月，飘飖兮若流风之回雪。”一句来赞美王羲之的书法之美。<br><strong>段落层次</strong><br>　　《洛神赋》全篇大致可分为六个段落，第一段写作者从洛阳回封地时，看到“丽人”宓妃伫立山崖，这段类话本的“入话”。第二段，写“宓妃”容仪服饰之美。第三段写“我”非常爱慕洛神，她实在太好了，既识礼仪又善言辞，虽已向她表达了真情，赠以信物，有了约会，却担心受欺骗，极言爱慕之深。第四段写洛神为“君王”之诚所感后的情状。第五段“恨人神之道殊”以下二句，是此赋的寄意之所在。第六段，写别后“我”对洛神的思念。<br><strong>突出特点</strong><br>　　特点一，想象丰富。想象到：他从京城洛阳启程，东归封地鄄城。途中，在洛川之边，停车饮马，在阳林漫步之时，看到了洛神宓妃，她的体态摇曳飘忽像惊飞的大雁，婉曲轻柔像是水中的游龙，鲜美、华丽较秋菊、茂松有过之，姣如朝霞，纯洁如芙蓉，风华绝代。随后他对她产生爱慕之情，托水波以传意，寄玉佩以定情。然她的神圣高洁使他不敢造次。洛神终被他的真情所感动，与之相见，倾之以情。但终因人神殊途，结合无望，与之惜别。想象绚烂，浪漫凄婉之情淡而不化，令人感叹，愁帐丝丝。但这想象并不离奇，是有感于宋玉的《神女赋》、《高唐赋》两篇赋而作。<br>　　特点二，词藻华丽而不浮躁，清新之气四逸，令人神爽。讲究排偶，对仗，音律，语言整饬、凝炼、生动、优美。取材构思汉赋中无出其右。<br>　　特点三，传神的描写刻画，兼之与比喻、烘托共用，错综变化巧妙得宜，给人一种浩而不烦、美而不惊之感，使人感到就如在看一幅绝妙丹青，个中人物有血有肉，而不会使人产生一种虚无之感。在对洛神的体型、五官、姿态等描写时，给人传递出洛神的沉鱼之貌、落雁之容。同时，又有“清水出芙蓉，天然去雕饰。”的清新高洁。在对洛神与之会面时的神态的描写刻画，使人感到斯人浮现于眼前，风姿绰约。而对于洛神与其分手时的描写“屏翳收风,川后静波,冯来鸣鼓,女娲清歌。”爱情之真挚、纯洁。一切都是这样的美好，以致离别后，人去心留，情思不断，洛神的倩影和相遇相知时的情景历历在目，浪漫而苦涩，心神为之不宁徘徊于洛水之间不忍离去。<br><strong>苦闷之情</strong><br>　　产生苦闷之情的原因有三：<br>　　1.人神有别，有情人不能成眷属；<br>　　2.“洛神”是他的精神寄托，但她只能存在于想象之中，现实中难以找到，失落无限；<br>　　3.以此赋托意，他不但与帝王之位无缘还屡受兄弟的逼害，无奈之余又感到悲哀和愤懑。<br><strong>艺术价值</strong><br>　　对《洛神赋》的思想、艺术成就前人都曾予以极高的评价，最明显的是常把它与屈原的《九歌》和宋玉的《神女》诸赋相提并论。其实，曹植此赋兼二者而有之，它既有《湘君》、《湘夫人》那种浓厚的抒情成分，同时又具宋玉诣赋对女性美的精妙刻画。此外，它的情节完整，手法多变和形式隽永等，又为以前的作品所不及。因此它在历史上有着非常广泛和深远的影响。晋代大书法家王献之和大画家顾恺之，都曾将《洛神赋》的神采风貌形诸楮墨，为书苑和画坛增添了不可多得的精品。到了南宋和元明时期，一些剧作家又将其搬上了舞台，汪道昆的《陈思王悲生洛水》就是其中比较著名的一出。至于历代作家以此为题材，见咏于诗词歌赋者，则更是多得难以数计。可见曹植《洛神赋》的艺术魅力，是经久不衰的。</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>文学爱好</category>
-        <category>古文</category>
-      </categories>
-      <tags>
-        <tag>文言文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>浅谈几种带宽与增益</title>
-    <url>/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/</url>
-    <content><![CDATA[<p>今天记录一下闭环增益、开环增益、环路增益，以及3dB带宽、单位增益带宽(UGB)、增益带宽积(GBW)。<br><span id="more"></span></p>
-<h2 id="关于增益"><a href="#关于增益" class="headerlink" title="关于增益"></a>关于增益</h2><h3 id="闭环增益"><a href="#闭环增益" class="headerlink" title="闭环增益"></a>闭环增益</h3><p>对于一个闭环反馈系统，如下图:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110153857.png" alt="20240110153857"><br>闭环增益即传输函数为: $\frac{Y(s)}{X(s)}=\frac{H(s)}{1+\beta H(s)}$, 是 $\frac{开环增益}{1+环路增益}$。</p>
-<h3 id="开环增益"><a href="#开环增益" class="headerlink" title="开环增益"></a>开环增益</h3><p>从上面图中可知，开环增益就是去除反馈对系统的作用，看运放的增益。</p>
-<h3 id="环路增益"><a href="#环路增益" class="headerlink" title="环路增益"></a>环路增益</h3><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110154642.png" alt="20240110154642"><br>如图所示，输入置0，断开环路。<br>环路增益$\frac{V_F}{V_t}=\beta A$<br>根据巴克豪森判据判断系统是否稳定，所以仿真都是用stb仿环路稳定性，看<b>环路增益波特图</b>而不是看开环增益或者闭环增益。</p>
-<p>那为什么到运放看稳定性就说开环增益了呢？<br>对于单个运放来说，由于运放一般工作在负反馈系统中，开环增益就相当于反馈系数为1的环路增益，所以到运放会说开环增益，其实还是在说环路增益。</p>
-<p>那为什么说运放仿开环增益相位裕度够了就代表其接成反馈系统是稳定的呢？<br>拉扎维的10.2节完美解释了这个问题:<br>运放开环增益相当于反馈系数为1的环路增益:在反馈系统里，反馈系数最大为1，就是接成单位增益负反馈形势。这种情况下，系统的环路增益波特图与运放的完全重合，即相位裕度一样，所以可以稳定。<br>对于其它反馈系数小于1的系统来说，环路增益为$\beta A$，不管$\beta$如何变，环路增益的波特图中，极点的位置与运放极点位置一样，不会变，所以相频曲线没有任何改变。但是由于$\beta &lt;1$，幅频曲线下移，增益交点提前，相位裕度只会越来越大。<br>综上，运放单独仿真与它接在负反馈系统里相比，相位裕度是最差的情况了，即当反馈变弱时，结果是系统更稳定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110161104.png" alt="20240110161104"></p>
-<h2 id="关于带宽"><a href="#关于带宽" class="headerlink" title="关于带宽"></a>关于带宽</h2><h3 id="3dB带宽"><a href="#3dB带宽" class="headerlink" title="3dB带宽"></a>3dB带宽</h3><p>3dB带宽就是运放的主极点处所对应的频率，幅度上对应比低频增益下降3个dB处。<br>推导:<br>运放传递函数:$A_v(s)=\frac{A_v(0)}{(1+s/\omega _0)(1+s/\omega _1)(1+s/\omega _2)···}$</p>
-<p>假设次极点离主极点很远很远，那么在主极点$s=\omega _0$处，有:<br>$A_v(\omega _0)=20log(\frac{A_v(0)}{1+\omega _0/\omega _0})=20log(\frac{A_v(0))}{2}=20logA_v(0)-20log(2)\approx 20logA_v(0)-3dB$</p>
-<p>所以叫做3dB带宽。</p>
-<h3 id="单位增益带宽"><a href="#单位增益带宽" class="headerlink" title="单位增益带宽"></a>单位增益带宽</h3><p>顾名思义，就是运放$\frac{开环增益}{闭环负反馈系统环路增益}=1$时对应的频率。<br>为了推导方便，假设只有一个极点的运放，那么在它的单位增益带宽处，有:<br>$A<em>v(\omega </em>{UGB})=\frac{A<em>v(0)}{1+\frac{\omega </em>{UGB}}{\omega <em>0}}=1$<br>可得，$\omega </em>{UGB}=A_v(0)*\omega _0$</p>
-<p>这里有一个结论: 闭环系统的3dB带宽等于环路增益的党委增益带宽。单位增益负反馈系统的3dB带宽等于该系统中所使用的运放的单位增益带宽。<br>推导:负反馈想要稳定，即相位裕度达到60°，单位增益带宽内一定只有一个极点。只看单位增益带宽内的情况，那么有:<br>环路增益: $\beta A(s)=\frac{\beta A_0}{1+\frac{s}{\omega _0}}$<br>闭环系统传输函数: $\frac{Y(s)}{X(s)}=\frac{A(s)}{1+\beta A(s)}=\frac{\frac{A_0}{1+\beta A_0}}{1+\frac{s}{(1+\beta A_0)\omega _0}}$<br>所以就闭环系统传输函数3dB带宽<b>(不是环路增益，是传输函数)</b>是$\omega _0<em>\beta A_0$，环路增益的单位增益带宽也是$\omega _0</em>\beta A_0$。<br>当系统为单位增益负反馈系统时，即反馈因子是1，系统3dB带宽是$\omega _0<em>A_0$,运放单位增益带宽也是$\omega _0</em>A_0$。</p>
-<h3 id="增益带宽积-GBW"><a href="#增益带宽积-GBW" class="headerlink" title="增益带宽积(GBW)"></a>增益带宽积(GBW)</h3><p>增益与带宽的乘积。<br>重要结论:在单极点系统中，GBW是不变的，等于单位增益带宽，等于低频增益3dB带宽。因为只有一个极点的时候，极点之后，带宽每增大10倍，增益下降20dB，20dB就是10倍，一个增大十倍，一个减小十倍，自然不变。<br>结合单位增益带宽中的结论推导部分，可见，闭环系统传输函数的增益带宽积与开环的增益带宽积相等。(再次强调:是传输函数的增益带宽积，不是环路增益中的增益带宽积)<br>$A_0<em>\omega _0=\frac{A_0}{1+\beta A_0}</em>(1+\beta A_0)*\omega _0$</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <categories>
-        <category>半导体专业</category>
-        <category>模拟电路</category>
-      </categories>
-      <tags>
-        <tag>反馈</tag>
       </tags>
   </entry>
   <entry>
@@ -4119,100 +4129,44 @@ A good rule of thumb would be to express your known link speeds in units of <cod
       </tags>
   </entry>
   <entry>
-    <title>英语--肯定句变否定句</title>
-    <url>/2023/12/01/%E8%8B%B1%E8%AF%AD-%E8%82%AF%E5%AE%9A%E5%8F%A5%E5%8F%98%E5%90%A6%E5%AE%9A%E5%8F%A5/</url>
-    <content><![CDATA[<h3 id="肯定句变否定句规则"><a href="#肯定句变否定句规则" class="headerlink" title="肯定句变否定句规则:"></a>肯定句变否定句规则:</h3><h4 id="一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。"><a href="#一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。" class="headerlink" title="一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。"></a>一、<font color=red>有</font>be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。</h4><p>例如:<br>|<center>肯定句</center>|<center>否定句</center>|<br>|——|——|<br>|I am a student.|I am not a student.<br>|Amy is a good girl.|Amy <u>is not</u><em><u><font color=red>(isn\’t)</font></u></em> a good girl.<br>|These flowers are very beautiful.|These flowers <u>are not</u><em><u><font color=red>(aren\’t)</font></u></em> very beautiful.<br>|I can swim.|I <u>can not</u><em><u><font color=red>(can\’t)</font></u></em> swim.<br>|There are some books on the table.|There <u>are not</u><em><u><font color=red>(aren\’t)</font></u></em> any books on the table.<br>|Jack is a doctor.|Jack <u>is not</u><em><u><font color=red>(isn\’t)</font></u></em> a doctor.<br>|I was a student ten years ago.|I <u>was not</u><em><u><font color=red>(wasn\’t)</font></u></em> a student ten years ago.</p>
-<p><b>注:&ensp;(1) some、and用于肯定句中，any、or用于否定句中；</b><br><b>　 &ensp;(2) was是is的过去式，were是are的过去式。</b><br><span id="more"></span></p>
-<h3 id="二、没有be动词-am、is、are-和情态动词（can、could、may、must、should、will、would等）的，在动词前面加don-’t，doesn-’t-一般现在时第三人称单数-，didn-’t-一般过去时-，动词恢复成原形，some变any，and变or，too变either，其他的照抄。"><a href="#二、没有be动词-am、is、are-和情态动词（can、could、may、must、should、will、would等）的，在动词前面加don-’t，doesn-’t-一般现在时第三人称单数-，didn-’t-一般过去时-，动词恢复成原形，some变any，and变or，too变either，其他的照抄。" class="headerlink" title="二、没有be动词(am、is、are)和情态动词（can、could、may、must、should、will、would等）的，在动词前面加don\’t，doesn\’t(一般现在时第三人称单数)，didn\’t(一般过去时)，动词恢复成原形，some变any，and变or，too变either，其他的照抄。"></a>二、<font color=red>没有</font>be动词(am、is、are)和情态动词（can、could、may、must、should、will、would等）的，在动词前面加don\’t，doesn\’t(一般现在时第三人称单数)，didn\’t(一般过去时)，动词恢复成原形，some变any，and变or，too变either，其他的照抄。</h3><p>例如:<br>|<center>肯定句</center>|<center>否定句</center>|<br>|——|——|<br>|I like math.|I <u>do not</u><em><u><font color=red>(don\’t)</font></u></em> like math.<br>|Jack like math, too.|Jack <u>does not</u><em><u><font color=red>(doesn\’t)</font></u></em> like math, either.<br>|They like bananas and apples.|They <u>do not</u><em><u><font color=red>(don\’t)</font></u></em> like bananas or apples.<br>|Lily gets up at six every morning.|Lily <u>does not</u><em><u><font color=red>(doesn\’t)</font></u></em> get up at six every morning.<br>|His father likes playing football.|His father <u>does not</u><em><u><font color=red>(doesn\’t)</font></u></em> like playing football.<br>|I went fishing yesterday.|I <u>did not</u><em><u><font color=red>(didn\’t)</font></u></em> go fishing yesterday.</p>
-<p><b>注:&ensp;(1) 当句子是一般过去时态时，在动词前面加didn\’t,动词恢复成原形；</b><br><b>　 &ensp;(2) 当句子是一般现在时态，且主语是第三人称单数时，在动词前加doesn\’t，动词恢复成原形；</b><br><b>　 &ensp;(3) 当句子是一般现在时态，且主语不是第三人称单数时，在动词前加don\’t。</b></p>
-<h3 id="三、肯定句变否定句专项练习。"><a href="#三、肯定句变否定句专项练习。" class="headerlink" title="三、肯定句变否定句专项练习。"></a>三、肯定句变否定句专项练习。</h3><p><style><br>    table th:first-of-type {<br>        width: 50%<br>    }<br>    table th:nth-of-type(2) {<br>        width: 50%<br>    }
-</style><br>|<center>肯定句</center>|<center>否定句</center>|<br>|——|——|<br>|He is my father.||<br>|This is a cat.||<br>|These are his books.||<br>|David can swim.||<br>|Stand up.||<br>|There are some books and two pencils on the desk.||<br>|We come from Shandong.||<br>|Milli has breakfast at 7:30 in the morning.||<br>|My parents like watching TV at night.||<br>|I often play basketball with my friends.||<br>|His brother likes swinmming and running.||<br>|My mother and I visited my grandparents last week.||<br>|I have many friends here.||<br>|Tom went to Beijing last summer vacation.||<br>|Jack likes playing football after school, too.||</p>
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
-        Answers
-    </div>
-    <div class='spoiler-content'>
-        <div class="table-container">
-<table>
-<thead>
-<tr>
-<th><center>肯定句</center></th>
-<th><center>否定句</center></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>He is my father.</td>
-<td>He <u>is not</u><em><u><font color=red>(isn`t)</font></u></em> my father.</td>
-</tr>
-<tr>
-<td>This is a cat.</td>
-<td>This <u>is not</u><em><u><font color=red>(isn\’t)</font></u></em> a cat.</td>
-</tr>
-<tr>
-<td>These are his books.</td>
-<td>These <u>are not</u><em><u><font color=red>(aren\’t)</font></u></em> his books</td>
-</tr>
-<tr>
-<td>David can swim.</td>
-<td>David <u>can not</u><em><u><font color=red>(can\’t)</font></u></em> swim.</td>
-</tr>
-<tr>
-<td>Stand up.</td>
-<td><u>Do not</u><em><u><font color=red>(Don\’t)</font></u></em> stand up.</td>
-</tr>
-<tr>
-<td>There are some books and two pencils on the desk.</td>
-<td>There <u>are not</u><em><u><font color=red>(aren\’t)</font></u></em> some books or two pencils on the desk.</td>
-</tr>
-<tr>
-<td>We come from Shandong.</td>
-<td>We <u>do not</u><em><u><font color=red>(don\’t)</font></u></em> come from Shandong.</td>
-</tr>
-<tr>
-<td>Milli has breakfast at 7:30 in the morning.</td>
-<td>Milli <u>does not</u><em><u><font color=red>(doesn\’t)</font></u></em> have breakfast at 7:30 in the morning.</td>
-</tr>
-<tr>
-<td>My parents like watching TV at night.</td>
-<td>My parents <u>do not</u><em><u><font color=red>(don\’t)</font></u></em> like watching TV at night.</td>
-</tr>
-<tr>
-<td>I often play basketball with my friends.</td>
-<td>I <u>do not</u><em><u><font color=red>(don\’t)</font></u></em> often play basketball with my friends.</td>
-</tr>
-<tr>
-<td>His brother likes swinmming and running.</td>
-<td>His brother <u>does not</u><em><u><font color=red>(doesn\’t)</font></u></em> like swimming and running.</td>
-</tr>
-<tr>
-<td>My mother and I visited my grandparents last week.</td>
-<td>My mother and I <u>did not</u><em><u><font color=red>(didn\’t)</font></u></em> visit my grandparents last week.</td>
-</tr>
-<tr>
-<td>I have many friends here.</td>
-<td>I <u>do not</u><em><u><font color=red>(don\’t)</font></u></em> have many friends here.</td>
-</tr>
-<tr>
-<td>Tom went to Beijing last summer vacation.</td>
-<td>Tom <u>did not</u><em><u><font color=red>(didn\’t)</font></u></em> go to Beijing last summer vacation.</td>
-</tr>
-<tr>
-<td>Jack likes playing football after school, too.</td>
-<td>Jack <u>does not</u><em><u><font color=red>(doesn\’t)</font></u></em> like playing football after school, either.</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-    </div>
-</div><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    <title>浅谈几种带宽与增益</title>
+    <url>/2024/01/10/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8D%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%A2%9E%E7%9B%8A/</url>
+    <content><![CDATA[<p>今天记录一下闭环增益、开环增益、环路增益，以及3dB带宽、单位增益带宽(UGB)、增益带宽积(GBW)。<br><span id="more"></span></p>
+<h2 id="关于增益"><a href="#关于增益" class="headerlink" title="关于增益"></a>关于增益</h2><h3 id="闭环增益"><a href="#闭环增益" class="headerlink" title="闭环增益"></a>闭环增益</h3><p>对于一个闭环反馈系统，如下图:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110153857.png" alt="20240110153857"><br>闭环增益即传输函数为: $\frac{Y(s)}{X(s)}=\frac{H(s)}{1+\beta H(s)}$, 是 $\frac{开环增益}{1+环路增益}$。</p>
+<h3 id="开环增益"><a href="#开环增益" class="headerlink" title="开环增益"></a>开环增益</h3><p>从上面图中可知，开环增益就是去除反馈对系统的作用，看运放的增益。</p>
+<h3 id="环路增益"><a href="#环路增益" class="headerlink" title="环路增益"></a>环路增益</h3><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110154642.png" alt="20240110154642"><br>如图所示，输入置0，断开环路。<br>环路增益$\frac{V_F}{V_t}=\beta A$<br>根据巴克豪森判据判断系统是否稳定，所以仿真都是用stb仿环路稳定性，看<b>环路增益波特图</b>而不是看开环增益或者闭环增益。</p>
+<p>那为什么到运放看稳定性就说开环增益了呢？<br>对于单个运放来说，由于运放一般工作在负反馈系统中，开环增益就相当于反馈系数为1的环路增益，所以到运放会说开环增益，其实还是在说环路增益。</p>
+<p>那为什么说运放仿开环增益相位裕度够了就代表其接成反馈系统是稳定的呢？<br>拉扎维的10.2节完美解释了这个问题:<br>运放开环增益相当于反馈系数为1的环路增益:在反馈系统里，反馈系数最大为1，就是接成单位增益负反馈形势。这种情况下，系统的环路增益波特图与运放的完全重合，即相位裕度一样，所以可以稳定。<br>对于其它反馈系数小于1的系统来说，环路增益为$\beta A$，不管$\beta$如何变，环路增益的波特图中，极点的位置与运放极点位置一样，不会变，所以相频曲线没有任何改变。但是由于$\beta &lt;1$，幅频曲线下移，增益交点提前，相位裕度只会越来越大。<br>综上，运放单独仿真与它接在负反馈系统里相比，相位裕度是最差的情况了，即当反馈变弱时，结果是系统更稳定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110161104.png" alt="20240110161104"></p>
+<h2 id="关于带宽"><a href="#关于带宽" class="headerlink" title="关于带宽"></a>关于带宽</h2><h3 id="3dB带宽"><a href="#3dB带宽" class="headerlink" title="3dB带宽"></a>3dB带宽</h3><p>3dB带宽就是运放的主极点处所对应的频率，幅度上对应比低频增益下降3个dB处。<br>推导:<br>运放传递函数:$A_v(s)=\frac{A_v(0)}{(1+s/\omega _0)(1+s/\omega _1)(1+s/\omega _2)···}$</p>
+<p>假设次极点离主极点很远很远，那么在主极点$s=\omega _0$处，有:<br>$A_v(\omega _0)=20log(\frac{A_v(0)}{1+\omega _0/\omega _0})=20log(\frac{A_v(0))}{2}=20logA_v(0)-20log(2)\approx 20logA_v(0)-3dB$</p>
+<p>所以叫做3dB带宽。</p>
+<h3 id="单位增益带宽"><a href="#单位增益带宽" class="headerlink" title="单位增益带宽"></a>单位增益带宽</h3><p>顾名思义，就是运放$\frac{开环增益}{闭环负反馈系统环路增益}=1$时对应的频率。<br>为了推导方便，假设只有一个极点的运放，那么在它的单位增益带宽处，有:<br>$A<em>v(\omega </em>{UGB})=\frac{A<em>v(0)}{1+\frac{\omega </em>{UGB}}{\omega <em>0}}=1$<br>可得，$\omega </em>{UGB}=A_v(0)*\omega _0$</p>
+<p>这里有一个结论: 闭环系统的3dB带宽等于环路增益的党委增益带宽。单位增益负反馈系统的3dB带宽等于该系统中所使用的运放的单位增益带宽。<br>推导:负反馈想要稳定，即相位裕度达到60°，单位增益带宽内一定只有一个极点。只看单位增益带宽内的情况，那么有:<br>环路增益: $\beta A(s)=\frac{\beta A_0}{1+\frac{s}{\omega _0}}$<br>闭环系统传输函数: $\frac{Y(s)}{X(s)}=\frac{A(s)}{1+\beta A(s)}=\frac{\frac{A_0}{1+\beta A_0}}{1+\frac{s}{(1+\beta A_0)\omega _0}}$<br>所以就闭环系统传输函数3dB带宽<b>(不是环路增益，是传输函数)</b>是$\omega _0<em>\beta A_0$，环路增益的单位增益带宽也是$\omega _0</em>\beta A_0$。<br>当系统为单位增益负反馈系统时，即反馈因子是1，系统3dB带宽是$\omega _0<em>A_0$,运放单位增益带宽也是$\omega _0</em>A_0$。</p>
+<h3 id="增益带宽积-GBW"><a href="#增益带宽积-GBW" class="headerlink" title="增益带宽积(GBW)"></a>增益带宽积(GBW)</h3><p>增益与带宽的乘积。<br>重要结论:在单极点系统中，GBW是不变的，等于单位增益带宽，等于低频增益3dB带宽。因为只有一个极点的时候，极点之后，带宽每增大10倍，增益下降20dB，20dB就是10倍，一个增大十倍，一个减小十倍，自然不变。<br>结合单位增益带宽中的结论推导部分，可见，闭环系统传输函数的增益带宽积与开环的增益带宽积相等。(再次强调:是传输函数的增益带宽积，不是环路增益中的增益带宽积)<br>$A_0<em>\omega _0=\frac{A_0}{1+\beta A_0}</em>(1+\beta A_0)*\omega _0$</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
       <categories>
-        <category>杂学</category>
-        <category>社科教育等</category>
+        <category>半导体专业</category>
+        <category>模拟电路</category>
       </categories>
       <tags>
-        <tag>英语</tag>
+        <tag>反馈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>洛神赋</title>
+    <url>/2025/02/19/%E6%B4%9B%E7%A5%9E%E8%B5%8B/</url>
+    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>《洛神赋》是三国时期曹魏文学家曹植创作的辞赋，原名《感鄄赋》，亦作《感甄赋》。曹植在221年，被贬为鄄城侯，次年改封鄄城王（今山东省菏泽市鄄城县），一直郁郁不得志，借神话传说中的洛水之神宓妃，抒发心中的积郁而作。魏明帝曹睿即位以后，因古代“鄄”通“甄”，他认为《感鄄赋》犯了自己母亲的讳，太露骨，得改，与大臣商议，遂更名为《洛神赋》。<br><span id="more"></span><br>此赋虚构了作者自己与洛神的邂逅和彼此间的思慕爱恋，洛神形象美丽绝伦，人神之恋飘渺迷离，但由于人神道殊而不能结合，最后抒发了无限的悲伤怅惘之情。全篇大致可分为六段：第一段写作者从洛阳回封地时，在恍惚之际看到洛神伫立山崖；第二段写洛神容仪服饰之美；第三段写作者爱慕洛神既识礼仪又善言辞，虽相互赠答，但担心遇合受阻；第四段写洛神为“君王”之诚所感后将来而未至的情状和举动；第五段写洛神来临扈从之多，终以人神道殊含恨离去；第六段写洛神去后作者顾望思慕不忍离去的深情。全赋辞采华美，描写细腻，想象丰富，情思绻缱，若有寄托。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>黄初三年，余朝(cháo)京师，还(huán)济洛川。古人有言:斯水之神，名曰宓(fú)妃。感宋玉对楚王神女之事，遂作此赋。其辞曰:<br>余从京域，言归东藩，背一阙(què)，越轘(huán)辕，经通谷，陵景山。日既西倾，车殆马烦。尔乃税(tuō)驾乎蘅皋(gāo),秣驷乎芝田，容与乎阳林，流眄(miǎn)乎洛川。于是精移神骇，忽焉思散。俯则未察，仰以殊观。睹一丽人，于岩之畔。乃援御者而告之曰:”尔有觌(dí)于彼者乎？彼何人斯，若此之艳也！”御者对曰:”臣闻河洛之神，名曰宓妃。然则君王之所见也，无乃是乎！其状若何？臣愿闻之。”<br>余告之曰:其形也，翩若惊鸿，婉若游龙。荣曜(yào)秋菊，华茂春松。髣(fǎng)髴(fú)兮若轻云之蔽月，飘飘兮若流风之回雪。。远而望之，皎若太阳升朝霞；迫而察之，灼若芙蕖出绿波。秾纤(xiān)得衷，修短合度。肩若削成，腰如约素。延颈秀项，皓质呈露。芳泽无加，铅华弗御。云髻峨峨，修眉联娟。丹唇外朗，皓齿内鲜。明眸善睐，靥辅承权。環姿艳逸，仪静体闲。柔情绰态，媚于语言。奇服旷世，骨像应图。披罗衣之璀粲兮，珥瑶碧之华琚。戴金翠之首饰，缀明珠以耀躯。践远游之文履，曳雾绡(xiāo)之轻裾(jū)。微幽兰之芳蔼兮，步踟蹰于山隅。于是忽焉纵体，以遨以嬉。左倚采旄(máo)，右荫桂旗。攘皓腕于神浒兮，采湍濑之玄芝。<br>余情悦其淑美兮，心振荡而不怡。无良媒以接欢兮，托微波而通辞。愿诚素之先达兮，解玉佩以要之。嗟佳人之信修兮，羌习礼而明诗。抗琼珶以和予兮，指潜渊而为期。执眷眷之款实兮，惧斯灵之我欺。感交甫之弃言兮，怅犹豫而狐疑。收和颜而静志兮，申礼防以自持。<br>于是洛灵感焉，徙倚彷徨。神光离合，乍阴乍阳。竦轻躯以鹤立，若将飞而未翔。践椒涂之郁烈，步蘅薄而流芳。超长吟以永慕兮，声哀厉而弥长。尔乃众灵杂遝(tà)，命俦(chóu)啸侣。或戏清流，或翔神渚(zhǔ)，或采明珠，或拾翠羽。从南湘之二妃，携汉滨之游女。叹匏瓜之无匹兮，咏牵牛之独处。扬轻袿之猗靡兮，翳修袖以延伫。体迅飞凫，飘忽若神。凌波微步，罗袜生尘。动无常则，若为若安；进止难期，若往若还。转眄流精，光润玉颜。含辞未吐，气若幽兰。华容婀娜，令我忘餐。<br>于是屏翳收风，川后静波。冯夷鸣鼓，女娲清歌。腾文鱼以警乘，鸣玉鸾以偕逝。六龙俨其齐首，载云车之容裔。鲸鲵(ní)踊而夹毂(gǔ)，水禽翔而为卫。于是越北沚，过南冈，纡(yū)素领，回清扬。动朱唇以徐言，陈交接之大纲。恨人神之道殊兮，怨盛年之莫当。抗罗袂以掩涕兮，泪流襟之浪浪。悼良会之永绝兮，哀一逝而异乡。无微情以效爱兮，献江南之明珰。虽潜处于太阴，长寄心于君王。忽不悟其所舍，怅神宵而蔽光。<br>于是背下陵高，足往神留。遗情想象，顾望怀愁。冀灵体之复形，御轻舟而上溯。浮长川而忘返，思绵绵而增慕。夜耿耿而不寐，沾繁霜而至曙。命仆夫而就驾，吾将归乎东路。揽騑(fēi)辔(pèi)以抗策，怅盘桓而不能去。</p>
+<h1 id="译文"><a href="#译文" class="headerlink" title="译文"></a>译文</h1><p>黄初三年，我来到京都朝觐，归渡洛水。古人曾说此水之神名叫宓妃。因有感于宋玉对楚王所说的神女之事，于是作了这篇赋。赋文云：<br>　　我从京都洛阳出发，向东回归封地鄄城，通过伊阙山，将其抛于背后，越过轘辕，途经通谷，登上景山。这时日已西下，车困马乏。于是就在长满杜蘅草的岸边卸了车，在生着芝草的地里喂马。自己则漫步于阳林，纵目眺望水波浩渺的洛川。于是不觉精神恍惚，思绪飘散。低头时还没有看见什么，一抬头，却发现了异常的景象，只见一个绝妙佳人，立于山岩之旁。我不禁拉着身边的车夫对他说：“你看见那个人了吗？那是什么人，竟如此艳丽！”车夫回答说：“臣听说河洛之神的名字叫宓妃，然而现在君王所看见的，莫非就是她！她的形状怎样，臣倒很想听听。”<br>　　我告诉他说：她的形影，翩然若惊飞的鸿雁，婉约若游动的蛟龙。容光焕发如秋日下的菊花，体态丰茂如春风中的青松。她时隐时现像轻云笼月，浮动飘忽似回风旋雪。远而望之，明洁如朝霞中升起的旭日；近而视之，鲜丽如绿波间绽开的新荷。她体态适中，高矮合度，肩窄如削，腰细如束，秀美的颈项露出白皙的皮肤。既不施脂，也不敷粉，发髻高耸如云，长眉弯曲细长，红唇鲜润，牙齿洁白，一双善于顾盼的闪亮的眼睛，两个面颧下甜甜的酒窝。她姿态优雅妩媚，举止温文娴静，情态柔美和顺，语辞得体可人。洛神服饰奇艳绝世，风骨体貌与图上画的一样。她身披明丽的罗衣，带着精美的佩玉。头戴金银翡翠首饰，缀以周身闪亮的明珠。她脚著饰有花纹的远游鞋，拖着薄雾般的裙裾，隐隐散发出幽兰的清香，在山边徘徊倘佯。忽然又飘然轻举，且行且戏，左面倚着彩旄，右面有桂旗庇荫，在河滩上伸出素手，采撷水流边的黑色芝草。<br>　　我钟情于她的淑美，不觉心旌摇曳而不安。因为没有合适的媒人去说情，只能借助微波来传递话语。但愿自己真诚的心意能先于别人陈达，我解下玉佩向她发出邀请。可叹佳人实在美好，既明礼义又善言辞，她举着琼玉向我作出回答，并指着深深的水流以为期待。我怀着眷眷之诚，又恐受这位神女的欺骗。因有感于郑交甫曾遇神女背弃诺言之事，心中不觉惆怅、犹豫和迟疑，于是敛容定神，以礼义自持。<br>　　这时洛神深受感动，低回徘徊，神光时离时合，忽明忽暗。她像鹤立般地耸起轻盈的躯体，如将飞而未翔；又踏着充满花椒浓香的小道，走过杜蘅草丛而使芳气流动。忽又怅然长吟以表示深沉的思慕，声音哀惋而悠长。于是众神纷至杂沓，呼朋引类，有的戏嬉于清澈的水流，有的飞翔于神异的小渚，有的在采集明珠，有的在俯拾翠鸟的羽毛。洛神身旁跟着娥皇、女英南湘二妃，她手挽汉水之神，为匏瓜星的无偶而叹息，为牵牛星的独处而哀咏。时而扬起随风飘动的上衣，用长袖蔽光远眺，久久伫立；时而又身体轻捷如飞凫，飘忽游移无定。她在水波上行走，罗袜溅起的水沫如同尘埃。她动止没有规律，像危急又像安闲；进退难以预知，像离开又像回返。她双目流转光亮，容颜焕发泽润，话未出口，却已气香如兰。她的体貌婀娜多姿，令我看了茶饭不思。<br>　　在这时风神屏翳收敛了晚风，水神川后止息了波涛，冯夷击响了神鼓，女娲发出清泠的歌声。飞腾的文鱼警卫着洛神的车乘，众神随着叮当作响的玉鸾一齐离去。六龙齐头并进，驾着云车从容前行。鲸鲵腾跃在车驾两旁，水禽绕翔护卫。车乘走过北面的沙洲，越过南面的山冈，洛神转动白洁的脖颈，回过清秀的眉目，朱唇微启，缓缓地陈诉着往来交接的纲要。只怨恨人神有别，彼此虽然都处在盛年而无法如愿以偿。说着不禁举起罗袖掩面而泣，止不住泪水涟涟沾湿了衣襟，哀念欢乐的相会就此永绝，如今一别身处两地，不曾以细微的柔情来表达爱慕之心，只能赠以明珰作为永久的纪念。自己虽然深处太阴，却时时怀念着君王。洛神说毕忽然不知去处，我为众灵一时消失隐去光彩而深感惆怅。<br>　　于是我舍低登高，脚步虽移，心神却仍留在原地。余情绻缱，不时思念着相会的情景和洛神的容貌；回首顾盼，更是愁绪萦怀。满心希望洛神能再次出现，就不顾一切地驾着轻舟逆流而上。行舟于悠长的洛水以至忘了回归，思恋之情却绵绵不断，越来越强，以至整夜心绪难平无法入睡，身上沾满了浓霜直至天明。我不得已命仆夫备马就车，踏上向东回返的道路，但当手执马缰，举鞭欲策之时，却又怅然若失，徘徊依恋，无法离去。</p>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>洛神：传说古帝宓（fú）羲氏之女溺死洛水而为神，故名洛神，又名宓妃。<br>黄初：魏文帝曹丕年号，公元220年。<br>黄初三年：即公元222年。<br>京师：京城，指魏都洛阳。<br>济：渡。洛川：即洛水，源出陕西，东南入河南，流经洛阳。<br>斯水：此水，指洛川。<br>宋玉对楚王神女之事：传为宋玉所作的《高唐赋》和《神女赋》，都记载宋玉与楚襄王对答梦遇巫山神女事。<br>京域：京都地区，指洛阳。<br>言：语助词。东藩：东方藩国，指曹植的封地。黄初三年，曹植被立为鄄（juàn）城（即今山东鄄城县）王，城在洛阳东北方向，故称东藩。<br>伊阙：山名，又称阙塞山、龙门山，在河南洛阳南。<br>轘（huán）辕：山名，在今河南偃师县东南。<br>通谷：山谷名。在洛阳城南。<br>陵：登。景山：山名，在今偃师县南。<br>殆：通“怠”，懈怠。一说指危险。烦：疲乏。<br>尔乃：承接连词，于是就。税驾：停车。税，舍、置。驾，车乘总称。蘅皋：生着杜蘅的河岸。蘅，杜蘅，香草名。皋，岸。<br>秣驷：喂马。驷，一车四马，此泛指驾车之马。芝田：种着灵芝草的田地，此处指野草繁茂之地。一说为地名，指河南巩县西南的芝田镇。<br>容与：悠然安闲貌。阳林：地名。<br>流眄：纵目四望。眄，斜视。一作“流盼”，目光流转顾盼。<br>精移神骇：神情恍惚。骇，散。<br>忽焉：急速貌。思散：思绪分散，精神不集中。<br>殊观：少见的异常现象。<br>岩之畔：山岩边。<br>援：以手牵引。御者：车夫。<br>觌（dí）：看见。<br>“翩若”二句：翩然若惊飞的鸿雁，蜿蜒如游动的蛟龙。翩，鸟疾飞的样子，此处指飘忽摇曳的样子。惊鸿，惊飞的鸿雁。婉，蜿蜒曲折。这两句是写洛神的体态轻盈宛转。<br>“荣曜（yào）”二句：容光焕发如秋日下的菊花，体态丰茂如春风中的松树。荣，丰盛。曜，日光照耀。华茂，华美茂盛。这两句是写洛神容光焕发充满生气。<br>“仿佛”二句：时隐时现象轻云遮住月亮，浮动飘忽似回风旋舞雪花。仿佛，若隐若现的样子。飘飖，飞翔貌。回，回旋，旋转。这两句是写洛神的体态婀娜，行动飘忽。<br>皎：洁白光亮。太阳升朝霞：太阳升起于朝霞之中。<br>迫：靠近。灼：鲜明，鲜艳。芙蕖：一作“芙蓉”，荷花。渌（lù）：水清貌。以上两句是说，不论远远凝望还是靠近观看，洛神都是姿容绝艳。<br>秾：花木繁盛。此指人体丰腴。纤：细小。此指人体苗条。<br>修短：长短，高矮。以上两句是说洛神的高矮肥瘦都恰到好处。<br>“肩若”二句：肩窄如削，腰细如束。削成，形容两肩瘦削下垂的样子。约素，一束白绢。素，白细丝织品。这两句是写洛神的肩膀和腰肢线条圆美。<br>延、秀：均指长。颈：脖子的前部。项：脖子的后部。<br>皓：洁白。呈露：显现，外露。<br>“芳泽”二句：既不施脂，也不敷粉。泽，润肤的油脂。铅华，粉。古代烧铅成粉，故称铅华。不御，不施。御，用。<br>云髻：发髻如云。峨峨：高耸貌。<br>联娟：微曲貌。<br>“丹唇”二句：红唇鲜润，牙齿洁白。朗，明润。鲜，光洁。<br>眸：目中瞳子。睐（lài）：顾盼。<br>靥（yè）：酒窝。辅：面颊。承权：在颧骨之下。权，颧骨。<br>瓌：同“瑰”，奇妙。艳逸：艳丽飘逸。<br>仪：仪态。闲：娴雅。<br>绰：绰约，美好。<br>奇服：奇丽的服饰。旷世：举世唯有。旷，空。<br>骨像：骨格形貌。应图：指与画中人相当。<br>璀粲：鲜明貌。一说为衣动的声音。<br>珥：珠玉耳饰。此用作动词，作佩戴解。瑶、碧：均为美玉。华琚：刻有花纹的佩玉。琚：佩玉名。<br>翠：翡翠。首饰：指钗簪一类饰物。<br>践：穿，着。远游：鞋名。文履：饰有花纹图案的鞋。<br>曳：拖。雾绡：轻薄如雾的绡。绡，生丝。裾：裙边。<br>微：轻微。芳蔼：香气。<br>踟蹰：徘徊。隅：角。<br>“于是”二句：忽然又飘然轻举，且行且戏。纵体，身体轻举貌。遨，游。<br>采旄（máo）：彩旗。采，同“彩”。旄，旗竿上旄牛尾饰物，此处指旗。<br>桂旗：以桂木做旗竿的旗，形容旗的华美。<br>攘：此指挽袖伸出。神浒：为神所游之水边地。浒，水边泽畔。<br>湍濑：石上急流。玄芝：黑色芝草，相传为神草。<br>“余情”二句：我喜欢她的淑美，又担心不被接受，不觉心旌摇曳而不安。振荡，形容心动荡不安。怡，悦。<br>“无良媒”二句：没有合适的媒人去通接欢情，就只能借助微波来传递话语。微波，一说指目光。<br>诚素：真诚的情意。素，同“愫”，情愫。<br>要：同“邀”，约请。<br>信修：确实美好。修，美好。<br>羌：发语词。习礼：懂得礼法。明诗：善于言辞。这句意指有很好的文化教养。<br>抗：举起。琼珶（dì）：美玉。和：应答。<br>“指潜渊”句：指深水发誓，约期相会。潜渊，深渊，一说指洛神所居之地。期，会。<br>眷眷：依恋貌。款实：诚实。<br>斯灵：此神，指宓妃。我欺：即欺我。<br>交甫：郑交甫。《文选》李善注引《神仙传》：“切仙一出，游于江滨，逢郑交甫。交甫不知何人也，目而挑之，女遂解佩与之。交甫行数步，空怀无佩，女亦不见。”弃言：背弃承诺。<br>狐疑：疑虑不定。因为想到郑交甫曾经被仙女遗弃，故此内心产生了疑虑。<br>收和颜：收起和悦的容颜。静志：镇定情志。<br>申：施展。礼防：礼法，礼能防乱，故称礼防。自持：自我约束。<br>徙倚：留连徘徊。<br>“神光”二句：洛神身上放出的光彩忽聚忽散，忽明忽暗。<br>竦（sǒng）：耸。鹤立：形容身躯轻盈飘举，如鹤之立。<br>椒途：涂有椒泥的道路，一说指长满香椒的道路。椒，花椒，有浓香。<br>蘅薄：杜蘅丛生地。流芳：散发香气。<br>“超长吟”二句：怅然长吟以表示深沉的思慕，声音哀惋而悠长。超，惆怅。永慕，长久思慕。厉，疾。弥，久。<br>众灵：众仙。杂沓：纷纭，多而乱的样子。<br>命俦啸侣：招呼同伴。俦，伙伴、同类。<br>渚：水中高地。<br>翠羽：翠鸟的羽毛。<br>南湘之二妃：指娥皇和女英。据刘向《列女传》载，尧以长女娥皇和次女女英嫁舜，后舜南巡，死于苍梧。二妃往寻，自投湘水而死，为湘水之神。<br>汉滨之游女：汉水之女神，即前注中郑交甫所遇之神女。<br>“叹匏瓜”二句：为匏瓜星的无偶而叹息，为牵牛星的独处而哀咏。匏瓜，星名，又名天鸡，在河鼓星东。无匹，无偶。牵牛，星名，又名天鼓，与织女星各处天河之旁。相传每年七月七日才得一会。<br>袿（guī）：妇女的上衣。猗（yī）靡：随风飘动貌。<br>翳（yì）：遮蔽。延伫：久立。<br>凫：野鸭。<br>“凌波”二句：在水波上细步行走，溅起的水沫附在罗袜上如同尘埃。凌，踏。尘，指细微四散的水沫。<br>难期：难料。<br>“转眄”句：转眼顾盼之间流露出奕奕神采。流精，形容目光流转而有光彩。<br>“气若”句：形容气息香馨如兰。<br>屏翳：传说中的众神之一，司职说法不一，或以为是云师，或以为是雷师，或以为是雨师，在此篇中被曹植视作风神。川后：传说中的河神。<br>冯（píng）夷：传说中的水神。<br>女娲：女神名，相传笙簧是她所造，所以这里说“女娲清歌”。<br>“腾文鱼”二句：飞腾的文鱼警卫着洛神的车乘，众神随着叮当作响的玉鸾一齐离去。腾，升。文鱼，神话中一种能飞的鱼。警乘，警卫车乘。玉銮，鸾鸟形的玉制车铃，动则发声。偕逝，俱往。<br>六龙：相传神出游多驾六龙。俨：庄严的样子。齐首：六龙齐头并进。<br>云车：相传神以云为车。容裔：即“容与”，舒缓安详貌。<br>鲸鲵（ní）：即鲸鱼。水栖哺乳动物，雄者称鲸，雌者称鲵。毂（gǔ）：车轮中用以贯轴的圆木，这里指车。<br>沚：水中小块陆地。<br>“纡素领”二句：洛神不断回首顾盼。纡，回。素领，白皙的颈项。清扬，形容女性清秀的眉目。<br>交接：结交往来。<br>盛年：少壮之年。莫当：无匹，无偶，即两人不能结合。<br>“抗罗袂”二句：举起罗袖掩面而泣，止不住泪水涟涟沾湿了衣襟。抗，举。袂，衣袖。浪浪，水流不断貌。<br>“悼良会”二句：痛惜这样美好的相会永不再有，哀叹长别从此身处两地。<br>效爱：致爱慕之意。<br>明珰：以明月珠作的耳珰。<br>“虽潜”二句：虽然幽居于神仙之所，但将永远怀念着君王。潜处，深处，幽居。太阴，众神所居之处。君王，指曹植。<br>“忽不悟”二句：洛神说毕忽然不知去处，我为众灵一时消失隐去光彩而深感惆怅。不悟，不见，未察觉。所舍，停留、止息之处。宵，通“消”，消失。蔽光，隐去光彩。<br>背下：离开低地。陵高：登上高处。<br>遗情：留情，情思留连。想像：指思念洛神的美好形象。<br>灵体：指洛神。<br>上溯：逆流而上。<br>长川：指洛水。<br>耿耿：心神不安的样子。<br>“揽騑辔”二句：当手执马缰，举鞭欲策之时，却又怅然若失，徘徊依恋，无法离去。騑（fēi），车旁之马。古代驾车称辕外之马为騑或骖，此泛指驾车之马。辔，马缰绳。抗策，犹举鞭。盘桓，徘徊不进貌</p>
+<h1 id="赏析"><a href="#赏析" class="headerlink" title="赏析"></a>赏析</h1><p><strong>浪漫色彩</strong><br>　　曹植在诗歌和辞赋创作方面有杰出成就，其赋继承两汉以来抒情小赋的传统，又吸收楚辞的浪漫主义精神，为辞赋的发展开辟了一个新的境界。《洛神赋》为曹植辞赋中杰出作品。作者以浪漫主义的手法，通过梦幻的境界，描写人神之间的真挚爱情，但终因“人神殊道”无从结合而惆怅分离。<br>　　周洪亮主编的《璇玑辞》选用曹植《洛神赋》中：“翩若惊鸿，婉若游龙，荣曜秋菊，华茂春松。髣髴兮若轻云之蔽月，飘飖兮若流风之回雪。”一句来赞美王羲之的书法之美。<br><strong>段落层次</strong><br>　　《洛神赋》全篇大致可分为六个段落，第一段写作者从洛阳回封地时，看到“丽人”宓妃伫立山崖，这段类话本的“入话”。第二段，写“宓妃”容仪服饰之美。第三段写“我”非常爱慕洛神，她实在太好了，既识礼仪又善言辞，虽已向她表达了真情，赠以信物，有了约会，却担心受欺骗，极言爱慕之深。第四段写洛神为“君王”之诚所感后的情状。第五段“恨人神之道殊”以下二句，是此赋的寄意之所在。第六段，写别后“我”对洛神的思念。<br><strong>突出特点</strong><br>　　特点一，想象丰富。想象到：他从京城洛阳启程，东归封地鄄城。途中，在洛川之边，停车饮马，在阳林漫步之时，看到了洛神宓妃，她的体态摇曳飘忽像惊飞的大雁，婉曲轻柔像是水中的游龙，鲜美、华丽较秋菊、茂松有过之，姣如朝霞，纯洁如芙蓉，风华绝代。随后他对她产生爱慕之情，托水波以传意，寄玉佩以定情。然她的神圣高洁使他不敢造次。洛神终被他的真情所感动，与之相见，倾之以情。但终因人神殊途，结合无望，与之惜别。想象绚烂，浪漫凄婉之情淡而不化，令人感叹，愁帐丝丝。但这想象并不离奇，是有感于宋玉的《神女赋》、《高唐赋》两篇赋而作。<br>　　特点二，词藻华丽而不浮躁，清新之气四逸，令人神爽。讲究排偶，对仗，音律，语言整饬、凝炼、生动、优美。取材构思汉赋中无出其右。<br>　　特点三，传神的描写刻画，兼之与比喻、烘托共用，错综变化巧妙得宜，给人一种浩而不烦、美而不惊之感，使人感到就如在看一幅绝妙丹青，个中人物有血有肉，而不会使人产生一种虚无之感。在对洛神的体型、五官、姿态等描写时，给人传递出洛神的沉鱼之貌、落雁之容。同时，又有“清水出芙蓉，天然去雕饰。”的清新高洁。在对洛神与之会面时的神态的描写刻画，使人感到斯人浮现于眼前，风姿绰约。而对于洛神与其分手时的描写“屏翳收风,川后静波,冯来鸣鼓,女娲清歌。”爱情之真挚、纯洁。一切都是这样的美好，以致离别后，人去心留，情思不断，洛神的倩影和相遇相知时的情景历历在目，浪漫而苦涩，心神为之不宁徘徊于洛水之间不忍离去。<br><strong>苦闷之情</strong><br>　　产生苦闷之情的原因有三：<br>　　1.人神有别，有情人不能成眷属；<br>　　2.“洛神”是他的精神寄托，但她只能存在于想象之中，现实中难以找到，失落无限；<br>　　3.以此赋托意，他不但与帝王之位无缘还屡受兄弟的逼害，无奈之余又感到悲哀和愤懑。<br><strong>艺术价值</strong><br>　　对《洛神赋》的思想、艺术成就前人都曾予以极高的评价，最明显的是常把它与屈原的《九歌》和宋玉的《神女》诸赋相提并论。其实，曹植此赋兼二者而有之，它既有《湘君》、《湘夫人》那种浓厚的抒情成分，同时又具宋玉诣赋对女性美的精妙刻画。此外，它的情节完整，手法多变和形式隽永等，又为以前的作品所不及。因此它在历史上有着非常广泛和深远的影响。晋代大书法家王献之和大画家顾恺之，都曾将《洛神赋》的神采风貌形诸楮墨，为书苑和画坛增添了不可多得的精品。到了南宋和元明时期，一些剧作家又将其搬上了舞台，汪道昆的《陈思王悲生洛水》就是其中比较著名的一出。至于历代作家以此为题材，见咏于诗词歌赋者，则更是多得难以数计。可见曹植《洛神赋》的艺术魅力，是经久不衰的。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>文学爱好</category>
+        <category>古文</category>
+      </categories>
+      <tags>
+        <tag>文言文</tag>
       </tags>
   </entry>
   <entry>
@@ -4525,6 +4479,103 @@ A good rule of thumb would be to express your known link speeds in units of <cod
         <category>技术兴趣</category>
         <category>图片处理</category>
       </categories>
+  </entry>
+  <entry>
+    <title>英语--肯定句变否定句</title>
+    <url>/2023/12/01/%E8%8B%B1%E8%AF%AD-%E8%82%AF%E5%AE%9A%E5%8F%A5%E5%8F%98%E5%90%A6%E5%AE%9A%E5%8F%A5/</url>
+    <content><![CDATA[<h3 id="肯定句变否定句规则"><a href="#肯定句变否定句规则" class="headerlink" title="肯定句变否定句规则:"></a>肯定句变否定句规则:</h3><h4 id="一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。"><a href="#一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。" class="headerlink" title="一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。"></a>一、<font color=red>有</font>be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。</h4><p>例如:<br>|<center>肯定句</center>|<center>否定句</center>|<br>|——|——|<br>|I am a student.|I am not a student.<br>|Amy is a good girl.|Amy <u>is not</u><em><u><font color=red>(isn\’t)</font></u></em> a good girl.<br>|These flowers are very beautiful.|These flowers <u>are not</u><em><u><font color=red>(aren\’t)</font></u></em> very beautiful.<br>|I can swim.|I <u>can not</u><em><u><font color=red>(can\’t)</font></u></em> swim.<br>|There are some books on the table.|There <u>are not</u><em><u><font color=red>(aren\’t)</font></u></em> any books on the table.<br>|Jack is a doctor.|Jack <u>is not</u><em><u><font color=red>(isn\’t)</font></u></em> a doctor.<br>|I was a student ten years ago.|I <u>was not</u><em><u><font color=red>(wasn\’t)</font></u></em> a student ten years ago.</p>
+<p><b>注:&ensp;(1) some、and用于肯定句中，any、or用于否定句中；</b><br><b>　 &ensp;(2) was是is的过去式，were是are的过去式。</b><br><span id="more"></span></p>
+<h3 id="二、没有be动词-am、is、are-和情态动词（can、could、may、must、should、will、would等）的，在动词前面加don-’t，doesn-’t-一般现在时第三人称单数-，didn-’t-一般过去时-，动词恢复成原形，some变any，and变or，too变either，其他的照抄。"><a href="#二、没有be动词-am、is、are-和情态动词（can、could、may、must、should、will、would等）的，在动词前面加don-’t，doesn-’t-一般现在时第三人称单数-，didn-’t-一般过去时-，动词恢复成原形，some变any，and变or，too变either，其他的照抄。" class="headerlink" title="二、没有be动词(am、is、are)和情态动词（can、could、may、must、should、will、would等）的，在动词前面加don\’t，doesn\’t(一般现在时第三人称单数)，didn\’t(一般过去时)，动词恢复成原形，some变any，and变or，too变either，其他的照抄。"></a>二、<font color=red>没有</font>be动词(am、is、are)和情态动词（can、could、may、must、should、will、would等）的，在动词前面加don\’t，doesn\’t(一般现在时第三人称单数)，didn\’t(一般过去时)，动词恢复成原形，some变any，and变or，too变either，其他的照抄。</h3><p>例如:<br>|<center>肯定句</center>|<center>否定句</center>|<br>|——|——|<br>|I like math.|I <u>do not</u><em><u><font color=red>(don\’t)</font></u></em> like math.<br>|Jack like math, too.|Jack <u>does not</u><em><u><font color=red>(doesn\’t)</font></u></em> like math, either.<br>|They like bananas and apples.|They <u>do not</u><em><u><font color=red>(don\’t)</font></u></em> like bananas or apples.<br>|Lily gets up at six every morning.|Lily <u>does not</u><em><u><font color=red>(doesn\’t)</font></u></em> get up at six every morning.<br>|His father likes playing football.|His father <u>does not</u><em><u><font color=red>(doesn\’t)</font></u></em> like playing football.<br>|I went fishing yesterday.|I <u>did not</u><em><u><font color=red>(didn\’t)</font></u></em> go fishing yesterday.</p>
+<p><b>注:&ensp;(1) 当句子是一般过去时态时，在动词前面加didn\’t,动词恢复成原形；</b><br><b>　 &ensp;(2) 当句子是一般现在时态，且主语是第三人称单数时，在动词前加doesn\’t，动词恢复成原形；</b><br><b>　 &ensp;(3) 当句子是一般现在时态，且主语不是第三人称单数时，在动词前加don\’t。</b></p>
+<h3 id="三、肯定句变否定句专项练习。"><a href="#三、肯定句变否定句专项练习。" class="headerlink" title="三、肯定句变否定句专项练习。"></a>三、肯定句变否定句专项练习。</h3><p><style><br>    table th:first-of-type {<br>        width: 50%<br>    }<br>    table th:nth-of-type(2) {<br>        width: 50%<br>    }
+</style><br>|<center>肯定句</center>|<center>否定句</center>|<br>|——|——|<br>|He is my father.||<br>|This is a cat.||<br>|These are his books.||<br>|David can swim.||<br>|Stand up.||<br>|There are some books and two pencils on the desk.||<br>|We come from Shandong.||<br>|Milli has breakfast at 7:30 in the morning.||<br>|My parents like watching TV at night.||<br>|I often play basketball with my friends.||<br>|His brother likes swinmming and running.||<br>|My mother and I visited my grandparents last week.||<br>|I have many friends here.||<br>|Tom went to Beijing last summer vacation.||<br>|Jack likes playing football after school, too.||</p>
+<div class='spoiler collapsed'>
+    <div class='spoiler-title'>
+        Answers
+    </div>
+    <div class='spoiler-content'>
+        <div class="table-container">
+<table>
+<thead>
+<tr>
+<th><center>肯定句</center></th>
+<th><center>否定句</center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>He is my father.</td>
+<td>He <u>is not</u><em><u><font color=red>(isn`t)</font></u></em> my father.</td>
+</tr>
+<tr>
+<td>This is a cat.</td>
+<td>This <u>is not</u><em><u><font color=red>(isn\’t)</font></u></em> a cat.</td>
+</tr>
+<tr>
+<td>These are his books.</td>
+<td>These <u>are not</u><em><u><font color=red>(aren\’t)</font></u></em> his books</td>
+</tr>
+<tr>
+<td>David can swim.</td>
+<td>David <u>can not</u><em><u><font color=red>(can\’t)</font></u></em> swim.</td>
+</tr>
+<tr>
+<td>Stand up.</td>
+<td><u>Do not</u><em><u><font color=red>(Don\’t)</font></u></em> stand up.</td>
+</tr>
+<tr>
+<td>There are some books and two pencils on the desk.</td>
+<td>There <u>are not</u><em><u><font color=red>(aren\’t)</font></u></em> some books or two pencils on the desk.</td>
+</tr>
+<tr>
+<td>We come from Shandong.</td>
+<td>We <u>do not</u><em><u><font color=red>(don\’t)</font></u></em> come from Shandong.</td>
+</tr>
+<tr>
+<td>Milli has breakfast at 7:30 in the morning.</td>
+<td>Milli <u>does not</u><em><u><font color=red>(doesn\’t)</font></u></em> have breakfast at 7:30 in the morning.</td>
+</tr>
+<tr>
+<td>My parents like watching TV at night.</td>
+<td>My parents <u>do not</u><em><u><font color=red>(don\’t)</font></u></em> like watching TV at night.</td>
+</tr>
+<tr>
+<td>I often play basketball with my friends.</td>
+<td>I <u>do not</u><em><u><font color=red>(don\’t)</font></u></em> often play basketball with my friends.</td>
+</tr>
+<tr>
+<td>His brother likes swinmming and running.</td>
+<td>His brother <u>does not</u><em><u><font color=red>(doesn\’t)</font></u></em> like swimming and running.</td>
+</tr>
+<tr>
+<td>My mother and I visited my grandparents last week.</td>
+<td>My mother and I <u>did not</u><em><u><font color=red>(didn\’t)</font></u></em> visit my grandparents last week.</td>
+</tr>
+<tr>
+<td>I have many friends here.</td>
+<td>I <u>do not</u><em><u><font color=red>(don\’t)</font></u></em> have many friends here.</td>
+</tr>
+<tr>
+<td>Tom went to Beijing last summer vacation.</td>
+<td>Tom <u>did not</u><em><u><font color=red>(didn\’t)</font></u></em> go to Beijing last summer vacation.</td>
+</tr>
+<tr>
+<td>Jack likes playing football after school, too.</td>
+<td>Jack <u>does not</u><em><u><font color=red>(doesn\’t)</font></u></em> like playing football after school, either.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+</div><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>杂学</category>
+        <category>社科教育等</category>
+      </categories>
+      <tags>
+        <tag>英语</tag>
+      </tags>
   </entry>
   <entry>
     <title>通过 ZeroTier 访问所在局域网的其它设备</title>
