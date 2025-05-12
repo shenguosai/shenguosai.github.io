@@ -1,7 +1,7 @@
 ---
 title: PVE(一)添加并挂载系统盘以外的磁盘
 date: 2025-04-11 14:49:21
-tags: 虚拟机
+tags: PVE
 categories: 
 - [技术兴趣,网络服务]
 ---
