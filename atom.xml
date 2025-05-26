@@ -6,7 +6,7 @@
   <link href="http://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="http://shenguosai.github.io/"/>
-  <updated>2025-05-12T09:40:24.972Z</updated>
+  <updated>2025-05-26T03:47:42.502Z</updated>
   <id>http://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于低版本Virtuoso无法调用环境变量的解决方法</title>
+    <link href="http://shenguosai.github.io/2025/05/26/%E5%85%B3%E4%BA%8E%E4%BD%8E%E7%89%88%E6%9C%ACVirtuoso%E6%97%A0%E6%B3%95%E8%B0%83%E7%94%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://shenguosai.github.io/2025/05/26/%E5%85%B3%E4%BA%8E%E4%BD%8E%E7%89%88%E6%9C%ACVirtuoso%E6%97%A0%E6%B3%95%E8%B0%83%E7%94%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
+    <published>2025-05-26T03:31:50.000Z</published>
+    <updated>2025-05-26T03:47:42.502Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于在 Virtuoso 中，系统的环境变量没有扩展到工具内部，如果在写 SKILL 脚本时需要调用系统环境变量的方法如下:</p><ol><li>作业环境<br>Virtuoso 6.18.040</li><li>确认系统变量已被定义<br>比如: MGC_HOME 这个变量<br>首先在终端中确认是否已定义: <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csh">echo $MGC_HOME<br></code></pre></td></tr></table></figure></li><li>配置命令<br>如果是直接在 CIW 中直接使用:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs skill">load(simplifyFilename(&quot;$MGC_HOME/lib/calibre.skl&quot;))<br></code></pre></td></tr></table></figure>如果是在启动时就需要调用，则需要在 .cdsinit 中加入以下两行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs skill">getShellEnvVar(&quot;MGC_HOME&quot;)<br>load(simplifyFilename(&quot;$MGC_HOME/lib/calibre.skl&quot;))<br></code></pre></td></tr></table></figure>在网上查到也可以通过加载 <code>(CCSexpandEnvVars(&quot;$MDTOOLS/MDT_MarkCoordinate.il&quot;)</code> 命令来使用，不过没有验证过。<br>据说在新的 Virtuoso 版本中已经扩展了系统环境变量，可以直接方便的调用。<br>另外，如果要在 Virtuoso 中定义新的环境变量，可以使用 <code>SetShellEnvVar()</code> 函数:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs skill">setShellEnvVar(&quot;TOTO=1&quot;)<br></code></pre></td></tr></table></figure></li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;由于在 Virtuoso 中，系统的环境变量没有扩展到工具内部，如果在写 SKILL 脚本时需要调用系统环境变量的方法如下:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;作业环境&lt;br&gt;Virtuoso 6.18.040&lt;/li&gt;
+&lt;li&gt;确认系统变量已被定义&lt;br&gt;比如: MGC_HOME</summary>
+      
+    
+    
+    
+    <category term="半导体专业" scheme="http://shenguosai.github.io/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/"/>
+    
+    <category term="EDA工具" scheme="http://shenguosai.github.io/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/EDA%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="Virtuoso" scheme="http://shenguosai.github.io/tags/Virtuoso/"/>
+    
+  </entry>
   
   <entry>
     <title>常用的瞬时电感电流采样方法</title>
@@ -475,31 +504,6 @@
     
     
     <category term="Adobe" scheme="http://shenguosai.github.io/tags/Adobe/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>打开word时MathType报错:MathType has detected an error inAutoExecCls.Main: 文件未找到: MathPage.WLL.</title>
-    <link href="http://shenguosai.github.io/2024/09/04/%E6%89%93%E5%BC%80word%E6%97%B6MathType%E6%8A%A5%E9%94%99-MathType-has-detected-an-error-inAutoExecCls-Main-%E6%96%87%E4%BB%B6%E6%9C%AA%E6%89%BE%E5%88%B0-MathPage-WLL/"/>
-    <id>http://shenguosai.github.io/2024/09/04/%E6%89%93%E5%BC%80word%E6%97%B6MathType%E6%8A%A5%E9%94%99-MathType-has-detected-an-error-inAutoExecCls-Main-%E6%96%87%E4%BB%B6%E6%9C%AA%E6%89%BE%E5%88%B0-MathPage-WLL/</id>
-    <published>2024-09-04T07:00:33.000Z</published>
-    <updated>2025-02-08T07:32:25.968Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h1><p>不知道为什么打开 Work 时出现了 MathType 的报错。<br><span id="more"></span><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240904150316.png" alt="20240904150316"><br>连续点击两次”确定”报错对话框消失，如果点击 MathType 按钮会再次出现报错信息。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240904150429.png" alt="20240904150429"></p><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>找到 MathPage.wll 文件将其复制到 Office 指定目录下。</p><ol><li>MathPage.wll<br>如果是 64 位的 Office，就去复制<code>C:\Program Files (x86)\MathType\Office Support\64\</code>中的 <code>MathPage.wll</code>。<br>如果是 32 位的 Office，就去复制<code>C:\Program Files (x86)\MathType\Office Support\32\</code>中的 <code>MathPage.wll</code>。</li><li>Office 指定目录<br>将上面的文件复制到目录: <code>C:\Program Files\Microsoft Office\root\Office16</code>中即可正常。</li></ol><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;报错信息&quot;&gt;&lt;a href=&quot;#报错信息&quot; class=&quot;headerlink&quot; title=&quot;报错信息&quot;&gt;&lt;/a&gt;报错信息&lt;/h1&gt;&lt;p&gt;不知道为什么打开 Work 时出现了 MathType 的报错。&lt;br&gt;</summary>
-    
-    
-    
-    <category term="技术兴趣" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/"/>
-    
-    <category term="软件应用" scheme="http://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E8%BD%AF%E4%BB%B6%E5%BA%94%E7%94%A8/"/>
-    
-    
-    <category term="Windows" scheme="http://shenguosai.github.io/tags/Windows/"/>
-    
-    <category term="MathType" scheme="http://shenguosai.github.io/tags/MathType/"/>
     
   </entry>
   
