@@ -18,6 +18,7 @@
     "hexo-blog-encrypt": "^3.1.9",
     "hexo-cli": "^4.3.2",
     "hexo-deployer-git": "^4.0.0",
+    "hexo-filter-auto-spacing": "^0.2.1",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-baidu-sitemap": "^0.1.9",
     "hexo-generator-category": "^2.0.0",
