@@ -122,7 +122,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">80</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">81</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -132,7 +132,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">39</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">40</span></a>
 
   </li>
         <li class="menu-item menu-item-schedule">
@@ -258,24 +258,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>半导体设计中常用的电容有: MIM, MOM, Varactor, NCAP, N/P MOS<br><span id="more"></span></p>
-<h3 id="MIM"><a href="#MIM" class="headerlink" title="MIM"></a>MIM</h3><p>MIM 电容是利用异层金属制备:</p>
+        <p> 半导体设计中常用的电容有: MIM, MOM, Varactor, NCAP, N/P MOS</p>
+<span id="more"></span>
+<h3 id="MIM">MIM</h3>
+<p>MIM 电容是利用异层金属制备:</p>
 <ol>
-<li>是使用特殊H -K 材料制作的高密度电容，比较薄，耐击穿性不好，比较贵，增加了新的工艺，需要额外的 mask(MIM 层间金属介质层)。</li>
-<li>逻辑电路中本身存在较多的金属层，可以将奇数层金属连接在一起，偶数层金属连接在一起，形成层间 MIM 电容，但是层间距离比较大，一次电容密度比较小。</li>
-<li>寄生电容大。</li>
+<li> 是使用特殊 H -K 材料制作的高密度电容，比较薄，耐击穿性不好，比较贵，增加了新的工艺，需要额外的 mask(MIM 层间金属介质层)。</li>
+<li> 逻辑电路中本身存在较多的金属层，可以将奇数层金属连接在一起，偶数层金属连接在一起，形成层间 MIM 电容，但是层间距离比较大，一次电容密度比较小。</li>
+<li> 寄生电容大。</li>
 </ol>
-<h3 id="MOM"><a href="#MOM" class="headerlink" title="MOM"></a>MOM</h3><p>同层金属插指形成:</p>
+<h3 id="MOM">MOM</h3>
+<p> 同层金属插指形成:</p>
 <ol>
-<li>比较占面积；</li>
-<li>容值高；</li>
-<li>工艺兼容，单独划分区域即可；</li>
-<li>寄生电容小；</li>
+<li> 比较占面积；</li>
+<li> 容值高；</li>
+<li> 工艺兼容，单独划分区域即可；</li>
+<li> 寄生电容小；</li>
 <li>28nm 以下工艺固定使用 MOM 。</li>
 </ol>
-<h3 id="Varactor"><a href="#Varactor" class="headerlink" title="Varactor"></a>Varactor</h3><p>Poly-oxide-NWell，S/D NP+ 作为bulk，是一种电压控制的电容，电容是反偏积累工作状态，其电容与电压的关系完全取决于 NWell 掺杂浓度梯度，工艺难度较大。<br>Varactor 一般操作在 accumulation (积累)区，C-V 曲线较线性，常用在需要电压调整电容的控制回路中。</p>
-<p>在 Psub 的工艺中，Varactor 和 NCAP 是坐在 NWell 中，S/D 是 N+ 重掺杂作为BULK，当 GATE 和 BULK 压差越大时，沟道积累负电荷越多，相当于 GATE 和 BULK 这两个极板离得越近，电容越大。</p>
-<h3 id="NCAP"><a href="#NCAP" class="headerlink" title="NCAP"></a>NCAP</h3><h3 id="N-P-MOS-Poly-cap"><a href="#N-P-MOS-Poly-cap" class="headerlink" title="N/P MOS(Poly cap)"></a>N/P MOS(Poly cap)</h3><p>MOS 电容，对比 Varactor NWell 情况，Poly Cap 使用 PMOS。所以 S/D 使用 PP+ 而不是 NP+。<br>MOS Cap 一般操作在 inversion (反型)区， C-V 曲线不线性且陡峭，通常用在固定 Gate Voltage 做稳压电容。</p>
+<h3 id="Varactor">Varactor</h3>
+<p>Poly-oxide-NWell，S/D NP+ 作为 bulk，是一种电压控制的电容，电容是反偏积累工作状态，其电容与电压的关系完全取决于 NWell 掺杂浓度梯度，工艺难度较大。<br>
+Varactor 一般操作在 accumulation (积累) 区，C-V 曲线较线性，常用在需要电压调整电容的控制回路中。</p>
+<p> 在 Psub 的工艺中，Varactor 和 NCAP 是坐在 NWell 中，S/D 是 N+ 重掺杂作为 BULK，当 GATE 和 BULK 压差越大时，沟道积累负电荷越多，相当于 GATE 和 BULK 这两个极板离得越近，电容越大。</p>
+<h3 id="NCAP">NCAP</h3>
+<h3 id="N-P-MOS-Poly-cap">N/P MOS(Poly cap)</h3>
+<p>MOS 电容，对比 Varactor NWell 情况，Poly Cap 使用 PMOS。所以 S/D 使用 PP+ 而不是 NP+。<br>
+MOS Cap 一般操作在 inversion (反型) 区， C-V 曲线不线性且陡峭，通常用在固定 Gate Voltage 做稳压电容。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
@@ -331,12 +339,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/02/01/EDA%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/" rel="prev" title="EDA工具使用备忘">
-      <i class="fa fa-chevron-left"></i> EDA工具使用备忘
+    <a href="/2024/02/01/EDA%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/" rel="prev" title="EDA 工具使用备忘">
+      <i class="fa fa-chevron-left"></i> EDA 工具使用备忘
     </a></div>
       <div class="post-nav-item">
-    <a href="/2024/02/04/%E4%BD%BF%E7%94%A8curl%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E6%9F%A5%E8%AF%A2%E6%9C%AC%E5%9C%B0%E5%85%AC%E7%BD%91IP%E5%9C%B0%E5%9D%80/" rel="next" title="使用curl命令行工具查询本地公网IP地址">
-      使用curl命令行工具查询本地公网IP地址 <i class="fa fa-chevron-right"></i>
+    <a href="/2024/02/04/%E4%BD%BF%E7%94%A8curl%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E6%9F%A5%E8%AF%A2%E6%9C%AC%E5%9C%B0%E5%85%AC%E7%BD%91IP%E5%9C%B0%E5%9D%80/" rel="next" title="使用 curl 命令行工具查询本地公网 IP 地址">
+      使用 curl 命令行工具查询本地公网 IP 地址 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -413,7 +421,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -426,7 +434,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -467,12 +475,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">376k</span>
+    <span title="站点总字数">381k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:42</span>
+    <span title="站点阅读时长">5:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
