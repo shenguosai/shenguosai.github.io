@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="趁着双十一在京东￥499入手了樊想S500PRO的2T SSD固态硬盘。 到货后就迫不及待的换下了原来笔记本里500G的老硬盘。然后发现换硬盘新装系统后各种软件的安装和配置都要重新来一遍。 下面记录下hexo的迁移过程。">
+  <meta name="description" content="趁着双十一在京东￥499入手了樊想S500PRO的2T SSD固态硬盘。到货后就迫不及待的换下了原来笔记本里500G的老硬盘。然后发现换硬盘新装系统后各种软件的安装和配置都要重新来一遍。 下面记录下hexo的迁移过程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="更换新电脑后，hexo 无损重新部署">
 <meta property="og:url" content="http://shenguosai.github.io/2023/11/14/%E6%9B%B4%E6%8D%A2%E6%96%B0%E7%94%B5%E8%84%91%E5%90%8E%EF%BC%8Chexo%E6%97%A0%E6%8D%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="小人驿站">
-<meta property="og:description" content="趁着双十一在京东￥499入手了樊想S500PRO的2T SSD固态硬盘。 到货后就迫不及待的换下了原来笔记本里500G的老硬盘。然后发现换硬盘新装系统后各种软件的安装和配置都要重新来一遍。 下面记录下hexo的迁移过程。">
+<meta property="og:description" content="趁着双十一在京东￥499入手了樊想S500PRO的2T SSD固态硬盘。到货后就迫不及待的换下了原来笔记本里500G的老硬盘。然后发现换硬盘新装系统后各种软件的安装和配置都要重新来一遍。 下面记录下hexo的迁移过程。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231114224848.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231115001919.png">
@@ -261,54 +261,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>趁着双十一在京东￥499 入手了 <a target="_blank" rel="noopener" href="https://item.jd.com/100048210573.html#crumb-wrap"> 樊想 S500PRO</a>的 2T SSD 固态硬盘。<br>
-到货后就迫不及待的换下了原来笔记本里 500G 的老硬盘。然后发现换硬盘新装系统后各种软件的安装和配置都要重新来一遍。</p>
-<h3 id="下面记录下 hexo 的迁移过程。">下面记录下 hexo 的迁移过程。</h3>
-<span id="more"></span>
+        <p>趁着双十一在京东￥499 入手了 <a target="_blank" rel="noopener" href="https://item.jd.com/100048210573.html#crumb-wrap"> 樊想 S500PRO</a>的 2T SSD 固态硬盘。<br>到货后就迫不及待的换下了原来笔记本里 500G 的老硬盘。然后发现换硬盘新装系统后各种软件的安装和配置都要重新来一遍。</p>
+<h3 id="下面记录下 hexo 的迁移过程。"><a href="# 下面记录下 hexo 的迁移过程。" class="headerlink" title="下面记录下 hexo 的迁移过程。"></a>下面记录下 hexo 的迁移过程。</h3><span id="more"></span>
 <ul>
-<li>
-<p>首先将原硬盘的 hexo 目录拷贝到新硬盘。我自己的目录是<code>D:\99_Git\blog</code>。</p>
-</li>
-<li>
-<p>配置 hexo 环境：</p>
+<li>首先将原硬盘的 hexo 目录拷贝到新硬盘。我自己的目录是<code>D:\99_Git\blog</code>。</li>
+<li><p>配置 hexo 环境：</p>
 <ul>
 <li>安装 nodejs 和 git，nodejs 安装好才可以使用 npm 安装 hexo，git 就是用来上传博客用的；（如果不希望多装软件可只安装 git 而不需要 git bash）</li>
-<li>如果可以将原来电脑中的 <code>C:\User\username\.gitconfig</code> 文件和 <code>C:\User\username（斜体）\.ssh\</code> 目录拷贝到同目录下就不需要重新配置了。(其中 username 是自己电脑的用户名)<br>
-如果没有就只能重新设置并生成 ssh key 文件了，命令如下：</li>
-</ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.name</span> <span class="hljs-string">&quot;username&quot;</span><br>git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.mail</span> <span class="hljs-string">&quot;user mail address&quot;</span><br>ssh-keygen -t rsa -C <span class="hljs-string">&quot;user mail address&quot;</span><br></code></pre></td></tr></table></figure>
-<ul>
-<li>进入到 hexo 部署文件夹，执行命令安装 hexo 和 hexo-depolyer-git 插件</li>
-</ul>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> hexo-cli -g<br>npm <span class="hljs-keyword">install</span> hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
-<ul>
-<li>
-<p><b>然后这里会出现一个问题:</b><br>
-我是使用 vs code 中的终端来操作的，怎么样也识别不了 hexo 命令，提示如下：（由于忘记截图了，网上找了张类似的）<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231114224848.png" alt="20231114224848"></p>
+<li>如果可以将原来电脑中的 <code>C:\User\username\.gitconfig</code> 文件和 <code>C:\User\username（斜体）\.ssh\</code> 目录拷贝到同目录下就不需要重新配置了。(其中 username 是自己电脑的用户名)<br>如果没有就只能重新设置并生成 ssh key 文件了，命令如下：<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.name</span> <span class="hljs-string">&quot;username&quot;</span><br>git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.mail</span> <span class="hljs-string">&quot;user mail address&quot;</span><br>ssh-keygen -t rsa -C <span class="hljs-string">&quot;user mail address&quot;</span><br></code></pre></td></tr></table></figure></li>
+<li>进入到 hexo 部署文件夹，执行命令安装 hexo 和 hexo-depolyer-git 插件<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> hexo-cli -g<br>npm <span class="hljs-keyword">install</span> hexo-deployer-git --save<br></code></pre></td></tr></table></figure></li>
+<li><p><b>然后这里会出现一个问题:</b><br>我是使用 vs code 中的终端来操作的，怎么样也识别不了 hexo 命令，提示如下：（由于忘记截图了，网上找了张类似的）<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231114224848.png" alt="20231114224848"></p>
 </li>
-<li>
-<p><b>解决方法</b><br>
-可以通过访问“请参阅……”后面的链接查看，核心问题是 power shell 的安全策略，将 hexo 命令视为了不安全脚本，不允许执行。只需要放开权限就行。<br>
-通过管理员权限运行 power shell，然后输入命令：<code>set-ExecutionPolicy RemoteSigned</code><br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231115001919.png" alt="20231115001919"><br>
-选择“Y”即可。<br>
-然后就可以正常在 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VS Code</a> 的终端里使用 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">hexo</a> 了。</p>
+<li><p><b>解决方法 </b><br> 可以通过访问“请参阅……”后面的链接查看，核心问题是 power shell 的安全策略，将 hexo 命令视为了不安全脚本，不允许执行。只需要放开权限就行。<br>通过管理员权限运行 power shell，然后输入命令：<code>set-ExecutionPolicy RemoteSigned</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231115001919.png" alt="20231115001919"><br>选择“Y”即可。<br>然后就可以正常在 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VS Code</a> 的终端里使用 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">hexo</a> 了。</p>
 </li>
-<li>
-<p><b><font color=blue>碰到的第二个问题：</font></b><br>
-上传时提示有换行符的问题，在执行 <code>hexo d</code> 后会出现整屏的提示信息，是我这个强迫症患者所无法忍受的。</p>
-</li>
-<li>
-<p><b><font color=blue>解决方法：</font></b><br>
-通过执行命令 <code>git config --global core.autocrlf false</code> 将默认的换行符转换功能去掉。</p>
+<li><b><font color=blue>碰到的第二个问题：</font></b><br>上传时提示有换行符的问题，在执行 <code>hexo d</code> 后会出现整屏的提示信息，是我这个强迫症患者所无法忍受的。</li>
+<li><b><font color=blue>解决方法：</font></b><br>通过执行命令 <code>git config --global core.autocrlf false</code> 将默认的换行符转换功能去掉。<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><span class="hljs-meta"># 提交时转换为 LF，检出时转换为 CRLF（默认）</span><br>git config --<span class="hljs-keyword">global</span> core.autocrlf <span class="hljs-literal">true</span><br><br><span class="hljs-meta"># 提交和检出时均不做换行符转换（修改）</span><br>git config --<span class="hljs-keyword">global</span> core.autocrlf <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><span class="hljs-meta"># 提交时转换为 LF，检出时转换为 CRLF（默认）</span><br>git config --<span class="hljs-keyword">global</span> core.autocrlf <span class="hljs-literal">true</span><br><br><span class="hljs-meta"># 提交和检出时均不做换行符转换（修改）</span><br>git config --<span class="hljs-keyword">global</span> core.autocrlf <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
 </li>
-<li>
-<p>图床设置<br>
-下载插件 vs code 的插件 PicGo，配置方法网上有很多，但是需要注意一点在 <code>Picgo &gt; Pic Bed &gt; Github: Custom Url</code> 中需要填入图传链接格式为<code>https://raw.githubusercontent.com/ 用户名 / 仓库名 / 分支名</code>，一开始这个地方没有设置对对上传没有影响但是在博客中看不到图片。</p>
+<li><p>图床设置 <br> 下载插件 vs code 的插件 PicGo，配置方法网上有很多，但是需要注意一点在 <code>Picgo &gt; Pic Bed &gt; Github: Custom Url</code> 中需要填入图传链接格式为<code>https://raw.githubusercontent.com/ 用户名 / 仓库名 / 分支名</code>，一开始这个地方没有设置对对上传没有影响但是在博客中看不到图片。</p>
 </li>
 </ul>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
@@ -502,12 +473,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">381k</span>
+    <span title="站点总字数">392k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:47</span>
+    <span title="站点阅读时长">5:57</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
