@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="由于在 Virtuoso 中，系统的环境变量没有扩展到工具内部，如果在写 SKILL 脚本时需要调用系统环境变量的方法如下:  作业环境Virtuoso 6.18.040 确认系统变量已被定义  比如: MGC_HOME 这个变量  首先在终端中确认是否已定义: 1echo $MGC_HOME 配置命令  如果是直接在 CIW 中直接使用:1load(simplifyFilename(&quot;">
+  <meta name="description" content="由于在 Virtuoso 中，系统的环境变量没有扩展到工具内部，如果在写 SKILL 脚本时需要调用系统环境变量的方法如下:   作业环境  Virtuoso 6.18.040  确认系统变量已被定义  比如: MGC_HOME 这个变量  首先在终端中确认是否已定义:1echo $MGC_HOME   配置命令  如果是直接在 CIW 中直接使用:1load(simplifyFilename(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于低版本 Virtuoso 无法调用环境变量的解决方法">
 <meta property="og:url" content="http://shenguosai.github.io/2025/05/26/%E5%85%B3%E4%BA%8E%E4%BD%8E%E7%89%88%E6%9C%ACVirtuoso%E6%97%A0%E6%B3%95%E8%B0%83%E7%94%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="小人驿站">
-<meta property="og:description" content="由于在 Virtuoso 中，系统的环境变量没有扩展到工具内部，如果在写 SKILL 脚本时需要调用系统环境变量的方法如下:  作业环境Virtuoso 6.18.040 确认系统变量已被定义  比如: MGC_HOME 这个变量  首先在终端中确认是否已定义: 1echo $MGC_HOME 配置命令  如果是直接在 CIW 中直接使用:1load(simplifyFilename(&quot;">
+<meta property="og:description" content="由于在 Virtuoso 中，系统的环境变量没有扩展到工具内部，如果在写 SKILL 脚本时需要调用系统环境变量的方法如下:   作业环境  Virtuoso 6.18.040  确认系统变量已被定义  比如: MGC_HOME 这个变量  首先在终端中确认是否已定义:1echo $MGC_HOME   配置命令  如果是直接在 CIW 中直接使用:1load(simplifyFilename(">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-26T03:31:50.000Z">
 <meta property="article:modified_time" content="2025-07-29T11:54:54.880Z">
@@ -258,15 +258,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>由于在 Virtuoso 中，系统的环境变量没有扩展到工具内部，如果在写 SKILL 脚本时需要调用系统环境变量的方法如下:</p>
+        <p> 由于在 Virtuoso 中，系统的环境变量没有扩展到工具内部，如果在写 SKILL 脚本时需要调用系统环境变量的方法如下:</p>
 <ol>
-<li>作业环境<br>Virtuoso 6.18.040</li>
-<li>确认系统变量已被定义 <br> 比如: MGC_HOME 这个变量 <br> 首先在终端中确认是否已定义: <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csh">echo $MGC_HOME<br></code></pre></td></tr></table></figure></li>
-<li>配置命令 <br> 如果是直接在 CIW 中直接使用:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs skill">load(simplifyFilename(&quot;$MGC_HOME/lib/calibre.skl&quot;))<br></code></pre></td></tr></table></figure>
-如果是在启动时就需要调用，则需要在 .cdsinit 中加入以下两行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs skill">getShellEnvVar(&quot;MGC_HOME&quot;)<br>load(simplifyFilename(&quot;$MGC_HOME/lib/calibre.skl&quot;))<br></code></pre></td></tr></table></figure>
-在网上查到也可以通过加载 <code>(CCSexpandEnvVars(&quot;$MDTOOLS/MDT_MarkCoordinate.il&quot;)</code> 命令来使用，不过没有验证过。<br>据说在新的 Virtuoso 版本中已经扩展了系统环境变量，可以直接方便的调用。<br>另外，如果要在 Virtuoso 中定义新的环境变量，可以使用 <code>SetShellEnvVar()</code> 函数:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs skill">setShellEnvVar(&quot;TOTO=1&quot;)<br></code></pre></td></tr></table></figure></li>
+<li> 作业环境 <br>
+Virtuoso 6.18.040</li>
+<li> 确认系统变量已被定义 <br>
+比如: MGC_HOME 这个变量 <br>
+首先在终端中确认是否已定义:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csh">echo $MGC_HOME<br></code></pre></td></tr></table></figure>
+</li>
+<li> 配置命令 <br>
+如果是直接在 CIW 中直接使用:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs skill">load(simplifyFilename(&quot;$MGC_HOME/lib/calibre.skl&quot;))<br></code></pre></td></tr></table></figure>
+如果是在启动时就需要调用，则需要在 .cdsinit 中加入以下两行 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs skill">getShellEnvVar(&quot;MGC_HOME&quot;)<br>load(simplifyFilename(&quot;$MGC_HOME/lib/calibre.skl&quot;))<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<p> 在网上查到也可以通过加载 <code>(CCSexpandEnvVars(&quot;$MDTOOLS/MDT_MarkCoordinate.il&quot;)</code> 命令来使用，不过没有验证过。<br>
+据说在新的 Virtuoso 版本中已经扩展了系统环境变量，可以直接方便的调用。<br>
+另外，如果要在 Virtuoso 中定义新的环境变量，可以使用 <code>SetShellEnvVar()</code> 函数:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs skill">setShellEnvVar(&quot;TOTO=1&quot;)<br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
     
@@ -456,12 +464,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">394k</span>
+    <span title="站点总字数">393k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:58</span>
+    <span title="站点阅读时长">5:57</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

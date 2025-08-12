@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="DMOS：Double-Diffused MOSVDMOS：Virtical DMOS垂直扩散DMOS，VDMOS的漏极在硅片背面，沟道在两个维度上包围源极，所以叫“垂直”，实际上栅极依然是水平的。VDMOS是PowerMOS（大功率MOS器件）的一种，通过垂直设计减小沟道场强，可以使短沟道承受很高的电压和电流。缺点是漏极要从背面引出，很难用和主流集成电路工艺兼容。这种结构可以减小漏电流并提高开关">
+  <meta name="description" content="DMOS：Double-Diffused MOS VDMOS：Virtical DMOS 垂直扩散DMOS，VDMOS的漏极在硅片背面，沟道在两个维度上包围源极，所以叫“垂直”，实际上栅极依然是水平的。VDMOS是PowerMOS（大功率MOS器件）的一种，通过垂直设计减小沟道场强，可以使短沟道承受很高的电压和电流。 缺点是漏极要从背面引出，很难用和主流集成电路工艺兼容。  这种结构可以减小漏电流">
 <meta property="og:type" content="article">
 <meta property="og:title" content="几种功率管">
 <meta property="og:url" content="http://shenguosai.github.io/2023/08/17/%E5%87%A0%E7%A7%8D%E5%8A%9F%E7%8E%87%E7%AE%A1/index.html">
 <meta property="og:site_name" content="小人驿站">
-<meta property="og:description" content="DMOS：Double-Diffused MOSVDMOS：Virtical DMOS垂直扩散DMOS，VDMOS的漏极在硅片背面，沟道在两个维度上包围源极，所以叫“垂直”，实际上栅极依然是水平的。VDMOS是PowerMOS（大功率MOS器件）的一种，通过垂直设计减小沟道场强，可以使短沟道承受很高的电压和电流。缺点是漏极要从背面引出，很难用和主流集成电路工艺兼容。这种结构可以减小漏电流并提高开关">
+<meta property="og:description" content="DMOS：Double-Diffused MOS VDMOS：Virtical DMOS 垂直扩散DMOS，VDMOS的漏极在硅片背面，沟道在两个维度上包围源极，所以叫“垂直”，实际上栅极依然是水平的。VDMOS是PowerMOS（大功率MOS器件）的一种，通过垂直设计减小沟道场强，可以使短沟道承受很高的电压和电流。 缺点是漏极要从背面引出，很难用和主流集成电路工艺兼容。  这种结构可以减小漏电流">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230817223815.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230817224559.png">
@@ -261,10 +261,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="DMOS：Double-Diffused-MOS"><a href="#DMOS：Double-Diffused-MOS" class="headerlink" title="DMOS：Double-Diffused MOS"></a>DMOS：Double-Diffused MOS</h2><h2 id="VDMOS：Virtical-DMOS"><a href="#VDMOS：Virtical-DMOS" class="headerlink" title="VDMOS：Virtical DMOS"></a>VDMOS：Virtical DMOS</h2><p>垂直扩散 DMOS，VDMOS 的漏极在硅片背面，沟道在两个维度上包围源极，所以叫“垂直”，实际上栅极依然是水平的。VDMOS 是 PowerMOS（大功率 MOS 器件）的一种，通过垂直设计减小沟道场强，可以使短沟道承受很高的电压和电流。<br>缺点是漏极要从背面引出，很难用和主流集成电路工艺兼容。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230817223815.png" alt="20230817223815"><br>这种结构可以减小漏电流并提高开关速度，具有低导通电阻、高电压承受能力和低开关损耗的优点。它在功率电子器件中广泛应用，如逆变器、直流 - 直流转换器和交流电机驱动器等。主要缺点是存在体效应和漏电流，且制造过程较为复杂。<br><span id="more"></span></p>
-<h2 id="LDMOS：Lateral-DMOS，常用于高电压大电流电路。"><a href="#LDMOS：Lateral-DMOS，常用于高电压大电流电路。" class="headerlink" title="LDMOS：Lateral DMOS，常用于高电压大电流电路。"></a>LDMOS：Lateral DMOS，常用于高电压大电流电路。</h2><p>水平扩散 DMOS，也是 PowerMOS 的一种，和 VDMOS 的区别是去掉了背部的漏极引出，方便兼容其它工艺 (CMOS 工艺)，和其他集成电路整合在同一块芯片上。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230817224559.png" alt="20230817224559"><br> 可以看到 LDMOS 把背部的 Drain 引出挪到了右边，代价是相对 VDMOS 面积变大了。<br>LDMOS 具有高电压承受能力和低导通电阻的优点。LDMOS 主要应用于高频功率放大器、天线开关和发射机等领域。LDMOS 的主要缺点是存在漏电流和温度效应，且不适用于高速开关应用。<br>LDMOS 由于更容易与 CMOS 工艺兼容而被广泛采用。LDMOS 器件结构如上图所示，是一种双扩散结构的功率器件。这项技术是在相同的源 / 漏区域注入两次，一次注入浓度较大（典型注入剂量 1015cm-2）的砷（As），另一次注入浓度较小（典型剂量 1013cm-2）的硼（B）。注入之后再进行一个高温推进过程，由于硼扩散比砷快，所以在栅极边界下会沿着横向扩散更远（上图中 P 阱），形成一个有浓度梯度的沟道，它的沟道长度由这两次横向扩散的距离之差决定。为了增加击穿电压，在有源区和漏区之间有一个漂移区。LDMOS 中的漂移区是该类器件设计的关键，漂移区的杂质浓度比较低，因此，当 LDMOS 接高压时，漂移区由于是高阻，能够承受更高的电压。图 1 所示 LDMOS 的多晶扩展到漂移区的场氧上面，充当场极板，会弱化漂移区的表面电场，有利于提高击穿电压。场极板的作用大小与场极板的长度密切相关。要使场极板能充分发挥作用，一要设计好 SiO2 层的厚度，二要设计好场极板的长度。</p>
-<h2 id="DEMOS：Drain-Extended-MOS，常用于高电压小电流电路。"><a href="#DEMOS：Drain-Extended-MOS，常用于高电压小电流电路。" class="headerlink" title="DEMOS：Drain-Extended MOS，常用于高电压小电流电路。"></a>DEMOS：Drain-Extended MOS，常用于高电压小电流电路。</h2><h2 id="SGT：Superjunction-MOSFET"><a href="#SGT：Superjunction-MOSFET" class="headerlink" title="SGT：Superjunction MOSFET"></a>SGT：Superjunction MOSFET</h2><p>采用多个交替的不同材料层构成，具有高电压承受能力和低导通电阻的优点。SGT 主要应用于高压直流输电、电动汽车和太阳能发电等领域。SGT 的主要缺点是制造成本较高。</p>
-<h2 id="Cool-MOS"><a href="#Cool-MOS" class="headerlink" title="Cool MOS"></a>Cool MOS</h2><p>英飞凌发明制造的功率管，是一种快速开关 MOSFET，具有低开关损耗和低导通电阻的优点。主要应用于高效率电源、LED 驱动器和电动汽车充电器等领域。主要缺点是存在体效应和漏电流，且制造成本较高。</p>
+        <h2 id="DMOS：Double-Diffused-MOS">DMOS：Double-Diffused MOS</h2>
+<h2 id="VDMOS：Virtical-DMOS">VDMOS：Virtical DMOS</h2>
+<p> 垂直扩散 DMOS，VDMOS 的漏极在硅片背面，沟道在两个维度上包围源极，所以叫“垂直”，实际上栅极依然是水平的。VDMOS 是 PowerMOS（大功率 MOS 器件）的一种，通过垂直设计减小沟道场强，可以使短沟道承受很高的电压和电流。<br>
+缺点是漏极要从背面引出，很难用和主流集成电路工艺兼容。<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230817223815.png" alt="20230817223815"><br>
+这种结构可以减小漏电流并提高开关速度，具有低导通电阻、高电压承受能力和低开关损耗的优点。它在功率电子器件中广泛应用，如逆变器、直流 - 直流转换器和交流电机驱动器等。主要缺点是存在体效应和漏电流，且制造过程较为复杂。</p>
+<span id="more"></span>
+<h2 id="LDMOS：Lateral-DMOS，常用于高电压大电流电路。">LDMOS：Lateral DMOS，常用于高电压大电流电路。</h2>
+<p> 水平扩散 DMOS，也是 PowerMOS 的一种，和 VDMOS 的区别是去掉了背部的漏极引出，方便兼容其它工艺 (CMOS 工艺)，和其他集成电路整合在同一块芯片上。<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20230817224559.png" alt="20230817224559"><br>
+可以看到 LDMOS 把背部的 Drain 引出挪到了右边，代价是相对 VDMOS 面积变大了。<br>
+LDMOS 具有高电压承受能力和低导通电阻的优点。LDMOS 主要应用于高频功率放大器、天线开关和发射机等领域。LDMOS 的主要缺点是存在漏电流和温度效应，且不适用于高速开关应用。<br>
+LDMOS 由于更容易与 CMOS 工艺兼容而被广泛采用。LDMOS 器件结构如上图所示，是一种双扩散结构的功率器件。这项技术是在相同的源 / 漏区域注入两次，一次注入浓度较大（典型注入剂量 1015cm-2）的砷（As），另一次注入浓度较小（典型剂量 1013cm-2）的硼（B）。注入之后再进行一个高温推进过程，由于硼扩散比砷快，所以在栅极边界下会沿着横向扩散更远（上图中 P 阱），形成一个有浓度梯度的沟道，它的沟道长度由这两次横向扩散的距离之差决定。为了增加击穿电压，在有源区和漏区之间有一个漂移区。LDMOS 中的漂移区是该类器件设计的关键，漂移区的杂质浓度比较低，因此，当 LDMOS 接高压时，漂移区由于是高阻，能够承受更高的电压。图 1 所示 LDMOS 的多晶扩展到漂移区的场氧上面，充当场极板，会弱化漂移区的表面电场，有利于提高击穿电压。场极板的作用大小与场极板的长度密切相关。要使场极板能充分发挥作用，一要设计好 SiO2 层的厚度，二要设计好场极板的长度。</p>
+<h2 id="DEMOS：Drain-Extended-MOS，常用于高电压小电流电路。">DEMOS：Drain-Extended MOS，常用于高电压小电流电路。</h2>
+<h2 id="SGT：Superjunction-MOSFET">SGT：Superjunction MOSFET</h2>
+<p> 采用多个交替的不同材料层构成，具有高电压承受能力和低导通电阻的优点。SGT 主要应用于高压直流输电、电动汽车和太阳能发电等领域。SGT 的主要缺点是制造成本较高。</p>
+<h2 id="Cool-MOS">Cool MOS</h2>
+<p> 英飞凌发明制造的功率管，是一种快速开关 MOSFET，具有低开关损耗和低导通电阻的优点。主要应用于高效率电源、LED 驱动器和电动汽车充电器等领域。主要缺点是存在体效应和漏电流，且制造成本较高。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
@@ -456,12 +470,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">394k</span>
+    <span title="站点总字数">393k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:58</span>
+    <span title="站点阅读时长">5:57</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
