@@ -24,3 +24,9 @@ categories:
 
 如此便成功激活了，可以发现原来标题栏中的 “Unregistered” 变为了 “ADMIN”
 ![20231203010151](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231203010151.png)
+
+Sublime Text 4 (Build 4200)
+将：
+89 D9 FF 50 38 EB 02 31 C0 48 8B 8E D8 04 00 00 0F B6 51 05 83 F2 01 44 8D 04 55 04 00 00 00 01 D2 80 79 04 00 44 0F
+替换为：
+89 D9 FF 50 38 EB 02 31 C0 48 8B 8E D8 04 00 00 *C6 41 05 01 31 D2 90 44 8D 04 55 04* 00 00 00 01 D2 80 79 04 00 44 0F
