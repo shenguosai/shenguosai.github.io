@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在 QNAP 上安装 Ubuntu Linux 工作站本来想在 QNAP 上使用 “Vitualization Station 虚拟化工作站”中安装一个 Linux 服务器版系统跑一些服务，但是尝试了 Debian 12.6 和 Ubuntu 18.04 都卡在了磁盘分区的设置上，感觉像是识别不到硬盘，无法安装文件系统。没有办法只有转战 QNAP 自带的 Ubuntu Linux 工作站了，通过跟">
+  <meta name="description" content="在 QNAP 上安装 Ubuntu Linux 工作站 本来想在 QNAP 上使用 &quot;Vitualization Station 虚拟化工作站&quot;中安装一个 Linux 服务器版系统跑一些服务，但是尝试了 Debian 12.6 和 Ubuntu 18.04 都卡在了磁盘分区的设置上，感觉像是识别不到硬盘，无法安装文件系统。 没有办法只有转战 QNAP 自带的 Ubuntu Li">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QNAP 虚拟机安装 ubuntu 18.04 无法登录远程桌面">
 <meta property="og:url" content="http://shenguosai.github.io/2024/08/08/QNAP%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85ubuntu-18-04-%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/index.html">
 <meta property="og:site_name" content="小人驿站">
-<meta property="og:description" content="在 QNAP 上安装 Ubuntu Linux 工作站本来想在 QNAP 上使用 “Vitualization Station 虚拟化工作站”中安装一个 Linux 服务器版系统跑一些服务，但是尝试了 Debian 12.6 和 Ubuntu 18.04 都卡在了磁盘分区的设置上，感觉像是识别不到硬盘，无法安装文件系统。没有办法只有转战 QNAP 自带的 Ubuntu Linux 工作站了，通过跟">
+<meta property="og:description" content="在 QNAP 上安装 Ubuntu Linux 工作站 本来想在 QNAP 上使用 &quot;Vitualization Station 虚拟化工作站&quot;中安装一个 Linux 服务器版系统跑一些服务，但是尝试了 Debian 12.6 和 Ubuntu 18.04 都卡在了磁盘分区的设置上，感觉像是识别不到硬盘，无法安装文件系统。 没有办法只有转战 QNAP 自带的 Ubuntu Li">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240808153629.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240808154353.png">
@@ -261,17 +261,53 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="在 -QNAP- 上安装 -Ubuntu-Linux- 工作站"><a href="# 在 -QNAP- 上安装 -Ubuntu-Linux- 工作站" class="headerlink" title="在 QNAP 上安装 Ubuntu Linux 工作站"></a>在 QNAP 上安装 Ubuntu Linux 工作站 </h1><p> 本来想在 QNAP 上使用 “Vitualization Station 虚拟化工作站”中安装一个 Linux 服务器版系统跑一些服务，但是尝试了 Debian 12.6 和 Ubuntu 18.04 都卡在了磁盘分区的设置上，感觉像是识别不到硬盘，无法安装文件系统。<br>没有办法只有转战 QNAP 自带的 Ubuntu Linux 工作站了，通过跟客服咨询，这个 App 只有桌面版无法安装 Server 版。<br>既然安装了桌面版，那当然要设置成能够远程登录了。<br><span id="more"></span></p>
-<h1 id="安装 -xrdp- 服务器等软件"><a href="# 安装 -xrdp- 服务器等软件" class="headerlink" title="安装 xrdp 服务器等软件"></a>安装 xrdp 服务器等软件 </h1><p> 由于一直登录不上，所以搞清楚原因之前杂七杂八装了很多，也不知道哪个是非必需的，总之目前安装上的软件如下:(安装命令从上到下为个人感觉必要性高低)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get update<br>sudo apt-get install xrdp<br>sudo apt-get install xfce4 xfce4-goodies<br>sudo apt-get install vnc4server tightvnc<br>sudo apt-get install xorg<br></code></pre></td></tr></table></figure><br>刚开始的时候只安装了 xrdp 和 xfce4，感觉只用这两个就可以了，但是由于后面一直登录不上不知道原因所以又装了一大堆。<br>还有好像可以不用 xfce4，直接连接 GNOME 的远程桌面，那样的话我感觉才 xfce4 都不需要安装，没有详细研究先不讨论。</p>
-<p>安装完之后打开服务，由于使用 zerotier 进行组网，所以没有进行端口映射和防火墙的设置。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl start xrdp<br></code></pre></td></tr></table></figure></p>
-<h1 id="无法登录远程桌面及解决方法"><a href="# 无法登录远程桌面及解决方法" class="headerlink" title="无法登录远程桌面及解决方法"></a>无法登录远程桌面及解决方法 </h1><p> 通过 Win11 连接远程桌面的时候发现输入完登录信息点击”OK”按钮之后就一直没有任何反应，通过查看服务状态 <code>systemctl status xdrp</code>。发现错误信息:<code>[ERROR] xrdp_wm_log_msg: Error connecting to sesman: 127.0.0.1 port: 3350</code> 。<br> 通过搜索，在 Github 上找到了 <a target="_blank" rel="noopener" href="https://github.com/neutrinolabs/xrdp/issues/1777"> 答案 </a>，虽然对原理不是很理解，但是觉得说的很有道理于是开始尝试。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240808153629.png" alt="20240808153629"><br> 这是在设置的时候有点问题，本人设置步骤如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sysctl -a | grep disable_ipv6<br></code></pre></td></tr></table></figure></p>
+        <h1>在 QNAP 上安装 Ubuntu Linux 工作站</h1>
+<p>本来想在 QNAP 上使用 &quot;Vitualization Station 虚拟化工作站 &quot; 中安装一个 Linux 服务器版系统跑一些服务，但是尝试了 Debian 12.6 和 Ubuntu 18.04 都卡在了磁盘分区的设置上，感觉像是识别不到硬盘，无法安装文件系统。<br>
+没有办法只有转战 QNAP 自带的 Ubuntu Linux 工作站了，通过跟客服咨询，这个 App 只有桌面版无法安装 Server 版。<br>
+既然安装了桌面版，那当然要设置成能够远程登录了。</p>
+<span id="more"></span>
+<h1>安装 xrdp 服务器等软件</h1>
+<p>由于一直登录不上，所以搞清楚原因之前杂七杂八装了很多，也不知道哪个是非必需的，总之目前安装上的软件如下:(安装命令从上到下为个人感觉必要性高低)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get update<br>sudo apt-get install xrdp<br>sudo apt-get install xfce4 xfce4-goodies<br>sudo apt-get install vnc4server tightvnc<br>sudo apt-get install xorg<br></code></pre></td></tr></table></figure>
+<p>刚开始的时候只安装了 xrdp 和 xfce4，感觉只用这两个就可以了，但是由于后面一直登录不上不知道原因所以又装了一大堆。<br>
+还有好像可以不用 xfce4，直接连接 GNOME 的远程桌面，那样的话我感觉才 xfce4 都不需要安装，没有详细研究先不讨论。</p>
+<p>安装完之后打开服务，由于使用 zerotier 进行组网，所以没有进行端口映射和防火墙的设置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl start xrdp<br></code></pre></td></tr></table></figure>
+<h1>无法登录远程桌面及解决方法</h1>
+<p>通过 Win11 连接远程桌面的时候发现输入完登录信息点击 &quot;OK&quot; 按钮之后就一直没有任何反应，通过查看服务状态<code>systemctl status xdrp</code>。发现错误信息:<code>[ERROR] xrdp_wm_log_msg: Error connecting to sesman: 127.0.0.1 port: 3350</code> 。<br>
+通过搜索，在 Github 上找到了 <a target="_blank" rel="noopener" href="https://github.com/neutrinolabs/xrdp/issues/1777"> 答案</a>，虽然对原理不是很理解，但是觉得说的很有道理于是开始尝试。<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240808153629.png" alt="20240808153629"><br>
+这是在设置的时候有点问题，本人设置步骤如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sysctl -a | grep disable_ipv6<br></code></pre></td></tr></table></figure>
 <blockquote>
-<p>sysctl: reading key “net.ipv6.conf.all.stable_secret”<br>net.ipv6.conf.all.disable_ipv6 = 1<br>sysctl: reading key “net.ipv6.conf.default.stable_secret”<br>net.ipv6.conf.default.disable_ipv6 = 1<br>sysctl: reading key “net.ipv6.conf.eth0.stable_secret”<br>net.ipv6.conf.eth0.disable_ipv6 = 0<br>sysctl: reading key “net.ipv6.conf.eth1.stable_secret”<br>net.ipv6.conf.eth1.disable_ipv6 = 0<br>sysctl: reading key “net.ipv6.conf.eth2.stable_secret”<br>net.ipv6.conf.eth2.disable_ipv6 = 0<br>sysctl: reading key “net.ipv6.conf.lo.stable_secret”<br>net.ipv6.conf.lo.disable_ipv6 = 1<br>sysctl: reading key “net.ipv6.conf.ztjlhq7oim.stable_secret”<br>net.ipv6.conf.ztjlhq7oim.disable_ipv6 = 1</p>
+<p>sysctl: reading key “net.ipv6.conf.all.stable_secret”<br>
+net.ipv6.conf.all.disable_ipv6 = 1<br>
+sysctl: reading key “net.ipv6.conf.default.stable_secret”<br>
+net.ipv6.conf.default.disable_ipv6 = 1<br>
+sysctl: reading key “net.ipv6.conf.eth0.stable_secret”<br>
+net.ipv6.conf.eth0.disable_ipv6 = 0<br>
+sysctl: reading key “net.ipv6.conf.eth1.stable_secret”<br>
+net.ipv6.conf.eth1.disable_ipv6 = 0<br>
+sysctl: reading key “net.ipv6.conf.eth2.stable_secret”<br>
+net.ipv6.conf.eth2.disable_ipv6 = 0<br>
+sysctl: reading key “net.ipv6.conf.lo.stable_secret”<br>
+net.ipv6.conf.lo.disable_ipv6 = 1<br>
+sysctl: reading key “net.ipv6.conf.ztjlhq7oim.stable_secret”<br>
+net.ipv6.conf.ztjlhq7oim.disable_ipv6 = 1</p>
 </blockquote>
 <p>于是根据上面的解答解答需要将 <code>net.ipv6.conf.eth0.disable_ipv6</code>、<code>net.ipv6.conf.eth1.disable_ipv6</code>、<code>net.ipv6.conf.eth2.disable_ipv6</code> 的值设为 1。</p>
-<h2 id="方法一"><a href="# 方法一" class="headerlink" title="方法一"></a>方法一</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo sysctl -w net.ipv6.conf.eth0.disable_ipv6=1<br>sudo sysctl -w net.ipv6.conf.eth1.disable_ipv6=1<br>sudo sysctl -w net.ipv6.conf.eth2.disable_ipv6=1<br></code></pre></td></tr></table></figure>
-<h2 id="方法二"><a href="# 方法二" class="headerlink" title="方法二"></a>方法二 </h2><p> 设置 <code>/etc/sysctl.conf</code> 文件 <br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vi /etc/sysctl.conf<br></code></pre></td></tr></table></figure><br> 在文件末尾加入下面三行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">net.ipv6.conf.all.disable_ipv6=0<br>net.ipv6.conf.default.disable_ipv6=0<br>net.ipv6.conf.lo.disable_ipv6=0<br></code></pre></td></tr></table></figure><br>使配置修改生效 <br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo sysctl -p<br></code></pre></td></tr></table></figure><br> 经实验，上述两种方法只能暂时禁用 <code>ipv6</code>，重启之后就会失效。长期生效方法:<a target="_blank" rel="noopener" href="https://linux.cn/article-12689-1.html"> 如何在 Ubuntu Linux 上禁用 IPv6</a></p>
-<p>然后就登录进去了，虽然是 xfce 桌面。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240808154353.png" alt="20240808154353"></p>
+<h2 id="方法一">方法一</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo sysctl -w net.ipv6.conf.eth0.disable_ipv6=1<br>sudo sysctl -w net.ipv6.conf.eth1.disable_ipv6=1<br>sudo sysctl -w net.ipv6.conf.eth2.disable_ipv6=1<br></code></pre></td></tr></table></figure>
+<h2 id="方法二">方法二</h2>
+<p>设置 <code>/etc/sysctl.conf</code> 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vi /etc/sysctl.conf<br></code></pre></td></tr></table></figure>
+<p>在文件末尾加入下面三行:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">net.ipv6.conf.all.disable_ipv6=0<br>net.ipv6.conf.default.disable_ipv6=0<br>net.ipv6.conf.lo.disable_ipv6=0<br></code></pre></td></tr></table></figure>
+<p>使配置修改生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo sysctl -p<br></code></pre></td></tr></table></figure>
+<p>经实验，上述两种方法只能暂时禁用 <code>ipv6</code>，重启之后就会失效。长期生效方法:<a target="_blank" rel="noopener" href="https://linux.cn/article-12689-1.html"> 如何在 Ubuntu Linux 上禁用 IPv6</a></p>
+<p>然后就登录进去了，虽然是 xfce 桌面。<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240808154353.png" alt="20240808154353"></p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
@@ -393,7 +429,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%20-QNAP-%20%E4%B8%8A%E5%AE%89%E8%A3%85%20-Ubuntu-Linux-%20%E5%B7%A5%E4%BD%9C%E7%AB%99"><span class="nav-number">1.</span> <span class="nav-text">在 QNAP 上安装 Ubuntu Linux 工作站 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%20-xrdp-%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AD%89%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">安装 xrdp 服务器等软件 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">无法登录远程桌面及解决方法 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">3.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-number">3.2.</span> <span class="nav-text">方法二 </span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">在 QNAP 上安装 Ubuntu Linux 工作站</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">安装 xrdp 服务器等软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">无法登录远程桌面及解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">3.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-number">3.2.</span> <span class="nav-text">方法二</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -463,12 +499,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">413k</span>
+    <span title="站点总字数">408k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:15</span>
+    <span title="站点阅读时长">6:11</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
