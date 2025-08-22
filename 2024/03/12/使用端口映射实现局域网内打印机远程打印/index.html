@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="打印机是现在办公设备必不可少的工具，我们常常需要使用打印机复印或打印各种文件资料，尤其对一些正在加班且不能在家陪伴孩子写作业的父母来说，学会远程打印的方法十分必要。 打印机种类: 激光打印机 打印机型号: DCP-B7520DW 目前这款打印机不支持远程打印，所以需要将打印端口映射到外网才能实现远程打印。 局域网内电脑系统: Windows 10 远程打印电脑系统: Windows 11">
+  <meta name="description" content="打印机是现在办公设备必不可少的工具，我们常常需要使用打印机复印或打印各种文件资料，尤其对一些正在加班且不能在家陪伴孩子写作业的父母来说，学会远程打印的方法十分必要。打印机种类: 激光打印机打印机型号: DCP-B7520DW目前这款打印机不支持远程打印，所以需要将打印端口映射到外网才能实现远程打印。局域网内电脑系统: Windows 10远程打印电脑系统: Windows 11">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用端口映射实现局域网内打印机远程打印">
 <meta property="og:url" content="http://shenguosai.github.io/2024/03/12/%E4%BD%BF%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E6%89%93%E5%8D%B0%E6%9C%BA%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0/index.html">
 <meta property="og:site_name" content="小人驿站">
-<meta property="og:description" content="打印机是现在办公设备必不可少的工具，我们常常需要使用打印机复印或打印各种文件资料，尤其对一些正在加班且不能在家陪伴孩子写作业的父母来说，学会远程打印的方法十分必要。 打印机种类: 激光打印机 打印机型号: DCP-B7520DW 目前这款打印机不支持远程打印，所以需要将打印端口映射到外网才能实现远程打印。 局域网内电脑系统: Windows 10 远程打印电脑系统: Windows 11">
+<meta property="og:description" content="打印机是现在办公设备必不可少的工具，我们常常需要使用打印机复印或打印各种文件资料，尤其对一些正在加班且不能在家陪伴孩子写作业的父母来说，学会远程打印的方法十分必要。打印机种类: 激光打印机打印机型号: DCP-B7520DW目前这款打印机不支持远程打印，所以需要将打印端口映射到外网才能实现远程打印。局域网内电脑系统: Windows 10远程打印电脑系统: Windows 11">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312160611.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312160725.png">
@@ -275,57 +275,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>打印机是现在办公设备必不可少的工具，我们常常需要使用打印机复印或打印各种文件资料，尤其对一些正在加班且不能在家陪伴孩子写作业的父母来说，学会远程打印的方法十分必要。<br>
-打印机种类: 激光打印机<br>
-打印机型号: DCP-B7520DW<br>
-目前这款打印机不支持远程打印，所以需要将打印端口映射到外网才能实现远程打印。<br>
-局域网内电脑系统: Windows 10<br>
-远程打印电脑系统: Windows 11</p>
-<span id="more"></span>
-<p>电脑进行远程打印可以用一下两种方法:</p>
+        <p>打印机是现在办公设备必不可少的工具，我们常常需要使用打印机复印或打印各种文件资料，尤其对一些正在加班且不能在家陪伴孩子写作业的父母来说，学会远程打印的方法十分必要。<br>打印机种类: 激光打印机 <br> 打印机型号: DCP-B7520DW<br>目前这款打印机不支持远程打印，所以需要将打印端口映射到外网才能实现远程打印。<br>局域网内电脑系统: Windows 10<br>远程打印电脑系统: Windows 11<br><span id="more"></span><br>电脑进行远程打印可以用一下两种方法:</p>
 <ol>
 <li>使用 zerotier 将主路由加入到虚拟局域网中，这样家中所有设备都可以通过虚拟局域网进行访问，此种方式如能将手机也加入到 zerotier 的虚拟局域网中亦可以实现手机端的远程打印。</li>
-<li>将打印机数据传输端口通过路由器进行端口映射来实现，此种方法目前还未能实现手机端的远程打印。<br>
-下面详细讲述第 2 中方法的实现步骤:</li>
+<li>将打印机数据传输端口通过路由器进行端口映射来实现，此种方法目前还未能实现手机端的远程打印。<br>下面详细讲述第 2 中方法的实现步骤:<h4 id="一、设置映射"><a href="# 一、设置映射" class="headerlink" title="一、设置映射"></a>一、设置映射 </h4> 首先保证局域网内能正常打印，进入 <strong> 控制面板 </strong>——<strong> 设备和打印机 </strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312160611.png" alt="20240312160611"><br> 找到对应的打印机，右键 <strong> 打印机属性 </strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312160725.png" alt="20240312160725"><br> 选择 <strong> 端口 </strong>，找到对应的打印机，点击<strong> 配置端口 </strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312160925.png" alt="20240312160925"><br> 查看打印机的 IP 地址和端口号；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312161050.png" alt="20240312161050"><br>这个地方有一个问题，我的打印机原来默认是 LPR 协议，端口应该是 515；现在我将它改成的 Raw 协议，Raw 协议默认使用 9100，9101，9102 端口，这里选择默认的 9100 端口。<br>然后将你所使用的端口，这里是 9100 通过路由器的设置映射到外网，我家里使用的是华为的 AX3 Pro 路由器，设置界面如下，外部端口填写你想设置的端口即可 (1~65535):<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312161449.png" alt="20240312161449"><br> 点击保存即设置成功。<h4 id="二、远程打印电脑的设置"><a href="# 二、远程打印电脑的设置" class="headerlink" title="二、远程打印电脑的设置"></a>二、远程打印电脑的设置 </h4> 点击 <strong> 开始 </strong>——<strong> 设置 </strong>——选择<strong> 蓝牙和其他设备 </strong>——点击<strong> 打印机和扫描仪 </strong><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312162315.png" alt="20240312162315"><br> 点击 <strong> 打印机和扫描仪 </strong>——点击<strong> 添加设备 </strong><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312162447.png" alt="20240312162447"><br> 点击 <strong> 手动添加 </strong>——选择<strong> 通过手动设置添加本地打印机或网络打印机 </strong>，<strong> 下一步 </strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312162952.png" alt="20240312162952"><br> 选择 <strong> 创建新端口 </strong>，端口类型选择<strong>Standard TCP/IP Port</strong>，下一步；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312163246.png" alt="20240312163246"><br><strong> 主机名或 IP 地址 </strong> 和<strong>端口名称 </strong>，填写自己的公网 IP 或域名地址。(由于现在供应商提供的公网 IP 是会变的，所以建议使用 DDNS 在此处填写自己的 DDNS 域名。)<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312164131.png" alt="20240312164131"><br> 设置类型选择 <strong> 自定义 </strong>，点击<strong> 设置 </strong>，<strong> 原始设置 </strong> 里的 <strong> 端口号 </strong> 填入上面映射到外网的外部端口号，<strong>确定 </strong> 然后 <strong> 下一步 </strong>；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312165944.png" alt="20240312165944"><br> 然后就是安装驱动程序，点击 <strong> 从磁盘安装 </strong>，<strong> 制造商文件复制来源 </strong> 选择对应打印机驱动的安装目录里，这里要求选择 <code>.inf</code> 文件。<br>我这边驱动目录下的路径是 <code>D:\51_Installer\DCP-B7520DW\Y17C_C1_ULWL_PP-inst-H1\xmlpaper\BRXM17A.INF</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312171646.png" alt="20240312171646"><br> 根据我的打印机型号，选择 <code>Brother DCP-B7520DW XML Paper1</code>。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312172309.png" alt="20240312172309"><br> 选择 <strong> 替换当前的驱动程序 </strong>，下一步，<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312172405.png" alt="20240312172405"><br> 给打印机自定义一个名字，下一步；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312174733.png" alt="20240312174733"><br>选择 <strong> 不共享这台打印机 </strong>，下一步；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312174819.png" alt="20240312174819"><br> 点击 <strong> 完成</strong>。也可以打印测试页看是否成功。</li>
 </ol>
-<h4 id="一、设置映射">一、设置映射</h4>
-<p>首先保证局域网内能正常打印，进入 <strong> 控制面板 </strong>----<strong> 设备和打印机</strong>；<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312160611.png" alt="20240312160611"><br>
-找到对应的打印机，右键 <strong> 打印机属性</strong>；<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312160725.png" alt="20240312160725"><br>
-选择 <strong> 端口 </strong>，找到对应的打印机，点击<strong> 配置端口</strong>；<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312160925.png" alt="20240312160925"><br>
-查看打印机的 IP 地址和端口号；<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312161050.png" alt="20240312161050"><br>
-这个地方有一个问题，我的打印机原来默认是 LPR 协议，端口应该是 515；现在我将它改成的 Raw 协议，Raw 协议默认使用 9100，9101，9102 端口，这里选择默认的 9100 端口。<br>
-然后将你所使用的端口，这里是 9100 通过路由器的设置映射到外网，我家里使用的是华为的 AX3 Pro 路由器，设置界面如下，外部端口填写你想设置的端口即可(1~65535):<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312161449.png" alt="20240312161449"><br>
-点击保存即设置成功。</p>
-<h4 id="二、远程打印电脑的设置">二、远程打印电脑的设置</h4>
-<p>点击 <strong> 开始 </strong>----<strong> 设置 </strong>---- 选择<strong> 蓝牙和其他设备 </strong>---- 点击<strong> 打印机和扫描仪</strong><br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312162315.png" alt="20240312162315"><br>
-点击 <strong> 打印机和扫描仪 </strong>---- 点击<strong> 添加设备</strong><br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312162447.png" alt="20240312162447"><br>
-点击 <strong> 手动添加 </strong>---- 选择<strong> 通过手动设置添加本地打印机或网络打印机 </strong>，<strong> 下一步</strong>；<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312162952.png" alt="20240312162952"><br>
-选择 <strong> 创建新端口</strong>，端口类型选择<strong>Standard TCP/IP Port</strong>，下一步；<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312163246.png" alt="20240312163246"><br>
-<strong>主机名或 IP 地址 </strong> 和<strong>端口名称</strong>，填写自己的公网 IP 或域名地址。(由于现在供应商提供的公网 IP 是会变的，所以建议使用 DDNS 在此处填写自己的 DDNS 域名。)<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312164131.png" alt="20240312164131"><br>
-设置类型选择 <strong> 自定义 </strong>，点击<strong> 设置 </strong>，<strong> 原始设置 </strong> 里的 <strong> 端口号 </strong> 填入上面映射到外网的外部端口号，<strong>确定 </strong> 然后 <strong> 下一步</strong>；<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312165944.png" alt="20240312165944"><br>
-然后就是安装驱动程序，点击 <strong> 从磁盘安装 </strong>，<strong> 制造商文件复制来源 </strong> 选择对应打印机驱动的安装目录里，这里要求选择 <code>.inf</code> 文件。<br>
-我这边驱动目录下的路径是<code>D:\51_Installer\DCP-B7520DW\Y17C_C1_ULWL_PP-inst-H1\xmlpaper\BRXM17A.INF</code><br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312171646.png" alt="20240312171646"><br>
-根据我的打印机型号，选择<code>Brother DCP-B7520DW XML Paper1</code>。<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312172309.png" alt="20240312172309"><br>
-选择 <strong> 替换当前的驱动程序</strong>，下一步，<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312172405.png" alt="20240312172405"><br>
-给打印机自定义一个名字，下一步；<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312174733.png" alt="20240312174733"><br>
-选择 <strong> 不共享这台打印机</strong>，下一步；<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240312174819.png" alt="20240312174819"><br>
-点击 <strong> 完成</strong>。也可以打印测试页看是否成功。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
@@ -447,7 +401,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%AE%BE%E7%BD%AE%E6%98%A0%E5%B0%84"><span class="nav-number">1.</span> <span class="nav-text">一、设置映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0%E7%94%B5%E8%84%91%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">二、远程打印电脑的设置</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%AE%BE%E7%BD%AE%E6%98%A0%E5%B0%84"><span class="nav-number">1.</span> <span class="nav-text">一、设置映射 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0%E7%94%B5%E8%84%91%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">二、远程打印电脑的设置 </span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -517,12 +471,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">417k</span>
+    <span title="站点总字数">427k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:19</span>
+    <span title="站点阅读时长">6:29</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
