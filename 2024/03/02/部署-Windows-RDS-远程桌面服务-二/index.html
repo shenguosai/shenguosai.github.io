@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="转自超详细的 部署Windows RDS 远程桌面服务来啦！！！确定不来看一下嘛~，留待以后部署自己的远程桌面网关。 -----开始正文-----">
+  <meta name="description" content="转自超详细的 部署Windows RDS 远程桌面服务来啦！！！确定不来看一下嘛~，留待以后部署自己的远程桌面网关。 ——-开始正文——-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="部署 Windows RDS 远程桌面服务 (二)">
 <meta property="og:url" content="http://shenguosai.github.io/2024/03/02/%E9%83%A8%E7%BD%B2-Windows-RDS-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1-%E4%BA%8C/index.html">
 <meta property="og:site_name" content="小人驿站">
-<meta property="og:description" content="转自超详细的 部署Windows RDS 远程桌面服务来啦！！！确定不来看一下嘛~，留待以后部署自己的远程桌面网关。 -----开始正文-----">
+<meta property="og:description" content="转自超详细的 部署Windows RDS 远程桌面服务来啦！！！确定不来看一下嘛~，留待以后部署自己的远程桌面网关。 ——-开始正文——-">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204322.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204403.png">
@@ -278,36 +278,9 @@
 
       
         <p>转自 <a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_70919503/article/details/134965019"> 超详细的 部署 Windows RDS 远程桌面服务来啦！！！确定不来看一下嘛~</a>，留待以后部署自己的远程桌面网关。</p>
-<p>-----<em>开始正文</em>-----</p>
-<span id="more"></span>
-<p>用 Windows Server 2016 操作系统来完成 RDS 的部署，包括添加远程桌面服务角色，创建会话集合，发布 Remote App 程序，以及测试访问 Remote App 程序。<br>
-首先准备两台部署好域环境的虚拟机: Windows Server 2016 和 Windows 7</p>
-<h3 id="添加远程桌面服务角色">添加远程桌面服务角色</h3>
-<p>打开 Windows Server 2016:<br>
-(1) 点进服务器管理器，点击“添加角色和功能”<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204322.png" alt="20240302204322"><br>
-(2) 在安装类型选择“远程桌面服务安装”<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204403.png" alt="20240302204403"><br>
-(3) 在“选择部署类型”窗口中选择“标准部署”按键，后“下一步”<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204503.png" alt="20240302204503"><br>
-(4) 在“选择部署方案”窗口中，选择“基于会话的桌面部署”按键，后“下一步”<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204559.png" alt="20240302204559"><br>
-(5) 系统会自动安装和配置必需的角色服务，直接“下一步”<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204643.png" alt="20240302204643"><br>
-(6) 依次指定下面三个服务所在的服务器，在“指定 RD 连接代理服务器”窗口中，将服务器池中的当前服务器添加到右侧窗格中，后“下一步”<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204837.png" alt="20240302204837"><br>
-(7) 选择服务器池中的当前的服务器后，双击添加到右侧窗格中，后“下一步”<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205006.png" alt="20240302205006"><br>
-(8) 选择服务器池中的当前的服务器后，双击添加到右侧窗格中，后“下一步”<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205108.png" alt="20240302205108"><br>
-(9) 选择“需要时自动启动目标服务器”后，单击“部署”按键<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205210.png" alt="20240302205210"><br>
-(10) 安装过程中系统自动重启，重新后会自动完成剩下的安装任务<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205308.png" alt="20240302205308"><br>
-登录自己的域账号<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205410.png" alt="20240302205410"></p>
-<h3 id="创建会话集合">创建会话集合</h3>
-<pre><code>(1) 打开“服务器管理器”窗口，在左侧窗格单击刚安装好的“远程桌面服务”，在中间窗格选择“概述”选项，在右侧窗格单击“创建会话合集”
+<p>——-<em>开始正文 </em>——-<br><span id="more"></span><br> 用 Windows Server 2016 操作系统来完成 RDS 的部署，包括添加远程桌面服务角色，创建会话集合，发布 Remote App 程序，以及测试访问 Remote App 程序。<br>首先准备两台部署好域环境的虚拟机: Windows Server 2016 和 Windows 7</p>
+<h3 id="添加远程桌面服务角色"><a href="# 添加远程桌面服务角色" class="headerlink" title="添加远程桌面服务角色"></a>添加远程桌面服务角色 </h3><p> 打开 Windows Server 2016:<br>    (1) 点进服务器管理器，点击“添加角色和功能”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204322.png" alt="20240302204322"><br>    (2) 在安装类型选择“远程桌面服务安装”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204403.png" alt="20240302204403"><br>    (3) 在“选择部署类型”窗口中选择“标准部署”按键，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204503.png" alt="20240302204503"><br>    (4) 在“选择部署方案”窗口中，选择“基于会话的桌面部署”按键，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204559.png" alt="20240302204559"><br>    (5) 系统会自动安装和配置必需的角色服务，直接“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204643.png" alt="20240302204643"><br>    (6) 依次指定下面三个服务所在的服务器，在“指定 RD 连接代理服务器”窗口中，将服务器池中的当前服务器添加到右侧窗格中，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302204837.png" alt="20240302204837"><br>    (7) 选择服务器池中的当前的服务器后，双击添加到右侧窗格中，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205006.png" alt="20240302205006"><br>    (8) 选择服务器池中的当前的服务器后，双击添加到右侧窗格中，后“下一步”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205108.png" alt="20240302205108"><br>    (9) 选择“需要时自动启动目标服务器”后，单击“部署”按键 <br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205210.png" alt="20240302205210"><br>    (10) 安装过程中系统自动重启，重新后会自动完成剩下的安装任务<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205308.png" alt="20240302205308"><br> 登录自己的域账号<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205410.png" alt="20240302205410"></p>
+<h3 id="创建会话集合"><a href="# 创建会话集合" class="headerlink" title="创建会话集合"></a>创建会话集合</h3><pre><code>(1) 打开“服务器管理器”窗口，在左侧窗格单击刚安装好的“远程桌面服务”，在中间窗格选择“概述”选项，在右侧窗格单击“创建会话合集”
 ![20240302205757](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302205757.png)
 (2) 在“开始之前”窗口中，直接“下一步”
 (3) 自己取一个便于识别的名称后，单击“下一步”
@@ -322,9 +295,7 @@
 ![20240302210228](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210228.png)
 (8) 创建成功后单击“关闭”按键
 ![20240302210300](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210300.png)
-</code></pre>
-<h3 id="发布 -Remote-App- 程序">发布 Remote App 程序</h3>
-<pre><code>(1) 打开“服务器管理器”窗口，单击左侧窗格“远程桌面服务”，在中间窗格单击刚创建的集合名称，单击“发布 Remote App 程序”
+</code></pre><h3 id="发布 -Remote-App- 程序"><a href="# 发布 -Remote-App- 程序" class="headerlink" title="发布 Remote App 程序"></a>发布 Remote App 程序</h3><pre><code>(1) 打开“服务器管理器”窗口，单击左侧窗格“远程桌面服务”，在中间窗格单击刚创建的集合名称，单击“发布 Remote App 程序”
 ![20240302210553](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210553.png)
 (2) 选择要发布集合的应用程序，咱选择发布自带的“画图”
 ![20240302210640](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210640.png)
@@ -332,30 +303,13 @@
 ![20240302210731](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210731.png)
 (4) 发布“画图”完成
 ![20240302210802](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210802.png)
-</code></pre>
-<h3 id="AD- 服务端新建用户">AD 服务端新建用户</h3>
-<pre><code>(1) 打开“AD 用户和计算机”窗口
+</code></pre><h3 id="AD- 服务端新建用户"><a href="#AD- 服务端新建用户" class="headerlink" title="AD 服务端新建用户"></a>AD 服务端新建用户</h3><pre><code>(1) 打开“AD 用户和计算机”窗口
 ![20240302210852](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210852.png)
 (2) 设置用户登录名称
 ![20240302210913](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210913.png)
 (3) 设置用户登录密码
 ![20240302210937](https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302210937.png)
-</code></pre>
-<h3 id="访问 -Remote-App- 程序 - 测试">访问 Remote App 程序(测试)</h3>
-<p>进入 Windows 7 (客户端):<br>
-(1) 在 Web 浏览器地址栏输入 URL: “<a target="_blank" rel="noopener" href="http://FQDN/rdweb%E2%80%9D%EF%BC%8C%E5%9C%A8%E6%89%93%E5%BC%80%E7%9A%84%E9%A1%B5%E9%9D%A2%E4%B8%AD%E5%8D%95%E5%87%BB%E2%80%9C%E7%BB%A7%E7%BB%AD%E6%B5%8F%E8%A7%88%E6%AD%A4%E7%BD%91%E7%AB%99%E2%80%9D">http://FQDN/rdweb”，在打开的页面中单击“继续浏览此网站”</a><br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211135.png" alt="20240302211135"><br>
-(2) 输入 &quot; 服务端域名 \ 刚刚新建的用户的名字 &quot;，和登录密码后，点击“登录”<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211242.png" alt="20240302211242"><br>
-登录成功后出现“画图”程序图表即代表发布成功<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211336.png" alt="20240302211336"><br>
-(3) 单击程序图标，在浏览器底部弹出的对话框单击“打开”按键<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211436.png" alt="20240302211436"><br>
-(4) 点击“连接”<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211505.png" alt="20240302211505"><br>
-(5) 输入账号和登录密码<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211534.png" alt="20240302211534"><br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211551.png" alt="20240302211551"></p>
+</code></pre><h3 id="访问 -Remote-App- 程序 - 测试"><a href="# 访问 -Remote-App- 程序 - 测试" class="headerlink" title="访问 Remote App 程序 (测试)"></a> 访问 Remote App 程序 (测试)</h3><p> 进入 Windows 7 (客户端):<br>    (1) 在 Web 浏览器地址栏输入 URL: “<a target="_blank" rel="noopener" href="http://FQDN/rdweb”，在打开的页面中单击“继续浏览此网站”">http://FQDN/rdweb”，在打开的页面中单击“继续浏览此网站”</a><br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211135.png" alt="20240302211135"><br>    (2) 输入”服务端域名 \ 刚刚新建的用户的名字”，和登录密码后，点击“登录”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211242.png" alt="20240302211242"><br>        登录成功后出现“画图”程序图表即代表发布成功<br>        <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211336.png" alt="20240302211336"><br>    (3) 单击程序图标，在浏览器底部弹出的对话框单击“打开”按键<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211436.png" alt="20240302211436"><br>    (4) 点击“连接”<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211505.png" alt="20240302211505"><br>    (5) 输入账号和登录密码<br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211534.png" alt="20240302211534"><br>    <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240302211551.png" alt="20240302211551"></p>
 <p>以上便是所有内容，欢迎大家前来借鉴！</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
@@ -478,7 +432,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E8%A7%92%E8%89%B2"><span class="nav-number">1.</span> <span class="nav-text">添加远程桌面服务角色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BC%9A%E8%AF%9D%E9%9B%86%E5%90%88"><span class="nav-number">2.</span> <span class="nav-text">创建会话集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B8%83%20-Remote-App-%20%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">发布 Remote App 程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AD-%20%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%96%B0%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="nav-number">4.</span> <span class="nav-text">AD 服务端新建用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%20-Remote-App-%20%E7%A8%8B%E5%BA%8F%20-%20%E6%B5%8B%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">访问 Remote App 程序(测试)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E8%A7%92%E8%89%B2"><span class="nav-number">1.</span> <span class="nav-text">添加远程桌面服务角色 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BC%9A%E8%AF%9D%E9%9B%86%E5%90%88"><span class="nav-number">2.</span> <span class="nav-text">创建会话集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B8%83%20-Remote-App-%20%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">发布 Remote App 程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AD-%20%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%96%B0%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="nav-number">4.</span> <span class="nav-text">AD 服务端新建用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%20-Remote-App-%20%E7%A8%8B%E5%BA%8F%20-%20%E6%B5%8B%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text"> 访问 Remote App 程序 (测试)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -548,12 +502,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">435k</span>
+    <span title="站点总字数">456k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:35</span>
+    <span title="站点阅读时长">6:55</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
