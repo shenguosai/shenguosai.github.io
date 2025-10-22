@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="环境 硬件: QNAP TS-464C 系统: iStore OS 虚拟机(Zerotier虚拟局域网网关) 软件: Zerotier Zerotier 网段: 10.147.18.0&#x2F;24 局域网网段: 192.168.3.0&#x2F;24">
+  <meta name="description" content="环境硬件: QNAP TS-464C系统: iStore OS 虚拟机(Zerotier虚拟局域网网关)软件: ZerotierZerotier 网段: 10.147.18.0&#x2F;24局域网网段: 192.168.3.0&#x2F;24">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过 ZeroTier 访问所在局域网的其它设备">
 <meta property="og:url" content="http://shenguosai.github.io/2024/08/15/%E9%80%9A%E8%BF%87-ZeroTier-%E8%AE%BF%E9%97%AE%E6%89%80%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E5%85%B6%E5%AE%83%E8%AE%BE%E5%A4%87/index.html">
 <meta property="og:site_name" content="小人驿站">
-<meta property="og:description" content="环境 硬件: QNAP TS-464C 系统: iStore OS 虚拟机(Zerotier虚拟局域网网关) 软件: Zerotier Zerotier 网段: 10.147.18.0&#x2F;24 局域网网段: 192.168.3.0&#x2F;24">
+<meta property="og:description" content="环境硬件: QNAP TS-464C系统: iStore OS 虚拟机(Zerotier虚拟局域网网关)软件: ZerotierZerotier 网段: 10.147.18.0&#x2F;24局域网网段: 192.168.3.0&#x2F;24">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112603.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112706.png">
@@ -261,38 +261,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1> 环境 </h1>
-<p> 硬件: QNAP TS-464C<br>
-系统: iStore OS 虚拟机 (Zerotier 虚拟局域网网关)<br>
-软件: Zerotier<br>
-Zerotier 网段: 10.147.18.0/24<br>
-局域网网段: 192.168.3.0/24</p>
-<span id="more"></span>
-<h1> 配置 </h1>
-<h2 id="配置 -Zerotier- 设置"> 配置 Zerotier 设置 </h2>
-<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112603.png" alt="20240815112603"></p>
-<h2 id="配置 -Zerotier- 网关"> 配置 Zerotier 网关 </h2>
-<ol>
-<li> 插件设置 <br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112706.png" alt="20240815112706"></li>
-<li> 配置网关开启内核转发 <br>
-先 ssh 登录到 iStore OS(Zerotier 虚拟局域网网关，执行以下命令:</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;net.ipv4.ip_forward=1&#x27;</span> &gt;&gt; /etc/sysctl.conf<br>sysctl -p<br></code></pre></td></tr></table></figure>
-<h2 id="访问方法"> 访问方法 </h2>
-<ol>
-<li> 重启一下使用的外网设备的 Zerotier 服务；</li>
-<li> 跟在局域网内访问相同，使用局域网地址访问即可。</li>
-</ol>
-<h1> 后续 </h1>
-<ol>
-<li> 网上说需要开启 Zerotier 网关的地址伪装，即 <code>MASQUERADE</code>；</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -j MASQUERADE<br></code></pre></td></tr></table></figure>
-<ol>
-<li> 配置静态路由表；</li>
-<li> 防火墙放行 <code>9933</code> 端口。<br>
-上述三个步骤本次配置没有使用到，可能是 iStore OS 简化了配置，如果以后有需要使用 Linux 标准系统来使用的需求时再研究。</li>
+        <h1 id="环境"><a href="# 环境" class="headerlink" title="环境"></a>环境 </h1><p> 硬件: QNAP TS-464C<br>系统: iStore OS 虚拟机 (Zerotier 虚拟局域网网关)<br> 软件: Zerotier<br>Zerotier 网段: 10.147.18.0/24<br>局域网网段: 192.168.3.0/24<br><span id="more"></span></p>
+<h1 id="配置"><a href="# 配置" class="headerlink" title="配置"></a>配置 </h1><h2 id="配置 -Zerotier- 设置"><a href="# 配置 -Zerotier- 设置" class="headerlink" title="配置 Zerotier 设置"></a> 配置 Zerotier 设置</h2><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112603.png" alt="20240815112603"></p>
+<h2 id="配置 -Zerotier- 网关"><a href="# 配置 -Zerotier- 网关" class="headerlink" title="配置 Zerotier 网关"></a>配置 Zerotier 网关</h2><ol>
+<li>插件设置<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112706.png" alt="20240815112706"></li>
+<li>配置网关开启内核转发 <br> 先 ssh 登录到 iStore OS(Zerotier 虚拟局域网网关，执行以下命令:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;net.ipv4.ip_forward=1&#x27;</span> &gt;&gt; /etc/sysctl.conf<br>sysctl -p<br></code></pre></td></tr></table></figure>
+<h2 id="访问方法"><a href="# 访问方法" class="headerlink" title="访问方法"></a>访问方法</h2></li>
+<li>重启一下使用的外网设备的 Zerotier 服务；</li>
+<li>跟在局域网内访问相同，使用局域网地址访问即可。<h1 id="后续"><a href="# 后续" class="headerlink" title="后续"></a>后续</h1></li>
+<li>网上说需要开启 Zerotier 网关的地址伪装，即<code>MASQUERADE</code>；<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -j MASQUERADE<br></code></pre></td></tr></table></figure></li>
+<li>配置静态路由表；</li>
+<li>防火墙放行 <code>9933</code> 端口。<br>上述三个步骤本次配置没有使用到，可能是 iStore OS 简化了配置，如果以后有需要使用 Linux 标准系统来使用的需求时再研究。</li>
 </ol>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
@@ -415,7 +394,7 @@ Zerotier 网段: 10.147.18.0/24<br>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"> 环境 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text"> 配置 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%20-Zerotier-%20%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text"> 配置 Zerotier 设置 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%20-Zerotier-%20%E7%BD%91%E5%85%B3"><span class="nav-number">2.2.</span> <span class="nav-text"> 配置 Zerotier 网关 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text"> 访问方法 </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text"> 后续 </span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">环境 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">配置 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%20-Zerotier-%20%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text"> 配置 Zerotier 设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%20-Zerotier-%20%E7%BD%91%E5%85%B3"><span class="nav-number">2.2.</span> <span class="nav-text">配置 Zerotier 网关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">访问方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD"><span class="nav-number">3.</span> <span class="nav-text">后续</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -485,12 +464,12 @@ Zerotier 网段: 10.147.18.0/24<br>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">444k</span>
+    <span title="站点总字数">462k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:43</span>
+    <span title="站点阅读时长">7:01</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

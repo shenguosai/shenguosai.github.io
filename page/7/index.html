@@ -256,6 +256,8 @@
 
       
           <center>状态行参数列表</center>
+
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -398,6 +400,7 @@
 </tr>
 </tbody>
 </table>
+</div>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/12/06/VIM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%8A%B6%E6%80%81%E8%A1%8C/#more" rel="contents">
@@ -510,11 +513,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="简介">简介</h2>
-<p>Adobe Acrobat XI Pro 是一个著名的功能性程序，用于舒适地处理各种 PDF 文件，它将为您提供以专业水平创建和编辑高质量 PDF 文件的机会。 Acrobat XI Pro 包含高级功能，可以轻松打开许多其他管理功能，具有用户友好的界面。在创建 PDF 文件并在以后进行处理时，Adobe Acrobat 变得绝对不可替代。</p>
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Adobe Acrobat XI Pro 是一个著名的功能性程序，用于舒适地处理各种 PDF 文件，它将为您提供以专业水平创建和编辑高质量 PDF 文件的机会。 Acrobat XI Pro 包含高级功能，可以轻松打开许多其他管理功能，具有用户友好的界面。在创建 PDF 文件并在以后进行处理时，Adobe Acrobat 变得绝对不可替代。</p>
 <p>Adobe Acrobat XI Pro 包含提供额外互操作性的智能功能。简单，快速，专业。将包括文档，电子表格，电子邮件，图像，视频，3D图形和地图在内的多种内容组合到一个压缩的结构化PDF包中。在查看共享的文档时进行协作。创建交互式表格并快速收集数据。保护和控制有价值的信息。</p>
 <p>体验 Adobe®Acrobat®Dynamic PDF 技术创建和共享下一代 PDF 的强大功能。通过电子文档审阅，可填写的 PDF 表单和 Acrobat 服务与同行，客户和合作伙伴进行协作。将多种文件类型组合成一个无缝组织的专业质量 PDF 包。设置密码和权限以保护文档。内容丰富，使您的文档更具吸引力。</p>
-<p>Adobe Acrobat XI Pro 是理想的工具，可轻松，快速，专业地处理各种 PDF 文件。</p>
+<p>Adobe Acrobat XI Pro 是理想的工具，可轻松，快速，专业地处理各种 PDF 文件。<br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/12/05/Adobe-Acrobat-XI-Pro-11-0-23%E4%B8%8B%E8%BD%BD%E5%8F%8A%E6%BF%80%E6%B4%BB/#more" rel="contents">
@@ -628,8 +630,7 @@
 
       
           <figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs fortran">% calibre -lvs -hier -auto rule.<span class="hljs-keyword">file</span><br>% calibre -xrc -pdb -rcc -xcell cell.<span class="hljs-keyword">file</span> rule.<span class="hljs-keyword">file</span><br>% calibre -xrc -<span class="hljs-keyword">fmt</span> -<span class="hljs-built_in">all</span> -xcell cell.<span class="hljs-keyword">file</span> rule.<span class="hljs-keyword">file</span><br></code></pre></td></tr></table></figure>
-<p>rule.file 中应指定 layout(gds) 的路径及文件名 <br>
-<a target="_blank" rel="noopener" href="https://www.engr.colostate.edu/ECE571/class_materials/xcalibre_instructions.htm">Instructions for Extracting Parasitics for your Layout using xCalibre Tool</a></p>
+<p>rule.file 中应指定 layout(gds) 的路径及文件名 <br><a target="_blank" rel="noopener" href="https://www.engr.colostate.edu/ECE571/class_materials/xcalibre_instructions.htm">Instructions for Extracting Parasitics for your Layout using xCalibre Tool</a></p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
@@ -735,11 +736,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>在提取寄生参数时，除了需要关注金属导体的寄生电容外，还需要分析mos器件的节点寄生参数提取是否准确。<br>
-下面是一个典型的 nmos 4端器件:</p>
-<p>该mos管的4个节点 D, G, S, B 的寄生电容是否准确呢？<br>
-首先用calibre xrc提取一下其寄生参数，结果如下:</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cc_1</span> S G <span class="hljs-number">3</span>.<span class="hljs-number">32511</span>f<br><span class="hljs-attribute">cc_2</span> S D <span class="hljs-number">6</span>.<span class="hljs-number">73464</span>e-<span class="hljs-number">19</span><br><span class="hljs-attribute">cc_3</span> S B <span class="hljs-number">12</span>.<span class="hljs-number">7622</span>f<br><span class="hljs-attribute">cc_4</span> G D <span class="hljs-number">3</span>.<span class="hljs-number">32511</span>f<br><span class="hljs-attribute">cc_5</span> G B <span class="hljs-number">1</span>.<span class="hljs-number">16212</span>f<br><span class="hljs-attribute">cc_6</span> D B <span class="hljs-number">12</span>.<span class="hljs-number">7506</span>f<br></code></pre></td></tr></table></figure>
+          <p>在提取寄生参数时，除了需要关注金属导体的寄生电容外，还需要分析mos器件的节点寄生参数提取是否准确。<br>下面是一个典型的 nmos 4端器件:</p>
+<p>该mos管的4个节点 D, G, S, B 的寄生电容是否准确呢？<br>首先用calibre xrc提取一下其寄生参数，结果如下:<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cc_1</span> S G <span class="hljs-number">3</span>.<span class="hljs-number">32511</span>f<br><span class="hljs-attribute">cc_2</span> S D <span class="hljs-number">6</span>.<span class="hljs-number">73464</span>e-<span class="hljs-number">19</span><br><span class="hljs-attribute">cc_3</span> S B <span class="hljs-number">12</span>.<span class="hljs-number">7622</span>f<br><span class="hljs-attribute">cc_4</span> G D <span class="hljs-number">3</span>.<span class="hljs-number">32511</span>f<br><span class="hljs-attribute">cc_5</span> G B <span class="hljs-number">1</span>.<span class="hljs-number">16212</span>f<br><span class="hljs-attribute">cc_6</span> D B <span class="hljs-number">12</span>.<span class="hljs-number">7506</span>f<br></code></pre></td></tr></table></figure><br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/12/03/%E6%8A%BD%E5%8F%96%E5%AF%84%E7%94%9F%E6%97%B6%E5%B1%8F%E8%94%BD%E6%8E%89%E5%9C%A8spice-model%E4%B8%AD%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AF%84%E7%94%9F%E7%94%B5%E5%AE%B9/#more" rel="contents">
@@ -852,16 +850,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>截止2023年12月2日，最新版本是<a target="_blank" rel="noopener" href="https://www.sublimetext.com/">Sublime Text 4 (Build 4169)</a>。<br>
-注册方法如下:</p>
+          <p>截止2023年12月2日，最新版本是<a target="_blank" rel="noopener" href="https://www.sublimetext.com/">Sublime Text 4 (Build 4169)</a>。<br>注册方法如下:</p>
 <ul>
-<li>安装软件:
-<ul>
+<li>安装软件:<ul>
 <li>去官方网站下载并安装，<a target="_blank" rel="noopener" href="https://www.sublimetext.com/">Sublime Text - Text Editing, Done Right</a></li>
 </ul>
 </li>
-<li>修改sublime的执行文件:
-<ul>
+<li>修改sublime的执行文件:<ul>
 <li>使用16进制编辑器或打开<a target="_blank" rel="noopener" href="https://hexed.it/">https://hexed.it</a></li>
 <li>点击“打开文件”打开 Sublime Text 安装目录下的 sublime_text.exe</li>
 <li>在右边的“搜索”中输入<code>807805000f94c1</code>并按回车键</li>
@@ -965,14 +960,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.6k</span>
+              <span>2.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -984,49 +979,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="肯定句变否定句规则">肯定句变否定句规则:</h3>
-<h4 id="一、-font-color-red-有-font-be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。">一、<font color=red>有</font>be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。</h4>
-<p>例如:</p>
-<table>
-<thead>
-<tr>
-<th><center>肯定句</center></th>
-<th><center>否定句</center></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>I am a student.</td>
-<td>I am not a student.</td>
-</tr>
-<tr>
-<td>Amy is a good girl.</td>
-<td>Amy <u>is not</u><em><u><font color=red>(isn't)</font></u></em> a good girl.</td>
-</tr>
-<tr>
-<td>These flowers are very beautiful.</td>
-<td>These flowers <u>are not</u><em><u><font color=red>(aren't)</font></u></em> very beautiful.</td>
-</tr>
-<tr>
-<td>I can swim.</td>
-<td>I <u>can not</u><em><u><font color=red>(can't)</font></u></em> swim.</td>
-</tr>
-<tr>
-<td>There are some books on the table.</td>
-<td>There <u>are not</u><em><u><font color=red>(aren't)</font></u></em> any books on the table.</td>
-</tr>
-<tr>
-<td>Jack is a doctor.</td>
-<td>Jack <u>is not</u><em><u><font color=red>(isn't)</font></u></em> a doctor.</td>
-</tr>
-<tr>
-<td>I was a student ten years ago.</td>
-<td>I <u>was not</u><em><u><font color=red>(wasn't)</font></u></em> a student ten years ago.</td>
-</tr>
-</tbody>
-</table>
-<p><b>注: (1) some、and用于肯定句中，any、or用于否定句中；</b><br>
-<b>　  (2) was是is的过去式，were是are的过去式。</b></p>
+          <h3 id="肯定句变否定句规则"><a href="#肯定句变否定句规则" class="headerlink" title="肯定句变否定句规则:"></a>肯定句变否定句规则:</h3><h4 id="一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。"><a href="#一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。" class="headerlink" title="一、有be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。"></a>一、<font color=red>有</font>be动词（am、is、are）和情态动词（can、could、may、must、should、will、would等）的，直接在be动词和情态动词后面加not，some变any，and变or，too变either，其他的照抄。</h4><p>例如:<br>|<center>肯定句</center>|<center>否定句</center>|<br>|——|——|<br>|I am a student.|I am not a student.<br>|Amy is a good girl.|Amy <u>is not</u><em><u><font color=red>(isn\’t)</font></u></em> a good girl.<br>|These flowers are very beautiful.|These flowers <u>are not</u><em><u><font color=red>(aren\’t)</font></u></em> very beautiful.<br>|I can swim.|I <u>can not</u><em><u><font color=red>(can\’t)</font></u></em> swim.<br>|There are some books on the table.|There <u>are not</u><em><u><font color=red>(aren\’t)</font></u></em> any books on the table.<br>|Jack is a doctor.|Jack <u>is not</u><em><u><font color=red>(isn\’t)</font></u></em> a doctor.<br>|I was a student ten years ago.|I <u>was not</u><em><u><font color=red>(wasn\’t)</font></u></em> a student ten years ago.</p>
+<p><b>注:&ensp;(1) some、and用于肯定句中，any、or用于否定句中；</b><br><b>　 &ensp;(2) was是is的过去式，were是are的过去式。</b><br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/12/01/%E8%8B%B1%E8%AF%AD-%E8%82%AF%E5%AE%9A%E5%8F%A5%E5%8F%98%E5%90%A6%E5%AE%9A%E5%8F%A5/#more" rel="contents">
@@ -1140,39 +1094,21 @@
 
       
           <ul>
-<li>
-<p>表达随遇而安：<br>
-时光清浅处，一步一安然。</p>
+<li><p>表达随遇而安：<br>时光清浅处，一步一安然。</p>
 </li>
-<li>
-<p>表达岁月静好：<br>
-山野万万里，余生路漫。日暮酒杯淡饭，一半一半</p>
+<li><p>表达岁月静好：<br>山野万万里，余生路漫。日暮酒杯淡饭，一半一半</p>
 </li>
-<li>
-<p>夸心上人美好：<br>
-山有扶苏，隰（xí）有荷华。</p>
+<li><p>夸心上人美好：<br>山有扶苏，隰（xí）有荷华。</p>
 </li>
-<li>
-<p>想说坚韧不拔：<br>
-冬青树上挂凌霄，岁晏花凋树不凋。</p>
+<li><p>想说坚韧不拔：<br>冬青树上挂凌霄，岁晏花凋树不凋。</p>
 </li>
-<li>
-<p>对于好朋友：<br>
-半师半友半知己，半慕半尊半倾心。</p>
+<li><p>对于好朋友：<br>半师半友半知己，半慕半尊半倾心。</p>
 </li>
-<li>
-<p>乐观面对上火：<br>
-时间煮雨，岁月缝花。以欢喜心，慢度日常。</p>
+<li><p>乐观面对上火：<br>时间煮雨，岁月缝花。以欢喜心，慢度日常。</p>
 </li>
-<li>
-<p>琐碎诗意交织：<br>
-手执烟火以谋生，心怀诗意以谋爱。</p>
+<li><p>琐碎诗意交织：<br>手执烟火以谋生，心怀诗意以谋爱。</p>
 </li>
-<li>
-<p>表达对另一半的爱意：<br>
-日出有盼，日落有念。心有所期，忙而不茫。</p>
-</li>
-</ul>
+<li><p>表达对另一半的爱意：<br>日出有盼，日落有念。心有所期，忙而不茫。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/11/27/%E5%8F%A4%E8%AF%97%E8%AF%8D%E6%AC%A3%E8%B5%8F%E2%80%9420231127/#more" rel="contents">
@@ -1286,13 +1222,9 @@
 
       
           <ol>
-<li>安装<code>hexo-wordcount</code>插件<br>
-<code>npm install hexo-wordcount --save</code></li>
-<li>安装<code>hexo-symbols-count-time</code>插件<br>
-<code>npm install hexo-symbols-count-time --save</code></li>
-<li>安装<code>eslint</code><br>
-<code>npm install eslint --save</code></li>
-</ol>
+<li>安装<code>hexo-wordcount</code>插件<br><code>npm install hexo-wordcount --save</code></li>
+<li>安装<code>hexo-symbols-count-time</code>插件<br><code>npm install hexo-symbols-count-time --save</code></li>
+<li>安装<code>eslint</code><br><code>npm install eslint --save</code>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/11/20/Hexo%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E4%B8%8E%E9%98%85%E8%AF%BB%E7%BB%9F%E8%AE%A1/#more" rel="contents">
@@ -1405,9 +1337,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>趁着双十一在京东￥499入手了<a target="_blank" rel="noopener" href="https://item.jd.com/100048210573.html#crumb-wrap">樊想S500PRO</a>的2T SSD固态硬盘。<br>
-到货后就迫不及待的换下了原来笔记本里500G的老硬盘。然后发现换硬盘新装系统后各种软件的安装和配置都要重新来一遍。</p>
-<h3 id="下面记录下hexo的迁移过程。">下面记录下hexo的迁移过程。</h3>
+          <p>趁着双十一在京东￥499入手了<a target="_blank" rel="noopener" href="https://item.jd.com/100048210573.html#crumb-wrap">樊想S500PRO</a>的2T SSD固态硬盘。<br>到货后就迫不及待的换下了原来笔记本里500G的老硬盘。然后发现换硬盘新装系统后各种软件的安装和配置都要重新来一遍。</p>
+<h3 id="下面记录下hexo的迁移过程。"><a href="#下面记录下hexo的迁移过程。" class="headerlink" title="下面记录下hexo的迁移过程。"></a>下面记录下hexo的迁移过程。</h3>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/11/14/%E6%9B%B4%E6%8D%A2%E6%96%B0%E7%94%B5%E8%84%91%E5%90%8E%EF%BC%8Chexo%E6%97%A0%E6%8D%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/#more" rel="contents">
@@ -1501,7 +1432,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>535</span>
+              <span>247</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1520,8 +1451,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>这两天帮父亲新接手的球馆弄监控，花了一番功夫终于把已经停产的十几年前的监控摄像头搞定，发现里面的TF卡却坏掉了。于是在京东上买了BanQ的Joy联名TF卡，买来之后插上读卡器发现无法识别，申请换新之后还是无法识别，这才开始怀疑自己的读卡器是不是有问题。但是前两天刚试过家里的4G的TF卡读取是没有问题的。<br>
-于是从同事那里借来较新的读卡器发现成功读出来了，就怀疑自己应该也是十几年前买的读卡器是不是不支持大容量TF卡，于是到主页上查找了一番，发现Micro SD卡容量最大支持到16GB。</p>
+          <p>这两天帮父亲新接手的球馆弄监控，花了一番功夫终于把已经停产的十几年前的监控摄像头搞定，发现里面的TF卡却坏掉了。于是在京东上买了BanQ的Joy联名TF卡，买来之后插上读卡器发现无法识别，申请换新之后还是无法识别，这才开始怀疑自己的读卡器是不是有问题。但是前两天刚试过家里的4G的TF卡读取是没有问题的。<br>于是从同事那里借来较新的读卡器发现成功读出来了，就怀疑自己应该也是十几年前买的读卡器是不是不支持大容量TF卡，于是到主页上查找了一番，发现Micro SD卡容量最大支持到16GB。<br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/09/13/Elecom-MR-C18BK-%E8%AF%BB%E5%8D%A1%E5%99%A8/#more" rel="contents">
@@ -1669,12 +1599,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">444k</span>
+    <span title="站点总字数">462k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:43</span>
+    <span title="站点阅读时长">7:01</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
