@@ -255,7 +255,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <table>
+          <div class="table-container">
+<table>
 <thead>
 <tr>
 <th> 配置项 </th>
@@ -303,6 +304,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>NFC 公交和乘车码对儿童手表来说目前是个伪需求，因为无法使用学生卡。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
@@ -416,8 +418,7 @@
 <li>一台 iPhone6 安装了“掌上看家” APP 在家里做个监控用来看孩子有没有玩电子设备</li>
 <li>另一台 iPhone6 越狱出来做了一些小处理，本文重点来讲这个</li>
 <li>三星 Galaxy A9 Pro 已经解锁 BootLoader 成功还没想好干什么</li>
-<li>三星 Galaxy A32 还没折腾</li>
-</ul>
+<li>三星 Galaxy A32 还没折腾
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/03/28/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E8%AE%BF%E9%97%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E6%8E%A7%E5%88%B6%E7%95%8C%E9%9D%A2/#more" rel="contents">
@@ -530,7 +531,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>无意中找到一个介绍越狱后iOS的说明， 受益匪浅， 转一下:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/franknihao/p/7360695.html">【Darwin】 越狱后玩耍IPhone系统</a></p>
+          <p>无意中找到一个介绍越狱后iOS的说明， 受益匪浅， 转一下:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/franknihao/p/7360695.html">【Darwin】 越狱后玩耍IPhone系统</a><br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/03/27/%E3%80%90%E8%BD%AC%E3%80%91%E8%B6%8A%E7%8B%B1%E5%90%8E%E7%8E%A9%E8%80%8DIPhone%E7%B3%BB%E7%BB%9F(Darwin)/#more" rel="contents">
@@ -643,10 +644,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1>什么是 Docker?</h1>
-<p><code>Docker</code>是基于<code>Go语言</code>实现的在 2013 年发布的云开源项目，它利用了围绕容器这个现有的计算概念，特别是在<code>Linux</code>世界中，这些原始概念被称为<code>cgroups</code>和命名空间。<code>Docker</code>的技术之所以独特是因为它专注于开发人员和系统操作员的需求，以将应用程序依赖项与基础架构分开。<br>
-<code>Docker</code>的主要目标是 “Build，Ship and Run Any App,Anywhere”，也就是通过对应用组件的封装、分发、部署、运行等生命周期的管理，使用户的 APP (可以是一个WEB应用或数据库应用等等) 及其运行环境能够做到“一次封装，到处运行”。<br>
-一句话概括，<code>Docker</code>的出现解决了运行环境和配置环境不一致的情况，从而更方便的做持续集成并有助于应用的整体发布。</p>
+          <h1 id="什么是-Docker"><a href="#什么是-Docker" class="headerlink" title="什么是 Docker?"></a>什么是 Docker?</h1><p><code>Docker</code>是基于<code>Go语言</code>实现的在 2013 年发布的云开源项目，它利用了围绕容器这个现有的计算概念，特别是在<code>Linux</code>世界中，这些原始概念被称为<code>cgroups</code>和命名空间。<code>Docker</code>的技术之所以独特是因为它专注于开发人员和系统操作员的需求，以将应用程序依赖项与基础架构分开。<br><code>Docker</code>的主要目标是 “Build，Ship and Run Any App,Anywhere”，也就是通过对应用组件的封装、分发、部署、运行等生命周期的管理，使用户的 APP (可以是一个WEB应用或数据库应用等等) 及其运行环境能够做到“一次封装，到处运行”。<br>一句话概括，<code>Docker</code>的出现解决了运行环境和配置环境不一致的情况，从而更方便的做持续集成并有助于应用的整体发布。<br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/03/26/%E5%88%A0%E9%99%A4docker%E5%AE%B9%E5%99%A8%E5%92%8C%E9%95%9C%E5%83%8F/#more" rel="contents">
@@ -759,9 +757,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>使用ssh远程windows端的时候默认使用cmd，而用powershell可以使用很多linux的命令，像<code>ls</code>，<code>ps</code>，<code>cd</code>什么的(实际上只是映射了一下)。<br>
-使用管理员权限在<em>PowerShell</em>执行以下命令，使SSH连接Windows时默认使用<em>Powershell</em>。</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">New-ItemProperty</span> <span class="hljs-literal">-Path</span> <span class="hljs-string">&quot;HKLM:\SOFTWARE\OpenSSH&quot;</span> <span class="hljs-literal">-Name</span> DefaultShell <span class="hljs-literal">-Value</span> <span class="hljs-string">&quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot;</span> <span class="hljs-literal">-PropertyType</span> String <span class="hljs-literal">-Force</span><br></code></pre></td></tr></table></figure>
+          <p>使用ssh远程windows端的时候默认使用cmd，而用powershell可以使用很多linux的命令，像<code>ls</code>，<code>ps</code>，<code>cd</code>什么的(实际上只是映射了一下)。<br>使用管理员权限在<em>PowerShell</em>执行以下命令，使SSH连接Windows时默认使用<em>Powershell</em>。<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">New-ItemProperty</span> <span class="hljs-literal">-Path</span> <span class="hljs-string">&quot;HKLM:\SOFTWARE\OpenSSH&quot;</span> <span class="hljs-literal">-Name</span> DefaultShell <span class="hljs-literal">-Value</span> <span class="hljs-string">&quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot;</span> <span class="hljs-literal">-PropertyType</span> String <span class="hljs-literal">-Force</span><br></code></pre></td></tr></table></figure><br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/03/26/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9C%A8cmd%E4%B8%AD%E8%83%BD%E6%89%A7%E8%A1%8C%E4%BD%86%E6%98%AF%E5%9C%A8PowerShell%E4%B8%AD%E6%8A%A5%E9%94%99/#more" rel="contents">
@@ -874,11 +870,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1>安装 Docker</h1>
-<p>更新 <code>yum</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum update<br></code></pre></td></tr></table></figure>
-<p>安装配置时的依赖包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install -y yum-utils device-mapper-persistent-data lvm2<br></code></pre></td></tr></table></figure>
+          <h1 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h1><p>更新 <code>yum</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum update<br></code></pre></td></tr></table></figure><br>安装配置时的依赖包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install -y yum-utils device-mapper-persistent-data lvm2<br></code></pre></td></tr></table></figure><br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/03/25/CentOS-7-%E5%AE%89%E8%A3%85docker%E5%92%8Cdocker-compose/#more" rel="contents">
@@ -991,12 +983,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>打印机是现在办公设备必不可少的工具，我们常常需要使用打印机复印或打印各种文件资料，尤其对一些正在加班且不能在家陪伴孩子写作业的父母来说，学会远程打印的方法十分必要。<br>
-打印机种类: 激光打印机<br>
-打印机型号: DCP-B7520DW<br>
-目前这款打印机不支持远程打印，所以需要将打印端口映射到外网才能实现远程打印。<br>
-局域网内电脑系统: Windows 10<br>
-远程打印电脑系统: Windows 11</p>
+          <p>打印机是现在办公设备必不可少的工具，我们常常需要使用打印机复印或打印各种文件资料，尤其对一些正在加班且不能在家陪伴孩子写作业的父母来说，学会远程打印的方法十分必要。<br>打印机种类: 激光打印机<br>打印机型号: DCP-B7520DW<br>目前这款打印机不支持远程打印，所以需要将打印端口映射到外网才能实现远程打印。<br>局域网内电脑系统: Windows 10<br>远程打印电脑系统: Windows 11<br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/03/12/%E4%BD%BF%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E6%89%93%E5%8D%B0%E6%9C%BA%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0/#more" rel="contents">
@@ -1109,7 +1096,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://docs.zerotier.com/"><strong>ZeroTier Documentation</strong></a></p>
+          <p><a target="_blank" rel="noopener" href="https://docs.zerotier.com/"><strong>ZeroTier Documentation</strong></a><br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/03/06/ZeroTier-Documention/#more" rel="contents">
@@ -1222,30 +1209,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="1- 背景">1. 背景 </h2>
-<p> 查了一下订单，2015 年 5 月回国的时候给爸爸和我买了两台小米 Note，应该用了没有多久就出问题了一直闲置在家。上网查了一下回收价只有 2 元，所以就像改造一下看能不能当个简单的服务器来使用。</p>
-<h2 id="2- 准备">2. 准备 </h2>
-<h3 id="2-1- 小米手机助手">2.1 小米手机助手 </h3>
-<p> 近些年一直都没有关注小米，上网一查发现小米官网已经不开放手机助手的下载了，在网上找到这么一个网页:<a target="_blank" rel="noopener" href="https://miuiver.com/mi-phone-assistant/">MiPhoneAssistant 小米手机助手下载合集 </a>。<br>
-留个底:<br>
-由于小米助手官方已经很久没更新了，最近一次更新是 2021-10-28，所以强烈不建议在这之后发布的手机和 MIUI 版本上使用，大概率会有适配兼容问题，备份恢复功能很可能不能按预期工作，它只适合在老机型和 MIUI 老版本上使用！</p>
-<p> 下面是小米助手官方下载地址，版本由新到旧排列，可按个人喜好或需要选择。<br>
-<a target="_blank" rel="noopener" href="https://miuirom.xiaomi.com/rom/u1106245679/4.2.1028.10/MiAssistant-4.2.1028.10.zip">https://miuirom.xiaomi.com/rom/u1106245679/4.2.1028.10/MiAssistant-4.2.1028.10.zip</a><br>
-<a target="_blank" rel="noopener" href="https://miuirom.xiaomi.com/rom/u1106245679/3.2.522.32/MiAssistant-3.2.522.32.zip">https://miuirom.xiaomi.com/rom/u1106245679/3.2.522.32/MiAssistant-3.2.522.32.zip</a><br>
-<a target="_blank" rel="noopener" href="https://miuirom.xiaomi.com/rom/u491047765/2.3.0.4071/mipctoolexe-2.3.0.4071.exe">https://miuirom.xiaomi.com/rom/u491047765/2.3.0.4071/mipctoolexe-2.3.0.4071.exe</a><br>
-<a target="_blank" rel="noopener" href="https://miuirom.xiaomi.com/rom/u491047765/2.3.0.3101/mipctoolexe-2.3.0.3101.exe">https://miuirom.xiaomi.com/rom/u491047765/2.3.0.3101/mipctoolexe-2.3.0.3101.exe</a><br>
-<a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.3.0.1031_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.3.0.1031_2717.exe</a><br>
-<a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.7241_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.7241_2717.exe</a><br>
-<a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.6261_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.6261_2717.exe</a><br>
-<a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.4091_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.4091_2717.exe</a><br>
-<a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.3171_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.3171_2717.exe</a><br>
-<a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.2131_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.2131_2717.exe</a><br>
-<a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.1301_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.1301_2717.exe</a><br>
-<a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.12251_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.12251_2717.exe</a><br>
-<a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.11211_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.11211_2717.exe</a></p>
-<p> 文件 MD5 校验值如下。</p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dns">b9aaa49dd92a828179b4994b1eb82136  MiAssistant-<span class="hljs-number">3.2.522</span>.<span class="hljs-number">32</span>.zip<br><span class="hljs-number">7</span>bc76814006a340667dbe72669c66e1f  MiAssistant-<span class="hljs-number">4.2.1028</span>.<span class="hljs-number">10</span>.zip<br>b4ebf49b441a3f4997fc1ac<span class="hljs-number">4a82486a5</span>  mipctoolexe-<span class="hljs-number">2</span>.<span class="hljs-number">3.0.3101</span>.exe<br>d274427550884f389c7e417a13bfd3c1  mipctoolexe-<span class="hljs-number">2</span>.<span class="hljs-number">3.0.4071</span>.exe<br>d4580a3adff0db692f7a0420b568499f  MiSetup2.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>.<span class="hljs-number">11211_2717</span>.exe<br><span class="hljs-number">936</span>fc4c41e247baf21528e13e26e577e  MiSetup2.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>.<span class="hljs-number">12251_2717</span>.exe<br><span class="hljs-number">8251</span>f9670237d91f22cc70fa<span class="hljs-number">8f910086</span>  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1301_2717</span>.exe<br><span class="hljs-number">80</span>a68985a0d063d32d7884d008a0a71e  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">2131_2717</span>.exe<br><span class="hljs-number">98</span>c7c5185ee0cd2f1940fcc<span class="hljs-number">8a0f95f99</span>  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">3171_2717</span>.exe<br>e1073d32737075b51709c9a2b1c0cc99  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">4091_2717</span>.exe<br>aea5d32a8c4839fc35a2ed4fbb53e70f  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">6261_2717</span>.exe<br><span class="hljs-number">62d</span>3bd3427038a67ea8772972da1f82f  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">7241_2717</span>.exe<br><span class="hljs-number">539</span>cd92545f27978e2fe29aae<span class="hljs-number">527d4b2</span>  MiSetup2.<span class="hljs-number">3</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1031_2717</span>.exe<br></code></pre></td></tr></table></figure>
-<p> 尝试了一下上面下载地址的前 4 个还可以下载，但是后面的已经无法打开了，会提示 <code>403 Forbidden</code>。</p>
+          <h2 id="1- 背景"><a href="#1- 背景" class="headerlink" title="1. 背景"></a>1. 背景 </h2><p> 查了一下订单，2015 年 5 月回国的时候给爸爸和我买了两台小米 Note，应该用了没有多久就出问题了一直闲置在家。上网查了一下回收价只有 2 元，所以就像改造一下看能不能当个简单的服务器来使用。</p>
+<h2 id="2- 准备"><a href="#2- 准备" class="headerlink" title="2. 准备"></a>2. 准备 </h2><h3 id="2-1- 小米手机助手"><a href="#2-1- 小米手机助手" class="headerlink" title="2.1 小米手机助手"></a>2.1 小米手机助手</h3><p> 近些年一直都没有关注小米，上网一查发现小米官网已经不开放手机助手的下载了，在网上找到这么一个网页:<a target="_blank" rel="noopener" href="https://miuiver.com/mi-phone-assistant/">MiPhoneAssistant 小米手机助手下载合集 </a>。<br> 留个底:<br>由于小米助手官方已经很久没更新了，最近一次更新是 2021-10-28，所以强烈不建议在这之后发布的手机和 MIUI 版本上使用，大概率会有适配兼容问题，备份恢复功能很可能不能按预期工作，它只适合在老机型和 MIUI 老版本上使用！</p>
+<p>下面是小米助手官方下载地址，版本由新到旧排列，可按个人喜好或需要选择。<br><a target="_blank" rel="noopener" href="https://miuirom.xiaomi.com/rom/u1106245679/4.2.1028.10/MiAssistant-4.2.1028.10.zip">https://miuirom.xiaomi.com/rom/u1106245679/4.2.1028.10/MiAssistant-4.2.1028.10.zip</a><br><a target="_blank" rel="noopener" href="https://miuirom.xiaomi.com/rom/u1106245679/3.2.522.32/MiAssistant-3.2.522.32.zip">https://miuirom.xiaomi.com/rom/u1106245679/3.2.522.32/MiAssistant-3.2.522.32.zip</a><br><a target="_blank" rel="noopener" href="https://miuirom.xiaomi.com/rom/u491047765/2.3.0.4071/mipctoolexe-2.3.0.4071.exe">https://miuirom.xiaomi.com/rom/u491047765/2.3.0.4071/mipctoolexe-2.3.0.4071.exe</a><br><a target="_blank" rel="noopener" href="https://miuirom.xiaomi.com/rom/u491047765/2.3.0.3101/mipctoolexe-2.3.0.3101.exe">https://miuirom.xiaomi.com/rom/u491047765/2.3.0.3101/mipctoolexe-2.3.0.3101.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.3.0.1031_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.3.0.1031_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.7241_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.7241_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.6261_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.6261_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.4091_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.4091_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.3171_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.3171_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.2131_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.2131_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.1301_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.2.0.1301_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.12251_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.12251_2717.exe</a><br><a target="_blank" rel="noopener" href="https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.11211_2717.exe">https://bigota.d.miui.com/MiFlash/MiSetup2.1.0.11211_2717.exe</a></p>
+<p>文件 MD5 校验值如下。<br><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dns">b9aaa49dd92a828179b4994b1eb82136  MiAssistant-<span class="hljs-number">3.2.522</span>.<span class="hljs-number">32</span>.zip<br><span class="hljs-number">7</span>bc76814006a340667dbe72669c66e1f  MiAssistant-<span class="hljs-number">4.2.1028</span>.<span class="hljs-number">10</span>.zip<br>b4ebf49b441a3f4997fc1ac<span class="hljs-number">4a82486a5</span>  mipctoolexe-<span class="hljs-number">2</span>.<span class="hljs-number">3.0.3101</span>.exe<br>d274427550884f389c7e417a13bfd3c1  mipctoolexe-<span class="hljs-number">2</span>.<span class="hljs-number">3.0.4071</span>.exe<br>d4580a3adff0db692f7a0420b568499f  MiSetup2.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>.<span class="hljs-number">11211_2717</span>.exe<br><span class="hljs-number">936</span>fc4c41e247baf21528e13e26e577e  MiSetup2.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>.<span class="hljs-number">12251_2717</span>.exe<br><span class="hljs-number">8251</span>f9670237d91f22cc70fa<span class="hljs-number">8f910086</span>  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1301_2717</span>.exe<br><span class="hljs-number">80</span>a68985a0d063d32d7884d008a0a71e  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">2131_2717</span>.exe<br><span class="hljs-number">98</span>c7c5185ee0cd2f1940fcc<span class="hljs-number">8a0f95f99</span>  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">3171_2717</span>.exe<br>e1073d32737075b51709c9a2b1c0cc99  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">4091_2717</span>.exe<br>aea5d32a8c4839fc35a2ed4fbb53e70f  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">6261_2717</span>.exe<br><span class="hljs-number">62d</span>3bd3427038a67ea8772972da1f82f  MiSetup2.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>.<span class="hljs-number">7241_2717</span>.exe<br><span class="hljs-number">539</span>cd92545f27978e2fe29aae<span class="hljs-number">527d4b2</span>  MiSetup2.<span class="hljs-number">3</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1031_2717</span>.exe<br></code></pre></td></tr></table></figure></p>
+<p>尝试了一下上面下载地址的前 4 个还可以下载，但是后面的已经无法打开了，会提示<code>403 Forbidden</code>。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
@@ -1352,7 +1320,7 @@
 
       
           <p>转自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/heavyhe/p/4547058.html">RD网关部署说明</a>，留待以后部署自己的远程桌面网关。</p>
-<p>-----<em>开始正文</em>-----</p>
+<p>——-<em>开始正文</em>——-<br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/03/02/%E9%83%A8%E7%BD%B2-Windows-RDS-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1-%E4%B8%80/#more" rel="contents">
@@ -1500,12 +1468,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">452k</span>
+    <span title="站点总字数">469k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:51</span>
+    <span title="站点阅读时长">7:06</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

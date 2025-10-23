@@ -260,30 +260,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>QNAP 的虚拟机必须要使用自己转换出的<code>.img</code>，下面记录一下自己安装虚拟机的映像转换过程。</p>
-<span id="more"></span>
-<h1>IMG 文件</h1>
-<p>QNAP 上安装了 iStoreOS 系统的旁路由虚拟机，先使用 <a target="_blank" rel="noopener" href="https://www.starwindsoftware.com/starwind-v2v-converter#download">StarWind V2V Convertor</a> 软件将 <code>IMG</code> 文件转换为 QNAP Virtual Station 中可以使用的 <code>.vdi</code> 或 <code>.vdmk</code> 文件，然后使用 QNAP Vistual Station 内置的转换工具进行转换，转换完就是其可以使用的 <code>.img</code> 文件了。</p>
+        <p>QNAP 的虚拟机必须要使用自己转换出的<code>.img</code>，下面记录一下自己安装虚拟机的映像转换过程。<br><span id="more"></span></p>
+<h1 id="IMG 文件"><a href="#IMG 文件" class="headerlink" title="IMG 文件"></a>IMG 文件 </h1><p>QNAP 上安装了 iStoreOS 系统的旁路由虚拟机，先使用 <a target="_blank" rel="noopener" href="https://www.starwindsoftware.com/starwind-v2v-converter#download">StarWind V2V Convertor</a> 软件将<code>IMG</code> 文件转换为 QNAP Virtual Station 中可以使用的 <code>.vdi</code> 或 <code>.vdmk</code> 文件，然后使用 QNAP Vistual Station 内置的转换工具进行转换，转换完就是其可以使用的 <code>.img</code> 文件了。</p>
 <blockquote>
 <p>这个系统已安装成功！</p>
 </blockquote>
-<h1>ISO 文件</h1>
-<h2 id="方法一">方法一</h2>
-<p><code>.iso</code> 文件网上的信息很少，唯一有点用处的如下 <a target="_blank" rel="noopener" href="https://blog.csdn.net/LiniLing/article/details/119864889"> 将 ISO 镜像转换成 VDI、VDH 和 VMDK 格式</a>:</p>
+<h1 id="ISO 文件"><a href="#ISO 文件" class="headerlink" title="ISO 文件"></a>ISO 文件 </h1><h2 id="方法一"><a href="# 方法一" class="headerlink" title="方法一"></a> 方法一 </h2><p><code>.iso</code> 文件网上的信息很少，唯一有点用处的如下<a target="_blank" rel="noopener" href="https://blog.csdn.net/LiniLing/article/details/119864889"> 将 ISO 镜像转换成 VDI、VDH 和 VMDK 格式</a>:</p>
 <ol>
 <li>首先，要先下载两个软件: <a target="_blank" rel="noopener" href="https://downloads2.broadcom.com/?file=VMware-workstation-full-17.5.2-23775571.exe&amp;oid=30581048&amp;id=sQ9ZBRmMMB_QK60kfaL-tcNlwWCDromgou84_F7-Mkxcey9zd6BIhyhHVbcjvGfqYxM=&amp;verify=1722998592-oxwenmxozDwNlEOLBkXvPXCUcQOw2EOmWEej20K6%2FeU%3D">VMWare</a> 和 <a target="_blank" rel="noopener" href="https://download.virtualbox.org/virtualbox/7.0.20/VirtualBox-7.0.20-163906-Win.exe">VirtualBox</a></li>
 <li>在 VMWare 中使用 <code>.iso</code> 映像安装好虚拟机；</li>
-<li>选中安装好的虚拟机，文件 =&gt; 导出为 OVF，然后会生成 4 个文件；<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240812092446.png" alt="20240812092446"></li>
+<li>选中安装好的虚拟机，文件 =&gt; 导出为 OVF，然后会生成 4 个文件；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240812092446.png" alt="20240812092446"></li>
 <li>打开 VirtualBox 软件，</li>
-<li></li>
+<li>上述方法由于还没有实践过，未验证成功，等验证成功后再补充完整步骤。<h2 id="方法二"><a href="# 方法二" class="headerlink" title="方法二"></a>方法二 </h2><strong>.iso</strong> 的文件大概介绍如下：iso 格式，ISO 是一种光盘镜像文件，无法直接使用，需要利用一些工具进行解压后才能使用。ISO 一般都是将光盘文件做成一个文件，而有一些光盘软件设定只能从光驱进行安装，那么直接解压后还是不能使用，需要用到虚拟光驱软件（虚拟光驱的软件很多，Daemon Tools 是一款不错的虚拟光驱软件）<br><strong>.img</strong>文件大概介绍如下：img 格式，IMG 是一种文件压缩格式（archive format），.IMG 这个文件格式可视为.ISO 格式的一种超集合。由于.ISO 只能压缩使用 ISO9660 和 UDF 这两种文件系统的存储媒介，意即.ISO 只能拿来压缩 CD 或 DVD，因此才发展出了.IMG，它是以.ISO 格式为基础另外新增可压缩使用其它文件系统的存储媒介的能力，.IMG 可向后兼容于.ISO，如果是拿来压缩 CD 或 DVD，则使用.IMG 和.ISO 这两种格式所压缩出来的内容是一样的。<br>从上面的介绍，可以看出.img 是.iso 的一种超集合，两者解压得到的东西是一样的，所以将一个.iso 转化为.img，可以直接将.iso 重命名为.img 即可。<br>重命名为 <code>.img</code> 之后确实可以通过 StarWind V2V Convertor 软件转化为 <code>.vmdk</code> 文件了，并且也能够通过 QNAP Virtual Station 的转换工具转换为其可以使用的 <code>.img</code> 文件，也能开始引导安装，但是安装 (Debian 12.6 和 Ubuntu 18.04) 到磁盘分区的时候出现错误无法识别到硬盘，可能是设置哪里有问题，后续尝试成功后补充。</li>
 </ol>
-<p>上述方法由于还没有实践过，未验证成功，等验证成功后再补充完整步骤。</p>
-<h2 id="方法二">方法二</h2>
-<p><strong>.iso</strong>的文件大概介绍如下：iso 格式，ISO 是一种光盘镜像文件，无法直接使用，需要利用一些工具进行解压后才能使用。ISO 一般都是将光盘文件做成一个文件，而有一些光盘软件设定只能从光驱进行安装，那么直接解压后还是不能使用，需要用到虚拟光驱软件（虚拟光驱的软件很多，Daemon Tools 是一款不错的虚拟光驱软件）<br>
-<strong>.img</strong>文件大概介绍如下：img 格式，IMG 是一种文件压缩格式（archive format），.IMG 这个文件格式可视为.ISO 格式的一种超集合。由于.ISO 只能压缩使用 ISO9660 和 UDF 这两种文件系统的存储媒介，意即.ISO 只能拿来压缩 CD 或 DVD，因此才发展出了.IMG，它是以.ISO 格式为基础另外新增可压缩使用其它文件系统的存储媒介的能力，.IMG 可向后兼容于.ISO，如果是拿来压缩 CD 或 DVD，则使用.IMG 和.ISO 这两种格式所压缩出来的内容是一样的。<br>
-从上面的介绍，可以看出.img 是.iso 的一种超集合，两者解压得到的东西是一样的，所以将一个.iso 转化为.img，可以直接将.iso 重命名为.img 即可。<br>
-重命名为 <code>.img</code> 之后确实可以通过 StarWind V2V Convertor 软件转化为 <code>.vmdk</code> 文件了，并且也能够通过 QNAP Virtual Station 的转换工具转换为其可以使用的 <code>.img</code> 文件，也能开始引导安装，但是安装 (Debian 12.6 和 Ubuntu 18.04) 到磁盘分区的时候出现错误无法识别到硬盘，可能是设置哪里有问题，后续尝试成功后补充。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
@@ -405,7 +394,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">IMG 文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">ISO 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">2.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-number">2.2.</span> <span class="nav-text">方法二</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IMG%20%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">IMG 文件 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ISO%20%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">ISO 文件 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">2.1.</span> <span class="nav-text"> 方法一 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-number">2.2.</span> <span class="nav-text">方法二 </span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -475,12 +464,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">452k</span>
+    <span title="站点总字数">469k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:51</span>
+    <span title="站点阅读时长">7:06</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
