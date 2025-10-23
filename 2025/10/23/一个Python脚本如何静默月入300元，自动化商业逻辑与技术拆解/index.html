@@ -1,571 +1,173 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 7.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+<!DOCTYPE HTML>
+<html lang="<%= config.language %>">
+<%- partial('_partial/head') %>
 
-<link rel="stylesheet" href="/css/main.css">
+<body>
+    <%- partial('_partial/header') %>
+    <%- body %>
 
+    <%- partial('_partial/footer') %>
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+    <%- partial('_partial/search') %>
+    <%- partial('_widget/day-night') %>
+    <%- partial('_partial/back-top') %>
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.materialize) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.masonry) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.aos) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.scrollProgress) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.lightgallery) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.matery) %>"></script>
 
-  <meta name="description" content="转自：今日头条 - 高效码农 序言  在一个充斥着复杂技术和喧嚣创业故事的时代，往往是那些“安静”运行的自动化程序，在不经意间构建起了真正被动且可持续的收入流。我的故事始于一个简单的“帮忙”。一位朋友急需一份跨越多个电商网站的每日产品价格报告。为了解决这个问题，我快速编写了一个 Python 爬虫。起初，这只是一个技术上的小插曲。然而，仅仅一周后，我的朋友主动提出付费，希望我能继续维护并运行这个脚">
-<meta property="og:type" content="article">
-<meta property="og:title" content="一个 Python 脚本如何静默月入 300 元，自动化商业逻辑与技术拆解">
-<meta property="og:url" content="http://shenguosai.github.io/2025/10/23/%E4%B8%80%E4%B8%AAPython%E8%84%9A%E6%9C%AC%E5%A6%82%E4%BD%95%E9%9D%99%E9%BB%98%E6%9C%88%E5%85%A5300%E5%85%83%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%95%86%E4%B8%9A%E9%80%BB%E8%BE%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%8B%86%E8%A7%A3/index.html">
-<meta property="og:site_name" content="小人驿站">
-<meta property="og:description" content="转自：今日头条 - 高效码农 序言  在一个充斥着复杂技术和喧嚣创业故事的时代，往往是那些“安静”运行的自动化程序，在不经意间构建起了真正被动且可持续的收入流。我的故事始于一个简单的“帮忙”。一位朋友急需一份跨越多个电商网站的每日产品价格报告。为了解决这个问题，我快速编写了一个 Python 爬虫。起初，这只是一个技术上的小插曲。然而，仅仅一周后，我的朋友主动提出付费，希望我能继续维护并运行这个脚">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-23T02:05:49.000Z">
-<meta property="article:modified_time" content="2025-10-23T06:45:15.555Z">
-<meta property="article:author" content="市井一俗人">
-<meta property="article:tag" content="搞钱">
-<meta name="twitter:card" content="summary">
+    <% if (theme.mermaid.enable) { %>
+        <!-- <script src='https://unpkg.com/mermaid@<%= theme.mermaid.version %>/dist/mermaid.min.js'></script> -->
+        <script src='<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.mermaid) %>'></script>
+        <script>
+          if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+          }
+        </script>
+    <% } %>
 
-<link rel="canonical" href="http://shenguosai.github.io/2025/10/23/%E4%B8%80%E4%B8%AAPython%E8%84%9A%E6%9C%AC%E5%A6%82%E4%BD%95%E9%9D%99%E9%BB%98%E6%9C%88%E5%85%A5300%E5%85%83%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%95%86%E4%B8%9A%E9%80%BB%E8%BE%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%8B%86%E8%A7%A3/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
-
-  <title>一个 Python 脚本如何静默月入 300 元，自动化商业逻辑与技术拆解 | 小人驿站</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-<link rel="alternate" href="/atom.xml" title="小人驿站" type="application/atom+xml">
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">小人驿站</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">模拟电路工程师</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">82</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">41</span></a>
-
-  </li>
-        <li class="menu-item menu-item-schedule">
-
-    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
+    <% if (theme.translate.enable) { %>
+        <script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.sc2tc) %>"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "<%= config.url %>"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    <% } %>
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+    <% if (theme.sakura.enable) { %>
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.sakura) %>"><\/script>');
+            }
+        </script>
+    <% } %>
 
+    <!-- 雪花特效 -->
+    <% if (theme.snowdown.enable) { %> 
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.snow) %>"><\/script>');
+            }
+        </script>
+    <% } %>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
+    <!-- 鼠标星星特效 -->
+    <% if (theme.mouseStar.enable) { %> 
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.star) %>"><\/script>');
+            }
+        </script>
+    <% } %>
 
-          <div class="content post posts-expand">
-            
+    <% if (theme.tcaptcha.enable) { %> 
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.tcaptcha) %>"></script>
+        <button id="TencentCaptcha" data-appid="<%- theme.tcaptcha.appid %>" data-cbfn="callback" type="button" hidden></button>
+    <% } %>
 
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2025/10/23/%E4%B8%80%E4%B8%AAPython%E8%84%9A%E6%9C%AC%E5%A6%82%E4%BD%95%E9%9D%99%E9%BB%98%E6%9C%88%E5%85%A5300%E5%85%83%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%95%86%E4%B8%9A%E9%80%BB%E8%BE%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%8B%86%E8%A7%A3/">
+    <%- partial('_partial/baidu-analytics') %>
+    <%- partial('_partial/baidu-push') %>
+    <% if (theme.clicklove.enable) { %>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.clicklove) %>" async="async"></script>
+    <% } %>
+    <% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
+    <script async src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.busuanzi) %>"></script>
+    <% } %>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="市井一俗人">
-      <meta itemprop="description" content="怀出世之心，行入世之事。">
-    </span>
+    <% if (theme.tidio.enable) { %>
+        <script src="//code.tidio.co/<%- theme.tidio.public_key %>.js"></script>
+        <script>
+            $(document).ready(function () {
+                setInterval(change_Tidio, 50);
+                function change_Tidio() {
+                    var tidio=$("#tidio-chat iframe");
+                    if(tidio.css("display")=="block"&& $(window).width()>977 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"<%if(theme.toc.showToggleBtn){%>85px<%}else{%>20px<%}%>":"20px";
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";
+                        document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
+                        document.getElementById("tidio-chat-iframe").style.zIndex="998";
+                    }
+                }
+            });
+        </script>
+    <% } %>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小人驿站">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          一个 Python 脚本如何静默月入 300 元，自动化商业逻辑与技术拆解
-        </h1>
+    <% if (theme.daovoice.enable) { %>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: "<%- theme.daovoice.app_id %>"
+        });
+        daovoice('update');
+    </script>
+    <% } %>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-10-23 10:05:49 / 修改时间：14:45:15" itemprop="dateCreated datePublished" datetime="2025-10-23T10:05:49+08:00">2025-10-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9D%82%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">杂学</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9D%82%E5%AD%A6/%E5%95%86%E4%B8%9A/" itemprop="url" rel="index"><span itemprop="name">商业</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2025/10/23/%E4%B8%80%E4%B8%AAPython%E8%84%9A%E6%9C%AC%E5%A6%82%E4%BD%95%E9%9D%99%E9%BB%98%E6%9C%88%E5%85%A5300%E5%85%83%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%95%86%E4%B8%9A%E9%80%BB%E8%BE%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%8B%86%E8%A7%A3/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2025/10/23/%E4%B8%80%E4%B8%AAPython%E8%84%9A%E6%9C%AC%E5%A6%82%E4%BD%95%E9%9D%99%E9%BB%98%E6%9C%88%E5%85%A5300%E5%85%83%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%95%86%E4%B8%9A%E9%80%BB%E8%BE%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%8B%86%E8%A7%A3/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
+    <!--腾讯兔小巢-->
+    <% if (theme.tuxiaochao.enable) { %>
+        <div style="position:fixed;bottom:125px;right:16px;cursor: pointer;">
+            <a title="兔小巢" href="https://support.qq.com/products/<%- theme.tuxiaochao.productId %>"><i class="fa fa-comments fa-3x"  aria-hidden="true"></i></a>
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <p><em>转自：今日头条 - 高效码农</em></p>
-<h1 id="序言"><a href="# 序言" class="headerlink" title="序言"></a>序言 </h1><p> 在一个充斥着复杂技术和喧嚣创业故事的时代，往往是那些“安静”运行的自动化程序，在不经意间构建起了真正被动且可持续的收入流。我的故事始于一个简单的“帮忙”。一位朋友急需一份跨越多个电商网站的每日产品价格报告。为了解决这个问题，我快速编写了一个 Python 爬虫。<br>起初，这只是一个技术上的小插曲。然而，仅仅一周后，我的朋友主动提出付费，希望我能继续维护并运行这个脚本。又过了几周，他的两位同事也表达了同样的付费需求。至此，这个原本的“帮忙”正是转变成了一门小小的自动化业务。<br>这个业务的特殊之处在于它的极简主义：没有员工，没有冗长的会议，只有一段 Python 代码在我休息时静静地运行，为我创造收入。这种模式的核心精髓，正是将重复性的数据工作转化为可交付的、有价值的分析报告。<br>本文将深入剖析这个静默盈利的 Python 脚本背后的核心商业理念，完整的技术栈、详细的代码逻辑拆解，以及如何将其转化为多层次的收入模式。这不仅仅是一个关于代码的故事，更是一个关于如何利用自动化技术实现复利价值的商业案例。</p>
-<h2 id="一、自动化盈利的核心法则：三步闭环模型"><a href="# 一、自动化盈利的核心法则：三步闭环模型" class="headerlink" title="一、自动化盈利的核心法则：三步闭环模型"></a>一、自动化盈利的核心法则：三步闭环模型 </h2><p> 所有能够实现盈利的自动化项目，无论其具体领域如何，都遵循一个清晰且重复的“自动化 分析 交付”三步循环。理解并掌握这个闭环，是构建任何自动化业务的基石。</p>
-<h3 id="1- 第一步：自动化重复性的数据收集（Automate）"><a href="#1- 第一步：自动化重复性的数据收集（Automate）" class="headerlink" title="1. 第一步：自动化重复性的数据收集（Automate）"></a>1. 第一步：自动化重复性的数据收集（Automate）</h3><p>一切的起点，在于用程序取代人类重复性的操作。对于这个价格监控脚本而言，这一步是数据抓取。它每天定时运行，从多个电子商务网站上拉取最新的产品价格信息。</p>
-<h3 id="2- 第二步：将数据转化为有价值的洞察（Analyze）"><a href="#2- 第二步：将数据转化为有价值的洞察（Analyze）" class="headerlink" title="2. 第二步：将数据转化为有价值的洞察（Analyze）"></a>2. 第二步：将数据转化为有价值的洞察（Analyze）</h3><p>原始数据本身往往价值有限。真正的价值在于对数据进行分析和丰富。在这个环节，脚本使用了 Pandas 库对收集到的历史价格进行处理，以检测价格趋势或突发的价格暴跌。通过计算价格变化率，原始数据被转化为了可操作的商业洞察。</p>
-<h3 id="3- 第三步：自动交付价值（Deliver）"><a href="#3- 第三步：自动交付价值（Deliver）" class="headerlink" title="3. 第三步：自动交付价值（Deliver）"></a>3. 第三步：自动交付价值（Deliver）</h3><p>再好的洞察，如果不能及时、专业地送达客户手中，也毫无意义。最后一步是自动交付。在这个案例中，脚本通过电子邮件，将整理干净的报告，清晰的可视化图表以及最关键的 AI 撰写的摘要发送给客户。这种自动化的交付方式，极大地提升了报告的专业度和说服力。<br>我的自动化脚本的具体结构如下：</p>
-<ul>
-<li>Scraper（爬虫）：负责从多个网站获取每日产品价格。</li>
-<li>Analyze（分析器）：使用 Pandas 来识别趋势和价格骤降。</li>
-<li>Messenger（信使）：向客户发送包含简洁报告和 AI 摘要的电子邮件 <h2 id="二、精简而强大的技术栈：纯 -Python- 的力量"><a href="# 二、精简而强大的技术栈：纯 -Python- 的力量" class="headerlink" title="二、精简而强大的技术栈：纯 Python 的力量"></a> 二、精简而强大的技术栈：纯 Python 的力量 </h2> 为了实现上述三步闭环，我没有依赖复杂的云服务架构或多层技术栈，而是仅仅依靠一套精简且强大的 Python 库。这种轻量化的工具选择，是保持项目简单、易于维护和快速部署的关键。<br>项目所使用的核心工具库清单如下：<br>| 工具库名称 | 核心功能 |<br>|——|——|<br>|Requests/BeautifulSoup| 负责核心的 Web 数据抓取（Web scraping）任务。|<br>|Pandas| 用于高效的数据清洗、处理和分析 |<br>|Matplotlib| 用于快速生成可视化图表 |<br>|OpenAI| 用于生成报告摘要和提供商业洞察。|<br>|Yagmail| 用于自动化发送邮件报告。|<br>|Schedule| 用于自动化整个工作流程的调度。|</li>
-</ul>
-<p>通过 <code>pip install request beautifulsoup4 pandas Matplotlib openai yagmail schedule</code> 命令即可安装所有必需的组件。这个技术栈体现了“用最少得工具做最多的事”的原则。</p>
-<h2 id="三、步骤拆解：从数据抓取到历史积累"><a href="# 三、步骤拆解：从数据抓取到历史积累" class="headerlink" title="三、步骤拆解：从数据抓取到历史积累"></a>三、步骤拆解：从数据抓取到历史积累 </h2><p> 自动化流程的第一步是持续、稳定地获取数据。</p>
-<h3 id="1- 爬取数据（Scraping-the-Data）"><a href="#1- 爬取数据（Scraping-the-Data）" class="headerlink" title="1. 爬取数据（Scraping the Data）"></a>1. 爬取数据（Scraping the Data）</h3><p>我构建了一个简化的爬虫函数<code>scrape_prices()</code>。这个函数的工作流程是：</p>
-<ul>
-<li>定义目标和伪装：设置目标 URL 并添加一个 User-Agent 头部，以模拟正常的浏览器访问，提高抓取成功率。</li>
-<li>发起请求：使用 <code>requests.get()</code> 方法获取页面内容。</li>
-<li>解析内容：使用 <code>BeautifulSoup</code> 来解析 HTML 文本。</li>
-<li>提取关键信息：通过 CSS 选择器（例如 .product、.name、.price）定位和提取产品名称和价格。需要注意的是，价格数据通常需要需要清洗，例如去除货币符号并转换为浮点数类型。</li>
-<li>构建数据集：将提取到的名称、价格和当前日期 <code>datatime.now().date()</code> 组织成一个数据字典列表。</li>
-<li>持久化存储：使用 <code>pd.DataFrame(products)</code> 将数据转换为 Pandas DataFrame，并追加写入到一个名为 prices.csv 的文件中。关键在于使用 mode=”a”（追加模式）和 header=False（不重复写入表头，确保每次运行都能在现有数据集上累加新的每日数据。<br>这个脚本每天运行一次，其结果是数据集自动地、持续地增长，为后续的历史分析奠定了基础。<h2 id="四、步骤拆解：历史数据分析与警报生成"><a href="# 四、步骤拆解：历史数据分析与警报生成" class="headerlink" title="四、步骤拆解：历史数据分析与警报生成"></a>四、步骤拆解：历史数据分析与警报生成 </h2> 一旦有了历史价格数据，脚本的第二部分就开始发挥其核心价值：价格变动检测。<h3 id="1- 读取和分组历史数据"><a href="#1- 读取和分组历史数据" class="headerlink" title="1. 读取和分组历史数据"></a>1. 读取和分组历史数据 </h3><code>analyze_prices()</code> 函数承担了数据分析的角色。首先，它读取 prices.csv 文件，并给列赋予名称（”name”，”price”，”date”）。然后，它利用 Pandas 强大的分组 <code>(groupby(&quot;name))</code> 功能来获取关键数据点：</li>
-<li>最新价格：使用 <code>last().reset_index()</code> 获取每个产品最新的记录。</li>
-<li>前一次价格：使用 <code>nth(-2).reset_index()</code> 获取每个产品倒数第二条记录，即前一日的价格。<h3 id="2- 对比与计算价格变动率"><a href="#2- 对比与计算价格变动率" class="headerlink" title="2. 对比与计算价格变动率"></a>2. 对比与计算价格变动率 </h3> 接下来，脚本将最新价格和前一次价格通过 <code>pd.merge</code> 基于产品名称（on=”name”）进行合并。<br>然后，它计算价格变动率：<br>这个计算结果以百分比形式存储在 <code>merged[&quot;change&quot;]</code> 列中。<h3 id="3- 设置警报阈值"><a href="#3- 设置警报阈值" class="headerlink" title="3. 设置警报阈值"></a>3. 设置警报阈值 </h3> 关键的业务逻辑在于警报触发。脚本设置了一个简单的规则：如果任何产品的价格变化（绝对值）超过 10%，则将其标记为警报（alerts=merged[merged[“change”].abs()&gt;10]）。<br>最终，这个函数返回一个包含产品名称、新旧价格以及百分比变化率的警报数据框。<h2 id="五、步骤拆解：专业化报告的生成与交付"><a href="# 五、步骤拆解：专业化报告的生成与交付" class="headerlink" title="五、步骤拆解：专业化报告的生成与交付"></a>五、步骤拆解：专业化报告的生成与交付 </h2> 仅仅发现价格变动是不够的，报告必须以专业、易懂且有说服力的方式呈现给客户，才能真正实现商业价值。<h3 id="1- 生成可视化图表"><a href="#1- 生成可视化图表" class="headerlink" title="1. 生成可视化图表"></a>1. 生成可视化图表 </h3> 为了让电子邮件报告看起来更专业，我加入了 Matplotlib 来生成一个简单的条形图（plot_changes(df)）。</li>
-<li>它绘制了被标记产品名称和它们的价格变化百分比。</li>
-<li>添加了标题和轴标签，并旋转了 X 轴标签以保证可读性。</li>
-<li>图表被保存为 price_changes.png 文件，作为邮件附件。<h3 id="2- 利用 -AI- 生成商业概要"><a href="#2- 利用 -AI- 生成商业概要" class="headerlink" title="2. 利用 AI 生成商业概要"></a>2. 利用 AI 生成商业概要 </h3> 这是提升报告价值的关键一步。客户需要的是上下文，而非仅仅是数据表格。通过集成 OpenAI API，脚本能够将警报数据框（DataFrame）转换为文本，并提示 AI 模型（如 gpt-4o-mini）生成一份简短的报告摘要（generate_summary(dataframe)）。<br>例如，AI 可以生成类似“Product X 下降了 15%，Product Y 上涨了 12% —— 建议相应调整广告预算”这样的专业性建议。正是这种上下文（context）和可操作性（actionability），使得报告更具销售力。<h3 id="3- 自动化电子邮件发送"><a href="#3- 自动化电子邮件发送" class="headerlink" title="3. 自动化电子邮件发送"></a>3. 自动化电子邮件发送 </h3> 我使用 Yagmail 库来处理邮件发送。它被用于连接 SMTP 服务器并发送电子邮件（send_report(df,summary)）。<br>邮件主题（body）被格式化为 HTML，包含每日价格报告的标题、AI 生成的摘要。最重要的步骤是将前面生成的 price_changes.png 文件作为附件发送。<h2 id="六、步骤拆解：整体工作流的自动化调度"><a href="# 六、步骤拆解：整体工作流的自动化调度" class="headerlink" title="六、步骤拆解：整体工作流的自动化调度"></a>六、步骤拆解：整体工作流的自动化调度 </h2> 为了确保脚本能够每天在指定时间运行，我使用了 schedule 库来管理整个工作流。<h3 id="1- 封装主作业函数"><a href="#1- 封装主作业函数" class="headerlink" title="1. 封装主作业函数"></a>1. 封装主作业函数 </h3> 首先，将所有步骤封装在一个主函数 <code>job()</code> 中：</li>
-<li>运行 <code>scrape_prices()</code> 进行数据抓取。</li>
-<li>运行 <code>df = analyze_prices()</code> 进行数据分析。</li>
-<li>设置条件判断：只有当警报数据框（df）不为空时，才执行后续的图表生成、AI 总结和邮件发送步骤。<h3 id="2- 定时调度"><a href="#2- 定时调度" class="headerlink" title="2. 定时调度"></a>2. 定时调度 </h3> 然后，使用 <code>schedule.every().day.at(&quot;08:00&quot;).do(job)</code> 设置作业在每天早上八点执行。<h3 id="3- 持续运行循环"><a href="#3- 持续运行循环" class="headerlink" title="3. 持续运行循环"></a>3. 持续运行循环 </h3> 最后，通过一个 while True 循环来持续检查是否有待执行的调度任务，并每隔 60 秒运行一次检查（schedule.run_pending() 和 time.sleep(60)）<br>至此，整个自动化系统搭建完成：它在每天早晨自动运行，抓取数据、检测变动、生成报告并通过电子邮件发送，而我则在醒来后便发现账户中有了新的收入。<h2 id="七、将自动化转化为可持续收入的商业模式"><a href="# 七、将自动化转化为可持续收入的商业模式" class="headerlink" title="七、将自动化转化为可持续收入的商业模式"></a>七、将自动化转化为可持续收入的商业模式 </h2> 一个可运行的脚本和一门赚钱的生意之间，隔着一个商业模式。我将这项自动化服务成功地商业化，设置了分级定价策略。<h3 id="1- 分级定价策略（Tiered-Monetizatiion）"><a href="#1- 分级定价策略（Tiered-Monetizatiion）" class="headerlink" title="1. 分级定价策略（Tiered Monetizatiion）"></a>1. 分级定价策略（Tiered Monetizatiion）</h3>通过提供不同层次的服务深度，我能够满足不同规模客户的需求，并将相同的核心代码复用与所有客户。<br>| 服务等级 | 价格（美元 / 月）| 核心价值交付 |<br>|——|——|——|<br>|Tier 1|$29| 跟踪一个网站，提供基础每日报告 |<br>|Tier 2|$59| 跟踪多达三个网站，增加趋势分析功能。|<br>|Tier 3|$99| 提供自定义 AI 洞察、预测性趋势分析和深度可视化报告。|<h3 id="2- 高效的客户管理"><a href="#2- 高效的客户管理" class="headerlink" title="2. 高效的客户管理"></a>2. 高效的客户管理 </h3> 这种模式最巧妙之处在于其极高的效率。对于每个新客户，我只需要为他们设置一个独立的 .env 配置文件和一个专用的 csv 数据集。所有客户都共享同一套核心代码。这意味着没增加一个客户，我的额外工作量几乎为零。<h2 id="八、扩展与复用：从一个脚本到多条收入线"><a href="# 八、扩展与复用：从一个脚本到多条收入线" class="headerlink" title="八、扩展与复用：从一个脚本到多条收入线"></a>八、扩展与复用：从一个脚本到多条收入线 </h2> 一旦掌握了这种自动化 分析 交付的骨架，就可以将这种模式快速克隆并应用到其他领域，实现收入线的指数级增长。<br>我利用相同的核心代码骨架，成功地将业务模型扩展到以下领域：</li>
-<li>社会媒体趋势报告</li>
-<li>联盟营销（Affiliate）价格监控</li>
-<li>加密货币价格变动追踪</li>
-<li>职位列表数据分析</li>
-<li>房地产价格警报 <br> 这种扩展的关键是：换掉 URL，调整核心分析逻辑。代码骨架保持不变，通过简单的修改即可创建一个全新的自动化产品。<h2 id="九、自动化商业模式的复利效应和可持续性"><a href="# 九、自动化商业模式的复利效应和可持续性" class="headerlink" title="九、自动化商业模式的复利效应和可持续性"></a>九、自动化商业模式的复利效应和可持续性 </h2> 这个 Python 自动化项目最强大的地方，在于它蕴含的复利价值（compounding value）。它不仅仅是出售一段代码，而是出售随着时间推移而不断改进的结果。<h3 id="1- 数据驱动的价值增长"><a href="#1- 数据驱动的价值增长" class="headerlink" title="1. 数据驱动的价值增长"></a>1. 数据驱动的价值增长 </h3> 自动化脚本手机的数据越多，它就越“聪明”，历史数据集的积累，使得 AI 的洞察更加深刻，趋势分析更加精准。<h3 id="2- 持续改进的客户体验"><a href="#2- 持续改进的客户体验" class="headerlink" title="2. 持续改进的客户体验"></a>2. 持续改进的客户体验 </h3> 每一天的自动化运行，都在使得报告更加丰富、预测更加准确，这意味着客户获得的价值在持续提升，从而保障了收入的稳定性和被动性。<br>这种商业模式的核心是：你的脚本每天都在为你和你的客户创造价值，并且这种价值是指数级增长的。你的收入不再依赖于你花费的时间，而是依赖于你的自动化系统持续不断地运行和积累数据。<h2 id="结语：自动化是下一代被动收入的关键"><a href="# 结语：自动化是下一代被动收入的关键" class="headerlink" title="结语：自动化是下一代被动收入的关键"></a>结语：自动化是下一代被动收入的关键 </h2> 从一个简单的 Python 爬虫，到每月稳定收入 300 美元的自动化业务，这个案例清晰地展示了技术如何转化为可扩展的商业资产。它的成功并非依赖于复杂的技术堆栈或巨额投资，而是依赖于对重复性任务的敏锐洞察，并利用一套精简的 Python 工具实现了自动化 分析 交付的闭环。<br>对于任何希望利用技术创造额外收入的人来说，这个模型提供了一个清晰、可复制的蓝图：找到一个重复的数据需求，用代码解决它，并将其转化为一个专业的、自动化的信息服务。自动化，正在静静地重塑被动收入的定义。</li>
-</ul>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-    </div>
-
-    
-    
-    
-        <div class="reward-container">
-  <div>买包烟</div>
-  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-    打赏
-  </button>
-  <div id="qr" style="display: none;">
-      
-      <div style="display: inline-block;">
-        <img src="/images/wechatpay.png" alt="市井一俗人 微信支付">
-        <p>微信支付</p>
-      </div>
-      
-      <div style="display: inline-block;">
-        <img src="/images/alipay.png" alt="市井一俗人 支付宝">
-        <p>支付宝</p>
-      </div>
-
-  </div>
-</div>
-
-        
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>小人市井
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="http://shenguosai.github.io/2025/10/23/%E4%B8%80%E4%B8%AAPython%E8%84%9A%E6%9C%AC%E5%A6%82%E4%BD%95%E9%9D%99%E9%BB%98%E6%9C%88%E5%85%A5300%E5%85%83%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%95%86%E4%B8%9A%E9%80%BB%E8%BE%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%8B%86%E8%A7%A3/" title="一个 Python 脚本如何静默月入 300 元，自动化商业逻辑与技术拆解">http://shenguosai.github.io/2025/10/23/一个Python脚本如何静默月入300元，自动化商业逻辑与技术拆解/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E6%90%9E%E9%92%B1/" rel="tag"># 搞钱</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2025/08/06/%E6%B0%B4%E6%9C%A8%E7%84%B6-%E4%BA%BA%E9%97%B4%E6%B8%85%E9%86%92%E4%B8%89%E9%83%A8%E6%9B%B2/" rel="prev" title="水木然 - 人间清醒三部曲">
-      <i class="fa fa-chevron-left"></i> 水木然 - 人间清醒三部曲
-    </a></div>
-      <div class="post-nav-item"></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
-          </div>
-          
-    <div class="comments" id="valine-comments"></div>
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%8F%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">序言 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9B%88%E5%88%A9%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%95%E5%88%99%EF%BC%9A%E4%B8%89%E6%AD%A5%E9%97%AD%E7%8E%AF%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">一、自动化盈利的核心法则：三步闭环模型 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%20%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%87%8D%E5%A4%8D%E6%80%A7%E7%9A%84%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86%EF%BC%88Automate%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 第一步：自动化重复性的数据收集（Automate）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%20%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%B0%86%E6%95%B0%E6%8D%AE%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%9C%89%E4%BB%B7%E5%80%BC%E7%9A%84%E6%B4%9E%E5%AF%9F%EF%BC%88Analyze%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 第二步：将数据转化为有价值的洞察（Analyze）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%20%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E8%87%AA%E5%8A%A8%E4%BA%A4%E4%BB%98%E4%BB%B7%E5%80%BC%EF%BC%88Deliver%EF%BC%89"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 第三步：自动交付价值（Deliver）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%B2%BE%E7%AE%80%E8%80%8C%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%8A%80%E6%9C%AF%E6%A0%88%EF%BC%9A%E7%BA%AF%20-Python-%20%E7%9A%84%E5%8A%9B%E9%87%8F"><span class="nav-number">1.2.</span> <span class="nav-text"> 二、精简而强大的技术栈：纯 Python 的力量 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%AD%A5%E9%AA%A4%E6%8B%86%E8%A7%A3%EF%BC%9A%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96%E5%88%B0%E5%8E%86%E5%8F%B2%E7%A7%AF%E7%B4%AF"><span class="nav-number">1.3.</span> <span class="nav-text">三、步骤拆解：从数据抓取到历史积累 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%20%E7%88%AC%E5%8F%96%E6%95%B0%E6%8D%AE%EF%BC%88Scraping-the-Data%EF%BC%89"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 爬取数据（Scraping the Data）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%AD%A5%E9%AA%A4%E6%8B%86%E8%A7%A3%EF%BC%9A%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E8%AD%A6%E6%8A%A5%E7%94%9F%E6%88%90"><span class="nav-number">1.4.</span> <span class="nav-text">四、步骤拆解：历史数据分析与警报生成 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%20%E8%AF%BB%E5%8F%96%E5%92%8C%E5%88%86%E7%BB%84%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. 读取和分组历史数据 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%20%E5%AF%B9%E6%AF%94%E4%B8%8E%E8%AE%A1%E7%AE%97%E4%BB%B7%E6%A0%BC%E5%8F%98%E5%8A%A8%E7%8E%87"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. 对比与计算价格变动率 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%20%E8%AE%BE%E7%BD%AE%E8%AD%A6%E6%8A%A5%E9%98%88%E5%80%BC"><span class="nav-number">1.4.3.</span> <span class="nav-text">3. 设置警报阈值 </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%AD%A5%E9%AA%A4%E6%8B%86%E8%A7%A3%EF%BC%9A%E4%B8%93%E4%B8%9A%E5%8C%96%E6%8A%A5%E5%91%8A%E7%9A%84%E7%94%9F%E6%88%90%E4%B8%8E%E4%BA%A4%E4%BB%98"><span class="nav-number">1.5.</span> <span class="nav-text">五、步骤拆解：专业化报告的生成与交付 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%20%E7%94%9F%E6%88%90%E5%8F%AF%E8%A7%86%E5%8C%96%E5%9B%BE%E8%A1%A8"><span class="nav-number">1.5.1.</span> <span class="nav-text">1. 生成可视化图表 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%20%E5%88%A9%E7%94%A8%20-AI-%20%E7%94%9F%E6%88%90%E5%95%86%E4%B8%9A%E6%A6%82%E8%A6%81"><span class="nav-number">1.5.2.</span> <span class="nav-text">2. 利用 AI 生成商业概要 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%20%E8%87%AA%E5%8A%A8%E5%8C%96%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81"><span class="nav-number">1.5.3.</span> <span class="nav-text">3. 自动化电子邮件发送 </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%AD%A5%E9%AA%A4%E6%8B%86%E8%A7%A3%EF%BC%9A%E6%95%B4%E4%BD%93%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E8%B0%83%E5%BA%A6"><span class="nav-number">1.6.</span> <span class="nav-text">六、步骤拆解：整体工作流的自动化调度 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%20%E5%B0%81%E8%A3%85%E4%B8%BB%E4%BD%9C%E4%B8%9A%E5%87%BD%E6%95%B0"><span class="nav-number">1.6.1.</span> <span class="nav-text">1. 封装主作业函数 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%20%E5%AE%9A%E6%97%B6%E8%B0%83%E5%BA%A6"><span class="nav-number">1.6.2.</span> <span class="nav-text">2. 定时调度 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%20%E6%8C%81%E7%BB%AD%E8%BF%90%E8%A1%8C%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.6.3.</span> <span class="nav-text">3. 持续运行循环 </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%B0%86%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%8F%AF%E6%8C%81%E7%BB%AD%E6%94%B6%E5%85%A5%E7%9A%84%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.7.</span> <span class="nav-text">七、将自动化转化为可持续收入的商业模式 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%20%E5%88%86%E7%BA%A7%E5%AE%9A%E4%BB%B7%E7%AD%96%E7%95%A5%EF%BC%88Tiered-Monetizatiion%EF%BC%89"><span class="nav-number">1.7.1.</span> <span class="nav-text">1. 分级定价策略（Tiered Monetizatiion）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%20%E9%AB%98%E6%95%88%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AE%A1%E7%90%86"><span class="nav-number">1.7.2.</span> <span class="nav-text">2. 高效的客户管理 </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%89%A9%E5%B1%95%E4%B8%8E%E5%A4%8D%E7%94%A8%EF%BC%9A%E4%BB%8E%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC%E5%88%B0%E5%A4%9A%E6%9D%A1%E6%94%B6%E5%85%A5%E7%BA%BF"><span class="nav-number">1.8.</span> <span class="nav-text">八、扩展与复用：从一个脚本到多条收入线 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E8%87%AA%E5%8A%A8%E5%8C%96%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%A4%8D%E5%88%A9%E6%95%88%E5%BA%94%E5%92%8C%E5%8F%AF%E6%8C%81%E7%BB%AD%E6%80%A7"><span class="nav-number">1.9.</span> <span class="nav-text">九、自动化商业模式的复利效应和可持续性 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%20%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E7%9A%84%E4%BB%B7%E5%80%BC%E5%A2%9E%E9%95%BF"><span class="nav-number">1.9.1.</span> <span class="nav-text">1. 数据驱动的价值增长 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%20%E6%8C%81%E7%BB%AD%E6%94%B9%E8%BF%9B%E7%9A%84%E5%AE%A2%E6%88%B7%E4%BD%93%E9%AA%8C"><span class="nav-number">1.9.2.</span> <span class="nav-text">2. 持续改进的客户体验 </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD%EF%BC%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E6%98%AF%E4%B8%8B%E4%B8%80%E4%BB%A3%E8%A2%AB%E5%8A%A8%E6%94%B6%E5%85%A5%E7%9A%84%E5%85%B3%E9%94%AE"><span class="nav-number">1.10.</span> <span class="nav-text">结语：自动化是下一代被动收入的关键 </span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="市井一俗人"
-      src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">市井一俗人</p>
-  <div class="site-description" itemprop="description">怀出世之心，行入世之事。</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">82</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">18</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">41</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="mailto:shenguosai@gmail.com" title="E-Mail → mailto:shenguosai@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2025</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">市井一俗人</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-area"></i>
-    </span>
-    <span title="站点总字数">469k</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    <span title="站点阅读时长">7:06</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : false,
-      appId      : '0dJ6KzQjpKzOPUi998D88vE3-gzGzoHsz',
-      appKey     : 'LseOZQMpqtwJKZALm9XXl9hA',
-      placeholder: "Just go go",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
-</script>
+    <%}%>
+    <% if (theme.canvas_nest.enable) { %>
+    <script type="text/javascript" color="<%- theme.canvas_nest.color %>"
+        pointColor="<%- theme.canvas_nest.pointColor %>" opacity='<%- theme.canvas_nest.opacity %>'
+        zIndex="<%- theme.canvas_nest.zIndex %>" count="<%- theme.canvas_nest.count %>"
+        src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.canvas_nest) %>"></script>
+    <% } %>
+
+    <% if (theme.ribbon.enable) { %>
+    <% var ribbonSrc = theme.ribbon.clickChange ? theme.libs.js.ribbon : theme.libs.js.ribbonRefresh; %>
+    <script type="text/javascript" size="<%- theme.ribbon.size %>" alpha='<%- theme.ribbon.alpha %>'
+        zIndex="<%- theme.ribbon.zIndex %>" src="<%- theme.jsDelivr.url %><%- url_for(ribbonSrc) %>" async="async"></script>
+    <% } %>
+
+    <% if (theme.ribbon_dynamic.enable) { %>
+    <script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.ribbon_dynamic) %>" async="async"></script>
+    <% } %>
+
+    <% if (theme.instantpage.enable) { %>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.instantpage) %>" type="module"></script>
+    <% } %>
 
 </body>
+
 </html>

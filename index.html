@@ -1,1537 +1,173 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 7.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+<!DOCTYPE HTML>
+<html lang="<%= config.language %>">
+<%- partial('_partial/head') %>
 
-<link rel="stylesheet" href="/css/main.css">
+<body>
+    <%- partial('_partial/header') %>
+    <%- body %>
 
+    <%- partial('_partial/footer') %>
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+    <%- partial('_partial/search') %>
+    <%- partial('_widget/day-night') %>
+    <%- partial('_partial/back-top') %>
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.materialize) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.masonry) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.aos) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.scrollProgress) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.lightgallery) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.matery) %>"></script>
 
-  <meta name="description" content="怀出世之心，行入世之事。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小人驿站">
-<meta property="og:url" content="http://shenguosai.github.io/index.html">
-<meta property="og:site_name" content="小人驿站">
-<meta property="og:description" content="怀出世之心，行入世之事。">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="市井一俗人">
-<meta name="twitter:card" content="summary">
+    <% if (theme.mermaid.enable) { %>
+        <!-- <script src='https://unpkg.com/mermaid@<%= theme.mermaid.version %>/dist/mermaid.min.js'></script> -->
+        <script src='<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.mermaid) %>'></script>
+        <script>
+          if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+          }
+        </script>
+    <% } %>
 
-<link rel="canonical" href="http://shenguosai.github.io/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
-</script>
-
-  <title>小人驿站</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-<link rel="alternate" href="/atom.xml" title="小人驿站" type="application/atom+xml">
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">小人驿站</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">模拟电路工程师</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">82</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">41</span></a>
-
-  </li>
-        <li class="menu-item menu-item-schedule">
-
-    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
+    <% if (theme.translate.enable) { %>
+        <script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.sc2tc) %>"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "<%= config.url %>"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    <% } %>
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2025/10/23/%E4%B8%80%E4%B8%AAPython%E8%84%9A%E6%9C%AC%E5%A6%82%E4%BD%95%E9%9D%99%E9%BB%98%E6%9C%88%E5%85%A5300%E5%85%83%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%95%86%E4%B8%9A%E9%80%BB%E8%BE%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%8B%86%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="市井一俗人">
-      <meta itemprop="description" content="怀出世之心，行入世之事。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小人驿站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/10/23/%E4%B8%80%E4%B8%AAPython%E8%84%9A%E6%9C%AC%E5%A6%82%E4%BD%95%E9%9D%99%E9%BB%98%E6%9C%88%E5%85%A5300%E5%85%83%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%95%86%E4%B8%9A%E9%80%BB%E8%BE%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%8B%86%E8%A7%A3/" class="post-title-link" itemprop="url">一个 Python 脚本如何静默月入 300 元，自动化商业逻辑与技术拆解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-10-23 10:05:49 / 修改时间：14:45:15" itemprop="dateCreated datePublished" datetime="2025-10-23T10:05:49+08:00">2025-10-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9D%82%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">杂学</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9D%82%E5%AD%A6/%E5%95%86%E4%B8%9A/" itemprop="url" rel="index"><span itemprop="name">商业</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2025/10/23/%E4%B8%80%E4%B8%AAPython%E8%84%9A%E6%9C%AC%E5%A6%82%E4%BD%95%E9%9D%99%E9%BB%98%E6%9C%88%E5%85%A5300%E5%85%83%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%95%86%E4%B8%9A%E9%80%BB%E8%BE%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%8B%86%E8%A7%A3/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2025/10/23/%E4%B8%80%E4%B8%AAPython%E8%84%9A%E6%9C%AC%E5%A6%82%E4%BD%95%E9%9D%99%E9%BB%98%E6%9C%88%E5%85%A5300%E5%85%83%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%95%86%E4%B8%9A%E9%80%BB%E8%BE%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%8B%86%E8%A7%A3/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><em>转自：今日头条 - 高效码农</em></p>
-<h1 id="序言"><a href="# 序言" class="headerlink" title="序言"></a>序言 </h1><p> 在一个充斥着复杂技术和喧嚣创业故事的时代，往往是那些“安静”运行的自动化程序，在不经意间构建起了真正被动且可持续的收入流。我的故事始于一个简单的“帮忙”。一位朋友急需一份跨越多个电商网站的每日产品价格报告。为了解决这个问题，我快速编写了一个 Python 爬虫。<br>起初，这只是一个技术上的小插曲。然而，仅仅一周后，我的朋友主动提出付费，希望我能继续维护并运行这个脚本。又过了几周，他的两位同事也表达了同样的付费需求。至此，这个原本的“帮忙”正是转变成了一门小小的自动化业务。<br>这个业务的特殊之处在于它的极简主义：没有员工，没有冗长的会议，只有一段 Python 代码在我休息时静静地运行，为我创造收入。这种模式的核心精髓，正是将重复性的数据工作转化为可交付的、有价值的分析报告。<br>本文将深入剖析这个静默盈利的 Python 脚本背后的核心商业理念，完整的技术栈、详细的代码逻辑拆解，以及如何将其转化为多层次的收入模式。这不仅仅是一个关于代码的故事，更是一个关于如何利用自动化技术实现复利价值的商业案例。</p>
-<h2 id="一、自动化盈利的核心法则：三步闭环模型"><a href="# 一、自动化盈利的核心法则：三步闭环模型" class="headerlink" title="一、自动化盈利的核心法则：三步闭环模型"></a>一、自动化盈利的核心法则：三步闭环模型 </h2><p> 所有能够实现盈利的自动化项目，无论其具体领域如何，都遵循一个清晰且重复的“自动化 分析 交付”三步循环。理解并掌握这个闭环，是构建任何自动化业务的基石。</p>
-<h3 id="1- 第一步：自动化重复性的数据收集（Automate）"><a href="#1- 第一步：自动化重复性的数据收集（Automate）" class="headerlink" title="1. 第一步：自动化重复性的数据收集（Automate）"></a>1. 第一步：自动化重复性的数据收集（Automate）</h3><p>一切的起点，在于用程序取代人类重复性的操作。对于这个价格监控脚本而言，这一步是数据抓取。它每天定时运行，从多个电子商务网站上拉取最新的产品价格信息。</p>
-<h3 id="2- 第二步：将数据转化为有价值的洞察（Analyze）"><a href="#2- 第二步：将数据转化为有价值的洞察（Analyze）" class="headerlink" title="2. 第二步：将数据转化为有价值的洞察（Analyze）"></a>2. 第二步：将数据转化为有价值的洞察（Analyze）</h3><p>原始数据本身往往价值有限。真正的价值在于对数据进行分析和丰富。在这个环节，脚本使用了 Pandas 库对收集到的历史价格进行处理，以检测价格趋势或突发的价格暴跌。通过计算价格变化率，原始数据被转化为了可操作的商业洞察。</p>
-<h3 id="3- 第三步：自动交付价值（Deliver）"><a href="#3- 第三步：自动交付价值（Deliver）" class="headerlink" title="3. 第三步：自动交付价值（Deliver）"></a>3. 第三步：自动交付价值（Deliver）</h3><p>再好的洞察，如果不能及时、专业地送达客户手中，也毫无意义。最后一步是自动交付。在这个案例中，脚本通过电子邮件，将整理干净的报告，清晰的可视化图表以及最关键的 AI 撰写的摘要发送给客户。这种自动化的交付方式，极大地提升了报告的专业度和说服力。<br>我的自动化脚本的具体结构如下：</p>
-<ul>
-<li>Scraper（爬虫）：负责从多个网站获取每日产品价格。</li>
-<li>Analyze（分析器）：使用 Pandas 来识别趋势和价格骤降。</li>
-<li>Messenger（信使）：向客户发送包含简洁报告和 AI 摘要的电子邮件 <h2 id="二、精简而强大的技术栈：纯 -Python- 的力量"><a href="# 二、精简而强大的技术栈：纯 -Python- 的力量" class="headerlink" title="二、精简而强大的技术栈：纯 Python 的力量"></a> 二、精简而强大的技术栈：纯 Python 的力量 </h2> 为了实现上述三步闭环，我没有依赖复杂的云服务架构或多层技术栈，而是仅仅依靠一套精简且强大的 Python 库。这种轻量化的工具选择，是保持项目简单、易于维护和快速部署的关键。<br>项目所使用的核心工具库清单如下：<br>| 工具库名称 | 核心功能 |<br>|——|——|<br>|Requests/BeautifulSoup| 负责核心的 Web 数据抓取（Web scraping）任务。|<br>|Pandas| 用于高效的数据清洗、处理和分析 |<br>|Matplotlib| 用于快速生成可视化图表 |<br>|OpenAI| 用于生成报告摘要和提供商业洞察。|<br>|Yagmail| 用于自动化发送邮件报告。|<br>|Schedule| 用于自动化整个工作流程的调度。|</li>
-</ul>
-<p>通过 <code>pip install request beautifulsoup4 pandas Matplotlib openai yagmail schedule</code> 命令即可安装所有必需的组件。这个技术栈体现了“用最少得工具做最多的事”的原则。</p>
-<h2 id="三、步骤拆解：从数据抓取到历史积累"><a href="# 三、步骤拆解：从数据抓取到历史积累" class="headerlink" title="三、步骤拆解：从数据抓取到历史积累"></a>三、步骤拆解：从数据抓取到历史积累 </h2><p> 自动化流程的第一步是持续、稳定地获取数据。</p>
-<h3 id="1- 爬取数据（Scraping-the-Data）"><a href="#1- 爬取数据（Scraping-the-Data）" class="headerlink" title="1. 爬取数据（Scraping the Data）"></a>1. 爬取数据（Scraping the Data）</h3><p>我构建了一个简化的爬虫函数<code>scrape_prices()</code>。这个函数的工作流程是：</p>
-<ul>
-<li>定义目标和伪装：设置目标 URL 并添加一个 User-Agent 头部，以模拟正常的浏览器访问，提高抓取成功率。</li>
-<li>发起请求：使用 <code>requests.get()</code> 方法获取页面内容。</li>
-<li>解析内容：使用 <code>BeautifulSoup</code> 来解析 HTML 文本。</li>
-<li>提取关键信息：通过 CSS 选择器（例如 .product、.name、.price）定位和提取产品名称和价格。需要注意的是，价格数据通常需要需要清洗，例如去除货币符号并转换为浮点数类型。</li>
-<li>构建数据集：将提取到的名称、价格和当前日期 <code>datatime.now().date()</code> 组织成一个数据字典列表。</li>
-<li>持久化存储：使用 <code>pd.DataFrame(products)</code> 将数据转换为 Pandas DataFrame，并追加写入到一个名为 prices.csv 的文件中。关键在于使用 mode=”a”（追加模式）和 header=False（不重复写入表头，确保每次运行都能在现有数据集上累加新的每日数据。<br>这个脚本每天运行一次，其结果是数据集自动地、持续地增长，为后续的历史分析奠定了基础。<h2 id="四、步骤拆解：历史数据分析与警报生成"><a href="# 四、步骤拆解：历史数据分析与警报生成" class="headerlink" title="四、步骤拆解：历史数据分析与警报生成"></a>四、步骤拆解：历史数据分析与警报生成 </h2> 一旦有了历史价格数据，脚本的第二部分就开始发挥其核心价值：价格变动检测。<h3 id="1- 读取和分组历史数据"><a href="#1- 读取和分组历史数据" class="headerlink" title="1. 读取和分组历史数据"></a>1. 读取和分组历史数据 </h3><code>analyze_prices()</code> 函数承担了数据分析的角色。首先，它读取 prices.csv 文件，并给列赋予名称（”name”，”price”，”date”）。然后，它利用 Pandas 强大的分组 <code>(groupby(&quot;name))</code> 功能来获取关键数据点：</li>
-<li>最新价格：使用 <code>last().reset_index()</code> 获取每个产品最新的记录。</li>
-<li>前一次价格：使用 <code>nth(-2).reset_index()</code> 获取每个产品倒数第二条记录，即前一日的价格。<h3 id="2- 对比与计算价格变动率"><a href="#2- 对比与计算价格变动率" class="headerlink" title="2. 对比与计算价格变动率"></a>2. 对比与计算价格变动率 </h3> 接下来，脚本将最新价格和前一次价格通过 <code>pd.merge</code> 基于产品名称（on=”name”）进行合并。<br>然后，它计算价格变动率：<br>这个计算结果以百分比形式存储在 <code>merged[&quot;change&quot;]</code> 列中。<h3 id="3- 设置警报阈值"><a href="#3- 设置警报阈值" class="headerlink" title="3. 设置警报阈值"></a>3. 设置警报阈值 </h3> 关键的业务逻辑在于警报触发。脚本设置了一个简单的规则：如果任何产品的价格变化（绝对值）超过 10%，则将其标记为警报（alerts=merged[merged[“change”].abs()&gt;10]）。<br>最终，这个函数返回一个包含产品名称、新旧价格以及百分比变化率的警报数据框。<h2 id="五、步骤拆解：专业化报告的生成与交付"><a href="# 五、步骤拆解：专业化报告的生成与交付" class="headerlink" title="五、步骤拆解：专业化报告的生成与交付"></a>五、步骤拆解：专业化报告的生成与交付 </h2> 仅仅发现价格变动是不够的，报告必须以专业、易懂且有说服力的方式呈现给客户，才能真正实现商业价值。<h3 id="1- 生成可视化图表"><a href="#1- 生成可视化图表" class="headerlink" title="1. 生成可视化图表"></a>1. 生成可视化图表 </h3> 为了让电子邮件报告看起来更专业，我加入了 Matplotlib 来生成一个简单的条形图（plot_changes(df)）。</li>
-<li>它绘制了被标记产品名称和它们的价格变化百分比。</li>
-<li>添加了标题和轴标签，并旋转了 X 轴标签以保证可读性。</li>
-<li>图表被保存为 price_changes.png 文件，作为邮件附件。<h3 id="2- 利用 -AI- 生成商业概要"><a href="#2- 利用 -AI- 生成商业概要" class="headerlink" title="2. 利用 AI 生成商业概要"></a>2. 利用 AI 生成商业概要 </h3> 这是提升报告价值的关键一步。客户需要的是上下文，而非仅仅是数据表格。通过集成 OpenAI API，脚本能够将警报数据框（DataFrame）转换为文本，并提示 AI 模型（如 gpt-4o-mini）生成一份简短的报告摘要（generate_summary(dataframe)）。<br>例如，AI 可以生成类似“Product X 下降了 15%，Product Y 上涨了 12% —— 建议相应调整广告预算”这样的专业性建议。正是这种上下文（context）和可操作性（actionability），使得报告更具销售力。<h3 id="3- 自动化电子邮件发送"><a href="#3- 自动化电子邮件发送" class="headerlink" title="3. 自动化电子邮件发送"></a>3. 自动化电子邮件发送 </h3> 我使用 Yagmail 库来处理邮件发送。它被用于连接 SMTP 服务器并发送电子邮件（send_report(df,summary)）。<br>邮件主题（body）被格式化为 HTML，包含每日价格报告的标题、AI 生成的摘要。最重要的步骤是将前面生成的 price_changes.png 文件作为附件发送。<h2 id="六、步骤拆解：整体工作流的自动化调度"><a href="# 六、步骤拆解：整体工作流的自动化调度" class="headerlink" title="六、步骤拆解：整体工作流的自动化调度"></a>六、步骤拆解：整体工作流的自动化调度 </h2> 为了确保脚本能够每天在指定时间运行，我使用了 schedule 库来管理整个工作流。<h3 id="1- 封装主作业函数"><a href="#1- 封装主作业函数" class="headerlink" title="1. 封装主作业函数"></a>1. 封装主作业函数 </h3> 首先，将所有步骤封装在一个主函数 <code>job()</code> 中：</li>
-<li>运行 <code>scrape_prices()</code> 进行数据抓取。</li>
-<li>运行 <code>df = analyze_prices()</code> 进行数据分析。</li>
-<li>设置条件判断：只有当警报数据框（df）不为空时，才执行后续的图表生成、AI 总结和邮件发送步骤。<h3 id="2- 定时调度"><a href="#2- 定时调度" class="headerlink" title="2. 定时调度"></a>2. 定时调度 </h3> 然后，使用 <code>schedule.every().day.at(&quot;08:00&quot;).do(job)</code> 设置作业在每天早上八点执行。<h3 id="3- 持续运行循环"><a href="#3- 持续运行循环" class="headerlink" title="3. 持续运行循环"></a>3. 持续运行循环 </h3> 最后，通过一个 while True 循环来持续检查是否有待执行的调度任务，并每隔 60 秒运行一次检查（schedule.run_pending() 和 time.sleep(60)）<br>至此，整个自动化系统搭建完成：它在每天早晨自动运行，抓取数据、检测变动、生成报告并通过电子邮件发送，而我则在醒来后便发现账户中有了新的收入。<h2 id="七、将自动化转化为可持续收入的商业模式"><a href="# 七、将自动化转化为可持续收入的商业模式" class="headerlink" title="七、将自动化转化为可持续收入的商业模式"></a>七、将自动化转化为可持续收入的商业模式 </h2> 一个可运行的脚本和一门赚钱的生意之间，隔着一个商业模式。我将这项自动化服务成功地商业化，设置了分级定价策略。<h3 id="1- 分级定价策略（Tiered-Monetizatiion）"><a href="#1- 分级定价策略（Tiered-Monetizatiion）" class="headerlink" title="1. 分级定价策略（Tiered Monetizatiion）"></a>1. 分级定价策略（Tiered Monetizatiion）</h3>通过提供不同层次的服务深度，我能够满足不同规模客户的需求，并将相同的核心代码复用与所有客户。<br>| 服务等级 | 价格（美元 / 月）| 核心价值交付 |<br>|——|——|——|<br>|Tier 1|$29| 跟踪一个网站，提供基础每日报告 |<br>|Tier 2|$59| 跟踪多达三个网站，增加趋势分析功能。|<br>|Tier 3|$99| 提供自定义 AI 洞察、预测性趋势分析和深度可视化报告。|<h3 id="2- 高效的客户管理"><a href="#2- 高效的客户管理" class="headerlink" title="2. 高效的客户管理"></a>2. 高效的客户管理 </h3> 这种模式最巧妙之处在于其极高的效率。对于每个新客户，我只需要为他们设置一个独立的 .env 配置文件和一个专用的 csv 数据集。所有客户都共享同一套核心代码。这意味着没增加一个客户，我的额外工作量几乎为零。<h2 id="八、扩展与复用：从一个脚本到多条收入线"><a href="# 八、扩展与复用：从一个脚本到多条收入线" class="headerlink" title="八、扩展与复用：从一个脚本到多条收入线"></a>八、扩展与复用：从一个脚本到多条收入线 </h2> 一旦掌握了这种自动化 分析 交付的骨架，就可以将这种模式快速克隆并应用到其他领域，实现收入线的指数级增长。<br>我利用相同的核心代码骨架，成功地将业务模型扩展到以下领域：</li>
-<li>社会媒体趋势报告</li>
-<li>联盟营销（Affiliate）价格监控</li>
-<li>加密货币价格变动追踪</li>
-<li>职位列表数据分析</li>
-<li>房地产价格警报 <br> 这种扩展的关键是：换掉 URL，调整核心分析逻辑。代码骨架保持不变，通过简单的修改即可创建一个全新的自动化产品。<h2 id="九、自动化商业模式的复利效应和可持续性"><a href="# 九、自动化商业模式的复利效应和可持续性" class="headerlink" title="九、自动化商业模式的复利效应和可持续性"></a>九、自动化商业模式的复利效应和可持续性 </h2> 这个 Python 自动化项目最强大的地方，在于它蕴含的复利价值（compounding value）。它不仅仅是出售一段代码，而是出售随着时间推移而不断改进的结果。<h3 id="1- 数据驱动的价值增长"><a href="#1- 数据驱动的价值增长" class="headerlink" title="1. 数据驱动的价值增长"></a>1. 数据驱动的价值增长 </h3> 自动化脚本手机的数据越多，它就越“聪明”，历史数据集的积累，使得 AI 的洞察更加深刻，趋势分析更加精准。<h3 id="2- 持续改进的客户体验"><a href="#2- 持续改进的客户体验" class="headerlink" title="2. 持续改进的客户体验"></a>2. 持续改进的客户体验 </h3> 每一天的自动化运行，都在使得报告更加丰富、预测更加准确，这意味着客户获得的价值在持续提升，从而保障了收入的稳定性和被动性。<br>这种商业模式的核心是：你的脚本每天都在为你和你的客户创造价值，并且这种价值是指数级增长的。你的收入不再依赖于你花费的时间，而是依赖于你的自动化系统持续不断地运行和积累数据。<h2 id="结语：自动化是下一代被动收入的关键"><a href="# 结语：自动化是下一代被动收入的关键" class="headerlink" title="结语：自动化是下一代被动收入的关键"></a>结语：自动化是下一代被动收入的关键 </h2> 从一个简单的 Python 爬虫，到每月稳定收入 300 美元的自动化业务，这个案例清晰地展示了技术如何转化为可扩展的商业资产。它的成功并非依赖于复杂的技术堆栈或巨额投资，而是依赖于对重复性任务的敏锐洞察，并利用一套精简的 Python 工具实现了自动化 分析 交付的闭环。<br>对于任何希望利用技术创造额外收入的人来说，这个模型提供了一个清晰、可复制的蓝图：找到一个重复的数据需求，用代码解决它，并将其转化为一个专业的、自动化的信息服务。自动化，正在静静地重塑被动收入的定义。</li>
-</ul>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2025/08/06/%E6%B0%B4%E6%9C%A8%E7%84%B6-%E4%BA%BA%E9%97%B4%E6%B8%85%E9%86%92%E4%B8%89%E9%83%A8%E6%9B%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="市井一俗人">
-      <meta itemprop="description" content="怀出世之心，行入世之事。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小人驿站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/08/06/%E6%B0%B4%E6%9C%A8%E7%84%B6-%E4%BA%BA%E9%97%B4%E6%B8%85%E9%86%92%E4%B8%89%E9%83%A8%E6%9B%B2/" class="post-title-link" itemprop="url">水木然 - 人间清醒三部曲</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-08-06 14:50:14" itemprop="dateCreated datePublished" datetime="2025-08-06T14:50:14+08:00">2025-08-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-10-22 20:42:47" itemprop="dateModified" datetime="2025-10-22T20:42:47+08:00">2025-10-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E5%AD%A6%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">文学爱好</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E5%AD%A6%E7%88%B1%E5%A5%BD/%E6%95%A3%E6%96%87%E8%AF%97%E7%AD%89/" itemprop="url" rel="index"><span itemprop="name">散文诗等</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2025/08/06/%E6%B0%B4%E6%9C%A8%E7%84%B6-%E4%BA%BA%E9%97%B4%E6%B8%85%E9%86%92%E4%B8%89%E9%83%A8%E6%9B%B2/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2025/08/06/%E6%B0%B4%E6%9C%A8%E7%84%B6-%E4%BA%BA%E9%97%B4%E6%B8%85%E9%86%92%E4%B8%89%E9%83%A8%E6%9B%B2/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>88k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1:20</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          有东西被加密了, 请输入密码查看.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/08/06/%E6%B0%B4%E6%9C%A8%E7%84%B6-%E4%BA%BA%E9%97%B4%E6%B8%85%E9%86%92%E4%B8%89%E9%83%A8%E6%9B%B2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
+    <% if (theme.sakura.enable) { %>
         
-      
-    </div>
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.sakura) %>"><\/script>');
+            }
+        </script>
+    <% } %>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+    <!-- 雪花特效 -->
+    <% if (theme.snowdown.enable) { %> 
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.snow) %>"><\/script>');
+            }
+        </script>
+    <% } %>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2025/07/31/%E5%85%B3%E4%BA%8E%E4%BA%B2%E5%AD%90/">
+    <!-- 鼠标星星特效 -->
+    <% if (theme.mouseStar.enable) { %> 
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.star) %>"><\/script>');
+            }
+        </script>
+    <% } %>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="市井一俗人">
-      <meta itemprop="description" content="怀出世之心，行入世之事。">
-    </span>
+    <% if (theme.tcaptcha.enable) { %> 
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.tcaptcha) %>"></script>
+        <button id="TencentCaptcha" data-appid="<%- theme.tcaptcha.appid %>" data-cbfn="callback" type="button" hidden></button>
+    <% } %>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小人驿站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/07/31/%E5%85%B3%E4%BA%8E%E4%BA%B2%E5%AD%90/" class="post-title-link" itemprop="url">关于亲子</a>
-        </h2>
+    <%- partial('_partial/baidu-analytics') %>
+    <%- partial('_partial/baidu-push') %>
+    <% if (theme.clicklove.enable) { %>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.clicklove) %>" async="async"></script>
+    <% } %>
+    <% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
+    <script async src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.busuanzi) %>"></script>
+    <% } %>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
+    <% if (theme.tidio.enable) { %>
+        <script src="//code.tidio.co/<%- theme.tidio.public_key %>.js"></script>
+        <script>
+            $(document).ready(function () {
+                setInterval(change_Tidio, 50);
+                function change_Tidio() {
+                    var tidio=$("#tidio-chat iframe");
+                    if(tidio.css("display")=="block"&& $(window).width()>977 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"<%if(theme.toc.showToggleBtn){%>85px<%}else{%>20px<%}%>":"20px";
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";
+                        document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
+                        document.getElementById("tidio-chat-iframe").style.zIndex="998";
+                    }
+                }
+            });
+        </script>
+    <% } %>
 
-              <time title="创建时间：2025-07-31 11:07:22 / 修改时间：17:22:11" itemprop="dateCreated datePublished" datetime="2025-07-31T11:07:22+08:00">2025-07-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index"><span itemprop="name">生活</span></a>
-                </span>
-            </span>
+    <% if (theme.daovoice.enable) { %>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: "<%- theme.daovoice.app_id %>"
+        });
+        daovoice('update');
+    </script>
+    <% } %>
 
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2025/07/31/%E5%85%B3%E4%BA%8E%E4%BA%B2%E5%AD%90/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2025/07/31/%E5%85%B3%E4%BA%8E%E4%BA%B2%E5%AD%90/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>248</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
+    <!--腾讯兔小巢-->
+    <% if (theme.tuxiaochao.enable) { %>
+        <div style="position:fixed;bottom:125px;right:16px;cursor: pointer;">
+            <a title="兔小巢" href="https://support.qq.com/products/<%- theme.tuxiaochao.productId %>"><i class="fa fa-comments fa-3x"  aria-hidden="true"></i></a>
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> 首先，这不是关于育儿的感受，这是关于生死的思考。<br> 上一篇文章《2025 年大年初三济南一日游》中提到去济南看望大爹，那个时候大爹虽然看上去衰老，精神头不足，但是自理能力还是有的。2025 年正月初三，阳历 1 月 31 日；今天，2025 年 7 月 31 日，间隔正好半年，前天——周二晚上 9 点半左右收到了我哥的微信。说大爹在家摔了一跤，导致大腿骨骨折，后脑勺也磕到了一下，送医、住院，直到这个点才忙活完。昨天在医院做了全面检查，脑萎缩、肾功能减弱，肝也有问题。82 岁高龄的老人经过这样一番折腾，整个人顿时更加不好了。</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2025/07/22/%E5%9C%A8%E9%9F%A9%E5%9B%BD%E5%AE%B6%E5%AE%BD%E4%B8%AD%E9%83%A8%E7%BD%B2%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="市井一俗人">
-      <meta itemprop="description" content="怀出世之心，行入世之事。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小人驿站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/07/22/%E5%9C%A8%E9%9F%A9%E5%9B%BD%E5%AE%B6%E5%AE%BD%E4%B8%AD%E9%83%A8%E7%BD%B2%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" class="post-title-link" itemprop="url">在韩国家宽中部署科学上网</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-07-22 09:37:23" itemprop="dateCreated datePublished" datetime="2025-07-22T09:37:23+08:00">2025-07-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-07-29 20:07:11" itemprop="dateModified" datetime="2025-07-29T20:07:11+08:00">2025-07-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">网络服务</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2025/07/22/%E5%9C%A8%E9%9F%A9%E5%9B%BD%E5%AE%B6%E5%AE%BD%E4%B8%AD%E9%83%A8%E7%BD%B2%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2025/07/22/%E5%9C%A8%E9%9F%A9%E5%9B%BD%E5%AE%B6%E5%AE%BD%E4%B8%AD%E9%83%A8%E7%BD%B2%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          有东西被加密了, 请输入密码查看.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/07/22/%E5%9C%A8%E9%9F%A9%E5%9B%BD%E5%AE%B6%E5%AE%BD%E4%B8%AD%E9%83%A8%E7%BD%B2%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2025/05/26/%E5%85%B3%E4%BA%8E%E4%BD%8E%E7%89%88%E6%9C%ACVirtuoso%E6%97%A0%E6%B3%95%E8%B0%83%E7%94%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="市井一俗人">
-      <meta itemprop="description" content="怀出世之心，行入世之事。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小人驿站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/05/26/%E5%85%B3%E4%BA%8E%E4%BD%8E%E7%89%88%E6%9C%ACVirtuoso%E6%97%A0%E6%B3%95%E8%B0%83%E7%94%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">关于低版本 Virtuoso 无法调用环境变量的解决方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-05-26 11:31:50" itemprop="dateCreated datePublished" datetime="2025-05-26T11:31:50+08:00">2025-05-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-07-29 19:54:54" itemprop="dateModified" datetime="2025-07-29T19:54:54+08:00">2025-07-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/" itemprop="url" rel="index"><span itemprop="name">半导体专业</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/EDA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">EDA工具</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2025/05/26/%E5%85%B3%E4%BA%8E%E4%BD%8E%E7%89%88%E6%9C%ACVirtuoso%E6%97%A0%E6%B3%95%E8%B0%83%E7%94%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2025/05/26/%E5%85%B3%E4%BA%8E%E4%BD%8E%E7%89%88%E6%9C%ACVirtuoso%E6%97%A0%E6%B3%95%E8%B0%83%E7%94%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>551</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>由于在 Virtuoso 中，系统的环境变量没有扩展到工具内部，如果在写 SKILL 脚本时需要调用系统环境变量的方法如下:</p>
-<ol>
-<li>作业环境<br>Virtuoso 6.18.040</li>
-<li>确认系统变量已被定义 <br> 比如: MGC_HOME 这个变量 <br> 首先在终端中确认是否已定义: <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csh">echo $MGC_HOME<br></code></pre></td></tr></table></figure></li>
-<li>配置命令 <br> 如果是直接在 CIW 中直接使用:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs skill">load(simplifyFilename(&quot;$MGC_HOME/lib/calibre.skl&quot;))<br></code></pre></td></tr></table></figure>
-如果是在启动时就需要调用，则需要在 .cdsinit 中加入以下两行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs skill">getShellEnvVar(&quot;MGC_HOME&quot;)<br>load(simplifyFilename(&quot;$MGC_HOME/lib/calibre.skl&quot;))<br></code></pre></td></tr></table></figure>
-在网上查到也可以通过加载 <code>(CCSexpandEnvVars(&quot;$MDTOOLS/MDT_MarkCoordinate.il&quot;)</code> 命令来使用，不过没有验证过。<br>据说在新的 Virtuoso 版本中已经扩展了系统环境变量，可以直接方便的调用。<br>另外，如果要在 Virtuoso 中定义新的环境变量，可以使用 <code>SetShellEnvVar()</code> 函数:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs skill">setShellEnvVar(&quot;TOTO=1&quot;)<br></code></pre></td></tr></table></figure></li>
-</ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2025/05/12/%E5%B8%B8%E7%94%A8%E7%9A%84%E7%9E%AC%E6%97%B6%E7%94%B5%E6%84%9F%E7%94%B5%E6%B5%81%E9%87%87%E6%A0%B7%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="市井一俗人">
-      <meta itemprop="description" content="怀出世之心，行入世之事。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小人驿站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/05/12/%E5%B8%B8%E7%94%A8%E7%9A%84%E7%9E%AC%E6%97%B6%E7%94%B5%E6%84%9F%E7%94%B5%E6%B5%81%E9%87%87%E6%A0%B7%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">常用的瞬时电感电流采样方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-05-12 16:58:25" itemprop="dateCreated datePublished" datetime="2025-05-12T16:58:25+08:00">2025-05-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-07-29 19:54:54" itemprop="dateModified" datetime="2025-07-29T19:54:54+08:00">2025-07-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/" itemprop="url" rel="index"><span itemprop="name">半导体专业</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF/" itemprop="url" rel="index"><span itemprop="name">模拟电路</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2025/05/12/%E5%B8%B8%E7%94%A8%E7%9A%84%E7%9E%AC%E6%97%B6%E7%94%B5%E6%84%9F%E7%94%B5%E6%B5%81%E9%87%87%E6%A0%B7%E6%96%B9%E6%B3%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2025/05/12/%E5%B8%B8%E7%94%A8%E7%9A%84%E7%9E%AC%E6%97%B6%E7%94%B5%E6%84%9F%E7%94%B5%E6%B5%81%E9%87%87%E6%A0%B7%E6%96%B9%E6%B3%95/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>879</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="常用的瞬时电感电流采样方法"><a href="# 常用的瞬时电感电流采样方法" class="headerlink" title="常用的瞬时电感电流采样方法"></a>常用的瞬时电感电流采样方法 </h1><h2 id="分类"><a href="# 分类" class="headerlink" title="分类"></a> 分类</h2><ol>
-<li>电阻采样<br><a href="/download/ 电阻采样.pdf">Forghani-zadeh H P, Rincon-Mora G A. Current-sensing techniques for DC-DC converters[C]. The 2002 45th Midwest Symposium on Circuits and Systems, 2002. MWSCAS-2002.: Vol. 2. Tulsa, OK, USA: IEEE, 2002: II-577-II-580.</a></li>
-<li>DCR 采样<br><a href="/download/DCR 采样.pdf">Michal V. Absolute Value, 1% Linear and Lossless Current-Sensing Circuit for the Step-Down DC-DC Converters With Integrated Power Stage[J]. IEEE Journal of Solid-State Circuits, 2014, 49(5): 1256-1270.</a></li>
-<li>R<sub>dson</sub> 采样<br><a href="/download/Rdson 采样.pdf">Zhang Y, Zane R, Prodic A, et al. Online Calibration of MOSFET On-State Resistance for Precise Current Sensing[J]. IEEE Power Electronics Letters, 2004, 2(3): 100-103.</a></li>
-<li>Sense-FET 采样<br><a href="/download/Sense-FET 采样.pdf">Su Y P, Chen W C, Huang Y P, et al. Pseudo-Ramp Current Balance (PRCB) Technique With Offset Cancellation Control (OCC) in Dual-Phase DC-DC Buck Converter[J]. IEEE Transactions on Very Large Scale Integration (VLSI) Systems, 2014, 22(10): 2192-2205.</a></li>
-</ol>
-<h2 id="各种采样方式的优缺点"><a href="# 各种采样方式的优缺点" class="headerlink" title="各种采样方式的优缺点"></a>各种采样方式的优缺点</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">采样方式</th>
-<th style="text-align:center">优点</th>
-<th style="text-align:center">缺点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">电阻采样</td>
-<td style="text-align:center">结构简单</td>
-<td style="text-align:center">电阻精度要求高，重载损耗大</td>
-</tr>
-<tr>
-<td style="text-align:center">DCR 采样</td>
-<td style="text-align:center">采样精度高，无功率损耗</td>
-<td style="text-align:center">RC 值较大，常需放置在片外</td>
-</tr>
-<tr>
-<td style="text-align:center">功率管 R<sub>dson</sub> 采样</td>
-<td style="text-align:center">无功率损耗</td>
-<td style="text-align:center">精度低，无法采样全周期电流</td>
-</tr>
-<tr>
-<td style="text-align:center">Sense-FET 采样</td>
-<td style="text-align:center">损耗较小</td>
-<td style="text-align:center">精度低，匹配要求高</td>
-</tr>
-</tbody>
-</table>
-</div>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2025/05/08/PVE(%E5%9B%9B)%E8%A7%A3%E5%86%B3%E5%8D%87%E7%BA%A7(apt-get-update)%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="市井一俗人">
-      <meta itemprop="description" content="怀出世之心，行入世之事。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小人驿站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/05/08/PVE(%E5%9B%9B)%E8%A7%A3%E5%86%B3%E5%8D%87%E7%BA%A7(apt-get-update)%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">PVE(四)解决升级 (apt-get update) 报错问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-05-08 18:10:58" itemprop="dateCreated datePublished" datetime="2025-05-08T18:10:58+08:00">2025-05-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-07-29 19:54:54" itemprop="dateModified" datetime="2025-07-29T19:54:54+08:00">2025-07-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">网络服务</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2025/05/08/PVE(%E5%9B%9B)%E8%A7%A3%E5%86%B3%E5%8D%87%E7%BA%A7(apt-get-update)%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2025/05/08/PVE(%E5%9B%9B)%E8%A7%A3%E5%86%B3%E5%8D%87%E7%BA%A7(apt-get-update)%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>504</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="问题原因"><a href="# 问题原因" class="headerlink" title="问题原因"></a>问题原因 </h1><p> 使用 Proxmox VE 默认的 APT 更新源，在 WEB 更新管理面板点击“刷新”后，会显示错误。这是因为默认的更新源为 Proxmox VE 企业版的订阅，如果我们没有购买订阅，就会提示签名错误，从而使得 APT 更新失败，解决的方法很简单，就是更换软件源就可以了。 Proxmox 官方提供了对应不同版本的源，可以根据自己的情况进行选择。</p>
-<h1 id="解决方法"><a href="# 解决方法" class="headerlink" title="解决方法"></a>解决方法 </h1><p> 修改两个软件源文件即可。</p>
-<h2 id="etc-apt-sources-list-d-pve-enterprise-list"><a href="#etc-apt-sources-list-d-pve-enterprise-list" class="headerlink" title="/etc/apt/sources.list.d/pve-enterprise.list"></a>/etc/apt/sources.list.d/pve-enterprise.list</h2><p>注释掉 enterprise 字样的企业软件源，添加免费软件源<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#deb https://enterprise.proxmox.com/debian/pve bookworm pve-enterprise</span><br>deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription<br></code></pre></td></tr></table></figure></p>
-<h2 id="etc-apt-sources-list-d-ceph-list"><a href="#etc-apt-sources-list-d-ceph-list" class="headerlink" title="/etc/apt/sources.list.d/ceph.list"></a>/etc/apt/sources.list.d/ceph.list</h2><p>注释掉仅有的一行即可<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#deb https://enterprise.proxmox.com/debian/ceph-quincy bookworm enterprise</span><br></code></pre></td></tr></table></figure></p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2025/04/16/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="市井一俗人">
-      <meta itemprop="description" content="怀出世之心，行入世之事。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小人驿站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/04/16/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" class="post-title-link" itemprop="url">在自己搭建的 hexo 博客上发布文章</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-04-16 23:34:47" itemprop="dateCreated datePublished" datetime="2025-04-16T23:34:47+08:00">2025-04-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" itemprop="url" rel="index"><span itemprop="name">技术兴趣</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">网络服务</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2025/04/16/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2025/04/16/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>349</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li>在<code>/source/_posts</code>目录下建立<code>.md</code>文件并撰写内容；<br>编辑文章时要在第一行中加上<code>title</code>，如果不按此格式来写的话在<code>hexo</code>博客中就会显示这篇文章没有名字。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/04/16/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2025/04/16/%E6%9C%A8%E5%BF%83%E2%80%94%E3%80%8A%E4%BA%91%E9%9B%80%E5%8F%AB%E4%BA%86%E4%B8%80%E6%95%B4%E5%A4%A9%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="市井一俗人">
-      <meta itemprop="description" content="怀出世之心，行入世之事。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小人驿站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/04/16/%E6%9C%A8%E5%BF%83%E2%80%94%E3%80%8A%E4%BA%91%E9%9B%80%E5%8F%AB%E4%BA%86%E4%B8%80%E6%95%B4%E5%A4%A9%E3%80%8B/" class="post-title-link" itemprop="url">木心—《云雀叫了一整天》</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-04-16 10:39:53" itemprop="dateCreated datePublished" datetime="2025-04-16T10:39:53+08:00">2025-04-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-08-06 14:52:21" itemprop="dateModified" datetime="2025-08-06T14:52:21+08:00">2025-08-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E5%AD%A6%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">文学爱好</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E5%AD%A6%E7%88%B1%E5%A5%BD/%E6%95%A3%E6%96%87%E8%AF%97%E7%AD%89/" itemprop="url" rel="index"><span itemprop="name">散文诗等</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2025/04/16/%E6%9C%A8%E5%BF%83%E2%80%94%E3%80%8A%E4%BA%91%E9%9B%80%E5%8F%AB%E4%BA%86%E4%B8%80%E6%95%B4%E5%A4%A9%E3%80%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2025/04/16/%E6%9C%A8%E5%BF%83%E2%80%94%E3%80%8A%E4%BA%91%E9%9B%80%E5%8F%AB%E4%BA%86%E4%B8%80%E6%95%B4%E5%A4%A9%E3%80%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>26k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>24 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>由《我的后半生》知道了木心先生的《从前慢》，由《从前慢》知道了木心先生的诗集《云雀叫了一整天》，颇有共鸣，特记之。<br>木心（1927年2月14日-2011年12月21日），出生于浙江桐乡市乌镇东栅栏杆桥，原名孙璞，字玉山，又名孙仰中，中国当代画家、文学家、诗人，其主要作品有散文集《琼美卡随想录》《散文一集》《素履之往》；诗集《西班牙三棵树》《巴珑》《我纷纷的情欲》《会吾中》；小说集《温莎墓园日记》；画集《木心画集》；绘画作品《浦东月色》《纠缦卿云》《渔村》《舞蹈者》《晴风》《朝霞》《战争前夜》《歌剧》等。<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/04/16/%E6%9C%A8%E5%BF%83%E2%80%94%E3%80%8A%E4%BA%91%E9%9B%80%E5%8F%AB%E4%BA%86%E4%B8%80%E6%95%B4%E5%A4%A9%E3%80%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2025/04/16/%E6%9C%A8%E5%BF%83%EF%BC%8D%E3%80%8A%E4%BB%8E%E5%89%8D%E6%85%A2%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="市井一俗人">
-      <meta itemprop="description" content="怀出世之心，行入世之事。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小人驿站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/04/16/%E6%9C%A8%E5%BF%83%EF%BC%8D%E3%80%8A%E4%BB%8E%E5%89%8D%E6%85%A2%E3%80%8B/" class="post-title-link" itemprop="url">木心－《从前慢》</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-04-16 10:23:09" itemprop="dateCreated datePublished" datetime="2025-04-16T10:23:09+08:00">2025-04-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-08-06 14:52:03" itemprop="dateModified" datetime="2025-08-06T14:52:03+08:00">2025-08-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E5%AD%A6%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index"><span itemprop="name">文学爱好</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E5%AD%A6%E7%88%B1%E5%A5%BD/%E6%95%A3%E6%96%87%E8%AF%97%E7%AD%89/" itemprop="url" rel="index"><span itemprop="name">散文诗等</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2025/04/16/%E6%9C%A8%E5%BF%83%EF%BC%8D%E3%80%8A%E4%BB%8E%E5%89%8D%E6%85%A2%E3%80%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2025/04/16/%E6%9C%A8%E5%BF%83%EF%BC%8D%E3%80%8A%E4%BB%8E%E5%89%8D%E6%85%A2%E3%80%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>89</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>记得早先少年时 <br> 大家诚诚恳恳 <br> 说一句 是一句</p>
-<p>清早上火车站 <br> 长街黑暗无行人 <br> 卖豆浆的小店冒着热气</p>
-<p>从前的日色变得慢 <br> 车、马、邮件都慢 <br> 一生只够爱一个人</p>
-<p>从前的锁也好看 <br> 钥匙精美有样子 <br> 你锁了，人家就懂了</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="市井一俗人"
-      src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">市井一俗人</p>
-  <div class="site-description" itemprop="description">怀出世之心，行入世之事。</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">82</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">18</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">41</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="mailto:shenguosai@gmail.com" title="E-Mail → mailto:shenguosai@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2025</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">市井一俗人</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-area"></i>
-    </span>
-    <span title="站点总字数">469k</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    <span title="站点阅读时长">7:06</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : false,
-      appId      : '0dJ6KzQjpKzOPUi998D88vE3-gzGzoHsz',
-      appKey     : 'LseOZQMpqtwJKZALm9XXl9hA',
-      placeholder: "Just go go",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
-</script>
+    <%}%>
+    <% if (theme.canvas_nest.enable) { %>
+    <script type="text/javascript" color="<%- theme.canvas_nest.color %>"
+        pointColor="<%- theme.canvas_nest.pointColor %>" opacity='<%- theme.canvas_nest.opacity %>'
+        zIndex="<%- theme.canvas_nest.zIndex %>" count="<%- theme.canvas_nest.count %>"
+        src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.canvas_nest) %>"></script>
+    <% } %>
+
+    <% if (theme.ribbon.enable) { %>
+    <% var ribbonSrc = theme.ribbon.clickChange ? theme.libs.js.ribbon : theme.libs.js.ribbonRefresh; %>
+    <script type="text/javascript" size="<%- theme.ribbon.size %>" alpha='<%- theme.ribbon.alpha %>'
+        zIndex="<%- theme.ribbon.zIndex %>" src="<%- theme.jsDelivr.url %><%- url_for(ribbonSrc) %>" async="async"></script>
+    <% } %>
+
+    <% if (theme.ribbon_dynamic.enable) { %>
+    <script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.ribbon_dynamic) %>" async="async"></script>
+    <% } %>
+
+    <% if (theme.instantpage.enable) { %>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.instantpage) %>" type="module"></script>
+    <% } %>
 
 </body>
+
 </html>
