@@ -1,173 +1,600 @@
-<!DOCTYPE HTML>
-<html lang="<%= config.language %>">
-<%- partial('_partial/head') %>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<body>
-    <%- partial('_partial/header') %>
-    <%- body %>
+<link rel="stylesheet" href="/css/main.css">
 
-    <%- partial('_partial/footer') %>
 
-    <%- partial('_partial/search') %>
-    <%- partial('_widget/day-night') %>
-    <%- partial('_partial/back-top') %>
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.materialize) %>"></script>
-    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.masonry) %>"></script>
-    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.aos) %>"></script>
-    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.scrollProgress) %>"></script>
-    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.lightgallery) %>"></script>
-    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.matery) %>"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shenguosai.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
-    <% if (theme.mermaid.enable) { %>
-        <!-- <script src='https://unpkg.com/mermaid@<%= theme.mermaid.version %>/dist/mermaid.min.js'></script> -->
-        <script src='<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.mermaid) %>'></script>
-        <script>
-          if (window.mermaid) {
-            mermaid.initialize({theme: 'forest'});
-          }
-        </script>
-    <% } %>
+  <meta name="description" content="中国历史顺序表原始社会(170万年前~公元前21世纪)旧石器时代(约170万年前~1万年前) 约 170 万年前，元谋人生活在云南元谋一带 约 80 万年前，蓝田人生活在山西蓝田一带 约 70~20 万年前，北京人生活在北京周口店一带 约 3 万年前，山顶洞人生活在北京周口店一带">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中国历史顺序表">
+<meta property="og:url" content="http://shenguosai.github.io/2024/08/22/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E9%A1%BA%E5%BA%8F%E8%A1%A8/index.html">
+<meta property="og:site_name" content="小人驿站">
+<meta property="og:description" content="中国历史顺序表原始社会(170万年前~公元前21世纪)旧石器时代(约170万年前~1万年前) 约 170 万年前，元谋人生活在云南元谋一带 约 80 万年前，蓝田人生活在山西蓝田一带 约 70~20 万年前，北京人生活在北京周口店一带 约 3 万年前，山顶洞人生活在北京周口店一带">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-22T07:54:59.000Z">
+<meta property="article:modified_time" content="2025-04-16T15:34:47.399Z">
+<meta property="article:author" content="市井一俗人">
+<meta name="twitter:card" content="summary">
 
-    <% if (theme.translate.enable) { %>
-        <script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.sc2tc) %>"></script>
-        <script type="text/javascript">
-          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
-          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
-          var cookieDomain = "<%= config.url %>"; //Cookie地址, 一定要设定, 通常为你的网址
-          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
-          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
-          var translateButtonId = "translateLink"; //默认互换id
-          translateInitilization();
-        </script>
-    <% } %>
+<link rel="canonical" href="http://shenguosai.github.io/2024/08/22/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E9%A1%BA%E5%BA%8F%E8%A1%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>中国历史顺序表 | 小人驿站</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="小人驿站" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小人驿站</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">模拟电路工程师</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">82</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">41</span></a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-友情链接">
+
+    <a href="/links" rel="section"><i class="fa fa-address-book fa-fw"></i>友情链接</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
     
-    <% if (theme.sakura.enable) { %>
-        
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.sakura) %>"><\/script>');
-            }
-        </script>
-    <% } %>
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
-    <!-- 雪花特效 -->
-    <% if (theme.snowdown.enable) { %> 
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.snow) %>"><\/script>');
-            }
-        </script>
-    <% } %>
 
-    <!-- 鼠标星星特效 -->
-    <% if (theme.mouseStar.enable) { %> 
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.star) %>"><\/script>');
-            }
-        </script>
-    <% } %>
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-    <% if (theme.tcaptcha.enable) { %> 
-        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
-        <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.tcaptcha) %>"></script>
-        <button id="TencentCaptcha" data-appid="<%- theme.tcaptcha.appid %>" data-cbfn="callback" type="button" hidden></button>
-    <% } %>
+          <div class="content post posts-expand">
+            
 
-    <%- partial('_partial/baidu-analytics') %>
-    <%- partial('_partial/baidu-push') %>
-    <% if (theme.clicklove.enable) { %>
-    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.clicklove) %>" async="async"></script>
-    <% } %>
-    <% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
-    <script async src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.busuanzi) %>"></script>
-    <% } %>
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenguosai.github.io/2024/08/22/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E9%A1%BA%E5%BA%8F%E8%A1%A8/">
 
-    <% if (theme.tidio.enable) { %>
-        <script src="//code.tidio.co/<%- theme.tidio.public_key %>.js"></script>
-        <script>
-            $(document).ready(function () {
-                setInterval(change_Tidio, 50);
-                function change_Tidio() {
-                    var tidio=$("#tidio-chat iframe");
-                    if(tidio.css("display")=="block"&& $(window).width()>977 ){
-                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"<%if(theme.toc.showToggleBtn){%>85px<%}else{%>20px<%}%>":"20px";
-                        document.getElementById("tidio-chat-iframe").style.right="-15px";
-                        document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
-                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
-                    }
-                    else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
-                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;
-                        document.getElementById("tidio-chat-iframe").style.right="-15px";
-                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
-                    }
-                    else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
-                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;
-                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
-                    }
-                    if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
-                        document.getElementById("tidio-chat-iframe").style.zIndex="998";
-                    }
-                }
-            });
-        </script>
-    <% } %>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="市井一俗人">
+      <meta itemprop="description" content="怀出世之心，行入世之事。">
+    </span>
 
-    <% if (theme.daovoice.enable) { %>
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i["DaoVoiceObject"] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            a.charset = "utf-8";
-            m.parentNode.insertBefore(a, m)
-        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
-            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
-        daovoice('init', {
-            app_id: "<%- theme.daovoice.app_id %>"
-        });
-        daovoice('update');
-    </script>
-    <% } %>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小人驿站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          中国历史顺序表
+        </h1>
 
-    <!--腾讯兔小巢-->
-    <% if (theme.tuxiaochao.enable) { %>
-        <div style="position:fixed;bottom:125px;right:16px;cursor: pointer;">
-            <a title="兔小巢" href="https://support.qq.com/products/<%- theme.tuxiaochao.productId %>"><i class="fa fa-comments fa-3x"  aria-hidden="true"></i></a>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-08-22 15:54:59" itemprop="dateCreated datePublished" datetime="2024-08-22T15:54:59+08:00">2024-08-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-16 23:34:47" itemprop="dateModified" datetime="2025-04-16T23:34:47+08:00">2025-04-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">杂学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E5%AD%A6/%E5%8E%86%E5%8F%B2/" itemprop="url" rel="index"><span itemprop="name">历史</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/08/22/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E9%A1%BA%E5%BA%8F%E8%A1%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/08/22/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E9%A1%BA%E5%BA%8F%E8%A1%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
         </div>
-    <%}%>
-    <% if (theme.canvas_nest.enable) { %>
-    <script type="text/javascript" color="<%- theme.canvas_nest.color %>"
-        pointColor="<%- theme.canvas_nest.pointColor %>" opacity='<%- theme.canvas_nest.opacity %>'
-        zIndex="<%- theme.canvas_nest.zIndex %>" count="<%- theme.canvas_nest.count %>"
-        src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.canvas_nest) %>"></script>
-    <% } %>
+      </header>
 
-    <% if (theme.ribbon.enable) { %>
-    <% var ribbonSrc = theme.ribbon.clickChange ? theme.libs.js.ribbon : theme.libs.js.ribbonRefresh; %>
-    <script type="text/javascript" size="<%- theme.ribbon.size %>" alpha='<%- theme.ribbon.alpha %>'
-        zIndex="<%- theme.ribbon.zIndex %>" src="<%- theme.jsDelivr.url %><%- url_for(ribbonSrc) %>" async="async"></script>
-    <% } %>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-    <% if (theme.ribbon_dynamic.enable) { %>
-    <script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.ribbon_dynamic) %>" async="async"></script>
-    <% } %>
+      
+        <h1 id="中国历史顺序表"><a href="# 中国历史顺序表" class="headerlink" title="中国历史顺序表"></a>中国历史顺序表 </h1><h2 id="原始社会 -170 万年前 - 公元前 21 世纪"><a href="# 原始社会 -170 万年前 - 公元前 21 世纪" class="headerlink" title="原始社会(170 万年前~ 公元前 21 世纪)"></a> 原始社会 (170 万年前~ 公元前 21 世纪)</h2><h3 id="旧石器时代 - 约 170 万年前 -1 万年前"><a href="# 旧石器时代 - 约 170 万年前 -1 万年前" class="headerlink" title="旧石器时代(约 170 万年前~1 万年前)"></a> 旧石器时代(约 170 万年前~1 万年前)</h3><ul>
+<li>约 170 万年前，元谋人生活在云南元谋一带</li>
+<li>约 80 万年前，蓝田人生活在山西蓝田一带</li>
+<li>约 70~20 万年前，北京人生活在北京周口店一带</li>
+<li>约 3 万年前，山顶洞人生活在北京周口店一带<span id="more"></span>
+<h3 id="新石器时代 -1 万年前 -4 千年前"><a href="# 新石器时代 -1 万年前 -4 千年前" class="headerlink" title="新石器时代 (1 万年前~4 千年前)"></a> 新石器时代(1 万年前~4 千年前)</h3></li>
+<li>约 7000~5000 年前，河姆渡、半坡母系氏族公社</li>
+<li>约 5000~4000 年前，大汶口文化中晚期—父系氏族公社 <h3 id="三皇五帝"><a href="# 三皇五帝" class="headerlink" title="三皇五帝"></a> 三皇五帝 </h3> 三皇五帝已不可考，众说纷纭。<br>三皇: 天皇、地皇、人皇<blockquote>
+<blockquote>
+<p>燧人、伏羲、神农 — 出自《尚书大传》<br>伏羲、女娲、神农 — 出自《春秋运斗枢》<br>伏羲、祝融、黄帝 — 出自《风俗通义》<br>伏羲　神农、黄帝 — 出自《三字经》<br>有巢氏、燧人氏 — 出自《庄子》、《纲鉴易知录》<br>五帝: 东方青帝灵威仰、南方赤帝赤熛怒、中央黄帝含枢纽、西方白帝白招拒、北方黑帝汁光纪 <br> 太昊、炎帝、黄帝、少昊、颛顼 — 出自《吕氏春秋》<br>黄帝、颛顼、帝喾、尧、舜 — 出自《史记》《大戴礼记》<br>黄帝、少昊、颛顼、帝喾、尧 — 出自《资治通鉴外纪》</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h2 id="奴隶社会 - 公元前 2070 年 - 公元前 476 年"><a href="# 奴隶社会 - 公元前 2070 年 - 公元前 476 年" class="headerlink" title="奴隶社会 (公元前 2070 年~ 公元前 476 年)"></a> 奴隶社会(公元前 2070 年~ 公元前 476 年)</h2><ul>
+<li>夏: 公元前 2070 年 ~ 公元前 1600 年，禹之子启建夏，世袭取代禅让</li>
+<li>商: 公元前 1601 年 ~ 公元前 1046 年，商汤灭夏，商朝建立</li>
+<li>西周: 公元前 1046 年 ~ 公元前 771 年，周武王灭商，西周开始</li>
+<li>东周: 公元前 770 年 ~ 公元前 476 年，俗称东周列国，分为前期和后期。<ul>
+<li>东周前期俗称春秋时期，公元前 770 年 ~ 公元前 476 年，春秋时期诸侯争相称霸；</li>
+<li>东周后期俗称战国时期，公元前 475 年 ~ 公元前 221 年。中国社会有奴隶制进入封建社会，出现战国七雄。<h2 id="封建社会 - 公元前 475 年 - 公元 1840 年"><a href="# 封建社会 - 公元前 475 年 - 公元 1840 年" class="headerlink" title="封建社会 (公元前 475 年~ 公元 1840 年)"></a> 封建社会(公元前 475 年~ 公元 1840 年)</h2></li>
+</ul>
+</li>
+<li>秦: 公元前 221 年 ~ 公元前 206 年，秦于战国七雄中崛起吞并六国，首建集权制帝国。</li>
+<li>汉: 公元前 206 年 ~ 公元 220 年<ul>
+<li>西汉: 公元前 206 年 ~ 公元 8 年，刘邦垓下之战灭项羽，称帝与长安。</li>
+<li>新莽: 公元 9 年 ~ 公元 25 年，公元 8 年底，王莽篡位称帝，改国号为”新”。</li>
+<li>东汉: 公元 25 年 ~ 公元 220 年，刘秀灭王莽，夺回政权，建都洛阳。</li>
+</ul>
+</li>
+<li>三国: 公元 220 年 ~ 公元 280 年，东汉后期，曹操挟天子以令诸侯，出现三国鼎立。</li>
+<li>西晋: 公元 266 年 ~ 公元 316 年</li>
+<li>东晋: 公元 317 年 ~ 公元 420 年</li>
+<li>南北朝: 公元 420 年 ~ 公元 589 年</li>
+<li>隋: 公元 581 年 ~ 公元 618 年</li>
+<li>唐: 公元 618 年 ~ 公元 907 年</li>
+<li>五代十国:<ul>
+<li>五代: 公元 907 年 ~ 公元 960 年</li>
+<li>十国: 公元 902 年 ~ 公元 979 年</li>
+</ul>
+</li>
+<li>北宋: 公元 960 年 ~ 1127 年</li>
+<li>南宋: 1127 年 ~ 1276 年</li>
+<li>元: 1271 年 ~ 1368 年</li>
+<li>明: 1368 年 ~ 1644 年</li>
+<li>清: 1636 年 ~ 1911 年 <h2 id="近代史"><a href="# 近代史" class="headerlink" title="近代史"></a> 近代史 </h2> 近代史从 1840 年鸦片战争开始。</li>
+<li>民国: 1912 年 ~ 1949 年，中华民国成立。<h2 id="现代史"><a href="# 现代史" class="headerlink" title="现代史"></a>现代史 </h2> 现代史从 1949 年中华人民共和国成立开始。</li>
+<li>中华人民共和国: 1949 年 ~ 至今</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>※※<br>三皇五帝始，尧舜禹相传。夏商与西周，东周分两段。春秋和战国，一统秦两汉。<br>三分魏蜀吴，二晋前后延。南北朝并立，隋唐五代传。宋元明清后，皇朝至此完。</p>
+</blockquote>
+</blockquote>
+<h1 id="中国历史大事纪"><a href="# 中国历史大事纪" class="headerlink" title="中国历史大事纪"></a>中国历史大事纪</h1><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    </div>
 
-    <% if (theme.instantpage.enable) { %>
-    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.instantpage) %>" type="module"></script>
-    <% } %>
+    
+    
+    
+        <div class="reward-container">
+  <div>买包烟</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="市井一俗人 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="市井一俗人 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>市井一俗人
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://shenguosai.github.io/2024/08/22/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E9%A1%BA%E5%BA%8F%E8%A1%A8/" title="中国历史顺序表">http://shenguosai.github.io/2024/08/22/中国历史顺序表/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/08/17/%E4%BD%BF%E7%94%A8PS%E8%BD%AF%E4%BB%B6%E8%BF%9B%E8%A1%8C%E4%B8%80%E5%AF%B8%E8%AF%81%E4%BB%B6%E7%85%A7%E7%89%87%E6%89%93%E5%8D%B0%E6%8E%92%E7%89%88/" rel="prev" title="使用 PS 软件进行一寸证件照片打印排版">
+      <i class="fa fa-chevron-left"></i> 使用 PS 软件进行一寸证件照片打印排版
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/08/28/%E7%9B%B8%E7%89%87%E5%B0%BA%E5%AF%B8/" rel="next" title="相片尺寸">
+      相片尺寸 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">中国历史顺序表 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E7%A4%BE%E4%BC%9A%20-170%20%E4%B8%87%E5%B9%B4%E5%89%8D%20-%20%E5%85%AC%E5%85%83%E5%89%8D%2021%20%E4%B8%96%E7%BA%AA"><span class="nav-number">1.1.</span> <span class="nav-text"> 原始社会 (170 万年前~ 公元前 21 世纪)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A7%E7%9F%B3%E5%99%A8%E6%97%B6%E4%BB%A3%20-%20%E7%BA%A6%20170%20%E4%B8%87%E5%B9%B4%E5%89%8D%20-1%20%E4%B8%87%E5%B9%B4%E5%89%8D"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 旧石器时代(约 170 万年前~1 万年前)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E7%9F%B3%E5%99%A8%E6%97%B6%E4%BB%A3%20-1%20%E4%B8%87%E5%B9%B4%E5%89%8D%20-4%20%E5%8D%83%E5%B9%B4%E5%89%8D"><span class="nav-number">1.1.2.</span> <span class="nav-text"> 新石器时代(1 万年前~4 千年前)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%9A%87%E4%BA%94%E5%B8%9D"><span class="nav-number">1.1.3.</span> <span class="nav-text"> 三皇五帝 </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%B4%E9%9A%B6%E7%A4%BE%E4%BC%9A%20-%20%E5%85%AC%E5%85%83%E5%89%8D%202070%20%E5%B9%B4%20-%20%E5%85%AC%E5%85%83%E5%89%8D%20476%20%E5%B9%B4"><span class="nav-number">1.2.</span> <span class="nav-text"> 奴隶社会(公元前 2070 年~ 公元前 476 年)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%81%E5%BB%BA%E7%A4%BE%E4%BC%9A%20-%20%E5%85%AC%E5%85%83%E5%89%8D%20475%20%E5%B9%B4%20-%20%E5%85%AC%E5%85%83%201840%20%E5%B9%B4"><span class="nav-number">1.3.</span> <span class="nav-text"> 封建社会(公元前 475 年~ 公元 1840 年)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%91%E4%BB%A3%E5%8F%B2"><span class="nav-number">1.4.</span> <span class="nav-text"> 近代史 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%B0%E4%BB%A3%E5%8F%B2"><span class="nav-number">1.5.</span> <span class="nav-text">现代史 </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E5%A4%A7%E4%BA%8B%E7%BA%AA"><span class="nav-number">2.</span> <span class="nav-text">中国历史大事纪</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="市井一俗人"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">市井一俗人</p>
+  <div class="site-description" itemprop="description">怀出世之心，行入世之事。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:shenguosai@gmail.com" title="E-Mail → mailto:shenguosai@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">市井一俗人</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">469k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">7:06</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '0dJ6KzQjpKzOPUi998D88vE3-gzGzoHsz',
+      appKey     : 'LseOZQMpqtwJKZALm9XXl9hA',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
 
 </body>
-
 </html>
