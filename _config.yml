@@ -98,7 +98,7 @@ ignore:
 ## s: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 #theme: landscape
-theme: next
+theme: hexo-theme-matery
 
 encrypt: #hexo-blog-encrypt
   enable: true

@@ -124,6 +124,7 @@ menu:  # 设置各个页面的相对路径，默认根路径是 blog/source
   schedule: /schedule/ || fa fa-calendar  #日历
   #sitemap: /sitemap.xml || fa fa-sitemap  #站点地图，供搜索引擎爬取
   #commonweal: /404/ || fa fa-heartbeat  #腾讯公益404
+  友情链接: /links || fa fa-address-book
   about: /about/ || fa fa-user
 # ||之前的值是目标链接，之后的是分类页面的图表，图表名称来自于 FontAwesome.icon。
 
