@@ -267,52 +267,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>今天记录一下闭环增益、开环增益、环路增益，以及 3dB 带宽、单位增益带宽(UGB)、增益带宽积(GBW)。</p>
-<span id="more"></span>
-<h2 id="关于增益">关于增益</h2>
-<h3 id="闭环增益">闭环增益</h3>
-<p>对于一个闭环反馈系统，如下图:<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110153857.png" alt="20240110153857"><br>
-闭环增益即传输函数为: $\frac{Y(s)}{X(s)}=\frac{H(s)}{1+\beta H(s)}$, 是 $\frac{开环增益}{1+ 环路增益}$。</p>
-<h3 id="开环增益">开环增益</h3>
-<p>从上面图中可知，开环增益就是去除反馈对系统的作用，看运放的增益。</p>
-<h3 id="环路增益">环路增益</h3>
-<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110154642.png" alt="20240110154642"><br>
-如图所示，输入置 0，断开环路。<br>
-环路增益 $\frac{V_F}{V_t}=\beta A$<br>
-根据巴克豪森判据判断系统是否稳定，所以仿真都是用 stb 仿环路稳定性，看 <b> 环路增益波特图 </b> 而不是看开环增益或者闭环增益。</p>
-<p>那为什么到运放看稳定性就说开环增益了呢？<br>
-对于单个运放来说，由于运放一般工作在负反馈系统中，开环增益就相当于反馈系数为 1 的环路增益，所以到运放会说开环增益，其实还是在说环路增益。</p>
-<p>那为什么说运放仿开环增益相位裕度够了就代表其接成反馈系统是稳定的呢？<br>
-拉扎维的 10.2 节完美解释了这个问题:<br>
-运放开环增益相当于反馈系数为 1 的环路增益: 在反馈系统里，反馈系数最大为 1，就是接成单位增益负反馈形势。这种情况下，系统的环路增益波特图与运放的完全重合，即相位裕度一样，所以可以稳定。<br>
-对于其它反馈系数小于 1 的系统来说，环路增益为 $\beta A$，不管 $\beta$ 如何变，环路增益的波特图中，极点的位置与运放极点位置一样，不会变，所以相频曲线没有任何改变。但是由于 $\beta &lt;1$，幅频曲线下移，增益交点提前，相位裕度只会越来越大。<br>
-综上，运放单独仿真与它接在负反馈系统里相比，相位裕度是最差的情况了，即当反馈变弱时，结果是系统更稳定。<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110161104.png" alt="20240110161104"></p>
-<h2 id="关于带宽">关于带宽</h2>
-<h3 id="3dB 带宽">3dB 带宽</h3>
-<p>3dB 带宽就是运放的主极点处所对应的频率，幅度上对应比低频增益下降 3 个 dB 处。<br>
-推导:<br>
-运放传递函数:$A_v(s)=\frac{A_v(0)}{(1+s/\omega _0)(1+s/\omega _1)(1+s/\omega _2)···}$</p>
-<p>假设次极点离主极点很远很远，那么在主极点 $s=\omega _0$ 处，有:<br>
-$A_v(\omega _0)=20log(\frac{A_v(0)}{1+\omega _0/\omega _0})=20log(\frac{A_v(0))}{2}=20logA_v(0)-20log(2)\approx 20logA_v(0)-3dB$</p>
+        <p>今天记录一下闭环增益、开环增益、环路增益，以及 3dB 带宽、单位增益带宽(UGB)、增益带宽积(GBW)。<br><span id="more"></span></p>
+<h2 id="关于增益"><a href="# 关于增益" class="headerlink" title="关于增益"></a>关于增益 </h2><h3 id="闭环增益"><a href="# 闭环增益" class="headerlink" title="闭环增益"></a> 闭环增益 </h3><p> 对于一个闭环反馈系统，如下图:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110153857.png" alt="20240110153857"><br>闭环增益即传输函数为: $\frac{Y(s)}{X(s)}=\frac{H(s)}{1+\beta H(s)}$, 是 $\frac{开环增益}{1+ 环路增益}$。</p>
+<h3 id="开环增益"><a href="# 开环增益" class="headerlink" title="开环增益"></a>开环增益 </h3><p> 从上面图中可知，开环增益就是去除反馈对系统的作用，看运放的增益。</p>
+<h3 id="环路增益"><a href="# 环路增益" class="headerlink" title="环路增益"></a>环路增益 </h3><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110154642.png" alt="20240110154642"><br> 如图所示，输入置 0，断开环路。<br>环路增益 $\frac{V_F}{V_t}=\beta A$<br>根据巴克豪森判据判断系统是否稳定，所以仿真都是用 stb 仿环路稳定性，看 <b> 环路增益波特图 </b> 而不是看开环增益或者闭环增益。</p>
+<p>那为什么到运放看稳定性就说开环增益了呢？<br>对于单个运放来说，由于运放一般工作在负反馈系统中，开环增益就相当于反馈系数为 1 的环路增益，所以到运放会说开环增益，其实还是在说环路增益。</p>
+<p>那为什么说运放仿开环增益相位裕度够了就代表其接成反馈系统是稳定的呢？<br>拉扎维的 10.2 节完美解释了这个问题:<br>运放开环增益相当于反馈系数为 1 的环路增益: 在反馈系统里，反馈系数最大为 1，就是接成单位增益负反馈形势。这种情况下，系统的环路增益波特图与运放的完全重合，即相位裕度一样，所以可以稳定。<br>对于其它反馈系数小于 1 的系统来说，环路增益为 $\beta A$，不管 $\beta$ 如何变，环路增益的波特图中，极点的位置与运放极点位置一样，不会变，所以相频曲线没有任何改变。但是由于 $\beta &lt;1$，幅频曲线下移，增益交点提前，相位裕度只会越来越大。<br>综上，运放单独仿真与它接在负反馈系统里相比，相位裕度是最差的情况了，即当反馈变弱时，结果是系统更稳定。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240110161104.png" alt="20240110161104"></p>
+<h2 id="关于带宽"><a href="# 关于带宽" class="headerlink" title="关于带宽"></a>关于带宽 </h2><h3 id="3dB 带宽"><a href="#3dB 带宽" class="headerlink" title="3dB 带宽"></a>3dB 带宽</h3><p>3dB 带宽就是运放的主极点处所对应的频率，幅度上对应比低频增益下降 3 个 dB 处。<br> 推导:<br>运放传递函数:$A_v(s)=\frac{A_v(0)}{(1+s/\omega _0)(1+s/\omega _1)(1+s/\omega _2)···}$</p>
+<p>假设次极点离主极点很远很远，那么在主极点 $s=\omega _0$ 处，有:<br>$A_v(\omega _0)=20log(\frac{A_v(0)}{1+\omega _0/\omega _0})=20log(\frac{A_v(0))}{2}=20logA_v(0)-20log(2)\approx 20logA_v(0)-3dB$</p>
 <p>所以叫做 3dB 带宽。</p>
-<h3 id="单位增益带宽">单位增益带宽</h3>
-<p>顾名思义，就是运放 $\frac{开环增益}{闭环负反馈系统环路增益}=1$ 时对应的频率。<br>
-为了推导方便，假设只有一个极点的运放，那么在它的单位增益带宽处，有:<br>
-$A_v(\omega _{UGB})=\frac{A_v(0)}{1+\frac{\omega _{UGB}}{\omega _0}}=1$<br>
-可得，$\omega _{UGB}=A_v(0)*\omega _0$</p>
-<p>这里有一个结论: 闭环系统的 3dB 带宽等于环路增益的党委增益带宽。单位增益负反馈系统的 3dB 带宽等于该系统中所使用的运放的单位增益带宽。<br>
-推导: 负反馈想要稳定，即相位裕度达到 60°，单位增益带宽内一定只有一个极点。只看单位增益带宽内的情况，那么有:<br>
-环路增益: $\beta A(s)=\frac{\beta A_0}{1+\frac{s}{\omega _0}}$<br>
-闭环系统传输函数: $\frac{Y(s)}{X(s)}=\frac{A(s)}{1+\beta A(s)}=\frac{\frac{A_0}{1+\beta A_0}}{1+\frac{s}{(1+\beta A_0)\omega _0}}$<br>
-所以就闭环系统传输函数 3dB 带宽 <b>(不是环路增益，是传输函数)</b> 是 $\omega _0*\beta A_0$，环路增益的单位增益带宽也是 $\omega _0*\beta A_0$。<br>
-当系统为单位增益负反馈系统时，即反馈因子是 1，系统 3dB 带宽是 $\omega _0<em>A_0$, 运放单位增益带宽也是 $\omega _0</em>A_0$。</p>
-<h3 id="增益带宽积 -GBW">增益带宽积(GBW)</h3>
-<p>增益与带宽的乘积。<br>
-重要结论: 在单极点系统中，GBW 是不变的，等于单位增益带宽，等于低频增益 3dB 带宽。因为只有一个极点的时候，极点之后，带宽每增大 10 倍，增益下降 20dB，20dB 就是 10 倍，一个增大十倍，一个减小十倍，自然不变。<br>
-结合单位增益带宽中的结论推导部分，可见，闭环系统传输函数的增益带宽积与开环的增益带宽积相等。(再次强调: 是传输函数的增益带宽积，不是环路增益中的增益带宽积)<br>
-$A_0*\omega _0=\frac{A_0}{1+\beta A_0}<em>(1+\beta A_0)</em>\omega _0$</p>
+<h3 id="单位增益带宽"><a href="# 单位增益带宽" class="headerlink" title="单位增益带宽"></a>单位增益带宽 </h3><p> 顾名思义，就是运放 $\frac{开环增益}{闭环负反馈系统环路增益}=1$ 时对应的频率。<br>为了推导方便，假设只有一个极点的运放，那么在它的单位增益带宽处，有:<br>$A<em>v(\omega </em>{UGB})=\frac{A<em>v(0)}{1+\frac{\omega </em>{UGB}}{\omega <em>0}}=1$<br>可得，$\omega </em>{UGB}=A_v(0)*\omega _0$</p>
+<p>这里有一个结论: 闭环系统的 3dB 带宽等于环路增益的党委增益带宽。单位增益负反馈系统的 3dB 带宽等于该系统中所使用的运放的单位增益带宽。<br>推导: 负反馈想要稳定，即相位裕度达到 60°，单位增益带宽内一定只有一个极点。只看单位增益带宽内的情况，那么有:<br>环路增益: $\beta A(s)=\frac{\beta A_0}{1+\frac{s}{\omega _0}}$<br>闭环系统传输函数: $\frac{Y(s)}{X(s)}=\frac{A(s)}{1+\beta A(s)}=\frac{\frac{A_0}{1+\beta A_0}}{1+\frac{s}{(1+\beta A_0)\omega _0}}$<br>所以就闭环系统传输函数 3dB 带宽 <b>(不是环路增益，是传输函数)</b> 是 $\omega _0<em>\beta A_0$，环路增益的单位增益带宽也是 $\omega _0</em>\beta A_0$。<br>当系统为单位增益负反馈系统时，即反馈因子是 1，系统 3dB 带宽是 $\omega _0<em>A_0$, 运放单位增益带宽也是 $\omega _0</em>A_0$。</p>
+<h3 id="增益带宽积 -GBW"><a href="# 增益带宽积 -GBW" class="headerlink" title="增益带宽积 (GBW)"></a> 增益带宽积 (GBW)</h3><p> 增益与带宽的乘积。<br>重要结论: 在单极点系统中，GBW 是不变的，等于单位增益带宽，等于低频增益 3dB 带宽。因为只有一个极点的时候，极点之后，带宽每增大 10 倍，增益下降 20dB，20dB 就是 10 倍，一个增大十倍，一个减小十倍，自然不变。<br>结合单位增益带宽中的结论推导部分，可见，闭环系统传输函数的增益带宽积与开环的增益带宽积相等。(再次强调: 是传输函数的增益带宽积，不是环路增益中的增益带宽积)<br>$A_0<em>\omega _0=\frac{A_0}{1+\beta A_0}</em>(1+\beta A_0)*\omega _0$</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
@@ -434,7 +400,7 @@ $A_0*\omega _0=\frac{A_0}{1+\beta A_0}<em>(1+\beta A_0)</em>\omega _0$</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%A2%9E%E7%9B%8A"><span class="nav-number">1.</span> <span class="nav-text">关于增益</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AD%E7%8E%AF%E5%A2%9E%E7%9B%8A"><span class="nav-number">1.1.</span> <span class="nav-text">闭环增益</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E7%8E%AF%E5%A2%9E%E7%9B%8A"><span class="nav-number">1.2.</span> <span class="nav-text">开环增益</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E8%B7%AF%E5%A2%9E%E7%9B%8A"><span class="nav-number">1.3.</span> <span class="nav-text">环路增益</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%B8%A6%E5%AE%BD"><span class="nav-number">2.</span> <span class="nav-text">关于带宽</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3dB%20%E5%B8%A6%E5%AE%BD"><span class="nav-number">2.1.</span> <span class="nav-text">3dB 带宽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E4%BD%8D%E5%A2%9E%E7%9B%8A%E5%B8%A6%E5%AE%BD"><span class="nav-number">2.2.</span> <span class="nav-text">单位增益带宽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E7%9B%8A%E5%B8%A6%E5%AE%BD%E7%A7%AF%20-GBW"><span class="nav-number">2.3.</span> <span class="nav-text">增益带宽积(GBW)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%A2%9E%E7%9B%8A"><span class="nav-number">1.</span> <span class="nav-text">关于增益 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AD%E7%8E%AF%E5%A2%9E%E7%9B%8A"><span class="nav-number">1.1.</span> <span class="nav-text"> 闭环增益 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E7%8E%AF%E5%A2%9E%E7%9B%8A"><span class="nav-number">1.2.</span> <span class="nav-text">开环增益 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E8%B7%AF%E5%A2%9E%E7%9B%8A"><span class="nav-number">1.3.</span> <span class="nav-text">环路增益 </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%B8%A6%E5%AE%BD"><span class="nav-number">2.</span> <span class="nav-text">关于带宽 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3dB%20%E5%B8%A6%E5%AE%BD"><span class="nav-number">2.1.</span> <span class="nav-text">3dB 带宽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E4%BD%8D%E5%A2%9E%E7%9B%8A%E5%B8%A6%E5%AE%BD"><span class="nav-number">2.2.</span> <span class="nav-text">单位增益带宽 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E7%9B%8A%E5%B8%A6%E5%AE%BD%E7%A7%AF%20-GBW"><span class="nav-number">2.3.</span> <span class="nav-text"> 增益带宽积 (GBW)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -504,12 +470,12 @@ $A_0*\omega _0=\frac{A_0}{1+\beta A_0}<em>(1+\beta A_0)</em>\omega _0$</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">452k</span>
+    <span title="站点总字数">470k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:51</span>
+    <span title="站点阅读时长">7:07</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
