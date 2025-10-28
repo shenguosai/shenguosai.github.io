@@ -275,27 +275,78 @@
 <li>解决 DNS 泄露</li>
 <li>IPv4/IPv6 双栈共存</li>
 <li>去广告</li>
-<li>无缝访问 github、国外论文网站<span id="more"></span>
-</li>
+<li>无缝访问 github、国外论文网站</li>
 </ol>
-<h1 id="一、- 规则管理"><a href="# 一、- 规则管理" class="headerlink" title="一、 规则管理"></a>一、 规则管理</h1><ol>
-<li>删除默认的所有规则，探后添加 Reject、Direct、Proxy 规则；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217142557.png" alt="20250217142557"><br>这里有更好的规则，可以替代 passwall2 自带的:<br><a target="_blank" rel="noopener" href="https://github.com/Loyalsoldier/v2ray-rules-dat">https://github.com/Loyalsoldier/v2ray-rules-dat</a><br>将 geoip 文件链接更改为:<br><a target="_blank" rel="noopener" href="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat">https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat</a><br>将 geosite 文件链接更改为:<br><a target="_blank" rel="noopener" href="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat">https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat</a></li>
-<li>Reject 规则填入域名；<br>geosite:category-ads-all<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143100.png" alt="20250217143100"></li>
-<li>Direct 规则填入；<br>域名:<br>xn—ngstr-lra8j.com<br>geosite:private<br>geosite:cn<br>IP：<br>geoip:private<br>geoip:cn<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143216.png" alt="20250217143216"></li>
-<li>Proxy 规则填入域名；<br>geosite:geolocation-!cn<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143336.png" alt="20250217143336"></li>
+<span id="more"></span>
+<h1>一、 规则管理</h1>
+<ol>
+<li>删除默认的所有规则，探后添加 Reject、Direct、Proxy 规则；<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217142557.png" alt="20250217142557"><br>
+这里有更好的规则，可以替代 passwall2 自带的:<br>
+<a target="_blank" rel="noopener" href="https://github.com/Loyalsoldier/v2ray-rules-dat">https://github.com/Loyalsoldier/v2ray-rules-dat</a><br>
+将 geoip 文件链接更改为:<br>
+<a target="_blank" rel="noopener" href="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat">https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat</a><br>
+将 geosite 文件链接更改为:<br>
+<a target="_blank" rel="noopener" href="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat">https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat</a></li>
+<li>Reject 规则填入域名；<br>
+geosite:category-ads-all<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143100.png" alt="20250217143100"></li>
+<li>Direct 规则填入；<br>
+域名:<br>
+<a target="_blank" rel="noopener" href="http://xn--ngstr-lra8j.com">ångströ.com</a><br>
+geosite:private<br>
+geosite:cn<br>
+IP：<br>
+geoip:private<br>
+geoip:cn<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143216.png" alt="20250217143216"></li>
+<li>Proxy 规则填入域名；<br>
+geosite:geolocation-!cn<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217143336.png" alt="20250217143336"></li>
 </ol>
-<p>规则的顺序一定要这样排列:<br>1、 Reject<br>2、 Direct<br>3、 Proxy</p>
-<p><strong>注释:</strong><br>geosite:category-ads-all 去广告<br>xn—ngstr-lra8j.com 谷歌商店<br>geosite:private 内网地址<br>geosite:cn 国内域名<br>geoip:private 内网 IP<br>geoip:cn 国内 IP<br>geosite:geolocation-!cn 国外域名</p>
-<h1 id="二、- 高级设置"><a href="# 二、- 高级设置" class="headerlink" title="二、 高级设置"></a>二、 高级设置 </h1><p>1、如果不使用 UDP 代理，就把 UDP 不转发端口改成 - 所有，即可<br>2、设置 TCP 转发端口为：仅网页 ，也就是仅允许代理 80、443 这两个端口<br>3、TCP 代理方式可以改成 TPROXY，也可以默认 REDIRECT（勾选 IPv6 透明代理(TProxy) 后，会自动变更为 TPROXY）<br>4、如果你的节点支持 IPv4/IPv6 互通或者有 IPv6 的出口 IP，可以勾选 IPv6 透明代理(TProxy)，反之不勾选</p>
-<h1 id="三、- 修改节点配置 -Xray- 分流 - 分流总结点"><a href="# 三、- 修改节点配置 -Xray- 分流 - 分流总结点" class="headerlink" title="三、 修改节点配置 Xray 分流:[分流总结点]"></a>三、 修改节点配置 Xray 分流:[分流总结点]</h1><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217144013.png" alt="20250217144013"><br>1、Reject 设置为：黑洞（丢弃）<br>2、Direct 设置为：直连（绕过）<br>3、Proxy 设置为：默认（代理）<br>3、* 默认设置为：按照自己需求选择一个节点<br>4、域名解析策略设置为：AsIs （也就是跳过 IP 匹配、只匹配域名）— 可能是版本原因，没找到相关设置项</p>
-<h1 id="四、- 基本配置"><a href="# 四、- 基本配置" class="headerlink" title="四、 基本配置"></a>四、 基本配置</h1><ol>
+<p>规则的顺序一定要这样排列:<br>
+1、 Reject<br>
+2、 Direct<br>
+3、 Proxy</p>
+<p><strong>注释:</strong><br>
+geosite:category-ads-all 去广告<br>
+<a target="_blank" rel="noopener" href="http://xn--ngstr-lra8j.com">ångströ.com</a> 谷歌商店<br>
+geosite:private 内网地址<br>
+geosite:cn 国内域名<br>
+geoip:private 内网 IP<br>
+geoip:cn 国内 IP<br>
+geosite:geolocation-!cn 国外域名</p>
+<h1>二、 高级设置</h1>
+<p>1、如果不使用 UDP 代理，就把 UDP 不转发端口改成 - 所有，即可<br>
+2、设置 TCP 转发端口为：仅网页 ，也就是仅允许代理 80、443 这两个端口<br>
+3、TCP 代理方式可以改成 TPROXY，也可以默认 REDIRECT（勾选 IPv6 透明代理 (TProxy) 后，会自动变更为 TPROXY）<br>
+4、如果你的节点支持 IPv4/IPv6 互通或者有 IPv6 的出口 IP，可以勾选 IPv6 透明代理(TProxy)，反之不勾选</p>
+<h1>三、 修改节点配置 Xray 分流:[分流总结点]</h1>
+<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217144013.png" alt="20250217144013"><br>
+1、Reject 设置为：黑洞（丢弃）<br>
+2、Direct 设置为：直连（绕过）<br>
+3、Proxy 设置为：默认（代理）<br>
+3、* 默认设置为：按照自己需求选择一个节点<br>
+4、域名解析策略设置为：AsIs （也就是跳过 IP 匹配、只匹配域名）-- 可能是版本原因，没找到相关设置项</p>
+<h1>四、 基本配置</h1>
+<ol>
 <li>远程 DNS 协议: DoH</li>
-<li>勾选 Fake DNS<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217144233.png" alt="20250217144233"></li>
-<li>主要—- 节点设置为：Xray 分流：[分流总节点]</li>
+<li>勾选 Fake DNS<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250217144233.png" alt="20250217144233"></li>
+<li>主要—节点设置为：Xray 分流：[分流总节点]</li>
 <li>以上都配置好之后，勾选上主开关保存应用即可</li>
 </ol>
-<p><strong>注释：</strong><br>1、远程 DNS 出站一定要设置为：远程（走代理），不然你走直连大概率是不通的，但是 DOH 走代理都是会增加延迟 <br>2、勾选 FakeDNS 后，在 Proxy 规则内的域名，匹配上的会返回一个假 IP 作为 DNS 响应（例如 198.18.0.0/16），最后将域名请求发送给节点服务器 VPS 在它的网络环境中进行解析 IP<br>3、不在 Proxy 规则内的域名则会使用设置的 CloudFlare 远程 DNS 进行本地 DNS 解析真实 IP ，最后将这个真实 IP 发送给节点服务器 VPS ，而如果遇到解析出的是被污染的 IP ，由于开启了嗅探功能，会探测 HTTP 请求里的域名，所以就算本地解析出的 IP 是被污染也不影响<br>4、如何判断是走 FakeDNS 还是走远程 DNS ，电脑运行 CMD 窗口，输入<code>nslookup youtube.com</code> 回车，输入 <code>nslookup ipleak.net</code> 回车 <br> 上述都配置完成后，就能够解决 DNS 泄露、污染问题和去广告，并且支持双栈 IPv4/IPv6 上网，不需要再去套任何插件和关闭或禁止解析 IPv6 DNS 记录等。</p>
-<h1 id="五、-Steam- 设置"><a href="# 五、-Steam- 设置" class="headerlink" title="五、 Steam 设置"></a>五、 Steam 设置 </h1><p> 上述的配置完成后，发现 steam 下载走的是代理，需要通过以下操作解决。<br>1、在 Direct 规则中的域名添加 geosite:category-games，这样可以使 steam、epic 等软件都走直连。<br>2、为了避免走直连后 steam 社区、商店打不开，需要指定其域名走代理。添加 steam 分流规则，其中域名为<code>store.steampowered.com</code>、<code>steamcommunity.com</code>。<br>3、将 steam 规则排在 direct 上方，即最终规则顺序为 reject、steam、direct、proxy。</p>
+<p><strong>注释：</strong><br>
+1、远程 DNS 出站一定要设置为：远程（走代理），不然你走直连大概率是不通的，但是 DOH 走代理都是会增加延迟<br>
+2、勾选 FakeDNS 后，在 Proxy 规则内的域名，匹配上的会返回一个假 IP 作为 DNS 响应（例如 198.18.0.0/16），最后将域名请求发送给节点服务器 VPS 在它的网络环境中进行解析 IP<br>
+3、不在 Proxy 规则内的域名则会使用设置的 CloudFlare 远程 DNS 进行本地 DNS 解析真实 IP ，最后将这个真实 IP 发送给节点服务器 VPS ，而如果遇到解析出的是被污染的 IP ，由于开启了嗅探功能，会探测 HTTP 请求里的域名，所以就算本地解析出的 IP 是被污染也不影响<br>
+4、如何判断是走 FakeDNS 还是走远程 DNS ，电脑运行 CMD 窗口，输入 <code>nslookup youtube.com</code> 回车，输入 <code>nslookup ipleak.net</code> 回车<br>
+上述都配置完成后，就能够解决 DNS 泄露、污染问题和去广告，并且支持双栈 IPv4/IPv6 上网，不需要再去套任何插件和关闭或禁止解析 IPv6 DNS 记录等。</p>
+<h1>五、 Steam 设置</h1>
+<p>上述的配置完成后，发现 steam 下载走的是代理，需要通过以下操作解决。<br>
+1、在 Direct 规则中的域名添加 geosite:category-games，这样可以使 steam、epic 等软件都走直连。<br>
+2、为了避免走直连后 steam 社区、商店打不开，需要指定其域名走代理。添加 steam 分流规则，其中域名为<code>store.steampowered.com</code>、<code>steamcommunity.com</code>。<br>
+3、将 steam 规则排在 direct 上方，即最终规则顺序为 reject、steam、direct、proxy。</p>
 <p>【转自】<a target="_blank" rel="noopener" href="https://nanodesu.net/archives/36/">Pass Wall2（完美配置教程）)</a></p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
@@ -418,7 +469,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81-%20%E8%A7%84%E5%88%99%E7%AE%A1%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">一、 规则管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81-%20%E9%AB%98%E7%BA%A7%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">二、 高级设置 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81-%20%E4%BF%AE%E6%94%B9%E8%8A%82%E7%82%B9%E9%85%8D%E7%BD%AE%20-Xray-%20%E5%88%86%E6%B5%81%20-%20%E5%88%86%E6%B5%81%E6%80%BB%E7%BB%93%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">三、 修改节点配置 Xray 分流:[分流总结点]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81-%20%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">四、 基本配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81-Steam-%20%E8%AE%BE%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">五、 Steam 设置 </span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">一、 规则管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">二、 高级设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">三、 修改节点配置 Xray 分流:[分流总结点]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">四、 基本配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">五、 Steam 设置</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -488,12 +539,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">470k</span>
+    <span title="站点总字数">453k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">7:07</span>
+    <span title="站点阅读时长">6:51</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
