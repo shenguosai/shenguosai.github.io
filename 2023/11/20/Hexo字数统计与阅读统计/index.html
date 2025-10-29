@@ -6,8 +6,10 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo 字数统计与阅读统计, 小人驿站">
     <meta name="description" content="
-安装 hexo-wordcount 插件npm install hexo-wordcount --save
-安装 hexo-symbols-count-time 插件npm install hexo-symbols-count-time ">
+安装 hexo-wordcount 插件
+npm install hexo-wordcount --save
+安装 hexo-symbols-count-time 插件
+npm install hexo-symbols-count-tim">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -417,11 +419,19 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <ol>
-<li>安装 <code>hexo-wordcount</code> 插件<br><code>npm install hexo-wordcount --save</code></li>
-<li>安装 <code>hexo-symbols-count-time</code> 插件<br><code>npm install hexo-symbols-count-time --save</code></li>
-<li>安装<code>eslint</code><br><code>npm install eslint --save</code><span id="more"></span></li>
-<li>在 hexo 配置文件中添加 <code>symbols_count_time</code> 配置语句<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">symbols_count_time:</span><br> <span class="hljs-params">symbols:</span> <span class="hljs-literal">true</span>               <span class="hljs-comment"># 文字字数统计</span><br> <span class="hljs-params">time:</span> <span class="hljs-literal">true</span>                  <span class="hljs-comment"># 文章阅读时长</span><br> <span class="hljs-params">total_symbols:</span> <span class="hljs-literal">true</span>         <span class="hljs-comment"># 站点总字数统计</span><br> <span class="hljs-params">total_time:</span> <span class="hljs-literal">true</span>            <span class="hljs-comment"># 站点总阅读时长</span><br> <span class="hljs-params">exclude_codeblock:</span> <span class="hljs-literal">false</span>    <span class="hljs-comment"># 排除代码字数统计</span><br></code></pre></td></tr></table></figure></li>
-<li>在主题配置文件中添加 <code>symbols_count_time</code> 配置语句<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">symbols_count_time:</span><br> <span class="hljs-params">separated_meta:</span> <span class="hljs-literal">true</span>        <span class="hljs-comment"># 是否另起一行(true 的话不和发表时间等同一行)</span><br> <span class="hljs-params">item_text_post:</span> <span class="hljs-literal">true</span>        <span class="hljs-comment"># 首页文章统计数量前是否显示文字描述(本文字数、阅读时长)</span><br> <span class="hljs-params">item_text_total:</span> <span class="hljs-literal">false</span>      <span class="hljs-comment"># 页面底部统计数量前是否显示文字描述(站点总字数、站点阅读时长)</span><br> <span class="hljs-params">awl:</span> <span class="hljs-number">4</span>                      <span class="hljs-comment"># Average Word Lenth</span><br> <span class="hljs-params">wpm:</span> <span class="hljs-number">275</span>                    <span class="hljs-comment"># Words Per Minute（每分钟阅读词数</span><br> <span class="hljs-params">suffix:</span> mins.<br></code></pre></td></tr></table></figure></li>
+<li>安装 <code>hexo-wordcount</code> 插件<br>
+<code>npm install hexo-wordcount --save</code></li>
+<li>安装 <code>hexo-symbols-count-time</code> 插件<br>
+<code>npm install hexo-symbols-count-time --save</code></li>
+<li>安装<code>eslint</code><br>
+<code>npm install eslint --save</code></li>
+</ol>
+<span id="more"></span>
+<ol start="4">
+<li>在 hexo 配置文件中添加 <code>symbols_count_time</code> 配置语句<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">symbols_count_time:</span><br> <span class="hljs-params">symbols:</span> <span class="hljs-literal">true</span>               <span class="hljs-comment"># 文字字数统计</span><br> <span class="hljs-params">time:</span> <span class="hljs-literal">true</span>                  <span class="hljs-comment"># 文章阅读时长</span><br> <span class="hljs-params">total_symbols:</span> <span class="hljs-literal">true</span>         <span class="hljs-comment"># 站点总字数统计</span><br> <span class="hljs-params">total_time:</span> <span class="hljs-literal">true</span>            <span class="hljs-comment"># 站点总阅读时长</span><br> <span class="hljs-params">exclude_codeblock:</span> <span class="hljs-literal">false</span>    <span class="hljs-comment"># 排除代码字数统计</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>在主题配置文件中添加 <code>symbols_count_time</code> 配置语句<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">symbols_count_time:</span><br> <span class="hljs-params">separated_meta:</span> <span class="hljs-literal">true</span>        <span class="hljs-comment"># 是否另起一行(true 的话不和发表时间等同一行)</span><br> <span class="hljs-params">item_text_post:</span> <span class="hljs-literal">true</span>        <span class="hljs-comment"># 首页文章统计数量前是否显示文字描述(本文字数、阅读时长)</span><br> <span class="hljs-params">item_text_total:</span> <span class="hljs-literal">false</span>      <span class="hljs-comment"># 页面底部统计数量前是否显示文字描述(站点总字数、站点阅读时长)</span><br> <span class="hljs-params">awl:</span> <span class="hljs-number">4</span>                      <span class="hljs-comment"># Average Word Lenth</span><br> <span class="hljs-params">wpm:</span> <span class="hljs-number">275</span>                    <span class="hljs-comment"># Words Per Minute（每分钟阅读词数</span><br> <span class="hljs-params">suffix:</span> mins.<br></code></pre></td></tr></table></figure>
+</li>
 <li>在主题配置文件中配置 wordcount<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">post_wordcount:</span>          <span class="hljs-comment"># 字数统计</span><br> <span class="hljs-params">item_text:</span> <span class="hljs-literal">true</span>         <span class="hljs-comment"># 是否显示文字</span><br> <span class="hljs-params">wordcount:</span> <span class="hljs-literal">true</span>         <span class="hljs-comment"># 显示字数</span><br> <span class="hljs-params">min2read:</span> <span class="hljs-literal">true</span>          <span class="hljs-comment"># 显示阅读时间</span><br> <span class="hljs-params">totalcount:</span> <span class="hljs-literal">true</span>        <span class="hljs-comment"># 显示总数</span><br> <span class="hljs-params">seperated_meta:</span> <span class="hljs-literal">true</span>    <span class="hljs-comment"># 是否分开</span><br></code></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -587,15 +597,25 @@
                     <div class="summary block-with-text">
                         
                             
-表达随遇而安：时光清浅处，一步一安然。
 
-表达岁月静好：山野万万里，余生路漫。日暮酒杯淡饭，一半一半
+表达随遇而安：
+时光清浅处，一步一安然。
 
-夸心上人美好：山有扶苏，隰（xí）有荷华。
 
-想说坚韧不拔：冬青树上挂凌霄，岁晏花凋树不凋。
+表达岁月静好：
+山野万万里，余生路漫。日暮酒杯淡饭，一半一半
 
-对于好朋友：半师半友半知己，半慕半尊半
+
+夸心上人美好：
+山有扶苏，隰（xí）有荷华。
+
+
+想说坚韧不拔：
+冬青树上挂凌霄，岁晏花凋树不凋。
+
+
+对于好朋友：
+半师半
                         
                     </div>
                     <div class="publish-info">
@@ -640,7 +660,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            趁着双十一在京东￥499入手了樊想S500PRO的2T SSD固态硬盘。到货后就迫不及待的换下了原来笔记本里500G的老硬盘。然后发现换硬盘新装系统后各种软件的安装和配置都要重新来一遍。
+                            趁着双十一在京东￥499入手了樊想S500PRO的2T SSD固态硬盘。
+到货后就迫不及待的换下了原来笔记本里500G的老硬盘。然后发现换硬盘新装系统后各种软件的安装和配置都要重新来一遍。
 下面记录下hexo的迁移过程。
                         
                     </div>

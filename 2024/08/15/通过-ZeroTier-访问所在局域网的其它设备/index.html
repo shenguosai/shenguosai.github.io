@@ -5,8 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="通过 ZeroTier 访问所在局域网的其它设备, 小人驿站">
-    <meta name="description" content="环境  硬件: QNAP TS-464C系统: iStore OS 虚拟机 (Zerotier 虚拟局域网网关) 软件: ZerotierZerotier 网段: 10.147.18.0/24局域网网段: 192.168.3.0/24
-配置">
+    <meta name="description" content=" 环境 
+ 硬件: QNAP TS-464C
+系统: iStore OS 虚拟机 (Zerotier 虚拟局域网网关)
+软件: Zerotier
+Zerotier 网段: 10.147.18.0/24
+局域网网段: 192.168.3.0/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -415,17 +419,38 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="环境"><a href="# 环境" class="headerlink" title="环境"></a>环境 </h1><p> 硬件: QNAP TS-464C<br>系统: iStore OS 虚拟机 (Zerotier 虚拟局域网网关)<br> 软件: Zerotier<br>Zerotier 网段: 10.147.18.0/24<br>局域网网段: 192.168.3.0/24<br><span id="more"></span></p>
-<h1 id="配置"><a href="# 配置" class="headerlink" title="配置"></a>配置 </h1><h2 id="配置 -Zerotier- 设置"><a href="# 配置 -Zerotier- 设置" class="headerlink" title="配置 Zerotier 设置"></a> 配置 Zerotier 设置</h2><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112603.png" alt="20240815112603"></p>
-<h2 id="配置 -Zerotier- 网关"><a href="# 配置 -Zerotier- 网关" class="headerlink" title="配置 Zerotier 网关"></a>配置 Zerotier 网关</h2><ol>
-<li>插件设置<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112706.png" alt="20240815112706"></li>
-<li>配置网关开启内核转发 <br> 先 ssh 登录到 iStore OS(Zerotier 虚拟局域网网关，执行以下命令:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;net.ipv4.ip_forward=1&#x27;</span> &gt;&gt; /etc/sysctl.conf<br>sysctl -p<br></code></pre></td></tr></table></figure>
-<h2 id="访问方法"><a href="# 访问方法" class="headerlink" title="访问方法"></a>访问方法</h2></li>
-<li>重启一下使用的外网设备的 Zerotier 服务；</li>
-<li>跟在局域网内访问相同，使用局域网地址访问即可。<h1 id="后续"><a href="# 后续" class="headerlink" title="后续"></a>后续</h1></li>
-<li>网上说需要开启 Zerotier 网关的地址伪装，即<code>MASQUERADE</code>；<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -j MASQUERADE<br></code></pre></td></tr></table></figure></li>
-<li>配置静态路由表；</li>
-<li>防火墙放行 <code>9933</code> 端口。<br>上述三个步骤本次配置没有使用到，可能是 iStore OS 简化了配置，如果以后有需要使用 Linux 标准系统来使用的需求时再研究。</li>
+                <h1> 环境 </h1>
+<p> 硬件: QNAP TS-464C<br>
+系统: iStore OS 虚拟机 (Zerotier 虚拟局域网网关)<br>
+软件: Zerotier<br>
+Zerotier 网段: 10.147.18.0/24<br>
+局域网网段: 192.168.3.0/24</p>
+<span id="more"></span>
+<h1> 配置 </h1>
+<h2 id="配置 -Zerotier- 设置"> 配置 Zerotier 设置 </h2>
+<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112603.png" alt="20240815112603"></p>
+<h2 id="配置 -Zerotier- 网关"> 配置 Zerotier 网关 </h2>
+<ol>
+<li> 插件设置 <br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240815112706.png" alt="20240815112706"></li>
+<li> 配置网关开启内核转发 <br>
+先 ssh 登录到 iStore OS(Zerotier 虚拟局域网网关，执行以下命令:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;net.ipv4.ip_forward=1&#x27;</span> &gt;&gt; /etc/sysctl.conf<br>sysctl -p<br></code></pre></td></tr></table></figure>
+<h2 id="访问方法"> 访问方法 </h2>
+<ol>
+<li> 重启一下使用的外网设备的 Zerotier 服务；</li>
+<li> 跟在局域网内访问相同，使用局域网地址访问即可。</li>
+</ol>
+<h1> 后续 </h1>
+<ol>
+<li> 网上说需要开启 Zerotier 网关的地址伪装，即 <code>MASQUERADE</code>；</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -j MASQUERADE<br></code></pre></td></tr></table></figure>
+<ol>
+<li> 配置静态路由表；</li>
+<li> 防火墙放行 <code>9933</code> 端口。<br>
+上述三个步骤本次配置没有使用到，可能是 iStore OS 简化了配置，如果以后有需要使用 Linux 标准系统来使用的需求时再研究。</li>
 </ol>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
@@ -587,7 +612,9 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            环境系统: Windows 11软件: Adobe Photoshop 24.5.0 版
+                            环境
+系统: Windows 11
+软件: Adobe Photoshop 24.5.0 版
                         
                     </div>
                     <div class="publish-info">

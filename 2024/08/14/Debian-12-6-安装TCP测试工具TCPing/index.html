@@ -415,9 +415,12 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <figure class="highlight plaintext"><figcaption><span>TCP 协议的一种 ```ping``` 命令，用来测试数据包能否通过 TCP 协议到达目标主机。他的一大特点，就是可以在禁 ```ping``` 的时候检测网络连通率。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs TCPing``` 是基于">&lt;!--more--&gt;<br># 安装 ```tcptraceroute```<br>```TCPing``` 本质上是一个 shell 脚本，依赖 ```tcptraceroute``` 运行。<br>```bash<br>sudo apt install tcptraceroute<br></code></pre></td></tr></table></figure>
-<h1 id="下载 -TCPing"><a href="# 下载 -TCPing" class="headerlink" title="下载 TCPing"></a> 下载 TCPing</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> wget http://www.vdberg.org/~richard/tcpping -O /usr/bin/tcping<br></code></pre></td></tr></table></figure>
-<h1 id="配置权限"><a href="# 配置权限" class="headerlink" title="配置权限"></a> 配置权限 </h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chmod</span> +x /usr/bin/tcping<br></code></pre></td></tr></table></figure>
-<h1 id="使用方法"><a href="# 使用方法" class="headerlink" title="使用方法"></a> 使用方法 </h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tcping 目标 IP 目标端口 <br></code></pre></td></tr></table></figure>
+<h1> 下载 TCPing</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> wget http://www.vdberg.org/~richard/tcpping -O /usr/bin/tcping<br></code></pre></td></tr></table></figure>
+<h1> 配置权限 </h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chmod</span> +x /usr/bin/tcping<br></code></pre></td></tr></table></figure>
+<h1> 使用方法 </h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tcping 目标 IP 目标端口 <br></code></pre></td></tr></table></figure>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
@@ -578,7 +581,12 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            环境硬件: QNAP TS-464C系统: iStore OS 虚拟机(Zerotier虚拟局域网网关)软件: ZerotierZerotier 网段: 10.147.18.0/24局域网网段: 192.168.3.0/24
+                            环境
+硬件: QNAP TS-464C
+系统: iStore OS 虚拟机(Zerotier虚拟局域网网关)
+软件: Zerotier
+Zerotier 网段: 10.147.18.0/24
+局域网网段: 192.168.3.0/24
                         
                     </div>
                     <div class="publish-info">
@@ -632,6 +640,7 @@
                     <div class="summary block-with-text">
                         
                             准备工作
+
 在 App Center 中安装 QVPN Service
 
                         

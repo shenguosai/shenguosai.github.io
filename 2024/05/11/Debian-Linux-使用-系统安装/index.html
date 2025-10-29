@@ -5,8 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Debian Linux 使用 -- 系统安装, 小人驿站">
-    <meta name="description" content="机器配置  这台机器比较老，是 200x 年在日本买的富士通的 FMV-DESKPOWER，型号是 FMVFB70T。配置如下:
-
+    <meta name="description" content="机器配置
+这台机器比较老，是 200x 年在日本买的富士通的 FMV-DESKPOWER，型号是 FMVFB70T。
+配置如下:
 
 
 
@@ -23,7 +24,8 @@ FJNB023
 
 
 CPU
-Core(TM)2 Duo P840">
+Core™2 Duo P8400
+2.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -432,8 +434,9 @@ Core(TM)2 Duo P840">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="机器配置"><a href="# 机器配置" class="headerlink" title="机器配置"></a>机器配置 </h1><p> 这台机器比较老，是 200x 年在日本买的富士通的 FMV-DESKPOWER，型号是 FMVFB70T。<br>配置如下:</p>
-<div class="table-container">
+                <h1>机器配置</h1>
+<p>这台机器比较老，是 200x 年在日本买的富士通的 FMV-DESKPOWER，型号是 FMVFB70T。<br>
+配置如下:</p>
 <table>
 <thead>
 <tr>
@@ -450,7 +453,7 @@ Core(TM)2 Duo P840">
 </tr>
 <tr>
 <td>CPU</td>
-<td>Core(TM)2 Duo P8400</td>
+<td>Core™2 Duo P8400</td>
 <td>2.26GHz 2 核 2 线程</td>
 </tr>
 <tr>
@@ -490,33 +493,61 @@ Core(TM)2 Duo P840">
 </tr>
 </tbody>
 </table>
-</div>
 <span id="more"></span>
 <blockquote>
 <p>官网建议最大内存 4G(2G x2)，是因为当时预装的 Windows Vista Home 是 32 位系统，最大支持 4G 内存，而根据 GN45 Express 的 Chipset 规格最大可支持 8G(4G x2) 内存。</p>
 </blockquote>
-<p>相关命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">lscpu <span class="hljs-comment"># 使用程序将 sysfs 和 /proc/cpuinfo 中的详细 CPU 信息输出到屏幕</span><br><span class="hljs-built_in">sudo</span> dmidecode -t 2 <span class="hljs-comment"># 主板信息</span><br><span class="hljs-built_in">sudo</span> dmidecode -t 16 <span class="hljs-comment"># 内存信息</span><br>lspci | grep Ethernet <span class="hljs-comment"># 有线网卡</span><br>lspci | greo Wireless <span class="hljs-comment"># 无线网卡</span><br>iwconfig <span class="hljs-comment"># 无线网卡</span><br></code></pre></td></tr></table></figure></p>
-<h1 id="下载镜像"><a href="# 下载镜像" class="headerlink" title="下载镜像"></a>下载镜像 </h1><p>Debian 有很多版本，由于机器比较老，我使用的是 32 位的 dvd 映像进行的安装。<br> 下载地址: <a target="_blank" rel="noopener" href="https://cdimage.debian.org/debian-cd/current/i386/bt-dvd/">debian-12.5.0-i386-DVD-1.iso.torrent</a></p>
-<h1 id="安装系统"><a href="# 安装系统" class="headerlink" title="安装系统"></a>安装系统 </h1><p> 使用 Ventoy 正常安装即可。</p>
-<h1 id="配置"><a href="# 配置" class="headerlink" title="配置"></a>配置 </h1><h2 id="软件安装"><a href="# 软件安装" class="headerlink" title="软件安装"></a> 软件安装 </h2><p> 由于使用的 DVD 映像进行的系统安装，在后续安装软件时会优先使用介质安装，需要在 <code>/etc/apt/source.list</code> 中关闭映像安装，如下在第一行中添加 <code>#</code> 进行注释(我在安装系统时选择的是华为的镜像源)。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># deb cdrom:[Debian GNU/Linux 12.5.0 _Bookworm_ - Official i386 DVD Binary-1 with firmware 20240210-11:28]/ bookworm contrib main non-free-firmware</span><br><br>deb http://mirrors.huaweicloud.com/debian/ bookworm main non-free-firmware<br>deb-src http://mirrors.huaweicloud.com/debian/ bookworm main non-free-firmware<br><br>deb http://security.debian.org/debian-security bookworm-security main non-free-firmware<br>deb-src http://security.debian.org/debian-security bookworm-security main non-free-firmware<br><br><span class="hljs-comment"># bookworm-updates, to get updates before a point release is made;</span><br><span class="hljs-comment"># see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports</span><br>deb http://mirrors.huaweicloud.com/debian/ bookworm-updates main non-free-firmware<br>deb-src http://mirrors.huaweicloud.com/debian/ bookworm-updates main non-free-firmware<br></code></pre></td></tr></table></figure></p>
-<h2 id="用户权限"><a href="# 用户权限" class="headerlink" title="用户权限"></a>用户权限 </h2><p> 在安装系统时会设置两个用户，一个 root 用户，一个普通用户，而使用普通用户时默认无法使用 <code>sudo</code>，所以需要安装<code>sudo</code> 并添加权限。</p>
+<p>相关命令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">lscpu <span class="hljs-comment"># 使用程序将 sysfs 和 /proc/cpuinfo 中的详细 CPU 信息输出到屏幕</span><br><span class="hljs-built_in">sudo</span> dmidecode -t 2 <span class="hljs-comment"># 主板信息</span><br><span class="hljs-built_in">sudo</span> dmidecode -t 16 <span class="hljs-comment"># 内存信息</span><br>lspci | grep Ethernet <span class="hljs-comment"># 有线网卡</span><br>lspci | greo Wireless <span class="hljs-comment"># 无线网卡</span><br>iwconfig <span class="hljs-comment"># 无线网卡</span><br></code></pre></td></tr></table></figure>
+<h1>下载镜像</h1>
+<p>Debian 有很多版本，由于机器比较老，我使用的是 32 位的 dvd 映像进行的安装。<br>
+下载地址: <a target="_blank" rel="noopener" href="https://cdimage.debian.org/debian-cd/current/i386/bt-dvd/">debian-12.5.0-i386-DVD-1.iso.torrent</a></p>
+<h1>安装系统</h1>
+<p>使用 Ventoy 正常安装即可。</p>
+<h1>配置</h1>
+<h2 id="软件安装">软件安装</h2>
+<p>由于使用的 DVD 映像进行的系统安装，在后续安装软件时会优先使用介质安装，需要在 <code>/etc/apt/source.list</code> 中关闭映像安装，如下在第一行中添加 <code>#</code> 进行注释(我在安装系统时选择的是华为的镜像源)。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># deb cdrom:[Debian GNU/Linux 12.5.0 _Bookworm_ - Official i386 DVD Binary-1 with firmware 20240210-11:28]/ bookworm contrib main non-free-firmware</span><br><br>deb http://mirrors.huaweicloud.com/debian/ bookworm main non-free-firmware<br>deb-src http://mirrors.huaweicloud.com/debian/ bookworm main non-free-firmware<br><br>deb http://security.debian.org/debian-security bookworm-security main non-free-firmware<br>deb-src http://security.debian.org/debian-security bookworm-security main non-free-firmware<br><br><span class="hljs-comment"># bookworm-updates, to get updates before a point release is made;</span><br><span class="hljs-comment"># see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports</span><br>deb http://mirrors.huaweicloud.com/debian/ bookworm-updates main non-free-firmware<br>deb-src http://mirrors.huaweicloud.com/debian/ bookworm-updates main non-free-firmware<br></code></pre></td></tr></table></figure>
+<h2 id="用户权限">用户权限</h2>
+<p>在安装系统时会设置两个用户，一个 root 用户，一个普通用户，而使用普通用户时默认无法使用 <code>sudo</code>，所以需要安装<code>sudo</code> 并添加权限。</p>
 <ol>
-<li>安装 <code>sudo</code><br> 切换至 root 用户并安装<code>sudo</code>:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">su root<br>apt install <span class="hljs-built_in">sudo</span><br></code></pre></td></tr></table></figure></li>
-<li>添加权限 <br> 网上介绍了两种方法，但我使用方法一的时候没有成功，建议直接使用方法二。<br>方法一: 切换至 root 用户并执行下面的命令。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> usermod -aG <span class="hljs-built_in">sudo</span> username<br></code></pre></td></tr></table></figure>
-上面命令中的 username 换成自己的用户名。<br>方法二: 切换至 root 用户，在 <code>/etc/sudoer.d/</code> 目录下新建一个以自己用户名为文件名的文件。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">touch</span> /etc/sudoer.d/username<br>nano /etc/sudoer.d/username<br></code></pre></td></tr></table></figure>
-添加以下内容:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">username ALL=(ALL)ALL<br></code></pre></td></tr></table></figure>
-注意上面的 username 需要换成自己的用户名，然后 Ctrl+X 保存退出并切换回自己的用户就可以了。</li>
+<li>安装<code>sudo</code><br>
+切换至 root 用户并安装<code>sudo</code>:</li>
 </ol>
-<h2 id="配置语言"><a href="# 配置语言" class="headerlink" title="配置语言"></a>配置语言 </h2><p> 在安装过程中如果选择系统语言为英语进行安装的话进入系统后还要设置语言为中文并安装中文输入法，折腾了一番成功了但是具体的步骤不知道是否合理。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">su root<br>apt install <span class="hljs-built_in">sudo</span><br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>添加权限<br>
+网上介绍了两种方法，但我使用方法一的时候没有成功，建议直接使用方法二。<br>
+方法一: 切换至 root 用户并执行下面的命令。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> usermod -aG <span class="hljs-built_in">sudo</span> username<br></code></pre></td></tr></table></figure>
+<p>上面命令中的 username 换成自己的用户名。<br>
+方法二: 切换至 root 用户，在 <code>/etc/sudoer.d/</code> 目录下新建一个以自己用户名为文件名的文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">touch</span> /etc/sudoer.d/username<br>nano /etc/sudoer.d/username<br></code></pre></td></tr></table></figure>
+<p>添加以下内容:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">username ALL=(ALL)ALL<br></code></pre></td></tr></table></figure>
+<p>注意上面的 username 需要换成自己的用户名，然后 Ctrl+X 保存退出并切换回自己的用户就可以了。</p>
+<h2 id="配置语言">配置语言</h2>
+<p>在安装过程中如果选择系统语言为英语进行安装的话进入系统后还要设置语言为中文并安装中文输入法，折腾了一番成功了但是具体的步骤不知道是否合理。</p>
 <ol>
-<li>安装语言包<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt update<br><span class="hljs-built_in">sudo</span> apt install locales<br></code></pre></td></tr></table></figure></li>
-<li>配置 <code>locale</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dpkg-reconfigure locales<br></code></pre></td></tr></table></figure>
-在出现的对话框的表里一直下拉选择 <code>zh_CN.UTF-8</code> 。然后在下一个界面中选择 <code>zh_CN.UTF-8</code> 作为默认的 <code>locale</code> 。</li>
-<li>安装中文字体(非必需)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy<br></code></pre></td></tr></table></figure></li>
-<li>安装中文输入法<br>(1) 如果原来有安装先卸载<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt purge fcitx* ibus*<br></code></pre></td></tr></table></figure>
-(2) 安装 fcitx5 中文拼音输入法<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install fcitx5 fcitx5-chinese-addons<br></code></pre></td></tr></table></figure>
-(3) 然后重启系统打开 fcitx 配置根据自己的需要进行配置即可。</li>
+<li>安装语言包</li>
 </ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt update<br><span class="hljs-built_in">sudo</span> apt install locales<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>配置 <code>locale</code></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dpkg-reconfigure locales<br></code></pre></td></tr></table></figure>
+<p>在出现的对话框的表里一直下拉选择 <code>zh_CN.UTF-8</code> 。然后在下一个界面中选择 <code>zh_CN.UTF-8</code> 作为默认的 <code>locale</code> 。<br>
+3. 安装中文字体(非必需)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>安装中文输入法<br>
+(1) 如果原来有安装先卸载</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt purge fcitx* ibus*<br></code></pre></td></tr></table></figure>
+<p>(2) 安装 fcitx5 中文拼音输入法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install fcitx5 fcitx5-chinese-addons<br></code></pre></td></tr></table></figure>
+<p>(3) 然后重启系统打开 fcitx 配置根据自己的需要进行配置即可。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
@@ -677,7 +708,9 @@ Core(TM)2 Duo P840">
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            安装 Xrdp 使用 Xorg 进行远程登录网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。1sudo apt install xrdp
+                            安装 Xrdp 使用 Xorg 进行远程登录
+网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。
+1sudo apt install xrdp
                         
                     </div>
                     <div class="publish-info">

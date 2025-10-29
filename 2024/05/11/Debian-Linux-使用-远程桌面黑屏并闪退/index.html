@@ -5,7 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Debian Linux 使用 -- 远程桌面黑屏并闪退, 小人驿站">
-    <meta name="description" content="安装 Xrdp 使用 Xorg 进行远程登录  网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。1sudo apt install xrdp安装完成后该服务将自动">
+    <meta name="description" content=" 安装 Xrdp 使用 Xorg 进行远程登录 
+ 网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。
+1sudo apt install xrdp
+
+ 安装完成后">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -414,8 +418,23 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="安装 -Xrdp- 使用 -Xorg- 进行远程登录"><a href="# 安装 -Xrdp- 使用 -Xorg- 进行远程登录" class="headerlink" title="安装 Xrdp 使用 Xorg 进行远程登录"></a>安装 Xrdp 使用 Xorg 进行远程登录 </h1><p> 网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install xrdp<br></code></pre></td></tr></table></figure><br><span id="more"></span><br>安装完成后该服务将自动开启，可通过下面命令确认是否开启:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> systemctl status xrdp<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511104423.png" alt="20240511104423"><br>红框处显示 <code>active(running)</code> 则说明已开启。</p>
-<h1 id="解决远程桌面连接上之后黑屏并闪退问题"><a href="# 解决远程桌面连接上之后黑屏并闪退问题" class="headerlink" title="解决远程桌面连接上之后黑屏并闪退问题"></a>解决远程桌面连接上之后黑屏并闪退问题 </h1><p> 这个经常会有人说更换 test 版本的 xrdp 来解决，但是通过以下办法可以正常登录。<br>编辑 <code>/etc/xrdp/startwm.sh</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> vi /etc/xrdp/startwm.sh<br></code></pre></td></tr></table></figure><br> 加入下面三行内容:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">unset</span> DBUS_SESSION_BUS_ADDRESS<br><span class="hljs-built_in">unset</span> XDG_RUNTIME_DIR<br>. <span class="hljs-variable">$HOME</span>/.profile<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511104947.png" alt="20240511104947"><br>然后就可以通过 Xorg 登录看到桌面了。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511105324.png" alt="20240511105324"></p>
+                <h1> 安装 Xrdp 使用 Xorg 进行远程登录 </h1>
+<p> 网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install xrdp<br></code></pre></td></tr></table></figure>
+<span id="more"></span>
+<p> 安装完成后该服务将自动开启，可通过下面命令确认是否开启:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> systemctl status xrdp<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511104423.png" alt="20240511104423"><br>
+红框处显示 <code>active(running)</code> 则说明已开启。</p>
+<h1> 解决远程桌面连接上之后黑屏并闪退问题 </h1>
+<p> 这个经常会有人说更换 test 版本的 xrdp 来解决，但是通过以下办法可以正常登录。<br>
+编辑 <code>/etc/xrdp/startwm.sh</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> vi /etc/xrdp/startwm.sh<br></code></pre></td></tr></table></figure>
+<p> 加入下面三行内容:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">unset</span> DBUS_SESSION_BUS_ADDRESS<br><span class="hljs-built_in">unset</span> XDG_RUNTIME_DIR<br>. <span class="hljs-variable">$HOME</span>/.profile<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511104947.png" alt="20240511104947"><br>
+然后就可以通过 Xorg 登录看到桌面了。<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240511105324.png" alt="20240511105324"></p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
@@ -629,8 +648,9 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            机器配置这台机器比较老，是200x年在日本买的富士通的 FMV-DESKPOWER，型号是 FMVFB70T。配置如下:
-
+                            机器配置
+这台机器比较老，是200x年在日本买的富士通的 FMV-DESKPOWER，型号是 FMVFB70T。
+配置如下:
 
 
 
@@ -647,8 +667,8 @@ FJNB023
 
 
 CPU
-Core(TM)2 Duo P8400
-2.
+Core™2 Duo P8400
+2.26
                         
                     </div>
                     <div class="publish-info">
