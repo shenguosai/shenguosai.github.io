@@ -97,8 +97,8 @@ ignore:
 # Extensions
 ## s: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-#theme: landscape
-theme: hexo-theme-matery
+theme: landscape
+#theme: hexo-theme-matery
 #theme: hexo-theme-next
 #theme: next
 
