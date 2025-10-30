@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="PVE(二) 修改 IP 地址, 小人驿站">
-    <meta name="description" content="登入 PVE 后台命令行  方法一: 在局域网的电脑浏览器输入 PVE 的 IP 地址登录后台，从左边的菜单找到“PVE”—“_Shell”菜单，进入网页版的 ssh 界面下；或者在主机的控制台下输入 root 密码后登录到 ssh 下；方">
+    <meta name="description" content=" 登入 PVE 后台命令行 
+ 方法一: 在局域网的电脑浏览器输入 PVE 的 IP 地址登录后台，从左边的菜单找到“PVE”—“_Shell”菜单，进入网页版的 ssh 界面下；或者在主机的控制台下输入 root 密码后登录到 ssh 下">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -414,10 +415,20 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="登入 -PVE- 后台命令行"><a href="# 登入 -PVE- 后台命令行" class="headerlink" title="登入 PVE 后台命令行"></a>登入 PVE 后台命令行 </h1><p> 方法一: 在局域网的电脑浏览器输入 PVE 的 IP 地址登录后台，从左边的菜单找到“PVE”—“_Shell”菜单，进入网页版的 ssh 界面下；或者在主机的控制台下输入 root 密码后登录到 ssh 下；<br><span id="more"></span><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411165444.png" alt="20250411165444"><br>方法二: 使用 ssh 工具登入，如 Mobaxterm 。</p>
-<h1 id="编辑 -etc-network-interfaces"><a href="# 编辑 -etc-network-interfaces" class="headerlink" title="编辑 /etc/network/interfaces"></a>编辑 /etc/network/interfaces</h1><p><code>vi /etc/network/interfaces</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411165645.png" alt="20250411165645"></p>
-<h1 id="编辑 -etc-issue"><a href="# 编辑 -etc-issue" class="headerlink" title="编辑 /etc/issue"></a>编辑 /etc/issue</h1><p><code>vi /etc/issue</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411170326.png" alt="20250411170326"></p>
-<h1 id="编辑 -etc-hosts"><a href="# 编辑 -etc-hosts" class="headerlink" title="编辑 /etc/hosts"></a>编辑 /etc/hosts</h1><p><code>vi /etc/hosts</code><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411170433.png" alt="20250411170433"></p>
+                <h1> 登入 PVE 后台命令行 </h1>
+<p> 方法一: 在局域网的电脑浏览器输入 PVE 的 IP 地址登录后台，从左边的菜单找到“PVE”—“_Shell”菜单，进入网页版的 ssh 界面下；或者在主机的控制台下输入 root 密码后登录到 ssh 下；</p>
+<span id="more"></span>
+<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411165444.png" alt="20250411165444"><br>
+方法二: 使用 ssh 工具登入，如 Mobaxterm 。</p>
+<h1> 编辑 /etc/network/interfaces</h1>
+<p><code>vi /etc/network/interfaces</code><br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411165645.png" alt="20250411165645"></p>
+<h1> 编辑 /etc/issue</h1>
+<p><code>vi /etc/issue</code><br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411170326.png" alt="20250411170326"></p>
+<h1> 编辑 /etc/hosts</h1>
+<p><code>vi /etc/hosts</code><br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250411170433.png" alt="20250411170433"></p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
@@ -578,9 +589,10 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            关于 local 和 local-lvm查了很多相关资料，到现在还没有彻底的搞明白，根据目前的理解如下:
+                            关于 local 和 local-lvm
+查了很多相关资料，到现在还没有彻底的搞明白，根据目前的理解如下:
 
-lcoal-lvm 就是网上说的 lvm-thin，lvm-thin 算是 local-lvm 的存储类别，根据网上的说法，它的优点
+lcoal-lvm 就是网上说的 lvm-thin，lvm-thin 算是 local-lvm 的存储类别，根据网上的说法，它的优
                         
                     </div>
                     <div class="publish-info">

@@ -7,7 +7,11 @@
     <meta name="keywords" content="在 Windows11 中找回照片查看器打开图片, 小人驿站">
     <meta name="description" content="
 使用快捷键 Win + R 打开运行窗口， 输入 regedit 命令回车打开注册表
-找到HKEY_LOCAL_MACHINE -&amp;gt; SOFTWARE-&amp;gt;Microsoft -&amp;gt; Windows Photo Viewer">
+
+
+
+
+找到HKEY_LOCAL_MACHINE -&amp;gt; SOFTWARE-&amp;gt;Microsoft -&amp;gt; Windows Photo Vi">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -417,9 +421,15 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <ol>
-<li>使用快捷键 <code>Win + R</code> 打开运行窗口， 输入 <code>regedit</code> 命令回车打开注册表<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212234749.png" alt="20231212234749"><span id="more"></span></li>
-<li>找到<code>HKEY_LOCAL_MACHINE</code> -&gt; <code>SOFTWARE</code>-&gt;<code>Microsoft</code> -&gt; <code>Windows Photo Viewer</code> -&gt; <code>Capabilities</code> -&gt; <code>FileAssociations</code>，右键 =&gt; 新建 =&gt; 字符串值，名称填写<code>.jpg</code>，数值填写<code>PhotoViewer.FileAssoc.Tiff</code>，同理添加 <code>.png</code>  <code>.jpeg</code>，数值相同。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212234917.png" alt="20231212234917"></li>
-<li>添加之后就可以使用 Windows 照片查看器看图。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212235008.png" alt="20231212235008"></li>
+<li>使用快捷键 <code>Win + R</code> 打开运行窗口， 输入 <code>regedit</code> 命令回车打开注册表<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212234749.png" alt="20231212234749"></li>
+</ol>
+<span id="more"></span>
+<ol start="2">
+<li>找到<code>HKEY_LOCAL_MACHINE</code> -&gt; <code>SOFTWARE</code>-&gt;<code>Microsoft</code> -&gt; <code>Windows Photo Viewer</code> -&gt; <code>Capabilities</code> -&gt; <code>FileAssociations</code>，右键 =&gt; 新建 =&gt; 字符串值，名称填写<code>.jpg</code>，数值填写<code>PhotoViewer.FileAssoc.Tiff</code>，同理添加 <code>.png</code>  <code>.jpeg</code>，数值相同。<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212234917.png" alt="20231212234917"></li>
+<li>添加之后就可以使用 Windows 照片查看器看图。<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20231212235008.png" alt="20231212235008"></li>
 </ol>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
@@ -583,6 +593,7 @@
                         
                             
 通过 Virtuoso 的 Layout XL =&gt; Calibre =&gt; Run PEX 进入 Calibre PEX，并将工艺厂提供的 xRC(Rule) 文件设置好 Calibre PEX。
+
                         
                     </div>
                     <div class="publish-info">

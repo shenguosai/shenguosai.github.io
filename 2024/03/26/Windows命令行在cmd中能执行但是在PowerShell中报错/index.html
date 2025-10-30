@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Windows 命令行在 cmd 中能执行但是在 PowerShell 中报错, 小人驿站">
-    <meta name="description" content="使用 ssh 远程 windows 端的时候默认使用 cmd，而用 powershell 可以使用很多 linux 的命令，像 ls，ps，cd 什么的 (实际上只是映射了一下)。 使用管理员权限在 PowerShell 执行以下命令，使 ">
+    <meta name="description" content="使用 ssh 远程 windows 端的时候默认使用 cmd，而用 powershell 可以使用很多 linux 的命令，像 ls，ps，cd 什么的(实际上只是映射了一下)。
+使用管理员权限在 PowerShell 执行以下命令，使 S">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -414,17 +415,30 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>使用 ssh 远程 windows 端的时候默认使用 cmd，而用 powershell 可以使用很多 linux 的命令，像 <code>ls</code>，<code>ps</code>，<code>cd</code> 什么的 (实际上只是映射了一下)。<br> 使用管理员权限在 <em>PowerShell</em> 执行以下命令，使 SSH 连接 Windows 时默认使用 <em>Powershell</em>。<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">New-ItemProperty</span> <span class="hljs-literal">-Path</span> <span class="hljs-string">&quot;HKLM:\SOFTWARE\OpenSSH&quot;</span> <span class="hljs-literal">-Name</span> DefaultShell <span class="hljs-literal">-Value</span> <span class="hljs-string">&quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot;</span> <span class="hljs-literal">-PropertyType</span> String <span class="hljs-literal">-Force</span><br></code></pre></td></tr></table></figure><br><span id="more"></span><br> 但是今天远程 Windows 下开启 <code>http-server</code> 服务时却遇到一个奇怪的问题。</p>
+                <p>使用 ssh 远程 windows 端的时候默认使用 cmd，而用 powershell 可以使用很多 linux 的命令，像 <code>ls</code>，<code>ps</code>，<code>cd</code> 什么的(实际上只是映射了一下)。<br>
+使用管理员权限在 <em>PowerShell</em> 执行以下命令，使 SSH 连接 Windows 时默认使用<em>Powershell</em>。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">New-ItemProperty</span> <span class="hljs-literal">-Path</span> <span class="hljs-string">&quot;HKLM:\SOFTWARE\OpenSSH&quot;</span> <span class="hljs-literal">-Name</span> DefaultShell <span class="hljs-literal">-Value</span> <span class="hljs-string">&quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot;</span> <span class="hljs-literal">-PropertyType</span> String <span class="hljs-literal">-Force</span><br></code></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>但是今天远程 Windows 下开启 <code>http-server</code> 服务时却遇到一个奇怪的问题。</p>
 <blockquote>
 <p>这个问题也可以描述为: powershell 中无法执行命令 / 脚本</p>
 </blockquote>
-<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090059.png" alt="20240326090059"><br>尝试了一下发现一部分命令是可以执行的，就考虑是不是权限相关的问题，通过多方查证，总结了以下解决办法:</p>
+<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090059.png" alt="20240326090059"><br>
+尝试了一下发现一部分命令是可以执行的，就考虑是不是权限相关的问题，通过多方查证，总结了以下解决办法:</p>
 <ul>
-<li>运行命令行查看系统权限:<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Get-ExecutionPolicy</span> <span class="hljs-literal">-List</span><br></code></pre></td></tr></table></figure>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090340.png" alt="20240326090340"></li>
-<li>通过这个命令发现 <code>CurrentUser</code> 的权限是<code>Undefined</code>，那么就是权限的问题，尝试以下命令通过增加权限解决<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Set-ExecutionPolicy</span> <span class="hljs-literal">-ExecutionPolicy</span> RemoteSigned <span class="hljs-literal">-Scope</span> CurrentUser<br></code></pre></td></tr></table></figure>
-修改后再次执行 <code>Get-ExecutionPolicy -List</code> 查看权限 <br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090815.png" alt="20240326090815"><br> 再次开启 <code>http-server</code>:<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090934.png" alt="20240326090934"><br> 成功！</li>
+<li>运行命令行查看系统权限:</li>
 </ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Get-ExecutionPolicy</span> <span class="hljs-literal">-List</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090340.png" alt="20240326090340"></p>
+<ul>
+<li>通过这个命令发现 <code>CurrentUser</code> 的权限是<code>Undefined</code>，那么就是权限的问题，尝试以下命令通过增加权限解决</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Set-ExecutionPolicy</span> <span class="hljs-literal">-ExecutionPolicy</span> RemoteSigned <span class="hljs-literal">-Scope</span> CurrentUser<br></code></pre></td></tr></table></figure>
+<p>修改后再次执行 <code>Get-ExecutionPolicy -List</code> 查看权限<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090815.png" alt="20240326090815"><br>
+再次开启<code>http-server</code>:<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240326090934.png" alt="20240326090934"><br>
+成功！</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
@@ -585,7 +599,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            什么是 Docker?Docker是基于Go语言实现的在 2013 年发布的云开源项目，它利用了围绕容器这个现有的计算概念，特别是在Linux世界中，这些原始概念被称为cgroups和命名空间。Docker的技术之所以独特是因为它专注于开发
+                            什么是 Docker?
+Docker是基于Go语言实现的在 2013 年发布的云开源项目，它利用了围绕容器这个现有的计算概念，特别是在Linux世界中，这些原始概念被称为cgroups和命名空间。Docker的技术之所以独特是因为它专注于开
                         
                     </div>
                     <div class="publish-info">
@@ -638,7 +653,11 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            安装 Docker更新 yum1yum update安装配置时的依赖包1yum install -y yum-utils device-mapper-persistent-data lvm2
+                            安装 Docker
+更新 yum
+1yum update
+安装配置时的依赖包
+1yum install -y yum-utils device-mapper-persistent-data lvm2
                         
                     </div>
                     <div class="publish-info">
