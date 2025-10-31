@@ -6,21 +6,12 @@
     <meta charset="utf-8">
     <meta name="keywords" content="QNAP 安装 zerotier 进行异地组网, 小人驿站">
     <meta name="description" content="准备工作
-
 在 App Center 中安装 QVPN Service
 
 
-
-去 ZeroTier 官网 下载相关的安装包
-
-
-
-从本地安装 ZeroTier
-允许没有有效数字签名的程序安装
-
-安装
-
-打开 App Center，右上角 &amp;">
+去 ZeroTier 官网  下载相关的安装包 从本地安装 ZeroTier允许没有有效数字签名的程序安装  安装
+打开 App Center，右上角”手动安装”；
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -433,42 +424,22 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>准备工作</h1>
-<ol>
+                <h1 id="准备工作"><a href="# 准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
 <li>在 App Center 中安装 QVPN Service</li>
-<li>
-<span id="more"></span>
+<li><span id="more"></span>
 <img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814122823.png" alt="20240814122823"></li>
-<li>去 <a target="_blank" rel="noopener" href="https://www.zerotier.com/download/">ZeroTier 官网</a> 下载相关的安装包<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123138.png" alt="20240814123138"><br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123221.png" alt="20240814123221"></li>
+<li>去 <a target="_blank" rel="noopener" href="https://www.zerotier.com/download/">ZeroTier 官网 </a> 下载相关的安装包<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123138.png" alt="20240814123138"><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123221.png" alt="20240814123221"><h1 id="从本地安装 -ZeroTier"><a href="# 从本地安装 -ZeroTier" class="headerlink" title="从本地安装 ZeroTier"></a> 从本地安装 ZeroTier</h1><h2 id="允许没有有效数字签名的程序安装"><a href="# 允许没有有效数字签名的程序安装" class="headerlink" title="允许没有有效数字签名的程序安装"></a>允许没有有效数字签名的程序安装 </h2><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123719.png" alt="20240814123719"><h2 id="安装"><a href="# 安装" class="headerlink" title="安装"></a> 安装</h2></li>
+<li>打开 App Center，右上角”手动安装”；</li>
+<li>点击”浏览”，选中安装包；</li>
+<li>点击”安装”。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814124524.png" alt="20240814124524"><br>安装完成后，可以在所有应用中找到 Zerotier，但是和群晖不同，威联通上的 Zerotier 是无法点击打开的。(不明白为什么在”我的应用程序”中无法找到 Zerotier。)<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814124911.png" alt="20240814124911"></li>
 </ol>
-<h1>从本地安装 ZeroTier</h1>
-<h2 id="允许没有有效数字签名的程序安装">允许没有有效数字签名的程序安装</h2>
-<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814123719.png" alt="20240814123719"></p>
-<h2 id="安装">安装</h2>
-<ol>
-<li>打开 App Center，右上角 &quot; 手动安装 &quot;；</li>
-<li>点击 &quot; 浏览 &quot;，选中安装包；</li>
-<li>点击 &quot; 安装 &quot;。<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814124524.png" alt="20240814124524"><br>
-安装完成后，可以在所有应用中找到 Zerotier，但是和群晖不同，威联通上的 Zerotier 是无法点击打开的。(不明白为什么在 &quot; 我的应用程序 &quot; 中无法找到 Zerotier。)<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814124911.png" alt="20240814124911"></li>
-</ol>
-<h1>加入网络</h1>
-<p>Zerotier 的注册及申请方法不在此赘述，威联通安装好 Zerotier 软件后需要使用命令行来加入网络。且必须获取管理员权限才能安装。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">[user@QNAP ~]$ zerotier-cli <span class="hljs-built_in">join</span> xxxxxxxxxxxxxxxx<br>zerotier-cli: authtoken.secret not found or readable <span class="hljs-keyword">in</span> /share/CACHEDEV1_DATA/.qpkg/zerotier (try again as root)<br>[user@QNAP ~]$ <span class="hljs-built_in">sudo</span> zerotier-cli <span class="hljs-built_in">join</span> xxxxxxxxxxxxxxxx<br><br>We trust you have received the usual lecture from the <span class="hljs-built_in">local</span> System<br>Administrator. It usually boils down to these three things:<br><br>    <span class="hljs-comment">#1) Respect the privacy of others.</span><br>    <span class="hljs-comment">#2) Think before you type.</span><br>    <span class="hljs-comment">#3) With great power comes great responsibility.</span><br><br>Password:<br>200 <span class="hljs-built_in">join</span> OK<br></code></pre></td></tr></table></figure>
-<p>看到<code>200 join OK</code>，即意味着这台 NAS 已经加入了 zerotier 网络，然后就可以返回 zerotier 的网页管理端对这台设备进行授权。</p>
-<h1>设置防火墙允许访问</h1>
-<p>如果 QNAP 安装了防火墙<code>QuFirewall</code>，则需要添加一条规则允许 ZeroTier 虚拟局域网网段允许访问。</p>
+<h1 id="加入网络"><a href="# 加入网络" class="headerlink" title="加入网络"></a>加入网络 </h1><p>Zerotier 的注册及申请方法不在此赘述，威联通安装好 Zerotier 软件后需要使用命令行来加入网络。且必须获取管理员权限才能安装。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">[user@QNAP ~]$ zerotier-cli <span class="hljs-built_in">join</span> xxxxxxxxxxxxxxxx<br>zerotier-cli: authtoken.secret not found or readable <span class="hljs-keyword">in</span> /share/CACHEDEV1_DATA/.qpkg/zerotier (try again as root)<br>[user@QNAP ~]$ <span class="hljs-built_in">sudo</span> zerotier-cli <span class="hljs-built_in">join</span> xxxxxxxxxxxxxxxx<br><br>We trust you have received the usual lecture from the <span class="hljs-built_in">local</span> System<br>Administrator. It usually boils down to these three things:<br><br>    <span class="hljs-comment">#1) Respect the privacy of others.</span><br>    <span class="hljs-comment">#2) Think before you type.</span><br>    <span class="hljs-comment">#3) With great power comes great responsibility.</span><br><br>Password:<br>200 <span class="hljs-built_in">join</span> OK<br></code></pre></td></tr></table></figure><br> 看到<code>200 join OK</code>，即意味着这台 NAS 已经加入了 zerotier 网络，然后就可以返回 zerotier 的网页管理端对这台设备进行授权。</p>
+<h1 id="设置防火墙允许访问"><a href="# 设置防火墙允许访问" class="headerlink" title="设置防火墙允许访问"></a>设置防火墙允许访问 </h1><p> 如果 QNAP 安装了防火墙<code>QuFirewall</code>，则需要添加一条规则允许 ZeroTier 虚拟局域网网段允许访问。</p>
 <ol>
 <li>打开<code>QuFirewall</code></li>
-<li>点击 &quot; 编辑 &quot; 修改规则<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814150010.png" alt="20240814150010"></li>
-<li>点击 &quot; 添加规则 &quot;；<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814170631.png" alt="20240814170631"></li>
-<li>输入虚拟局域网的网段地址，子网掩码选 <code>255.255.255.0/24</code> 即可。其它设置不用更改，点击 &quot; 应用 &quot;，防火墙就允许虚拟局域网网段访问了。<br>
-<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814170809.png" alt="20240814170809"></li>
+<li>点击”编辑”修改规则<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814150010.png" alt="20240814150010"></li>
+<li>点击”添加规则”；<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814170631.png" alt="20240814170631"></li>
+<li>输入虚拟局域网的网段地址，子网掩码选 <code>255.255.255.0/24</code> 即可。其它设置不用更改，点击”应用”，防火墙就允许虚拟局域网网段访问了。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240814170809.png" alt="20240814170809"></li>
 </ol>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
