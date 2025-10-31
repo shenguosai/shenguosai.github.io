@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="PVE(四)解决升级 (apt-get update) 报错问题, 小人驿站">
-    <meta name="description" content="问题原因  使用 Proxmox VE 默认的 APT 更新源，在 WEB 更新管理面板点击“刷新”后，会显示错误。这是因为默认的更新源为 Proxmox VE 企业版的订阅，如果我们没有购买订阅，就会提示签名错误，从而使得 APT 更新失">
+    <meta name="description" content=" 问题原因 
+ 使用 Proxmox VE 默认的 APT 更新源，在 WEB 更新管理面板点击“刷新”后，会显示错误。这是因为默认的更新源为 Proxmox VE 企业版的订阅，如果我们没有购买订阅，就会提示签名错误，从而使得 APT 更">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -414,11 +415,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="问题原因"><a href="# 问题原因" class="headerlink" title="问题原因"></a>问题原因 </h1><p> 使用 Proxmox VE 默认的 APT 更新源，在 WEB 更新管理面板点击“刷新”后，会显示错误。这是因为默认的更新源为 Proxmox VE 企业版的订阅，如果我们没有购买订阅，就会提示签名错误，从而使得 APT 更新失败，解决的方法很简单，就是更换软件源就可以了。 Proxmox 官方提供了对应不同版本的源，可以根据自己的情况进行选择。</p>
-<h1 id="解决方法"><a href="# 解决方法" class="headerlink" title="解决方法"></a>解决方法 </h1><p> 修改两个软件源文件即可。</p>
-<h2 id="etc-apt-sources-list-d-pve-enterprise-list"><a href="#etc-apt-sources-list-d-pve-enterprise-list" class="headerlink" title="/etc/apt/sources.list.d/pve-enterprise.list"></a>/etc/apt/sources.list.d/pve-enterprise.list</h2><p>注释掉 enterprise 字样的企业软件源，添加免费软件源<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#deb https://enterprise.proxmox.com/debian/pve bookworm pve-enterprise</span><br>deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription<br></code></pre></td></tr></table></figure></p>
-<h2 id="etc-apt-sources-list-d-ceph-list"><a href="#etc-apt-sources-list-d-ceph-list" class="headerlink" title="/etc/apt/sources.list.d/ceph.list"></a>/etc/apt/sources.list.d/ceph.list</h2><p>注释掉仅有的一行即可<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#deb https://enterprise.proxmox.com/debian/ceph-quincy bookworm enterprise</span><br></code></pre></td></tr></table></figure></p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+                <h1> 问题原因 </h1>
+<p> 使用 Proxmox VE 默认的 APT 更新源，在 WEB 更新管理面板点击“刷新”后，会显示错误。这是因为默认的更新源为 Proxmox VE 企业版的订阅，如果我们没有购买订阅，就会提示签名错误，从而使得 APT 更新失败，解决的方法很简单，就是更换软件源就可以了。 Proxmox 官方提供了对应不同版本的源，可以根据自己的情况进行选择。</p>
+<h1> 解决方法 </h1>
+<p> 修改两个软件源文件即可。</p>
+<h2 id="etc-apt-sources-list-d-pve-enterprise-list">/etc/apt/sources.list.d/pve-enterprise.list</h2>
+<p> 注释掉 enterprise 字样的企业软件源，添加免费软件源 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#deb https://enterprise.proxmox.com/debian/pve bookworm pve-enterprise</span><br>deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription<br></code></pre></td></tr></table></figure>
+<h2 id="etc-apt-sources-list-d-ceph-list">/etc/apt/sources.list.d/ceph.list</h2>
+<p> 注释掉仅有的一行即可 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#deb https://enterprise.proxmox.com/debian/ceph-quincy bookworm enterprise</span><br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
             <hr/>
@@ -632,7 +638,9 @@
                     <div class="summary block-with-text">
                         
                             
-在/source/_posts目录下建立.md文件并撰写内容；编辑文章时要在第一行中加上title，如果不按此格式来写的话在hexo博客中就会显示这篇文章没有名字。
+在/source/_posts目录下建立.md文件并撰写内容；
+编辑文章时要在第一行中加上title，如果不按此格式来写的话在hexo博客中就会显示这篇文章没有名字。
+
                         
                     </div>
                     <div class="publish-info">

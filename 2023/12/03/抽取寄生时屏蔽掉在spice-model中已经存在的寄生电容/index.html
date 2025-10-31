@@ -5,8 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="抽取寄生时屏蔽掉在 spice model 中已经存在的寄生电容, 小人驿站">
-    <meta name="description" content=" 在提取寄生参数时，除了需要关注金属导体的寄生电容外，还需要分析 mos 器件的节点寄生参数提取是否准确。 下面是一个典型的 nmos 4 端器件:
- 该 mos 管的 4 个节点 D, G, S, B 的寄生电容是否准确呢？ 首先用 ca">
+    <meta name="description" content=" 在提取寄生参数时，除了需要关注金属导体的寄生电容外，还需要分析 mos 器件的节点寄生参数提取是否准确。
+下面是一个典型的 nmos 4 端器件:
+ 该 mos 管的 4 个节点 D, G, S, B 的寄生电容是否准确呢？
+首先用 ca">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -415,30 +417,66 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p> 在提取寄生参数时，除了需要关注金属导体的寄生电容外，还需要分析 mos 器件的节点寄生参数提取是否准确。<br> 下面是一个典型的 nmos 4 端器件:</p>
-<p> 该 mos 管的 4 个节点 D, G, S, B 的寄生电容是否准确呢？<br> 首先用 calibre xrc 提取一下其寄生参数，结果如下:<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cc_1</span> S G <span class="hljs-number">3</span>.<span class="hljs-number">32511</span>f<br><span class="hljs-attribute">cc_2</span> S D <span class="hljs-number">6</span>.<span class="hljs-number">73464</span>e-<span class="hljs-number">19</span><br><span class="hljs-attribute">cc_3</span> S B <span class="hljs-number">12</span>.<span class="hljs-number">7622</span>f<br><span class="hljs-attribute">cc_4</span> G D <span class="hljs-number">3</span>.<span class="hljs-number">32511</span>f<br><span class="hljs-attribute">cc_5</span> G B <span class="hljs-number">1</span>.<span class="hljs-number">16212</span>f<br><span class="hljs-attribute">cc_6</span> D B <span class="hljs-number">12</span>.<span class="hljs-number">7506</span>f<br></code></pre></td></tr></table></figure><br><span id="more"></span><br> 上述寄生电容分为 4 类:</p>
+                <p> 在提取寄生参数时，除了需要关注金属导体的寄生电容外，还需要分析 mos 器件的节点寄生参数提取是否准确。<br>
+下面是一个典型的 nmos 4 端器件:</p>
+<p> 该 mos 管的 4 个节点 D, G, S, B 的寄生电容是否准确呢？<br>
+首先用 calibre xrc 提取一下其寄生参数，结果如下:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cc_1</span> S G <span class="hljs-number">3</span>.<span class="hljs-number">32511</span>f<br><span class="hljs-attribute">cc_2</span> S D <span class="hljs-number">6</span>.<span class="hljs-number">73464</span>e-<span class="hljs-number">19</span><br><span class="hljs-attribute">cc_3</span> S B <span class="hljs-number">12</span>.<span class="hljs-number">7622</span>f<br><span class="hljs-attribute">cc_4</span> G D <span class="hljs-number">3</span>.<span class="hljs-number">32511</span>f<br><span class="hljs-attribute">cc_5</span> G B <span class="hljs-number">1</span>.<span class="hljs-number">16212</span>f<br><span class="hljs-attribute">cc_6</span> D B <span class="hljs-number">12</span>.<span class="hljs-number">7506</span>f<br></code></pre></td></tr></table></figure>
+<span id="more"></span>
+<p> 上述寄生电容分为 4 类:</p>
 <ul>
 <li>Gate 到 Source/Drain 电容 </li>
 <li>Source/Drain 到 Bulk 电容 </li>
 <li>Gate 到 Bulk 电容 </li>
 <li>Source 到 Drain 电容 </li>
 </ul>
-<p> 由于在 spice model 中一般会自动把上述 4 类电容考虑，如果寄生参数提取中再提取一遍，就会发生重复提取。<br> 因此，需要把这 4 类电容屏蔽，屏蔽方法如下:</p>
+<p> 由于在 spice model 中一般会自动把上述 4 类电容考虑，如果寄生参数提取中再提取一遍，就会发生重复提取。<br>
+因此，需要把这 4 类电容屏蔽，屏蔽方法如下:</p>
 <ul>
-<li> 屏蔽 Gate 到 Source/Drain 电容 <figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gams">PEX IGNORE CAPACITANCE <span class="hljs-keyword">ALL</span> <span class="hljs-built_in">poly</span> nsd<br>PEX IGNORE CAPACITANCE <span class="hljs-keyword">ALL</span> <span class="hljs-built_in">poly</span> psd<br></code></pre></td></tr></table></figure></li>
-<li> 屏蔽 Gate 到 Bulk 电容，其中 ALLGATE 是 mark layer<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">PEX IGNORE CAPATANCE DEVICE INTRINSIC poly ALLGATE</span><br></code></pre></td></tr></table></figure>
-</li>
+<li> 屏蔽 Gate 到 Source/Drain 电容 </li>
 </ul>
-<p> 设置上述 3 个参数后，提取结果如下:<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cc_1</span> S D <span class="hljs-number">0</span>.<span class="hljs-number">00129446</span>f<br><span class="hljs-attribute">cc_2</span> S B <span class="hljs-number">12</span>.<span class="hljs-number">7622</span>f<br><span class="hljs-attribute">cc_3</span> G B <span class="hljs-number">0</span>.<span class="hljs-number">211916</span>f<br><span class="hljs-attribute">cc_4</span> D B <span class="hljs-number">12</span>.<span class="hljs-number">7506</span>f<br></code></pre></td></tr></table></figure><br> 可以看到，Gate 到 Source/Drain 的电容没有了，被屏蔽掉了。Gate 到 Bulk 的电容比刚才的值小了，说明在 mos 管区域的电容被屏蔽了，只剩下 Gate 露头的电容了，这个符合预期。<br> 但是，Source/Drain 到 Bulk 的电容没有屏蔽掉，该如何设置呢？<br> 首先看一下再原始的工艺文件定义中，有如下语句:<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">diffusion</span> <span class="hljs-operator">=</span> diff &#123;<br>    thickness <span class="hljs-operator">=</span> <span class="hljs-number">0.004</span><br>    min_width <span class="hljs-operator">=</span> <span class="hljs-number">0.15</span><br>    min_spacing <span class="hljs-operator">=</span> <span class="hljs-number">0.18</span><br>    resistivity <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br>    src_drn_layers <span class="hljs-operator">=</span> &#123;nsd_psd_&#125;<br>&#125;<br></code></pre></td></tr></table></figure><br> 注意 diffusion, src<em>drn_layers 是关键字，nsd_psd</em> 是两个 process layer。<br>calibre 命令文件中原来有如下语句:<br><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">PEX <span class="hljs-built_in">MAP</span> diff NTAP PTAP nsd psd<br></code></pre></td></tr></table></figure><br> 它把 nsd, psd 映射到了 diff 层，但是没有告诉工具映射到 nsd<em>psd</em> 层。<br> 如果修改该语句如下:<br><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs arcade">PEX <span class="hljs-built_in">MAP</span> diff NTAP PTAP<br>PEX <span class="hljs-built_in">MAP</span> nsd_nsd_<br>PEX <span class="hljs-built_in">MAP</span> psd_psd_<br></code></pre></td></tr></table></figure><br> 当 calibre xrc 识别到该语句后，自动会把 nsd 之间的相互电容屏蔽掉，也自动会把 nsd/psd 到衬底的电容屏蔽掉。<br> 屏蔽后提取结果如下:<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cc_1</span> S B <span class="hljs-number">0</span>.<span class="hljs-number">0777512</span>f<br><span class="hljs-attribute">cc_2</span> G B <span class="hljs-number">0</span>.<span class="hljs-number">211916</span>f<br><span class="hljs-attribute">cc_3</span> D B <span class="hljs-number">0</span>.<span class="hljs-number">0540989</span>f<br></code></pre></td></tr></table></figure><br> 以上 3 个电容都是连接到 mos 管的金属之间的耦合电容了，电容值很小，不是器件本身的电容，符合预期。</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gams">PEX IGNORE CAPACITANCE <span class="hljs-keyword">ALL</span> <span class="hljs-built_in">poly</span> nsd<br>PEX IGNORE CAPACITANCE <span class="hljs-keyword">ALL</span> <span class="hljs-built_in">poly</span> psd<br></code></pre></td></tr></table></figure>
+<ul>
+<li> 屏蔽 Gate 到 Bulk 电容，其中 ALLGATE 是 mark layer</li>
+</ul>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">PEX IGNORE CAPATANCE DEVICE INTRINSIC poly ALLGATE</span><br></code></pre></td></tr></table></figure>
+<p> 设置上述 3 个参数后，提取结果如下:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cc_1</span> S D <span class="hljs-number">0</span>.<span class="hljs-number">00129446</span>f<br><span class="hljs-attribute">cc_2</span> S B <span class="hljs-number">12</span>.<span class="hljs-number">7622</span>f<br><span class="hljs-attribute">cc_3</span> G B <span class="hljs-number">0</span>.<span class="hljs-number">211916</span>f<br><span class="hljs-attribute">cc_4</span> D B <span class="hljs-number">12</span>.<span class="hljs-number">7506</span>f<br></code></pre></td></tr></table></figure>
+<p> 可以看到，Gate 到 Source/Drain 的电容没有了，被屏蔽掉了。Gate 到 Bulk 的电容比刚才的值小了，说明在 mos 管区域的电容被屏蔽了，只剩下 Gate 露头的电容了，这个符合预期。<br>
+但是，Source/Drain 到 Bulk 的电容没有屏蔽掉，该如何设置呢？<br>
+首先看一下再原始的工艺文件定义中，有如下语句:</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">diffusion</span> <span class="hljs-operator">=</span> diff &#123;<br>    thickness <span class="hljs-operator">=</span> <span class="hljs-number">0.004</span><br>    min_width <span class="hljs-operator">=</span> <span class="hljs-number">0.15</span><br>    min_spacing <span class="hljs-operator">=</span> <span class="hljs-number">0.18</span><br>    resistivity <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br>    src_drn_layers <span class="hljs-operator">=</span> &#123;nsd_psd_&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p> 注意 diffusion, src_drn_layers 是关键字，nsd_psd_ 是两个 process layer。<br>
+calibre 命令文件中原来有如下语句:</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">PEX <span class="hljs-built_in">MAP</span> diff NTAP PTAP nsd psd<br></code></pre></td></tr></table></figure>
+<p> 它把 nsd, psd 映射到了 diff 层，但是没有告诉工具映射到 nsd_psd_层。<br>
+如果修改该语句如下:</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs arcade">PEX <span class="hljs-built_in">MAP</span> diff NTAP PTAP<br>PEX <span class="hljs-built_in">MAP</span> nsd_nsd_<br>PEX <span class="hljs-built_in">MAP</span> psd_psd_<br></code></pre></td></tr></table></figure>
+<p> 当 calibre xrc 识别到该语句后，自动会把 nsd 之间的相互电容屏蔽掉，也自动会把 nsd/psd 到衬底的电容屏蔽掉。<br>
+屏蔽后提取结果如下:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cc_1</span> S B <span class="hljs-number">0</span>.<span class="hljs-number">0777512</span>f<br><span class="hljs-attribute">cc_2</span> G B <span class="hljs-number">0</span>.<span class="hljs-number">211916</span>f<br><span class="hljs-attribute">cc_3</span> D B <span class="hljs-number">0</span>.<span class="hljs-number">0540989</span>f<br></code></pre></td></tr></table></figure>
+<p> 以上 3 个电容都是连接到 mos 管的金属之间的耦合电容了，电容值很小，不是器件本身的电容，符合预期。</p>
 <hr>
-<p> 如果用户在原始的工艺定义中没有用 diffusion 的关键字，而是用 conductor 的关键字，如下:<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">conductor</span> <span class="hljs-operator">=</span> diff &#123;<br>    thickness <span class="hljs-operator">=</span> <span class="hljs-number">0.004</span><br>    min_width <span class="hljs-operator">=</span> <span class="hljs-number">0.15</span><br>    min_spacing <span class="hljs-operator">=</span> <span class="hljs-number">0.18</span><br>    resistivity <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br>&#125;<br></code></pre></td></tr></table></figure><br> 则用户需要增加额外的语句来屏蔽 source 到 drain，source 到衬底的寄生电容。</p>
+<p> 如果用户在原始的工艺定义中没有用 diffusion 的关键字，而是用 conductor 的关键字，如下:</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">conductor</span> <span class="hljs-operator">=</span> diff &#123;<br>    thickness <span class="hljs-operator">=</span> <span class="hljs-number">0.004</span><br>    min_width <span class="hljs-operator">=</span> <span class="hljs-number">0.15</span><br>    min_spacing <span class="hljs-operator">=</span> <span class="hljs-number">0.18</span><br>    resistivity <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p> 则用户需要增加额外的语句来屏蔽 source 到 drain，source 到衬底的寄生电容。</p>
 <ul>
-<li> 屏蔽 Gate 到 Source/Drain 的电容 <figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gams">PEX IGNORE CAPATANCE <span class="hljs-keyword">ALL</span> <span class="hljs-built_in">poly</span> nsd<br>PEX IGNORE CAPATANCE <span class="hljs-keyword">ALL</span> <span class="hljs-built_in">poly</span> psd<br></code></pre></td></tr></table></figure></li>
-<li> 屏蔽 Gate 到 Bulk<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">PEX IGNORE CAPACITANCE DEVICE INTRINSIC poly ALLGATE</span><br></code></pre></td></tr></table></figure></li>
-<li> 屏蔽 Source/Drain 到 Bulk<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">PEX IGNORE CAPACITANCE DEVICE INTRINSIC nsd ALLGATE</span><br></code></pre></td></tr></table></figure></li>
-<li> 屏蔽 Source 到 Drain<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">PEX IGNORE CAPACITANCE DEVICE nsd nsd ALLGATE</span><br></code></pre></td></tr></table></figure>
-可以看到，这种写法比较繁琐，不如前面的方法简洁。</li>
+<li> 屏蔽 Gate 到 Source/Drain 的电容 </li>
 </ul>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gams">PEX IGNORE CAPATANCE <span class="hljs-keyword">ALL</span> <span class="hljs-built_in">poly</span> nsd<br>PEX IGNORE CAPATANCE <span class="hljs-keyword">ALL</span> <span class="hljs-built_in">poly</span> psd<br></code></pre></td></tr></table></figure>
+<ul>
+<li> 屏蔽 Gate 到 Bulk</li>
+</ul>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">PEX IGNORE CAPACITANCE DEVICE INTRINSIC poly ALLGATE</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li> 屏蔽 Source/Drain 到 Bulk</li>
+</ul>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">PEX IGNORE CAPACITANCE DEVICE INTRINSIC nsd ALLGATE</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li> 屏蔽 Source 到 Drain</li>
+</ul>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">PEX IGNORE CAPACITANCE DEVICE nsd nsd ALLGATE</span><br></code></pre></td></tr></table></figure>
+<p> 可以看到，这种写法比较繁琐，不如前面的方法简洁。</p>
 <p> 总结，屏蔽掉 spice model 中的寄生参数最简单的方法是: 在工艺文件定义中用 diffusion 的关键字，用 src_drn_layers 指定具体的 layer 名称。然后在提取命令文件中，把 gate 的电容通过 PEX IGNORE 语句来屏蔽掉，不需要写 source, drain 的屏蔽语句。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
@@ -653,13 +691,15 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            截止2023年12月2日，最新版本是Sublime Text 4 (Build 4169)。注册方法如下:
+                            截止2023年12月2日，最新版本是Sublime Text 4 (Build 4169)。
+注册方法如下:
 
 安装软件:
+
 去官方网站下载并安装，Sublime Text - Text Editing, Done Right
 
 
-修改subl
+修改su
                         
                     </div>
                     <div class="publish-info">
