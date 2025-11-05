@@ -1,1129 +1,207 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
-
-
-<head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="使用 iStoreOS 中的 KMS 服务激活 Windows 和 Office, 小人驿站">
-    <meta name="description" content="安装 iStoreOS 路由系统  本机环境，在威联通 NAS 的虚拟机中安装了 iStoreOS。
-安装 KMS 服务插件  在 iStore 中找到 KMS 服务器并点击安装。安装完成后再服务中会出现 “KMS 服务器”，点击进入并将“">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
-
-    <title>使用 iStoreOS 中的 KMS 服务激活 Windows 和 Office | 小人驿站</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
-    
-
-
-    <!-- bg-cover style     -->
-
-
-
-<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-<link rel="stylesheet" type="text/css" href="/css/matery.css">
-<link rel="stylesheet" type="text/css" href="/css/my.css">
-<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
-
-
-
-
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-    <link rel="stylesheet" href="/css/post.css">
-
-
-
-
-    
-        <link rel="stylesheet" type="text/css" href="/css/reward.css">
-    
-
-
-
-    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
-
-<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="小人驿站" type="application/atom+xml">
-</head>
-
-
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">小人驿站</span>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-  <li>
-    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
-      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
-
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">小人驿站</div>
-        <div class="logo-desc">
-            
-            怀出世之心，行入世之事。
-            
-        </div>
-    </div>
-
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
-        
-    </ul>
-</div>
-
-
-        </div>
-
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>使用 iStoreOS 中的 KMS 服务激活 Windows 和 Office | 小人驿站</title><meta name="author" content="市井一俗人"><meta name="copyright" content="市井一俗人"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="安装 iStoreOS 路由系统   本机环境，在威联通 NAS 的虚拟机中安装了 iStoreOS。  安装 KMS 服务插件   在 iStore 中找到 KMS 服务器并点击安装。  安装完成后再服务中会出现 “KMS 服务器”，点击进入并将“启用”和“自动激活局域网客户端”勾选。 服务端设置到此完成。  端口映射   如果需要在外网使用可以在主路由中进行端口映射，建议使用默认端口 &amp;qu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 iStoreOS 中的 KMS 服务激活 Windows 和 Office">
+<meta property="og:url" content="https://shenguosai.github.io/2025/01/16/%E4%BD%BF%E7%94%A8iStoreOS%E4%B8%AD%E7%9A%84KMS%E6%9C%8D%E5%8A%A1%E6%BF%80%E6%B4%BBWindows%E5%92%8COffice/index.html">
+<meta property="og:site_name" content="小人驿站">
+<meta property="og:description" content="安装 iStoreOS 路由系统   本机环境，在威联通 NAS 的虚拟机中安装了 iStoreOS。  安装 KMS 服务插件   在 iStore 中找到 KMS 服务器并点击安装。  安装完成后再服务中会出现 “KMS 服务器”，点击进入并将“启用”和“自动激活局域网客户端”勾选。 服务端设置到此完成。  端口映射   如果需要在外网使用可以在主路由中进行端口映射，建议使用默认端口 &amp;qu">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://shenguosai.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-01-16T07:28:31.000Z">
+<meta property="article:modified_time" content="2025-04-16T15:34:47.420Z">
+<meta property="article:author" content="市井一俗人">
+<meta property="article:tag" content="Windows">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://shenguosai.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "使用 iStoreOS 中的 KMS 服务激活 Windows 和 Office",
+  "url": "https://shenguosai.github.io/2025/01/16/%E4%BD%BF%E7%94%A8iStoreOS%E4%B8%AD%E7%9A%84KMS%E6%9C%8D%E5%8A%A1%E6%BF%80%E6%B4%BBWindows%E5%92%8COffice/",
+  "image": "https://shenguosai.github.io/img/butterfly-icon.png",
+  "datePublished": "2025-01-16T07:28:31.000Z",
+  "dateModified": "2025-04-16T15:34:47.420Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "市井一俗人",
+      "url": "https://shenguosai.github.io"
     }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://shenguosai.github.io/2025/01/16/%E4%BD%BF%E7%94%A8iStoreOS%E4%B8%AD%E7%9A%84KMS%E6%9C%8D%E5%8A%A1%E6%BF%80%E6%B4%BBWindows%E5%92%8COffice/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
         }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
+        return value
+      }
     }
-</style>
 
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
-        
-    </nav>
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
 
-</header>
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
+      const theme = saveToLocal.get('theme')
     
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">使用 iStoreOS 中的 KMS 服务激活 Windows 和 Office</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<main class="post-container content">
-
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
     
-    <div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Windows/">
-                                <span class="chip bg-color">Windows</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" class="post-category">
-                                技术兴趣
-                            </a>
-                        
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                网络服务
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-01-16
-                </div>
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
-        </div>
-        <hr class="clearfix">
-
-        
-
-        
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h2 id="安装 -iStoreOS- 路由系统"><a href="# 安装 -iStoreOS- 路由系统" class="headerlink" title="安装 iStoreOS 路由系统"></a>安装 iStoreOS 路由系统 </h2><p> 本机环境，在威联通 NAS 的虚拟机中安装了 iStoreOS。</p>
-<h2 id="安装 -KMS- 服务插件"><a href="# 安装 -KMS- 服务插件" class="headerlink" title="安装 KMS 服务插件"></a>安装 KMS 服务插件 </h2><p> 在 iStore 中找到 KMS 服务器并点击安装。<br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250116153253.png" alt="20250116153253"><br>安装完成后再服务中会出现 “KMS 服务器”，点击进入并将“启用”和“自动激活局域网客户端”勾选。<br>服务端设置到此完成。</p>
-<h2 id="端口映射"><a href="# 端口映射" class="headerlink" title="端口映射"></a>端口映射 </h2><p> 如果需要在外网使用可以在主路由中进行端口映射，建议使用默认端口”1688”，不然在客户端还要指定端口。</p>
-<h2 id="激活 -Windows- 系统"><a href="# 激活 -Windows- 系统" class="headerlink" title="激活 Windows 系统"></a>激活 Windows 系统 </h2><p> 如果以前使用了公共的 KMS 服务器需要替换掉。</p>
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '使用 iStoreOS 中的 KMS 服务激活 Windows 和 Office',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="小人驿站" type="application/atom+xml">
+</head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">小人驿站</span></a><a class="nav-page-title" href="/"><span class="site-name">使用 iStoreOS 中的 KMS 服务激活 Windows 和 Office</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">使用 iStoreOS 中的 KMS 服务激活 Windows 和 Office</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-16T07:28:31.000Z" title="发表于 2025-01-16 15:28:31">2025-01-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-16T15:34:47.420Z" title="更新于 2025-04-16 23:34:47">2025-04-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/">技术兴趣</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/">网络服务</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="安装 -iStoreOS- 路由系统"> 安装 iStoreOS 路由系统 </h2>
+<p> 本机环境，在威联通 NAS 的虚拟机中安装了 iStoreOS。</p>
+<h2 id="安装 -KMS- 服务插件"> 安装 KMS 服务插件 </h2>
+<p> 在 iStore 中找到 KMS 服务器并点击安装。<br>
+<img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20250116153253.png" alt="20250116153253"><br>
+安装完成后再服务中会出现 “KMS 服务器”，点击进入并将“启用”和“自动激活局域网客户端”勾选。<br>
+服务端设置到此完成。</p>
+<h2 id="端口映射"> 端口映射 </h2>
+<p> 如果需要在外网使用可以在主路由中进行端口映射，建议使用默认端口 &quot;1688&quot;，不然在客户端还要指定端口。</p>
+<h2 id="激活 -Windows- 系统"> 激活 Windows 系统 </h2>
+<p> 如果以前使用了公共的 KMS 服务器需要替换掉。</p>
 <ol>
-<li>打开命令行提示符（管理员权限）<ul>
-<li>在 Windows 系统中，按下 Win+X 键，在弹出菜单中选择“终端管理员”</li>
-<li>在 macOS 和 Linux 系统中，打开终端</li>
+<li> 打开命令行提示符（管理员权限）
+<ul>
+<li> 在 Windows 系统中，按下 Win+X 键，在弹出菜单中选择“终端管理员”</li>
+<li> 在 macOS 和 Linux 系统中，打开终端 </li>
 </ul>
 </li>
-<li>查看 KMS 服务器信息 <br><code>slmgr /dlv</code><br> 后会弹出相关信息。（但是我没有找到 KMS 服务器的地址信息，可能是系统版本问题。及时看不到也不影响下面的替换。）</li>
-<li>停止 KMS 服务<br><code>net stop sppsvc</code></li>
-<li>删除原 KMS 服务器地址<br><code>slmgr /ckms</code></li>
-<li>添加新的 KMS 服务器地址<br><code>slmgr /skms starnest.mycloudnas.com</code></li>
-<li>激活系统<br><code>slmgr /ato</code></li>
-<li>启动 KMS 服务 <br><code>net start sppsvc</code><br> 其中 3 和 7 根据情况可进行省略。<h2 id="激活 -OFFICE"><a href="# 激活 -OFFICE" class="headerlink" title="激活 OFFICE"></a>激活 OFFICE</h2></li>
-<li>进入 Office 的安装目录<br><code>cd &#39;C:\Program Files\Microsoft Office\Office16&#39;</code></li>
-<li>执行命令查看 Office 激活状态及 KMS 服务器信息<br><code>cscript ospp.vbs /dstatus</code></li>
-<li>更新 KMS 服务器地址<br><code>cscript opss.vbs /sethst:starnest.mycloudnas.com</code></li>
-<li>激活 OFFICE<br><code>cscript opss.vbs /act</code></li>
+<li> 查看 KMS 服务器信息 <br>
+<code>slmgr /dlv</code><br>
+后会弹出相关信息。（但是我没有找到 KMS 服务器的地址信息，可能是系统版本问题。及时看不到也不影响下面的替换。）</li>
+<li> 停止 KMS 服务 <br>
+<code>net stop sppsvc</code></li>
+<li> 删除原 KMS 服务器地址 <br>
+<code>slmgr /ckms</code></li>
+<li> 添加新的 KMS 服务器地址 <br>
+<code>slmgr /skms starnest.mycloudnas.com</code></li>
+<li> 激活系统 <br>
+<code>slmgr /ato</code></li>
+<li> 启动 KMS 服务 <br>
+<code>net start sppsvc</code><br>
+其中 3 和 7 根据情况可进行省略。</li>
 </ol>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-                
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">市井一俗人</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://shenguosai.github.io/2025/01/16/%E4%BD%BF%E7%94%A8iStoreOS%E4%B8%AD%E7%9A%84KMS%E6%9C%8D%E5%8A%A1%E6%BF%80%E6%B4%BBWindows%E5%92%8COffice/">https://shenguosai.github.io/2025/01/16/%E4%BD%BF%E7%94%A8iStoreOS%E4%B8%AD%E7%9A%84KMS%E6%9C%8D%E5%8A%A1%E6%BF%80%E6%B4%BBWindows%E5%92%8COffice/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">市井一俗人</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/Windows/">
-                                    <span class="chip bg-color">Windows</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-                <div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
-            
-        </div>
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2025/02/08/2025%E5%B9%B4%E5%A4%A7%E5%B9%B4%E5%88%9D%E4%B8%89%E6%B5%8E%E5%8D%97%E4%B8%80%E6%97%A5%E6%B8%B8/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="2025 年大年初三济南一日游">
-                        
-                        <span class="card-title">2025 年大年初三济南一日游</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            刚刚度过了甲辰龙年，来到了2025的乙巳蛇年。这一年的不同之处在于是”双春年”(2025/2/3和2026/2/4)和”闰六月”的组合，象征着好运双倍，或将有吉祥之事发生。
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-02-08
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/10/30/Hexo%E7%9A%84%E7%8E%AF%E5%A2%83%E5%90%8C%E6%AD%A5%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Hexo 的环境同步及数据迁移">
-                        
-                        <span class="card-title">Hexo 的环境同步及数据迁移</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            今年的双 11 添置了零刻的 SER8 mini 小主机，以后就不想背着笔记本来回跑了，于是出现了两台电脑都能写博客的需求。网上找了很多教程，最后参考了两篇文章完成了迁移：
-
-使用hexo，如果换了电脑怎么更新博客？
-hexo博客同步管理及
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-30
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/" class="post-category">
-                                    技术兴趣
-                                </a>
-                            
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    网络服务
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
-</div>
-
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-
-</main>
-
-
-
-
-    <footer class="page-footer bg-color">
-    
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="/libs/aplayer/Meting.min.js"></script>
-
-    
-
-    <div class="container row center-align"
-         style="margin-bottom: 0px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2019-2025</span>
-            
-            <a href="/about" target="_blank">市井一俗人</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            
-            <br>
-            
-            
-            
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
-            
-            <br>
-
-            <!-- 运行天数提醒. -->
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
-
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
-
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    };
-
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 白天和黑夜主题 -->
-<div class="stars-con">
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>  
-</div>
-
-<script>
-    function switchNightMode() {
-        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
-        setTimeout(function () {
-            $('body').hasClass('DarkMode') 
-            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
-            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
-            
-            setTimeout(function () {
-            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
-                $(this).remove()
-            })
-            }, 2e3)
-        })
-    }
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
-
-    
-
-    
-    
-    
-
-    <!-- 雪花特效 -->
-    
-
-    <!-- 鼠标星星特效 -->
-    
-
-     
-        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
-        <script src="/libs/others/TencentCaptcha.js"></script>
-        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
-    
-
-    <!-- Baidu Analytics -->
-
-    <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
-
-    
-
-    
-
-    <!--腾讯兔小巢-->
-    
-    
-
-    
-
-    
-
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
-
-</body>
-
-</html>
+<h2 id="激活 -OFFICE"> 激活 OFFICE</h2>
+<ol>
+<li> 进入 Office 的安装目录 <br>
+<code>cd 'C:\Program Files\Microsoft Office\Office16'</code></li>
+<li> 执行命令查看 Office 激活状态及 KMS 服务器信息 <br>
+<code>cscript ospp.vbs /dstatus</code></li>
+<li> 更新 KMS 服务器地址 <br>
+<code>cscript opss.vbs /sethst:starnest.mycloudnas.com</code></li>
+<li> 激活 OFFICE<br>
+<code>cscript opss.vbs /act</code></li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://shenguosai.github.io">市井一俗人</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://shenguosai.github.io/2025/01/16/%E4%BD%BF%E7%94%A8iStoreOS%E4%B8%AD%E7%9A%84KMS%E6%9C%8D%E5%8A%A1%E6%BF%80%E6%B4%BBWindows%E5%92%8COffice/">https://shenguosai.github.io/2025/01/16/%E4%BD%BF%E7%94%A8iStoreOS%E4%B8%AD%E7%9A%84KMS%E6%9C%8D%E5%8A%A1%E6%BF%80%E6%B4%BBWindows%E5%92%8COffice/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://shenguosai.github.io" target="_blank">小人驿站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Windows/">Windows</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/02/08/2025%E5%B9%B4%E5%A4%A7%E5%B9%B4%E5%88%9D%E4%B8%89%E6%B5%8E%E5%8D%97%E4%B8%80%E6%97%A5%E6%B8%B8/" title="2025 年大年初三济南一日游"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">2025 年大年初三济南一日游</div></div><div class="info-2"><div class="info-item-1"> 刚刚度过了甲辰龙年，来到了 2025 的乙巳蛇年。这一年的不同之处在于是 &quot; 双春年 &quot;(2025/2/3 和 2026/2/4) 和 &quot; 闰六月 &quot; 的组合，象征着好运双倍，或将有吉祥之事发生。   因为爷爷奶奶是很早以前从烟台迁来青岛的，所以家里的称呼到我这一辈一直沿用着烟台的叫法。父亲家里兄弟姐妹 7 人，最大的大爹与最小的小姑年龄上整整差了 19 岁。如今大爹已是 82 岁高龄，已经步入了耄耋之年。在 80 岁之前一直没有感觉有多老，可以在前年突然腰不好之后身体每况愈下，现在走路都是一件相对困难的事情。由于家庭职业的原因，大爹在很小的时候就去了济南，并且定居到现在，而其他的兄弟姐妹们还是常住青岛。因为青岛人多，以前都是大爹一加来青岛跟大家相聚。现在由于身体原因，在大年初三，我和父亲、二姑、小姑去了济南。 这是下午回青岛时在济南站拍的，这里借用一下。   中午 11 点半左右下的火车，到饭店已经近 12 点了，大爹的儿子，我的堂哥在门口在饭店门口接的我们。     在饭店里明显感觉到大爹的精神有些不足，就仿佛一台电脑的休眠时间设置的...</div></div></div></a><a class="pagination-related" href="/2024/10/30/Hexo%E7%9A%84%E7%8E%AF%E5%A2%83%E5%90%8C%E6%AD%A5%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/" title="Hexo 的环境同步及数据迁移"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Hexo 的环境同步及数据迁移</div></div><div class="info-2"><div class="info-item-1">今年的双 11 添置了零刻的 SER8 mini 小主机，以后就不想背着笔记本来回跑了，于是出现了两台电脑都能写博客的需求。 网上找了很多教程，最后参考了两篇文章完成了迁移：  使用 hexo，如果换了电脑怎么更新博客？ hexo 博客同步管理及迁移   分析目录结构 首先，需要了解 hexo 项目的目录结构，以及各文件夹用来存放哪些文件。下面是我本地 hexo 项目的目录结构。文件夹没有展开，为了和文件区别，在文件夹后加了 / 用以和文件名区分。 1234567891011121314blog├──.deploy_git/├──.github/├──node_modules/├──public/├──scaffolds/├──source/├──themes/├──.gitignore├──_config.landscape.yml├──_config.yml├──db.json├──package.json└──package-lock.json  publi/和.deploy_git 这两个文件夹里的内容是一样的。用来存放由 markdown 文件生成的所有静态文件，猜测 ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2024/02/26/Windows11-%E6%BF%80%E6%B4%BB%E6%96%B9%E6%B3%95/" title="Windows11 激活方法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-26</div><div class="info-item-2">Windows11 激活方法</div></div><div class="info-2"><div class="info-item-1"> 今天将笔记本自带的 win11 家庭版升级到专业版时无意中在知乎中找到了一个方法，一试还真的有效，因为远程运行了一个网站的程序，不知道自己的电脑是不是成为别人的肉鸡了，但是激活方式确实是有效的。风险性后面再研究吧。   两个激活秘钥  12J8WVF-9X3GM-4WVYC-VDHQG-42CXT7Y64F-88DCY-Y6WTC-H33D2-64QHF  我使用的是第一个，第二个是否有效没有验证。  方法    右键“此电脑”，依次点击“属性” =&gt; “产品秘钥和激活” =&gt; “更改产品秘钥”，输入上述秘钥； win + R，输入 powershell，回车。在弹窗中输入命令:irm massgrave.dev/get.ps1 | iex  会弹出下面的窗口   简单解释一下: 按 1，Windows 永久激活；按 2，office 永久激活；按 3，Windows 激活到 2038 年；按 4，180 天的 kms 激活工具；……  然后重复 1 就会看到“已激活”字样。  </div></div></div></a><a class="pagination-related" href="/2024/03/26/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9C%A8cmd%E4%B8%AD%E8%83%BD%E6%89%A7%E8%A1%8C%E4%BD%86%E6%98%AF%E5%9C%A8PowerShell%E4%B8%AD%E6%8A%A5%E9%94%99/" title="Windows 命令行在 cmd 中能执行但是在 PowerShell 中报错"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-26</div><div class="info-item-2">Windows 命令行在 cmd 中能执行但是在 PowerShell 中报错</div></div><div class="info-2"><div class="info-item-1">使用 ssh 远程 windows 端的时候默认使用 cmd，而用 powershell 可以使用很多 linux 的命令，像 ls，ps，cd 什么的(实际上只是映射了一下)。 使用管理员权限在 PowerShell 执行以下命令，使 SSH 连接 Windows 时默认使用Powershell。 1New-ItemProperty -Path &quot;HKLM:\SOFTWARE\OpenSSH&quot; -Name DefaultShell -Value &quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -PropertyType String -Force  但是今天远程 Windows 下开启 http-server 服务时却遇到一个奇怪的问题。  这个问题也可以描述为: powershell 中无法执行命令 / 脚本   尝试了一下发现一部分命令是可以执行的，就考虑是不是权限相关的问题，通过多方查证，总结了以下解决办法:  运行命令行查看系统权限:  1Get-Execut...</div></div></div></a><a class="pagination-related" href="/2023/12/12/%E5%9C%A8Windows11%E4%B8%AD%E6%89%BE%E5%9B%9E%E7%85%A7%E7%89%87%E6%9F%A5%E7%9C%8B%E5%99%A8%E6%89%93%E5%BC%80%E5%9B%BE%E7%89%87/" title="在 Windows11 中找回照片查看器打开图片"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-12</div><div class="info-item-2">在 Windows11 中找回照片查看器打开图片</div></div><div class="info-2"><div class="info-item-1"> 使用快捷键 Win + R 打开运行窗口， 输入 regedit 命令回车打开注册表     找到HKEY_LOCAL_MACHINE -&gt; SOFTWARE-&gt;Microsoft -&gt; Windows Photo Viewer -&gt; Capabilities -&gt; FileAssociations，右键 =&gt; 新建 =&gt; 字符串值，名称填写.jpg，数值填写PhotoViewer.FileAssoc.Tiff，同理添加 .png  .jpeg，数值相同。  添加之后就可以使用 Windows 照片查看器看图。   </div></div></div></a><a class="pagination-related" href="/2024/09/04/%E6%89%93%E5%BC%80word%E6%97%B6MathType%E6%8A%A5%E9%94%99-MathType-has-detected-an-error-inAutoExecCls-Main-%E6%96%87%E4%BB%B6%E6%9C%AA%E6%89%BE%E5%88%B0-MathPage-WLL/" title="打开 word 时 MathType 报错:MathType has detected an error inAutoExecCls.Main: 文件未找到: MathPage.WLL."><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-04</div><div class="info-item-2">打开 word 时 MathType 报错:MathType has detected an error inAutoExecCls.Main: 文件未找到: MathPage.WLL.</div></div><div class="info-2"><div class="info-item-1">报错信息 不知道为什么打开 Work 时出现了 MathType 的报错。   连续点击两次 &quot; 确定 &quot; 报错对话框消失，如果点击 MathType 按钮会再次出现报错信息。  解决方法 找到 MathPage.wll 文件将其复制到 Office 指定目录下。  MathPage.wll 如果是 64 位的 Office，就去复制 C:\Program Files (x86)\MathType\Office Support\64\ 中的 MathPage.wll。 如果是 32 位的 Office，就去复制 C:\Program Files (x86)\MathType\Office Support\32\ 中的 MathPage.wll。 Office 指定目录 将上面的文件复制到目录: C:\Program Files\Microsoft Office\root\Office16中即可正常。  </div></div></div></a><a class="pagination-related" href="/2024/03/02/%E9%83%A8%E7%BD%B2-Windows-RDS-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1-%E4%B8%80/" title="部署 Windows RDS 远程桌面服务器 (一)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-02</div><div class="info-item-2">部署 Windows RDS 远程桌面服务器 (一)</div></div><div class="info-2"><div class="info-item-1">转自RD 网关部署说明，留待以后部署自己的远程桌面网关。 -----开始正文-----  1. 背景 实现通过 RD 网关服务器实现外网访问内网的远程桌面。 1.1 远程桌面网关 远程桌面网关（RD 网关）是一项角色服务，使授权远程用户可以从任何连接到 Internet 并且可以运行远程桌面连接 (RDC) 客户端的设备连接到内部企业网络或专用网络上的资源。网络资源可以是远程桌面会话主机（RD 会话主机）服务器、运行 RemoteApp 程序的 RD 会话主机服务器或启用了远程桌面的计算机。 RD 网关使用 HTTPS 上的远程桌面协议 (RDP) 在 Internet 上的远程用户与运行其生产力应用程序的内部网络资源之间建立安全的加密连接。 1.2 为什么使用远程桌面网关？ RD 网关有很多优点，其中包括: 通过 RD 网关，远程用户可以使用加密连接，通过 Internet 连接到内部网络资源，而不必配置虚拟专用网络 (VPN) 连接。 RD 网关提供全面的安全配置模型，使您可以控制对特定内部网络资源的访问。RD 网关提供点对点的 RDP 连接，而不是允许远程用户访问所有内部网...</div></div></div></a><a class="pagination-related" href="/2024/03/02/%E9%83%A8%E7%BD%B2-Windows-RDS-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1-%E4%BA%8C/" title="部署 Windows RDS 远程桌面服务 (二)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-02</div><div class="info-item-2">部署 Windows RDS 远程桌面服务 (二)</div></div><div class="info-2"><div class="info-item-1">转自  超详细的 部署 Windows RDS 远程桌面服务来啦！！！确定不来看一下嘛~，留待以后部署自己的远程桌面网关。 -----开始正文-----  用 Windows Server 2016 操作系统来完成 RDS 的部署，包括添加远程桌面服务角色，创建会话集合，发布 Remote App 程序，以及测试访问 Remote App 程序。 首先准备两台部署好域环境的虚拟机: Windows Server 2016 和 Windows 7 添加远程桌面服务角色 打开 Windows Server 2016: (1) 点进服务器管理器，点击“添加角色和功能”  (2) 在安装类型选择“远程桌面服务安装”  (3) 在“选择部署类型”窗口中选择“标准部署”按键，后“下一步”  (4) 在“选择部署方案”窗口中，选择“基于会话的桌面部署”按键，后“下一步”  (5) 系统会自动安装和配置必需的角色服务，直接“下一步”  (6) 依次指定下面三个服务所在的服务器，在“指定 RD 连接代理服务器”窗口中，将服务器池中的当前服务器添加到右侧窗格中，后“下一步”  (7) 选择服务器池中...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">市井一俗人</div><div class="author-info-description">怀出世之心，行入世之事。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">85</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%20-iStoreOS-%20%E8%B7%AF%E7%94%B1%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text"> 安装 iStoreOS 路由系统 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%20-KMS-%20%E6%9C%8D%E5%8A%A1%E6%8F%92%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text"> 安装 KMS 服务插件 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84"><span class="toc-number">3.</span> <span class="toc-text"> 端口映射 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%20-Windows-%20%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.</span> <span class="toc-text"> 激活 Windows 系统 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%20-OFFICE"><span class="toc-number">5.</span> <span class="toc-text"> 激活 OFFICE</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/05/%E4%BF%AE%E6%94%B9Nginx%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99%E7%9A%84%E9%A1%B5%E9%9D%A2/" title="修改 Nginx 部署网站的页面">修改 Nginx 部署网站的页面</a><time datetime="2025-11-05T11:52:40.000Z" title="发表于 2025-11-05 19:52:40">2025-11-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/03/%E9%99%88%E6%83%85%E8%A1%A8-%E6%9D%8E%E5%AF%86/" title="陈情表 -- 李密">陈情表 -- 李密</a><time datetime="2025-11-03T01:09:15.000Z" title="发表于 2025-11-03 09:09:15">2025-11-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/28/%E6%AE%B5%E4%BD%8D/" title="段位">段位</a><time datetime="2025-10-28T08:46:09.000Z" title="发表于 2025-10-28 16:46:09">2025-10-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/23/%E4%B8%80%E4%B8%AAPython%E8%84%9A%E6%9C%AC%E5%A6%82%E4%BD%95%E9%9D%99%E9%BB%98%E6%9C%88%E5%85%A5300%E5%85%83%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%95%86%E4%B8%9A%E9%80%BB%E8%BE%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%8B%86%E8%A7%A3/" title="一个 Python 脚本如何静默月入 300 元，自动化商业逻辑与技术拆解">一个 Python 脚本如何静默月入 300 元，自动化商业逻辑与技术拆解</a><time datetime="2025-10-23T02:05:49.000Z" title="发表于 2025-10-23 10:05:49">2025-10-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/06/%E6%B0%B4%E6%9C%A8%E7%84%B6-%E4%BA%BA%E9%97%B4%E6%B8%85%E9%86%92%E4%B8%89%E9%83%A8%E6%9B%B2/" title="水木然 - 人间清醒三部曲">水木然 - 人间清醒三部曲</a><time datetime="2025-08-06T06:50:14.000Z" title="发表于 2025-08-06 14:50:14">2025-08-06</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By 市井一俗人</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
