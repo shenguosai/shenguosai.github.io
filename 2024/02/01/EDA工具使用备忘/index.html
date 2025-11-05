@@ -5,14 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="EDA 工具使用备忘, 小人驿站">
-    <meta name="description" content="Cadence
-Virtuoso
-
+    <meta name="description" content="CadenceVirtuoso
 .cdsinit: 负责 Cadence 软件的初始化配置，包括加载快捷方式、嵌入 Calibre 软件接口等。
 
-
-
-示例存放目录:Candence 安装目录 /tools/dfII/samples/l">
+示例存放目录:Candence 安装目录 /tools/dfII/samples/local">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -421,102 +417,60 @@ Virtuoso
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Cadence">Cadence</h2>
-<h4 id="Virtuoso">Virtuoso</h4>
-<ol>
-<li>.cdsinit: 负责 Cadence 软件的初始化配置，包括加载快捷方式、嵌入 Calibre 软件接口等。</li>
-</ol>
-<span id="more"></span>
+                <h2 id="Cadence"><a href="#Cadence" class="headerlink" title="Cadence"></a>Cadence</h2><h4 id="Virtuoso"><a href="#Virtuoso" class="headerlink" title="Virtuoso"></a>Virtuoso</h4><ol>
+<li>.cdsinit: 负责 Cadence 软件的初始化配置，包括加载快捷方式、嵌入 Calibre 软件接口等。<span id="more"></span>
 <ul>
 <li>示例存放目录:<code>Candence 安装目录 /tools/dfII/samples/local/cdsinit</code></li>
-<li>读取顺序:
-<blockquote>
+<li>读取顺序: <blockquote>
 <p><em><font color="#d3d3d3">Cadence 安装目录 </font></em>/tools/dfII/samples/local/cdsinit =&gt; <em><font color="#d3d3d3"> 用户 home 目录</font></em>/.cdsinit =&gt; <em><font color="#d3d3d3">virtuoso 启动目录</font></em>/.cdsinit</p>
 </blockquote>
 </li>
-<li>设置默认读取的 display.drf 文件:   <pre>drLoadDrf(<em>filePath</em>)</pre>
-</li>
-<li>设置默认快捷键文件:
-<ul>
-<li>添加单个快捷键文件 <pre>load("/home/IC/Desktop/workspace/analog_ic/set_env/bindKeys_ICSkillSharing.il")</pre>
-</li>
-<li>添加多个快捷键文件 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs skill">let((bindKeyFileList file path saveSkillPath)<br>    bindKeyFileList = &#x27;(<br>        &quot;leBindKeys.il&quot;<br>        &quot;schBindKey.il&quot;<br>        &quot;bindKeys_ICSkillSharing.il&quot;<br>    )<br>)<br>; This is the path that is searched for the files<br>    path = strcat(<br>; If you want to add another path add it here as a string<br>        &quot;. ~/home/IC/Desktop/workspace/analog_ic/set_env &quot;<br>        prependInstallPath(&quot;local&quot;)<br>        prependInstallPath(&quot;samples/local&quot;)<br>    )<br>saveSkillPath = getSkillPath()<br>saveSkillPath(path)<br><br>foreach(file bindKeyFileList<br>    if(isFile(file) then<br>        loadi(file)<br>    )<br>)<br>setSkillPath(saveSkillPath)<br></code></pre></td></tr></table></figure>
-</li>
+<li>设置默认读取的 display.drf 文件:    <pre>drLoadDrf(<em>filePath</em>)</pre></li>
+<li>设置默认快捷键文件:<ul>
+<li>添加单个快捷键文件 <pre>load("/home/IC/Desktop/workspace/analog_ic/set_env/bindKeys_ICSkillSharing.il")</pre></li>
+<li>添加多个快捷键文件 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs skill">let((bindKeyFileList file path saveSkillPath)<br>    bindKeyFileList = &#x27;(<br>        &quot;leBindKeys.il&quot;<br>        &quot;schBindKey.il&quot;<br>        &quot;bindKeys_ICSkillSharing.il&quot;<br>    )<br>)<br>; This is the path that is searched for the files<br>    path = strcat(<br>; If you want to add another path add it here as a string<br>        &quot;. ~/home/IC/Desktop/workspace/analog_ic/set_env &quot;<br>        prependInstallPath(&quot;local&quot;)<br>        prependInstallPath(&quot;samples/local&quot;)<br>    )<br>saveSkillPath = getSkillPath()<br>saveSkillPath(path)<br><br>foreach(file bindKeyFileList<br>    if(isFile(file) then<br>        loadi(file)<br>    )<br>)<br>setSkillPath(saveSkillPath)<br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li>快捷键设置:
-<ul>
-<li>设置快捷键“0”消除高亮 net| 按“0”后鼠标点击欲消除的 net: <pre>hiSetBindKey("Schematics" "<Key>0" "geEnterDeleteNetProbe()")</pre>
-</li>
-<li>设置快捷键“-”消除所有高亮 net: <pre>hiSetBindkey("Schematics" "<Key>-" "geDeleteAllProbe(getCurrentWindow() t)")</pre>
-</li>
-<li>设置快捷键“F6”打开 Library Manager(启动 Virtuoso 后): <pre>hiSetBindKey("Command Interpreter" "<Key>F6" "ddsOpenLibManager()")</pre>
-</li>
-<li>设置快捷键“Shift+S”在上层 schematic 界面下编辑 Symbol: <pre>hiSetBindKey("Schematics" "Shift<Ket>S" "schHiEditInPlace()")</pre>
+<li>快捷键设置:<ul>
+<li>设置快捷键“0”消除高亮 net| 按“0”后鼠标点击欲消除的 net: <pre>hiSetBindKey("Schematics" "<Key>0" "geEnterDeleteNetProbe()")</pre></li>
+<li>设置快捷键“-”消除所有高亮 net:  <pre>hiSetBindkey("Schematics" "<Key>-" "geDeleteAllProbe(getCurrentWindow() t)")</pre></li>
+<li>设置快捷键“F6”打开 Library Manager(启动 Virtuoso 后): <pre>hiSetBindKey("Command Interpreter" "<Key>F6" "ddsOpenLibManager()")</pre></li>
+<li>设置快捷键“Shift+S”在上层 schematic 界面下编辑 Symbol: <pre>hiSetBindKey("Schematics" "Shift<Ket>S" "schHiEditInPlace()")</pre></li>
+<li>设置仿真结果默认存放目录为“/DATA/shenguosai/simulasion”: <pre>envSetVal("asimenv.startup" "projectDir" 'string"/DATA/shenguosai/simulasion")</pre></li>
+<li>调用其它软件接口:<ul>
+<li>Calibre<br><pre>load(“<em>Calibre_install_dir</em>/lib/calibre.skl”)</li>
+<li>HSPICE<br><pre>load(“<em>HSPICE_install_dir</em>/interface/HSPICE.ile”)</li>
+</ul>
 </li>
 </ul>
 </li>
 </ul>
-<pre><code>- 设置仿真结果默认存放目录为“/DATA/shenguosai/simulasion”:
-    &lt;pre&gt;envSetVal(&quot;asimenv.startup&quot; &quot;projectDir&quot; 'string &quot;/DATA/shenguosai/simulasion&quot;)&lt;/pre&gt;
-- 调用其它软件接口:
-  - Calibre
-    &lt;pre&gt;load(&quot;&lt;em&gt;Calibre_install_dir&lt;/em&gt;/lib/calibre.skl&quot;)
-  - HSPICE
-    &lt;pre&gt;load(&quot;&lt;em&gt;HSPICE_install_dir&lt;/em&gt;/interface/HSPICE.ile&quot;)
-</code></pre>
-<ol start="2">
-<li>.cdsenv: 包含了 Cadence 软件的变量设置，用户通过对变量赋值，改变软件设置。
-<ul>
-<li>
-<p>示例存放目录: <code>Candence 安装目录 /tools/dfII/samples/.cdsenv</code></p>
 </li>
-<li>
-<p>读取顺序:</p>
-<blockquote>
+<li><p>.cdsenv: 包含了 Cadence 软件的变量设置，用户通过对变量赋值，改变软件设置。</p>
+<ul>
+<li>示例存放目录: <code>Candence 安装目录 /tools/dfII/samples/.cdsenv</code></li>
+<li>读取顺序: <blockquote>
 <p><em><font color="#d3d3d3">Cadence 安装目录 </font></em>/tools/dfII/samples/.cdsenv =&gt; <em><font color="#d3d3d3"> 用户 home 目录</font></em>/.cdsenv =&gt; <em><font color="#d3d3d3">virtuoso 启动目录</font></em>/.cdsenv</p>
 </blockquote>
 </li>
-<li>
-<p>设置仿真结果显示有效位数:(示例文件中有，通过搜索改变赋值即可, 以下同)</p>
-   <pre>auCore.misc labelDigits int 6</pre>
-</li>
-<li>
-<p>改变仿真结果保存路径:</p>
-   <pre>asimenv.startup projectDir string"./simulation"</pre>
-</li>
-<li>
-<p>按 Library 名称设置仿真结果保存路径:</p>
-   <pre>asimenv.startup appendLibNameToProjectDir boolean t
-</li>
-<li>
-<p>设置原理图和版图中的 label 默认字体改为 roman:</p>
-   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs skill">schematic createLabelFontStyle cyclic &quot;roman&quot;<br>layout labelFontStyle cyclic &quot;roman&quot;<br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p>设置版图网格点默认值: 视工艺而定</p>
-   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs skill">layout xSnapSpacing float 0.005<br>layout ySnapSpacing float 0.005<br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p>设置仿真波形与坐标显示:</p>
-   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs skill">viva.graph  titleFont  string  &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.rectGraph    background  string  &quot;white&quot;<br>viva.axis     font   string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.horizMarker font    string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.vertMarker     font    string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.referenceLineMarker    font  string    &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>...<br>viva.trace  lineThickness  string  &quot;Thick&quot;<br>viva.trace  lineStyle  string  &quot;solid&quot;<br>wavescan.trace  lineThickness  string  &quot;Thick&quot;<br>wavescan.trace  lineStyle  string  &quot;solid&quot;<br></code></pre></td></tr></table></figure>
-<p>其中 <code>viva.axis font string &quot;Defaut,14,-1,5,75,0,0,0,0,0&quot;</code> 中的 14 为字号；75 为颜色深度，可以理解为是否加粗，取值在 0-99 之间。</p>
-<blockquote>
+<li>设置仿真结果显示有效位数:(示例文件中有，通过搜索改变赋值即可, 以下同)   <pre>auCore.misc labelDigits int 6</pre></li>
+<li>改变仿真结果保存路径:   <pre>asimenv.startup projectDir string"./simulation"</pre></li>
+<li>按 Library 名称设置仿真结果保存路径:<br>   <pre>asimenv.startup appendLibNameToProjectDir boolean t</li>
+<li>设置原理图和版图中的 label 默认字体改为 roman:   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs skill">schematic createLabelFontStyle cyclic &quot;roman&quot;<br>layout labelFontStyle cyclic &quot;roman&quot;<br></code></pre></td></tr></table></figure></li>
+<li>设置版图网格点默认值: 视工艺而定   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs skill">layout xSnapSpacing float 0.005<br>layout ySnapSpacing float 0.005<br></code></pre></td></tr></table></figure></li>
+<li>设置仿真波形与坐标显示:   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs skill">viva.graph  titleFont  string  &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.rectGraph    background  string  &quot;white&quot;<br>viva.axis     font   string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.horizMarker font    string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.vertMarker     font    string   &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>viva.referenceLineMarker    font  string    &quot;Default,14,-1,5,75,0,0,0,0,0&quot;<br>...<br>viva.trace  lineThickness  string  &quot;Thick&quot;<br>viva.trace  lineStyle  string  &quot;solid&quot;<br>wavescan.trace  lineThickness  string  &quot;Thick&quot;<br>wavescan.trace  lineStyle  string  &quot;solid&quot;<br></code></pre></td></tr></table></figure>
+   其中 <code>viva.axis font string &quot;Defaut,14,-1,5,75,0,0,0,0,0&quot;</code> 中的 14 为字号；75 为颜色深度，可以理解为是否加粗，取值在 0-99 之间。<blockquote>
 <p><b>注意</b>: 仿真波形显示方法会与 PDK 中环境变量设置和 display.drf 文件中的设置有关，如果按照上面的方法设置完后不能达到实际效果，首先考虑是否是 PDK 自带脚本加载了其它软件变量或者使用的 display.drf 文件中做了相应修改，如果发现有问题可以修改 PDK 中环境变量或者 display.drf 文件的相应设置。</p>
 </blockquote>
 </li>
-<li>
-<p>实现在 Library Manager 界面双击 view 以只读方式打开:</p>
-   <pre>cdsLibManager.main dblClickEditCellView boolean nil</pre>
+<li><p>实现在 Library Manager 界面双击 view 以只读方式打开:<br>   <pre>cdsLibManager.main dblClickEditCellView boolean nil</pre></p>
 <blockquote>
 <p><b>特别注意 </b>: 可能按照上面的方法设置完.cdsenv 文件之后，发现设置并未生效，这时候需要注意一个问题，<b>Cadence 每次启动时都会加载 .cdsinit 文件，然而对于 .cdsenv 文件并非如此，而且 .cdsenv 文件中的变量值会被覆盖，具体软件加载 .cdsenv 文件的顺序需要再用户的环境变量设置文件中定义。</b> 一般叫做 .bashrc (使用 export 定义环境变量)或者 .cshrc (使用 setenv 定义环境变量)。</p>
 </blockquote>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 加载软件启动目录下的 .cdsenv 文件</span><br><span class="hljs-built_in">export</span> CDS_LOAD_ENV = CWD(setenv CDS_LOAD_ENV CWD)<br><br><span class="hljs-comment"># 首先加载用户主目录下的 .cdsenv 文件，然后加载软件启动目录下的 .cdsenv 文件。</span><br><span class="hljs-built_in">export</span> CDS_LOAD_ENV = addCWD(setenv CDS_LOAD_ENV addCWD)<br></code></pre></td></tr></table></figure>
-</li>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 加载软件启动目录下的 .cdsenv 文件</span><br><span class="hljs-built_in">export</span> CDS_LOAD_ENV = CWD(setenv CDS_LOAD_ENV CWD)<br><br><span class="hljs-comment"># 首先加载用户主目录下的 .cdsenv 文件，然后加载软件启动目录下的 .cdsenv 文件。</span><br><span class="hljs-built_in">export</span> CDS_LOAD_ENV = addCWD(setenv CDS_LOAD_ENV addCWD)<br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li>display.drf: 一般在工艺库中会有初始化的显示文件。这里面会有电路的连线粗细及颜色，器件的一些显示，版图 layout 里面的 layer 颜色等等，还有 ADE 波形图里面的线的属性。总之就是显示相关的一些设置。
-<ul>
+<li>display.drf: 一般在工艺库中会有初始化的显示文件。这里面会有电路的连线粗细及颜色，器件的一些显示，版图 layout 里面的 layer 颜色等等，还有 ADE 波形图里面的线的属性。总之就是显示相关的一些设置。<ul>
 <li>文件的修改保存: 当修改过显示后，每次退出 virtuoso 会显示一个保存显示信息，这里输入名称，比如 display_1.drf，这个文件默认保存在打开 virtuoso 的文件夹下面。</li>
 <li>默认文件的设置: 在.cdsinit 文件里添加载入命令 <code>drLoadDrf(filepath)</code> 。</li>
 </ul>

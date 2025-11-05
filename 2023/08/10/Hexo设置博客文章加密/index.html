@@ -5,11 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo 设置博客文章加密, 小人驿站">
-    <meta name="description" content="准备
-Hexo 搭配使用 hexo-blog-encrypt 插件可以写一些比较私密的博客，通过密码验证的方式让其他人不能随意浏览。
-安装插件
-在 blog\ 目录运行以下代码：
-1npm install hexo-blog-encrypt">
+    <meta name="description" content="准备 Hexo 搭配使用hexo-blog-encrypt 插件可以写一些比较私密的博客，通过密码验证的方式让其他人不能随意浏览。
+安装插件  在blog\目录运行以下代码：1npm install hexo-blog-encrypt
+一般">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -418,22 +416,14 @@ Hexo 搭配使用 hexo-blog-encrypt 插件可以写一些比较私密的博客�
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>准备</h1>
-<p>Hexo 搭配使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-blog-encrypt">hexo-blog-encrypt</a> 插件可以写一些比较私密的博客，通过密码验证的方式让其他人不能随意浏览。</p>
-<h1>安装插件</h1>
-<p>在 <code>blog\</code> 目录运行以下代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-blog-encrypt<br></code></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1>一般配置</h1>
-<ol>
-<li>在根目录的配置文件 <code>_config.yml</code> 中添加以下代码：</li>
-</ol>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">encrypt:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
-<ol start="2">
-<li>设置加密之后，需要在新建博文时在文章头部添加加密的信息设置：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs config">---<br>title: &#123;&#123; title &#125;&#125;<br>date: &#123;&#123; date &#125;&#125;<br>tags: <br>categories: <br>password: <br>message: <br>---<br></code></pre></td></tr></table></figure>
+                <h1 id="准备"><a href="# 准备" class="headerlink" title="准备"></a>准备 </h1><p>Hexo 搭配使用<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-blog-encrypt">hexo-blog-encrypt</a> 插件可以写一些比较私密的博客，通过密码验证的方式让其他人不能随意浏览。</p>
+<h1 id="安装插件"><a href="# 安装插件" class="headerlink" title="安装插件"></a>安装插件 </h1><p> 在<code>blog\</code>目录运行以下代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-blog-encrypt<br></code></pre></td></tr></table></figure><br><span id="more"></span></p>
+<h1 id="一般配置"><a href="# 一般配置" class="headerlink" title="一般配置"></a>一般配置</h1><ol>
+<li>在根目录的配置文件 <code>_config.yml</code> 中添加以下代码：<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">encrypt:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure></li>
+<li>设置加密之后，需要在新建博文时在文章头部添加加密的信息设置：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs config">---<br>title: &#123;&#123; title &#125;&#125;<br>date: &#123;&#123; date &#125;&#125;<br>tags: <br>categories: <br>password: <br>message: <br>---<br></code></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><figcaption><span>密码。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs password```:">```message```：输入密码界面的提示说明。<br><br># 针对 Tag 的加密 <br> 将以下代码复制到根目录下的 ```_config.yml```:<br>```yml<br>encrypt: #hexo-blog-encrypt<br>  enable: true<br>  abstract: 有东西被加密了, 请输入密码查看.<br>  message: 您好, 这里需要密码.<br>  tags:<br>  - &#123;name: TagName1, password: 密码 A&#125;<br>  - &#123;name: TagName2, password: 密码 B&#125;<br>  wrong_pass_message: 抱歉, 这个密码看着不太对, 请再试试.<br>  wrong_hash_message: 抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
@@ -594,12 +584,7 @@ Hexo 搭配使用 hexo-blog-encrypt 插件可以写一些比较私密的博客�
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            准备工作
-Git
-Git官网下载
-下载完成后，双击安装包，选项全部默认，一路Next安装完成。
-测试安装成功，输入git --version显示版本信息即可。
-12shenguosai@LAPTOP-FBGFH99L ~$ git --ve
+                            准备工作GitGit官网下载下载完成后，双击安装包，选项全部默认，一路Next安装完成。测试安装成功，输入git --version显示版本信息即可。12shenguosai@LAPTOP-FBGFH99L ~$ git --version
                         
                     </div>
                     <div class="publish-info">

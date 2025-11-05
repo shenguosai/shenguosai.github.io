@@ -5,13 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="使用多终端发布 hexo 博客, 小人驿站">
-    <meta name="description" content=" 分支 
-master 分支: 保存博客静态资源，提供博客页面供人访问。
-hexo 分支 (仓库默认分支): 用于备份博客部署文件，共自己维护更新。
-
- 在新设备中建立环境 
- 拉取 hexo 分支 
-1git clone -b hexo ">
+    <meta name="description" content="分支master 分支: 保存博客静态资源，提供博客页面供人访问。hexo 分支(仓库默认分支): 用于备份博客部署文件，共自己维护更新。
+在新设备中建立环境  拉取 hexo 分支1git clone -b hexo git@github">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -420,23 +415,13 @@ hexo 分支 (仓库默认分支): 用于备份博客部署文件，共自己维�
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1> 分支 </h1>
-<p>master 分支: 保存博客静态资源，提供博客页面供人访问。<br>
-hexo 分支 (仓库默认分支): 用于备份博客部署文件，共自己维护更新。</p>
-<span id="more"></span>
-<h1> 在新设备中建立环境 </h1>
-<h2 id="拉取 hexo 分支"> 拉取 hexo 分支 </h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> -b hexo git@github.com:shenguosai/shenguosai.github.io.git<br></code></pre></td></tr></table></figure>
-<p> 执行完上述命令后目录下会出现一个 <code>shenguosai.github.io</code> 的目录。</p>
-<h2 id="初始化博客目录"> 初始化博客目录 </h2>
-<p> 拉取过来的 <code>shenguosai.github.io</code> 目录只是一个普通的 git 管理目录，需要把该目录初始化为 Hexo 目录。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> shenguosai.github.io<br>npm install hexo<br>npm install<br>npm install hexo-deployer-git<br></code></pre></td></tr></table></figure>
-<p> 可能是以前在其它目录使用的关系，只运行了 ‘npm install hexo’ 之后就可以使用了。</p>
-<h2 id="安装插件 - 可省略"> 安装插件 (可省略)</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-generator-searchdb --save <span class="hljs-comment"># 本地搜索插件 </span><br>npm install hexo-asset-image --save <span class="hljs-comment"># 图片插件 </span><br>npm install hexo-generator-sitemap --save <span class="hljs-comment"># 谷歌站点地图插件 </span><br>npm install hexo-generator-baidu-sitemap --save <span class="hljs-comment"># 百度站点地图插件 </span><br></code></pre></td></tr></table></figure>
-<h1> 在不同终端中写博客的流程 </h1>
-<p> 每次更新博客时不只要更新 master 分支中的静态文件，hexo 分支中的配置文件也需要同步。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">git pull <span class="hljs-comment"># 每次写博客前拉取最新的 hexo 分支代码 </span><br>hexo n  <span class="hljs-string">&#x27; 新文章 &#x27;</span> <span class="hljs-comment"># 开始写博客 </span><br>hexo clean &amp;&amp; hexo g <span class="hljs-comment"># 清空并生成新的静态文件和缓存文件 </span><br>git add .<br>git commit -m <span class="hljs-string">&#x27; 备注 &#x27;</span><br>git push <span class="hljs-comment"># 提交到 hexo 分支 </span><br>hexo d <span class="hljs-comment"># 提交到 master 分支 </span><br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+                <h1 id="分支"><a href="# 分支" class="headerlink" title="分支"></a>分支</h1><p>master 分支: 保存博客静态资源，提供博客页面供人访问。<br>hexo 分支(仓库默认分支): 用于备份博客部署文件，共自己维护更新。<br><span id="more"></span></p>
+<h1 id="在新设备中建立环境"><a href="# 在新设备中建立环境" class="headerlink" title="在新设备中建立环境"></a>在新设备中建立环境 </h1><h2 id="拉取 hexo 分支"><a href="# 拉取 hexo 分支" class="headerlink" title="拉取 hexo 分支"></a> 拉取 hexo 分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> -b hexo git@github.com:shenguosai/shenguosai.github.io.git<br></code></pre></td></tr></table></figure>
+<p>执行完上述命令后目录下会出现一个 <code>shenguosai.github.io</code> 的目录。</p>
+<h2 id="初始化博客目录"><a href="# 初始化博客目录" class="headerlink" title="初始化博客目录"></a>初始化博客目录 </h2><p> 拉取过来的 <code>shenguosai.github.io</code> 目录只是一个普通的 git 管理目录，需要把该目录初始化为 Hexo 目录。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> shenguosai.github.io<br>npm install hexo<br>npm install<br>npm install hexo-deployer-git<br></code></pre></td></tr></table></figure><br>可能是以前在其它目录使用的关系，只运行了 ‘npm install hexo’ 之后就可以使用了。</p>
+<h2 id="安装插件 - 可省略"><a href="# 安装插件 - 可省略" class="headerlink" title="安装插件 (可省略)"></a> 安装插件(可省略)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-generator-searchdb --save <span class="hljs-comment"># 本地搜索插件</span><br>npm install hexo-asset-image --save <span class="hljs-comment"># 图片插件</span><br>npm install hexo-generator-sitemap --save <span class="hljs-comment"># 谷歌站点地图插件</span><br>npm install hexo-generator-baidu-sitemap --save <span class="hljs-comment"># 百度站点地图插件</span><br></code></pre></td></tr></table></figure>
+<h1 id="在不同终端中写博客的流程"><a href="# 在不同终端中写博客的流程" class="headerlink" title="在不同终端中写博客的流程"></a>在不同终端中写博客的流程 </h1><p> 每次更新博客时不只要更新 master 分支中的静态文件，hexo 分支中的配置文件也需要同步。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">git pull <span class="hljs-comment"># 每次写博客前拉取最新的 hexo 分支代码</span><br>hexo n  <span class="hljs-string">&#x27; 新文章 &#x27;</span> <span class="hljs-comment"># 开始写博客</span><br>hexo clean &amp;&amp; hexo g <span class="hljs-comment"># 清空并生成新的静态文件和缓存文件</span><br>git add .<br>git commit -m <span class="hljs-string">&#x27; 备注 &#x27;</span><br>git push <span class="hljs-comment"># 提交到 hexo 分支</span><br>hexo d <span class="hljs-comment"># 提交到 master 分支</span><br></code></pre></td></tr></table></figure></p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
             <hr/>
@@ -602,7 +587,6 @@ hexo 分支 (仓库默认分支): 用于备份博客部署文件，共自己维�
 IPv4/IPv6 双栈共存
 去广告
 无缝访问 github、国外论文网站
-
                         
                     </div>
                     <div class="publish-info">
@@ -655,7 +639,7 @@ IPv4/IPv6 双栈共存
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            刚刚度过了甲辰龙年，来到了2025的乙巳蛇年。这一年的不同之处在于是&quot;双春年&quot;(2025/2/3和2026/2/4)和&quot;闰六月&quot;的组合，象征着好运双倍，或将有吉祥之事发生。
+                            刚刚度过了甲辰龙年，来到了2025的乙巳蛇年。这一年的不同之处在于是”双春年”(2025/2/3和2026/2/4)和”闰六月”的组合，象征着好运双倍，或将有吉祥之事发生。
                         
                     </div>
                     <div class="publish-info">

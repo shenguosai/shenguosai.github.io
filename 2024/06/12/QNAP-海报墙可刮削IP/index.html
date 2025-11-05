@@ -7,8 +7,7 @@
     <meta name="keywords" content="QNAP- 海报墙可刮削 IP, 小人驿站">
     <meta name="description" content=" 目前解决海报墙不可刮削问题的方法基本都是修改 hosts，因为墙屏蔽的是特殊 IP，而不是 themovie 等网站本身。
 
- 修改 QNAP 的 hosts 文件:
-这种方法比较简单方便，缺点就是每次威联通重启就会重置 hosts 文件">
+ 修改 QNAP 的 hosts 文件: 这种方法比较简单方便，缺点就是每次威联通重启就会重置 hosts 文件">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -419,16 +418,10 @@
             <div id="articleContent">
                 <p> 目前解决海报墙不可刮削问题的方法基本都是修改 hosts，因为墙屏蔽的是特殊 IP，而不是 themovie 等网站本身。</p>
 <ol>
-<li> 修改 QNAP 的 hosts 文件:<br>
-这种方法比较简单方便，缺点就是每次威联通重启就会重置 hosts 文件。<br>
-<code>sudo vi /etc/hosts</code><br>
-在 hosts 文件中指定域名的 IP 地址: <code>13.226.238.82 api.themoviedb.org</code></li>
-<li> 修改路由器的 hosts 文件:<br>
-这种方法一劳永逸，但是需要能够 ssh 路由器并取得 root 权限。<br>
-操作方法及添加内容与 1. 相同。</li>
+<li> 修改 QNAP 的 hosts 文件:<br> 这种方法比较简单方便，缺点就是每次威联通重启就会重置 hosts 文件。<br><code>sudo vi /etc/hosts</code><br> 在 hosts 文件中指定域名的 IP 地址: <code>13.226.238.82 api.themoviedb.org</code></li>
+<li> 修改路由器的 hosts 文件:<br> 这种方法一劳永逸，但是需要能够 ssh 路由器并取得 root 权限。<br> 操作方法及添加内容与 1. 相同。</li>
 </ol>
-<p> 在网上看到一个刮削网站的 IP 清单，将测试通过的记录如下:(摘自:<a target="_blank" rel="noopener" href="https://post.smzdm.com/p/az6x9m00/">NAS 干货分享 篇一：一招解决影片削挂问题，打造完美海报墙 </a>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs hosts">13.224.161.90 api.themoviedb.org<br>104.16.61.155 image.themoviedb.org<br>13.35.67.86 api.themoviedb.org<br>54.192.151.79 www.themoviedb.org<br>13.249.175.212 api.thetvdb.com<br>13.35.161.120 api.thetvdb.com<br>13.226.238.76 api.themoviedb.org<br>13.35.7.102 api.themoviedb.org<br>13.226.191.85 api.themoviedb.org<br>52.85.79.89 api.themoviedb.org<br>13.225.41.40 api.themoviedb.org<br>13.226.251.88 api.themoviedb.org<br></code></pre></td></tr></table></figure>
+<p> 在网上看到一个刮削网站的 IP 清单，将测试通过的记录如下:(摘自:<a target="_blank" rel="noopener" href="https://post.smzdm.com/p/az6x9m00/">NAS 干货分享 篇一：一招解决影片削挂问题，打造完美海报墙 </a>)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs hosts">13.224.161.90 api.themoviedb.org<br>104.16.61.155 image.themoviedb.org<br>13.35.67.86 api.themoviedb.org<br>54.192.151.79 www.themoviedb.org<br>13.249.175.212 api.thetvdb.com<br>13.35.161.120 api.thetvdb.com<br>13.226.238.76 api.themoviedb.org<br>13.35.7.102 api.themoviedb.org<br>13.226.191.85 api.themoviedb.org<br>52.85.79.89 api.themoviedb.org<br>13.225.41.40 api.themoviedb.org<br>13.226.251.88 api.themoviedb.org<br></code></pre></td></tr></table></figure></p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
@@ -589,12 +582,10 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            创建 iStoreOS 虚拟机
-今年 618 入坑威联通，终于知道为什么大家都推荐群晖了，软件使用还好但是配置方法确实不太人性化。话归正传:
+                            创建 iStoreOS 虚拟机今年 618 入坑威联通，终于知道为什么大家都推荐群晖了，软件使用还好但是配置方法确实不太人性化。话归正传:
 准备工作
-
 QTS 中要安装有 Virtualization Station 虚拟化工作站；
-下载
+下载 i
                         
                     </div>
                     <div class="publish-info">
@@ -647,9 +638,7 @@ QTS 中要安装有 Virtualization Station 虚拟化工作站；
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            安装 Xrdp 使用 Xorg 进行远程登录
-网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。
-1sudo apt install xrdp
+                            安装 Xrdp 使用 Xorg 进行远程登录网上有很多远程桌面的登录方法，如 VNC、X11 转发等等，由于不喜欢安装太多软件，想使用 Windoews 自带的远程桌面。1sudo apt install xrdp
                         
                     </div>
                     <div class="publish-info">

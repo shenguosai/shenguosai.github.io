@@ -5,14 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="CentOS 7 安装 docker 和 docker-compose, 小人驿站">
-    <meta name="description" content="安装 Docker
-更新 yum
-1yum update
-安装配置时的依赖包
-1yum install -y yum-utils device-mapper-persistent-data lvm2
-
-配置阿里云的 yum 源
-1yum-c">
+    <meta name="description" content="安装 Docker更新 yum1yum update安装配置时的依赖包 1yum install -y yum-utils device-mapper-persistent-data lvm2 配置阿里云的 yum 源1yum-config">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -421,32 +414,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>安装 Docker</h1>
-<p>更新 <code>yum</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum update<br></code></pre></td></tr></table></figure>
-<p>安装配置时的依赖包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install -y yum-utils device-mapper-persistent-data lvm2<br></code></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>配置阿里云的 <code>yum</code> 源</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo<br></code></pre></td></tr></table></figure>
-<p>查看仓库中所有的 docker 版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum list docker-ce --showduplicates | <span class="hljs-built_in">sort</span> -r<br></code></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240325151136.png" alt="20240325151136"><br>
-默认使用 <code>yum install docker-ce</code> 安装最新版的 docker，当然也可以指定安装特定的版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install docker-ce-24.0* -y<br></code></pre></td></tr></table></figure>
-<p>验证是否安装成功</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker --version<br></code></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker -v<br></code></pre></td></tr></table></figure>
-<h1>安装 Docker-compose</h1>
-<p>国外源安装:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -SL https://github.com/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure>
-<p>国内源安装:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -SL https://get.daocloud.io/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure>
-<p>赋予可执行权限:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> +x /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure>
-<p>验证是否安装成功:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker compose version<br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+                <h1 id="安装 -Docker"><a href="# 安装 -Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h1><p>更新 <code>yum</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum update<br></code></pre></td></tr></table></figure><br>安装配置时的依赖包 <br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install -y yum-utils device-mapper-persistent-data lvm2<br></code></pre></td></tr></table></figure><br><span id="more"></span><br> 配置阿里云的 <code>yum</code> 源<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo<br></code></pre></td></tr></table></figure><br>查看仓库中所有的 docker 版本 <br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum list docker-ce --showduplicates | <span class="hljs-built_in">sort</span> -r<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20240325151136.png" alt="20240325151136"><br> 默认使用 <code>yum install docker-ce</code> 安装最新版的 docker，当然也可以指定安装特定的版本 <br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install docker-ce-24.0* -y<br></code></pre></td></tr></table></figure><br> 验证是否安装成功 <br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker --version<br></code></pre></td></tr></table></figure><br> 或者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker -v<br></code></pre></td></tr></table></figure></p>
+<h1 id="安装 -Docker-compose"><a href="# 安装 -Docker-compose" class="headerlink" title="安装 Docker-compose"></a>安装 Docker-compose</h1><p>国外源安装:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -SL https://github.com/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure><br>国内源安装:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -SL https://get.daocloud.io/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure><br>赋予可执行权限:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> +x /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure><br>验证是否安装成功:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker compose version<br></code></pre></td></tr></table></figure></p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
             <hr/>
@@ -606,8 +576,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            使用ssh远程windows端的时候默认使用cmd，而用powershell可以使用很多linux的命令，像ls，ps，cd什么的(实际上只是映射了一下)。
-使用管理员权限在PowerShell执行以下命令，使SSH连接Windows时默认
+                            使用ssh远程windows端的时候默认使用cmd，而用powershell可以使用很多linux的命令，像ls，ps，cd什么的(实际上只是映射了一下)。使用管理员权限在PowerShell执行以下命令，使SSH连接Windows时默认使
                         
                     </div>
                     <div class="publish-info">
@@ -660,10 +629,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            打印机是现在办公设备必不可少的工具，我们常常需要使用打印机复印或打印各种文件资料，尤其对一些正在加班且不能在家陪伴孩子写作业的父母来说，学会远程打印的方法十分必要。
-打印机种类: 激光打印机
-打印机型号: DCP-B7520DW
-目前这款打
+                            打印机是现在办公设备必不可少的工具，我们常常需要使用打印机复印或打印各种文件资料，尤其对一些正在加班且不能在家陪伴孩子写作业的父母来说，学会远程打印的方法十分必要。打印机种类: 激光打印机打印机型号: DCP-B7520DW目前这款打印机不
                         
                     </div>
                     <div class="publish-info">
