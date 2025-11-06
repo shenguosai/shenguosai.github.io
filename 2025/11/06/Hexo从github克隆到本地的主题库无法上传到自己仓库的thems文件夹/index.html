@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo 从 github 克隆到本地的主题库无法上传到自己仓库的 thems 文件夹 | 小人驿站</title><meta name="author" content="市井一俗人"><meta name="copyright" content="市井一俗人"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一直都在使用 Hexo 的 Next 作为个人博客的主题，这两天尝试更换主题遇到两个问题：   更换主题后没有渲染效果   现象： 除使用 Next，更换为其它主题（landscape，butterfly，Hacker，matery，pure，yilia-plus）都没有渲染效果   原因： 缺少渲染器插件。 打开…&#x2F;themes&#x2F;theme title&#x2F;layout，发现里面的渲染文件后缀不同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 从 github 克隆到本地的主题库无法上传到自己仓库的 thems 文件夹">
+<meta property="og:url" content="https://shenguosai.github.io/2025/11/06/Hexo%E4%BB%8Egithub%E5%85%8B%E9%9A%86%E5%88%B0%E6%9C%AC%E5%9C%B0%E7%9A%84%E4%B8%BB%E9%A2%98%E5%BA%93%E6%97%A0%E6%B3%95%E4%B8%8A%E4%BC%A0%E5%88%B0%E8%87%AA%E5%B7%B1%E4%BB%93%E5%BA%93%E7%9A%84thems%E6%96%87%E4%BB%B6%E5%A4%B9/index.html">
+<meta property="og:site_name" content="小人驿站">
+<meta property="og:description" content="一直都在使用 Hexo 的 Next 作为个人博客的主题，这两天尝试更换主题遇到两个问题：   更换主题后没有渲染效果   现象： 除使用 Next，更换为其它主题（landscape，butterfly，Hacker，matery，pure，yilia-plus）都没有渲染效果   原因： 缺少渲染器插件。 打开…&#x2F;themes&#x2F;theme title&#x2F;layout，发现里面的渲染文件后缀不同">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://shenguosai.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-11-06T07:46:24.000Z">
+<meta property="article:modified_time" content="2025-11-06T08:18:35.687Z">
+<meta property="article:author" content="市井一俗人">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://shenguosai.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hexo 从 github 克隆到本地的主题库无法上传到自己仓库的 thems 文件夹",
+  "url": "https://shenguosai.github.io/2025/11/06/Hexo%E4%BB%8Egithub%E5%85%8B%E9%9A%86%E5%88%B0%E6%9C%AC%E5%9C%B0%E7%9A%84%E4%B8%BB%E9%A2%98%E5%BA%93%E6%97%A0%E6%B3%95%E4%B8%8A%E4%BC%A0%E5%88%B0%E8%87%AA%E5%B7%B1%E4%BB%93%E5%BA%93%E7%9A%84thems%E6%96%87%E4%BB%B6%E5%A4%B9/",
+  "image": "https://shenguosai.github.io/img/butterfly-icon.png",
+  "datePublished": "2025-11-06T07:46:24.000Z",
+  "dateModified": "2025-11-06T08:18:35.687Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "市井一俗人",
+      "url": "https://shenguosai.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://shenguosai.github.io/2025/11/06/Hexo%E4%BB%8Egithub%E5%85%8B%E9%9A%86%E5%88%B0%E6%9C%AC%E5%9C%B0%E7%9A%84%E4%B8%BB%E9%A2%98%E5%BA%93%E6%97%A0%E6%B3%95%E4%B8%8A%E4%BC%A0%E5%88%B0%E8%87%AA%E5%B7%B1%E4%BB%93%E5%BA%93%E7%9A%84thems%E6%96%87%E4%BB%B6%E5%A4%B9/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo 从 github 克隆到本地的主题库无法上传到自己仓库的 thems 文件夹',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="小人驿站" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">86</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">小人驿站</span></a><a class="nav-page-title" href="/"><span class="site-name">Hexo 从 github 克隆到本地的主题库无法上传到自己仓库的 thems 文件夹</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Hexo 从 github 克隆到本地的主题库无法上传到自己仓库的 thems 文件夹</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-06T07:46:24.000Z" title="发表于 2025-11-06 15:46:24">2025-11-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-06T08:18:35.687Z" title="更新于 2025-11-06 16:18:35">2025-11-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/">技术兴趣</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/">网络服务</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p> 一直都在使用 Hexo 的 Next 作为个人博客的主题，这两天尝试更换主题遇到两个问题：</p>
+<ol>
+<li> 更换主题后没有渲染效果 <br>
+<strong> 现象：</strong><br>
+除使用 Next，更换为其它主题（landscape，butterfly，Hacker，matery，pure，yilia-plus）都没有渲染效果 <br>
+<strong> 原因：</strong><br>
+缺少渲染器插件。<br>
+打开…/themes/<em>theme title</em>/layout，发现里面的渲染文件后缀不同。<br>
+| 主题 |Layout 渲染文件 |<br>
+|----|----|----|<br>
+|butterfly|pug|<br>
+|Hacker|ejs|<br>
+|matery|ejs|<br>
+|next|swig|<br>
+|pure|ejs|<br>
+|yilia-plus|ejs|<br>
+而我一直使用的是 Next 主题，所以没有安装 ejs 的渲染器。<br>
+<strong> 解决方法：</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm isntall hexo renderer-ejs<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<p> 具体哪个插件用来渲染什么模板记不清了，最终安装的插件有：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm list<br><br>hexo-renderer-ejs@2.0.0<br>hexo-renderer-jade@0.5.0<br>hexo-renderer-kramed@0.1.4<br>hexo-renderer-markdown-it@7.1.1<br>hexo-renderer-stylus@3.0.1<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li> 在 Github 仓库克隆到本地后无法使用 <code>git push</code> 上传到自己的仓库 <br>
+<strong> 现象：</strong><br>
+使用 <code>git clone</code> 命令将 github 中别人仓库的主题现在到本地，然后使用 <code>git add .</code> <code>git commit -m &quot;&quot;</code> <code>git push</code> 上传文件时发现新下载的 hexo-theme-matery 和 butterfly 的两个主题文件夹在仓库里时空的。<br>
+<strong> 原因：</strong><br>
+目前还不清楚原因，网上看到很多建议：
+<ol>
+<li> 删除 .git 文件夹，见别人仓库的信息删除；</li>
+<li> 使用 <code>git remote rm origin</code> 命令切断远程仓库的链接 <br>
+但是我使用上述方法均不起作用。<br>
+<strong> 解决方法：</strong><br>
+从暂存区删除文件夹：<code>git rm --cache ./themes/ 主题文件名 </code></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">rm</span> --cashe ./themes/hexo-theme-matery<br>git <span class="hljs-built_in">rm</span> --cache ./themes/butterfly<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://shenguosai.github.io">市井一俗人</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://shenguosai.github.io/2025/11/06/Hexo%E4%BB%8Egithub%E5%85%8B%E9%9A%86%E5%88%B0%E6%9C%AC%E5%9C%B0%E7%9A%84%E4%B8%BB%E9%A2%98%E5%BA%93%E6%97%A0%E6%B3%95%E4%B8%8A%E4%BC%A0%E5%88%B0%E8%87%AA%E5%B7%B1%E4%BB%93%E5%BA%93%E7%9A%84thems%E6%96%87%E4%BB%B6%E5%A4%B9/">https://shenguosai.github.io/2025/11/06/Hexo%E4%BB%8Egithub%E5%85%8B%E9%9A%86%E5%88%B0%E6%9C%AC%E5%9C%B0%E7%9A%84%E4%B8%BB%E9%A2%98%E5%BA%93%E6%97%A0%E6%B3%95%E4%B8%8A%E4%BC%A0%E5%88%B0%E8%87%AA%E5%B7%B1%E4%BB%93%E5%BA%93%E7%9A%84thems%E6%96%87%E4%BB%B6%E5%A4%B9/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://shenguosai.github.io" target="_blank">小人驿站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo/">Hexo</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/11/05/%E4%BF%AE%E6%94%B9Nginx%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99%E7%9A%84%E9%A1%B5%E9%9D%A2/" title="修改 Nginx 部署网站的页面"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">修改 Nginx 部署网站的页面</div></div><div class="info-2"><div class="info-item-1"> 前段时间使用 Nginx 部署了反向代理，一直使用 Nginx 的默认主页也不是回事，因为自己用 Hexo 在 github 上部署了博客，所以想着建个网站把自己平时常用的东西整合到一起。 在修改时发现，虽然我设置了 root 在 /var/www/html 下，而且使用域名访问其下的 blog 时也能正常访问，但是修改 /var/www/html/ 目录下的 index.html 却怎么也无法更新访问页面。 1234location  /blog &#123;  root  /var/www/html;  index index.html index.htm;&#125;  最后发现原来访问域名时 Nginx 展示的网页是 /usr/share/nginx/html/ 目录下的 index.html ，所以就把原来的文件删掉创建了一个软链接：ln -s /var/www/html/index.html index.html 这样解决了。  至于原因为何还没有搞明白。 </div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2023/08/10/Hexo%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%8C%82%E8%BD%BDgithub/" title="Hexo 搭建个人博客挂载 Github(未完)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-10</div><div class="info-item-2">Hexo 搭建个人博客挂载 Github(未完)</div></div><div class="info-2"><div class="info-item-1">准备工作 Git Git 官网下载 下载完成后，双击安装包，选项全部默认，一路 Next 安装完成。 测试安装成功，输入 git --version 显示版本信息即可。 12shenguosai@LAPTOP-FBGFH99L ~$ git --versiongit version 2.37.1  Node.js Node 官网下载 下载完成后，双击安装包，选项全部默认，一路 Next 安装完成。 测试安装成功，输入 node -v 显示版本信息即可。 12shenguosai@LAPTOP-FBGFH99L ~$ node -vv18.15.0 Gitee 或 GitHub(目前只成功挂载 GitHub@2023/8/3) 准备 Gitee 或 GitHub 账号，这个是用来托管的，可以不需要自己的服务器和域名就可以拥有自己的博客。 Gitee 官网 GitHub 官网 注册完成后，创建一个仓库，然后就可以将 hexo 挂载到这个仓库中了。 创建仓库的时候用 YourName.github.io 或 YourNama.gitee.io ，这样后面托管的域名比较好记。 博客搭建 ...</div></div></div></a><a class="pagination-related" href="/2025/04/16/Hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" title="在自己搭建的 hexo 博客上发布文章"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-16</div><div class="info-item-2">在自己搭建的 hexo 博客上发布文章</div></div><div class="info-2"><div class="info-item-1"> 在 /source/_posts 目录下建立 .md 文件并撰写内容； 编辑文章时要在第一行中加上 title，如果不按此格式来写的话在hexo 博客中就会显示这篇文章没有名字。   123---title: 文章题目---  命名完成后，将终端当前目录更改为/source/_posts 输入hexo g(完整命令为hexo generate)，生成静态文件； 输入hexo s(完整命令为hexo server)，启动 local 服务器，主要用于本地预览。完成后打开浏览器输入http://localhost:4000，就会发现多了刚才写的那篇博客。 输入hexo d(完整命令为hexo deploy)，将本地文件发布到 github 仓库上。 每次对 hexo 博客上的 .md 文件进行更改后都要重复步骤 2，这样更改的内容才能在 hexo 博客上显示。  </div></div></div></a><a class="pagination-related" href="/2023/08/10/Hexo%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/" title="Hexo 设置博客文章加密"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-10</div><div class="info-item-2">Hexo 设置博客文章加密</div></div><div class="info-2"><div class="info-item-1">准备 Hexo 搭配使用 hexo-blog-encrypt 插件可以写一些比较私密的博客，通过密码验证的方式让其他人不能随意浏览。 安装插件 在 blog\ 目录运行以下代码： 1npm install hexo-blog-encrypt  一般配置  在根目录的配置文件 _config.yml 中添加以下代码：  12encrypt:  enable: true  设置加密之后，需要在新建博文时在文章头部添加加密的信息设置：  12345678---title: &#123;&#123; title &#125;&#125;date: &#123;&#123; date &#125;&#125;tags: categories: password: message: --- 密码。1234567891011121314```message```：输入密码界面的提示说明。# 针对 Tag 的加密  将以下代码复制到根目录下的 ```_config.yml```:```ymlencrypt: #hexo-blog-encrypt  enable: true  abstract: ...</div></div></div></a><a class="pagination-related" href="/2023/11/20/Hexo%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E4%B8%8E%E9%98%85%E8%AF%BB%E7%BB%9F%E8%AE%A1/" title="Hexo 字数统计与阅读统计"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-20</div><div class="info-item-2">Hexo 字数统计与阅读统计</div></div><div class="info-2"><div class="info-item-1"> 安装 hexo-wordcount 插件 npm install hexo-wordcount --save 安装 hexo-symbols-count-time 插件 npm install hexo-symbols-count-time --save 安装eslint npm install eslint --save    在 hexo 配置文件中添加 symbols_count_time 配置语句123456symbols_count_time: symbols: true               # 文字字数统计 time: true                  # 文章阅读时长 total_symbols: true         # 站点总字数统计 total_time: true            # 站点总阅读时长 exclude_codeblock: false    # 排除代码字数统计  在主题配置文件中添加 symbols_count_time 配置语句1234567symbols_count_time: separated_meta:...</div></div></div></a><a class="pagination-related" href="/2024/10/30/Hexo%E7%9A%84%E7%8E%AF%E5%A2%83%E5%90%8C%E6%AD%A5%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/" title="Hexo 的环境同步及数据迁移"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-30</div><div class="info-item-2">Hexo 的环境同步及数据迁移</div></div><div class="info-2"><div class="info-item-1">今年的双 11 添置了零刻的 SER8 mini 小主机，以后就不想背着笔记本来回跑了，于是出现了两台电脑都能写博客的需求。 网上找了很多教程，最后参考了两篇文章完成了迁移：  使用 hexo，如果换了电脑怎么更新博客？ hexo 博客同步管理及迁移   分析目录结构 首先，需要了解 hexo 项目的目录结构，以及各文件夹用来存放哪些文件。下面是我本地 hexo 项目的目录结构。文件夹没有展开，为了和文件区别，在文件夹后加了 / 用以和文件名区分。 1234567891011121314blog├──.deploy_git/├──.github/├──node_modules/├──public/├──scaffolds/├──source/├──themes/├──.gitignore├──_config.landscape.yml├──_config.yml├──db.json├──package.json└──package-lock.json  publi/和.deploy_git 这两个文件夹里的内容是一样的。用来存放由 markdown 文件生成的所有静态文件，猜测 ...</div></div></div></a><a class="pagination-related" href="/2025/02/08/%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%8F%91%E5%B8%83-hexo-%E5%8D%9A%E5%AE%A2/" title="使用多终端发布 hexo 博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-08</div><div class="info-item-2">使用多终端发布 hexo 博客</div></div><div class="info-2"><div class="info-item-1"> 分支  master 分支: 保存博客静态资源，提供博客页面供人访问。 hexo 分支 (仓库默认分支): 用于备份博客部署文件，共自己维护更新。   在新设备中建立环境   拉取 hexo 分支  1git clone -b hexo git@github.com:shenguosai/shenguosai.github.io.git  执行完上述命令后目录下会出现一个 shenguosai.github.io 的目录。  初始化博客目录   拉取过来的 shenguosai.github.io 目录只是一个普通的 git 管理目录，需要把该目录初始化为 Hexo 目录。 1234cd shenguosai.github.ionpm install hexonpm installnpm install hexo-deployer-git  可能是以前在其它目录使用的关系，只运行了 ‘npm install hexo’ 之后就可以使用了。  安装插件 (可省略) 1234npm install hexo-generator-searchdb --save # 本地搜索插件 np...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">市井一俗人</div><div class="author-info-description">怀出世之心，行入世之事。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">86</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/06/Hexo%E4%BB%8Egithub%E5%85%8B%E9%9A%86%E5%88%B0%E6%9C%AC%E5%9C%B0%E7%9A%84%E4%B8%BB%E9%A2%98%E5%BA%93%E6%97%A0%E6%B3%95%E4%B8%8A%E4%BC%A0%E5%88%B0%E8%87%AA%E5%B7%B1%E4%BB%93%E5%BA%93%E7%9A%84thems%E6%96%87%E4%BB%B6%E5%A4%B9/" title="Hexo 从 github 克隆到本地的主题库无法上传到自己仓库的 thems 文件夹">Hexo 从 github 克隆到本地的主题库无法上传到自己仓库的 thems 文件夹</a><time datetime="2025-11-06T07:46:24.000Z" title="发表于 2025-11-06 15:46:24">2025-11-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/05/%E4%BF%AE%E6%94%B9Nginx%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99%E7%9A%84%E9%A1%B5%E9%9D%A2/" title="修改 Nginx 部署网站的页面">修改 Nginx 部署网站的页面</a><time datetime="2025-11-05T11:52:40.000Z" title="发表于 2025-11-05 19:52:40">2025-11-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/03/%E9%99%88%E6%83%85%E8%A1%A8-%E6%9D%8E%E5%AF%86/" title="陈情表 -- 李密">陈情表 -- 李密</a><time datetime="2025-11-03T01:09:15.000Z" title="发表于 2025-11-03 09:09:15">2025-11-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/28/%E6%AE%B5%E4%BD%8D/" title="段位">段位</a><time datetime="2025-10-28T08:46:09.000Z" title="发表于 2025-10-28 16:46:09">2025-10-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/23/%E4%B8%80%E4%B8%AAPython%E8%84%9A%E6%9C%AC%E5%A6%82%E4%BD%95%E9%9D%99%E9%BB%98%E6%9C%88%E5%85%A5300%E5%85%83%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%95%86%E4%B8%9A%E9%80%BB%E8%BE%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%8B%86%E8%A7%A3/" title="一个 Python 脚本如何静默月入 300 元，自动化商业逻辑与技术拆解">一个 Python 脚本如何静默月入 300 元，自动化商业逻辑与技术拆解</a><time datetime="2025-10-23T02:05:49.000Z" title="发表于 2025-10-23 10:05:49">2025-10-23</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By 市井一俗人</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
