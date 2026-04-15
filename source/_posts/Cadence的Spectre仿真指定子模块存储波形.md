@@ -1,3 +1,4 @@
+----
 title: Cadence的Spectre仿真指定子模块存储波形
 author: 小人市井
 top: true
@@ -9,6 +10,7 @@ tags: Spectre
 categories:
 - [半导体专业,EDA工具]
 password:
+----
 
 在模拟 IC 中，常用的 EDA 工具就是 Cadence 的 Virtuoso，而模拟电路仿真一般使用的仿真器是 Spectre。
 当电路规模比较大要存储所有的波形就会很占服务器的硬盘，那有没有折中的方法呢？
