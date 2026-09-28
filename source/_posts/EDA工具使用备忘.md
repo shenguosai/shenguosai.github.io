@@ -46,21 +46,26 @@ categories:
         ```
    - 快捷键设置:
      - 设置快捷键“0”消除高亮net|按“0”后鼠标点击欲消除的net:
-        <pre>hiSetBindKey("Schematics" "<Key>0" "geEnterDeleteNetProbe()")</pre>
+        <pre>hiSetBindKey("Schematics" "&lt;Key&gt;0" "geEnterDeleteNetProbe()")</pre>
      - 设置快捷键“-”消除所有高亮net: 
-        <pre>hiSetBindkey("Schematics" "<Key>-" "geDeleteAllProbe(getCurrentWindow() t)")</pre>
+        <pre>hiSetBindkey("Schematics" "&lt;Key&gt;-" "geDeleteAllProbe(getCurrentWindow() t)")</pre>
      - 设置快捷键“F6”打开Library Manager(启动Virtuoso后):
-        <pre>hiSetBindKey("Command Interpreter" "<Key>F6" "ddsOpenLibManager()")</pre>
+        <pre>hiSetBindKey("Command Interpreter" "&lt;Key&gt;F6" "ddsOpenLibManager()")</pre>
      - 设置快捷键“Shift+S”在上层schematic界面下编辑Symbol:
-        <pre>hiSetBindKey("Schematics" "Shift<Ket>S" "schHiEditInPlace()")</pre>
-    - 设置仿真结果默认存放目录为“/DATA/shenguosai/simulasion”:
+        <pre>hiSetBindKey("Schematics" "Shift&lt;Key&gt;s" "schHiEditInPlace()")</pre>
+     - 设置“Ctrl+F”为查找快捷键：
+        <pre>hiSetBindKey("Schematics" "Ctrl&lt;Key&gt;f" "schHiFind()")</pre>
+     - 设置“Shift+F”为 Options->Select Filter：
+        <pre>hiSetBindKey("Schematics" "Shift&lt;Key&gt;f" "schSetSelectOptions()")
+     - 设置仿真结果默认存放目录为“/DATA/shenguosai/simulasion”:
         <pre>envSetVal("asimenv.startup" "projectDir" 'string "/DATA/shenguosai/simulasion")</pre>
-    - 调用其它软件接口:
+
+   - 调用其它软件接口:
       - Calibre
         <pre>load("<em>Calibre_install_dir</em>/lib/calibre.skl")
       - HSPICE
         <pre>load("<em>HSPICE_install_dir</em>/interface/HSPICE.ile")
-2. .cdsenv: 包含了Cadence软件的变量设置，用户通过对变量赋值，改变软件设置。
+1. .cdsenv: 包含了Cadence软件的变量设置，用户通过对变量赋值，改变软件设置。
    - 示例存放目录: ```Candence安装目录/tools/dfII/samples/.cdsenv```
    - 读取顺序: 
         > *<font color="#d3d3d3">Cadence安装目录</font>*/tools/dfII/samples/.cdsenv => *<font color="#d3d3d3">用户home目录</font>*/.cdsenv => *<font color="#d3d3d3">virtuoso启动目录</font>*/.cdsenv
@@ -107,6 +112,6 @@ categories:
         # 首先加载用户主目录下的 .cdsenv 文件，然后加载软件启动目录下的 .cdsenv 文件。
         export CDS_LOAD_ENV = addCWD(setenv CDS_LOAD_ENV addCWD)
         ```
-3. display.drf: 一般在工艺库中会有初始化的显示文件。这里面会有电路的连线粗细及颜色，器件的一些显示，版图layout里面的layer颜色等等，还有ADE波形图里面的线的属性。总之就是显示相关的一些设置。
+2. display.drf: 一般在工艺库中会有初始化的显示文件。这里面会有电路的连线粗细及颜色，器件的一些显示，版图layout里面的layer颜色等等，还有ADE波形图里面的线的属性。总之就是显示相关的一些设置。
    - 文件的修改保存: 当修改过显示后，每次退出 virtuoso 会显示一个保存显示信息，这里输入名称，比如display_1.drf，这个文件默认保存在打开 virtuoso 的文件夹下面。
    - 默认文件的设置: 在.cdsinit 文件里添加载入命令 ```drLoadDrf(filepath)``` 。
