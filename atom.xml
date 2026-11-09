@@ -6,7 +6,7 @@
   <link href="https://shenguosai.github.io/atom.xml" rel="self"/>
   
   <link href="https://shenguosai.github.io/"/>
-  <updated>2026-09-29T06:00:41.314Z</updated>
+  <updated>2026-11-09T13:18:00.890Z</updated>
   <id>https://shenguosai.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>电流镜浅析</title>
+    <link href="https://shenguosai.github.io/2026/10/28/%E7%94%B5%E6%B5%81%E9%95%9C%E6%B5%85%E6%9E%90/"/>
+    <id>https://shenguosai.github.io/2026/10/28/%E7%94%B5%E6%B5%81%E9%95%9C%E6%B5%85%E6%9E%90/</id>
+    <published>2026-10-28T03:04:17.000Z</published>
+    <updated>2026-11-09T13:18:00.890Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="单管电流镜"><a href="# 单管电流镜" class="headerlink" title="单管电流镜"></a>单管电流镜 </h1><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20261109203555.png" alt="20261109203555"><br>$\frac{I_{out}}{I_{in}} &#x3D; \frac{(W&#x2F;L)<em>2}{(W&#x2F;L)<em>1}$<br> 输出阻抗：$r</em>{out} &#x3D; r</em>{o2}$<br>优点：结构简单；输出摆幅大 $V_{out,min} &gt; V_{DSAT2}$；<br>不足：M2 输出阻抗小，镜像电流受 $V_{out}$ 电压影响大</p><h1 id="Cascode- 电流镜"><a href="#Cascode- 电流镜" class="headerlink" title="Cascode 电流镜"></a>Cascode 电流镜 </h1><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20261109204443.png" alt="20261109204443"><br>$\frac{I_{out}}{I_{ref}} &#x3D; \frac{(W&#x2F;L)<em>2}{(W&#x2F;L)<em>1}$<br> 输出阻抗：$r</em>{out} &#x3D; r</em>{o2}g_{m4}r_{o4}$<br>优点：M4 屏蔽了 Vout 对 M2 的影响，输出阻抗提高 <br> 不足：$V_B &#x3D; 2V_{gs}$, $V_{out,min} &gt; 2V_{DSAT} + V_{TH}$，故输出摆幅很小</p><h1 id="宽摆幅 -Cascode- 电流镜"><a href="# 宽摆幅 -Cascode- 电流镜" class="headerlink" title="宽摆幅 Cascode 电流镜"></a>宽摆幅 Cascode 电流镜 </h1><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20261109204838.png" alt="20261109204838"><br>$\frac{I_out}{I_ref} &#x3D; \frac{(W&#x2F;L)<em>2}{(W&#x2F;L)<em>1}$<br> 输出阻抗：$r</em>{out} &#x3D; r</em>{o2}g_{m4}r_{o4}$<br>优点：$V_B$ 可取小一点，大于 $V_{GS4}+V_{DSAT2}$ 即可，有 $V_{out,min} &gt; V_B-V{TH}$， 即 $V_{out,min} &gt; V_{GS4}-V_{TH}+V_{DSAT2}$，即 $V_{out,min} &gt; 2V_{DSAT}$，摆幅提升。<br>不足：需提供额外的 V_B 偏置电压。</p><h1 id="威尔逊电流镜"><a href="# 威尔逊电流镜" class="headerlink" title="威尔逊电流镜"></a>威尔逊电流镜 </h1><p><img src="https://raw.githubusercontent.com/shenguosai/MyPic/img/img/20261109205822.png" alt="20261109205822"><br>$\frac{I_out}{I_ref} &#x3D; \frac{(W&#x2F;L)<em>2}{(W&#x2F;L)<em>1}$<br> 输出阻抗：$r</em>{out} \approx r</em>{o2}g_{m4}r_{o4}$<br>优点：负反馈稳定 $V_X$ 和 $V_Y$ 两点电压，稳定程度高于 Cascode 结构。<br>缺点：$V_Y$ 始终比 $V_X$ 高一个 $V_{GS}$，Iout 始终低于理想值（M2 的 $V_{DS}$ &lt; M4 的 $V_{DS}$）。$V_Y &#x3D; 2V_{GS}$，$V_{out,min} &gt; V_{GS} + V_{DSAT} &#x3D;&gt; V_{out,min} &gt; V_{TH} + 2V_{DSAT}$，摆幅较小。</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;单管电流镜&quot;&gt;&lt;a href=&quot;# 单管电流镜&quot; class=&quot;headerlink&quot; title=&quot;单管电流镜&quot;&gt;&lt;/a&gt;单管电流镜 &lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/shenguosai/M</summary>
+      
+    
+    
+    
+    <category term="半导体专业" scheme="https://shenguosai.github.io/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/"/>
+    
+    <category term="模拟电路" scheme="https://shenguosai.github.io/categories/%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%B8%93%E4%B8%9A/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF/"/>
+    
+    
+    <category term="模拟电路设计" scheme="https://shenguosai.github.io/tags/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo 中 Markdown 的特殊字符</title>
@@ -470,32 +496,6 @@
     
     
     <category term="DC-DC" scheme="https://shenguosai.github.io/tags/DC-DC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PVE(四)解决升级 (apt-get update) 报错问题</title>
-    <link href="https://shenguosai.github.io/2025/05/08/PVE(%E5%9B%9B)%E8%A7%A3%E5%86%B3%E5%8D%87%E7%BA%A7(apt-get-update)%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/"/>
-    <id>https://shenguosai.github.io/2025/05/08/PVE(%E5%9B%9B)%E8%A7%A3%E5%86%B3%E5%8D%87%E7%BA%A7(apt-get-update)%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/</id>
-    <published>2025-05-08T10:10:58.000Z</published>
-    <updated>2025-07-29T11:54:54.880Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="问题原因"><a href="# 问题原因" class="headerlink" title="问题原因"></a>问题原因 </h1><p> 使用 Proxmox VE 默认的 APT 更新源，在 WEB 更新管理面板点击“刷新”后，会显示错误。这是因为默认的更新源为 Proxmox VE 企业版的订阅，如果我们没有购买订阅，就会提示签名错误，从而使得 APT 更新失败，解决的方法很简单，就是更换软件源就可以了。 Proxmox 官方提供了对应不同版本的源，可以根据自己的情况进行选择。</p><h1 id="解决方法"><a href="# 解决方法" class="headerlink" title="解决方法"></a>解决方法 </h1><p> 修改两个软件源文件即可。</p><h2 id="etc-apt-sources-list-d-pve-enterprise-list"><a href="#etc-apt-sources-list-d-pve-enterprise-list" class="headerlink" title="&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;pve-enterprise.list"></a>&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;pve-enterprise.list</h2><p>注释掉 enterprise 字样的企业软件源，添加免费软件源</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#deb https://enterprise.proxmox.com/debian/pve bookworm pve-enterprise</span><br>deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription<br></code></pre></td></tr></table></figure><h2 id="etc-apt-sources-list-d-ceph-list"><a href="#etc-apt-sources-list-d-ceph-list" class="headerlink" title="&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;ceph.list"></a>&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;ceph.list</h2><p>注释掉仅有的一行即可</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#deb https://enterprise.proxmox.com/debian/ceph-quincy bookworm enterprise</span><br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;问题原因&quot;&gt;&lt;a href=&quot;# 问题原因&quot; class=&quot;headerlink&quot; title=&quot;问题原因&quot;&gt;&lt;/a&gt;问题原因 &lt;/h1&gt;&lt;p&gt; 使用 Proxmox VE 默认的 APT 更新源，在 WEB 更新管理面板点击“刷新”后，会显示错误。这是因为默认的</summary>
-      
-    
-    
-    
-    <category term="技术兴趣" scheme="https://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/"/>
-    
-    <category term="网络服务" scheme="https://shenguosai.github.io/categories/%E6%8A%80%E6%9C%AF%E5%85%B4%E8%B6%A3/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-    <category term="PVE" scheme="https://shenguosai.github.io/tags/PVE/"/>
     
   </entry>
   
